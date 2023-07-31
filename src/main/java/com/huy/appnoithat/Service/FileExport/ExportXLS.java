@@ -1,4 +1,4 @@
 package com.huy.appnoithat.Service.FileExport;
 
-public class ExportXLS implements ExportFormat{
+public class ExportXLS implements ExportFileService {
 }
