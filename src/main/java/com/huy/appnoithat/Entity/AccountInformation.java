@@ -17,4 +17,17 @@ public class AccountInformation {
     private String email;
     private String address;
     private String phone;
+
+
+    @Override
+    public String toString() {
+        return "AccountInformation{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }
