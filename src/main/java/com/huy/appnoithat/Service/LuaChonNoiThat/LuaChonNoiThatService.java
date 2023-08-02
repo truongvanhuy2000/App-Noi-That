@@ -35,6 +35,7 @@ public class LuaChonNoiThatService {
     NoiThat nt2 = new NoiThat(2, "Chair", new ArrayList<>());
     NoiThat nt3 = new NoiThat(3, "Bed", new ArrayList<>());
 
+
     PhongCachNoiThat pc1 = new PhongCachNoiThat(1, "Modern", new ArrayList<>());
     PhongCachNoiThat pc2 = new PhongCachNoiThat(2, "Classic", new ArrayList<>());
     // Fake the data
