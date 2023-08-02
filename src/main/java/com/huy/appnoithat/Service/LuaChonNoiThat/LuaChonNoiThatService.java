@@ -80,4 +80,13 @@ public class LuaChonNoiThatService {
         List<PhongCachNoiThat> list = findAllPhongCachNoiThat();
         return list.stream().filter(pc -> pc.getId() == id).findFirst().orElse(null);
     }
+
+    public List<UserSelection> getFakeUserSelection(){
+        List<UserSelection> listSelection= new ArrayList<UserSelection>();
+        listSelection.add(new UserSelection(pc1, nt1, hm1, vl1, ts1));
+        listSelection.add(new UserSelection(pc1, nt2, hm2, vl2, ts2));
+        return listSelection;
+    }
+
+
 }

@@ -1,10 +1,7 @@
 package com.huy.appnoithat.Entity;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.AllArgsConstructor;
-@Getter
-@Setter
+import lombok.*;
+
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Account {

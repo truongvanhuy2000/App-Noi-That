@@ -7,6 +7,8 @@ module com.huy.appnoithat {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires lombok;
+    requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
 
     opens com.huy.appnoithat to javafx.fxml;
     exports com.huy.appnoithat;
