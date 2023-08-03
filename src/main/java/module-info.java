@@ -10,6 +10,9 @@ module com.huy.appnoithat {
     requires org.apache.poi.poi;
     requires org.apache.poi.ooxml;
 
+    exports com.huy.appnoithat.Controller;
+    opens com.huy.appnoithat.Controller to javafx.fxml;
+
     opens com.huy.appnoithat to javafx.fxml;
     exports com.huy.appnoithat;
 }

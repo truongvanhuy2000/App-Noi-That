@@ -19,6 +19,5 @@ public class LoginController {
         if (!loginService.Authorization(usernameTextField.getText(), passwordField.getText())) {
             return;
         }
-
     }
 }

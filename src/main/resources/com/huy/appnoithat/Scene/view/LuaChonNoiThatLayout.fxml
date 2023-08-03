@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.LuaChonNoiThatController">
+   <children>
+      <TableView fx:id="TableNoiThat" prefHeight="400.0" prefWidth="819.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="26.0" text="ID" />
+          <TableColumn fx:id="PhongCach" prefWidth="97.0" text="Phong Cach" />
+            <TableColumn fx:id="NoiThat" prefWidth="88.0" text="Noi That" />
+            <TableColumn fx:id="HangMuc" prefWidth="78.0" text="Hang Muc" />
+            <TableColumn fx:id="VatLieu" prefWidth="102.0" text="Vat Lieu" />
+            <TableColumn prefWidth="75.0" text="Kich Thuoc">
+               <columns>
+                  <TableColumn fx:id="Dai" prefWidth="47.0" text="Dai" />
+                  <TableColumn fx:id="Rong" prefWidth="47.0" text="Rong" />
+                  <TableColumn fx:id="Cao" prefWidth="47.0" text="Cao" />
+               </columns>
+            </TableColumn>
+            <TableColumn fx:id="DonVi" prefWidth="58.0" text="Don Vi" />
+            <TableColumn fx:id="DonGia" text="Don Gia" />
+            <TableColumn fx:id="ThanhTien" prefWidth="75.0" text="So Luong" />
+            <TableColumn prefWidth="73.0" text="Thanh Tien" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

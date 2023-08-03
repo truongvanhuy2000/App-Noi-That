@@ -1,8 +1,7 @@
 package com.huy.appnoithat.Service.FileExport;
 
 
-import com.huy.appnoithat.Entity.AccountInformation;
-import com.huy.appnoithat.Entity.UserSelection;
+import com.huy.appnoithat.Entity.*;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
@@ -89,23 +88,23 @@ public class ExportXLS implements ExportFileService {
         XSSFSheet spreadsheet = workbook.getSheetAt(0);
 
 
-            //setup font to display title product
-            Font fontTitleProduct = customFontExcel(14,true,false,"Times New Roman",workbook);
-            CellStyle cellStyleTitleProduct = workbook.createCellStyle();
-            cellStyleTitleProduct.setFont(fontTitleProduct);
-            cellStyleTitleProduct = customCellStyle(true,true,cellStyleTitleProduct);
+        //setup font to display title product
+        Font fontTitleProduct = customFontExcel(14,true,false,"Times New Roman",workbook);
+        CellStyle cellStyleTitleProduct = workbook.createCellStyle();
+        cellStyleTitleProduct.setFont(fontTitleProduct);
+        cellStyleTitleProduct = customCellStyle(true,true,cellStyleTitleProduct);
 
         CellRangeAddress rangeAddress = new CellRangeAddress(13, 13, 1, 8);
 
         // Ghi văn bản vào mỗi ô trong phạm vi đã xác định
         /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  write title product    */
         for(UserSelection selection : listSelection) {
-        Row row = spreadsheet.createRow(rangeAddress.getFirstRow());
-        for (int col = rangeAddress.getFirstColumn(); col <= rangeAddress.getLastColumn(); col++) {
-            Cell cell = row.createCell(col);
-            cell.setCellValue(listSelection.get(0).getPhongCachNoiThat().getName());
-            cell.setCellStyle(cellStyleTitleProduct);
-        }
+            Row row = spreadsheet.createRow(rangeAddress.getFirstRow());
+            for (int col = rangeAddress.getFirstColumn(); col <= rangeAddress.getLastColumn(); col++) {
+                Cell cell = row.createCell(col);
+                cell.setCellValue(listSelection.get(0).getPhongCachNoiThat().getName());
+                cell.setCellStyle(cellStyleTitleProduct);
+            }
 
             /*write list product*/
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> write product data*/
@@ -173,4 +172,5 @@ public class ExportXLS implements ExportFileService {
         }
         return cellStyle;
     }
+
 }
