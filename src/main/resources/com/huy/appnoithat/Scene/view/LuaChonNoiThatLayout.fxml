@@ -23,8 +23,8 @@
             </TableColumn>
             <TableColumn fx:id="DonVi" prefWidth="58.0" text="Don Vi" />
             <TableColumn fx:id="DonGia" text="Don Gia" />
-            <TableColumn fx:id="ThanhTien" prefWidth="75.0" text="So Luong" />
-            <TableColumn prefWidth="73.0" text="Thanh Tien" />
+            <TableColumn fx:id="SoLuong" prefWidth="75.0" text="So Luong" />
+            <TableColumn fx:id="ThanhTien" prefWidth="73.0" text="Thanh Tien" />
         </columns>
       </TableView>
       <Button fx:id="BackButton" layoutY="8.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="Back" />
