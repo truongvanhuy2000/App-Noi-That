@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.LuaChonNoiThatController">
+<AnchorPane prefHeight="451.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.LuaChonNoiThatController">
    <children>
-      <TableView fx:id="TableNoiThat" prefHeight="400.0" prefWidth="819.0">
+      <TableView fx:id="TableNoiThat" layoutY="41.0" prefHeight="424.0" prefWidth="819.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="26.0" text="ID" />
           <TableColumn fx:id="PhongCach" prefWidth="97.0" text="Phong Cach" />
@@ -27,5 +27,6 @@
             <TableColumn prefWidth="73.0" text="Thanh Tien" />
         </columns>
       </TableView>
+      <Button fx:id="BackButton" layoutY="8.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="Back" />
    </children>
 </AnchorPane>

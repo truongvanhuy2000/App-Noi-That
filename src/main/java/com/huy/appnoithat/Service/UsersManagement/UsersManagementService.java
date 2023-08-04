@@ -10,9 +10,9 @@ public class UsersManagementService {
     private final List<Account> tempAccountList = new ArrayList<>();
 
     public UsersManagementService() {
-        Account account1 = new Account(1, "john_doe", "password123", 1, new AccountInformation());
-        Account account2 = new Account(2, "jane_smith", "ilovecoding", 1, new AccountInformation());
-        Account account3 = new Account(3, "mike_jackson", "12345pass", 0, new AccountInformation());
+        Account account1 = new Account(1, "john_doe", "password123", 1, "ADMIN", new AccountInformation());
+        Account account2 = new Account(2, "jane_smith", "ilovecoding", 1, "USER", new AccountInformation());
+        Account account3 = new Account(3, "mike_jackson", "12345pass", 0, "USER", new AccountInformation());
         tempAccountList.add(account1);
         tempAccountList.add(account2);
         tempAccountList.add(account2);

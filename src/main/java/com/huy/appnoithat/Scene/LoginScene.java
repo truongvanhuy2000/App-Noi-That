@@ -13,11 +13,12 @@ import java.util.Objects;
 public class LoginScene {
     private Scene scene;
     private Parent root;
+    private final FXMLLoader fxmlLoader;
     private static LoginScene single_instance = null;
     public LoginScene() {
         String viewPath = "view/LoginLayout.fxml";
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(LoginScene.class.getResource(viewPath));
+            fxmlLoader = new FXMLLoader(LoginScene.class.getResource(viewPath));
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);

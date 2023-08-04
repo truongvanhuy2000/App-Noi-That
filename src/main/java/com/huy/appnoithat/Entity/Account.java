@@ -9,6 +9,6 @@ public class Account {
     private String username;
     private String password;
     private int active;
+    private String roles;
     private AccountInformation accountInformation;
-
 }

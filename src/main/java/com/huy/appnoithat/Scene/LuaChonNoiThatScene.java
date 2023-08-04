@@ -14,11 +14,11 @@ public class LuaChonNoiThatScene {
     private Scene scene;
     private Parent root;
     private static LuaChonNoiThatScene single_instance = null;
-
+    private final FXMLLoader fxmlLoader;
     public LuaChonNoiThatScene() {
         String viewPath = "view/LuaChonNoiThatLayout.fxml";
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(LuaChonNoiThatScene.class.getResource(viewPath));
+            fxmlLoader = new FXMLLoader(LuaChonNoiThatScene.class.getResource(viewPath));
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
