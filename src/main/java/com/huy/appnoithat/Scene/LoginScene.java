@@ -7,26 +7,45 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.IOException;
+import java.util.Objects;
 
 @Getter
-@Setter
 public class LoginScene {
-    private final Scene scene;
-    private final Parent root;
+    private Scene scene;
+    private Parent root;
     private static LoginScene single_instance = null;
     public LoginScene() {
+        String viewPath = "view/LoginLayout.fxml";
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(LoginScene.class.getResource("view/LoginLayout.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginScene.class.getResource(viewPath));
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("css/LoginLayout.css").toExternalForm());
+        addCssToScence();
     }
+
+    // Create an object of this class, call this function
     public static synchronized LoginScene getInstance() {
         if (single_instance == null)
             single_instance = new LoginScene();
         return single_instance;
+    }
+
+    public void setRoot(Parent root) {
+        this.root = root;
+        scene.setRoot(this.root);
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+        scene.setRoot(this.root);
+        addCssToScence();
+    }
+
+    private void addCssToScence(){
+        String cssPath = "css/LoginLayout.css";
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }
 }

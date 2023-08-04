@@ -13,8 +13,6 @@ public class AccountInformation {
     private String email;
     private String address;
     private String phone;
-
-
     @Override
     public String toString() {
         return "AccountInformation{" +
