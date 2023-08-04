@@ -88,58 +88,83 @@ public class ExportXLS implements ExportFileService {
         XSSFSheet spreadsheet = workbook.getSheetAt(0);
 
 
-        //setup font to display title product
-        Font fontTitleProduct = customFontExcel(14,true,false,"Times New Roman",workbook);
-        CellStyle cellStyleTitleProduct = workbook.createCellStyle();
-        cellStyleTitleProduct.setFont(fontTitleProduct);
-        cellStyleTitleProduct = customCellStyle(true,true,cellStyleTitleProduct);
+            //setup font to display title product
+            Font fontTitleProduct = customFontExcel(14,true,false,"Times New Roman",workbook);
+            CellStyle cellStyleTitleProduct = workbook.createCellStyle();
+            cellStyleTitleProduct.setFont(fontTitleProduct);
+            cellStyleTitleProduct = customCellStyle(true,true,cellStyleTitleProduct);
 
-        CellRangeAddress rangeAddress = new CellRangeAddress(13, 13, 1, 8);
+//        CellRangeAddress rangeAddress = new CellRangeAddress(13, 13, 1, 8);
 
         // Ghi văn bản vào mỗi ô trong phạm vi đã xác định
         /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  write title product    */
-        for(UserSelection selection : listSelection) {
-            Row row = spreadsheet.createRow(rangeAddress.getFirstRow());
-            for (int col = rangeAddress.getFirstColumn(); col <= rangeAddress.getLastColumn(); col++) {
-                Cell cell = row.createCell(col);
-                cell.setCellValue(listSelection.get(0).getPhongCachNoiThat().getName());
-                cell.setCellStyle(cellStyleTitleProduct);
-            }
+//        for(UserSelection selection : listSelection) {
+//        Row row = spreadsheet.createRow(rangeAddress.getFirstRow());
+//        for (int col = rangeAddress.getFirstColumn(); col <= rangeAddress.getLastColumn(); col++) {
+//            Cell cell = row.createCell(col);
+//            cell.setCellValue(listSelection.get(0).getPhongCachNoiThat().getName());
+//            cell.setCellStyle(cellStyleTitleProduct);
+//        }
+//
+//            /*write list product*/
+//        /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> write product data*/
+//            int rowid = 14; //hang 15
+//            int cellid = 1; // cot B
+//
+//            //This data needs to be written (Object[])
+//            Map < String, Object[] > productinfo = new TreeMap < String, Object[] >();
+//            productinfo.put( "1", new Object[] { "Tủ bếp long", "- Thùng  : MDF chống ẩm an cường , độ dày 18mm ", "189","350","750","mét dài","2,360,000","1.00"," 29,055,000" });
+//            productinfo.put( "2", new Object[] { "Tủ bếp linh2", "- Thùng  : MDF chống ẩm an cường , độ dày 18mm ", "200","450","850","mét dài","3,360,000","2.00"," 30,055,000" });
+//
+//            //Iterate over data and write to sheet
+//            Set < String > keyid = productinfo.keySet();
+//            CellStyle cellStyleEachProduct = workbook.createCellStyle();
+//            Font fontTextProduct = customFontExcel(12,false,false,"Times New Roman",workbook);
+//            cellStyleEachProduct.setFont(fontTextProduct);
+//
+//            for (String key : keyid) {
+//                row = spreadsheet.createRow(rowid++);
+//                Object [] objectArr = productinfo.get(key);
+//                for (Object obj : objectArr) {
+//                    if(cellid==10){
+//                        cellid=1;
+//                    }
+//                    Cell cellProduct = row.createCell(cellid++);
+//                    cellProduct.setCellValue((String)obj);
+//                    cellProduct.setCellStyle(customCellStyle(true,true,cellStyleEachProduct));
+//                }
+//            }
+//        }
 
-            /*write list product*/
-        /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> write product data*/
-            int rowid = 14; //hang 15
-            int cellid = 1; // cot B
+        LuaChonNoiThatService noiThatService = new LuaChonNoiThatService() ;
+        List<PhongCachNoiThat> listPc = noiThatService.findAllPhongCachNoiThat();
 
-            //This data needs to be written (Object[])
-            Map < String, Object[] > productinfo = new TreeMap < String, Object[] >();
-            productinfo.put( "1", new Object[] { "Tủ bếp long", "- Thùng  : MDF chống ẩm an cường , độ dày 18mm ", "189","350","750","mét dài","2,360,000","1.00"," 29,055,000" });
-            productinfo.put( "2", new Object[] { "Tủ bếp linh2", "- Thùng  : MDF chống ẩm an cường , độ dày 18mm ", "200","450","850","mét dài","3,360,000","2.00"," 30,055,000" });
+        int rowid = 14; //hang 15
+        int cellid = 1;
 
-            //Iterate over data and write to sheet
-            Set < String > keyid = productinfo.keySet();
-            CellStyle cellStyleEachProduct = workbook.createCellStyle();
-            Font fontTextProduct = customFontExcel(12,false,false,"Times New Roman",workbook);
-            cellStyleEachProduct.setFont(fontTextProduct);
 
-            for (String key : keyid) {
-                row = spreadsheet.createRow(rowid++);
-                Object [] objectArr = productinfo.get(key);
-                for (Object obj : objectArr) {
-                    if(cellid==10){
-                        cellid=1;
+   ;
+        for (PhongCachNoiThat pc: listPc) {
+
+            for (NoiThat nt : pc.getNoiThatList()) {
+                CellRangeAddress rangeAddress = new CellRangeAddress(13, 13, 1, 8);
+                Row rowTitle = spreadsheet.createRow(rangeAddress.getFirstRow());
+                Cell cellTitle = rowTitle.createCell(rangeAddress.getFirstColumn());
+                cellTitle.setCellValue(nt.getName());
+                cellTitle.setCellStyle(cellStyleTitleProduct);
+                for (HangMuc hm : nt.getHangMucList()) {
+                    Row row = spreadsheet.createRow(rowid);
+                    Cell cell = row.createCell(1); //cot B
+                   cell.setCellValue(hm.getName());
+                    for (VatLieu vl : hm.getVatLieuList()) {
+                        //bug ko the set value vao o C15
+                         cell = row.createCell(2); //cot B
+                        cell.setCellValue("long");
                     }
-                    Cell cellProduct = row.createCell(cellid++);
-                    cellProduct.setCellValue((String)obj);
-                    cellProduct.setCellStyle(customCellStyle(true,true,cellStyleEachProduct));
                 }
             }
 
-
-
         }
-
-
         //lets write the excel data to file now
         FileOutputStream fos = new FileOutputStream(fileName);
         workbook.write(fos);
@@ -172,5 +197,4 @@ public class ExportXLS implements ExportFileService {
         }
         return cellStyle;
     }
-
 }
