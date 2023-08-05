@@ -15,10 +15,10 @@ public class UsersManagementService {
         Account account3 = new Account(3, "mike_jackson", "12345pass", 0, "USER", new AccountInformation());
         tempAccountList.add(account1);
         tempAccountList.add(account2);
-        tempAccountList.add(account2);
+        tempAccountList.add(account3);
     }
 
-    List<Account> findAllAccount(){
+    public List<Account> findAllAccount(){
         return tempAccountList;
     }
 
