@@ -9,4 +9,8 @@ public class VatLieu {
     private int id;
     private String name;
     ThongSo thongSo;
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

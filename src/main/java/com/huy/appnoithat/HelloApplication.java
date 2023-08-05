@@ -3,7 +3,6 @@ package com.huy.appnoithat;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
-import com.huy.appnoithat.Session.UserSession;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

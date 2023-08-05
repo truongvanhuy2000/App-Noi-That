@@ -3,7 +3,8 @@ package com.huy.appnoithat.Entity;
 import lombok.*;
 
 import java.util.List;
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 
@@ -18,10 +19,6 @@ public class PhongCachNoiThat {
 
     @Override
     public String toString() {
-        return "PhongCachNoiThat{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", noiThatList=" + noiThatList +
-                '}';
+        return this.name;
     }
 }

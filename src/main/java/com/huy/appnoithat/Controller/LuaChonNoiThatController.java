@@ -1,52 +1,63 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.Entity.BangNoiThat;
+import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 
 public class LuaChonNoiThatController implements Initializable {
-    @FXML
-    private Button BackButton;
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public class BangNoiThat {
+        private int id;
+        private ComboBox<String> PhongCach;
+        private float Cao;
+        private float Dai;
+        private float Rong;
+        private long DonGia;
+        private String DonVi;
+        private ComboBox<String> HangMuc;
+        private ComboBox<String> NoiThat;
+        private ComboBox<String> VatLieu;
+        private long ThanhTien;
+        private float SoLuong;
+    }
+
     @FXML
     private TableView<BangNoiThat> TableNoiThat;
     @FXML
-    private TableColumn<BangNoiThat, Float> Cao;
+    private TableColumn<BangNoiThat, Float> Cao, Dai, Rong, SoLuong;
     @FXML
-    private TableColumn<BangNoiThat, Float> Dai;
+    private TableColumn<BangNoiThat, Long> DonGia, ThanhTien;
     @FXML
-    private TableColumn<BangNoiThat, Long> DonGia;
-    @FXML
-    private TableColumn<BangNoiThat, String> DonVi;
-    @FXML
-    private TableColumn<BangNoiThat, String> HangMuc;
-    @FXML
-    private TableColumn<BangNoiThat, String> NoiThat;
-    @FXML
-    private TableColumn<BangNoiThat, String> PhongCach;
-    @FXML
-    private TableColumn<BangNoiThat, Float> Rong;
-    @FXML
-    private TableColumn<BangNoiThat, Float> SoLuong;
-    @FXML
-    private TableColumn<BangNoiThat, Long> ThanhTien;
-    @FXML
-    private TableColumn<BangNoiThat, String> VatLieu;
+    private TableColumn<BangNoiThat, String> DonVi, HangMuc, NoiThat, PhongCach, VatLieu;
     @FXML
     private TableColumn<BangNoiThat, Integer> id;
+    @FXML
+    private Button BackButton;
+    private int current_id = 0;
+    List<PhongCachNoiThat> listPhongCachNoiThat;
     LuaChonNoiThatService luaChonNoiThatService;
     public LuaChonNoiThatController() {
         luaChonNoiThatService = new LuaChonNoiThatService();
@@ -56,6 +67,8 @@ public class LuaChonNoiThatController implements Initializable {
     public void initialize() {
     }
     public void setUpTable(){
+        TableNoiThat.setEditable(true);
+
         PhongCach.setCellValueFactory(new PropertyValueFactory<>("PhongCach"));
         Cao.setCellValueFactory(new PropertyValueFactory<>("Cao"));
         Dai.setCellValueFactory(new PropertyValueFactory<>("Dai"));
@@ -72,9 +85,7 @@ public class LuaChonNoiThatController implements Initializable {
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
         setUpTable();
-        BangNoiThat bangNoiThat = new BangNoiThat(1, "Phong Cach", 1, 1, 1, 1, "cm", "Hang Muc", "Noi That", "Vat Lieu", 1, 1);
-        System.out.println(bangNoiThat);
-        TableNoiThat.getItems().add(bangNoiThat);
+        listPhongCachNoiThat = luaChonNoiThatService.findAllPhongCachNoiThat();
     }
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
@@ -85,12 +96,67 @@ public class LuaChonNoiThatController implements Initializable {
         if (source == BackButton){
             scene = HomeScene.getInstance().getScene();
         }
-        else {
-            return;
-        }
+        else return;
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    void addNewLine(ActionEvent event) {
+        current_id += 1;
+        ComboBox<String> phongCachCombobox = new ComboBox<String>(FXCollections.observableList(getObjectNameList(listPhongCachNoiThat)));
+//        phongCachCombobox.setOnAction(e -> {
+//            System.out.println(e.getSource().toString());
+//            System.out.println(phongCachCombobox.getValue());
+//        });
+        TableNoiThat.getItems().add(new BangNoiThat(current_id,
+                phongCachCombobox,
+                0, 0, 0, 0, "",
+                null,
+                null,
+                null,
+                0,
+                0));
+    }
 
+    public List<String> getObjectNameList(List<?> list){
+        return list.stream().map(Object::toString).collect(Collectors.toList());
+    }
 
+//    private void
+
+    @FXML
+    void cellComitEventHandler(ActionEvent event) {
+        Object source = event.getSource();
+        if (source == PhongCach){
+            System.out.println("Phong cach");
+        }
+        else if (source == HangMuc){
+            System.out.println("Hang muc");
+        }
+        else if (source == NoiThat){
+            System.out.println("Noi that");
+        }
+        else if (source == VatLieu){
+            System.out.println("Vat lieu");
+        }
+        else return;
+    }
+
+    @FXML
+    void cellEditEventHandler(ActionEvent event) {
+        Object source = event.getSource();
+        if (source == PhongCach){
+            System.out.println("Phong cach");
+        }
+        else if (source == HangMuc){
+            System.out.println("Hang muc");
+        }
+        else if (source == NoiThat){
+            System.out.println("Noi that");
+        }
+        else if (source == VatLieu){
+            System.out.println("Vat lieu");
+        }
+        else return;
+    }
 }

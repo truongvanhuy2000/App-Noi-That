@@ -15,4 +15,8 @@ public class NoiThat {
     public void add(HangMuc hangMuc) {
         hangMucList.add(hangMuc);
     }
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

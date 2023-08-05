@@ -15,4 +15,8 @@ public class HangMuc {
     public void add(VatLieu vatLieu) {
         vatLieuList.add(vatLieu);
     }
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
