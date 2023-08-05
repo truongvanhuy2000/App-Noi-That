@@ -17,13 +17,25 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 public class UsersManagementController{
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class AccountTable {
+        private int id;
+        private String username;
+        private String password;
+        private int active;
+    }
 
     @FXML
-    private TableColumn<Account, Integer> active;
+    private TableColumn<AccountTable, Integer> active;
 
     @FXML
     private Button btnAddUser;
@@ -32,33 +44,33 @@ public class UsersManagementController{
     private Button btnSearch;
 
     @FXML
-    private TableColumn<Account, String> password;
+    private TableColumn<AccountTable, String> password;
 
     @FXML
-    private TableView<Account> tableManageUser;
+    private TableView<AccountTable> tableManageUser;
 
     @FXML
     private TextField txtSearchUser;
 
     @FXML
-    private TableColumn<Account, String> username;
+    private TableColumn<AccountTable, String> username;
 
 
     UsersManagementService user = new UsersManagementService();
 
     List<Account> list = user.findAllAccount();
-    ObservableList<Account> listUser = FXCollections.observableArrayList(
-            new Account(1, "john_doe", "password123", 1, "ADMIN", new AccountInformation()),
-            new Account(2, "jane_smith", "ilovecoding", 1, "USER", new AccountInformation())
+    ObservableList<AccountTable> listUser = FXCollections.observableArrayList(
+            new AccountTable(1, "john_smith", "ilovecoding", 1),
+            new AccountTable(2, "john_smith", "ilovecoding", 1)
     );
     UserSessionService userSessionService;
     public UsersManagementController() {
         userSessionService = new UserSessionService();
     }
     public void initialize() {
-        username.setCellValueFactory(new PropertyValueFactory<Account,String>("username"));
-        password.setCellValueFactory(new PropertyValueFactory<Account,String>("password"));
-        active.setCellValueFactory(new PropertyValueFactory<Account,Integer>("active"));
+        username.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("username"));
+        password.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("password"));
+        active.setCellValueFactory(new PropertyValueFactory<AccountTable,Integer>("active"));
         tableManageUser.setItems(listUser);
     }
 
