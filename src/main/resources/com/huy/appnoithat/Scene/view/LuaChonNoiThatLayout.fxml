@@ -1,33 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="465.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.LuaChonNoiThatController">
+<AnchorPane prefHeight="799.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.LuaChonNoiThatController">
    <children>
-      <TableView fx:id="TableNoiThat" layoutY="41.0" prefHeight="424.0" prefWidth="875.0">
-        <columns>
-          <TableColumn fx:id="id" prefWidth="26.0" text="ID" />
-          <TableColumn fx:id="PhongCach" prefWidth="97.0" text="Phong Cach" />
-            <TableColumn fx:id="NoiThat" prefWidth="88.0" text="Noi That" />
-            <TableColumn fx:id="HangMuc" prefWidth="78.0" text="Hang Muc" />
-            <TableColumn fx:id="VatLieu" prefWidth="102.0" text="Vat Lieu" />
-            <TableColumn prefWidth="75.0" text="Kich Thuoc">
-               <columns>
-                  <TableColumn fx:id="Dai" prefWidth="47.0" text="Dai" />
-                  <TableColumn fx:id="Rong" prefWidth="47.0" text="Rong" />
-                  <TableColumn fx:id="Cao" prefWidth="47.0" text="Cao" />
-               </columns>
-            </TableColumn>
-            <TableColumn fx:id="DonVi" prefWidth="58.0" text="Don Vi" />
-            <TableColumn fx:id="DonGia" text="Don Gia" />
-            <TableColumn fx:id="SoLuong" prefWidth="75.0" text="So Luong" />
-            <TableColumn fx:id="ThanhTien" prefWidth="73.0" text="Thanh Tien" />
-        </columns>
-      </TableView>
-      <Button fx:id="BackButton" layoutY="8.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="Back" />
-      <Button layoutX="754.0" layoutY="8.0" mnemonicParsing="false" onAction="#addNewLine" text="Add" />
+      <TabPane prefHeight="802.0" prefWidth="938.0" side="BOTTOM" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Untitled Tab 1">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="766.0" prefWidth="938.0">
+                     <children>
+                        <TableView fx:id="TableNoiThat" layoutX="69.0" layoutY="367.0" prefHeight="395.0" prefWidth="869.0">
+                          <columns>
+                            <TableColumn fx:id="id" prefWidth="26.0" text="ID" />
+                            <TableColumn fx:id="PhongCach" prefWidth="97.0" text="Phong Cach" />
+                              <TableColumn fx:id="NoiThat" prefWidth="88.0" text="Noi That" />
+                              <TableColumn fx:id="HangMuc" prefWidth="78.0" text="Hang Muc" />
+                              <TableColumn fx:id="VatLieu" prefWidth="102.0" text="Vat Lieu" />
+                              <TableColumn prefWidth="75.0" text="Kich Thuoc">
+                                 <columns>
+                                    <TableColumn fx:id="Dai" prefWidth="47.0" text="Dai" />
+                                    <TableColumn fx:id="Rong" prefWidth="47.0" text="Rong" />
+                                    <TableColumn fx:id="Cao" prefWidth="47.0" text="Cao" />
+                                 </columns>
+                              </TableColumn>
+                              <TableColumn fx:id="DonVi" prefWidth="58.0" text="Don Vi" />
+                              <TableColumn fx:id="DonGia" text="Don Gia" />
+                              <TableColumn fx:id="SoLuong" prefWidth="75.0" text="So Luong" />
+                              <TableColumn fx:id="ThanhTien" prefWidth="123.0" text="Thanh Tien" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="14.0" layoutY="439.0" mnemonicParsing="false" onAction="#addNewLine" text="Add" />
+                        <Button fx:id="BackButton" layoutX="6.0" layoutY="12.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="Back" />
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="76.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../../../../../Pictures/wallhaven-x6z89o.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>
