@@ -21,11 +21,6 @@ public class LuaChonNoiThatControllerTest extends Application {
             throw new RuntimeException(e);
         }
     }
-
-    @Test
-    void testInitialize() {
-    }
-
     @BeforeEach
     void setUp() {
         thread = new Thread("JavaFX Init Thread") {

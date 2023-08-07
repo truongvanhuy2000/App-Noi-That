@@ -3,6 +3,7 @@ package com.huy.appnoithat.Controller;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -70,18 +71,36 @@ public class LuaChonNoiThatController implements Initializable {
         TableNoiThat.setEditable(true);
 
         PhongCach.setCellValueFactory(new PropertyValueFactory<>("PhongCach"));
-        PhongCach.setCellFactory(column -> new ComboboxCell());
+        PhongCach.setCellFactory(column -> new CustomComboboxCell());
 
         Cao.setCellValueFactory(new PropertyValueFactory<>("Cao"));
+        Cao.setCellFactory(column -> new CustomEditingCell<>());
+
         Dai.setCellValueFactory(new PropertyValueFactory<>("Dai"));
+        Dai.setCellFactory(column -> new CustomEditingCell<>());
+
         Rong.setCellValueFactory(new PropertyValueFactory<>("Rong"));
+        Rong.setCellFactory(column -> new CustomEditingCell<>());
+
         DonGia.setCellValueFactory(new PropertyValueFactory<>("DonGia"));
+        DonGia.setCellFactory(column -> new CustomEditingCell<>());
+
         DonVi.setCellValueFactory(new PropertyValueFactory<>("DonVi"));
         HangMuc.setCellValueFactory(new PropertyValueFactory<>("HangMuc"));
+        HangMuc.setCellFactory(column -> new CustomComboboxCell());
+
         NoiThat.setCellValueFactory(new PropertyValueFactory<>("NoiThat"));
+        NoiThat.setCellFactory(column -> new CustomComboboxCell());
+
         VatLieu.setCellValueFactory(new PropertyValueFactory<>("VatLieu"));
+        VatLieu.setCellFactory(column -> new CustomComboboxCell());
+
         ThanhTien.setCellValueFactory(new PropertyValueFactory<>("ThanhTien"));
+        ThanhTien.setCellFactory(column -> new CustomEditingCell<>());
+
         SoLuong.setCellValueFactory(new PropertyValueFactory<>("SoLuong"));
+        SoLuong.setCellFactory(column -> new CustomEditingCell<>());
+
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
         TableNoiThat.setItems(list);
@@ -115,7 +134,7 @@ public class LuaChonNoiThatController implements Initializable {
     }
 
 //    private void
-    public class ComboboxCell extends TableCell<BangNoiThat, String> {
+    public class CustomComboboxCell extends TableCell<BangNoiThat, String> {
         private ComboBox<String> comboBox;
         ObservableList<String> dropDownData = FXCollections.observableArrayList();
         @Override
@@ -128,26 +147,10 @@ public class LuaChonNoiThatController implements Initializable {
             setText(null);
             setGraphic(comboBox);
         }
-//        @Override
-//        public void updateItem(String item, boolean empty) {
-//            super.updateItem(item, empty);
-//
-//            if (empty) {
-//                setText(null);
-//                setGraphic(null);
-//            } else {
-//                if (isEditing()) {
-//                    if (comboBox != null) {
-//                        comboBox.setValue(getTyp());
-//                    }
-//                    setText(getTyp().getTyp());
-//                    setGraphic(comboBox);
-//                } else {
-//                    setText(getTyp().getTyp());
-//                    setGraphic(null);
-//                }
-//            }
-//        }
+        @Override
+        public void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+        }
         @Override
         public void cancelEdit() {
             super.cancelEdit();
@@ -169,5 +172,53 @@ public class LuaChonNoiThatController implements Initializable {
     //                }
     //            });
         }
+    }
+
+    class CustomEditingCell<T> extends TableCell<BangNoiThat, T> {
+
+        private TextField textField;
+
+        private CustomEditingCell() {
+        }
+
+        @Override
+        public void startEdit() {
+            if (!isEmpty()) {
+                super.startEdit();
+                createTextField();
+                setText(null);
+                setGraphic(textField);
+//                textField.selectAll();
+            }
+        }
+
+        @Override
+        public void cancelEdit() {
+            super.cancelEdit();
+
+//            setText((String) getItem());
+            setGraphic(null);
+        }
+
+        @Override
+        public void updateItem(T item, boolean empty) {
+            super.updateItem(item, empty);
+        }
+
+        private void createTextField() {
+//            textField = new TextField(getString());
+//            textField.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
+//            textField.setOnAction((e) -> commitEdit(textField.getText()));
+//            textField.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+//                if (!newValue) {
+//                    System.out.println("Commiting " + textField.getText());
+//                    commitEdit(textField.getText());
+//                }
+//            });
+        }
+
+//        private String getString() {
+//            return getItem() == null ? "" : getItem();
+//        }
     }
 }
