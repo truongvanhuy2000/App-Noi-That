@@ -10,10 +10,10 @@
       <TableView fx:id="TableNoiThat" layoutY="41.0" prefHeight="424.0" prefWidth="875.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="26.0" text="ID" />
-          <TableColumn fx:id="PhongCach" onEditCommit="#cellComitEventHandler" onEditStart="#cellEditEventHandler" prefWidth="97.0" text="Phong Cach" />
-            <TableColumn fx:id="NoiThat" onEditCommit="#cellComitEventHandler" onEditStart="#cellEditEventHandler" prefWidth="88.0" text="Noi That" />
-            <TableColumn fx:id="HangMuc" onEditCommit="#cellComitEventHandler" onEditStart="#cellEditEventHandler" prefWidth="78.0" text="Hang Muc" />
-            <TableColumn fx:id="VatLieu" onEditCommit="#cellComitEventHandler" onEditStart="#cellEditEventHandler" prefWidth="102.0" text="Vat Lieu" />
+          <TableColumn fx:id="PhongCach" prefWidth="97.0" text="Phong Cach" />
+            <TableColumn fx:id="NoiThat" prefWidth="88.0" text="Noi That" />
+            <TableColumn fx:id="HangMuc" prefWidth="78.0" text="Hang Muc" />
+            <TableColumn fx:id="VatLieu" prefWidth="102.0" text="Vat Lieu" />
             <TableColumn prefWidth="75.0" text="Kich Thuoc">
                <columns>
                   <TableColumn fx:id="Dai" prefWidth="47.0" text="Dai" />

@@ -4,15 +4,13 @@ import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lombok.AllArgsConstructor;
@@ -31,17 +29,17 @@ public class LuaChonNoiThatController implements Initializable {
     @NoArgsConstructor
     public class BangNoiThat {
         private int id;
-        private ComboBox<String> PhongCach;
-        private float Cao;
-        private float Dai;
-        private float Rong;
-        private long DonGia;
+        private String PhongCach;
+        private Float Cao;
+        private Float Dai;
+        private Float Rong;
+        private Long DonGia;
         private String DonVi;
-        private ComboBox<String> HangMuc;
-        private ComboBox<String> NoiThat;
-        private ComboBox<String> VatLieu;
-        private long ThanhTien;
-        private float SoLuong;
+        private String HangMuc;
+        private String NoiThat;
+        private String VatLieu;
+        private Long ThanhTien;
+        private Float SoLuong;
     }
 
     @FXML
@@ -56,9 +54,11 @@ public class LuaChonNoiThatController implements Initializable {
     private TableColumn<BangNoiThat, Integer> id;
     @FXML
     private Button BackButton;
+
     private int current_id = 0;
     List<PhongCachNoiThat> listPhongCachNoiThat;
-    LuaChonNoiThatService luaChonNoiThatService;
+    private final LuaChonNoiThatService luaChonNoiThatService;
+    private ObservableList<BangNoiThat> list = FXCollections.observableArrayList();
     public LuaChonNoiThatController() {
         luaChonNoiThatService = new LuaChonNoiThatService();
     }
@@ -70,6 +70,8 @@ public class LuaChonNoiThatController implements Initializable {
         TableNoiThat.setEditable(true);
 
         PhongCach.setCellValueFactory(new PropertyValueFactory<>("PhongCach"));
+        PhongCach.setCellFactory(column -> new ComboboxCell());
+
         Cao.setCellValueFactory(new PropertyValueFactory<>("Cao"));
         Dai.setCellValueFactory(new PropertyValueFactory<>("Dai"));
         Rong.setCellValueFactory(new PropertyValueFactory<>("Rong"));
@@ -81,6 +83,8 @@ public class LuaChonNoiThatController implements Initializable {
         ThanhTien.setCellValueFactory(new PropertyValueFactory<>("ThanhTien"));
         SoLuong.setCellValueFactory(new PropertyValueFactory<>("SoLuong"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        TableNoiThat.setItems(list);
     }
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
@@ -103,19 +107,7 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     void addNewLine(ActionEvent event) {
         current_id += 1;
-        ComboBox<String> phongCachCombobox = new ComboBox<String>(FXCollections.observableList(getObjectNameList(listPhongCachNoiThat)));
-//        phongCachCombobox.setOnAction(e -> {
-//            System.out.println(e.getSource().toString());
-//            System.out.println(phongCachCombobox.getValue());
-//        });
-        TableNoiThat.getItems().add(new BangNoiThat(current_id,
-                phongCachCombobox,
-                0, 0, 0, 0, "",
-                null,
-                null,
-                null,
-                0,
-                0));
+        list.add(new BangNoiThat(current_id, "", 0f, 0f, 0f, 0L, "", "", "", "", 0L, 0f));
     }
 
     public List<String> getObjectNameList(List<?> list){
@@ -123,40 +115,59 @@ public class LuaChonNoiThatController implements Initializable {
     }
 
 //    private void
-
-    @FXML
-    void cellComitEventHandler(ActionEvent event) {
-        Object source = event.getSource();
-        if (source == PhongCach){
-            System.out.println("Phong cach");
+    public class ComboboxCell extends TableCell<BangNoiThat, String> {
+        private ComboBox<String> comboBox;
+        ObservableList<String> dropDownData = FXCollections.observableArrayList();
+        @Override
+        public void startEdit() {
+            if (isEmpty()){
+                return;
+            }
+            super.startEdit();
+            createComboBox();
+            setText(null);
+            setGraphic(comboBox);
         }
-        else if (source == HangMuc){
-            System.out.println("Hang muc");
+//        @Override
+//        public void updateItem(String item, boolean empty) {
+//            super.updateItem(item, empty);
+//
+//            if (empty) {
+//                setText(null);
+//                setGraphic(null);
+//            } else {
+//                if (isEditing()) {
+//                    if (comboBox != null) {
+//                        comboBox.setValue(getTyp());
+//                    }
+//                    setText(getTyp().getTyp());
+//                    setGraphic(comboBox);
+//                } else {
+//                    setText(getTyp().getTyp());
+//                    setGraphic(null);
+//                }
+//            }
+//        }
+        @Override
+        public void cancelEdit() {
+            super.cancelEdit();
+//            setText(getTyp().getTyp());
+            setGraphic(null);
         }
-        else if (source == NoiThat){
-            System.out.println("Noi that");
+        private void createComboBox() {
+            comboBox = new ComboBox<>(dropDownData);
+//            comboBoxConverter(comboBox);
+//            comboBox.valueProperty().set(getTyp());
+            comboBox.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
+            comboBox.setOnAction((e) -> {
+                System.out.println("Committed: " + comboBox.getSelectionModel().getSelectedItem());
+                commitEdit(comboBox.getSelectionModel().getSelectedItem());
+            });
+    //            comboBox.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+    //                if (!newValue) {
+    //                    commitEdit(comboBox.getSelectionModel().getSelectedItem());
+    //                }
+    //            });
         }
-        else if (source == VatLieu){
-            System.out.println("Vat lieu");
-        }
-        else return;
-    }
-
-    @FXML
-    void cellEditEventHandler(ActionEvent event) {
-        Object source = event.getSource();
-        if (source == PhongCach){
-            System.out.println("Phong cach");
-        }
-        else if (source == HangMuc){
-            System.out.println("Hang muc");
-        }
-        else if (source == NoiThat){
-            System.out.println("Noi that");
-        }
-        else if (source == VatLieu){
-            System.out.println("Vat lieu");
-        }
-        else return;
     }
 }
