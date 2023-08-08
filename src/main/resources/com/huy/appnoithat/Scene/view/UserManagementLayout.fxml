@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.UsersManagementController">
+<AnchorPane prefHeight="638.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.UsersManagementController">
    <children>
-      <Button fx:id="testButton" layoutX="206.0" layoutY="211.0" mnemonicParsing="false" onAction="#test" text="Button" />
+      <Button fx:id="btnAddUser" layoutX="731.0" layoutY="570.0" mnemonicParsing="false" text="Add New User" />
+      <TableView fx:id="tableManageUser" layoutX="52.0" layoutY="172.0" prefHeight="361.0" prefWidth="789.0">
+         <columns>
+            <TableColumn fx:id="username" prefWidth="265.0" text="Username" />
+            <TableColumn fx:id="password" prefWidth="227.0" text="Password" />
+            <TableColumn fx:id="active" minWidth="0.0" prefWidth="105.0" text="Active" />
+         </columns>
+      </TableView>
+      <Pane layoutX="52.0" layoutY="27.0" prefHeight="130.0" prefWidth="696.0">
+         <children>
+            <Text layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search username:" textOrigin="TOP">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Text>
+            <TextField fx:id="txtSearchUser" layoutX="226.0" layoutY="53.0" prefHeight="24.0" prefWidth="293.0" />
+            <Button fx:id="btnSearch" layoutX="571.0" layoutY="53.0" mnemonicParsing="false" text="Search" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
