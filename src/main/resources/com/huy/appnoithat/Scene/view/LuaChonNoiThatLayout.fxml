@@ -7,21 +7,20 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="855.0" prefWidth="936.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.LuaChonNoiThatController">
+<AnchorPane prefHeight="855.0" prefWidth="1214.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.LuaChonNoiThatController">
    <children>
-      <TabPane prefHeight="802.0" prefWidth="938.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="855.0" prefWidth="1277.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Sheet 1">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="896.0" prefWidth="938.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="824.0" prefWidth="1253.0">
                      <children>
-                        <TableView fx:id="TableNoiThat" layoutX="49.0" layoutY="367.0" prefHeight="229.0" prefWidth="862.0">
+                        <TableView fx:id="TableNoiThat" layoutX="72.0" layoutY="367.0" prefHeight="435.0" prefWidth="904.0">
                           <columns>
                             <TableColumn fx:id="id" prefWidth="26.0" text="ID" />
                             <TableColumn fx:id="PhongCach" prefWidth="97.0" text="Phong Cach" />
@@ -41,19 +40,15 @@
                               <TableColumn fx:id="ThanhTien" prefWidth="123.0" text="Thanh Tien" />
                           </columns>
                         </TableView>
-                        <Button layoutX="11.0" layoutY="423.0" mnemonicParsing="false" onAction="#addNewLine" text="+" />
+                        <Button layoutX="11.0" layoutY="423.0" minWidth="32.0" mnemonicParsing="false" onAction="#addNewLine" prefHeight="30.0" prefWidth="32.0" text="+" />
                         <Button fx:id="BackButton" layoutX="11.0" layoutY="21.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="&lt;" />
                         <TextField layoutX="253.0" layoutY="14.0" prefHeight="24.0" prefWidth="547.0" promptText="Ten Cong Ty" />
                         <TextField layoutX="253.0" layoutY="45.0" prefHeight="24.0" prefWidth="547.0" promptText="Van Phong" />
                         <TextField layoutX="253.0" layoutY="77.0" prefHeight="24.0" prefWidth="547.0" promptText="Dia chi xuong" />
                         <TextField layoutX="253.0" layoutY="108.0" prefHeight="24.0" prefWidth="547.0" promptText="Dien Thoai" />
-                        <HBox layoutX="81.0" layoutY="20.0" prefHeight="152.0" prefWidth="149.0">
+                        <HBox layoutX="76.0" layoutY="13.0" prefHeight="152.0" prefWidth="149.0">
                            <children>
-                              <ImageView fitHeight="142.0" fitWidth="162.0" pickOnBounds="true">
-                                 <image>
-                                    <Image url="@../../../../../../../../../../../../../../media/huy/Local%20Disk/data/Pictures/Instagram/IMG_20220705_185659_182.jpg" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fx:id="ImageView" fitHeight="142.0" fitWidth="162.0" onMouseClicked="#OnMouseClickedHandler" pickOnBounds="true" />
                            </children>
                         </HBox>
                         <TextField layoutX="253.0" layoutY="141.0" prefHeight="24.0" prefWidth="547.0" promptText="Email" />

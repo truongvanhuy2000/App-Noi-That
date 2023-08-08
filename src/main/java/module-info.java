@@ -1,7 +1,7 @@
 module com.huy.appnoithat {
     requires javafx.controls;
     requires javafx.fxml;
-
+    requires org.apache.commons.io;
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires org.kordamp.ikonli.javafx;

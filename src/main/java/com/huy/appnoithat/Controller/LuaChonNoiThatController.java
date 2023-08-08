@@ -13,16 +13,24 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.scene.image.ImageView;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.io.FilenameUtils;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+import java.io.File;
 
 public class LuaChonNoiThatController implements Initializable {
     @Data
@@ -55,6 +63,8 @@ public class LuaChonNoiThatController implements Initializable {
     private TableColumn<BangNoiThat, Integer> id;
     @FXML
     private Button BackButton;
+    @FXML
+    private ImageView ImageView;
 
     private int current_id = 0;
     List<PhongCachNoiThat> listPhongCachNoiThat;
@@ -122,6 +132,29 @@ public class LuaChonNoiThatController implements Initializable {
         else return;
         stage.setScene(scene);
         stage.show();
+    }
+    @FXML
+    void OnMouseClickedHandler(MouseEvent event) {
+        Object source = event.getSource();
+        if (source == ImageView){
+            imageViewHandler();
+        }
+    }
+    private void imageViewHandler(){
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showOpenDialog(new Stage());
+        String fileExtension = FilenameUtils.getExtension(file.getName());
+        if (!(fileExtension.equals("jpg") || fileExtension.equals("jpeg") || fileExtension.equals("png"))){
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Chỉ được chọn ảnh", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+        try {
+            Image image = new Image(new FileInputStream(file));
+            ImageView.setImage(image);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
     @FXML
     void addNewLine(ActionEvent event) {
