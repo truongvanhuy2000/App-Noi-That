@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Controller;
+package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Scene.HomeScene;
@@ -31,26 +31,9 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import java.io.File;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.CustomEditingCell;
 
 public class LuaChonNoiThatController implements Initializable {
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public class BangNoiThat {
-        private int id;
-        private String PhongCach;
-        private Float Cao;
-        private Float Dai;
-        private Float Rong;
-        private Long DonGia;
-        private String DonVi;
-        private String HangMuc;
-        private String NoiThat;
-        private String VatLieu;
-        private Long ThanhTien;
-        private Float SoLuong;
-    }
-
     @FXML
     private TableView<BangNoiThat> TableNoiThat;
     @FXML
@@ -159,99 +142,13 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     void addNewLine(ActionEvent event) {
         current_id += 1;
-        list.add(new BangNoiThat(current_id, "", 0f, 0f, 0f, 0L, "", "", "", "", 0L, 0f));
+        // Populate list with valid data
+        list.add(new BangNoiThat(current_id, "", 0f, 0f, 0f, 0L, "cm", "", "", "", 0L, 0f));
+        list.add(new BangNoiThat(current_id, "", 0f, 0f, 0f, 0L, "cm", "", "", "", 0L, 0f));
     }
 
     public List<String> getObjectNameList(List<?> list){
         return list.stream().map(Object::toString).collect(Collectors.toList());
     }
 
-//    private void
-    public class CustomComboboxCell extends TableCell<BangNoiThat, String> {
-        private ComboBox<String> comboBox;
-        ObservableList<String> dropDownData = FXCollections.observableArrayList();
-        @Override
-        public void startEdit() {
-            if (isEmpty()){
-                return;
-            }
-            super.startEdit();
-            createComboBox();
-            setText(null);
-            setGraphic(comboBox);
-        }
-        @Override
-        public void updateItem(String item, boolean empty) {
-            super.updateItem(item, empty);
-        }
-        @Override
-        public void cancelEdit() {
-            super.cancelEdit();
-//            setText(getTyp().getTyp());
-            setGraphic(null);
-        }
-        private void createComboBox() {
-            comboBox = new ComboBox<>(dropDownData);
-//            comboBoxConverter(comboBox);
-//            comboBox.valueProperty().set(getTyp());
-            comboBox.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
-            comboBox.setOnAction((e) -> {
-                System.out.println("Committed: " + comboBox.getSelectionModel().getSelectedItem());
-                commitEdit(comboBox.getSelectionModel().getSelectedItem());
-            });
-    //            comboBox.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
-    //                if (!newValue) {
-    //                    commitEdit(comboBox.getSelectionModel().getSelectedItem());
-    //                }
-    //            });
-        }
-    }
-
-    class CustomEditingCell<T> extends TableCell<BangNoiThat, T> {
-
-        private TextField textField;
-
-        private CustomEditingCell() {
-        }
-
-        @Override
-        public void startEdit() {
-            if (!isEmpty()) {
-                super.startEdit();
-                createTextField();
-                setText(null);
-                setGraphic(textField);
-//                textField.selectAll();
-            }
-        }
-
-        @Override
-        public void cancelEdit() {
-            super.cancelEdit();
-
-//            setText((String) getItem());
-            setGraphic(null);
-        }
-
-        @Override
-        public void updateItem(T item, boolean empty) {
-            super.updateItem(item, empty);
-        }
-
-        private void createTextField() {
-//            textField = new TextField(getString());
-//            textField.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
-//            textField.setOnAction((e) -> commitEdit(textField.getText()));
-//            textField.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
-//                if (!newValue) {
-//                    System.out.println("Commiting " + textField.getText());
-//                    commitEdit(textField.getText());
-//                }
-//            });
-        }
-
-//        private String getString() {
-//            return getItem() == null ? "" : getItem();
-//        }
-    }
 }

@@ -1,15 +1,13 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.Scene.HomeScene;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.Scene.LuaChonNoiThatScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
-import static org.junit.jupiter.api.Assertions.*;
 public class LuaChonNoiThatControllerTest extends Application {
     LuaChonNoiThatController luaChonNoiThatController;
     private Thread thread;

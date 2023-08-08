@@ -7,48 +7,56 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="855.0" prefWidth="1214.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.LuaChonNoiThatController">
+<AnchorPane prefHeight="1010.0" prefWidth="1217.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController">
    <children>
-      <TabPane prefHeight="855.0" prefWidth="1277.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="855.0" prefWidth="1308.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab text="Sheet 1">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="824.0" prefWidth="1253.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="824.0" prefWidth="1720.0">
                      <children>
-                        <TableView fx:id="TableNoiThat" layoutX="72.0" layoutY="367.0" prefHeight="435.0" prefWidth="904.0">
+                        <TableView fx:id="TableNoiThat" editable="true" layoutX="72.0" layoutY="367.0" prefHeight="435.0" prefWidth="1084.0" AnchorPane.bottomAnchor="177.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="367.0">
                           <columns>
                             <TableColumn fx:id="id" prefWidth="26.0" text="ID" />
-                            <TableColumn fx:id="PhongCach" prefWidth="97.0" text="Phong Cach" />
-                              <TableColumn fx:id="NoiThat" prefWidth="88.0" text="Noi That" />
-                              <TableColumn fx:id="HangMuc" prefWidth="78.0" text="Hang Muc" />
-                              <TableColumn fx:id="VatLieu" prefWidth="102.0" text="Vat Lieu" />
-                              <TableColumn prefWidth="75.0" text="Kich Thuoc">
+                            <TableColumn fx:id="PhongCach" prefWidth="97.0" text=" Phong Cách" />
+                              <TableColumn fx:id="NoiThat" prefWidth="88.0" text="Nội thất" />
+                              <TableColumn fx:id="HangMuc" prefWidth="98.0" text="Hạng mục" />
+                              <TableColumn fx:id="VatLieu" prefWidth="258.0" text="Vật liệu " />
+                              <TableColumn minWidth="0.0" prefWidth="169.0" text="Kích thước">
                                  <columns>
-                                    <TableColumn fx:id="Dai" prefWidth="47.0" text="Dai" />
-                                    <TableColumn fx:id="Rong" prefWidth="47.0" text="Rong" />
+                                    <TableColumn fx:id="Dai" prefWidth="47.0" text="Dài" />
+                                    <TableColumn fx:id="Rong" prefWidth="47.0" text="Rộng" />
                                     <TableColumn fx:id="Cao" prefWidth="47.0" text="Cao" />
                                  </columns>
                               </TableColumn>
-                              <TableColumn fx:id="DonVi" prefWidth="58.0" text="Don Vi" />
-                              <TableColumn fx:id="DonGia" text="Don Gia" />
-                              <TableColumn fx:id="SoLuong" prefWidth="75.0" text="So Luong" />
-                              <TableColumn fx:id="ThanhTien" prefWidth="123.0" text="Thanh Tien" />
+                              <TableColumn fx:id="DonVi" prefWidth="58.0" text="Đơn vị" />
+                              <TableColumn fx:id="DonGia" text="Đơn giá" />
+                              <TableColumn fx:id="SoLuong" prefWidth="105.0" text="Số lượng " />
+                              <TableColumn fx:id="ThanhTien" prefWidth="105.0" text="Thành tiền" />
+                              <TableColumn fx:id="ThanhTien1" prefWidth="71.0" text="Thành tiền" />
                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
                         </TableView>
                         <Button layoutX="11.0" layoutY="423.0" minWidth="32.0" mnemonicParsing="false" onAction="#addNewLine" prefHeight="30.0" prefWidth="32.0" text="+" />
                         <Button fx:id="BackButton" layoutX="11.0" layoutY="21.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="&lt;" />
-                        <TextField layoutX="253.0" layoutY="14.0" prefHeight="24.0" prefWidth="547.0" promptText="Ten Cong Ty" />
-                        <TextField layoutX="253.0" layoutY="45.0" prefHeight="24.0" prefWidth="547.0" promptText="Van Phong" />
-                        <TextField layoutX="253.0" layoutY="77.0" prefHeight="24.0" prefWidth="547.0" promptText="Dia chi xuong" />
-                        <TextField layoutX="253.0" layoutY="108.0" prefHeight="24.0" prefWidth="547.0" promptText="Dien Thoai" />
+                        <TextField layoutX="253.0" layoutY="14.0" prefHeight="24.0" prefWidth="547.0" promptText="Tên công ty" />
+                        <TextField layoutX="253.0" layoutY="45.0" prefHeight="24.0" prefWidth="547.0" promptText="Văn phòng" />
+                        <TextField layoutX="253.0" layoutY="77.0" prefHeight="24.0" prefWidth="547.0" promptText="Địa chỉ xưởng" />
+                        <TextField layoutX="253.0" layoutY="108.0" prefHeight="24.0" prefWidth="547.0" promptText="Điện thoại" />
                         <HBox layoutX="76.0" layoutY="13.0" prefHeight="152.0" prefWidth="149.0">
                            <children>
-                              <ImageView fx:id="ImageView" fitHeight="142.0" fitWidth="162.0" onMouseClicked="#OnMouseClickedHandler" pickOnBounds="true" />
+                              <ImageView fx:id="ImageView" fitHeight="142.0" fitWidth="162.0" onMouseClicked="#OnMouseClickedHandler" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../../../../../Downloads/att-logo.png" />
+                                 </image></ImageView>
                            </children>
                         </HBox>
                         <TextField layoutX="253.0" layoutY="141.0" prefHeight="24.0" prefWidth="547.0" promptText="Email" />
@@ -57,16 +65,25 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="99.0" layoutY="203.0" prefHeight="24.0" prefWidth="740.0" promptText="Khach hang" />
-                        <TextField layoutX="100.0" layoutY="233.0" prefHeight="24.0" prefWidth="739.0" promptText="Dien thoai" />
-                        <TextField layoutX="101.0" layoutY="263.0" prefHeight="24.0" prefWidth="738.0" promptText="Dia chi" />
-                        <TextField layoutX="101.0" layoutY="294.0" prefHeight="24.0" prefWidth="739.0" promptText="Ngay lap bao gia" />
-                        <TextField layoutX="101.0" layoutY="326.0" prefHeight="24.0" prefWidth="737.0" promptText="San pham" />
+                        <TextField layoutX="99.0" layoutY="203.0" prefHeight="24.0" prefWidth="989.0" promptText="Khách hàng" />
+                        <TextField layoutX="100.0" layoutY="233.0" prefHeight="24.0" prefWidth="988.0" promptText="Điện thoại" />
+                        <TextField layoutX="101.0" layoutY="263.0" prefHeight="24.0" prefWidth="988.0" promptText="Địa chỉ" />
+                        <TextField layoutX="101.0" layoutY="294.0" prefHeight="24.0" prefWidth="990.0" promptText="Ngày lập báo giá" />
+                        <TextField layoutX="101.0" layoutY="326.0" prefHeight="24.0" prefWidth="992.0" promptText="Sản phẩm" />
+                        <Button layoutX="1111.0" layoutY="21.0" mnemonicParsing="false" text="Export" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
         </tabs>
       </TabPane>
+      <TableView layoutX="71.0" layoutY="852.0" prefHeight="136.0" prefWidth="1072.0">
+        <columns>
+          <TableColumn prefWidth="239.0" text="Đặt cọc thiết kế 10%" />
+          <TableColumn prefWidth="344.0" text="Đặt cọc thi công 30%" />
+            <TableColumn prefWidth="247.0" text="Hàng đến chân công trình 50%" />
+            <TableColumn prefWidth="239.0" text="Nghiệm thu quyết " />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
