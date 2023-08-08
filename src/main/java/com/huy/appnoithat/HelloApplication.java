@@ -15,6 +15,7 @@ public class HelloApplication extends Application {
         }
         else{
             stage.setScene(LoginScene.getInstance().getScene());
+
         }
         stage.setTitle("App Noi That");
         stage.show();
