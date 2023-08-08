@@ -1,17 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.HomeController">
    <children>
-      <ButtonBar layoutX="209.0" layoutY="140.0" prefHeight="40.0" prefWidth="91.0" />
-      <Button fx:id="QuanLyNguoiDungButton" layoutX="107.0" layoutY="168.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="24.0" prefWidth="162.0" text="Quan Ly Nguoi Dung" />
-      <Button fx:id="LuaChonNoiThatButton" layoutX="347.0" layoutY="168.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="24.0" prefWidth="162.0" text="Lua chon noi that" />
-      <Button fx:id="LogoutButton" layoutX="495.0" layoutY="65.0" mnemonicParsing="false" onAction="#logout" prefHeight="24.0" prefWidth="91.0" text="Logout" />
-      <Text fx:id="UserName" layoutX="495.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <AnchorPane layoutX="35.0" layoutY="216.0" prefHeight="135.0" prefWidth="205.0" style="-fx-border-radius: 0px 50px 0px 0px; -fx-border-color: #AEB2C3;" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="216.0">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Button fx:id="QuanLyNguoiDungButton" layoutX="22.0" layoutY="90.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="24.0" prefWidth="162.0" text="Quan Ly Nguoi Dung" textFill="#2645dd" />
+            <ImageView fitHeight="42.0" fitWidth="59.0" layoutX="79.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../Downloads/icon/pngtree-vector-user-management-icon-png-image_3773556.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="336.0" layoutY="216.0" prefHeight="135.0" prefWidth="205.0" style="-fx-border-radius: 0px 50px 0px 0px; -fx-border-color: #AEB2C3;" AnchorPane.leftAnchor="330.0">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Button fx:id="LuaChonNoiThatButton" layoutX="21.0" layoutY="84.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="24.0" prefWidth="162.0" text="Lua chon noi that" textFill="#2645dd" />
+            <ImageView fitHeight="42.0" fitWidth="59.0" layoutX="82.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../Downloads/icon/istockphoto-1257047931-612x612.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="121.0" prefWidth="600.0" style="-fx-background-color: #2262C6; -fx-background-radius: 0px 0px 50px 50px;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="LogoutButton" layoutX="495.0" layoutY="49.0" mnemonicParsing="false" onAction="#logout" prefHeight="24.0" prefWidth="91.0" text="Logout" />
+            <Text fx:id="UserName" fill="WHITE" layoutX="255.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="91.0">
+               <font>
+                  <Font name="NimbusSansNarrow-Regular" size="25.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="24.0" fitWidth="42.0" layoutX="562.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../Downloads/icon/660350.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label layoutX="35.0" layoutY="145.0" prefHeight="24.0" prefWidth="242.0" text="Quản Lý của tôi" textFill="#100dbf" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="145.0">
+         <font>
+            <Font name="Liberation Sans" size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
