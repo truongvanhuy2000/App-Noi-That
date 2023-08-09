@@ -61,38 +61,36 @@ public class LuaChonNoiThatController implements Initializable {
     public void initialize() {
     }
     public void setUpTable(){
-        TableNoiThat.setEditable(true);
-
         PhongCach.setCellValueFactory(new PropertyValueFactory<>("PhongCach"));
-//        PhongCach.setCellFactory(column -> new CustomComboboxCell());
+        PhongCach.setCellFactory(column -> new CustomComboboxCell());
 
         Cao.setCellValueFactory(new PropertyValueFactory<>("Cao"));
-//        Cao.setCellFactory(column -> new CustomEditingCell<>());
+        Cao.setCellFactory(column -> new CustomEditingCell<>());
 
         Dai.setCellValueFactory(new PropertyValueFactory<>("Dai"));
-//        Dai.setCellFactory(column -> new CustomEditingCell<>());
+        Dai.setCellFactory(column -> new CustomEditingCell<>());
 
         Rong.setCellValueFactory(new PropertyValueFactory<>("Rong"));
-//        Rong.setCellFactory(column -> new CustomEditingCell<>());
+        Rong.setCellFactory(column -> new CustomEditingCell<>());
 
         DonGia.setCellValueFactory(new PropertyValueFactory<>("DonGia"));
-//        DonGia.setCellFactory(column -> new CustomEditingCell<>());
+        DonGia.setCellFactory(column -> new CustomEditingCell<>());
 
         DonVi.setCellValueFactory(new PropertyValueFactory<>("DonVi"));
         HangMuc.setCellValueFactory(new PropertyValueFactory<>("HangMuc"));
-//        HangMuc.setCellFactory(column -> new CustomComboboxCell());
+        HangMuc.setCellFactory(column -> new CustomComboboxCell());
 
         NoiThat.setCellValueFactory(new PropertyValueFactory<>("NoiThat"));
-//        NoiThat.setCellFactory(column -> new CustomComboboxCell());
+        NoiThat.setCellFactory(column -> new CustomComboboxCell());
 
         VatLieu.setCellValueFactory(new PropertyValueFactory<>("VatLieu"));
-//        VatLieu.setCellFactory(column -> new CustomComboboxCell());
+        VatLieu.setCellFactory(column -> new CustomComboboxCell());
 
         ThanhTien.setCellValueFactory(new PropertyValueFactory<>("ThanhTien"));
-//        ThanhTien.setCellFactory(column -> new CustomEditingCell<>());
+        ThanhTien.setCellFactory(column -> new CustomEditingCell<>());
 
         SoLuong.setCellValueFactory(new PropertyValueFactory<>("SoLuong"));
-//        SoLuong.setCellFactory(column -> new CustomEditingCell<>());
+        SoLuong.setCellFactory(column -> new CustomEditingCell<>());
 
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
@@ -143,7 +141,7 @@ public class LuaChonNoiThatController implements Initializable {
     void addNewLine(ActionEvent event) {
         current_id += 1;
         // Populate list with valid data
-        BangNoiThat noiThat = new BangNoiThat(current_id, "NỘI THẤT PHONG CÁCH HIỆN ĐẠI ", 2f, 15f, 4f, 100L, "cm", "Tủ bếp dưới ", "NỘI THẤT PHÒNG BẾP", "- Thùng: nhựa Picomat 17mm chống nước tuyệt đối. ", 999L, 100f);
+        BangNoiThat noiThat = new BangNoiThat(current_id, "NỘI THẤT PHONG CÁCH HIỆN ĐẠI ", 2f, 15f, 4f, 100L, "cm", "Tủ bếp dưới ", "NỘI THẤT PHÒNG BẾP", "- Thùng: nhựa Picomat 17mm chống nước tuyệt đối. \n - Thùng: nhựa Picomat 17mm chống nước tuyệt đối. \n - Thùng: nhựa Picomat 17mm chống nước tuyệt đối.", 999L, 100f);
         list.add(noiThat);
     }
 
