@@ -68,6 +68,7 @@ public class HomeController {
         }
         else if (source == LuaChonNoiThatButton) {
             scene = LuaChonNoiThatScene.getInstance().getScene();
+            stage.setMaximized(true);
         }
         else if (source == QuanLyNguoiDungButton) {
             scene = UserManagementScene.getInstance().getScene();

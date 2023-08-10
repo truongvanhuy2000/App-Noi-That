@@ -3,6 +3,8 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,9 +20,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javafx.util.Callback;
+import javafx.util.Duration;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.FileInputStream;
@@ -31,7 +32,6 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import java.io.File;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.CustomEditingCell;
 
 public class LuaChonNoiThatController implements Initializable {
     @FXML
@@ -57,10 +57,11 @@ public class LuaChonNoiThatController implements Initializable {
         luaChonNoiThatService = new LuaChonNoiThatService();
     }
     // Call this method everytime you switch scene
-
     public void initialize() {
     }
     public void setUpTable(){
+        TableNoiThat.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
         PhongCach.setCellValueFactory(new PropertyValueFactory<>("PhongCach"));
         PhongCach.setCellFactory(column -> new CustomComboboxCell());
 
@@ -100,6 +101,7 @@ public class LuaChonNoiThatController implements Initializable {
     public final void initialize(URL url, ResourceBundle resourceBundle) {
         setUpTable();
         listPhongCachNoiThat = luaChonNoiThatService.findAllPhongCachNoiThat();
+        workAroundToCollumWidthBug();
     }
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
@@ -149,4 +151,11 @@ public class LuaChonNoiThatController implements Initializable {
         return list.stream().map(Object::toString).collect(Collectors.toList());
     }
 
+    private void workAroundToCollumWidthBug(){
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(1500),
+                ae -> TableView.CONSTRAINED_RESIZE_POLICY.call(new TableView.ResizeFeatures<>(TableNoiThat, PhongCach, 1.0))));
+        timeline.play();
+        System.out.println("Worked around");
+    }
 }

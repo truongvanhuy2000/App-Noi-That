@@ -8,6 +8,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.concurrent.TransferQueue;
+
 public class LuaChonNoiThatControllerTest extends Application {
     LuaChonNoiThatController luaChonNoiThatController;
     private Thread thread;
@@ -43,6 +45,7 @@ public class LuaChonNoiThatControllerTest extends Application {
     public void start(Stage stage) throws Exception {
         stage.setScene(LuaChonNoiThatScene.getInstance().getScene());
         stage.setTitle("App Noi That");
+        stage.setMaximized(true);
         stage.show();
     }
 }
