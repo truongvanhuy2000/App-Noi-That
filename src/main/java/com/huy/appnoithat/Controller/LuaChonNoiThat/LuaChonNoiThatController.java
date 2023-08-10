@@ -35,15 +35,17 @@ import java.io.File;
 
 public class LuaChonNoiThatController implements Initializable {
     @FXML
-    private TableView<BangNoiThat> TableNoiThat;
+    private TreeTableView<BangNoiThat> TableNoiThat;
     @FXML
-    private TableColumn<BangNoiThat, Float> Cao, Dai, Rong, SoLuong;
+    private TreeTableColumn<BangNoiThat, Float> Cao, Dai, Rong, KhoiLuong;
     @FXML
-    private TableColumn<BangNoiThat, Long> DonGia, ThanhTien;
+    private TreeTableColumn<BangNoiThat, Long> DonGia, ThanhTien;
     @FXML
-    private TableColumn<BangNoiThat, String> DonVi, HangMuc, NoiThat, PhongCach, VatLieu;
+    private TreeTableColumn<BangNoiThat, String> DonVi, HangMuc, VatLieu;
+
+    TreeItem<BangNoiThat> root = new TreeItem<>(new BangNoiThat(0, 0f, 0f, 0f, 0L, "asdsd", "asdsd", "sadsdsa", 0L, 0f));
     @FXML
-    private TableColumn<BangNoiThat, Integer> id;
+    private TreeTableColumn<BangNoiThat, Integer> id;
     @FXML
     private Button BackButton;
     @FXML
@@ -60,42 +62,36 @@ public class LuaChonNoiThatController implements Initializable {
     public void initialize() {
     }
     public void setUpTable(){
-        TableNoiThat.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
-        PhongCach.setCellValueFactory(new PropertyValueFactory<>("PhongCach"));
-        PhongCach.setCellFactory(column -> new CustomComboboxCell());
-
-        Cao.setCellValueFactory(new PropertyValueFactory<>("Cao"));
-        Cao.setCellFactory(column -> new CustomEditingCell<>());
-
-        Dai.setCellValueFactory(new PropertyValueFactory<>("Dai"));
-        Dai.setCellFactory(column -> new CustomEditingCell<>());
-
-        Rong.setCellValueFactory(new PropertyValueFactory<>("Rong"));
-        Rong.setCellFactory(column -> new CustomEditingCell<>());
-
-        DonGia.setCellValueFactory(new PropertyValueFactory<>("DonGia"));
-        DonGia.setCellFactory(column -> new CustomEditingCell<>());
-
-        DonVi.setCellValueFactory(new PropertyValueFactory<>("DonVi"));
-        HangMuc.setCellValueFactory(new PropertyValueFactory<>("HangMuc"));
-        HangMuc.setCellFactory(column -> new CustomComboboxCell());
-
-        NoiThat.setCellValueFactory(new PropertyValueFactory<>("NoiThat"));
-        NoiThat.setCellFactory(column -> new CustomComboboxCell());
-
-        VatLieu.setCellValueFactory(new PropertyValueFactory<>("VatLieu"));
-        VatLieu.setCellFactory(column -> new CustomComboboxCell());
-
-        ThanhTien.setCellValueFactory(new PropertyValueFactory<>("ThanhTien"));
-        ThanhTien.setCellFactory(column -> new CustomEditingCell<>());
-
-        SoLuong.setCellValueFactory(new PropertyValueFactory<>("SoLuong"));
-        SoLuong.setCellFactory(column -> new CustomEditingCell<>());
-
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
-
-        TableNoiThat.setItems(list);
+//
+//        Cao.setCellValueFactory(new PropertyValueFactory<>("Cao"));
+//        Cao.setCellFactory(column -> new CustomEditingCell<>());
+//
+//        Dai.setCellValueFactory(new PropertyValueFactory<>("Dai"));
+//        Dai.setCellFactory(column -> new CustomEditingCell<>());
+//
+//        Rong.setCellValueFactory(new PropertyValueFactory<>("Rong"));
+//        Rong.setCellFactory(column -> new CustomEditingCell<>());
+//
+//        DonGia.setCellValueFactory(new PropertyValueFactory<>("DonGia"));
+//        DonGia.setCellFactory(column -> new CustomEditingCell<>());
+//
+//        DonVi.setCellValueFactory(new PropertyValueFactory<>("DonVi"));
+//        HangMuc.setCellValueFactory(new PropertyValueFactory<>("HangMuc"));
+//        HangMuc.setCellFactory(column -> new CustomComboboxCell());
+//
+//
+//        VatLieu.setCellValueFactory(new PropertyValueFactory<>("VatLieu"));
+//        VatLieu.setCellFactory(column -> new CustomComboboxCell());
+//
+//        ThanhTien.setCellValueFactory(new PropertyValueFactory<>("ThanhTien"));
+//        ThanhTien.setCellFactory(column -> new CustomEditingCell<>());
+//
+//        KhoiLuong.setCellValueFactory(new PropertyValueFactory<>("SoLuong"));
+//        KhoiLuong.setCellFactory(column -> new CustomEditingCell<>());
+//
+//        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+//
+//        TableNoiThat.setItems(list);
     }
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
@@ -143,8 +139,8 @@ public class LuaChonNoiThatController implements Initializable {
     void addNewLine(ActionEvent event) {
         current_id += 1;
         // Populate list with valid data
-        BangNoiThat noiThat = new BangNoiThat(current_id, "NỘI THẤT PHONG CÁCH HIỆN ĐẠI ", 2f, 15f, 4f, 100L, "cm", "Tủ bếp dưới ", "NỘI THẤT PHÒNG BẾP", "- Thùng: nhựa Picomat 17mm chống nước tuyệt đối. \n - Thùng: nhựa Picomat 17mm chống nước tuyệt đối. \n - Thùng: nhựa Picomat 17mm chống nước tuyệt đối.", 999L, 100f);
-        list.add(noiThat);
+//        BangNoiThat noiThat = new BangNoiThat(current_id, "NỘI THẤT PHONG CÁCH HIỆN ĐẠI ", 2f, 15f, 4f, 100L, "cm", "Tủ bếp dưới ", "NỘI THẤT PHÒNG BẾP", "- Thùng: nhựa Picomat 17mm chống nước tuyệt đối. \n - Thùng: nhựa Picomat 17mm chống nước tuyệt đối. \n - Thùng: nhựa Picomat 17mm chống nước tuyệt đối.", 999L, 100f);
+//        list.add(noiThat);
     }
 
     public List<String> getObjectNameList(List<?> list){
@@ -152,10 +148,10 @@ public class LuaChonNoiThatController implements Initializable {
     }
 
     private void workAroundToCollumWidthBug(){
-        Timeline timeline = new Timeline(new KeyFrame(
-                Duration.millis(1500),
-                ae -> TableView.CONSTRAINED_RESIZE_POLICY.call(new TableView.ResizeFeatures<>(TableNoiThat, PhongCach, 1.0))));
-        timeline.play();
-        System.out.println("Worked around");
+//        Timeline timeline = new Timeline(new KeyFrame(
+//                Duration.millis(2000),
+//                ae -> TableView.CONSTRAINED_RESIZE_POLICY.call(new TableView.ResizeFeatures<>(TableNoiThat, HangMuc, 1.0))));
+//        timeline.play();
+//        System.out.println("Worked around");
     }
 }
