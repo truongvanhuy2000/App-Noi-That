@@ -43,7 +43,7 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private TreeTableColumn<BangNoiThat, String> DonVi, HangMuc, VatLieu;
     @FXML
-    private TreeTableColumn<BangNoiThat, Integer> id;
+    private TreeTableColumn<BangNoiThat, Integer> STT;
     TreeItem<BangNoiThat> item0 = new TreeItem<>(new BangNoiThat(1, 0f, 0f, 0f, 0L, "asdsd", "asdsd", "hhhfasd", 0L, 0f));
     TreeItem<BangNoiThat> item1 = new TreeItem<>(new BangNoiThat(2, 0f, 0f, 0f, 0L, "asdsad", "asd", "asddqwqe", 0L, 0f));
     TreeItem<BangNoiThat> item2 = new TreeItem<>(new BangNoiThat(3, 0f, 0f, 0f, 0L, "asds", "zzxcxzx", "qwe", 0L, 0f));
@@ -69,22 +69,22 @@ public class LuaChonNoiThatController implements Initializable {
         Cao.setCellValueFactory(param -> {
             return param.getValue().getValue().getCao().asObject();
         });
-        Cao.setCellFactory(column -> new CustomEditingCell<>());
+//        Cao.setCellFactory(column -> new CustomEditingCell<>());
 
         Dai.setCellValueFactory(param -> {
             return param.getValue().getValue().getDai().asObject();
         });
-        Dai.setCellFactory(column -> new CustomEditingCell<>());
+//        Dai.setCellFactory(column -> new CustomEditingCell<>());
 
         Rong.setCellValueFactory(param -> {
             return param.getValue().getValue().getRong().asObject();
         });
-        Rong.setCellFactory(column -> new CustomEditingCell<>());
+//        Rong.setCellFactory(column -> new CustomEditingCell<>());
 
         DonGia.setCellValueFactory(param -> {
             return param.getValue().getValue().getDonGia().asObject();
         });
-        DonGia.setCellFactory(column -> new CustomEditingCell<>());
+//        DonGia.setCellFactory(column -> new CustomEditingCell<>());
 
         DonVi.setCellValueFactory(param -> {
             return param.getValue().getValue().getDonVi();
@@ -92,27 +92,29 @@ public class LuaChonNoiThatController implements Initializable {
         HangMuc.setCellValueFactory(param -> {
             return param.getValue().getValue().getHangMuc();
         });
-        HangMuc.setCellFactory(column -> new CustomComboboxCell());
+//        HangMuc.setCellFactory(column -> new CustomComboboxCell());
 
 
         VatLieu.setCellValueFactory(param -> {
             return param.getValue().getValue().getVatLieu();
         });
-        VatLieu.setCellFactory(column -> new CustomComboboxCell());
+//        VatLieu.setCellFactory(column -> new CustomComboboxCell());
 
         ThanhTien.setCellValueFactory(param -> {
             return param.getValue().getValue().getThanhTien().asObject();
         });
-        ThanhTien.setCellFactory(column -> new CustomEditingCell<>());
+//        ThanhTien.setCellFactory(column -> new CustomEditingCell<>());
 
         KhoiLuong.setCellValueFactory(param -> {
             return param.getValue().getValue().getKhoiLuong().asObject();
         });
-        KhoiLuong.setCellFactory(column -> new CustomEditingCell<>());
+//        KhoiLuong.setCellFactory(column -> new CustomEditingCell<>());
 
-        id.setCellValueFactory(param -> {
+        STT.setCellValueFactory(param -> {
             return param.getValue().getValue().getSTT().asObject();
         });
+
+//        STT.setCellFactory(column -> new CustomEditingCell<>());
 
         itemRoot.getChildren().addAll(item0, item1, item2);
         TableNoiThat.setRoot(itemRoot);
