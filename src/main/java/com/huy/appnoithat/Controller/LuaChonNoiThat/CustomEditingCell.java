@@ -2,8 +2,9 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeTableCell;
 
-public class CustomEditingCell<T> extends TableCell<BangNoiThat, T> {
+public class CustomEditingCell<T> extends TreeTableCell<BangNoiThat, T> {
     private TextField textField;
 
     public CustomEditingCell() {

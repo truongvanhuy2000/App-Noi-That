@@ -4,8 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TreeTableCell;
 
-public class CustomComboboxCell extends TableCell<BangNoiThat, String> {
+public class CustomComboboxCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;
     ObservableList<String> dropDownData = FXCollections.observableArrayList();
     @Override
