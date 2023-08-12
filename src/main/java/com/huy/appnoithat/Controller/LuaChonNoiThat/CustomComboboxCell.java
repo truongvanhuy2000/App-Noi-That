@@ -3,45 +3,81 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TreeTableCell;
+import javafx.scene.control.cell.ComboBoxTreeTableCell;
 
 public class CustomComboboxCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;
-    ObservableList<String> dropDownData = FXCollections.observableArrayList();
+    private ObservableList<String> items;
+    public CustomComboboxCell(ObservableList<String> items) {
+        this.items = items;
+    }
+
     @Override
     public void startEdit() {
-        if (isEmpty()){
-            return;
+        if (!isEmpty()) {
+            super.startEdit();
+            createComboBox();
+            super.setText(null);
+            setGraphic(comboBox);
         }
-        super.startEdit();
-        createComboBox();
-        setText(null);
-        setGraphic(comboBox);
     }
-    @Override
-    public void updateItem(String item, boolean empty) {
-        super.updateItem(item, empty);
-    }
+
     @Override
     public void cancelEdit() {
         super.cancelEdit();
-//            setText(getTyp().getTyp());
+        super.setText(super.getItem());
         setGraphic(null);
     }
+
+    @Override
+    public void updateItem(String item, boolean empty) {
+        super.updateItem(item, empty);
+
+        if (empty) {
+            super.setText(null);
+            setGraphic(null);
+        } else {
+            if (isEditing()) {
+                if (comboBox != null) {
+                    comboBox.setValue(super.getItem());
+                }
+                super.setText(super.getItem());
+                setGraphic(comboBox);
+            } else {
+                super.setText(super.getItem());
+                setGraphic(null);
+            }
+        }
+    }
+
     private void createComboBox() {
-        comboBox = new ComboBox<>(dropDownData);
-//            comboBoxConverter(comboBox);
-//            comboBox.valueProperty().set(getTyp());
+        comboBox = new ComboBox<>(items);
+//        comboBoxConverter(comboBox);
+        comboBox.valueProperty().set(super.getItem());
         comboBox.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
         comboBox.setOnAction((e) -> {
-            System.out.println("Committed: " + comboBox.getSelectionModel().getSelectedItem());
-            commitEdit(comboBox.getSelectionModel().getSelectedItem());
+//            System.out.println("Committed: " + comboBox.getSelectionModel().getSelectedItem());
+            super.commitEdit(comboBox.getSelectionModel().getSelectedItem());
         });
-        //            comboBox.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
-        //                if (!newValue) {
-        //                    commitEdit(comboBox.getSelectionModel().getSelectedItem());
-        //                }
-        //            });
     }
+
+//    private void comboBoxConverter(ComboBox<String> comboBox) {
+//        // Define rendering of the list of values in ComboBox drop down.
+//        comboBox.setCellFactory((c) -> new ListCell<String>() {
+//            @Override
+//            protected void updateItem(String item, boolean empty) {
+//                super.updateItem(item, empty);
+//
+//                if (item == null || empty) {
+//                    super.setText(null);
+//                } else {
+//                    super.setText(item);
+//                }
+//            }
+//        });
+//    }
+
 }

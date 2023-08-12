@@ -69,14 +69,14 @@
                         <TextArea layoutX="73.0" layoutY="850.0" prefHeight="112.0" prefWidth="1336.0" text="Chú thích:&#10;- Báo giá đã bao gồm vận chuyển nội thành, lắp đặt, phí đo đạc thiết kế.&#10;- Đơn giá trên chưa bao gồm VAT, khách hàng chỉ chịu phí VAT = 10% tổng gía trị hợp đồng khi muốn xuất hóa đơn đỏ.&#10;- Bảo hành phần gỗ 3 năm, phụ kiện bảo hành 2 năm theo hãng.&#10;- Báo giá cuối cùng được tính theo khối lượng thực tế tại công trình.&#10;- Báo giá có giá trị trong vòng 20 ngày kể từ ngày lập báo giá." AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0" />
                         <TreeTableView fx:id="TableNoiThat" layoutX="71.0" layoutY="351.0" prefHeight="385.0" prefWidth="1306.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
                           <columns>
-                            <TreeTableColumn fx:id="STT" prefWidth="37.0" resizable="false" text="STT" />
-                            <TreeTableColumn fx:id="HangMuc" minWidth="200.0" prefWidth="315.0" text="HANG MUC" />
+                            <TreeTableColumn fx:id="STT" prefWidth="59.0" resizable="false" text="STT" />
+                            <TreeTableColumn fx:id="HangMuc" minWidth="200.0" prefWidth="319.0" text="HANG MUC" />
                               <TreeTableColumn fx:id="VatLieu" minWidth="200.0" prefWidth="248.0" text="VAT LIEU" />
                               <TreeTableColumn prefWidth="415.0" text="KICH THUOC">
                                  <columns>
-                                    <TreeTableColumn fx:id="Dai" prefWidth="52.0" text="DAI" />
-                                    <TreeTableColumn fx:id="Rong" prefWidth="63.0" text="RONG" />
-                                    <TreeTableColumn fx:id="Cao" prefWidth="52.0" text="CAO" />
+                                    <TreeTableColumn fx:id="Dai" prefWidth="52.0" resizable="false" text="DAI" />
+                                    <TreeTableColumn fx:id="Rong" prefWidth="63.0" resizable="false" text="RONG" />
+                                    <TreeTableColumn fx:id="Cao" prefWidth="52.0" resizable="false" text="CAO" />
                                  </columns>
                               </TreeTableColumn>
                               <TreeTableColumn fx:id="DonVi" prefWidth="95.0" text="DON VI" />
