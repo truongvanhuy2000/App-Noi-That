@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Controller;
 
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Scene.LuaChonNoiThatScene;
@@ -77,7 +78,7 @@ public class HomeController {
         else if (source == QuanLyNguoiDungButton) {
             scene = UserManagementScene.getInstance().getScene();
         }else if (source == suadoidatabaseButton) {
-            scene = UserManagementScene.getInstance().getScene();
+            scene = DatabaseModifyPhongCachScene.getInstance().getScene();
         }
         else {
             return;

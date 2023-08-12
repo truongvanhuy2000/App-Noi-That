@@ -49,7 +49,6 @@ public class DatabaseModifyPhongCachController implements Initializable {
     void AddNewPhongCach(ActionEvent event) {
         try {
             Dialog dialog = new Dialog();
-            //chua check add Phong cach giong ten nhau thi khong duoc
             String txt = txtPhongCach.getText().trim().toUpperCase();
             boolean hasDuplicate = false;
             if(!txt.isEmpty()){
@@ -89,11 +88,22 @@ public class DatabaseModifyPhongCachController implements Initializable {
     void DeletePhongCach(ActionEvent event) {
         try {
             int selectIndex = listViewPhongCach.getSelectionModel().getSelectedIndex();
+            Alert deleteDialog = new Alert(Alert.AlertType.CONFIRMATION);
+            Dialog dialog = new Dialog();
             if(selectIndex>=0){
-                listViewPhongCach.getItems().remove(selectIndex);
-
+                deleteDialog.setTitle("Delete Confirmation");
+                deleteDialog.setHeaderText("Are you sure you want to delete this item?");
+                deleteDialog.setContentText("This action cannot be undone.");
+                // Add "Yes" button
+                deleteDialog.getDialogPane().getButtonTypes().add(ButtonType.YES);
+                deleteDialog.getDialogPane().getButtonTypes().remove(ButtonType.OK);
+                // Show the dialog and wait for user interaction
+                ButtonType result = deleteDialog.showAndWait().orElse(ButtonType.CANCEL);
+                // Handle the user's choice
+                if (result == ButtonType.YES) {
+                    listViewPhongCach.getItems().remove(selectIndex);
+                }
             }else{
-                Dialog dialog = new Dialog();
                 dialog.setTitle("DELETE ERROR");
                 dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
                 dialog.getDialogPane().setContentText("Please select one item to delete !!!");
