@@ -1,0 +1,23 @@
+#usernameTextField{
+-fx-border-width: 0 0 1 0; /* Only set the bottom border width */
+    -fx-border-color: black;   /* Set the border color */
+    -fx-padding: 5;
+}
+
+#passwordField{
+-fx-border-width: 0 0 1 0; /* Only set the bottom border width */
+    -fx-border-color: black;   /* Set the border color */
+    -fx-padding: 5;
+}
+
+#LoginButton{
+-fx-alignment:center;
+-fx-text-fill: white;
+-fx-background-color: blue;
+
+
+}
+
+#gridPane{
+-fx-background-color: linear-gradient(#e66465, #9198e5);
+}

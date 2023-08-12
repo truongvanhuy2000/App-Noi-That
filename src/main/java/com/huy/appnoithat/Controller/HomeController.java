@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -71,6 +72,7 @@ public class HomeController {
         }
         else if (source == LuaChonNoiThatButton) {
             scene = LuaChonNoiThatScene.getInstance().getScene();
+            stage.setMaximized(true);
         }
         else if (source == QuanLyNguoiDungButton) {
             scene = UserManagementScene.getInstance().getScene();
