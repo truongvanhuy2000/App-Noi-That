@@ -74,7 +74,9 @@ public class UsersManagementController{
         tableManageUser.setItems(listUser);
     }
 
-
+    public Object seach(String username) {
+        return listUser.stream().filter(user -> user.getUsername().equalsIgnoreCase(username.trim())).findFirst().orElse(null);
+    }
     // Used to switch between scence
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
