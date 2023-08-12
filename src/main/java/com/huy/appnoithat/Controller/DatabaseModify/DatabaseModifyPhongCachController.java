@@ -1,23 +1,26 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
 
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
+import com.huy.appnoithat.Scene.LoginScene;
+import com.huy.appnoithat.Scene.UserManagementScene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
-import java.lang.reflect.Array;
 import java.net.URL;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class DatabaseModifyController implements Initializable {
+public class DatabaseModifyPhongCachController implements Initializable {
 
     String[] items = {"NỘI THẤT PHONG CÁCH HIỆN ĐẠI - CONTEMPORARY STYLE","NỘI THẤT TÂN CỔ ĐIỂN SANG TRỌNG - CONTEMPORATY CLASSIC","NỘI THẤT GỖ SỒI MỸ - AMERICAN OAK EDITION","NỘI THẤT CAO CẤP GỖ ÓC CHÓ PHIÊN BẢN GIỚI HẠN - WALNUT LIMITED EDITION"};
     @FXML
@@ -36,6 +39,9 @@ public class DatabaseModifyController implements Initializable {
     private Button deletePhongCachButton;
 
     @FXML
+    private Button nextScreenButton;
+
+    @FXML
     private TextField txtPhongCach;
 
 
@@ -44,12 +50,12 @@ public class DatabaseModifyController implements Initializable {
         try {
             Dialog dialog = new Dialog();
             //chua check add Phong cach giong ten nhau thi khong duoc
-            String txt = txtPhongCach.getText().trim().toLowerCase();
+            String txt = txtPhongCach.getText().trim().toUpperCase();
             boolean hasDuplicate = false;
             if(!txt.isEmpty()){
                 List<String> array = listViewPhongCach.getItems().stream().filter(e->e.equals(txt)).collect(Collectors.toList());
                 for (int i = 0; i < array.size(); i++) {
-                    if(array.get(i).trim().equals(txt.toLowerCase())){
+                    if(array.get(i).trim().equals(txt.toUpperCase())){
                         hasDuplicate = true;
                     }
                 }
@@ -60,7 +66,7 @@ public class DatabaseModifyController implements Initializable {
                     dialog.show();
                 }
                 if(!hasDuplicate){
-                    listViewPhongCach.getItems().add(txtPhongCach.getText());
+                    listViewPhongCach.getItems().add(txt);
                     txtPhongCach.setText("");
                 }
 
@@ -103,15 +109,22 @@ public class DatabaseModifyController implements Initializable {
     @FXML
     void EditPhongCach(ActionEvent event) {
         try {
+            Dialog dialog = new Dialog();
+
+            String txt = txtPhongCach.getText().trim().toUpperCase();
             int selectIndex = listViewPhongCach.getSelectionModel().getSelectedIndex();
-            if(selectIndex>=0){
-                listViewPhongCach.getItems().set(selectIndex, txtPhongCach.getText());
-            }else{
-                Dialog dialog = new Dialog();
+            if(selectIndex<=0){
                 dialog.setTitle("EDIT ERROR");
                 dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
                 dialog.getDialogPane().setContentText("Please select one item to edit !!!");
                 dialog.show();
+            }else if(txt.isEmpty()){
+                dialog.setTitle("EDIT ERROR");
+                dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+                dialog.getDialogPane().setContentText("Cannot edit with text empty !!!");
+                dialog.show();
+            }else{
+                listViewPhongCach.getItems().set(selectIndex, txtPhongCach.getText());
             }
         }catch (Exception e){
             System.out.println("co loi roi dai ca oi");
@@ -133,7 +146,17 @@ public class DatabaseModifyController implements Initializable {
 
     @FXML
     void NextScreen(ActionEvent event) {
-
+        Scene scene = null;
+        Stage stage = null;
+        Object source = event.getSource();
+        stage = (Stage) ((Node)source).getScene().getWindow();
+        if (source == nextScreenButton){
+            scene = DatabaseModifyHangMucScene.getInstance().getScene();
+        }else {
+            return;
+        }
+        stage.setScene(scene);
+        stage.show();
     }
 
 

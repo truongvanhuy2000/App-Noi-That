@@ -1,8 +1,6 @@
 package com.huy.appnoithat.Scene.DatabaseModify;
 
-import com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyController;
-import com.huy.appnoithat.Controller.HomeController;
-import com.huy.appnoithat.Scene.HomeScene;
+import com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyPhongCachController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,15 +9,15 @@ import lombok.Getter;
 import java.io.IOException;
 import java.util.Objects;
 @Getter
-public class DatabaseModifyScene {
+public class DatabaseModifyPhongCachScene {
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
-    private static DatabaseModifyScene single_instance = null;
-    public DatabaseModifyScene() {
-        String viewPath = "view/DatabaseModifyLayout.fxml";
+    private static DatabaseModifyPhongCachScene single_instance = null;
+    public DatabaseModifyPhongCachScene() {
+        String viewPath = "view/DatabaseModifyPhongCachLayout.fxml";
         try {
-            fxmlLoader = new FXMLLoader(DatabaseModifyScene.class.getResource(viewPath));
+            fxmlLoader = new FXMLLoader(DatabaseModifyPhongCachScene.class.getResource(viewPath));
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -29,9 +27,9 @@ public class DatabaseModifyScene {
     }
 
     // Create an object of this class, call this function
-    public static synchronized DatabaseModifyScene getInstance() {
+    public static synchronized DatabaseModifyPhongCachScene getInstance() {
         if (single_instance == null)
-            single_instance = new DatabaseModifyScene();
+            single_instance = new DatabaseModifyPhongCachScene();
         return single_instance;
     }
 
@@ -47,10 +45,10 @@ public class DatabaseModifyScene {
     }
 
     private void addCssToScence(){
-        String cssPath = "css/DatabaseModify.css";
+        String cssPath = "css/DatabaseModifyPhongCach.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }
-    public DatabaseModifyController getHomeController(){
+    public DatabaseModifyPhongCachController getHomeController(){
         return fxmlLoader.getController();
     }
 }

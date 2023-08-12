@@ -16,4 +16,6 @@ module com.huy.appnoithat {
     opens com.huy.appnoithat.Entity to javafx.fxml;
     opens com.huy.appnoithat to javafx.fxml;
     exports com.huy.appnoithat;
+    exports com.huy.appnoithat.Controller.DatabaseModify;
+    opens com.huy.appnoithat.Controller.DatabaseModify to javafx.fxml;
 }

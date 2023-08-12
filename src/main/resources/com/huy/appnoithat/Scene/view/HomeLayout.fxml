@@ -12,6 +12,6 @@
       <Button fx:id="LuaChonNoiThatButton" layoutX="347.0" layoutY="168.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="24.0" prefWidth="162.0" text="Lua chon noi that" />
       <Button fx:id="LogoutButton" layoutX="495.0" layoutY="65.0" mnemonicParsing="false" onAction="#logout" prefHeight="24.0" prefWidth="91.0" text="Logout" />
       <Text fx:id="UserName" layoutX="495.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Button layoutX="224.0" layoutY="234.0" mnemonicParsing="false" text="Sua doi co so du lieu" />
+      <Button fx:id="suadoidatabaseButton" layoutX="224.0" layoutY="234.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="Sua doi co so du lieu" />
    </children>
 </AnchorPane>

@@ -21,6 +21,10 @@ public class HomeController {
     private Button LuaChonNoiThatButton;
     @FXML
     private Button QuanLyNguoiDungButton;
+
+    @FXML
+    private Button suadoidatabaseButton;
+
     @FXML
     private Text UserName;
     private final UserSessionService sessionService;
@@ -69,6 +73,8 @@ public class HomeController {
             scene = LuaChonNoiThatScene.getInstance().getScene();
         }
         else if (source == QuanLyNguoiDungButton) {
+            scene = UserManagementScene.getInstance().getScene();
+        }else if (source == suadoidatabaseButton) {
             scene = UserManagementScene.getInstance().getScene();
         }
         else {

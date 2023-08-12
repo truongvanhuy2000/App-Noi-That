@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyPhongCachController">
    <children>
       <ListView fx:id="listViewPhongCach" layoutX="14.0" layoutY="63.0" onMouseClicked="#tableClickToSelectItem" prefHeight="315.0" prefWidth="325.0" />
       <Label layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="288.0" text="Phong cach cua ban" textFill="#171616">
@@ -24,7 +24,7 @@
       </Label>
       <Button fx:id="deletePhongCachButton" layoutX="355.0" layoutY="300.0" mnemonicParsing="false" onAction="#DeletePhongCach" prefHeight="29.0" prefWidth="230.0" text="DELETE PHONG CACH" />
       <Button fx:id="EditPhongCachButton" layoutX="355.0" layoutY="252.0" mnemonicParsing="false" onAction="#EditPhongCach" prefHeight="29.0" prefWidth="230.0" text="EDIT PHONG CACH" />
-      <Button fx:id="addPhongCachButton1" layoutX="355.0" layoutY="349.0" mnemonicParsing="false" onAction="#NextScreen" prefHeight="29.0" prefWidth="230.0" text="NEXT" textFill="#110000" />
+      <Button fx:id="nextScreenButton" layoutX="355.0" layoutY="349.0" mnemonicParsing="false" onAction="#NextScreen" prefHeight="29.0" prefWidth="230.0" text="NEXT" textFill="#110000" />
       <Button fx:id="clearTextbtn" layoutX="355.0" layoutY="145.0" mnemonicParsing="false" onAction="#ClearText" prefHeight="29.0" prefWidth="230.0" text="CLEAR TEXT" textFill="#110000" />
    </children>
 </AnchorPane>
