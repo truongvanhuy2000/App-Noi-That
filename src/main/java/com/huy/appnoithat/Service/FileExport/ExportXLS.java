@@ -139,31 +139,45 @@ public class ExportXLS implements ExportFileService {
         LuaChonNoiThatService noiThatService = new LuaChonNoiThatService() ;
         List<PhongCachNoiThat> listPc = noiThatService.findAllPhongCachNoiThat();
 
-        int rowid = 14; //hang 15
+        int rowid = 13; //hang 15
         int cellid = 1;
 
-
-   ;
         for (PhongCachNoiThat pc: listPc) {
 
             for (NoiThat nt : pc.getNoiThatList()) {
-                CellRangeAddress rangeAddress = new CellRangeAddress(13, 13, 1, 8);
+                CellRangeAddress rangeAddress = new CellRangeAddress(rowid, rowid, 1, 8);
                 Row rowTitle = spreadsheet.createRow(rangeAddress.getFirstRow());
                 Cell cellTitle = rowTitle.createCell(rangeAddress.getFirstColumn());
                 cellTitle.setCellValue(nt.getName());
                 cellTitle.setCellStyle(cellStyleTitleProduct);
+                rowid ++;
                 for (HangMuc hm : nt.getHangMucList()) {
-                    Row row = spreadsheet.createRow(rowid);
-                    Cell cell = row.createCell(1); //cot B
-                   cell.setCellValue(hm.getName());
+                    Row hangMucRow;
+                    if (spreadsheet.getRow(rowid) == null)
+                    {
+                        hangMucRow = spreadsheet.createRow(rowid);
+                    }
+                    else hangMucRow = spreadsheet.getRow(rowid);
+                    Cell hangMucCell = hangMucRow.createCell(cellid); //cot B
+                    hangMucCell.setCellValue(hm.getName());
+                    cellid++;
                     for (VatLieu vl : hm.getVatLieuList()) {
                         //bug ko the set value vao o C15
-                         cell = row.createCell(2); //cot B
-                        cell.setCellValue("long");
-                    }
-                }
-            }
+                        Row vatLieuRow;
+                        if (spreadsheet.getRow(rowid) == null)
+                        {
+                            vatLieuRow = spreadsheet.createRow(rowid);
+                        }
+                        else vatLieuRow = spreadsheet.getRow(rowid);
 
+                        Cell vatLieuCell = vatLieuRow.createCell(cellid); //cot B
+                        vatLieuCell.setCellValue(vl.getName());
+                        rowid++;
+                    }
+                    cellid = 1;
+                }
+                rowid ++;
+            }
         }
         //lets write the excel data to file now
         FileOutputStream fos = new FileOutputStream(fileName);
