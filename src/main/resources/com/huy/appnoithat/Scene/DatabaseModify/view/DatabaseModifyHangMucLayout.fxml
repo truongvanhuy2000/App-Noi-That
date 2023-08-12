@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Scene.DatabaseModify.view.DatabaseModifyHangMucLayout">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyHangMucController">
    <children>
       <AnchorPane prefHeight="410.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -27,7 +26,7 @@
             </Label>
             <Button fx:id="deleteHangMucButton" layoutX="355.0" layoutY="300.0" mnemonicParsing="false" onAction="#DeleteHangMuc" prefHeight="29.0" prefWidth="230.0" text="DELETE HANG MUC" />
             <Button fx:id="EditHangMucButton" layoutX="355.0" layoutY="252.0" mnemonicParsing="false" onAction="#EditHangMuc" prefHeight="29.0" prefWidth="230.0" text="EDIT HANG MUC" />
-            <Button fx:id="addPhongCachButton1" layoutX="355.0" layoutY="349.0" mnemonicParsing="false" onAction="#NextScreen" prefHeight="29.0" prefWidth="230.0" text="NEXT" textFill="#110000" />
+            <Button fx:id="nextScreenButton" layoutX="355.0" layoutY="349.0" mnemonicParsing="false" onAction="#NextScreen" prefHeight="29.0" prefWidth="230.0" text="NEXT" textFill="#110000" />
             <Button fx:id="clearTextbtn" layoutX="355.0" layoutY="145.0" mnemonicParsing="false" onAction="#ClearText" prefHeight="29.0" prefWidth="230.0" text="CLEAR TEXT" textFill="#110000" />
          </children>
       </AnchorPane>
