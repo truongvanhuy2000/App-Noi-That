@@ -72,6 +72,7 @@ public class STTCollumHandler {
             return;
         }
         addNodeToTheYoungestLeaf(tempNoiThatList, newItem);
+
     }
     private TreeItem<BangNoiThat> findRoot(TreeItem<BangNoiThat> node){
         if (node == null) throw new IllegalArgumentException("Node is null");
@@ -88,11 +89,6 @@ public class STTCollumHandler {
         }
         catch (Exception e){
             logger.error("Error when find root of node: " + currentItem.getValue());
-            // Need a better way to handle this exception
-            //
-            //
-            //
-            //
             return null;
         }
         return tempPhongCachList;

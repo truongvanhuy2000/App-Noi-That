@@ -58,6 +58,10 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private Button deleteButton;
     @FXML
+    private Button addContinuousButton;
+    @FXML
+    private Button addNewButton;
+    @FXML
     private ImageView ImageView;
     ObservableList<String> hangMucList = FXCollections.observableArrayList();
     ObservableList<String> vatLieuList = FXCollections.observableArrayList();
@@ -74,6 +78,10 @@ public class LuaChonNoiThatController implements Initializable {
     public final void initialize(URL url, ResourceBundle resourceBundle) {
         setUpTable();
 //        deleteButton.setDisable(true);
+        ButtonHandler buttonHandler = new ButtonHandler(TableNoiThat);
+        deleteButton.setOnAction(buttonHandler::onDeleteLine);
+        addNewButton.setOnAction(buttonHandler::addNewLine);
+        addContinuousButton.setOnAction(buttonHandler::continuousLineAdd);
         workAroundToCollumWidthBug();
     }
     @FXML
@@ -111,22 +119,7 @@ public class LuaChonNoiThatController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-    @FXML
-    void addNewLine(ActionEvent event) {
-        TreeItem<BangNoiThat> temp = new TreeItem<>(new BangNoiThat(
-                "A", 0f, 0f, 0f, 0L,
-                "", "", "", 0L, 0f));
-        TableNoiThat.getRoot().getChildren().add(temp);
-//        temp.getValue().setDai(30);
-    }
-    @FXML
-    void onDeleteLine(ActionEvent event) {
-        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
-            return;
-        }
-        if (currentSelectedItem == null) return;
-        currentSelectedItem.getParent().getChildren().remove(currentSelectedItem);
-    }
+
 
     public void onEditCommitVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         String newValue =  event.getNewValue();
@@ -147,10 +140,11 @@ public class LuaChonNoiThatController implements Initializable {
         TableNoiThat.setRoot(itemRoot);
         TableNoiThat.setShowRoot(false);
         TableNoiThat.setEditable(true);
-        TableNoiThat.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            currentSelectedItem = observable.getValue();
-//            deleteButton.setDisable(false);
-        });
+//        TableNoiThat.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+//            currentSelectedItem = observable.getValue();
+////            deleteButton.setDisable(false);
+//        });
+        itemRoot.getChildren().add(new TreeItem<>(new BangNoiThat("A", 0f, 0f, 0f, 0L, "", "", "", 0L, 0f)));
     }
     private void setUpCollum(){
         setUpCao();

@@ -24,7 +24,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="824.0" prefWidth="1720.0">
                      <children>
-                        <Button layoutX="11.0" layoutY="423.0" minWidth="32.0" mnemonicParsing="false" onAction="#addNewLine" prefHeight="30.0" prefWidth="32.0" text="+" />
+                        <Button fx:id="addNewButton" layoutX="11.0" layoutY="423.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" text="+" />
                         <Button fx:id="BackButton" layoutX="11.0" layoutY="21.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="&lt;" />
                         <TextField layoutX="374.0" layoutY="14.0" prefHeight="24.0" prefWidth="547.0" promptText="Tên công ty" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="374.0" />
                         <TextField layoutX="374.0" layoutY="45.0" prefHeight="24.0" prefWidth="547.0" promptText="Văn phòng" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="374.0" />
@@ -88,7 +88,8 @@
                               <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TreeTableView>
-                        <Button fx:id="deleteButton" layoutX="11.0" layoutY="490.0" minWidth="32.0" mnemonicParsing="false" onAction="#onDeleteLine" prefHeight="30.0" prefWidth="32.0" text="X" />
+                        <Button fx:id="deleteButton" layoutX="11.0" layoutY="544.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" text="X" />
+                        <Button fx:id="addContinuousButton" layoutX="4.0" layoutY="487.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="44.0" rotate="90.0" text="&gt;&gt;" />
                      </children>
                   </AnchorPane>
             </content>
