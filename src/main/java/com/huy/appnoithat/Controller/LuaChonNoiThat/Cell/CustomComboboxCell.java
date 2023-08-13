@@ -1,5 +1,6 @@
-package com.huy.appnoithat.Controller.LuaChonNoiThat;
+package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
+import com.huy.appnoithat.Controller.LuaChonNoiThat.BangNoiThat;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
@@ -11,10 +12,10 @@ import javafx.scene.control.cell.ComboBoxTreeTableCell;
 public class CustomComboboxCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;
     private ObservableList<String> items;
+    private String oldValue;
     public CustomComboboxCell(ObservableList<String> items) {
         this.items = items;
     }
-
     @Override
     public void startEdit() {
         if (!isEmpty()) {
@@ -28,14 +29,13 @@ public class CustomComboboxCell extends TreeTableCell<BangNoiThat, String> {
     @Override
     public void cancelEdit() {
         super.cancelEdit();
-        super.setText(super.getItem());
+        super.setText(getItem());
         setGraphic(null);
     }
 
     @Override
     public void updateItem(String item, boolean empty) {
         super.updateItem(item, empty);
-
         if (empty) {
             super.setText(null);
             setGraphic(null);
@@ -50,6 +50,10 @@ public class CustomComboboxCell extends TreeTableCell<BangNoiThat, String> {
                 super.setText(super.getItem());
                 setGraphic(null);
             }
+//            if (super.getItem() != null && !super.getItem().isEmpty()) {
+//                oldValue = super.getItem();
+//                System.out.println(oldValue);
+//            }
         }
     }
 

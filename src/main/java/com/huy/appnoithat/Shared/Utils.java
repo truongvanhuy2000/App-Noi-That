@@ -1,6 +1,8 @@
 package com.huy.appnoithat.Shared;
 
+import java.util.List;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class Utils {
     public static boolean isAlpha(String name) {
@@ -12,7 +14,6 @@ public class Utils {
     public static class RomanNumber {
         private final static TreeMap<Integer, String> map = new TreeMap<Integer, String>();
         static {
-
             map.put(1000, "M");
             map.put(900, "CM");
             map.put(500, "D");
@@ -39,5 +40,8 @@ public class Utils {
         public static boolean isRoman(String roman) {
             return roman.matches("^(M{0,3})(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$");
         }
+    }
+    public static List<String> getObjectNameList(List<?> list){
+        return list.stream().map(Object::toString).collect(Collectors.toList());
     }
 }

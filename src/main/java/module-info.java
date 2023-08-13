@@ -21,4 +21,6 @@ module com.huy.appnoithat {
 
     exports com.huy.appnoithat.Controller.DatabaseModify;
     opens com.huy.appnoithat.Controller.DatabaseModify to javafx.fxml;
+    exports com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
+    opens com.huy.appnoithat.Controller.LuaChonNoiThat.Cell to javafx.fxml;
 }

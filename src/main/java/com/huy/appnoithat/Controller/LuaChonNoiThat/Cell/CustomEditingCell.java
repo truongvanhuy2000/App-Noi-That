@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Controller.LuaChonNoiThat;
+package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;

@@ -37,42 +37,42 @@ public class BangNoiThat {
     }
 
     public void setSTT(String STT) {
-        this.STT.set(STT);
+        this.STT.setValue(STT);
     }
 
     public void setCao(float cao) {
-        this.Cao.set(cao);
+        this.Cao.setValue(cao);
     }
 
     public void setDai(float dai) {
-        this.Dai.set(dai);
+        this.Dai.setValue(dai);
     }
 
     public void setRong(float rong) {
-        this.Rong.set(rong);
+        this.Rong.setValue(rong);
     }
 
     public void setDonGia(long donGia) {
-        this.DonGia.set(donGia);
+        this.DonGia.setValue(donGia);
     }
 
     public void setDonVi(String donVi) {
-        this.DonVi.set(donVi);
+        this.DonVi.setValue(donVi);
     }
 
     public void setHangMuc(String hangMuc) {
-        this.HangMuc.set(hangMuc);
+        this.HangMuc.setValue(hangMuc);
     }
 
     public void setVatLieu(String vatLieu) {
-        this.VatLieu.set(vatLieu);
+        this.VatLieu.setValue(vatLieu);
     }
 
     public void setThanhTien(long thanhTien) {
-        this.ThanhTien.set(thanhTien);
+        this.ThanhTien.setValue(thanhTien);
     }
 
     public void setKhoiLuong(float khoiLuong) {
-        this.KhoiLuong.set(khoiLuong);
+        this.KhoiLuong.setValue(khoiLuong);
     }
 }
