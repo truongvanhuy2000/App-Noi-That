@@ -24,9 +24,9 @@ public class BangNoiThat {
 
     public BangNoiThat(int id, Float cao, Float dai, Float rong, Long donGia, String donVi, String hangMuc, String vatLieu, Long thanhTien, Float khoiLuong) {
         STT = new SimpleIntegerProperty(id);
-        Cao = new SimpleFloatProperty(cao);
-        Dai = new SimpleFloatProperty(dai);
-        Rong = new SimpleFloatProperty(rong);
+        Cao = new SimpleFloatProperty();
+        Dai = new SimpleFloatProperty();
+        Rong = new SimpleFloatProperty();
         DonGia = new SimpleLongProperty(donGia);
         DonVi = new SimpleStringProperty(donVi);
         HangMuc = new SimpleStringProperty(hangMuc);
