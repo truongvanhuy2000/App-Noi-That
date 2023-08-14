@@ -15,9 +15,11 @@ public class ButtonHandler {
     }
     public void addNewLine(ActionEvent event) {
         if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
+            TableNoiThat.getRoot().getChildren().add(new TreeItem<>(new BangNoiThat(
+                    "0", 0f, 0f, 0f, 0L,
+                    "", "", "", 0L, 0f)));
             return;
         }
-
         if (isReachedLimit(TableNoiThat.getRoot())){
             ErrorUtils.throwErrorSignal("Đã đạt giới hạn số lượng 30");
             return;
@@ -27,11 +29,11 @@ public class ButtonHandler {
 
         int indexOfCurrentItem = parent.getChildren().indexOf(currentSelectedItem);
         parent.getChildren().add(indexOfCurrentItem + 1, new TreeItem<>(new BangNoiThat(
-                "", 0f, 0f, 0f, 0L,
+                "0", 0f, 0f, 0f, 0L,
                 "", "", "", 0L, 0f)));
-        System.out.println("new line suppose to be added");
         parent.setExpanded(true);
     }
+
     public void continuousLineAdd(ActionEvent event) {
         if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
             return;

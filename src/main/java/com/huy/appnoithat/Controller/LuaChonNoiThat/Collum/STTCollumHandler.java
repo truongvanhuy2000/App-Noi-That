@@ -118,7 +118,7 @@ public class STTCollumHandler {
     }
 
     private void makeTreeNotCollapsed(TreeItem<BangNoiThat> item){
-//        item.addEventHandler(TreeItem.branchCollapsedEvent(),
-//                (EventHandler<TreeItem.TreeModificationEvent<String>>) event -> event.getTreeItem().setExpanded(true));
+        item.addEventHandler(TreeItem.branchCollapsedEvent(),
+                (EventHandler<TreeItem.TreeModificationEvent<String>>) event -> event.getTreeItem().setExpanded(true));
     }
 }
