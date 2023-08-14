@@ -26,11 +26,11 @@
                      <children>
                         <Button fx:id="addNewButton" layoutX="11.0" layoutY="423.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" text="+" />
                         <Button fx:id="BackButton" layoutX="11.0" layoutY="21.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="&lt;" />
-                        <TextField layoutX="374.0" layoutY="14.0" prefHeight="24.0" prefWidth="547.0" promptText="Tên công ty" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="374.0" />
-                        <TextField layoutX="374.0" layoutY="45.0" prefHeight="24.0" prefWidth="547.0" promptText="Văn phòng" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="374.0" />
-                        <TextField layoutX="374.0" layoutY="77.0" prefHeight="24.0" prefWidth="547.0" promptText="Địa chỉ xưởng" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="374.0" />
-                        <TextField layoutX="374.0" layoutY="108.0" prefHeight="24.0" prefWidth="547.0" promptText="Điện thoại" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="374.0" />
-                        <HBox layoutX="197.0" layoutY="14.0" prefHeight="152.0" prefWidth="149.0">
+                        <TextField layoutX="275.0" layoutY="14.0" prefHeight="24.0" prefWidth="350.0" promptText="Tên công ty" AnchorPane.leftAnchor="275.0" />
+                        <TextField layoutX="275.0" layoutY="44.0" prefHeight="24.0" prefWidth="350.0" promptText="Văn phòng" AnchorPane.leftAnchor="275.0" />
+                        <TextField layoutX="275.0" layoutY="74.0" prefHeight="24.0" prefWidth="350.0" promptText="Địa chỉ xưởng" AnchorPane.leftAnchor="275.0" />
+                        <TextField layoutX="275.0" layoutY="104.0" prefHeight="24.0" prefWidth="350.0" promptText="Điện thoại" AnchorPane.leftAnchor="275.0" />
+                        <HBox layoutX="100.0" layoutY="17.0" prefHeight="152.0" prefWidth="149.0">
                            <children>
                               <ImageView fx:id="ImageView" fitHeight="142.0" fitWidth="162.0" onMouseClicked="#OnMouseClickedHandler" pickOnBounds="true">
                                  <image>
@@ -38,22 +38,22 @@
                                  </image></ImageView>
                            </children>
                         </HBox>
-                        <TextField layoutX="374.0" layoutY="142.0" prefHeight="24.0" prefWidth="547.0" promptText="Email" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="374.0" />
-                        <Label layoutX="438.0" layoutY="166.0" prefHeight="31.0" prefWidth="642.0" style="-fx-alignment: center;" text="Báo Giá Nội Thất Công Ty TNHH Kiến Trúc Xây Dựng Nội Thất A One" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <TextField layoutX="275.0" layoutY="134.0" prefHeight="24.0" prefWidth="350.0" promptText="Email" AnchorPane.leftAnchor="275.0" />
+                        <Label layoutY="175.0" prefHeight="31.0" prefWidth="642.0" style="-fx-alignment: center;" text="Báo Giá Nội Thất Công Ty TNHH Kiến Trúc Xây Dựng Nội Thất A One" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="204.0" layoutY="201.0" text="Khách hàng" />
-                        <Label layoutX="204.0" layoutY="231.0" text="Điện thoại" />
-                        <Label layoutX="204.0" layoutY="261.0" text="Địa chỉ" />
-                        <Label layoutX="204.0" layoutY="292.0" text="Ngày lập" />
-                        <Label layoutX="204.0" layoutY="324.0" text="Sản phẩm" />
-                        <TextField layoutX="290.0" layoutY="197.0" prefHeight="24.0" prefWidth="961.0" promptText="Khách hàng" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0" />
-                        <TextField layoutX="289.0" layoutY="227.0" prefHeight="24.0" prefWidth="962.0" promptText="Điện thoại" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0" />
-                        <TextField layoutX="289.0" layoutY="257.0" prefHeight="24.0" prefWidth="963.0" promptText="Địa chỉ" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0" />
-                        <TextField layoutX="289.0" layoutY="288.0" prefHeight="24.0" prefWidth="965.0" promptText="Ngày lập báo giá" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0" />
-                        <TextField layoutX="288.0" layoutY="320.0" prefHeight="24.0" prefWidth="968.0" promptText="Sản phẩm" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0" />
+                        <Label layoutX="738.0" layoutY="18.0" text="Khách hàng" />
+                        <Label layoutX="738.0" layoutY="48.0" text="Điện thoại" />
+                        <Label layoutX="738.0" layoutY="78.0" text="Địa chỉ" />
+                        <Label layoutX="738.0" layoutY="108.0" text="Ngày lập" />
+                        <Label layoutX="738.0" layoutY="138.0" text="Sản phẩm" />
+                        <TextField layoutX="820.0" layoutY="14.0" prefHeight="24.0" prefWidth="300.0" promptText="Khách hàng" AnchorPane.leftAnchor="820.0" />
+                        <TextField layoutX="820.0" layoutY="44.0" prefHeight="24.0" prefWidth="300.0" promptText="Điện thoại" AnchorPane.leftAnchor="820.0" />
+                        <TextField layoutX="820.0" layoutY="104.0" prefHeight="24.0" prefWidth="300.0" promptText="Địa chỉ" AnchorPane.leftAnchor="820.0" />
+                        <TextField layoutX="820.0" layoutY="74.0" prefHeight="24.0" prefWidth="300.0" promptText="Ngày lập báo giá" AnchorPane.leftAnchor="820.0" />
+                        <TextField layoutX="820.0" layoutY="134.0" prefHeight="24.0" prefWidth="300.0" promptText="Sản phẩm" AnchorPane.leftAnchor="820.0" />
                         <Button layoutX="13.0" layoutY="69.0" mnemonicParsing="false" text="Export" />
                         <TableView layoutX="73.0" layoutY="745.0" prefHeight="91.0" prefWidth="1336.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
                           <columns>
@@ -67,7 +67,7 @@
                            </columnResizePolicy>
                         </TableView>
                         <TextArea layoutX="73.0" layoutY="850.0" prefHeight="112.0" prefWidth="1336.0" text="Chú thích:&#10;- Báo giá đã bao gồm vận chuyển nội thành, lắp đặt, phí đo đạc thiết kế.&#10;- Đơn giá trên chưa bao gồm VAT, khách hàng chỉ chịu phí VAT = 10% tổng gía trị hợp đồng khi muốn xuất hóa đơn đỏ.&#10;- Bảo hành phần gỗ 3 năm, phụ kiện bảo hành 2 năm theo hãng.&#10;- Báo giá cuối cùng được tính theo khối lượng thực tế tại công trình.&#10;- Báo giá có giá trị trong vòng 20 ngày kể từ ngày lập báo giá." AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0" />
-                        <TreeTableView fx:id="TableNoiThat" layoutX="71.0" layoutY="351.0" prefHeight="385.0" prefWidth="1306.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
+                        <TreeTableView fx:id="TableNoiThat" layoutX="71.0" layoutY="211.0" prefHeight="525.0" prefWidth="1306.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
                           <columns>
                             <TreeTableColumn fx:id="STT" prefWidth="59.0" resizable="false" sortable="false" text="STT" />
                             <TreeTableColumn fx:id="HangMuc" minWidth="200.0" prefWidth="319.0" sortable="false" text="HANG MUC" />
