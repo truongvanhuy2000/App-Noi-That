@@ -8,9 +8,9 @@ import lombok.*;
 
 public class ThongSo {
     private int id;
-    private int dai;
-    private int rong;
-    private int cao;
+    private Float dai;
+    private Float rong;
+    private Float cao;
     private String don_vi;
-    private int don_gia;
+    private Long don_gia;
 }

@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LuaChonNoiThatService {
-    ThongSo ts1 = new ThongSo(1, 10, 5, 3, "cm", 50);
-    ThongSo ts2 = new ThongSo(2, 8, 6, 4, "cm", 45);
-    ThongSo ts3 = new ThongSo(3, 12, 7, 2, "cm", 55);
-    ThongSo ts4 = new ThongSo(4, 15, 5, 3, "cm", 60);
-    ThongSo ts5 = new ThongSo(5, 10, 5, 3, "cm", 50);
-    ThongSo ts6 = new ThongSo(6, 10, 5, 3, "cm", 50);
-    ThongSo ts7 = new ThongSo(7, 10, 5, 3, "cm", 50);
-    ThongSo ts8 = new ThongSo(8, 10, 5, 3, "cm", 50);
-    ThongSo ts9 = new ThongSo(9, 10, 5, 3, "cm", 50);
+    ThongSo ts1 = new ThongSo(1, 10F, 5F, 3F, "cm", 50L);
+    ThongSo ts2 = new ThongSo(2, 8F, 6F, 4F, "cm", 45L);
+    ThongSo ts3 = new ThongSo(3, 12F, 7F, 2F, "cm", 55L);
+    ThongSo ts4 = new ThongSo(4, 15F, 5F, 3F, "cm", 60L);
+    ThongSo ts5 = new ThongSo(5, 10F, 5F, 3F, "cm", 50L);
+    ThongSo ts6 = new ThongSo(6, 10F, 5F, 3F, "cm", 50L);
+    ThongSo ts7 = new ThongSo(7, 10F, 5F, 3F, "cm", 50L);
+    ThongSo ts8 = new ThongSo(8, 10F, 5F, 3F, "cm", 50L);
+    ThongSo ts9 = new ThongSo(9, 10F, 5F, 3F, "cm", 50L);
 
     VatLieu vl1 = new VatLieu(1, "Wood", new ThongSo());
     VatLieu vl2 = new VatLieu(2, "Metal", new ThongSo());
@@ -88,5 +88,31 @@ public class LuaChonNoiThatService {
         listSelection.add(new UserSelection(pc1, nt2, hm2, vl2, ts2));
         return listSelection;
     }
+    public PhongCachNoiThat findPhongCachNoiThatByName(String name) {
+        List<PhongCachNoiThat> list = findAllPhongCachNoiThat();
+        return list.stream().filter(pc -> pc.getName().equals(name)).findFirst().orElse(null);
+    }
+    public List<NoiThat> findNoiThatByPhongCachName(String name) {
+        PhongCachNoiThat foundPhongCachNoiThat = findPhongCachNoiThatByName(name);
+        if (foundPhongCachNoiThat == null) throw new NullPointerException("Phong cach not found");
+        return foundPhongCachNoiThat.getNoiThatList();
+    }
 
+    public List<HangMuc> findHangMucListByPhongCachAndNoiThat(String phongCach, String noiThat){
+        PhongCachNoiThat foundPhongCach = findPhongCachNoiThatByName(phongCach);
+        if (foundPhongCach == null) throw new NullPointerException("Phong cach not found");
+        NoiThat foundNoiThat = foundPhongCach.getNoiThatList().stream().filter(nt -> nt.getName().equals(noiThat)).findFirst().orElse(null);
+        if (foundNoiThat == null) throw new NullPointerException("Noi that not found");
+        return foundNoiThat.getHangMucList();
+    }
+
+    public List<VatLieu> findVatLieuListByParentsName(String phongCach, String noiThat, String hangMuc){
+        PhongCachNoiThat foundPhongCach = findPhongCachNoiThatByName(phongCach);
+        if (foundPhongCach == null) throw new NullPointerException("Phong cach not found");
+        NoiThat foundNoiThat = foundPhongCach.getNoiThatList().stream().filter(nt -> nt.getName().equals(noiThat)).findFirst().orElse(null);
+        if (foundNoiThat == null) throw new NullPointerException("Noi that not found");
+        HangMuc foundHangMuc = foundNoiThat.getHangMucList().stream().filter(hm -> hm.getName().equals(hangMuc)).findFirst().orElse(null);
+        if (foundHangMuc == null) throw new NullPointerException("Hang muc not found");
+        return foundHangMuc.getVatLieuList();
+    }
 }

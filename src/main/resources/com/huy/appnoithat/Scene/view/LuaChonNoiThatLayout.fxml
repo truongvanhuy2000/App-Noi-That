@@ -24,7 +24,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="824.0" prefWidth="1720.0">
                      <children>
-                        <Button layoutX="11.0" layoutY="423.0" minWidth="32.0" mnemonicParsing="false" onAction="#addNewLine" prefHeight="30.0" prefWidth="32.0" text="+" />
+                        <Button fx:id="addNewButton" layoutX="11.0" layoutY="423.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" text="+" />
                         <Button fx:id="BackButton" layoutX="11.0" layoutY="21.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="&lt;" />
                         <TextField layoutX="374.0" layoutY="14.0" prefHeight="24.0" prefWidth="547.0" promptText="Tên công ty" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="374.0" />
                         <TextField layoutX="374.0" layoutY="45.0" prefHeight="24.0" prefWidth="547.0" promptText="Văn phòng" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="374.0" />
@@ -69,25 +69,27 @@
                         <TextArea layoutX="73.0" layoutY="850.0" prefHeight="112.0" prefWidth="1336.0" text="Chú thích:&#10;- Báo giá đã bao gồm vận chuyển nội thành, lắp đặt, phí đo đạc thiết kế.&#10;- Đơn giá trên chưa bao gồm VAT, khách hàng chỉ chịu phí VAT = 10% tổng gía trị hợp đồng khi muốn xuất hóa đơn đỏ.&#10;- Bảo hành phần gỗ 3 năm, phụ kiện bảo hành 2 năm theo hãng.&#10;- Báo giá cuối cùng được tính theo khối lượng thực tế tại công trình.&#10;- Báo giá có giá trị trong vòng 20 ngày kể từ ngày lập báo giá." AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0" />
                         <TreeTableView fx:id="TableNoiThat" layoutX="71.0" layoutY="351.0" prefHeight="385.0" prefWidth="1306.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
                           <columns>
-                            <TreeTableColumn fx:id="STT" prefWidth="74.0" resizable="false" text="STT" />
-                            <TreeTableColumn fx:id="HangMuc" minWidth="200.0" prefWidth="304.0" text="HANG MUC" />
-                              <TreeTableColumn fx:id="VatLieu" minWidth="200.0" prefWidth="248.0" text="VAT LIEU" />
-                              <TreeTableColumn prefWidth="415.0" text="KICH THUOC">
+                            <TreeTableColumn fx:id="STT" prefWidth="59.0" resizable="false" sortable="false" text="STT" />
+                            <TreeTableColumn fx:id="HangMuc" minWidth="200.0" prefWidth="319.0" sortable="false" text="HANG MUC" />
+                              <TreeTableColumn fx:id="VatLieu" minWidth="200.0" prefWidth="248.0" sortable="false" text="VAT LIEU" />
+                              <TreeTableColumn prefWidth="415.0" sortable="false" text="KICH THUOC">
                                  <columns>
-                                    <TreeTableColumn fx:id="Dai" prefWidth="52.0" text="DAI" />
-                                    <TreeTableColumn fx:id="Rong" prefWidth="63.0" text="RONG" />
-                                    <TreeTableColumn fx:id="Cao" prefWidth="52.0" text="CAO" />
+                                    <TreeTableColumn fx:id="Dai" prefWidth="52.0" resizable="false" sortable="false" text="DAI" />
+                                    <TreeTableColumn fx:id="Rong" prefWidth="63.0" resizable="false" sortable="false" text="RONG" />
+                                    <TreeTableColumn fx:id="Cao" prefWidth="52.0" resizable="false" sortable="false" text="CAO" />
                                  </columns>
                               </TreeTableColumn>
-                              <TreeTableColumn fx:id="DonVi" prefWidth="95.0" text="DON VI" />
-                              <TreeTableColumn fx:id="DonGia" prefWidth="95.0" text="DON GIA" />
-                              <TreeTableColumn fx:id="KhoiLuong" prefWidth="126.0" text="KHOI LUONG" />
-                              <TreeTableColumn fx:id="ThanhTien" prefWidth="126.0" text="THANH TIEN" />
+                              <TreeTableColumn fx:id="DonVi" prefWidth="100.0" resizable="false" sortable="false" text="DON VI" />
+                              <TreeTableColumn fx:id="DonGia" prefWidth="95.0" sortable="false" text="DON GIA" />
+                              <TreeTableColumn fx:id="KhoiLuong" prefWidth="70.0" resizable="false" sortable="false" text="KHOI LUONG" />
+                              <TreeTableColumn fx:id="ThanhTien" prefWidth="126.0" sortable="false" text="THANH TIEN" />
                           </columns>
                            <columnResizePolicy>
                               <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TreeTableView>
+                        <Button fx:id="deleteButton" layoutX="11.0" layoutY="544.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" text="X" />
+                        <Button fx:id="addContinuousButton" layoutX="4.0" layoutY="487.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="44.0" rotate="90.0" text="&gt;&gt;" />
                      </children>
                   </AnchorPane>
             </content>
