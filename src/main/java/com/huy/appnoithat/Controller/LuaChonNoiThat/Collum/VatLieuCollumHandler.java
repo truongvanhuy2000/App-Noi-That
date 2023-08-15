@@ -2,9 +2,11 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomComboboxCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
+import com.huy.appnoithat.Shared.ErrorUtils;
 import com.huy.appnoithat.Shared.Utils;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -45,7 +47,9 @@ public class VatLieuCollumHandler {
     public void onStartEditVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         List<String> items;
-        
+        if (!TableUtils.isALlowedToEdit(event)){
+            return;
+        }
         String hangMuc = currentItem.getValue().getHangMuc().getValue();
         String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
         String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
