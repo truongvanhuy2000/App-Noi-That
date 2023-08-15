@@ -5,6 +5,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.HangMucCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.STTCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.VatLieuCollumHandler;
 import com.huy.appnoithat.Scene.HomeScene;
+import com.huy.appnoithat.Scene.LuaChonNoiThatScene;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Shared.ErrorUtils;
 import javafx.animation.KeyFrame;
@@ -15,11 +16,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,10 +29,13 @@ import javafx.util.Duration;
 import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.LongStringConverter;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -49,8 +51,6 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private TreeTableColumn<BangNoiThat, String> STT;
     @FXML
-    private Button BackButton;
-    @FXML
     private Button deleteButton;
     @FXML
     private Button addContinuousButton;
@@ -58,40 +58,27 @@ public class LuaChonNoiThatController implements Initializable {
     private Button addNewButton;
     @FXML
     private ImageView ImageView;
-    ObservableList<String> hangMucList = FXCollections.observableArrayList();
-    ObservableList<String> vatLieuList = FXCollections.observableArrayList();
-    private TreeItem<BangNoiThat> currentSelectedItem;
-    private final LuaChonNoiThatService luaChonNoiThatService;
+
+    private final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatController.class);
+
+
     public LuaChonNoiThatController() {
-        luaChonNoiThatService = new LuaChonNoiThatService();
+
     }
-    // Call this method everytime you switch scene
     public void initialize() {
     }
 
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
         setUpTable();
-//        deleteButton.setDisable(true);
         ButtonHandler buttonHandler = new ButtonHandler(TableNoiThat);
         deleteButton.setOnAction(buttonHandler::onDeleteLine);
         addNewButton.setOnAction(buttonHandler::addNewLine);
         addContinuousButton.setOnAction(buttonHandler::continuousLineAdd);
         workAroundToCollumWidthBug();
+        System.out.println("LuaChonNoiThatController initialized");
     }
-    @FXML
-    private void sceneSwitcher(ActionEvent actionEvent) {
-        Scene scene = null;
-        Stage stage = null;
-        Object source = actionEvent.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
-        if (source == BackButton){
-            scene = HomeScene.getInstance().getScene();
-        }
-        else return;
-        stage.setScene(scene);
-        stage.show();
-    }
+
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {
         Object source = event.getSource();
@@ -102,6 +89,7 @@ public class LuaChonNoiThatController implements Initializable {
     private void imageViewHandler(){
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(new Stage());
+        if (file == null) return;
         String fileExtension = FilenameUtils.getExtension(file.getName());
         if (!(fileExtension.equals("jpg") || fileExtension.equals("jpeg") || fileExtension.equals("png"))){
             ErrorUtils.throwErrorSignal("File không hợp lệ");
@@ -115,12 +103,6 @@ public class LuaChonNoiThatController implements Initializable {
         }
     }
 
-
-    public void onEditCommitVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
-        String newValue =  event.getNewValue();
-        event.getRowValue().getValue().setVatLieu(newValue);
-    }
-
     private void workAroundToCollumWidthBug(){
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(1000),
@@ -131,14 +113,9 @@ public class LuaChonNoiThatController implements Initializable {
     private void setUpTable() {
         setUpCollum();
         TreeItem<BangNoiThat> itemRoot = new TreeItem<>(new BangNoiThat("0", 0f, 0f, 0f, 0L, "", "IM root", "", 0L, 0f));
-//        itemRoot.getValue().setDonGia(90f);90f);
         TableNoiThat.setRoot(itemRoot);
         TableNoiThat.setShowRoot(false);
         TableNoiThat.setEditable(true);
-//        TableNoiThat.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-//            currentSelectedItem = observable.getValue();
-////            deleteButton.setDisable(false);
-//        });
         itemRoot.getChildren().add(new TreeItem<>(new BangNoiThat("A", 0f, 0f, 0f, 0L, "", "", "", 0L, 0f)));
     }
     private void setUpCollum(){
@@ -179,7 +156,8 @@ public class LuaChonNoiThatController implements Initializable {
     }
     private void setUpVatLieu(){
         // Set up collum for VatLieu
-        VatLieuCollumHandler vatLieuCollumHandler = new VatLieuCollumHandler(this.vatLieuList);
+        ObservableList<String> vatLieuList = FXCollections.observableArrayList();
+        VatLieuCollumHandler vatLieuCollumHandler = new VatLieuCollumHandler(vatLieuList);
         VatLieu.setCellValueFactory(vatLieuCollumHandler::getCustomCellValueFactory);
         VatLieu.setCellFactory(vatLieuCollumHandler::getCustomCellFactory);
         VatLieu.setOnEditCommit(vatLieuCollumHandler::onEditCommitVatLieu);
@@ -187,7 +165,8 @@ public class LuaChonNoiThatController implements Initializable {
     }
 
     private void setUpHangMuc(){
-        HangMucCollumHandler hangMucCollumHandler = new HangMucCollumHandler(this.hangMucList);
+        ObservableList<String> hangMucList = FXCollections.observableArrayList();
+        HangMucCollumHandler hangMucCollumHandler = new HangMucCollumHandler(hangMucList);
         // Set up collum for HangMuc
         HangMuc.setCellValueFactory(hangMucCollumHandler::getCustomCellValueFactory);
         HangMuc.setOnEditCommit(hangMucCollumHandler::onEditCommitHangMuc);

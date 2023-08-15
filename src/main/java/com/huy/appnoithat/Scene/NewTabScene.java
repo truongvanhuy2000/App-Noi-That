@@ -1,26 +1,24 @@
 package com.huy.appnoithat.Scene;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
+import com.huy.appnoithat.Controller.NewTabController;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.io.IOException;
 import java.util.Objects;
-
 @Getter
-public class LuaChonNoiThatScene {
-    private static final String viewPath = "view/LuaChonNoiThatLayout.fxml";
+public class NewTabScene {
+    private static final String viewPath = "view/TabLayout.fxml";
     private Scene scene;
     private Parent root;
-    private static LuaChonNoiThatScene single_instance = null;
-    public LuaChonNoiThatScene() {
+    private static NewTabScene single_instance = null;
+    public NewTabScene() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(LuaChonNoiThatScene.class.getResource(viewPath));
-            fxmlLoader.setController(new LuaChonNoiThatController());
+            FXMLLoader fxmlLoader = new FXMLLoader(NewTabScene.class.getResource(viewPath));
+            fxmlLoader.setController(new NewTabController());
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -29,9 +27,9 @@ public class LuaChonNoiThatScene {
         addCssToScence();
     }
     // Create an object of this class, call this function
-    public static synchronized LuaChonNoiThatScene getInstance() {
+    public static synchronized NewTabScene getInstance() {
         if (single_instance == null)
-            single_instance = new LuaChonNoiThatScene();
+            single_instance = new NewTabScene();
         return single_instance;
     }
     public void setRoot(Parent root) {
@@ -44,14 +42,7 @@ public class LuaChonNoiThatScene {
         addCssToScence();
     }
     private void addCssToScence(){
-        String cssPath = "css/LuaChonNoiThatLayout.css";
+        String cssPath = "css/TabLayout.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
-    }
-
-    static public Node getNewRoot() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(LuaChonNoiThatScene.class.getResource(viewPath));
-        fxmlLoader.setController(new LuaChonNoiThatController());
-        Parent root = fxmlLoader.load();
-        return root;
     }
 }

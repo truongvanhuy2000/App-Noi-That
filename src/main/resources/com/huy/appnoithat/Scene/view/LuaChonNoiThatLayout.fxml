@@ -2,8 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -16,85 +14,77 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1010.0" prefWidth="1452.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController">
+<AnchorPane prefHeight="1000.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane prefHeight="855.0" prefWidth="1308.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <tabs>
-          <Tab text="Sheet 1">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="824.0" prefWidth="1720.0">
-                     <children>
-                        <Button fx:id="addNewButton" layoutX="11.0" layoutY="423.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" text="+" />
-                        <Button fx:id="BackButton" layoutX="11.0" layoutY="21.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="&lt;" />
-                        <TextField layoutX="275.0" layoutY="14.0" prefHeight="24.0" prefWidth="350.0" promptText="Tên công ty" AnchorPane.leftAnchor="275.0" />
-                        <TextField layoutX="275.0" layoutY="44.0" prefHeight="24.0" prefWidth="350.0" promptText="Văn phòng" AnchorPane.leftAnchor="275.0" />
-                        <TextField layoutX="275.0" layoutY="74.0" prefHeight="24.0" prefWidth="350.0" promptText="Địa chỉ xưởng" AnchorPane.leftAnchor="275.0" />
-                        <TextField layoutX="275.0" layoutY="104.0" prefHeight="24.0" prefWidth="350.0" promptText="Điện thoại" AnchorPane.leftAnchor="275.0" />
-                        <HBox layoutX="100.0" layoutY="17.0" prefHeight="152.0" prefWidth="149.0">
-                           <children>
-                              <ImageView fx:id="ImageView" fitHeight="142.0" fitWidth="162.0" onMouseClicked="#OnMouseClickedHandler" pickOnBounds="true">
-                                 <image>
-                                    <Image url="@../../../../../../../../../../../../Downloads/att-logo.png" />
-                                 </image></ImageView>
-                           </children>
-                        </HBox>
-                        <TextField layoutX="275.0" layoutY="134.0" prefHeight="24.0" prefWidth="350.0" promptText="Email" AnchorPane.leftAnchor="275.0" />
-                        <Label layoutY="175.0" prefHeight="31.0" prefWidth="642.0" style="-fx-alignment: center;" text="Báo Giá Nội Thất Công Ty TNHH Kiến Trúc Xây Dựng Nội Thất A One" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="738.0" layoutY="18.0" text="Khách hàng" />
-                        <Label layoutX="738.0" layoutY="48.0" text="Điện thoại" />
-                        <Label layoutX="738.0" layoutY="78.0" text="Địa chỉ" />
-                        <Label layoutX="738.0" layoutY="108.0" text="Ngày lập" />
-                        <Label layoutX="738.0" layoutY="138.0" text="Sản phẩm" />
-                        <TextField layoutX="820.0" layoutY="14.0" prefHeight="24.0" prefWidth="300.0" promptText="Khách hàng" AnchorPane.leftAnchor="820.0" />
-                        <TextField layoutX="820.0" layoutY="44.0" prefHeight="24.0" prefWidth="300.0" promptText="Điện thoại" AnchorPane.leftAnchor="820.0" />
-                        <TextField layoutX="820.0" layoutY="104.0" prefHeight="24.0" prefWidth="300.0" promptText="Địa chỉ" AnchorPane.leftAnchor="820.0" />
-                        <TextField layoutX="820.0" layoutY="74.0" prefHeight="24.0" prefWidth="300.0" promptText="Ngày lập báo giá" AnchorPane.leftAnchor="820.0" />
-                        <TextField layoutX="820.0" layoutY="134.0" prefHeight="24.0" prefWidth="300.0" promptText="Sản phẩm" AnchorPane.leftAnchor="820.0" />
-                        <Button layoutX="13.0" layoutY="69.0" mnemonicParsing="false" text="Export" />
-                        <TableView layoutX="73.0" layoutY="745.0" prefHeight="91.0" prefWidth="1336.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
-                          <columns>
-                            <TableColumn prefWidth="339.0" text="Đặt cọc thiết kế 10%" />
-                            <TableColumn prefWidth="314.0" text="Đặt cọc thi công 30%" />
-                              <TableColumn prefWidth="294.0" text="Hàng đến chân công trình 50%" />
-                              <TableColumn prefWidth="330.0" text="Nghiệm thu quyết " />
-                          </columns>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                        </TableView>
-                        <TextArea layoutX="73.0" layoutY="850.0" prefHeight="112.0" prefWidth="1336.0" text="Chú thích:&#10;- Báo giá đã bao gồm vận chuyển nội thành, lắp đặt, phí đo đạc thiết kế.&#10;- Đơn giá trên chưa bao gồm VAT, khách hàng chỉ chịu phí VAT = 10% tổng gía trị hợp đồng khi muốn xuất hóa đơn đỏ.&#10;- Bảo hành phần gỗ 3 năm, phụ kiện bảo hành 2 năm theo hãng.&#10;- Báo giá cuối cùng được tính theo khối lượng thực tế tại công trình.&#10;- Báo giá có giá trị trong vòng 20 ngày kể từ ngày lập báo giá." AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0" />
-                        <TreeTableView fx:id="TableNoiThat" layoutX="71.0" layoutY="211.0" prefHeight="525.0" prefWidth="1306.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
-                          <columns>
-                            <TreeTableColumn fx:id="STT" prefWidth="59.0" resizable="false" sortable="false" text="STT" />
-                            <TreeTableColumn fx:id="HangMuc" minWidth="200.0" prefWidth="319.0" sortable="false" text="HANG MUC" />
-                              <TreeTableColumn fx:id="VatLieu" minWidth="200.0" prefWidth="248.0" sortable="false" text="VAT LIEU" />
-                              <TreeTableColumn prefWidth="415.0" sortable="false" text="KICH THUOC">
-                                 <columns>
-                                    <TreeTableColumn fx:id="Dai" prefWidth="52.0" resizable="false" sortable="false" text="DAI" />
-                                    <TreeTableColumn fx:id="Rong" prefWidth="63.0" resizable="false" sortable="false" text="RONG" />
-                                    <TreeTableColumn fx:id="Cao" prefWidth="52.0" resizable="false" sortable="false" text="CAO" />
-                                 </columns>
-                              </TreeTableColumn>
-                              <TreeTableColumn fx:id="DonVi" prefWidth="100.0" resizable="false" sortable="false" text="DON VI" />
-                              <TreeTableColumn fx:id="DonGia" prefWidth="95.0" sortable="false" text="DON GIA" />
-                              <TreeTableColumn fx:id="KhoiLuong" prefWidth="70.0" resizable="false" sortable="false" text="KHOI LUONG" />
-                              <TreeTableColumn fx:id="ThanhTien" prefWidth="126.0" sortable="false" text="THANH TIEN" />
-                          </columns>
-                           <columnResizePolicy>
-                              <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                        </TreeTableView>
-                        <Button fx:id="deleteButton" layoutX="11.0" layoutY="544.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" text="X" />
-                        <Button fx:id="addContinuousButton" layoutX="4.0" layoutY="487.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="44.0" rotate="90.0" text="&gt;&gt;" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
+  <AnchorPane layoutY="27.0" minHeight="0.0" minWidth="0.0" prefHeight="818.0" prefWidth="1720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="addNewButton" layoutX="11.0" layoutY="423.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" text="+" />
+            <TextField layoutX="275.0" layoutY="14.0" prefHeight="24.0" prefWidth="350.0" promptText="Tên công ty" AnchorPane.leftAnchor="275.0" />
+            <TextField layoutX="275.0" layoutY="44.0" prefHeight="24.0" prefWidth="350.0" promptText="Văn phòng" AnchorPane.leftAnchor="275.0" />
+            <TextField layoutX="275.0" layoutY="74.0" prefHeight="24.0" prefWidth="350.0" promptText="Địa chỉ xưởng" AnchorPane.leftAnchor="275.0" />
+            <TextField layoutX="275.0" layoutY="104.0" prefHeight="24.0" prefWidth="350.0" promptText="Điện thoại" AnchorPane.leftAnchor="275.0" />
+            <HBox layoutX="100.0" layoutY="17.0" prefHeight="152.0" prefWidth="149.0">
+               <children>
+                  <ImageView fx:id="ImageView" fitHeight="142.0" fitWidth="162.0" onMouseClicked="#OnMouseClickedHandler" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../../../../../../../../../../Downloads/att-logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <TextField layoutX="275.0" layoutY="134.0" prefHeight="24.0" prefWidth="350.0" promptText="Email" AnchorPane.leftAnchor="275.0" />
+            <Label layoutY="175.0" prefHeight="31.0" prefWidth="642.0" style="-fx-alignment: center;" text="Báo Giá Nội Thất Công Ty TNHH Kiến Trúc Xây Dựng Nội Thất A One" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="738.0" layoutY="18.0" text="Khách hàng" />
+            <Label layoutX="738.0" layoutY="48.0" text="Điện thoại" />
+            <Label layoutX="738.0" layoutY="78.0" text="Địa chỉ" />
+            <Label layoutX="738.0" layoutY="108.0" text="Ngày lập" />
+            <Label layoutX="738.0" layoutY="138.0" text="Sản phẩm" />
+            <TextField layoutX="820.0" layoutY="14.0" prefHeight="24.0" prefWidth="350.0" promptText="Khách hàng" AnchorPane.leftAnchor="820.0" />
+            <TextField layoutX="820.0" layoutY="44.0" prefHeight="24.0" prefWidth="350.0" promptText="Điện thoại" AnchorPane.leftAnchor="820.0" />
+            <TextField layoutX="820.0" layoutY="104.0" prefHeight="24.0" prefWidth="350.0" promptText="Địa chỉ" AnchorPane.leftAnchor="820.0" />
+            <TextField layoutX="820.0" layoutY="74.0" prefHeight="24.0" prefWidth="350.0" promptText="Ngày lập báo giá" AnchorPane.leftAnchor="820.0" />
+            <TextField layoutX="820.0" layoutY="134.0" prefHeight="24.0" prefWidth="350.0" promptText="Sản phẩm" AnchorPane.leftAnchor="820.0" />
+            <Button layoutX="13.0" layoutY="14.0" mnemonicParsing="false" text="Export" />
+            <TableView layoutX="73.0" layoutY="745.0" prefHeight="91.0" prefWidth="1336.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
+              <columns>
+                <TableColumn prefWidth="339.0" text="Đặt cọc thiết kế 10%" />
+                <TableColumn prefWidth="314.0" text="Đặt cọc thi công 30%" />
+                  <TableColumn prefWidth="294.0" text="Hàng đến chân công trình 50%" />
+                  <TableColumn prefWidth="330.0" text="Nghiệm thu quyết " />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <TextArea layoutX="73.0" layoutY="850.0" prefHeight="112.0" prefWidth="1336.0" text="Chú thích:&#10;- Báo giá đã bao gồm vận chuyển nội thành, lắp đặt, phí đo đạc thiết kế.&#10;- Đơn giá trên chưa bao gồm VAT, khách hàng chỉ chịu phí VAT = 10% tổng gía trị hợp đồng khi muốn xuất hóa đơn đỏ.&#10;- Bảo hành phần gỗ 3 năm, phụ kiện bảo hành 2 năm theo hãng.&#10;- Báo giá cuối cùng được tính theo khối lượng thực tế tại công trình.&#10;- Báo giá có giá trị trong vòng 20 ngày kể từ ngày lập báo giá." AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0" />
+            <TreeTableView fx:id="TableNoiThat" layoutX="71.0" layoutY="211.0" prefHeight="525.0" prefWidth="1306.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
+              <columns>
+                <TreeTableColumn fx:id="STT" prefWidth="59.0" resizable="false" sortable="false" text="STT" />
+                <TreeTableColumn fx:id="HangMuc" minWidth="200.0" prefWidth="319.0" sortable="false" text="HANG MUC" />
+                  <TreeTableColumn fx:id="VatLieu" minWidth="200.0" prefWidth="248.0" sortable="false" text="VAT LIEU" />
+                  <TreeTableColumn prefWidth="415.0" sortable="false" text="KICH THUOC">
+                     <columns>
+                        <TreeTableColumn fx:id="Dai" prefWidth="52.0" resizable="false" sortable="false" text="DAI" />
+                        <TreeTableColumn fx:id="Rong" prefWidth="63.0" resizable="false" sortable="false" text="RONG" />
+                        <TreeTableColumn fx:id="Cao" prefWidth="52.0" resizable="false" sortable="false" text="CAO" />
+                     </columns>
+                  </TreeTableColumn>
+                  <TreeTableColumn fx:id="DonVi" prefWidth="100.0" resizable="false" sortable="false" text="DON VI" />
+                  <TreeTableColumn fx:id="DonGia" prefWidth="95.0" sortable="false" text="DON GIA" />
+                  <TreeTableColumn fx:id="KhoiLuong" prefWidth="70.0" resizable="false" sortable="false" text="KHOI LUONG" />
+                  <TreeTableColumn fx:id="ThanhTien" prefWidth="126.0" sortable="false" text="THANH TIEN" />
+              </columns>
+               <columnResizePolicy>
+                  <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TreeTableView>
+            <Button fx:id="deleteButton" layoutX="11.0" layoutY="544.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" text="X" />
+            <Button fx:id="addContinuousButton" layoutX="4.0" layoutY="487.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="44.0" rotate="90.0" text="&gt;&gt;" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
