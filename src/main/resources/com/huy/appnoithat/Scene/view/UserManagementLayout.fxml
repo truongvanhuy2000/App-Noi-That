@@ -100,5 +100,6 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button fx:id="backButton" layoutX="5.0" layoutY="6.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="&lt;" />
    </children>
 </AnchorPane>

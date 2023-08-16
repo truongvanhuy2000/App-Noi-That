@@ -51,4 +51,10 @@ public class HomeScene {
     public HomeController getHomeController(){
         return fxmlLoader.getController();
     }
+    public double getHeight() {
+        return scene.getHeight();
+    }
+    public double getWidth() {
+        return scene.getWidth();
+    }
 }

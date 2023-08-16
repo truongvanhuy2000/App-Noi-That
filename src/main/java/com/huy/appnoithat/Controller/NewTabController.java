@@ -49,6 +49,7 @@ public class NewTabController implements Initializable {
         stage = (Stage) ((Node)source).getScene().getWindow();
         if (source == BackButton){
             scene = HomeScene.getInstance().getScene();
+            HomeScene.getInstance().getHomeController().initialize();
         }
         else return;
         stage.setScene(scene);
