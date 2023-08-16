@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
-import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyChiTietScene;
+import com.huy.appnoithat.Scene.DatabaseModify.ChangeProductSpecificationScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,39 +16,39 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class DatabaseModifyHangMucController implements Initializable {
+public class DatabaseModifyChiTietController implements Initializable {
 
-    String[] items = {"Tủ bếp dưới","Tủ bếp trên","Tủ  trên tầng 2","Tủ trang trí"};
-
-    @FXML
-    private Button EditHangMucButton;
+    String[] items = {"- Thùng khung :  nhựa Picomat chống nước tuyệt đối độ dày 18mm","-Cánh : MDF chống ẩm an cường  soi CNC sơn inchem 5 lớp mỹ độ dày  cánh 25mm","-Hậu  Tấm nhôm Alu 3 ly"};
 
     @FXML
-    private Button addHangMucButton;
+    private Button EditChiTietButton;
+
+    @FXML
+    private Button addChiTietButton;
 
     @FXML
     private Button clearTextbtn;
 
     @FXML
-    private Button deleteHangMucButton;
+    private Button deleteChiTietButton;
 
     @FXML
-    private ListView<String> listViewHangMuc;
+    private ListView<String> listViewChiTiet;
 
     @FXML
     private Button nextScreenButton;
 
     @FXML
-    private TextField txtHangMuc;
+    private TextField txtChiTiiet;
 
     @FXML
-    void AddNewHangMuc(ActionEvent event) {
+    void AddNewChiTiet(ActionEvent event) {
         try {
             Dialog dialog = new Dialog();
-            String txt = txtHangMuc.getText().trim().toUpperCase();
+            String txt = txtChiTiiet.getText().trim().toUpperCase();
             boolean hasDuplicate = false;
             if(!txt.isEmpty()){
-                List<String> array = listViewHangMuc.getItems().stream().filter(e->e.equals(txt)).collect(Collectors.toList());
+                List<String> array = listViewChiTiet.getItems().stream().filter(e->e.equals(txt)).collect(Collectors.toList());
                 for (int i = 0; i < array.size(); i++) {
                     if(array.get(i).trim().equals(txt.toUpperCase())){
                         hasDuplicate = true;
@@ -61,8 +61,8 @@ public class DatabaseModifyHangMucController implements Initializable {
                     dialog.show();
                 }
                 if(!hasDuplicate){
-                    listViewHangMuc.getItems().add(txt);
-                    txtHangMuc.setText("");
+                    listViewChiTiet.getItems().add(txt);
+                    txtChiTiiet.setText("");
                 }
 
             }else{
@@ -80,15 +80,15 @@ public class DatabaseModifyHangMucController implements Initializable {
 
     @FXML
     void ClearText(ActionEvent event) {
-        txtHangMuc.setText("");
+        txtChiTiiet.setText("");
     }
 
     @FXML
-    void DeleteHangMuc(ActionEvent event) {
+    void DeleteChiTiet(ActionEvent event) {
         try {
             Alert deleteDialog = new Alert(Alert.AlertType.CONFIRMATION);
             Dialog dialog = new Dialog();
-            int selectIndex = listViewHangMuc.getSelectionModel().getSelectedIndex();
+            int selectIndex = listViewChiTiet.getSelectionModel().getSelectedIndex();
             if(selectIndex>=0){
                 deleteDialog.setTitle("Delete Confirmation");
                 deleteDialog.setHeaderText("Are you sure you want to delete this item?");
@@ -100,7 +100,7 @@ public class DatabaseModifyHangMucController implements Initializable {
                 ButtonType result = deleteDialog.showAndWait().orElse(ButtonType.CANCEL);
                 // Handle the user's choice
                 if (result == ButtonType.YES) {
-                    listViewHangMuc.getItems().remove(selectIndex);
+                    listViewChiTiet.getItems().remove(selectIndex);
                 }
             }else{
                 dialog.setTitle("DELETE ERROR");
@@ -114,12 +114,12 @@ public class DatabaseModifyHangMucController implements Initializable {
     }
 
     @FXML
-    void EditHangMuc(ActionEvent event) {
+    void EditChiTiet(ActionEvent event) {
         try {
             Dialog dialog = new Dialog();
 
-            String txt = txtHangMuc.getText().trim().toUpperCase();
-            int selectIndex = listViewHangMuc.getSelectionModel().getSelectedIndex();
+            String txt = txtChiTiiet.getText().trim().toUpperCase();
+            int selectIndex = listViewChiTiet.getSelectionModel().getSelectedIndex();
             if(selectIndex<=0){
                 dialog.setTitle("EDIT ERROR");
                 dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
@@ -131,7 +131,7 @@ public class DatabaseModifyHangMucController implements Initializable {
                 dialog.getDialogPane().setContentText("Cannot edit with text empty !!!");
                 dialog.show();
             }else{
-                listViewHangMuc.getItems().set(selectIndex, txtHangMuc.getText());
+                listViewChiTiet.getItems().set(selectIndex, txtChiTiiet.getText());
             }
         }catch (Exception e){
             System.out.println("co loi roi dai ca oi");
@@ -145,7 +145,7 @@ public class DatabaseModifyHangMucController implements Initializable {
         Object source = event.getSource();
         stage = (Stage) ((Node)source).getScene().getWindow();
         if (source == nextScreenButton){
-            scene = DatabaseModifyChiTietScene.getInstance().getScene();
+            scene = ChangeProductSpecificationScene.getInstance().getScene();
         }else {
             return;
         }
@@ -155,12 +155,12 @@ public class DatabaseModifyHangMucController implements Initializable {
 
     @FXML
     void tableClickToSelectItem(MouseEvent event) {
-        String selectedItem = listViewHangMuc.getSelectionModel().getSelectedItem();
-        txtHangMuc.setText(selectedItem);
+        String selectedItem = listViewChiTiet.getSelectionModel().getSelectedItem();
+        txtChiTiiet.setText(selectedItem);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listViewHangMuc.getItems().addAll(items);
+        listViewChiTiet.getItems().addAll(items);
     }
 }

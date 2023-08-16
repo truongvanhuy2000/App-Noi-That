@@ -16,15 +16,15 @@
          </font>
       </Label>
       <TextField fx:id="txtPhongCach" layoutX="355.0" layoutY="75.0" prefHeight="29.0" prefWidth="230.0" />
+      <Button fx:id="clearTextbtn" layoutX="355.0" layoutY="145.0" mnemonicParsing="false" onAction="#ClearText" prefHeight="29.0" prefWidth="230.0" text="CLEAR TEXT" textFill="#110000" />
       <Button fx:id="addPhongCachButton" layoutX="355.0" layoutY="201.0" mnemonicParsing="false" onAction="#AddNewPhongCach" prefHeight="29.0" prefWidth="230.0" text="ADD NEW PHONG CACH" />
       <Label layoutX="375.0" layoutY="30.0" text="Them Phong Cach moi">
          <font>
             <Font name="Dyuthi Regular" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="deletePhongCachButton" layoutX="355.0" layoutY="300.0" mnemonicParsing="false" onAction="#DeletePhongCach" prefHeight="29.0" prefWidth="230.0" text="DELETE PHONG CACH" />
       <Button fx:id="EditPhongCachButton" layoutX="355.0" layoutY="252.0" mnemonicParsing="false" onAction="#EditPhongCach" prefHeight="29.0" prefWidth="230.0" text="EDIT PHONG CACH" />
+      <Button fx:id="deletePhongCachButton" layoutX="355.0" layoutY="300.0" mnemonicParsing="false" onAction="#DeletePhongCach" prefHeight="29.0" prefWidth="230.0" text="DELETE PHONG CACH" />
       <Button fx:id="nextScreenButton" layoutX="355.0" layoutY="349.0" mnemonicParsing="false" onAction="#NextScreen" prefHeight="29.0" prefWidth="230.0" text="NEXT" textFill="#110000" />
-      <Button fx:id="clearTextbtn" layoutX="355.0" layoutY="145.0" mnemonicParsing="false" onAction="#ClearText" prefHeight="29.0" prefWidth="230.0" text="CLEAR TEXT" textFill="#110000" />
    </children>
 </AnchorPane>

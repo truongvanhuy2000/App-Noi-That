@@ -48,7 +48,6 @@ public class DatabaseModifyPhongCachController implements Initializable {
     @FXML
     void AddNewPhongCach(ActionEvent event) {
         try {
-            Dialog dialog = new Dialog();
             String txt = txtPhongCach.getText().trim().toUpperCase();
             boolean hasDuplicate = false;
             if(!txt.isEmpty()){
@@ -59,23 +58,24 @@ public class DatabaseModifyPhongCachController implements Initializable {
                     }
                 }
                 if(hasDuplicate){
-                    dialog.setTitle("ADD DUPLICATE ERROR");
-                    dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-                    dialog.getDialogPane().setContentText("cannot add duplicate element !!!");
-                    dialog.show();
+
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("ADD DUPLICATE ERROR");
+                    alert.setHeaderText("look, a error");
+                    alert.setContentText("cannot add duplicate element !!!");
+                    alert.showAndWait();
                 }
                 if(!hasDuplicate){
                     listViewPhongCach.getItems().add(txt);
                     txtPhongCach.setText("");
                 }
 
-
             }else{
-
-                dialog.setTitle("ADD ERROR");
-                dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-                dialog.getDialogPane().setContentText("please input something !!!");
-                dialog.show();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ADD ERROR");
+                alert.setHeaderText("look, a error");
+                alert.setContentText("please input something !!!");
+                alert.showAndWait();
             }
 
         }catch (Exception e){
@@ -89,7 +89,6 @@ public class DatabaseModifyPhongCachController implements Initializable {
         try {
             int selectIndex = listViewPhongCach.getSelectionModel().getSelectedIndex();
             Alert deleteDialog = new Alert(Alert.AlertType.CONFIRMATION);
-            Dialog dialog = new Dialog();
             if(selectIndex>=0){
                 deleteDialog.setTitle("Delete Confirmation");
                 deleteDialog.setHeaderText("Are you sure you want to delete this item?");
@@ -104,10 +103,11 @@ public class DatabaseModifyPhongCachController implements Initializable {
                     listViewPhongCach.getItems().remove(selectIndex);
                 }
             }else{
-                dialog.setTitle("DELETE ERROR");
-                dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-                dialog.getDialogPane().setContentText("Please select one item to delete !!!");
-                dialog.show();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("DELETE ERROR");
+                alert.setHeaderText("look, a error");
+                alert.setContentText("Please choose one item to delete");
+                alert.showAndWait();
             }
         }catch (Exception e){
             System.out.println("Something went wrong.");
@@ -119,20 +119,20 @@ public class DatabaseModifyPhongCachController implements Initializable {
     @FXML
     void EditPhongCach(ActionEvent event) {
         try {
-            Dialog dialog = new Dialog();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
 
             String txt = txtPhongCach.getText().trim().toUpperCase();
             int selectIndex = listViewPhongCach.getSelectionModel().getSelectedIndex();
             if(selectIndex<=0){
-                dialog.setTitle("EDIT ERROR");
-                dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-                dialog.getDialogPane().setContentText("Please select one item to edit !!!");
-                dialog.show();
+                alert.setTitle("EDIT ERROR");
+                alert.setHeaderText("look, a error to edit");
+                alert.setContentText("Please select one item to edit !!!");
+                alert.showAndWait();
             }else if(txt.isEmpty()){
-                dialog.setTitle("EDIT ERROR");
-                dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-                dialog.getDialogPane().setContentText("Cannot edit with text empty !!!");
-                dialog.show();
+                alert.setTitle("EDIT ERROR");
+                alert.setHeaderText("look, a error to edit");
+                alert.setContentText("Cannot edit with text empty !!!");
+                alert.showAndWait();
             }else{
                 listViewPhongCach.getItems().set(selectIndex, txtPhongCach.getText());
             }

@@ -4,6 +4,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -11,23 +13,92 @@
 
 <AnchorPane prefHeight="638.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.UsersManagementController">
    <children>
-      <Button fx:id="btnAddUser" layoutX="731.0" layoutY="570.0" mnemonicParsing="false" text="Add New User" />
-      <TableView fx:id="tableManageUser" layoutX="52.0" layoutY="172.0" prefHeight="361.0" prefWidth="789.0">
-         <columns>
-            <TableColumn fx:id="username" prefWidth="265.0" text="Username" />
-            <TableColumn fx:id="password" prefWidth="227.0" text="Password" />
-            <TableColumn fx:id="active" minWidth="0.0" prefWidth="105.0" text="Active" />
-         </columns>
-      </TableView>
-      <Pane layoutX="52.0" layoutY="27.0" prefHeight="130.0" prefWidth="696.0">
+      <Pane layoutX="38.0" layoutY="29.0" prefHeight="128.0" prefWidth="835.0" style="-fx-background-color: #E5E7E9;">
          <children>
-            <Text layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search username:" textOrigin="TOP">
+            <Text layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search username:" textOrigin="TOP" wrappingWidth="199.6826171875">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Text>
-            <TextField fx:id="txtSearchUser" layoutX="226.0" layoutY="53.0" prefHeight="24.0" prefWidth="293.0" />
-            <Button fx:id="btnSearch" layoutX="571.0" layoutY="53.0" mnemonicParsing="false" text="Search" />
+            <TextField fx:id="txtSearchUser" layoutX="226.0" layoutY="53.0" prefHeight="28.0" prefWidth="326.0" />
+            <Button fx:id="btnSearch" layoutX="571.0" layoutY="51.0" mnemonicParsing="false" onAction="#SearchByUserName" prefHeight="30.0" prefWidth="109.0" text="Search">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/search1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnAllAccount" layoutX="694.0" layoutY="52.0" mnemonicParsing="false" onAction="#getAllAcount" prefHeight="30.0" prefWidth="120.0" text="All Account">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/list1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
+      <Button fx:id="btnAddacount" layoutX="35.0" layoutY="200.0" mnemonicParsing="false" onAction="#AddAccount" prefHeight="30.0" prefWidth="120.0" text="Add">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/plusicon.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btnEditAccount" layoutX="177.0" layoutY="200.0" mnemonicParsing="false" onAction="#EditAccount" prefHeight="30.0" prefWidth="120.0" text="Edit">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/editicon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnDeleteAccount" layoutX="310.0" layoutY="200.0" mnemonicParsing="false" onAction="#DeleteAccount" prefHeight="30.0" prefWidth="120.0" text="Delete">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/delete.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnActiveAccount" layoutX="456.0" layoutY="200.0" mnemonicParsing="false" onAction="#ActiveAccount" prefHeight="30.0" prefWidth="120.0" text="Active">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/activeUser.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TableView fx:id="tableManageUser" layoutX="34.0" layoutY="250.0" onMouseClicked="#tableClickToSelectItem" prefHeight="361.0" prefWidth="835.0">
+         <columns>
+            <TableColumn fx:id="username" prefWidth="307.0" text="Username" />
+            <TableColumn fx:id="password" prefWidth="282.0" text="Password" />
+            <TableColumn fx:id="active" minWidth="0.0" prefWidth="245.0" text="Active" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnInactiveAccount" layoutX="605.0" layoutY="200.0" mnemonicParsing="false" onAction="#InActiveAccount" prefHeight="30.0" prefWidth="120.0" text="Inactive">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/notActiveUser.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnDuyet" layoutX="741.0" layoutY="200.0" mnemonicParsing="false" onAction="#DuyetAccount" prefHeight="30.0" prefWidth="120.0" text="Duyet">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/approveList.jpeg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
