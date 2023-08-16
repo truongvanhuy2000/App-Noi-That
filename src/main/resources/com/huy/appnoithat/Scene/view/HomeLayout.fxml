@@ -19,7 +19,7 @@
             <Button fx:id="QuanLyNguoiDungButton" layoutX="22.0" layoutY="90.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="24.0" prefWidth="162.0" text="Quan Ly Nguoi Dung" textFill="#2645dd" />
             <ImageView fitHeight="42.0" fitWidth="59.0" layoutX="79.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../../Downloads/icon/pngtree-vector-user-management-icon-png-image_3773556.jpg" />
+                  <Image url="@../icons/managerAdmin.png" />
                </image>
             </ImageView>
          </children>
@@ -32,7 +32,25 @@
             <Button fx:id="LuaChonNoiThatButton" layoutX="21.0" layoutY="84.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="24.0" prefWidth="162.0" text="Lua chon noi that" textFill="#2645dd" />
             <ImageView fitHeight="42.0" fitWidth="59.0" layoutX="82.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../../Downloads/icon/istockphoto-1257047931-612x612.jpg" />
+                  <Image url="@../icons/chairIcon.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label layoutX="35.0" layoutY="145.0" prefHeight="42.0" prefWidth="248.0" text="Quản Lý của tôi" textFill="#100dbf" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="145.0">
+         <font>
+            <Font name="Loma" size="27.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="189.0" layoutY="378.0" prefHeight="135.0" prefWidth="205.0" style="-fx-border-radius: 0px 50px 0px 0px; -fx-border-color: #AEB2C3;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Button fx:id="suadoidatabaseButton" layoutX="22.0" layoutY="90.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="24.0" prefWidth="162.0" text="Sua doi database" textFill="#2645dd" />
+            <ImageView fitHeight="42.0" fitWidth="59.0" layoutX="79.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/databaseicon.png" />
                </image>
             </ImageView>
          </children>
@@ -48,24 +66,6 @@
             <ImageView fitHeight="24.0" fitWidth="42.0" layoutX="562.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../../../../../../Downloads/icon/660350.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <Label layoutX="35.0" layoutY="145.0" prefHeight="24.0" prefWidth="242.0" text="Quản Lý của tôi" textFill="#100dbf" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="145.0">
-         <font>
-            <Font name="Liberation Sans" size="19.0" />
-         </font>
-      </Label>
-      <AnchorPane layoutX="189.0" layoutY="378.0" prefHeight="135.0" prefWidth="205.0" style="-fx-border-radius: 0px 50px 0px 0px; -fx-border-color: #AEB2C3;">
-         <effect>
-            <DropShadow />
-         </effect>
-         <children>
-            <Button fx:id="suadoidatabaseButton" layoutX="22.0" layoutY="90.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="24.0" prefWidth="162.0" text="Sua doi database" textFill="#2645dd" />
-            <ImageView fitHeight="42.0" fitWidth="59.0" layoutX="79.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../../Downloads/icon/pngtree-vector-user-management-icon-png-image_3773556.jpg" />
                </image>
             </ImageView>
          </children>
