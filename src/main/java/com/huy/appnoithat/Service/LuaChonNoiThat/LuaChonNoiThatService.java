@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LuaChonNoiThatService {
-    ThongSo ts1 = new ThongSo(1, 10F, 5F, 3F, "cm", 50L);
-    ThongSo ts2 = new ThongSo(2, 8F, 6F, 4F, "cm", 45L);
-    ThongSo ts3 = new ThongSo(3, 12F, 7F, 2F, "cm", 55L);
-    ThongSo ts4 = new ThongSo(4, 15F, 5F, 3F, "cm", 60L);
-    ThongSo ts5 = new ThongSo(5, 10F, 5F, 3F, "cm", 50L);
-    ThongSo ts6 = new ThongSo(6, 10F, 5F, 3F, "cm", 50L);
-    ThongSo ts7 = new ThongSo(7, 10F, 5F, 3F, "cm", 50L);
-    ThongSo ts8 = new ThongSo(8, 10F, 5F, 3F, "cm", 50L);
-    ThongSo ts9 = new ThongSo(9, 10F, 5F, 3F, "cm", 50L);
+    ThongSo ts1 = new ThongSo(1, 1000F, 50F, 300F, "mét dài", 50L);
+    ThongSo ts2 = new ThongSo(2, 800F, 600F, 400F, "mét dài", 45L);
+    ThongSo ts3 = new ThongSo(3, 1200F, 700F, 200F, "mét dài", 55L);
+    ThongSo ts4 = new ThongSo(4, 1500F, 50F, 300F, "mét dài", 60L);
+    ThongSo ts5 = new ThongSo(5, 1000F, 50F, 3000F, "mét dài", 50L);
+    ThongSo ts6 = new ThongSo(6, 1000F, 5000F, 3000F, "mét vuông", 50L);
+    ThongSo ts7 = new ThongSo(7, 1000F, 5000F, 300F, "mét vuông", 50L);
+    ThongSo ts8 = new ThongSo(8, 100F, 50F, 3F, "mét vuông", 50L);
+    ThongSo ts9 = new ThongSo(9, 10F, 5F, 3F, "mét vuông", 50L);
 
     VatLieu vl1 = new VatLieu(1, "Wood", new ThongSo());
     VatLieu vl2 = new VatLieu(2, "Metal", new ThongSo());

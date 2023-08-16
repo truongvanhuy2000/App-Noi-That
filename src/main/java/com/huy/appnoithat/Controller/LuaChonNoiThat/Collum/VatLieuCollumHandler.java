@@ -6,14 +6,13 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
-import com.huy.appnoithat.Shared.ErrorUtils;
 import com.huy.appnoithat.Shared.Utils;
+
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -38,11 +37,21 @@ public class VatLieuCollumHandler {
         if (coresspondingThongSo == null){
             return;
         }
-        event.getRowValue().getValue().setDai(coresspondingThongSo.getDai());
-        event.getRowValue().getValue().setRong(9F);
-        event.getRowValue().getValue().setCao(8F);
-        event.getRowValue().getValue().setDonGia(coresspondingThongSo.getDon_gia());
-        event.getRowValue().getValue().setDonVi(coresspondingThongSo.getDon_vi());
+        float dai = coresspondingThongSo.getDai();
+        float rong = coresspondingThongSo.getRong();
+        float cao = coresspondingThongSo.getCao();
+        long donGia = coresspondingThongSo.getDon_gia();
+        String donVi = coresspondingThongSo.getDon_vi();
+        float khoiLuong = TableUtils.calculateKhoiLuong(dai, cao, rong, donVi);
+
+        event.getRowValue().getValue().setKhoiLuong(khoiLuong);
+        event.getRowValue().getValue().setDai(dai);
+        event.getRowValue().getValue().setRong(rong);
+        event.getRowValue().getValue().setCao(cao);
+        event.getRowValue().getValue().setDonGia(donGia);
+        event.getRowValue().getValue().setDonVi(donVi);
+
+
     }
     public void onStartEditVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();

@@ -227,7 +227,7 @@ public class UsersManagementController{
 
     @FXML
     void tableClickToSelectItem(MouseEvent event) {
-        String username = tableManageUser.getSelectionModel().getSelectedItem().getUsername();
+//        String username = tableManageUser.getSelectionModel().getSelectedItem().getUsername();
     }
 
 

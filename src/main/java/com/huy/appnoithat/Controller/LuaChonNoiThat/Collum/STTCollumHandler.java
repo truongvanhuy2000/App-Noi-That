@@ -105,7 +105,6 @@ public class STTCollumHandler {
         TreeItem<BangNoiThat> youngestLeaf = leafList.get(leafList.size() - 1);
         youngestLeaf.getChildren().add(newItem);
         youngestLeaf.setExpanded(true);
-        makeTreeNotCollapsed(youngestLeaf);
     }
 
     public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param){
@@ -115,10 +114,5 @@ public class STTCollumHandler {
     public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param){
         SimpleStringProperty tempSTT = param.getValue().getValue().getSTT();
         return tempSTT.getValue().isEmpty() ? null : tempSTT;
-    }
-
-    private void makeTreeNotCollapsed(TreeItem<BangNoiThat> item){
-        item.addEventHandler(TreeItem.branchCollapsedEvent(),
-                (EventHandler<TreeItem.TreeModificationEvent<String>>) event -> event.getTreeItem().setExpanded(true));
     }
 }

@@ -58,16 +58,11 @@ public class LuaChonNoiThatController implements Initializable {
     private Button addNewButton;
     @FXML
     private ImageView ImageView;
-
     private final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatController.class);
-
-
     public LuaChonNoiThatController() {
-
     }
     public void initialize() {
     }
-
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
         setUpTable();
@@ -78,7 +73,6 @@ public class LuaChonNoiThatController implements Initializable {
         workAroundToCollumWidthBug();
         System.out.println("LuaChonNoiThatController initialized");
     }
-
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {
         Object source = event.getSource();
@@ -102,21 +96,20 @@ public class LuaChonNoiThatController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-
     private void workAroundToCollumWidthBug(){
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(1000),
                 ae -> TreeTableView.CONSTRAINED_RESIZE_POLICY.call(new TreeTableView.ResizeFeatures<>(TableNoiThat, HangMuc, 1.0))));
         timeline.play();
     }
-
     private void setUpTable() {
         setUpCollum();
         TreeItem<BangNoiThat> itemRoot = new TreeItem<>(new BangNoiThat("0", 0f, 0f, 0f, 0L, "", "IM root", "", 0L, 0f));
         TableNoiThat.setRoot(itemRoot);
         TableNoiThat.setShowRoot(false);
         TableNoiThat.setEditable(true);
-        itemRoot.getChildren().add(new TreeItem<>(new BangNoiThat("A", 0f, 0f, 0f, 0L, "", "", "", 0L, 0f)));
+        TreeItem<BangNoiThat> newItem = new TreeItem<>(new BangNoiThat("A", 0f, 0f, 0f, 0L, "", "", "", 0L, 0f));
+        itemRoot.getChildren().add(newItem);
     }
     private void setUpCollum(){
         setUpCao();
@@ -197,6 +190,7 @@ public class LuaChonNoiThatController implements Initializable {
         Rong.setOnEditCommit(event -> {
             event.getRowValue().getValue().setRong(event.getNewValue());
         });
+
     }
     private void setUpDai(){
         // Set up collum for Dai

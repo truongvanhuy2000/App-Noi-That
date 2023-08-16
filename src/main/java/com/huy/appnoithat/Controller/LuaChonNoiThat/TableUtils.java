@@ -26,4 +26,24 @@ public class TableUtils {
         }
         return true;
     }
+
+    public static Float calculateKhoiLuong(float chieuDai, float chieuCao, float rong, String donVi){
+        String metDai = "mét dài";
+        String metVuong = "mét vuông";
+        Float khoiLuong = 0f;
+        if (donVi.trim().equalsIgnoreCase(metDai)){
+            if(chieuDai == 0f){
+                return 0f;
+            }
+            khoiLuong = chieuDai/1000;
+        }
+
+        if (donVi.trim().equalsIgnoreCase(metVuong)){
+            if(chieuDai == 0f || chieuCao == 0f){
+                return 0f;
+            }
+            khoiLuong = chieuDai*chieuCao/1000000;
+        }
+        return khoiLuong;
+    }
 }
