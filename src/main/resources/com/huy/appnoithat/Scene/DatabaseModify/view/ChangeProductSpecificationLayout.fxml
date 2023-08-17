@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.DatabaseModify.ChangeProductSpecificationController">
    <children>
       <Label layoutX="121.0" layoutY="12.0" prefHeight="29.0" prefWidth="422.0" text="Thay Đổi Thông Số Sản Phẩm">
@@ -38,5 +37,6 @@
          </children>
       </Pane>
       <Button layoutX="525.0" layoutY="354.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="46.0" text="OK" />
+      <Button fx:id="backButton" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="&lt;" />
    </children>
 </AnchorPane>

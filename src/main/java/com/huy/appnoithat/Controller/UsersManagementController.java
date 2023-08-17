@@ -2,6 +2,8 @@ package com.huy.appnoithat.Controller;
 
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyChiTietScene;
+import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.ListAccountWaitToApproveScene;
 import com.huy.appnoithat.Scene.UserManagementAddAccountScene;
 import com.huy.appnoithat.Scene.UserManagementEditorScene;
@@ -41,7 +43,8 @@ public class UsersManagementController{
         private int active;
         private ImageView activeImage;
     }
-
+    @FXML
+    private Button backButton;
     @FXML
     private TableColumn<AccountTable, ImageView> active;
 
@@ -270,11 +273,17 @@ public class UsersManagementController{
     // Used to switch between scence
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
-//        Scene scene = null;
-//        Stage stage = null;
-//        Object source = actionEvent.getSource();
-//        stage = (Stage) ((Node)source).getScene().getWindow();
-//        stage.setScene(scene);
-//        stage.show();
+        Scene scene = null;
+        Stage stage = null;
+        Object source = actionEvent.getSource();
+        stage = (Stage) ((Node)source).getScene().getWindow();
+        if (source == backButton){
+            scene = HomeScene.getInstance().getScene();
+        }
+        else {
+            return;
+        }
+        stage.setScene(scene);
+        stage.show();
     }
 }

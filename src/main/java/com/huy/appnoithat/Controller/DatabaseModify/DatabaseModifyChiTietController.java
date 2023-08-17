@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller.DatabaseModify;
 
 import com.huy.appnoithat.Scene.DatabaseModify.ChangeProductSpecificationScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,6 +41,8 @@ public class DatabaseModifyChiTietController implements Initializable {
 
     @FXML
     private TextField txtChiTiiet;
+    @FXML
+    private Button backButton;
 
     @FXML
     void AddNewChiTiet(ActionEvent event) {
@@ -163,4 +166,21 @@ public class DatabaseModifyChiTietController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listViewChiTiet.getItems().addAll(items);
     }
+
+    @FXML
+    private void sceneSwitcher(ActionEvent actionEvent) {
+        Scene scene = null;
+        Stage stage = null;
+        Object source = actionEvent.getSource();
+        stage = (Stage) ((Node)source).getScene().getWindow();
+        if (source == backButton){
+            scene = DatabaseModifyHangMucScene.getInstance().getScene();
+        }
+        else {
+            return;
+        }
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
