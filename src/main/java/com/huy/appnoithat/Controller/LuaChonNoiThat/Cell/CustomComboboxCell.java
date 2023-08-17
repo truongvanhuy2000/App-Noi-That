@@ -11,7 +11,7 @@ import javafx.scene.control.cell.ComboBoxTreeTableCell;
 
 public class CustomComboboxCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;
-    private ObservableList<String> items;
+    private final ObservableList<String> items;
     private String oldValue;
     public CustomComboboxCell(ObservableList<String> items) {
         this.items = items;

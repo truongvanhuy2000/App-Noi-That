@@ -1,13 +1,10 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
 import javafx.beans.value.ObservableValue;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeTableCell;
-import javafx.util.StringConverter;
-
+import javafx.scene.control.TreeTableView;
 public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, String> {
     private TextField textField;
     public CustomEditingCell() {
@@ -15,6 +12,7 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
 
     @Override
     public void startEdit() {
+
         if (!isEmpty()) {
             super.startEdit();
             createTextField();
