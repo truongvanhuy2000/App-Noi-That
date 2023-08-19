@@ -2,7 +2,10 @@ package com.huy.appnoithat.Controller.DatabaseModify;
 
 
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
+import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.LoginScene;
+import com.huy.appnoithat.Scene.LuaChonNoiThatScene;
 import com.huy.appnoithat.Scene.UserManagementScene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,7 +40,8 @@ public class DatabaseModifyPhongCachController implements Initializable {
 
     @FXML
     private Button deletePhongCachButton;
-
+    @FXML
+    private Button backButton;
     @FXML
     private Button nextScreenButton;
 
@@ -175,5 +179,19 @@ public class DatabaseModifyPhongCachController implements Initializable {
         listViewPhongCach.getItems().addAll(items);
     }
 
-
+    @FXML
+    private void sceneSwitcher(ActionEvent actionEvent) {
+        Scene scene = null;
+        Stage stage = null;
+        Object source = actionEvent.getSource();
+        stage = (Stage) ((Node)source).getScene().getWindow();
+        if (source == backButton){
+            scene = HomeScene.getInstance().getScene();
+        }
+        else {
+            return;
+        }
+        stage.setScene(scene);
+        stage.show();
+    }
 }

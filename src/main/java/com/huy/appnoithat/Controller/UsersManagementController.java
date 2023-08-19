@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller;
 
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyChiTietScene;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.ListAccountWaitToApproveScene;
 import com.huy.appnoithat.Scene.UserManagementAddAccountScene;
@@ -42,7 +43,8 @@ public class UsersManagementController{
         private int active;
         private ImageView activeImage;
     }
-
+    @FXML
+    private Button backButton;
     @FXML
     private TableColumn<AccountTable, ImageView> active;
 
@@ -63,8 +65,7 @@ public class UsersManagementController{
 
     @FXML
     private Button btnSearch;
-    @FXML
-    private Button backButton;
+
     @FXML
     private TableColumn<AccountTable, String> password;
 
@@ -227,7 +228,7 @@ public class UsersManagementController{
 
     @FXML
     void tableClickToSelectItem(MouseEvent event) {
-//        String username = tableManageUser.getSelectionModel().getSelectedItem().getUsername();
+        String username = tableManageUser.getSelectionModel().getSelectedItem().getUsername();
     }
 
 
@@ -278,6 +279,9 @@ public class UsersManagementController{
         stage = (Stage) ((Node)source).getScene().getWindow();
         if (source == backButton){
             scene = HomeScene.getInstance().getScene();
+        }
+        else {
+            return;
         }
         stage.setScene(scene);
         stage.show();

@@ -77,9 +77,9 @@
       </Button>
       <TableView fx:id="tableManageUser" layoutX="34.0" layoutY="250.0" onMouseClicked="#tableClickToSelectItem" prefHeight="361.0" prefWidth="835.0">
          <columns>
-            <TableColumn fx:id="username" prefWidth="307.0" sortable="false" text="Username" />
-            <TableColumn fx:id="password" prefWidth="282.0" sortable="false" text="Password" />
-            <TableColumn fx:id="active" minWidth="0.0" prefWidth="245.0" sortable="false" text="Active" />
+            <TableColumn fx:id="username" prefWidth="307.0" text="Username" />
+            <TableColumn fx:id="password" prefWidth="282.0" text="Password" />
+            <TableColumn fx:id="active" minWidth="0.0" prefWidth="245.0" text="Active" />
          </columns>
       </TableView>
       <Button fx:id="btnInactiveAccount" layoutX="605.0" layoutY="200.0" mnemonicParsing="false" onAction="#InActiveAccount" prefHeight="30.0" prefWidth="120.0" text="Inactive">
@@ -100,6 +100,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="backButton" layoutX="5.0" layoutY="6.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="&lt;" />
+      <Button fx:id="backButton" layoutX="6.0" layoutY="29.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="&lt;" />
    </children>
 </AnchorPane>

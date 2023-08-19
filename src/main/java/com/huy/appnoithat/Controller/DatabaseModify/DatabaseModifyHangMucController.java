@@ -2,6 +2,8 @@ package com.huy.appnoithat.Controller.DatabaseModify;
 
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyChiTietScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
+import com.huy.appnoithat.Scene.HomeScene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,6 +42,8 @@ public class DatabaseModifyHangMucController implements Initializable {
 
     @FXML
     private TextField txtHangMuc;
+    @FXML
+    private Button backButton;
 
     @FXML
     void AddNewHangMuc(ActionEvent event) {
@@ -162,5 +166,21 @@ public class DatabaseModifyHangMucController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listViewHangMuc.getItems().addAll(items);
+    }
+
+    @FXML
+    private void sceneSwitcher(ActionEvent actionEvent) {
+        Scene scene = null;
+        Stage stage = null;
+        Object source = actionEvent.getSource();
+        stage = (Stage) ((Node)source).getScene().getWindow();
+        if (source == backButton){
+            scene = DatabaseModifyPhongCachScene.getInstance().getScene();
+        }
+        else {
+            return;
+        }
+        stage.setScene(scene);
+        stage.show();
     }
 }
