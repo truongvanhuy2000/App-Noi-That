@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomNumberCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.HangMucCollumHandler;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.KichThuocHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.STTCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.VatLieuCollumHandler;
 import com.huy.appnoithat.Scene.HomeScene;
@@ -112,9 +113,7 @@ public class LuaChonNoiThatController implements Initializable {
         itemRoot.getChildren().add(newItem);
     }
     private void setUpCollum(){
-        setUpCao();
-        setUpDai();
-        setUpRong();
+        setUpKichThuoc();
         setUpDonGia();
         setUpDonVi();
         setUpHangMuc();
@@ -134,15 +133,19 @@ public class LuaChonNoiThatController implements Initializable {
         // Set up collum for KhoiLuong
         KhoiLuong.setText("Khối\nlượng");
         KhoiLuong.setCellValueFactory(param -> param.getValue().getValue().getKhoiLuong().asObject());
-        KhoiLuong.setCellFactory(param -> new CustomNumberCell<>(new FloatStringConverter()));
+        KhoiLuong.setCellFactory(param -> new CustomNumberCell<>(new FloatStringConverter(), TableNoiThat));
         KhoiLuong.setOnEditCommit(event -> {
-            event.getRowValue().getValue().setKhoiLuong(event.getNewValue());
+            float khoiLuong = event.getNewValue();
+            long donGia = event.getRowValue().getValue().getDonGia().getValue();
+            long thanhTien = TableUtils.calculateThanhTien(khoiLuong, donGia);
+            event.getRowValue().getValue().setThanhTien(thanhTien);
+            event.getRowValue().getValue().setKhoiLuong(khoiLuong);
         });
     }
     private void setUpThanhTien(){
         // Set up collum for ThanhTien
         ThanhTien.setCellValueFactory(param -> param.getValue().getValue().getThanhTien().asObject());
-        ThanhTien.setCellFactory(param -> new CustomNumberCell<>(new LongStringConverter()));
+        ThanhTien.setCellFactory(param -> new CustomNumberCell<>(new LongStringConverter(), TableNoiThat));
         ThanhTien.setOnEditCommit(event -> {
             event.getRowValue().getValue().setThanhTien(event.getNewValue());
         });
@@ -170,42 +173,32 @@ public class LuaChonNoiThatController implements Initializable {
     private void setUpDonVi(){
         // Set up collum for Donvi
         DonVi.setCellValueFactory(param -> param.getValue().getValue().getDonVi());
-        DonVi.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
-        DonVi.setOnEditCommit(event -> {
-            event.getRowValue().getValue().setDonVi(event.getNewValue());
-        });
+//        DonVi.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+//        DonVi.setOnEditCommit(event -> {
+//            event.getRowValue().getValue().setDonVi(event.getNewValue());
+//        });
     }
     private void setUpDonGia(){
         // Set up collum for DonGia
         DonGia.setCellValueFactory(param -> param.getValue().getValue().getDonGia().asObject());
-        DonGia.setCellFactory(param -> new CustomNumberCell<>(new LongStringConverter()));
+        DonGia.setCellFactory(param -> new CustomNumberCell<>(new LongStringConverter(), TableNoiThat));
         DonGia.setOnEditCommit(event -> {
             event.getRowValue().getValue().setDonGia(event.getNewValue());
         });
     }
-    private void setUpRong(){
-        // Set up collum for Rong
-        Rong.setCellValueFactory(param -> param.getValue().getValue().getRong().asObject());
-        Rong.setCellFactory(param -> new CustomNumberCell<>(new FloatStringConverter()));
-        Rong.setOnEditCommit(event -> {
-            event.getRowValue().getValue().setRong(event.getNewValue());
-        });
+    private void setUpKichThuoc(){
+        KichThuocHandler kichThuocHandler = new KichThuocHandler(TableNoiThat, Cao, Dai, Rong);
 
-    }
-    private void setUpDai(){
-        // Set up collum for Dai
-        Dai.setCellValueFactory(param -> param.getValue().getValue().getDai().asObject());
-        Dai.setCellFactory(param -> new CustomNumberCell<>(new FloatStringConverter()));
-        Dai.setOnEditCommit(event -> {
-            event.getRowValue().getValue().setDai(event.getNewValue());
-        });
-    }
-    private void setUpCao(){
-        // Set up collum for Cao
         Cao.setCellValueFactory(param -> param.getValue().getValue().getCao().asObject());
-        Cao.setCellFactory(param -> new CustomNumberCell<>(new FloatStringConverter()));
-        Cao.setOnEditCommit(event -> {
-            event.getRowValue().getValue().setCao(event.getNewValue());
-        });
+        Cao.setCellFactory(param -> new CustomNumberCell<>(new FloatStringConverter(), TableNoiThat));
+        Cao.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
+
+        Dai.setCellValueFactory(param -> param.getValue().getValue().getDai().asObject());
+        Dai.setCellFactory(param -> new CustomNumberCell<>(new FloatStringConverter(), TableNoiThat));
+        Dai.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
+
+        Rong.setCellValueFactory(param -> param.getValue().getValue().getRong().asObject());
+        Rong.setCellFactory(param -> new CustomNumberCell<>(new FloatStringConverter(), TableNoiThat));
+        Rong.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
     }
 }

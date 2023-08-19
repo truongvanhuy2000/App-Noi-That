@@ -11,23 +11,25 @@ import javafx.scene.control.cell.ComboBoxTreeTableCell;
 
 public class CustomComboboxCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;
-    private ObservableList<String> items;
+    private final ObservableList<String> items;
     private String oldValue;
     public CustomComboboxCell(ObservableList<String> items) {
         this.items = items;
     }
     @Override
     public void startEdit() {
+        System.out.println("startEdit");
         if (!isEmpty()) {
             super.startEdit();
             createComboBox();
-            super.setText(null);
+//            super.setText(null);
             setGraphic(comboBox);
         }
     }
 
     @Override
     public void cancelEdit() {
+        System.out.println("cancelEdit");
         super.cancelEdit();
         super.setText(getItem());
         setGraphic(null);
@@ -35,53 +37,32 @@ public class CustomComboboxCell extends TreeTableCell<BangNoiThat, String> {
 
     @Override
     public void updateItem(String item, boolean empty) {
+        System.out.println("updateItem " + item + " " + empty);
         super.updateItem(item, empty);
         if (empty) {
             super.setText(null);
             setGraphic(null);
-        } else {
-            if (isEditing()) {
-                if (comboBox != null) {
-                    comboBox.setValue(super.getItem());
-                }
-                super.setText(super.getItem());
-                setGraphic(comboBox);
-            } else {
-                super.setText(super.getItem());
-                setGraphic(null);
+            return;
+        }
+        if (isEditing()) {
+            if (comboBox != null) {
+                comboBox.setValue(super.getItem());
             }
-//            if (super.getItem() != null && !super.getItem().isEmpty()) {
-//                oldValue = super.getItem();
-//                System.out.println(oldValue);
-//            }
+            super.setText(super.getItem());
+            setGraphic(comboBox);
+        } else {
+            super.setText(super.getItem());
+            setGraphic(null);
         }
     }
 
     private void createComboBox() {
         comboBox = new ComboBox<>(items);
-//        comboBoxConverter(comboBox);
         comboBox.valueProperty().set(super.getItem());
         comboBox.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
         comboBox.setOnAction((e) -> {
-//            System.out.println("Committed: " + comboBox.getSelectionModel().getSelectedItem());
             super.commitEdit(comboBox.getSelectionModel().getSelectedItem());
         });
     }
-
-//    private void comboBoxConverter(ComboBox<String> comboBox) {
-//        // Define rendering of the list of values in ComboBox drop down.
-//        comboBox.setCellFactory((c) -> new ListCell<String>() {
-//            @Override
-//            protected void updateItem(String item, boolean empty) {
-//                super.updateItem(item, empty);
-//
-//                if (item == null || empty) {
-//                    super.setText(null);
-//                } else {
-//                    super.setText(item);
-//                }
-//            }
-//        });
-//    }
 
 }

@@ -4,6 +4,7 @@ import com.huy.appnoithat.Shared.ErrorUtils;
 import com.huy.appnoithat.Shared.Utils;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
 import javafx.scene.control.skin.TableColumnHeader;
 
 public class TableUtils {
@@ -45,5 +46,17 @@ public class TableUtils {
             khoiLuong = chieuDai*chieuCao/1000000;
         }
         return khoiLuong;
+    }
+
+    public static Long calculateThanhTien(float khoiLuong, long donGia){
+        return (long) (khoiLuong*donGia);
+    }
+
+    public static boolean isEditable(TreeTableView<BangNoiThat> TableNoiThat){
+        if (TableNoiThat.getSelectionModel().getSelectedItem() == null){
+            return false;
+        }
+        String stt = TableNoiThat.getSelectionModel().getSelectedItem().getValue().getSTT().getValue();
+        return Utils.isNumeric(stt);
     }
 }

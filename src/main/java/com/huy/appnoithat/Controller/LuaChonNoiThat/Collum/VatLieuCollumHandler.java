@@ -43,15 +43,15 @@ public class VatLieuCollumHandler {
         long donGia = coresspondingThongSo.getDon_gia();
         String donVi = coresspondingThongSo.getDon_vi();
         float khoiLuong = TableUtils.calculateKhoiLuong(dai, cao, rong, donVi);
+        long thanhTien = TableUtils.calculateThanhTien(khoiLuong, donGia);
 
+        event.getRowValue().getValue().setThanhTien(thanhTien);
         event.getRowValue().getValue().setKhoiLuong(khoiLuong);
         event.getRowValue().getValue().setDai(dai);
         event.getRowValue().getValue().setRong(rong);
         event.getRowValue().getValue().setCao(cao);
         event.getRowValue().getValue().setDonGia(donGia);
         event.getRowValue().getValue().setDonVi(donVi);
-
-
     }
     public void onStartEditVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
