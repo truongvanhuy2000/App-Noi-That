@@ -70,9 +70,9 @@ public class ButtonHandler {
             return;
         }
         if (Utils.isNumeric(currentItemStt)){
-            if (!isReachedLimit(currentSelectedItem.getParent())) {
-                continuousLineAddForNumericStt(currentSelectedItem);
-            }
+//            if (!isReachedLimit(currentSelectedItem.getParent())) {
+            continuousLineAddForNumericStt(currentSelectedItem);
+//            }
         }
 //        TreeItem<BangNoiThat> parent = currentSelectedItem.getParent();
 
@@ -80,7 +80,7 @@ public class ButtonHandler {
 
     private void continuousLineAddForNumericStt(TreeItem<BangNoiThat> currentSelectedItem) {
         TreeItem<BangNoiThat> parent = currentSelectedItem.getParent();
-        TreeItem<BangNoiThat> tempNewItem = new TreeItem<>(new BangNoiThat("0", 0f, 0f, 0f, 0L,
+        TreeItem<BangNoiThat> tempNewItem = new TreeItem<>(new BangNoiThat("1", 0f, 0f, 0f, 0L,
                 "", "", "", 0L, 0f));
 
         String nextStt = findTheNextStt(currentSelectedItem.getValue().getSTT().getValue());
@@ -98,7 +98,7 @@ public class ButtonHandler {
     }
 
     private void continuousLineAddForRomanStt(TreeItem<BangNoiThat> currentSelectedItem) {
-        TreeItem<BangNoiThat> tempNewItem = new TreeItem<>(new BangNoiThat("0", 0f, 0f, 0f, 0L,
+        TreeItem<BangNoiThat> tempNewItem = new TreeItem<>(new BangNoiThat("1", 0f, 0f, 0f, 0L,
                 "", "", "", 0L, 0f));
         currentSelectedItem.getChildren().add(tempNewItem);
         currentSelectedItem.setExpanded(true);

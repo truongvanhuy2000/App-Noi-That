@@ -4,13 +4,12 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.LuaChonNoiThatScene;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,16 +29,29 @@ public class NewTabController implements Initializable {
     void newTabButtonHandler(ActionEvent event) {
         createNewTab();
     }
-    void createNewTab(){
-        Tab newTab = new Tab("Tab mới");
+    private void createNewTab(){
+        Tab newTab = setUpTab();
         try {
             Node root = LuaChonNoiThatScene.getNewRoot();
             newTab.setContent(root);
         } catch (IOException e) {
             logger.error("Critical Error:" + e.getMessage());
         }
+        addNewTabToPane(newTab);
+    }
+    private void addNewTabToPane(Tab newTab){
         tabPane.getTabs().add(newTab);
         tabPane.getSelectionModel().select(newTab);
+    }
+    private Tab setUpTab(){
+        Tab newTab = new Tab("Tab mới");
+        ContextMenu contextMenu = new ContextMenu();
+        MenuItem nhanBanMenuItem = new MenuItem("Nhân bản");
+        nhanBanMenuItem.setOnAction(event -> duplicateTab(event, newTab));
+        contextMenu.getItems().add(nhanBanMenuItem);
+
+        newTab.contextMenuProperty().set(contextMenu);
+        return newTab;
     }
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
@@ -55,7 +67,17 @@ public class NewTabController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+    private void duplicateTab(ActionEvent action, Tab currentTab) {
+        Node nodeFromCurrentTab = currentTab.getContent();
+        nodeFromCurrentTab.lookupAll();
+        Tab newTab = setUpTab();
+        try {
+            Node root = LuaChonNoiThatScene.getNewRoot();
+            newTab.setContent(root);
+        } catch (IOException e) {
+            logger.error("Critical Error:" + e.getMessage());
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         createNewTab();
