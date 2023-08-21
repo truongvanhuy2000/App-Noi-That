@@ -29,7 +29,7 @@ public class LoginService {
                 .filter(account -> account.getUsername().equals(username) && account.getPassword().equals(password))
                 .findFirst().orElse(null);
         if ( tempAccount != null) {
-            sessionService.setSession(tempAccount);
+            sessionService.setSession(tempAccount, ":))");
             return true;
         }
         return false;

@@ -11,10 +11,14 @@ public class UserSessionService {
         return false;
     }
     public void cleanUserSession() {
-        UserSession.getInstance().setAccount(null);
+        UserSession session = UserSession.getInstance();
+        session.setAccount(null);
+        session.setJwtToken(null);
     }
-    public void setSession(Account account) {
-        UserSession.getInstance().setAccount(account);
+    public void setSession(Account account, String jwtToken) {
+        UserSession session = UserSession.getInstance();
+        session.setAccount(account);
+        session.setJwtToken(jwtToken);
     }
     public Account getSession() {
         if (!isLogin()) {

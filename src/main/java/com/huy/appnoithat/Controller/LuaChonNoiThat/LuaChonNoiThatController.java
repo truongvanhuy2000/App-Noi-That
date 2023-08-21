@@ -41,6 +41,30 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LuaChonNoiThatController implements Initializable {
+    // Thong Tin ve cong ty
+    @FXML
+    private TextField TenCongTy;
+    @FXML
+    private TextField VanPhong;
+    @FXML
+    private TextField DiaChiXuong;
+    @FXML
+    private TextField DienThoaiCongTy;
+    @FXML
+    private TextField Email;
+    // Thong tin ve khach hang
+    @FXML
+    private TextField TenKhachHang;
+    @FXML
+    private TextField DienThoaiKhachHang;
+    @FXML
+    private TextField DiaChiKhachHang;
+    @FXML
+    private TextField NgayLapBaoGia;
+    @FXML
+    private TextField SanPham;
+
+    // Bang noi that
     @FXML
     private TreeTableView<BangNoiThat> TableNoiThat;
     @FXML
@@ -51,6 +75,7 @@ public class LuaChonNoiThatController implements Initializable {
     private TreeTableColumn<BangNoiThat, String> DonVi, HangMuc, VatLieu;
     @FXML
     private TreeTableColumn<BangNoiThat, String> STT;
+    // Button
     @FXML
     private Button deleteButton;
     @FXML
@@ -72,7 +97,6 @@ public class LuaChonNoiThatController implements Initializable {
         addNewButton.setOnAction(buttonHandler::addNewLine);
         addContinuousButton.setOnAction(buttonHandler::continuousLineAdd);
         workAroundToCollumWidthBug();
-        System.out.println("LuaChonNoiThatController initialized");
     }
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {
