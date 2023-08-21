@@ -10,6 +10,7 @@ import lombok.Setter;
 public class UserSession {
     private static UserSession instance;
     private Account account;
+    private String jwtToken;
     private UserSession() {
     }
     public static synchronized UserSession getInstance() {

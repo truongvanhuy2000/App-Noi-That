@@ -10,6 +10,9 @@ module com.huy.appnoithat {
     requires org.apache.poi.poi;
     requires org.apache.poi.ooxml;
     requires org.apache.logging.log4j;
+    requires org.apache.httpcomponents.httpclient;
+    requires org.apache.httpcomponents.httpcore;
+
     exports com.huy.appnoithat.Controller;
     opens com.huy.appnoithat.Controller to javafx.fxml;
     exports com.huy.appnoithat.Entity;
@@ -21,6 +24,8 @@ module com.huy.appnoithat {
 
     exports com.huy.appnoithat.Controller.DatabaseModify;
     opens com.huy.appnoithat.Controller.DatabaseModify to javafx.fxml;
+
     exports com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
     opens com.huy.appnoithat.Controller.LuaChonNoiThat.Cell to javafx.fxml;
+
 }

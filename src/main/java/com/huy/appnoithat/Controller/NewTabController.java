@@ -69,7 +69,7 @@ public class NewTabController implements Initializable {
     }
     private void duplicateTab(ActionEvent action, Tab currentTab) {
         Node nodeFromCurrentTab = currentTab.getContent();
-        nodeFromCurrentTab.lookupAll();
+//        nodeFromCurrentTab.lookupAll();
         Tab newTab = setUpTab();
         try {
             Node root = LuaChonNoiThatScene.getNewRoot();

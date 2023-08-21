@@ -52,6 +52,8 @@ public class VatLieuCollumHandler {
         event.getRowValue().getValue().setCao(cao);
         event.getRowValue().getValue().setDonGia(donGia);
         event.getRowValue().getValue().setDonVi(donVi);
+
+        event.getTreeTableView().getSelectionModel().clearSelection();
     }
     public void onStartEditVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();

@@ -30,6 +30,7 @@ public class HangMucCollumHandler {
     public void onEditCommitHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         String newValue =  event.getNewValue();
         event.getRowValue().getValue().setHangMuc(newValue);
+        event.getTreeTableView().getSelectionModel().clearSelection();
     }
 
     public void onStartEditHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {

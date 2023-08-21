@@ -11,7 +11,6 @@ public class HangMuc {
     private int id;
     private String name;
     List<VatLieu> vatLieuList;
-
     public void add(VatLieu vatLieu) {
         vatLieuList.add(vatLieu);
     }

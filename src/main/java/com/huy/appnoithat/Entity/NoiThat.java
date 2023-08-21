@@ -11,7 +11,6 @@ public class NoiThat {
     private int id;
     private String name;
     List<HangMuc> hangMucList;
-
     public void add(HangMuc hangMuc) {
         hangMucList.add(hangMuc);
     }

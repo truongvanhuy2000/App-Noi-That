@@ -37,7 +37,6 @@ public class CustomComboboxCell extends TreeTableCell<BangNoiThat, String> {
 
     @Override
     public void updateItem(String item, boolean empty) {
-        System.out.println("updateItem " + item + " " + empty);
         super.updateItem(item, empty);
         if (empty) {
             super.setText(null);
