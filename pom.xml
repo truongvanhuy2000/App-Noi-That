@@ -16,6 +16,22 @@
   <!--1 -->
   <dependencies>
 
+    <!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
+    <dependency>
+      <groupId>com.jfoenix</groupId>
+      <artifactId>jfoenix</artifactId>
+      <version>9.0.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>de.jensd</groupId>
+      <artifactId>fontawesomefx</artifactId>
+      <version>8.9</version>
+    </dependency>
+    <!-- Thanks for using https://jar-download.com -->
+
+
+
     <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
     <dependency>
       <groupId>org.apache.poi</groupId>
