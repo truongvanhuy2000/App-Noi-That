@@ -10,8 +10,8 @@ module com.huy.appnoithat {
     requires org.apache.poi.poi;
     requires org.apache.poi.ooxml;
     requires org.apache.logging.log4j;
-    requires org.apache.httpcomponents.httpclient;
-    requires org.apache.httpcomponents.httpcore;
+    requires java.net.http;
+    requires com.fasterxml.jackson.databind;
 
     exports com.huy.appnoithat.Controller;
     opens com.huy.appnoithat.Controller to javafx.fxml;
