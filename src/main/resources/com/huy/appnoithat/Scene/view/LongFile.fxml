@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.LoginController">
+   <children>
+      <JFXButton fx:id="btnSignin" layoutX="1.0" layoutY="169.0" prefHeight="49.0" prefWidth="132.0" text="Signin" />
+      <JFXButton fx:id="btnSignup" layoutX="1.0" layoutY="309.0" prefHeight="41.0" prefWidth="132.0" text="Signup" />
+      <AnchorPane layoutX="133.0" layoutY="3.0" prefHeight="607.0" prefWidth="421.0" style="-fx-background-color: blue;">
+         <children>
+            <Label layoutX="51.0" layoutY="304.0" prefHeight="41.0" prefWidth="347.0" text="WELCOME TO APP NOI THAT" textFill="WHITE">
+               <font>
+                  <Font name="Loma Bold Oblique" size="21.0" />
+               </font>
+            </Label>
+            <FontAwesomeIconView fill="WHITE" glyphName="XING" layoutX="169.0" layoutY="276.0" size="80" />
+         </children></AnchorPane>
+      <AnchorPane layoutX="555.0" layoutY="-6.0" prefHeight="613.0" prefWidth="448.0" style="-fx-background-color: WHITE;">
+         <children>
+            <TextField layoutX="55.0" layoutY="56.0" prefHeight="41.0" prefWidth="338.0" promptText="USERNAME" />
+            <TextField layoutX="53.0" layoutY="122.0" prefHeight="41.0" prefWidth="338.0" promptText="PASSWORD" />
+            <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="177.0" layoutY="441.0" prefHeight="33.0" prefWidth="93.0" />
+            <TextField layoutX="53.0" layoutY="183.0" prefHeight="41.0" prefWidth="338.0" promptText="NAME" />
+            <TextField layoutX="53.0" layoutY="307.0" prefHeight="41.0" prefWidth="338.0" promptText="BITRHDAY" />
+            <TextField layoutX="55.0" layoutY="368.0" prefHeight="41.0" prefWidth="338.0" promptText="PHONE" />
+            <FontAwesomeIconView glyphName="CHEVRON_CIRCLE_RIGHT" layoutX="203.0" layoutY="559.0" size="50" text="" />
+            <JFXComboBox layoutX="55.0" layoutY="425.0" prefHeight="49.0" prefWidth="338.0" />
+            <Label layoutX="171.0" layoutY="14.0" prefHeight="41.0" prefWidth="132.0" text="SIGN UP">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <TextField layoutX="55.0" layoutY="239.0" prefHeight="41.0" prefWidth="338.0" promptText="EMAIL" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="554.0" prefHeight="584.0" prefWidth="448.0" style="-fx-background-color: WHITE;">
+         <children>
+            <TextField fx:id="usernameTextField" layoutX="53.0" layoutY="194.0" prefHeight="41.0" prefWidth="338.0" promptText="USERNAME" />
+            <TextField fx:id="passwordField" layoutX="53.0" layoutY="357.0" prefHeight="41.0" prefWidth="338.0" promptText="PASSWORD" />
+            <JFXButton fx:id="LoginButton" contentDisplay="GRAPHIC_ONLY" layoutX="177.0" layoutY="441.0" prefHeight="33.0" prefWidth="93.0">
+               <graphic>
+                  <FontAwesomeIconView glyphName="CHEVRON_CIRCLE_RIGHT" size="50" />
+               </graphic>
+            </JFXButton>
+            <Label layoutX="156.0" layoutY="101.0" prefHeight="41.0" prefWidth="132.0" text="SIGN IN">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
