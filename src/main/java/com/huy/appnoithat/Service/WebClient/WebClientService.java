@@ -18,8 +18,6 @@ public class WebClientService {
             httpclient.execute(httpPost, response -> {
 //                System.out.println(response.getCode() + " " + response.getReasonPhrase());
                 final HttpEntity entity2 = response.getEntity();
-                // do something useful with the response body
-                // and ensure it is fully consumed
                 EntityUtils.consume(entity2);
                 return null;
             });
