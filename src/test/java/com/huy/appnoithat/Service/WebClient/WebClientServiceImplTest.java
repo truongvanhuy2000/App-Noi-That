@@ -7,22 +7,17 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.net.Authenticator;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-class WebClientServiceTest {
+class WebClientServiceImplTest {
     private WebClientService webClientService;
     private ObjectMapper objectMapper;
     private String token;
     @BeforeEach
     void setUp() {
-        webClientService = new WebClientService("http://localhost:8080", 10);
+        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         Account account = new Account(1, "admin", "admin", 1, null, null);
         try {
-            token = webClientService.unauthorizeHttpPostJson("/api/login", objectMapper.writeValueAsString(account));
-            System.out.println(token);
+            token = webClientService.unauthorizedHttpPostJson("/api/login", objectMapper.writeValueAsString(account));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
@@ -34,14 +29,38 @@ class WebClientServiceTest {
 
     @Test
     void getAccounts() {
-        String response2 = webClientService.authorizeHttpGetJson("/api/accounts", token);
+        String response2 = webClientService.authorizedHttpGetJson("/api/accounts", token);
         System.out.println(response2);
     }
 
     @Test
     void getPhongCachs() {
-        String response = webClientService.authorizeHttpGetJson("/api/phongcach", token);
+        String response = webClientService.authorizedHttpGetJson("/api/phongcach", token);
         System.out.println(response);
     }
 
+
+    @Test
+    void unauthorizeHttpPostJson() {
+    }
+
+    @Test
+    void unauthorizeHttpGetJson() {
+    }
+
+    @Test
+    void authorizeHttpPostJson() {
+    }
+
+    @Test
+    void authorizeHttpGetJson() {
+    }
+
+    @Test
+    void authorizeHttpPutJson() {
+    }
+
+    @Test
+    void authorizeHttpDeleteJson() {
+    }
 }

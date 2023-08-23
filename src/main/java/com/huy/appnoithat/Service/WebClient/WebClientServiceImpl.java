@@ -1,0 +1,120 @@
+package com.huy.appnoithat.Service.WebClient;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
+
+public class WebClientServiceImpl implements WebClientService {
+    private static final String CONTENT_TYPE = "Content-Type";
+    private static final String JSON = "application/json";
+    private static final String AUTHORIZATION = "Authorization";
+    private static final String GET = "GET";
+    private static final String POST = "POST";
+    private static final String PUT = "PUT";
+    private static final String DELETE = "DELETE";
+    private final String host;
+    private final long timeOut;
+    private final HttpClient client;
+    public WebClientServiceImpl(String host, long timeOut) {
+        this.host = host;
+        this.timeOut = timeOut;
+        client = HttpClient.newHttpClient();
+    }
+    //    Use this api to do an unauthorized Http Post request.
+    //    Path is the path to the api
+    //    jsonData is the data to be sent to the server. Must be in json format
+    public String unauthorizedHttpPostJson(String path, String jsonData) {
+        if (path == null || jsonData == null) {
+            throw new IllegalArgumentException();
+        }
+        return doSendRequest(POST, path, null, jsonData);
+    }
+    //    Use this api to do an unauthorized Http GET request.
+    //    Path is the path to the api
+    public String unauthorizedHttpGetJson(String path) {
+        if (path == null) {
+            throw new IllegalArgumentException();
+        }
+        return doSendRequest(GET, path, null, null);
+    }
+    //    Use this api to do an authorized Http Post request.
+    //    Path is the path to the api, token is the bearer token provided after login
+    //    jsonData is the data to be sent to the server. Must be in json format
+    public String authorizedHttpPostJson(String path, String jsonData, String token) {
+        if (path == null) {
+            throw new IllegalArgumentException();
+        }
+        return doSendRequest(POST, path, token, jsonData);
+    }
+    //    Use this api to do an authorized Http Get request.
+    //    Path is the path to the api, token is the bearer token provided after login
+    public String authorizedHttpGetJson(String path, String token) {
+        if (path == null) {
+            throw new IllegalArgumentException();
+        }
+        return doSendRequest(GET, path, token, null);
+    }
+
+    //    Use this api to do an authorized Http Put request.
+    //    Path is the path to the api, token is the bearer token provided after login
+    //    jsonData is the data to be sent to the server. Must be in json format
+    public String authorizedHttpPutJson(String path, String jsonData, String token) {
+        if (path == null) {
+            throw new IllegalArgumentException();
+        }
+        return doSendRequest(PUT, path, token, jsonData);
+    }
+    //    Use this api to do an authorized Http Delete request.
+    //    Path is the path to the api, token is the bearer token provided after login
+    public String authorizedHttpDeleteJson(String path, String jsonData, String token) {
+        if (path == null) {
+            throw new IllegalArgumentException();
+        }
+        return doSendRequest(DELETE, path, token, jsonData);
+    }
+    private String doSendRequest(String method, String path, String authenticationToken, String data) {
+        try {
+            HttpRequest httpRequest = buildJsonHttpRequest(method, path, authenticationToken, data);
+            HttpResponse<String> response = client.send(httpRequest, BodyHandlers.ofString());
+            if (response.statusCode() != 200) {
+                throw new RuntimeException("Exception: " + response.statusCode() + " " + response.body());
+            }
+            return response.body();
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private HttpRequest buildJsonHttpRequest(String method, String path, String authenticationToken, String data) {
+        HttpRequest.Builder builder = HttpRequest.newBuilder();
+        builder.uri(URI.create(this.host + path));
+        builder.timeout(java.time.Duration.ofSeconds(this.timeOut));
+        builder.header(CONTENT_TYPE, JSON);
+
+        switch (method) {
+            case GET -> builder.GET();
+            case POST -> {
+                if (data != null && !data.isEmpty()) {
+                    builder.POST(HttpRequest.BodyPublishers.ofString(data));
+                    break;
+                }
+                throw new IllegalArgumentException("Data cannot be null or empty");
+            }
+            case PUT -> {
+                if (data != null && !data.isEmpty()) {
+                    builder.PUT(HttpRequest.BodyPublishers.ofString(data));
+                    break;
+                }
+                throw new IllegalArgumentException("Data cannot be null or empty");
+            }
+            case DELETE -> builder.DELETE();
+            default -> throw new IllegalArgumentException();
+        }
+        if (authenticationToken != null && !authenticationToken.isEmpty()) {
+            builder.header(AUTHORIZATION, "Bearer " + authenticationToken);
+        }
+        return builder.build();
+    }
+}
