@@ -117,6 +117,7 @@ public class LuaChonNoiThatController implements Initializable {
         try {
             Image image = new Image(new FileInputStream(file));
             ImageView.setImage(image);
+
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

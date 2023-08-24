@@ -10,20 +10,21 @@ import java.io.IOException;
 import java.util.Objects;
 @Getter
 public class HomeScene {
+    private static final String VIEW_PATH = "view/HomeLayout.fxml";
+    private static final String CSS_PATH = "css/HomeLayout.css";
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
     private static HomeScene single_instance = null;
     public HomeScene() {
-        String viewPath = "view/HomeLayout.fxml";
         try {
-            fxmlLoader = new FXMLLoader(HomeScene.class.getResource(viewPath));
+            fxmlLoader = new FXMLLoader(HomeScene.class.getResource(VIEW_PATH));
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         scene = new Scene(root);
-        addCssToScence();
+        addCssToScene();
     }
 
     // Create an object of this class, call this function
@@ -41,12 +42,11 @@ public class HomeScene {
     public void setScene(Scene scene) {
         this.scene = scene;
         scene.setRoot(this.root);
-        addCssToScence();
+        addCssToScene();
     }
 
-    private void addCssToScence(){
-        String cssPath = "css/HomeLayout.css";
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
+    private void addCssToScene(){
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(CSS_PATH)).toExternalForm());
     }
     public HomeController getHomeController(){
         return fxmlLoader.getController();

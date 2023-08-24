@@ -7,11 +7,11 @@ module com.huy.appnoithat {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires lombok;
-    requires org.apache.poi.poi;
-    requires org.apache.poi.ooxml;
     requires org.apache.logging.log4j;
     requires java.net.http;
     requires com.fasterxml.jackson.databind;
+    requires jxls.poi;
+    requires jxls;
 
     exports com.huy.appnoithat.Controller;
     opens com.huy.appnoithat.Controller to javafx.fxml;

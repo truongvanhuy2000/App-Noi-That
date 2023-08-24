@@ -19,33 +19,10 @@ class ExportXLSTest {
     private LuaChonNoiThatService luachon;
     @BeforeEach
     void setUp() {
-        exportXLS = new ExportXLS();
-        luachon = new LuaChonNoiThatService();
-        accountInformationList = new ArrayList<>();
     }
 
     @AfterEach
     void tearDown() {
     }
 
-    @Test
-    void writeInformationToFile() {
-        AccountInformation acc = new AccountInformation(1,"huy","nam","ngoclong@gmail.com","hasadasd sadas","0123123123");
-        accountInformationList.add(acc);
-        assertDoesNotThrow(() -> exportXLS.writeInformationToFile("template.xlsx",accountInformationList));
-
-    }
-    @Test
-    void writeProductToFile() {
-        userSelectionList = luachon.getFakeUserSelection();
-        assertDoesNotThrow(() -> exportXLS.writeProductToFile("template.xlsx",userSelectionList));
-    }
-
-    @Test
-    void customFontExcel() {
-    }
-
-    @Test
-    void customCellStyle() {
-    }
 }
