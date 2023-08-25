@@ -1,28 +1,55 @@
 package com.huy.appnoithat.Service.FileExport;
 
-import com.huy.appnoithat.Entity.AccountInformation;
-import com.huy.appnoithat.Entity.UserSelection;
-import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
+import com.huy.appnoithat.DataModel.Employee;
+import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ExportXLSTest {
     private ExportXLS exportXLS;
-    private List<UserSelection> userSelectionList;
-    private List<AccountInformation> accountInformationList;
-    private LuaChonNoiThatService luachon;
     @BeforeEach
     void setUp() {
+        ThongTinCongTy thongTinCongTy = null;
+        try {
+            thongTinCongTy = new ThongTinCongTy(
+                    new FileInputStream("/home/huy/Pictures/download.jpeg"),
+                    "Công ty TNHH Nội Thất Huy",
+                    "Địa chỉ Cty: 123 Nguyễn Văn Cừ, Quận 5, TP.HCM",
+                    "Địa chỉ xuong: 123 Nguyễn Văn Cừ, Quận 5, TP.HCM",
+                    "SĐT: 0123456789",
+                    "Email: huy@gmail.com"
+
+            );
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        exportXLS = new ExportXLS();
+        exportXLS.setThongTinCongTy(thongTinCongTy);
     }
 
     @AfterEach
     void tearDown() {
+    }
+
+    @Test
+    void exportImage() {
+        try {
+            Employee employee = new Employee("Huy", 20, 1000.0, 100.0, new Date());
+            Employee employee1 = new Employee("Huy", 20, 1000.0, 100.0, new Date());
+            Employee employee2 = new Employee("Huy", 20, 1000.0, 100.0, new Date());
+            Employee employee3 = new Employee("Huy", 20, 1000.0, 100.0, new Date());
+            List<Employee> employeeList = List.of(employee, employee1, employee2, employee3);
+            exportXLS.exportThongTinKhachHang(employeeList);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

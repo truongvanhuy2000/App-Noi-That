@@ -7,17 +7,14 @@ import com.huy.appnoithat.Shared.Utils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 public class STTCollumHandler {
     private TreeTableView<BangNoiThat> TableNoiThat;
-    private final static Logger logger = LogManager.getLogger(STTCollumHandler.class);
 
     public STTCollumHandler(TreeTableView<BangNoiThat> tableNoiThat) {
         this.TableNoiThat = tableNoiThat;
@@ -57,7 +54,6 @@ public class STTCollumHandler {
         TreeItem<BangNoiThat> newItem = new TreeItem<>(currentItem.getValue());
         ObservableList<TreeItem<BangNoiThat>> tempPhongCachList = findPhongCachList(currentItem);
         if (tempPhongCachList == null){
-            logger.error("tempPhongCachList is null");
             return;
         }
         if (tempPhongCachList.isEmpty()){

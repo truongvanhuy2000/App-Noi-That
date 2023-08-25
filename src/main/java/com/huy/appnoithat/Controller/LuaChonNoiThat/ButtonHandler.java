@@ -3,10 +3,8 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat;
 import com.huy.appnoithat.Shared.ErrorUtils;
 import com.huy.appnoithat.Shared.Utils;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
-import org.apache.poi.xdgf.util.Util;
 
 public class ButtonHandler {
     private TreeTableView<BangNoiThat> TableNoiThat;

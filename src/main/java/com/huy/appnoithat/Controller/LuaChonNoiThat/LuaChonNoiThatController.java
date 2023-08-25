@@ -30,9 +30,6 @@ import javafx.util.Duration;
 import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.LongStringConverter;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -84,7 +81,6 @@ public class LuaChonNoiThatController implements Initializable {
     private Button addNewButton;
     @FXML
     private ImageView ImageView;
-    private final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatController.class);
     public LuaChonNoiThatController() {
     }
     public void initialize() {

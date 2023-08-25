@@ -1,12 +1,10 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.BangNoiThat;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 public class KichThuocHandler {
     private TreeTableView<BangNoiThat> TableNoiThat;

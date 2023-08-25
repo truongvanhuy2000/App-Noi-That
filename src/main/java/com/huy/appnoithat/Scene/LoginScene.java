@@ -16,7 +16,7 @@ public class LoginScene {
     private final FXMLLoader fxmlLoader;
     private static LoginScene single_instance = null;
     public LoginScene() {
-        String viewPath = "view/LongFile.fxml";
+        String viewPath = "view/LoginLayout.fxml";
         try {
             fxmlLoader = new FXMLLoader(LoginScene.class.getResource(viewPath));
             root = fxmlLoader.load();
@@ -46,7 +46,7 @@ public class LoginScene {
     }
 
     private void addCssToScence(){
-//        String cssPath = "css/LoginLayout.css";
-//        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
+        String cssPath = "css/LoginLayout.css";
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }
 }

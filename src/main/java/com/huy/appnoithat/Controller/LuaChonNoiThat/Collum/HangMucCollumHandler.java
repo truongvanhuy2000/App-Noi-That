@@ -10,16 +10,12 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HangMucCollumHandler {
     private ObservableList<String> hangMucList;
-    private final static Logger logger = LogManager.getLogger(HangMucCollumHandler.class);
-
     private final LuaChonNoiThatService luaChonNoiThatService;
 
     public HangMucCollumHandler(ObservableList<String> hangMucList) {
@@ -44,7 +40,6 @@ public class HangMucCollumHandler {
             try {
                 items = Utils.getObjectNameList(luaChonNoiThatService.findNoiThatByPhongCachName(phongCach));
             } catch (NullPointerException e) {
-                logger.error(e.getMessage());
                 ErrorUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
                 return;
             }
@@ -56,7 +51,6 @@ public class HangMucCollumHandler {
             try {
                 items = Utils.getObjectNameList(luaChonNoiThatService.findAllPhongCachNoiThat());
             } catch (NullPointerException e) {
-                logger.error(e.getMessage());
                 ErrorUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
                 return;
             }
@@ -71,7 +65,6 @@ public class HangMucCollumHandler {
             try{
                 items = Utils.getObjectNameList(luaChonNoiThatService.findHangMucListByPhongCachAndNoiThat(phongCach, noiThat));
             } catch (NullPointerException e) {
-                logger.error(e.getMessage());
                 ErrorUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
                 return;
             }

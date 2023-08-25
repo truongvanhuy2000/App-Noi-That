@@ -45,20 +45,20 @@ public class HomeController {
         LuaChonNoiThatButton.setVisible(false);
         QuanLyNguoiDungButton.setVisible(false);
 
-        // Set username using current session
-        String username = sessionService.getSession().getUsername();
-        UserName.setText(username);
-
-        // Show button based on role
-        switch (sessionService.getSession().getRoles().toLowerCase()) {
-            case "admin" -> {
-                QuanLyNguoiDungButton.setVisible(true);
-                LuaChonNoiThatButton.setVisible(true);
-            }
-            case "user" -> LuaChonNoiThatButton.setVisible(true);
-            default -> {
-            }
-        }
+//        // Set username using current session
+//        String username = sessionService.getSession().getUsername();
+//        UserName.setText(username);
+//
+//        // Show button based on role
+//        switch (sessionService.getSession().getRoles().toLowerCase()) {
+//            case "admin" -> {
+//                QuanLyNguoiDungButton.setVisible(true);
+//                LuaChonNoiThatButton.setVisible(true);
+//            }
+//            case "user" -> LuaChonNoiThatButton.setVisible(true);
+//            default -> {
+//            }
+//        }
     }
     // Central unit to switch scene based on context
     @FXML
