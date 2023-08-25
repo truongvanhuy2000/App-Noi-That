@@ -20,8 +20,8 @@ import java.util.Objects;
 @Setter
 public class ExportXLS implements ExportFileService {
     // USED FOR TESTING ONLY
-    private static final String DEFAULT_TEMPLATE_PATH = "/test.xls";
-    private static final String DEFAULT_OUTPUT_PATH = "/home/huy/Desktop/object_collection_output.xls";
+    private static final String DEFAULT_TEMPLATE_PATH = "/template.xlsx";
+    private static final String DEFAULT_OUTPUT_PATH = "/home/huy/Desktop/object_collection_output.xlsx";
 
     private ThongTinCongTy thongTinCongTy;
     private ThongTinKhachHang thongTinKhachHang;
@@ -63,11 +63,19 @@ public class ExportXLS implements ExportFileService {
 
     public void exportLogo(InputStream image) throws IOException {
         byte[] bytes = image.readAllBytes();
-        int pictureIdx = workbook.addPicture(bytes, Workbook.PICTURE_TYPE_JPEG);
+        int pictureIdx = workbook.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
         XSSFDrawing drawing = (XSSFDrawing) spreadsheet.createDrawingPatriarch();
         XSSFClientAnchor logoAnchor = new XSSFClientAnchor();
 
         logoAnchor.setCol1(0);
+        logoAnchor.setRow1(0);
+        logoAnchor.setCol2(2);
+        logoAnchor.setRow2(5);
+        drawing.createPicture(logoAnchor, pictureIdx);
         image.close();
+    }
+
+    public void save() throws IOException {
+        workbook.write(this.outputFile);
     }
 }
