@@ -20,11 +20,11 @@ public class UserSessionService {
         session.setAccount(account);
         session.setJwtToken(jwtToken);
     }
-    public Account getSession() {
+    public UserSession getSession() {
         if (!isLogin()) {
             throw new RuntimeException("User is not login");
         }
-        return UserSession.getInstance().getAccount();
+        return UserSession.getInstance();
     }
     // Haven't implemented yet
     public void loadInstanceFromDisk() {

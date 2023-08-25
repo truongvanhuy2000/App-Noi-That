@@ -1,5 +1,8 @@
 package com.huy.appnoithat.Controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyChiTietScene;
@@ -9,6 +12,8 @@ import com.huy.appnoithat.Scene.UserManagementAddAccountScene;
 import com.huy.appnoithat.Scene.UserManagementEditorScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
+import com.huy.appnoithat.Service.WebClient.WebClientService;
+import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,11 +33,20 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class UsersManagementController{
+
+    private WebClientService webClientService;
+    private ObjectMapper objectMapper;
+    private String token;
+
+    private final UserSessionService sessionService = new UserSessionService();
+
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
@@ -106,7 +120,25 @@ public class UsersManagementController{
     public UsersManagementController() {
         userSessionService = new UserSessionService();
     }
-    public void initialize() {
+    public void initialize() throws JsonProcessingException {
+        token = this.sessionService.getSession().getJwtToken();
+        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        String response2 = this.webClientService.authorizedHttpGetJson("/api/accounts", token);
+        objectMapper = new ObjectMapper();
+        try {
+
+
+            // 2. convert JSON array to List of objects
+            List<Account> ppl2 = Arrays.asList(objectMapper.readValue(response2, Account[].class));
+
+            System.out.println("\nJSON array to List of objects");
+            ppl2.stream().forEach(x -> System.out.println(x.toString()));
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         username.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("username"));
         password.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("password"));
         active.setCellValueFactory(new PropertyValueFactory<AccountTable,ImageView>("activeImage"));
@@ -114,7 +146,8 @@ public class UsersManagementController{
     }
 
     @FXML
-    void getAllAcount(ActionEvent event) {
+    void getAllAcount(ActionEvent event) throws JsonProcessingException{
+
         initialize();
     }
 
