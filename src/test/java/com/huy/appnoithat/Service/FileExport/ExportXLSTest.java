@@ -2,6 +2,7 @@ package com.huy.appnoithat.Service.FileExport;
 
 import com.huy.appnoithat.DataModel.Employee;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
+import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,21 +18,28 @@ class ExportXLSTest {
     @BeforeEach
     void setUp() {
         ThongTinCongTy thongTinCongTy = null;
-//        try {
-//            thongTinCongTy = new ThongTinCongTy(
-//                    new FileInputStream("/home/huy/Pictures/download.jpeg"),
-//                    "Công ty TNHH Nội Thất Huy",
-//                    "Địa chỉ Cty: 123 Nguyễn Văn Cừ, Quận 5, TP.HCM",
-//                    "Địa chỉ xuong: 123 Nguyễn Văn Cừ, Quận 5, TP.HCM",
-//                    "SĐT: 0123456789",
-//                    "Email: huy@gmail.com"
-//
-//            );
-//        } catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
+        ThongTinKhachHang thongTinKhachHang = new ThongTinKhachHang(
+                "Khach Hang: Nguyễn Văn A",
+                "Dia Chi: 123 Nguyễn Văn Cừ, Quận 5, TP.HC",
+                "Dien Thoai: 0123456789",
+                "Ngay: 1/2/1999",
+                "San Pham: tu quan ao");
+        try {
+            thongTinCongTy = new ThongTinCongTy(
+                    new FileInputStream("/home/huy/Downloads/att-logo.png"),
+                    "Công ty TNHH Nội Thất Huy",
+                    "Địa chỉ Cty: 123 Nguyễn Văn Cừ, Quận 5, TP.HCM",
+                    "Địa chỉ xuong: 123 Nguyễn Văn Cừ, Quận 5, TP.HCM",
+                    "SĐT: 0123456789",
+                    "Email: huy@gmail.com"
+
+            );
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         exportXLS = new ExportXLS();
-//        exportXLS.setThongTinCongTy(thongTinCongTy);
+        exportXLS.setThongTinCongTy(thongTinCongTy);
+        exportXLS.setThongTinKhachHang(thongTinKhachHang);
     }
 
     @AfterEach
@@ -39,9 +47,9 @@ class ExportXLSTest {
     }
 
     @Test
-    void exportImage() {
+    void export() {
         try {
-            exportXLS.exportLogo(new FileInputStream("/home/huy/Downloads/att-logo.png"));
+            exportXLS.export();
             exportXLS.save();
         } catch (IOException e) {
             throw new RuntimeException(e);
