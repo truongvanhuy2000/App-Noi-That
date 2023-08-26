@@ -15,7 +15,7 @@ class WebClientServiceImplTest {
     void setUp() {
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
-        Account account = new Account(1, "admin", "admin", 1, null, null);
+        Account account = new Account(1, "admin", "admin", true, null, true);
         try {
             token = webClientService.unauthorizedHttpPostJson("/api/login", objectMapper.writeValueAsString(account));
         } catch (JsonProcessingException e) {
