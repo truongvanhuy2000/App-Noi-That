@@ -1,8 +1,8 @@
 package com.huy.appnoithat.Service.FileExport;
 
-import com.huy.appnoithat.DataModel.Employee;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
+import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 class ExportXLSTest {
@@ -37,9 +37,23 @@ class ExportXLSTest {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+        ThongTinNoiThat thongTinNoiThat = new ThongTinNoiThat(
+                "I",
+                "Noi That Tu Bep",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "1000000");
+        List<ThongTinNoiThat> thongTinNoiThatList = new ArrayList<>();
+        thongTinNoiThatList.add(thongTinNoiThat);
         exportXLS = new ExportXLS();
         exportXLS.setThongTinCongTy(thongTinCongTy);
         exportXLS.setThongTinKhachHang(thongTinKhachHang);
+        exportXLS.setThongTinNoiThatList(thongTinNoiThatList);
     }
 
     @AfterEach
