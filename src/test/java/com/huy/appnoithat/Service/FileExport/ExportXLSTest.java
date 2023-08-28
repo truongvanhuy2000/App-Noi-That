@@ -48,8 +48,20 @@ class ExportXLSTest {
                 "",
                 "",
                 "1000000");
+        ThongTinNoiThat thongTinNoiThat1 = new ThongTinNoiThat(
+                "1",
+                "Noi That Tu Bep",
+                "sadsdas",
+                "100",
+                "200",
+                "300",
+                "400",
+                "500",
+                "600",
+                "1000000");
         List<ThongTinNoiThat> thongTinNoiThatList = new ArrayList<>();
         thongTinNoiThatList.add(thongTinNoiThat);
+        thongTinNoiThatList.add(thongTinNoiThat1);
         exportXLS = new ExportXLS();
         exportXLS.setThongTinCongTy(thongTinCongTy);
         exportXLS.setThongTinKhachHang(thongTinKhachHang);

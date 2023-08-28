@@ -11,6 +11,7 @@ module com.huy.appnoithat {
     requires com.fasterxml.jackson.databind;
     requires org.apache.poi.ooxml;
     requires org.apache.poi.poi;
+    requires org.apache.logging.log4j;
 
     exports com.huy.appnoithat.Controller;
     opens com.huy.appnoithat.Controller to javafx.fxml;
