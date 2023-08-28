@@ -3,6 +3,7 @@ package com.huy.appnoithat.Controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Entity.Account;
+import com.huy.appnoithat.Entity.AccountInformation;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.ListAccountWaitToApproveScene;
 import com.huy.appnoithat.Scene.UserManagementAddAccountScene;
@@ -37,11 +38,6 @@ import java.util.stream.Collectors;
 
 public class UsersManagementController{
 
-    private WebClientService webClientService;
-    private ObjectMapper objectMapper;
-    private String token;
-
-    private final UserSessionService sessionService = new UserSessionService();
 
     @Data
     @AllArgsConstructor
@@ -50,7 +46,7 @@ public class UsersManagementController{
         private int id;
         private String username;
         private String password;
-        private int active;
+        private boolean active;
         private ImageView activeImage;
     }
     @FXML
@@ -105,44 +101,32 @@ public class UsersManagementController{
         return activeIcon;
     }
     ObservableList<AccountTable> listUser = FXCollections.observableArrayList(
-            new AccountTable(1, "long", "ilovecoding", 1,convertActiveIcon(true)),
-            new AccountTable(2, "linh", "ilovecoding", 0,convertActiveIcon(false)),
-            new AccountTable(3, "trang", "ilovecoding", 0,convertActiveIcon(false)),
-            new AccountTable(4, "huy", "ilovecoding", 1,convertActiveIcon(true))
     );
 
+    UsersManagementService usersManagementService = new UsersManagementService();
 
     UserSessionService userSessionService;
     public UsersManagementController() {
         userSessionService = new UserSessionService();
     }
     public void initialize() throws JsonProcessingException {
-        token = this.sessionService.getSession().getJwtToken();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/accounts", token);
-        objectMapper = new ObjectMapper();
-        try {
             // 2. convert JSON array to List of objects
-            List<Account> ppl2 = objectMapper.readValue(response2, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, Account.class));
+            List<Account> accountList = usersManagementService.findAllAccount();
 
-            System.out.println("\nJSON array to List of objects");
-            ppl2.stream().forEach(x -> System.out.println(x.toString()));
+            for (Account account: accountList
+                 ) {
+                listUser.add(new AccountTable(account.getId(),account.getUsername(), account.getPassword(),account.isActive(),convertActiveIcon(account.isActive())));
+            }
+            username.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("username"));
+            password.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("password"));
+            active.setCellValueFactory(new PropertyValueFactory<AccountTable,ImageView>("activeImage"));
+            tableManageUser.setItems(listUser);
 
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        username.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("username"));
-        password.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("password"));
-        active.setCellValueFactory(new PropertyValueFactory<AccountTable,ImageView>("activeImage"));
-        tableManageUser.setItems(listUser);
     }
 
     @FXML
     void getAllAcount(ActionEvent event) throws JsonProcessingException{
-
+        listUser.clear();
         initialize();
     }
 
@@ -158,12 +142,16 @@ public class UsersManagementController{
     @FXML
     void ActiveAccount(ActionEvent event) {
         tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(true));
+
         tableManageUser.refresh();
 
     }
 
     @FXML
     void InActiveAccount(ActionEvent event) {
+        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
+        int inactiveID = tableManageUser.getItems().get(indexSelector).getId();
+
         tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(false));
         tableManageUser.refresh();
     }
@@ -183,9 +171,10 @@ public class UsersManagementController{
             userManageMentStage.setScene(userManagementAddAccountScene);
 
             btnadd.setOnAction(actionEvent -> {
-                listUser.add(new AccountTable(listUser.size(),txtusername.getText(),txtpassword.getText(),Integer.parseInt(txtactive.getText()),convertActiveIcon(true)));
+                listUser.add(new AccountTable(listUser.size(),txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),convertActiveIcon(true)));
                 System.out.println(listUser.size());
                 tableManageUser.refresh();
+                usersManagementService.addNewAccount(new Account(0,txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),true));
                 userManageMentStage.close();
                 // You might need additional logic to handle saving or updating data
             });
@@ -205,6 +194,8 @@ public class UsersManagementController{
     @FXML
     void DeleteAccount(ActionEvent event) {
         int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
+        int deleteid = tableManageUser.getItems().get(indexSelector).getId();
+        usersManagementService.deleteAccount(deleteid);
         tableManageUser.getItems().remove(indexSelector);
     }
 

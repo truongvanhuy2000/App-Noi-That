@@ -35,7 +35,7 @@ public class LoginService {
 //        }
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
-        Account account = new Account(0, username, password, true, null, false, "sadds");
+        Account account = new Account(0, username, password, true, null, false);
         try {
             token = webClientService.unauthorizedHttpPostJson("/api/login", objectMapper.writeValueAsString(account));
             if (!token.isEmpty()){

@@ -46,7 +46,7 @@ public class LoginScene {
     }
 
     private void addCssToScence(){
-//        String cssPath = "css/LoginLayout.css";
-//        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
+        String cssPath = "css/LoginLayout.css";
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }
 }
