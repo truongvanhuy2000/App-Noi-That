@@ -10,10 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import lombok.Data;
@@ -40,6 +37,12 @@ public class LoginController {
         String userName = usernameTextField.getText();
         String password = passwordField.getText();
         if (!loginService.Authorization(userName, password)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("LOGIN FAIL!!");
+            alert.setHeaderText("look, a error");
+            alert.setContentText("Username or Password wrong, please input again !!");
+            alert.showAndWait();
+            passwordField.setText("");
             return;
         }
         sceneSwitcher(actionEvent);
