@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseModifyPhongCachService {
-    private final List<PhongCachNoiThat> tempPhongCachList = new ArrayList<>();
+    private List<PhongCachNoiThat> tempPhongCachList = new ArrayList<>();
 
     private WebClientService webClientService;
     private ObjectMapper objectMapper;
@@ -41,7 +41,6 @@ public class DatabaseModifyPhongCachService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return tempPhongCachList;
     }
 }
