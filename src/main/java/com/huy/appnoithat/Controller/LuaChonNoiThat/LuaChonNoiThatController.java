@@ -8,8 +8,8 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.VatLieuCollumHandler;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
-import com.huy.appnoithat.Service.FileExport.ExportXLS;
-import com.huy.appnoithat.Shared.ErrorUtils;
+import com.huy.appnoithat.Service.FileExport.Excel.ExportXLS;
+import com.huy.appnoithat.Shared.PopupUtils;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -27,12 +27,11 @@ import javafx.util.Duration;
 import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.LongStringConverter;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +59,7 @@ public class LuaChonNoiThatController implements Initializable {
     private Button deleteButton, addContinuousButton, addNewButton, ExportButton;
     @FXML
     private ImageView ImageView;
+    private ByteArrayOutputStream imageStream;
     public void initialize() {
     }
     @Override
@@ -73,10 +73,17 @@ public class LuaChonNoiThatController implements Initializable {
         workAroundToCollumWidthBug();
     }
     private void exportButtonHandler(ActionEvent event){
-        ExportXLS exportXLS = new ExportXLS();
-        exportXLS.setThongTinCongTy(getThongTinCongTy());
-        exportXLS.setThongTinKhachHang(getThongTinKhachHang());
-        exportXLS.setThongTinNoiThatList(getThongTinNoiThatList());
+        try {
+            ExportXLS exportXLS = new ExportXLS();
+            exportXLS.setThongTinCongTy(getThongTinCongTy());
+            exportXLS.setThongTinKhachHang(getThongTinKhachHang());
+            exportXLS.setThongTinNoiThatList(getThongTinNoiThatList());
+            exportXLS.export();
+        } catch (IOException e) {
+            LOGGER.error("Some thing is wrong with the export operation", e);
+            throw new RuntimeException(e);
+        }
+        PopupUtils.throwSuccessSignal("Xuất file thành công");
     }
 
     private List<ThongTinNoiThat> getThongTinNoiThatList(){
@@ -122,20 +129,30 @@ public class LuaChonNoiThatController implements Initializable {
     }
     private void imageViewHandler(){
         FileChooser fileChooser = new FileChooser();
+        //Set extension filter
+//        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+//        FileChooser.ExtensionFilter extFilterJPEG = new FileChooser.ExtensionFilter("JPEG files (*.jpeg)", "*.JPEG");
+//        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+//        fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG, extFilterJPEG);
+
         File file = fileChooser.showOpenDialog(new Stage());
         if (file == null) return;
         String fileExtension = FilenameUtils.getExtension(file.getName());
         if (!(fileExtension.equals("jpg") || fileExtension.equals("jpeg") || fileExtension.equals("png"))){
-            ErrorUtils.throwErrorSignal("File không hợp lệ");
+            PopupUtils.throwErrorSignal("File không hợp lệ");
             return;
         }
         try {
-            Image image = new Image(new FileInputStream(file));
+            InputStream imageInputStream = new FileInputStream(file);
+            imageStream= new ByteArrayOutputStream();
+            IOUtils.copy(imageInputStream, imageStream);
+            Image image = new Image(new ByteArrayInputStream(imageStream.toByteArray()));
             ImageView.setImage(image);
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
     private void workAroundToCollumWidthBug(){
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(1000),
@@ -143,20 +160,16 @@ public class LuaChonNoiThatController implements Initializable {
         timeline.play();
     }
 
-    private ThongTinCongTy getThongTinCongTy() {
-        try {
-            return new ThongTinCongTy(
-                    new FileInputStream(ImageView.getImage().getUrl()),
-                    TenCongTy.getText(),
-                    VanPhong.getText(),
-                    DiaChiXuong.getText(),
-                    DienThoaiCongTy.getText(),
-                    Email.getText()
-            );
-        } catch (FileNotFoundException e) {
-            LOGGER.error("File not found");
-            throw new RuntimeException(e);
-        }
+    private ThongTinCongTy getThongTinCongTy() throws IOException {
+
+        return new ThongTinCongTy(
+                new ByteArrayInputStream(imageStream.toByteArray()),
+                TenCongTy.getText(),
+                VanPhong.getText(),
+                DiaChiXuong.getText(),
+                DienThoaiCongTy.getText(),
+                Email.getText()
+        );
     }
     private ThongTinKhachHang getThongTinKhachHang(){
         return new ThongTinKhachHang(

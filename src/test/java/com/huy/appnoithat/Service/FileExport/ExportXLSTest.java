@@ -3,6 +3,7 @@ package com.huy.appnoithat.Service.FileExport;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
+import com.huy.appnoithat.Service.FileExport.Excel.ExportXLS;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,19 +20,19 @@ class ExportXLSTest {
     void setUp() {
         ThongTinCongTy thongTinCongTy = null;
         ThongTinKhachHang thongTinKhachHang = new ThongTinKhachHang(
-                "Khach Hang: Nguyễn Văn A",
-                "Dia Chi: 123 Nguyễn Văn Cừ, Quận 5, TP.HC",
-                "Dien Thoai: 0123456789",
-                "Ngay: 1/2/1999",
-                "San Pham: tu quan ao");
+                "Nguyễn Văn A",
+                "123 Nguyễn Văn Cừ, Quận 5, TP.HC",
+                "0123456789",
+                "1/2/1999",
+                "tu quan ao");
         try {
             thongTinCongTy = new ThongTinCongTy(
-                    new FileInputStream("/home/huy/Downloads/att-logo.png"),
+                    new FileInputStream("/home/huy/Pictures/download.jpeg"),
                     "Công ty TNHH Nội Thất Huy",
-                    "Địa chỉ Cty: 123 Nguyễn Văn Cừ, Quận 5, TP.HCM",
-                    "Địa chỉ xuong: 123 Nguyễn Văn Cừ, Quận 5, TP.HCM",
-                    "SĐT: 0123456789",
-                    "Email: huy@gmail.com"
+                    "123 Nguyễn Văn Cừ, Quận 5, TP.HCM",
+                    "123 Nguyễn Văn Cừ, Quận 5, TP.HCM",
+                    "0123456789",
+                    "huy@gmail.com"
 
             );
         } catch (FileNotFoundException e) {
@@ -42,7 +43,7 @@ class ExportXLSTest {
                 "Noi That Tu Bep",
                 "",
                 "",
-                "",it ad
+                "",
                 "",
                 "",
                 "",
@@ -76,7 +77,6 @@ class ExportXLSTest {
     void export() {
         try {
             exportXLS.export();
-            exportXLS.save();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

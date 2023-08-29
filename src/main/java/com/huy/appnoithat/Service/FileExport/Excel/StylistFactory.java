@@ -1,0 +1,97 @@
+package com.huy.appnoithat.Service.FileExport.Excel;
+
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFRichTextString;
+
+import java.util.List;
+import java.util.Map;
+
+public class StylistFactory {
+    Workbook workbook;
+
+    public StylistFactory(Workbook workbook) {
+        this.workbook = workbook;
+    }
+
+    public CellStyle cellStyleFactory(Map<String, String> style) {
+        CellStyle cellStyle = this.workbook.createCellStyle();
+        if (style.containsKey(Stylist.Element.ALIGNMENT)) {
+            switch (style.get(Stylist.Element.ALIGNMENT)) {
+                case Stylist.Style.HorizontalAlignment_CENTER -> cellStyle.setAlignment(HorizontalAlignment.CENTER);
+                case Stylist.Style.VerticalAlignment_CENTER ->
+                        cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+                case Stylist.Style.Alignment_BOTH -> {
+                    cellStyle.setAlignment(HorizontalAlignment.CENTER);
+                    cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+                }
+            }
+        }
+        if (style.containsKey(Stylist.Element.BORDER)) {
+            BorderStyle borderStyle = BorderStyle.NONE;
+            switch (style.get(Stylist.Element.BORDER)) {
+                case Stylist.Style.BorderStyle_THIN -> {
+                    borderStyle = BorderStyle.THIN;
+                }
+                case Stylist.Style.BorderStyle_MEDIUM -> {
+                    borderStyle = BorderStyle.MEDIUM;
+                }
+            }
+            cellStyle.setBorderTop(borderStyle);
+            cellStyle.setBorderBottom(borderStyle);
+            cellStyle.setBorderLeft(borderStyle);
+            cellStyle.setBorderRight(borderStyle);
+        }
+
+        cellStyle.setWrapText(true);
+        return cellStyle;
+    }
+    public Font fontStyleFactory(String style, int size) {
+        Font font = this.workbook.createFont();
+            switch (style) {
+                case Stylist.Style.Font_TimeNewRoman_NORMAL -> {
+                    font.setFontName("Times New Roman");
+                    font.setBold(false);
+                    font.setItalic(false);
+                }
+                case Stylist.Style.Font_TimeNewRoman_BOLD -> {
+                    font.setFontName("Times New Roman");
+                    font.setBold(true);
+                    font.setItalic(false);
+                }
+                case Stylist.Style.Font_TimeNewRoman_ITALIC -> {
+                    font.setFontName("Times New Roman");
+                    font.setBold(false);
+                    font.setItalic(true);
+                }
+                case Stylist.Style.Font_TimeNewRoman_BOLDTALIC -> {
+                    font.setFontName("Times New Roman");
+                    font.setBold(true);
+                    font.setItalic(true);
+            }
+        }
+        font.setFontHeightInPoints((short) size);
+        return font;
+    }
+
+    public RichTextString textStyleFactory(String style, String data, int size) {
+        int endPos = 0;
+        if (data.contains(":")) {
+            endPos = data.indexOf(":");
+        }else {
+            endPos = data.length();
+        }
+        RichTextString textString = new XSSFRichTextString(data);
+        switch (style) {
+            case Stylist.Style.Text_CUSTOMBOLD1 -> {
+
+                textString.applyFont(0, data.length(), fontStyleFactory(Stylist.Style.Font_TimeNewRoman_NORMAL, size));
+                textString.applyFont(0, endPos, fontStyleFactory(Stylist.Style.Font_TimeNewRoman_BOLD, size));
+            }
+            case Stylist.Style.Text_CUSTOMBOLD2 -> {
+                textString.applyFont(0, data.length(), fontStyleFactory(Stylist.Style.Font_TimeNewRoman_NORMAL, size));
+                textString.applyFont(0, endPos, fontStyleFactory(Stylist.Style.Font_TimeNewRoman_BOLDTALIC, size));
+            }
+        }
+        return textString;
+    }
+}

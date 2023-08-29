@@ -4,11 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class ThongTinKhachHang {
     String tenKhachHang;
     String diaChi;
     String soDienThoai;
     String date;
     String SanPham;
+
+    public ThongTinKhachHang(String tenKhachHang, String diaChi, String soDienThoai, String date, String sanPham) {
+        this.tenKhachHang = "Khách hàng : " + tenKhachHang;
+        this.diaChi = "Điện thoại: " + diaChi;
+        this.soDienThoai = "Địa chỉ : " + soDienThoai;
+        this.date = "Ngày: " + date;
+        SanPham = "Sản phẩm: " + sanPham;
+    }
 }

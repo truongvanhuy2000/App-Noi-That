@@ -18,18 +18,15 @@ public class CustomComboboxCell extends TreeTableCell<BangNoiThat, String> {
     }
     @Override
     public void startEdit() {
-        System.out.println("startEdit");
         if (!isEmpty()) {
             super.startEdit();
             createComboBox();
-//            super.setText(null);
             setGraphic(comboBox);
         }
     }
 
     @Override
     public void cancelEdit() {
-        System.out.println("cancelEdit");
         super.cancelEdit();
         super.setText(getItem());
         setGraphic(null);

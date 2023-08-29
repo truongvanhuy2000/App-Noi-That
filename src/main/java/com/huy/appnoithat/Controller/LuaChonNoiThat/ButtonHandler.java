@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
-import com.huy.appnoithat.Shared.ErrorUtils;
+import com.huy.appnoithat.Shared.PopupUtils;
 import com.huy.appnoithat.Shared.Utils;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TreeItem;
@@ -120,7 +120,7 @@ public class ButtonHandler {
 
     public boolean isReachedLimit(TreeItem<BangNoiThat> root){
         if (root.getChildren().size() >= 30){
-            ErrorUtils.throwErrorSignal("Đã đạt giới hạn số lượng 30");
+            PopupUtils.throwErrorSignal("Đã đạt giới hạn số lượng 30");
             return true;
         }
         return false;

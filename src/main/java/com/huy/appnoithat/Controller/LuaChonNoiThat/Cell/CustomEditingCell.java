@@ -58,7 +58,6 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
         textField.setOnAction((e) -> commitEdit(textField.getText()));
         textField.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
             if (!newValue) {
-                System.out.println("Commiting " + textField.getText());
                 commitEdit(textField.getText());
             }
         });
