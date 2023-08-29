@@ -14,8 +14,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class HomeController {
-    private static final String ADMIN_ROLE = "ADMIN";
-    private static final String USER_ROLE = "USER";
     @FXML
     private Button LogoutButton;
     @FXML
@@ -42,14 +40,14 @@ public class HomeController {
     // Initialize scene
     public void initialize() {
         // Hide all button
-        LuaChonNoiThatButton.setVisible(false);
-        QuanLyNguoiDungButton.setVisible(false);
+//        LuaChonNoiThatButton.setVisible(false);
+//        QuanLyNguoiDungButton.setVisible(false);
 
-//        // Set username using current session
-//        String username = sessionService.getSession().getUsername();
-//        UserName.setText(username);
-//
-//        // Show button based on role
+        // Set username using current session
+        String username = sessionService.getSession().getAccount().getUsername();
+        UserName.setText(username);
+
+        // Show button based on role
 //        switch (sessionService.getSession().getRoles().toLowerCase()) {
 //            case "admin" -> {
 //                QuanLyNguoiDungButton.setVisible(true);

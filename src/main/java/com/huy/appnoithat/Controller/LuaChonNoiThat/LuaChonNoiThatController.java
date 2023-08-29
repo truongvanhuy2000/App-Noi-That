@@ -5,9 +5,10 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.HangMucCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.KichThuocHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.STTCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.VatLieuCollumHandler;
-import com.huy.appnoithat.Scene.HomeScene;
-import com.huy.appnoithat.Scene.LuaChonNoiThatScene;
-import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
+import com.huy.appnoithat.DataModel.ThongTinCongTy;
+import com.huy.appnoithat.DataModel.ThongTinKhachHang;
+import com.huy.appnoithat.DataModel.ThongTinNoiThat;
+import com.huy.appnoithat.Service.FileExport.ExportXLS;
 import com.huy.appnoithat.Shared.ErrorUtils;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -16,11 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -30,37 +27,25 @@ import javafx.util.Duration;
 import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.LongStringConverter;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class LuaChonNoiThatController implements Initializable {
+    final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatController.class);
     // Thong Tin ve cong ty
     @FXML
-    private TextField TenCongTy;
-    @FXML
-    private TextField VanPhong;
-    @FXML
-    private TextField DiaChiXuong;
-    @FXML
-    private TextField DienThoaiCongTy;
-    @FXML
-    private TextField Email;
+    private TextField TenCongTy, VanPhong, DiaChiXuong, DienThoaiCongTy, Email;
     // Thong tin ve khach hang
     @FXML
-    private TextField TenKhachHang;
-    @FXML
-    private TextField DienThoaiKhachHang;
-    @FXML
-    private TextField DiaChiKhachHang;
-    @FXML
-    private TextField NgayLapBaoGia;
-    @FXML
-    private TextField SanPham;
-
+    private TextField TenKhachHang, DienThoaiKhachHang, DiaChiKhachHang, NgayLapBaoGia, SanPham;
     // Bang noi that
     @FXML
     private TreeTableView<BangNoiThat> TableNoiThat;
@@ -69,20 +54,12 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private TreeTableColumn<BangNoiThat, Long> DonGia, ThanhTien;
     @FXML
-    private TreeTableColumn<BangNoiThat, String> DonVi, HangMuc, VatLieu;
-    @FXML
-    private TreeTableColumn<BangNoiThat, String> STT;
+    private TreeTableColumn<BangNoiThat, String> DonVi, HangMuc, VatLieu, STT;
     // Button
     @FXML
-    private Button deleteButton;
-    @FXML
-    private Button addContinuousButton;
-    @FXML
-    private Button addNewButton;
+    private Button deleteButton, addContinuousButton, addNewButton, ExportButton;
     @FXML
     private ImageView ImageView;
-    public LuaChonNoiThatController() {
-    }
     public void initialize() {
     }
     @Override
@@ -92,7 +69,49 @@ public class LuaChonNoiThatController implements Initializable {
         deleteButton.setOnAction(buttonHandler::onDeleteLine);
         addNewButton.setOnAction(buttonHandler::addNewLine);
         addContinuousButton.setOnAction(buttonHandler::continuousLineAdd);
+        ExportButton.setOnAction(this::exportButtonHandler);
         workAroundToCollumWidthBug();
+    }
+    private void exportButtonHandler(ActionEvent event){
+        ExportXLS exportXLS = new ExportXLS();
+        exportXLS.setThongTinCongTy(getThongTinCongTy());
+        exportXLS.setThongTinKhachHang(getThongTinKhachHang());
+        exportXLS.setThongTinNoiThatList(getThongTinNoiThatList());
+    }
+
+    private List<ThongTinNoiThat> getThongTinNoiThatList(){
+        // This function will return a list of ThongTinNoiThat
+        List<ThongTinNoiThat> listNoiThat = new ArrayList<>();
+        // Get a list of phong cach item
+        TableNoiThat.getRoot().getChildren().forEach(
+                item -> {
+                    item.getChildren().forEach(
+                            item1 -> {
+                                listNoiThat.add(convertFromTreeItem(item1));
+                                item1.getChildren().forEach(
+                                        item2 -> {
+                                            listNoiThat.add(convertFromTreeItem(item2));
+                                        }
+                                );
+                            }
+                    );
+                }
+        );
+        return listNoiThat;
+    }
+    private ThongTinNoiThat convertFromTreeItem(TreeItem<BangNoiThat> item) {
+        return new ThongTinNoiThat(
+                item.getValue().getSTT().getValue(),
+                item.getValue().getHangMuc().getValue(),
+                item.getValue().getVatLieu().getValue(),
+                item.getValue().getDonVi().getValue(),
+                item.getValue().getCao().getValue().toString(),
+                item.getValue().getDai().getValue().toString(),
+                item.getValue().getRong().getValue().toString(),
+                item.getValue().getKhoiLuong().getValue().toString(),
+                item.getValue().getDonGia().getValue().toString(),
+                item.getValue().getThanhTien().getValue().toString()
+        );
     }
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {
@@ -113,7 +132,6 @@ public class LuaChonNoiThatController implements Initializable {
         try {
             Image image = new Image(new FileInputStream(file));
             ImageView.setImage(image);
-
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -123,6 +141,31 @@ public class LuaChonNoiThatController implements Initializable {
                 Duration.millis(1000),
                 ae -> TreeTableView.CONSTRAINED_RESIZE_POLICY.call(new TreeTableView.ResizeFeatures<>(TableNoiThat, HangMuc, 1.0))));
         timeline.play();
+    }
+
+    private ThongTinCongTy getThongTinCongTy() {
+        try {
+            return new ThongTinCongTy(
+                    new FileInputStream(ImageView.getImage().getUrl()),
+                    TenCongTy.getText(),
+                    VanPhong.getText(),
+                    DiaChiXuong.getText(),
+                    DienThoaiCongTy.getText(),
+                    Email.getText()
+            );
+        } catch (FileNotFoundException e) {
+            LOGGER.error("File not found");
+            throw new RuntimeException(e);
+        }
+    }
+    private ThongTinKhachHang getThongTinKhachHang(){
+        return new ThongTinKhachHang(
+                TenKhachHang.getText(),
+                DiaChiKhachHang.getText(),
+                DienThoaiKhachHang.getText(),
+                NgayLapBaoGia.getText(),
+                SanPham.getText()
+        );
     }
     private void setUpTable() {
         setUpCollum();

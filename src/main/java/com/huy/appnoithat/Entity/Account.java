@@ -1,14 +1,31 @@
 package com.huy.appnoithat.Entity;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Account {
+    @JsonProperty("id")
     private int id;
+    @JsonProperty("username")
     private String username;
+    @JsonProperty("password")
     private String password;
-    private int active;
-    private String roles;
+    @JsonProperty("active")
+    private boolean active;
+    @JsonProperty("accountInformation")
     private AccountInformation accountInformation;
+    @JsonProperty("enabled")
+    private boolean enabled;
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", active=" + active +
+                ", accountInformation=" + accountInformation +
+                '}';
+    }
 }

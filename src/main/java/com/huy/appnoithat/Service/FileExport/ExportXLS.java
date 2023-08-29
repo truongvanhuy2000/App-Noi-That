@@ -28,18 +28,27 @@ public class ExportXLS implements ExportFileService {
     private OutputStream outputFile;
     private XSSFWorkbook workbook;
     private XSSFSheet spreadsheet;
-    public ExportXLS(InputStream inputTemplate, OutputStream outputFile) {
-        this.inputTemplate = inputTemplate;
-        this.outputFile = outputFile;
+    public ExportXLS(OutputStream outputFile) {
+        try {
+            this.inputTemplate = new FileInputStream(Objects.requireNonNull(ExportXLS.class.getResource(DEFAULT_TEMPLATE_PATH)).getFile());
+            this.outputFile = outputFile;
+            initWorkbook();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     public ExportXLS() {
         try {
             this.inputTemplate = new FileInputStream(Objects.requireNonNull(ExportXLS.class.getResource(DEFAULT_TEMPLATE_PATH)).getFile());
             this.outputFile = new FileOutputStream(DEFAULT_OUTPUT_PATH);
-            workbook = new XSSFWorkbook(inputTemplate);
+            initWorkbook();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void initWorkbook() throws IOException {
+        workbook = new XSSFWorkbook(inputTemplate);
         spreadsheet = workbook.getSheet("Sheet1");
     }
 
@@ -136,18 +145,35 @@ public class ExportXLS implements ExportFileService {
         for (ThongTinNoiThat thongTinNoiThat : thongTinNoiThats) {
             spreadsheet.shiftRows(rowId, spreadsheet.getLastRowNum(), 1, true, true);
             Row newRow = createPopulatedRow(rowId, 10);
+            // If STT is roman, that mean it's the merge Row, we can call it title row
             if (Utils.RomanNumber.isRoman(thongTinNoiThat.getSTT())){
-                mergeCell(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange);
-                createCustomCellForRomanCollum(mergeRowId, cellId, thongTinNoiThat.getSTT());
-                createCustomCellForRomanCollum(mergeRowId, cellId + 1, thongTinNoiThat.getTenHangMuc());
-                createCustomCellForRomanCollum(mergeRowId, cellId + 9, thongTinNoiThat.getThanhTien());
+                exportNoiThatTitle(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, cellId, thongTinNoiThat);
             }
+            // If it's not roman, that mean it's the non merge row, we can call it content row
             else {
-
+                exportNoiThatContent(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, cellId, thongTinNoiThat);
             }
             rowId++;
             mergeRowId++;
         }
+    }
+    private void exportNoiThatTitle(int mergeRowId, int mergeColumnId, int mergeRowRange, int mergeColumnRange, int cellId, ThongTinNoiThat thongTinNoiThat) {
+        mergeCell(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange);
+        createCustomCellForRomanCollum(mergeRowId, cellId, thongTinNoiThat.getSTT());
+        createCustomCellForRomanCollum(mergeRowId, cellId + 1, thongTinNoiThat.getTenHangMuc());
+        createCustomCellForRomanCollum(mergeRowId, cellId + 9, thongTinNoiThat.getThanhTien());
+    }
+    private void exportNoiThatContent(int mergeRowId, int mergeColumnId, int mergeRowRange, int mergeColumnRange, int cellId, ThongTinNoiThat thongTinNoiThat) {
+        createCustomCellForRomanCollum(mergeRowId, cellId, thongTinNoiThat.getSTT());
+        createCustomCellForRomanCollum(mergeRowId, cellId + 1, thongTinNoiThat.getTenHangMuc());
+        createCustomCellForRomanCollum(mergeRowId, cellId + 2, thongTinNoiThat.getChiTiet());
+        createCustomCellForRomanCollum(mergeRowId, cellId + 3, thongTinNoiThat.getDai());
+        createCustomCellForRomanCollum(mergeRowId, cellId + 4, thongTinNoiThat.getRong());
+        createCustomCellForRomanCollum(mergeRowId, cellId + 5, thongTinNoiThat.getCao());
+        createCustomCellForRomanCollum(mergeRowId, cellId + 6, thongTinNoiThat.getDonGia());
+        createCustomCellForRomanCollum(mergeRowId, cellId + 7, thongTinNoiThat.getDonViTinh());
+        createCustomCellForRomanCollum(mergeRowId, cellId + 8, thongTinNoiThat.getSoLuong());
+        createCustomCellForRomanCollum(mergeRowId, cellId + 9, thongTinNoiThat.getThanhTien());
     }
     private void createCustomCellForRomanCollum(int rowId, int cellId, String data) {
         Cell cell0 = spreadsheet.getRow(rowId).getCell(cellId);
