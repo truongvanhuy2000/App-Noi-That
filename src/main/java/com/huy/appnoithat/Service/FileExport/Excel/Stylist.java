@@ -20,5 +20,19 @@ public class Stylist {
 
         public static final String Text_CUSTOMBOLD1 = "Text_CUSTOMBOLD1";
         public static final String Text_CUSTOMBOLD2 = "Text_CUSTOMBOLD2";
+        public static final String Text_BOLDALL = "Text_BOLDALL";
+        public static final String Text_NORMAL = "Text_NORMAL";
+    }
+    static class Preset {
+        public static final String NormalText_TimeNewRoman_CenterBoth_ThinBorder = "NormalText_TimeNewRoman_CenterBoth_ThinBorder";
+        public static final String BoldText01_TimeNewRoman_CenterBoth_ThinBorder = "BoldText01_TimeNewRoman_CenterBoth_ThinBorder";
+        public static final String BoldText02_TimeNewRoman_CenterBoth_ThinBorder = "BoldText02_TimeNewRoman_CenterBoth_ThinBorder";
+        public static final String BoldAll_TimeNewRoman_CenterBoth_ThinBorder = "BoldAll_TimeNewRoman_CenterBoth_ThinBorder";
+
+        public static final String NormalText_TimeNewRoman_VerticalCenter_ThinBorder = "NormalText_TimeNewRoman_VerticalCenter_ThinBorder";
+        public static final String BoldText01_TimeNewRoman_VerticalCenter_ThinBorder = "BoldText01_TimeNewRoman_VerticalCenter_ThinBorder";
+        public static final String BoldText02_TimeNewRoman_VerticalCenter_ThinBorder = "BoldText02_TimeNewRoman_VerticalCenter_ThinBorder";
+        public static final String BoldAll_TimeNewRoman_VerticalCenter_ThinBorder = "BoldAll_TimeNewRoman_VerticalCenter_ThinBorder";
+
     }
 }

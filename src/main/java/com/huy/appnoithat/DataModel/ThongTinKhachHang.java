@@ -13,8 +13,8 @@ public class ThongTinKhachHang {
 
     public ThongTinKhachHang(String tenKhachHang, String diaChi, String soDienThoai, String date, String sanPham) {
         this.tenKhachHang = "Khách hàng : " + tenKhachHang;
-        this.diaChi = "Điện thoại: " + diaChi;
-        this.soDienThoai = "Địa chỉ : " + soDienThoai;
+        this.diaChi = "Địa chỉ: " + diaChi;
+        this.soDienThoai = "Điện thoại: " + soDienThoai;
         this.date = "Ngày: " + date;
         SanPham = "Sản phẩm: " + sanPham;
     }

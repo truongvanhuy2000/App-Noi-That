@@ -68,13 +68,10 @@ public class ExportXLS implements ExportFileService {
         exportNoiThat(this.thongTinNoiThatList);
         save();
     }
-    private void mergeCell(int row, int col, int rowSpan, int colSpan) {
-        spreadsheet.addMergedRegion(new org.apache.poi.ss.util.CellRangeAddress(row, row + rowSpan, col, col + colSpan));
-    }
-    private void customWriteForInformation(String data, int row, int cell, int fontSize, CellStyle cellStyle) {
-        Cell cell0 = spreadsheet.getRow(row).getCell(cell);
-        cell0.setCellValue(stylistFactory.textStyleFactory(Stylist.Style.Text_CUSTOMBOLD1, data, fontSize));
-        cell0.setCellStyle(cellStyle);
+    private void mergeCells(int row, int col, int rowSpan, int colSpan, int howMany) {
+        for (int i = 0; i < howMany; i++) {
+            spreadsheet.addMergedRegion(new org.apache.poi.ss.util.CellRangeAddress(row + i, row + rowSpan + i, col, col + colSpan));
+        }
     }
     private void exportThongTinCongTy(ThongTinCongTy thongTinCongTy) {
         int mergeColumnRange = 7;
@@ -90,20 +87,22 @@ public class ExportXLS implements ExportFileService {
                 Stylist.Element.BORDER, Stylist.Style.BorderStyle_THIN
         ));
 
-        mergeCell(mergeRowId++, mergeColumnId, mergeRowRange, mergeColumnRange);
-        customWriteForInformation(thongTinCongTy.getTenCongTy(), rowId++, cellId, 18, cellStyle);
+        mergeCells(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, 5);
 
-        mergeCell(mergeRowId++, mergeColumnId, mergeRowRange, mergeColumnRange);
-        customWriteForInformation(thongTinCongTy.getDiaChiVanPhong(), rowId++, cellId, 13, cellStyle);
+        Cell cell0 = spreadsheet.getRow(rowId++).getCell(cellId);
+        stylistFactory.CellPresetFactory(cell0, thongTinCongTy.getTenCongTy(), 18, Stylist.Preset.BoldAll_TimeNewRoman_VerticalCenter_ThinBorder);
 
-        mergeCell(mergeRowId++, mergeColumnId, mergeRowRange, mergeColumnRange);
-        customWriteForInformation(thongTinCongTy.getDiaChiXuong(), rowId++, cellId, 13, cellStyle);
+        Cell cell1 = spreadsheet.getRow(rowId++).getCell(cellId);
+        stylistFactory.CellPresetFactory(cell1, thongTinCongTy.getDiaChiVanPhong(), 13, Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_ThinBorder);
 
-        mergeCell(mergeRowId++, mergeColumnId, mergeRowRange, mergeColumnRange);
-        customWriteForInformation(thongTinCongTy.getSoDienThoai(), rowId++, cellId, 13, cellStyle);
+        Cell cell2 = spreadsheet.getRow(rowId++).getCell(cellId);
+        stylistFactory.CellPresetFactory(cell2, thongTinCongTy.getDiaChiXuong(), 13, Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_ThinBorder);
 
-        mergeCell(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange);
-        customWriteForInformation(thongTinCongTy.getEmail(), rowId, cellId, 13, cellStyle);
+        Cell cell3 = spreadsheet.getRow(rowId++).getCell(cellId);
+        stylistFactory.CellPresetFactory(cell3, thongTinCongTy.getSoDienThoai(), 13, Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_ThinBorder);
+
+        Cell cell4 = spreadsheet.getRow(rowId).getCell(cellId);
+        stylistFactory.CellPresetFactory(cell4, thongTinCongTy.getEmail(), 13, Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_ThinBorder);
     }
 
     private void exportThongTinKhachHang(ThongTinKhachHang thongTinKhachHang) {
@@ -115,24 +114,22 @@ public class ExportXLS implements ExportFileService {
         int cellId = 0;
         int rowId = 6;
 
-        CellStyle cellStyle = stylistFactory.cellStyleFactory(Map.of(
-                Stylist.Element.ALIGNMENT, Stylist.Style.VerticalAlignment_CENTER
-        ));
+        mergeCells(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, 5);
 
-        mergeCell(mergeRowId++, mergeColumnId, mergeRowRange, mergeColumnRange);
-        customWriteForInformation(thongTinKhachHang.getTenKhachHang(), rowId++, cellId, 13, cellStyle);
+        Cell cell0 = spreadsheet.getRow(rowId++).getCell(cellId);
+        stylistFactory.CellPresetFactory(cell0, thongTinKhachHang.getTenKhachHang(), 13, Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_ThinBorder);
 
-        mergeCell(mergeRowId++, mergeColumnId, mergeRowRange, mergeColumnRange);
-        customWriteForInformation(thongTinKhachHang.getSoDienThoai(), rowId++, cellId, 13, cellStyle);
+        Cell cell1 = spreadsheet.getRow(rowId++).getCell(cellId);
+        stylistFactory.CellPresetFactory(cell1, thongTinKhachHang.getDiaChi(), 13, Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_ThinBorder);
 
-        mergeCell(mergeRowId++, mergeColumnId, mergeRowRange, mergeColumnRange);
-        customWriteForInformation(thongTinKhachHang.getDiaChi(), rowId++, cellId, 13, cellStyle);
+        Cell cell2 = spreadsheet.getRow(rowId++).getCell(cellId);
+        stylistFactory.CellPresetFactory(cell2, thongTinKhachHang.getSoDienThoai(), 13, Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_ThinBorder);
 
-        mergeCell(mergeRowId++, mergeColumnId, mergeRowRange, mergeColumnRange);
-        customWriteForInformation(thongTinKhachHang.getDate(), rowId++, cellId, 13, cellStyle);
+        Cell cell3 = spreadsheet.getRow(rowId++).getCell(cellId);
+        stylistFactory.CellPresetFactory(cell3, thongTinKhachHang.getDate(), 13, Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_ThinBorder);
 
-        mergeCell(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange);
-        customWriteForInformation(thongTinKhachHang.getSanPham(), rowId, cellId, 13, cellStyle);
+        Cell cell4 = spreadsheet.getRow(rowId).getCell(cellId);
+        stylistFactory.CellPresetFactory(cell4, thongTinKhachHang.getSanPham(), 13, Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_ThinBorder);
     }
 
     private void exportNoiThat(List<ThongTinNoiThat> thongTinNoiThats) {
@@ -160,22 +157,47 @@ public class ExportXLS implements ExportFileService {
         }
     }
     private void exportNoiThatTitle(int mergeRowId, int mergeColumnId, int mergeRowRange, int mergeColumnRange, int cellId, ThongTinNoiThat thongTinNoiThat) {
-        mergeCell(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange);
-        createCustomCellForRomanCollum(mergeRowId, cellId, thongTinNoiThat.getSTT());
-        createCustomCellForRomanCollum(mergeRowId, cellId + 1, thongTinNoiThat.getTenHangMuc());
-        createCustomCellForRomanCollum(mergeRowId, cellId + 9, thongTinNoiThat.getThanhTien());
+        mergeCells(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, 1);
+
+        Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
+        stylistFactory.CellPresetFactory(cell0, thongTinNoiThat.getSTT(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+
+        Cell cell1 = spreadsheet.getRow(mergeRowId).getCell(cellId + 1);
+        stylistFactory.CellPresetFactory(cell1, thongTinNoiThat.getTenHangMuc(), 14, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
+
+        Cell cell2 = spreadsheet.getRow(mergeRowId).getCell(cellId + 9);
+        stylistFactory.CellPresetFactory(cell2, thongTinNoiThat.getThanhTien(), 18, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
     }
     private void exportNoiThatContent(int mergeRowId, int mergeColumnId, int mergeRowRange, int mergeColumnRange, int cellId, ThongTinNoiThat thongTinNoiThat) {
-        createCustomCellForRomanCollum(mergeRowId, cellId, thongTinNoiThat.getSTT());
-        createCustomCellForRomanCollum(mergeRowId, cellId + 1, thongTinNoiThat.getTenHangMuc());
-        createCustomCellForRomanCollum(mergeRowId, cellId + 2, thongTinNoiThat.getChiTiet());
-        createCustomCellForRomanCollum(mergeRowId, cellId + 3, thongTinNoiThat.getDai());
-        createCustomCellForRomanCollum(mergeRowId, cellId + 4, thongTinNoiThat.getRong());
-        createCustomCellForRomanCollum(mergeRowId, cellId + 5, thongTinNoiThat.getCao());
-        createCustomCellForRomanCollum(mergeRowId, cellId + 6, thongTinNoiThat.getDonGia());
-        createCustomCellForRomanCollum(mergeRowId, cellId + 7, thongTinNoiThat.getDonViTinh());
-        createCustomCellForRomanCollum(mergeRowId, cellId + 8, thongTinNoiThat.getSoLuong());
-        createCustomCellForRomanCollum(mergeRowId, cellId + 9, thongTinNoiThat.getThanhTien());
+        Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
+        stylistFactory.CellPresetFactory(cell0, thongTinNoiThat.getSTT(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+
+        Cell cell1 = spreadsheet.getRow(mergeRowId).getCell(cellId + 1);
+        stylistFactory.CellPresetFactory(cell1, thongTinNoiThat.getTenHangMuc(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+
+        Cell cell2 = spreadsheet.getRow(mergeRowId).getCell(cellId + 2);
+        stylistFactory.CellPresetFactory(cell2, thongTinNoiThat.getChiTiet(), 12, Stylist.Preset.BoldText01_TimeNewRoman_CenterBoth_ThinBorder);
+
+        Cell cell3 = spreadsheet.getRow(mergeRowId).getCell(cellId + 3);
+        stylistFactory.CellPresetFactory(cell3, thongTinNoiThat.getDai(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+
+        Cell cell4 = spreadsheet.getRow(mergeRowId).getCell(cellId + 4);
+        stylistFactory.CellPresetFactory(cell4, thongTinNoiThat.getRong(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+
+        Cell cell5 = spreadsheet.getRow(mergeRowId).getCell(cellId + 5);
+        stylistFactory.CellPresetFactory(cell5, thongTinNoiThat.getCao(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+
+        Cell cell6 = spreadsheet.getRow(mergeRowId).getCell(cellId + 6);
+        stylistFactory.CellPresetFactory(cell6, thongTinNoiThat.getDonGia(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+
+        Cell cell7 = spreadsheet.getRow(mergeRowId).getCell(cellId + 7);
+        stylistFactory.CellPresetFactory(cell7, thongTinNoiThat.getDonViTinh(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+
+        Cell cell8 = spreadsheet.getRow(mergeRowId).getCell(cellId + 8);
+        stylistFactory.CellPresetFactory(cell8, thongTinNoiThat.getSoLuong(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+
+        Cell cell9 = spreadsheet.getRow(mergeRowId).getCell(cellId + 9);
+        stylistFactory.CellPresetFactory(cell9, thongTinNoiThat.getThanhTien(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
     }
     private void createCustomCellForRomanCollum(int rowId, int cellId, String data) {
         Cell cell0 = spreadsheet.getRow(rowId).getCell(cellId);

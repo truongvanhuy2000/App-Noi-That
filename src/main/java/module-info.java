@@ -12,6 +12,7 @@ module com.huy.appnoithat {
     requires org.apache.poi.ooxml;
     requires org.apache.poi.poi;
     requires org.apache.logging.log4j;
+    requires java.desktop;
 
     exports com.huy.appnoithat.Controller;
     opens com.huy.appnoithat.Controller to javafx.fxml;

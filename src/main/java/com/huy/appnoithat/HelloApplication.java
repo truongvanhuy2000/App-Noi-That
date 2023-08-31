@@ -5,7 +5,7 @@ import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import javafx.application.Application;
 import javafx.stage.Stage;
-
+import java.awt.im.InputContext;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage){
@@ -21,6 +21,7 @@ public class HelloApplication extends Application {
         stage.show();
     }
     public static void main(String[] args){
+        InputContext.getInstance();
         launch();
     }
 }
