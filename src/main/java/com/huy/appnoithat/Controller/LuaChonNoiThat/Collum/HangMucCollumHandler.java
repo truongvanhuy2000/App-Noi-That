@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomComboboxCell;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Shared.PopupUtils;

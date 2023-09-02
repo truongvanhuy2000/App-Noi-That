@@ -1,11 +1,8 @@
-package com.huy.appnoithat.Controller.LuaChonNoiThat;
+package com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel;
 
 import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

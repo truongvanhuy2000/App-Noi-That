@@ -1,16 +1,23 @@
 package com.huy.appnoithat.Shared;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
-
 public class Utils {
     public static boolean isAlpha(String name) {
         return name.matches("[a-zA-Z]+");
     }
     public static boolean isNumeric(String str) {
         return str.matches("-?\\d+(\\.\\d+)?");
+    }
+    public static String encodeValue(String value) {
+        return URLEncoder.encode(value, StandardCharsets.UTF_8);
+    }
+    public static String decodeValue(String value) {
+        return URLEncoder.encode(value, StandardCharsets.UTF_8);
     }
     public static class RomanNumber {
         public static String toRoman(int number) {

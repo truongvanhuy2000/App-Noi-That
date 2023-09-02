@@ -1,17 +1,17 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.LuaChonNoiThatScene;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
 
 import java.io.IOException;
 import java.net.URL;
@@ -66,14 +66,58 @@ public class NewTabController implements Initializable {
     }
     private void duplicateTab(ActionEvent action, Tab currentTab) {
         Node nodeFromCurrentTab = currentTab.getContent();
-//        nodeFromCurrentTab.lookupAll();
         Tab newTab = setUpTab();
         try {
             Node root = LuaChonNoiThatScene.getNewRoot();
-            newTab.setContent(root);
+            newTab.setContent(duplicateContent(nodeFromCurrentTab, root));
         } catch (IOException e) {
             throw new RuntimeException();
         }
+        addNewTabToPane(newTab);
+    }
+    private Node duplicateContent(Node nodeFromCurrentTab, Node nodeFromNewTab){
+        TextField TenCongTy = (TextField) nodeFromCurrentTab.lookup("#TenCongTy");
+        TextField VanPhong = (TextField) nodeFromCurrentTab.lookup("#VanPhong");
+        TextField DiaChiXuong = (TextField) nodeFromCurrentTab.lookup("#DiaChiXuong");
+        TextField DienThoaiCongTy = (TextField) nodeFromCurrentTab.lookup("#DienThoaiCongTy");
+        TextField Email = (TextField) nodeFromCurrentTab.lookup("#Email");
+        TextField TenKhachHang = (TextField) nodeFromCurrentTab.lookup("#TenKhachHang");
+        TextField DienThoaiKhachHang = (TextField) nodeFromCurrentTab.lookup("#DienThoaiKhachHang");
+        TextField DiaChiKhachHang = (TextField) nodeFromCurrentTab.lookup("#DiaChiKhachHang");
+        TextField SanPham = (TextField) nodeFromCurrentTab.lookup("#SanPham");
+        ImageView imageView = (ImageView) nodeFromCurrentTab.lookup("#ImageView");
+        TreeTableView<BangNoiThat> bangNoiThat = (TreeTableView<BangNoiThat>) nodeFromCurrentTab.lookup("#TableNoiThat");
+        TableView<BangThanhToan> bangThanhToan = (TableView<BangThanhToan>) nodeFromCurrentTab.lookup("#bangThanhToan");
+
+        TextField DuplicateTenCongTy = (TextField) nodeFromNewTab.lookup("#TenCongTy");
+        DuplicateTenCongTy.setText(TenCongTy.getText());
+        TextField DuplicateVanPhong = (TextField) nodeFromNewTab.lookup("#VanPhong");
+        DuplicateVanPhong.setText(VanPhong.getText());
+        TextField DuplicateDiaChiXuong = (TextField) nodeFromNewTab.lookup("#DiaChiXuong");
+        DuplicateDiaChiXuong.setText(DiaChiXuong.getText());
+        TextField DuplicateDienThoaiCongTy = (TextField) nodeFromNewTab.lookup("#DienThoaiCongTy");
+        DuplicateDienThoaiCongTy.setText(DienThoaiCongTy.getText());
+        TextField DuplicateEmail = (TextField) nodeFromNewTab.lookup("#Email");
+        DuplicateEmail.setText(Email.getText());
+        TextField DuplicateTenKhachHang = (TextField) nodeFromNewTab.lookup("#TenKhachHang");
+        DuplicateTenKhachHang.setText(TenKhachHang.getText());
+        TextField DuplicateDienThoaiKhachHang = (TextField) nodeFromNewTab.lookup("#DienThoaiKhachHang");
+        DuplicateDienThoaiKhachHang.setText(DienThoaiKhachHang.getText());
+        TextField DuplicateDiaChiKhachHang = (TextField) nodeFromNewTab.lookup("#DiaChiKhachHang");
+        DuplicateDiaChiKhachHang.setText(DiaChiKhachHang.getText());
+        TextField DuplicateSanPham = (TextField) nodeFromNewTab.lookup("#SanPham");
+        DuplicateSanPham.setText(SanPham.getText());
+        ImageView DuplicateImageView = (ImageView) nodeFromNewTab.lookup("#ImageView");
+        DuplicateImageView.setImage(imageView.getImage());
+        TreeTableView<BangNoiThat> DuplicateBangNoiThat = (TreeTableView<BangNoiThat>) nodeFromNewTab.lookup("#TableNoiThat");
+        DuplicateBangNoiThat.setRoot(new TreeItem<>(bangNoiThat.getRoot().getValue()));
+        DuplicateBangNoiThat.getRoot().getChildren().addAll(bangNoiThat.getRoot().getChildren());
+
+        TableView<BangThanhToan> DuplicateBangThanhToan = (TableView<BangThanhToan>) nodeFromNewTab.lookup("#bangThanhToan");
+        DuplicateBangThanhToan.getItems().clear();
+        DuplicateBangThanhToan.getItems().addAll(bangThanhToan.getItems());
+
+        return nodeFromNewTab;
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

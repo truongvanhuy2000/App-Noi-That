@@ -9,12 +9,16 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
+import org.apache.poi.xssf.usermodel.XSSFDrawing;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 @Getter
@@ -81,11 +85,6 @@ public class ExportXLS implements ExportFileService {
 
         int cellId = 2;
         int rowId = 0;
-
-        CellStyle cellStyle = stylistFactory.cellStyleFactory(Map.of(
-                Stylist.Element.ALIGNMENT, Stylist.Style.VerticalAlignment_CENTER,
-                Stylist.Element.BORDER, Stylist.Style.BorderStyle_THIN
-        ));
 
         mergeCells(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, 5);
 
@@ -188,26 +187,16 @@ public class ExportXLS implements ExportFileService {
         stylistFactory.CellPresetFactory(cell5, thongTinNoiThat.getCao(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
 
         Cell cell6 = spreadsheet.getRow(mergeRowId).getCell(cellId + 6);
-        stylistFactory.CellPresetFactory(cell6, thongTinNoiThat.getDonGia(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.CellPresetFactory(cell6, thongTinNoiThat.getDonViTinh(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
 
         Cell cell7 = spreadsheet.getRow(mergeRowId).getCell(cellId + 7);
-        stylistFactory.CellPresetFactory(cell7, thongTinNoiThat.getDonViTinh(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.CellPresetFactory(cell7, thongTinNoiThat.getDonGia(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
 
         Cell cell8 = spreadsheet.getRow(mergeRowId).getCell(cellId + 8);
         stylistFactory.CellPresetFactory(cell8, thongTinNoiThat.getSoLuong(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
 
         Cell cell9 = spreadsheet.getRow(mergeRowId).getCell(cellId + 9);
         stylistFactory.CellPresetFactory(cell9, thongTinNoiThat.getThanhTien(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
-    }
-    private void createCustomCellForRomanCollum(int rowId, int cellId, String data) {
-        Cell cell0 = spreadsheet.getRow(rowId).getCell(cellId);
-        CellStyle cellStyle = stylistFactory.cellStyleFactory(Map.of(
-                Stylist.Element.ALIGNMENT, Stylist.Style.Alignment_BOTH,
-                Stylist.Element.BORDER, Stylist.Style.BorderStyle_THIN
-        ));
-        cellStyle.setFont(stylistFactory.fontStyleFactory(Stylist.Style.Font_TimeNewRoman_BOLD, 14));
-        cell0.setCellValue(data.toUpperCase());
-        cell0.setCellStyle(cellStyle);
     }
     private Row createPopulatedRow(int rowId, int num) {
         Row newRow = spreadsheet.createRow(rowId);

@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Shared.PopupUtils;
 import com.huy.appnoithat.Shared.Utils;
 import javafx.event.ActionEvent;
@@ -130,7 +131,12 @@ public class ButtonHandler {
         if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
             return;
         }
-        TreeItem<BangNoiThat> currentSelectedItem = TableNoiThat.getSelectionModel().getSelectedItem();
-        currentSelectedItem.getParent().getChildren().remove(currentSelectedItem);
+        TableNoiThat.getSelectionModel().getSelectedItems().forEach(
+                item -> {
+                    if (item.getParent() != null) {
+                        item.getParent().getChildren().remove(item);
+                    }
+                }
+        );
     }
 }

@@ -27,7 +27,7 @@ class ExportXLSTest {
                 "tu quan ao");
         try {
             thongTinCongTy = new ThongTinCongTy(
-                    new FileInputStream("/home/huy/Pictures/download.jpeg"),
+                    new FileInputStream("/home/huy/Downloads/att-logo.png"),
                     "Công ty TNHH Nội Thất Huy",
                     "123 Nguyễn Văn Cừ, Quận 5, TP.HCM",
                     "123 Nguyễn Văn Cừ, Quận 5, TP.HCM",
@@ -56,7 +56,7 @@ class ExportXLSTest {
                 "100",
                 "200",
                 "300",
-                "400",
+                "cm",
                 "500",
                 "600",
                 "1000000");

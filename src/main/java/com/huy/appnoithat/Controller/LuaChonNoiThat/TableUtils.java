@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Shared.PopupUtils;
 import com.huy.appnoithat.Shared.Utils;
 import javafx.scene.control.TreeItem;
@@ -49,6 +50,18 @@ public class TableUtils {
 
     public static Long calculateThanhTien(float khoiLuong, long donGia){
         return (long) (khoiLuong*donGia);
+    }
+
+    public static void calculateTongTien(TreeItem<BangNoiThat> item){
+        Long tongTien = 0L;
+        if (item == null){
+            return;
+        }
+        for (TreeItem<BangNoiThat> child : item.getChildren()){
+            tongTien += child.getValue().getThanhTien().getValue();
+        }
+        item.getValue().setThanhTien(tongTien);
+        calculateTongTien(item.getParent());
     }
 
     public static boolean isEditable(TreeTableView<BangNoiThat> TableNoiThat){

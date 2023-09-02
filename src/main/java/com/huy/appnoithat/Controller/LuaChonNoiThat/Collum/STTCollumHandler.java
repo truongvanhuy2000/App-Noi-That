@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomEditingCell;
 import com.huy.appnoithat.Shared.PopupUtils;
 import com.huy.appnoithat.Shared.Utils;
@@ -14,7 +14,7 @@ import javafx.scene.control.TreeTableView;
 
 
 public class STTCollumHandler {
-    private TreeTableView<BangNoiThat> TableNoiThat;
+    private final TreeTableView<BangNoiThat> TableNoiThat;
 
     public STTCollumHandler(TreeTableView<BangNoiThat> tableNoiThat) {
         this.TableNoiThat = tableNoiThat;

@@ -5,6 +5,8 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.HangMucCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.KichThuocHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.STTCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.VatLieuCollumHandler;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
@@ -20,7 +22,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -33,7 +38,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -59,22 +66,43 @@ public class LuaChonNoiThatController implements Initializable {
     private Button deleteButton, addContinuousButton, addNewButton, ExportButton;
     @FXML
     private ImageView ImageView;
+
+    @FXML
+    private TableColumn<BangThanhToan, Long> DatCocThiCong30, DatCocThietKe10, HangDenChanCongTrinh50, NghiemThuQuyet;
+    @FXML
+    private TableView<BangThanhToan> bangThanhToan;
     private ByteArrayOutputStream imageStream;
     public void initialize() {
     }
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
-        setUpTable();
+        setUpBangThanhToan();
+        setUpBangNoiThat();
         ButtonHandler buttonHandler = new ButtonHandler(TableNoiThat);
         deleteButton.setOnAction(buttonHandler::onDeleteLine);
         addNewButton.setOnAction(buttonHandler::addNewLine);
         addContinuousButton.setOnAction(buttonHandler::continuousLineAdd);
         ExportButton.setOnAction(this::exportButtonHandler);
+        ExportButton.disableProperty().bind(
+                TenCongTy.textProperty().isEmpty().or(
+                VanPhong.textProperty().isEmpty().or(
+                DiaChiXuong.textProperty().isEmpty().or(
+                DienThoaiCongTy.textProperty().isEmpty().or(
+                Email.textProperty().isEmpty().or(
+                TenKhachHang.textProperty().isEmpty().or(
+                DienThoaiKhachHang.textProperty().isEmpty().or(
+                DiaChiKhachHang.textProperty().isEmpty().or(
+                SanPham.textProperty().isEmpty()))))))))
+        );
+        NgayLapBaoGia.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
         workAroundToCollumWidthBug();
     }
     private void exportButtonHandler(ActionEvent event){
         try {
-            ExportXLS exportXLS = new ExportXLS();
+            DirectoryChooser directoryChooser = new DirectoryChooser();
+            File selectedDirectory = directoryChooser.showDialog(new Stage());
+            if (selectedDirectory == null) return;
+            ExportXLS exportXLS = new ExportXLS(new FileOutputStream(new File(selectedDirectory, "BaoGia.xls")));
             exportXLS.setThongTinCongTy(getThongTinCongTy());
             exportXLS.setThongTinKhachHang(getThongTinKhachHang());
             exportXLS.setThongTinNoiThatList(getThongTinNoiThatList());
@@ -85,7 +113,9 @@ public class LuaChonNoiThatController implements Initializable {
         }
         PopupUtils.throwSuccessSignal("Xuất file thành công");
     }
-
+    private String populateFileName() {
+        return null;
+    }
     private List<ThongTinNoiThat> getThongTinNoiThatList(){
         // This function will return a list of ThongTinNoiThat
         List<ThongTinNoiThat> listNoiThat = new ArrayList<>();
@@ -111,12 +141,12 @@ public class LuaChonNoiThatController implements Initializable {
                 item.getValue().getSTT().getValue(),
                 item.getValue().getHangMuc().getValue(),
                 item.getValue().getVatLieu().getValue(),
-                item.getValue().getDonVi().getValue(),
-                item.getValue().getCao().getValue().toString(),
                 item.getValue().getDai().getValue().toString(),
                 item.getValue().getRong().getValue().toString(),
-                item.getValue().getKhoiLuong().getValue().toString(),
+                item.getValue().getCao().getValue().toString(),
+                item.getValue().getDonVi().getValue(),
                 item.getValue().getDonGia().getValue().toString(),
+                item.getValue().getKhoiLuong().getValue().toString(),
                 item.getValue().getThanhTien().getValue().toString()
         );
     }
@@ -127,14 +157,24 @@ public class LuaChonNoiThatController implements Initializable {
             imageViewHandler();
         }
     }
+    @FXML
+    void onKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.DELETE){
+            if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
+                return;
+            }
+            TableNoiThat.getSelectionModel().getSelectedItems().forEach(
+                    item -> {
+                        if (item.getParent() != null) {
+                            item.getParent().getChildren().remove(item);
+                        }
+                    }
+            );
+        }
+        TableNoiThat.getSelectionModel().clearSelection();
+    }
     private void imageViewHandler(){
         FileChooser fileChooser = new FileChooser();
-        //Set extension filter
-//        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
-//        FileChooser.ExtensionFilter extFilterJPEG = new FileChooser.ExtensionFilter("JPEG files (*.jpeg)", "*.JPEG");
-//        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
-//        fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG, extFilterJPEG);
-
         File file = fileChooser.showOpenDialog(new Stage());
         if (file == null) return;
         String fileExtension = FilenameUtils.getExtension(file.getName());
@@ -152,16 +192,13 @@ public class LuaChonNoiThatController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-
     private void workAroundToCollumWidthBug(){
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(1000),
                 ae -> TreeTableView.CONSTRAINED_RESIZE_POLICY.call(new TreeTableView.ResizeFeatures<>(TableNoiThat, HangMuc, 1.0))));
         timeline.play();
     }
-
     private ThongTinCongTy getThongTinCongTy() throws IOException {
-
         return new ThongTinCongTy(
                 new ByteArrayInputStream(imageStream.toByteArray()),
                 TenCongTy.getText(),
@@ -180,14 +217,44 @@ public class LuaChonNoiThatController implements Initializable {
                 SanPham.getText()
         );
     }
-    private void setUpTable() {
+    private void setUpBangNoiThat() {
         setUpCollum();
-        TreeItem<BangNoiThat> itemRoot = new TreeItem<>(new BangNoiThat("0", 0f, 0f, 0f, 0L, "", "IM root", "", 0L, 0f));
+        TableNoiThat.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        if (TableNoiThat.getRoot() != null) return;
+        TreeItem<BangNoiThat> itemRoot = new TreeItem<>(
+                new BangNoiThat("0", 0f, 0f, 0f, 0L, "", "IM root", "", 0L, 0f));
+        itemRoot.getValue().getThanhTien().addListener((observableValue, aLong, t1) -> {
+            calculateBangThanhToan(t1.longValue());
+        });
         TableNoiThat.setRoot(itemRoot);
         TableNoiThat.setShowRoot(false);
         TableNoiThat.setEditable(true);
-        TreeItem<BangNoiThat> newItem = new TreeItem<>(new BangNoiThat("A", 0f, 0f, 0f, 0L, "", "", "", 0L, 0f));
+        TreeItem<BangNoiThat> newItem = new TreeItem<>(
+                new BangNoiThat("A", 0f, 0f, 0f, 0L, "", "", "", 0L, 0f));
         itemRoot.getChildren().add(newItem);
+    }
+    private void setUpBangThanhToan() {
+        DatCocThietKe10.setCellValueFactory(param -> param.getValue().getDatCocThietKe10().asObject());
+        DatCocThiCong30.setCellValueFactory(param -> param.getValue().getDatCocThiCong30().asObject());
+        HangDenChanCongTrinh50.setCellValueFactory(param -> param.getValue().getHangDenChanCongTrinh50().asObject());
+        NghiemThuQuyet.setCellValueFactory(param -> param.getValue().getNghiemThuQuyet().asObject());
+        if (bangThanhToan.getItems().isEmpty()){
+            bangThanhToan.setItems(FXCollections.observableArrayList(
+                    new BangThanhToan(0L, 0L, 0L, 0L)
+            ));
+        }
+
+    }
+    private void calculateBangThanhToan(Long tongTien) {
+        Long datCocThietKe10 = (long) (tongTien*0.1);
+        Long datCocThiCong30 = (long) (tongTien*0.3);
+        Long hangDenChanCongTrinh50 = (long) (tongTien*0.5);
+        Long nghiemThuQuyet = tongTien - datCocThietKe10 - datCocThiCong30 - hangDenChanCongTrinh50;
+
+        bangThanhToan.getItems().get(0).setDatCocThietKe10(datCocThietKe10);
+        bangThanhToan.getItems().get(0).setDatCocThiCong30(datCocThiCong30);
+        bangThanhToan.getItems().get(0).setHangDenChanCongTrinh50(hangDenChanCongTrinh50);
+        bangThanhToan.getItems().get(0).setNghiemThuQuyet(nghiemThuQuyet);
     }
     private void setUpCollum(){
         setUpKichThuoc();
@@ -217,15 +284,15 @@ public class LuaChonNoiThatController implements Initializable {
             long thanhTien = TableUtils.calculateThanhTien(khoiLuong, donGia);
             event.getRowValue().getValue().setThanhTien(thanhTien);
             event.getRowValue().getValue().setKhoiLuong(khoiLuong);
+            TableUtils.calculateTongTien(event.getRowValue().getParent());
         });
     }
     private void setUpThanhTien(){
         // Set up collum for ThanhTien
         ThanhTien.setCellValueFactory(param -> param.getValue().getValue().getThanhTien().asObject());
         ThanhTien.setCellFactory(param -> new CustomNumberCell<>(new LongStringConverter(), TableNoiThat));
-        ThanhTien.setOnEditCommit(event -> {
-            event.getRowValue().getValue().setThanhTien(event.getNewValue());
-        });
+        ThanhTien.setOnEditCommit(event ->
+            event.getRowValue().getValue().setThanhTien(event.getNewValue()));
     }
     private void setUpVatLieu(){
         // Set up collum for VatLieu

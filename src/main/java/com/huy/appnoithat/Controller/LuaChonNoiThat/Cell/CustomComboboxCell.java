@@ -1,13 +1,9 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.BangNoiThat;
-import javafx.collections.FXCollections;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TreeTableCell;
-import javafx.scene.control.cell.ComboBoxTreeTableCell;
 
 public class CustomComboboxCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;

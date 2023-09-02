@@ -1,3 +1,54 @@
 .tree-table-row-cell {
     -fx-indent: 0;
 }
+/*.tree-table-view {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+/*.tree-table-view .column-header-background .filler {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+/*.tree-table-view .corner {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+/*.tree-table-view .column-header-background{*/
+/*    -fx-background-color: linear-gradient(to bottom, #1dbbdd44, #93f9b944);*/
+/*    -fx-background-radius: 7px 7px 0px 0px;*/
+/*    -fx-background-insets: 0 11px 0 0;*/
+/*    -fx-padding: 0 0 5px 0;*/
+/*}*/
+/*.tree-table-view .column-header {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+/*.tree-table-view .table-cell{*/
+/*    -fx-border-color: transparent;*/
+/*    -fx-padding: 2 0 2 10px;*/
+/*}*/
+/*.tree-table-view .virtual-flow .scroll-bar:vertical,*/
+/*.tree-table-view .virtual-flow .scroll-bar:vertical .track,*/
+/*.tree-table-view .virtual-flow .scroll-bar:vertical .track-background,*/
+/*.tree-table-view .virtual-flow .scroll-bar:horizontal,*/
+/*.tree-table-view .virtual-flow .scroll-bar:horizontal .track,*/
+/*.tree-table-view .virtual-flow .scroll-bar:horizontal .track-background {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+
+.tree-table-row-cell {
+    -fx-background-color: -fx-table-cell-border-color, -fx-control-inner-background;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+    -fx-text-fill: -fx-text-inner-color;
+}
+.tree-table-row-cell:selected {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-focus-color;
+    -fx-background-insets: 0, 1, 2;
+}
+
+.tree-table-row-cell:odd {
+    -fx-background-color: -fx-table-cell-border-color, derive(-fx-control-inner-background,-2%);
+    -fx-background-insets: 0, 0 0 1 0;
+}
+
+.tree-table-row-cell:selected:odd {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-focus-color;
+    -fx-background-insets: 0, 1, 2;
+}

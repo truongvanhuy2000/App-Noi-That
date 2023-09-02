@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomComboboxCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
 import com.huy.appnoithat.Entity.ThongSo;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class VatLieuCollumHandler {
-    private ObservableList<String> vatLieuList;
+    private final ObservableList<String> vatLieuList;
     private final LuaChonNoiThatService luaChonNoiThatService;
     HashMap<String, ThongSo> vatLieuThongSoHashMap = new HashMap<>();
     public VatLieuCollumHandler(ObservableList<String> vatLieuList) {
@@ -35,6 +35,7 @@ public class VatLieuCollumHandler {
         event.getRowValue().getValue().setVatLieu(vatLieu);
         ThongSo coresspondingThongSo = vatLieuThongSoHashMap.get(vatLieu);
         if (coresspondingThongSo == null){
+
             return;
         }
         float dai = coresspondingThongSo.getDai();
@@ -52,6 +53,8 @@ public class VatLieuCollumHandler {
         event.getRowValue().getValue().setCao(cao);
         event.getRowValue().getValue().setDonGia(donGia);
         event.getRowValue().getValue().setDonVi(donVi);
+
+        TableUtils.calculateTongTien(event.getRowValue().getParent());
 
         event.getTreeTableView().getSelectionModel().clearSelection();
     }
