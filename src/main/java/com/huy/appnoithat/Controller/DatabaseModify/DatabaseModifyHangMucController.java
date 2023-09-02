@@ -1,5 +1,7 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
+import com.huy.appnoithat.Entity.HangMuc;
+import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyChiTietScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
@@ -14,12 +16,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class DatabaseModifyHangMucController implements Initializable {
-
+    List<HangMuc> hangMucList = new ArrayList<>();
     String[] items = {"Tủ bếp dưới","Tủ bếp trên","Tủ  trên tầng 2","Tủ trang trí"};
 
     @FXML
@@ -150,6 +153,7 @@ public class DatabaseModifyHangMucController implements Initializable {
         stage = (Stage) ((Node)source).getScene().getWindow();
         if (source == nextScreenButton){
             scene = DatabaseModifyChiTietScene.getInstance().getScene();
+
         }else {
             return;
         }

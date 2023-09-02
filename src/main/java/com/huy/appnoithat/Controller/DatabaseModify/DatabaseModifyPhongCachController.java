@@ -3,6 +3,7 @@ package com.huy.appnoithat.Controller.DatabaseModify;
 
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.LoginScene;
@@ -26,11 +27,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class DatabaseModifyPhongCachController implements Initializable {
+public class DatabaseModifyPhongCachController {
+
     List<PhongCachNoiThat> phongCachNoiThatList = new ArrayList<>();
 
     DatabaseModifyPhongCachService databaseModifyPhongCachService = new DatabaseModifyPhongCachService();
-    String[] items = {"NỘI THẤT PHONG CÁCH HIỆN ĐẠI - CONTEMPORARY STYLE","NỘI THẤT TÂN CỔ ĐIỂN SANG TRỌNG - CONTEMPORATY CLASSIC","NỘI THẤT GỖ SỒI MỸ - AMERICAN OAK EDITION","NỘI THẤT CAO CẤP GỖ ÓC CHÓ PHIÊN BẢN GIỚI HẠN - WALNUT LIMITED EDITION"};
     @FXML
     private ListView<PhongCachNoiThat> listViewPhongCach;
 
@@ -56,40 +57,47 @@ public class DatabaseModifyPhongCachController implements Initializable {
 
     @FXML
     void AddNewPhongCach(ActionEvent event) {
-//        try {
-//            String txt = txtPhongCach.getText().trim().toUpperCase();
-//            boolean hasDuplicate = false;
-//            if(!txt.isEmpty()){
-//                List<String> array = listViewPhongCach.getItems().stream().filter(e->e.equals(txt)).collect(Collectors.toList());
-//                for (int i = 0; i < array.size(); i++) {
-//                    if(array.get(i).trim().equals(txt.toUpperCase())){
-//                        hasDuplicate = true;
-//                    }
-//                }
-//                if(hasDuplicate){
-//
-//                    Alert alert = new Alert(Alert.AlertType.ERROR);
-//                    alert.setTitle("ADD DUPLICATE ERROR");
-//                    alert.setHeaderText("look, a error");
-//                    alert.setContentText("cannot add duplicate element !!!");
-//                    alert.showAndWait();
-//                }
-//                if(!hasDuplicate){
-//                    listViewPhongCach.getItems().add(txt);
-//                    txtPhongCach.setText("");
-//                }
-//
-//            }else{
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setTitle("ADD ERROR");
-//                alert.setHeaderText("look, a error");
-//                alert.setContentText("please input something !!!");
-//                alert.showAndWait();
-//            }
-//
-//        }catch (Exception e){
-//            System.out.println("co loi add roi dai ca");
-//        }
+        try {
+            String txt = txtPhongCach.getText().trim().toUpperCase();
+            boolean hasDuplicate = false;
+            if(!txt.isEmpty()){
+                List<PhongCachNoiThat> array = listViewPhongCach.getItems().stream().filter(e->e.getName().equals(txt)).collect(Collectors.toList());
+                for (int i = 0; i < array.size(); i++) {
+                    if(array.get(i).equals(txt.toUpperCase())){
+                        hasDuplicate = true;
+                    }
+                }
+                if(hasDuplicate){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("ADD DUPLICATE ERROR");
+                    alert.setHeaderText("look, a error");
+                    alert.setContentText("cannot add duplicate element !!!");
+                    alert.showAndWait();
+                }
+                if(!hasDuplicate){
+                    PhongCachNoiThat phongCachNoiThat = new PhongCachNoiThat();
+                    phongCachNoiThat.setId(0);
+                    phongCachNoiThat.setName(txt);
+                    phongCachNoiThat.setNoiThatList(null);
+//                    listViewPhongCach.getItems().add(phongCachNoiThat);
+                    databaseModifyPhongCachService.addNewPhongCach(phongCachNoiThat);
+                    txtPhongCach.setText("");
+                    phongCachNoiThatList.clear();
+                    listViewPhongCach.getItems().clear();
+                    listViewPhongCach.refresh();
+                    initializePhongCach();
+                }
+
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ADD ERROR");
+                alert.setHeaderText("look, a error");
+                alert.setContentText("please input something !!!");
+                alert.showAndWait();
+            }
+        }catch (Exception e){
+            System.out.println("co loi add roi dai ca");
+        }
 
     }
 
@@ -97,6 +105,8 @@ public class DatabaseModifyPhongCachController implements Initializable {
     void DeletePhongCach(ActionEvent event) {
         try {
             int selectIndex = listViewPhongCach.getSelectionModel().getSelectedIndex();
+            int deleteID = listViewPhongCach.getSelectionModel().getSelectedItem().getId();
+            System.out.println(deleteID);
             Alert deleteDialog = new Alert(Alert.AlertType.CONFIRMATION);
             if(selectIndex>=0){
                 deleteDialog.setTitle("Delete Confirmation");
@@ -109,7 +119,10 @@ public class DatabaseModifyPhongCachController implements Initializable {
                 ButtonType result = deleteDialog.showAndWait().orElse(ButtonType.CANCEL);
                 // Handle the user's choice
                 if (result == ButtonType.YES) {
+
+                    databaseModifyPhongCachService.deletePhongCach(deleteID);
                     listViewPhongCach.getItems().remove(selectIndex);
+                    listViewPhongCach.refresh();
                 }
             }else{
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -127,27 +140,31 @@ public class DatabaseModifyPhongCachController implements Initializable {
 
     @FXML
     void EditPhongCach(ActionEvent event) {
-//        try {
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//
-//            String txt = txtPhongCach.getText().trim().toUpperCase();
-//            int selectIndex = listViewPhongCach.getSelectionModel().getSelectedIndex();
-//            if(selectIndex<=0){
-//                alert.setTitle("EDIT ERROR");
-//                alert.setHeaderText("look, a error to edit");
-//                alert.setContentText("Please select one item to edit !!!");
-//                alert.showAndWait();
-//            }else if(txt.isEmpty()){
-//                alert.setTitle("EDIT ERROR");
-//                alert.setHeaderText("look, a error to edit");
-//                alert.setContentText("Cannot edit with text empty !!!");
-//                alert.showAndWait();
-//            }else{
-//                listViewPhongCach.getItems().set(selectIndex, txtPhongCach.getText());
-//            }
-//        }catch (Exception e){
-//            System.out.println("co loi roi dai ca oi");
-//        }
+        try {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            String txt = txtPhongCach.getText().trim().toUpperCase();
+            int selectIndex = listViewPhongCach.getSelectionModel().getSelectedIndex();
+            if(selectIndex<0){
+                alert.setTitle("EDIT ERROR");
+                alert.setHeaderText("look, a error to edit");
+                alert.setContentText("Please select one item to edit !!!");
+                alert.showAndWait();
+            }else if(txt.isEmpty()){
+                alert.setTitle("EDIT ERROR");
+                alert.setHeaderText("look, a error to edit");
+                alert.setContentText("Cannot edit with text empty !!!");
+                alert.showAndWait();
+            }else{
+                PhongCachNoiThat phongCachNoiThat = new PhongCachNoiThat(listViewPhongCach.getItems().get(selectIndex).getId(),txt,listViewPhongCach.getItems().get(selectIndex).getNoiThatList());;
+                databaseModifyPhongCachService.EditPhongCach(phongCachNoiThat);
+                databaseModifyPhongCachService.findAllPhongCach();
+                listViewPhongCach.getItems().set(selectIndex,phongCachNoiThat);
+                listViewPhongCach.refresh();
+            }
+        }catch (Exception e){
+            System.out.println("co loi roi dai ca oi");
+        }
 
     }
 
@@ -159,18 +176,30 @@ public class DatabaseModifyPhongCachController implements Initializable {
 
     @FXML
     void tableClickToSelectItem(MouseEvent event) {
-//        String selectedItem = listViewPhongCach.getSelectionModel().getSelectedItem();
-//        txtPhongCach.setText(selectedItem);
+        try {
+            if(listViewPhongCach.getSelectionModel().getSelectedItem() !=null){
+                PhongCachNoiThat selectedItem = listViewPhongCach.getSelectionModel().getSelectedItem();
+                txtPhongCach.setText(selectedItem.getName());
+            }
+        }catch (Exception e){
+            System.out.println("loi roi");
+        }
+
     }
 
     @FXML
     void NextScreen(ActionEvent event) {
+        int selectID = listViewPhongCach.getSelectionModel().getSelectedItem().getId();
+        PhongCachNoiThat pc = databaseModifyPhongCachService.findByID(selectID);
+        System.out.println(pc.getNoiThatList());
         Scene scene = null;
         Stage stage = null;
         Object source = event.getSource();
         stage = (Stage) ((Node)source).getScene().getWindow();
         if (source == nextScreenButton){
-            scene = DatabaseModifyHangMucScene.getInstance().getScene();
+            scene = DatabaseModifyNoiThatScene.getInstance().getScene();
+            DatabaseModifyNoiThatScene.getInstance().getController().initializeNoiThat(selectID);
+            DatabaseModifyNoiThatScene.getInstance().getController().getPhongCachNoiThat(pc);
         }else {
             return;
         }
@@ -179,12 +208,13 @@ public class DatabaseModifyPhongCachController implements Initializable {
     }
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initializePhongCach() {
+        phongCachNoiThatList.clear();
         phongCachNoiThatList = databaseModifyPhongCachService.findAllPhongCach();
         for (PhongCachNoiThat pc : phongCachNoiThatList) {
             listViewPhongCach.getItems().add(new PhongCachNoiThat(pc.getId(),pc.getName(),pc.getNoiThatList()));
         }
+
     }
 
     @FXML
@@ -195,6 +225,8 @@ public class DatabaseModifyPhongCachController implements Initializable {
         stage = (Stage) ((Node)source).getScene().getWindow();
         if (source == backButton){
             scene = HomeScene.getInstance().getScene();
+            phongCachNoiThatList.clear();
+            listViewPhongCach.getItems().clear();
         }
         else {
             return;

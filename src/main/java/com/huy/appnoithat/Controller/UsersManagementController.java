@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
+import com.huy.appnoithat.Entity.Role;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.ListAccountWaitToApproveScene;
 import com.huy.appnoithat.Scene.UserManagementAddAccountScene;
@@ -174,12 +175,17 @@ public class UsersManagementController{
             userManageMentStage.setScene(userManagementAddAccountScene);
 
             btnadd.setOnAction(actionEvent -> {
+                try {
                 listUser.add(new AccountTable(listUser.size(),txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),convertActiveIcon(true)));
-                System.out.println(listUser.size());
                 tableManageUser.refresh();
-                usersManagementService.addNewAccount(new Account(0,txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),true));
+                usersManagementService.addNewAccount(new Account(0,txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),null,true));
                 userManageMentStage.close();
                 // You might need additional logic to handle saving or updating data
+
+                    initialize();
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
             });
 
             btncancel.setOnAction(actionEvent -> {
@@ -294,7 +300,7 @@ public class UsersManagementController{
 
             for (Account account : accountList
             ) {
-                listUserNotEnable.add(new Account(account.getId(), account.getUsername(), account.getPassword(), account.isActive(),account.getAccountInformation(),account.isEnabled()));
+                listUserNotEnable.add(new Account(account.getId(), account.getUsername(), account.getPassword(),account.isActive(),account.getAccountInformation(),account.getRoleList(),account.isEnabled()));
             }
             usernameColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("username"));
             passwordColumn.setCellValueFactory(new PropertyValueFactory<Account,String>("password"));
@@ -317,6 +323,8 @@ public class UsersManagementController{
                 // You might need additional logic to handle saving or updating data
             });
 
+
+            //chua lam reject
             btnReject.setOnAction(actionEvent -> {
 
             });

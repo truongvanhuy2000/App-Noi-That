@@ -47,7 +47,7 @@ public class DatabaseModifyChiTietScene {
         String cssPath = "css/DatabaseModifyPhongCach.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }
-    public DatabaseModifyChiTietScene getHomeController(){
+    public DatabaseModifyChiTietScene getController(){
         return fxmlLoader.getController();
     }
 }
