@@ -1,6 +1,5 @@
 package com.huy.appnoithat.DataModel;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
@@ -18,4 +17,5 @@ public class ThongTinKhachHang {
         this.date = "Ngày: " + date;
         SanPham = "Sản phẩm: " + sanPham;
     }
+
 }

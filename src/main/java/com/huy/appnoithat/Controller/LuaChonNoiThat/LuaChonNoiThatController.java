@@ -10,6 +10,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
+import com.huy.appnoithat.DataModel.ThongTinThanhToan;
 import com.huy.appnoithat.Service.FileExport.Excel.ExportXLS;
 import com.huy.appnoithat.Shared.PopupUtils;
 import javafx.animation.KeyFrame;
@@ -106,6 +107,7 @@ public class LuaChonNoiThatController implements Initializable {
             exportXLS.setThongTinCongTy(getThongTinCongTy());
             exportXLS.setThongTinKhachHang(getThongTinKhachHang());
             exportXLS.setThongTinNoiThatList(getThongTinNoiThatList());
+            exportXLS.setThongTinThanhToan(getThongTinThanhToan());
             exportXLS.export();
         } catch (IOException e) {
             LOGGER.error("Some thing is wrong with the export operation", e);
@@ -136,19 +138,12 @@ public class LuaChonNoiThatController implements Initializable {
         );
         return listNoiThat;
     }
+    private ThongTinThanhToan getThongTinThanhToan(){
+        return new ThongTinThanhToan(
+                bangThanhToan.getItems().get(0));
+    }
     private ThongTinNoiThat convertFromTreeItem(TreeItem<BangNoiThat> item) {
-        return new ThongTinNoiThat(
-                item.getValue().getSTT().getValue(),
-                item.getValue().getHangMuc().getValue(),
-                item.getValue().getVatLieu().getValue(),
-                item.getValue().getDai().getValue().toString(),
-                item.getValue().getRong().getValue().toString(),
-                item.getValue().getCao().getValue().toString(),
-                item.getValue().getDonVi().getValue(),
-                item.getValue().getDonGia().getValue().toString(),
-                item.getValue().getKhoiLuong().getValue().toString(),
-                item.getValue().getThanhTien().getValue().toString()
-        );
+        return new ThongTinNoiThat(item.getValue());
     }
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {
@@ -163,15 +158,18 @@ public class LuaChonNoiThatController implements Initializable {
             if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
                 return;
             }
-            TableNoiThat.getSelectionModel().getSelectedItems().forEach(
-                    item -> {
-                        if (item.getParent() != null) {
-                            item.getParent().getChildren().remove(item);
-                        }
-                    }
-            );
+            ObservableList<TreeItem<BangNoiThat>> listItem = TableNoiThat.getSelectionModel().getSelectedItems();
+            for (int i = listItem.size() - 1; i >= 0; i--) {
+                if(listItem.get(i) == null) continue;
+                if(listItem.get(i).getParent() == null) continue;
+
+                listItem.get(i).getParent().getChildren().remove(listItem.get(i));
+            }
+            TableNoiThat.getSelectionModel().clearSelection();
         }
-        TableNoiThat.getSelectionModel().clearSelection();
+        if (event.getCode() == KeyCode.ESCAPE) {
+            TableNoiThat.getSelectionModel().clearSelection();
+        }
     }
     private void imageViewHandler(){
         FileChooser fileChooser = new FileChooser();
@@ -243,7 +241,6 @@ public class LuaChonNoiThatController implements Initializable {
                     new BangThanhToan(0L, 0L, 0L, 0L)
             ));
         }
-
     }
     private void calculateBangThanhToan(Long tongTien) {
         Long datCocThietKe10 = (long) (tongTien*0.1);

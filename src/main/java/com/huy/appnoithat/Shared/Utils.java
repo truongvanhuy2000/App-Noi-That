@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
+import java.text.DecimalFormat;
+
 public class Utils {
     public static boolean isAlpha(String name) {
         return name.matches("[a-zA-Z]+");
@@ -69,5 +71,12 @@ public class Utils {
     }
     public static List<String> getObjectNameList(List<?> list){
         return list.stream().map(Object::toString).collect(Collectors.toList());
+    }
+
+    public static String convertLongToDecimal(long number) {
+        // Create a DecimalFormat object with comma delimiter
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        // Format the long number to a string with commas
+        return decimalFormat.format(number);
     }
 }

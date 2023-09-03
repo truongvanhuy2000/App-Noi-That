@@ -33,6 +33,7 @@ public class NewTabController implements Initializable {
             Node root = LuaChonNoiThatScene.getNewRoot();
             newTab.setContent(root);
         } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         addNewTabToPane(newTab);
     }
@@ -76,6 +77,12 @@ public class NewTabController implements Initializable {
         addNewTabToPane(newTab);
     }
     private Node duplicateContent(Node nodeFromCurrentTab, Node nodeFromNewTab){
+        duplicateTruongThongTin(nodeFromCurrentTab, nodeFromNewTab);
+        duplicateBangNoiThat(nodeFromCurrentTab, nodeFromNewTab);
+        duplicateBangThanhToan(nodeFromCurrentTab, nodeFromNewTab);
+        return nodeFromNewTab;
+    }
+    private void duplicateTruongThongTin(Node nodeFromCurrentTab, Node nodeFromNewTab) {
         TextField TenCongTy = (TextField) nodeFromCurrentTab.lookup("#TenCongTy");
         TextField VanPhong = (TextField) nodeFromCurrentTab.lookup("#VanPhong");
         TextField DiaChiXuong = (TextField) nodeFromCurrentTab.lookup("#DiaChiXuong");
@@ -86,8 +93,6 @@ public class NewTabController implements Initializable {
         TextField DiaChiKhachHang = (TextField) nodeFromCurrentTab.lookup("#DiaChiKhachHang");
         TextField SanPham = (TextField) nodeFromCurrentTab.lookup("#SanPham");
         ImageView imageView = (ImageView) nodeFromCurrentTab.lookup("#ImageView");
-        TreeTableView<BangNoiThat> bangNoiThat = (TreeTableView<BangNoiThat>) nodeFromCurrentTab.lookup("#TableNoiThat");
-        TableView<BangThanhToan> bangThanhToan = (TableView<BangThanhToan>) nodeFromCurrentTab.lookup("#bangThanhToan");
 
         TextField DuplicateTenCongTy = (TextField) nodeFromNewTab.lookup("#TenCongTy");
         DuplicateTenCongTy.setText(TenCongTy.getText());
@@ -109,15 +114,24 @@ public class NewTabController implements Initializable {
         DuplicateSanPham.setText(SanPham.getText());
         ImageView DuplicateImageView = (ImageView) nodeFromNewTab.lookup("#ImageView");
         DuplicateImageView.setImage(imageView.getImage());
+    }
+    private void duplicateBangNoiThat(Node nodeFromCurrentTab, Node nodeFromNewTab){
+        TreeTableView<BangNoiThat> bangNoiThat = (TreeTableView<BangNoiThat>) nodeFromCurrentTab.lookup("#TableNoiThat");
         TreeTableView<BangNoiThat> DuplicateBangNoiThat = (TreeTableView<BangNoiThat>) nodeFromNewTab.lookup("#TableNoiThat");
-        DuplicateBangNoiThat.setRoot(new TreeItem<>(bangNoiThat.getRoot().getValue()));
-        DuplicateBangNoiThat.getRoot().getChildren().addAll(bangNoiThat.getRoot().getChildren());
-
+        DuplicateBangNoiThat.setRoot(deepcopy(bangNoiThat.getRoot()));
+    }
+    private void duplicateBangThanhToan(Node nodeFromCurrentTab, Node nodeFromNewTab){
+        TableView<BangThanhToan> bangThanhToan = (TableView<BangThanhToan>) nodeFromCurrentTab.lookup("#bangThanhToan");
         TableView<BangThanhToan> DuplicateBangThanhToan = (TableView<BangThanhToan>) nodeFromNewTab.lookup("#bangThanhToan");
         DuplicateBangThanhToan.getItems().clear();
         DuplicateBangThanhToan.getItems().addAll(bangThanhToan.getItems());
-
-        return nodeFromNewTab;
+    }
+    private TreeItem<BangNoiThat> deepcopy(TreeItem<BangNoiThat> item) {
+        TreeItem<BangNoiThat> copy = new TreeItem<>(item.getValue());
+        for (TreeItem<BangNoiThat> child : item.getChildren()) {
+            copy.getChildren().add(deepcopy(child));
+        }
+        return copy;
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

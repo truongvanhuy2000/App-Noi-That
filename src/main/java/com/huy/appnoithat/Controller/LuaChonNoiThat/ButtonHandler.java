@@ -69,12 +69,8 @@ public class ButtonHandler {
             return;
         }
         if (Utils.isNumeric(currentItemStt)){
-//            if (!isReachedLimit(currentSelectedItem.getParent())) {
             continuousLineAddForNumericStt(currentSelectedItem);
-//            }
         }
-//        TreeItem<BangNoiThat> parent = currentSelectedItem.getParent();
-
     }
 
     private void continuousLineAddForNumericStt(TreeItem<BangNoiThat> currentSelectedItem) {
@@ -85,7 +81,7 @@ public class ButtonHandler {
         String nextStt = findTheNextStt(currentSelectedItem.getValue().getSTT().getValue());
         tempNewItem.getValue().getSTT().setValue(nextStt);
         parent.getChildren().add(tempNewItem);
-        TableNoiThat.getSelectionModel().select(tempNewItem);
+        selectNewItem(tempNewItem);
     }
 
     private void continuousLineAddForAlphaStt(TreeItem<BangNoiThat> currentSelectedItem) {
@@ -93,7 +89,7 @@ public class ButtonHandler {
                 "", "", "", 0L, 0f));
         currentSelectedItem.getChildren().add(tempNewItem);
         currentSelectedItem.setExpanded(true);
-        TableNoiThat.getSelectionModel().select(tempNewItem);
+        selectNewItem(tempNewItem);
     }
 
     private void continuousLineAddForRomanStt(TreeItem<BangNoiThat> currentSelectedItem) {
@@ -101,9 +97,12 @@ public class ButtonHandler {
                 "", "", "", 0L, 0f));
         currentSelectedItem.getChildren().add(tempNewItem);
         currentSelectedItem.setExpanded(true);
+        selectNewItem(tempNewItem);
+    }
+    private void selectNewItem(TreeItem<BangNoiThat> tempNewItem){
+        TableNoiThat.getSelectionModel().clearSelection();
         TableNoiThat.getSelectionModel().select(tempNewItem);
     }
-
     public static String findTheNextStt(String stt) {
         if (Utils.RomanNumber.isRoman(stt)){
             int nextStt = Utils.RomanNumber.romanToInt(stt) + 1;

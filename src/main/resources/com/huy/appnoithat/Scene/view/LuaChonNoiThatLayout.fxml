@@ -74,9 +74,9 @@
                      </columns>
                   </TreeTableColumn>
                   <TreeTableColumn fx:id="DonVi" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="DON VI" />
-                  <TreeTableColumn fx:id="DonGia" editable="false" prefWidth="95.0" sortable="false" text="DON GIA" />
+                  <TreeTableColumn fx:id="DonGia" editable="false" prefWidth="95.0" resizable="false" sortable="false" text="DON GIA" />
                   <TreeTableColumn fx:id="KhoiLuong" prefWidth="70.0" resizable="false" sortable="false" text="KHOI LUONG" />
-                  <TreeTableColumn fx:id="ThanhTien" prefWidth="126.0" sortable="false" text="THANH TIEN" />
+                  <TreeTableColumn fx:id="ThanhTien" prefWidth="126.0" resizable="false" sortable="false" text="THANH TIEN" />
               </columns>
                <columnResizePolicy>
                   <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -3,8 +3,9 @@ package com.huy.appnoithat.Service.FileExport.Excel;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 
-import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StylistFactory {
     Workbook workbook;
@@ -34,6 +35,9 @@ public class StylistFactory {
                 }
                 case Stylist.Style.BorderStyle_MEDIUM -> {
                     borderStyle = BorderStyle.MEDIUM;
+                }
+                case Stylist.Style.BorderStyle_NO -> {
+                    borderStyle = BorderStyle.NONE;
                 }
             }
             cellStyle.setBorderTop(borderStyle);
@@ -95,6 +99,18 @@ public class StylistFactory {
             }
             case Stylist.Style.Text_NORMAL -> {
                 textString.applyFont(0, data.length(), fontStyleFactory(Stylist.Style.Font_TimeNewRoman_NORMAL, size));
+            }
+            case Stylist.Style.Text_CUSTOMBOLD3 -> {
+                // Define a regular expression pattern to match the desired text
+                Pattern pattern = Pattern.compile("-\\s(.*?):");
+                // Create a Matcher object to find matches in the input text
+                Matcher matcher = pattern.matcher(data);
+                textString.applyFont(0, data.length(), fontStyleFactory(Stylist.Style.Font_TimeNewRoman_NORMAL, size));
+                while (matcher.find()) {
+                    int start = matcher.start(1);
+                    int end = matcher.end(1);
+                    textString.applyFont(start, end, fontStyleFactory(Stylist.Style.Font_TimeNewRoman_BOLD, size));
+                }
             }
         }
         return textString;
@@ -169,6 +185,22 @@ public class StylistFactory {
                 fontStyle = Stylist.Style.Font_TimeNewRoman_BOLD;
                 textStyle = Stylist.Style.Text_BOLDALL;
             }
+            case Stylist.Preset.BoldText03_TimeNewRoman_VerticalCenter_ThinBorder -> {
+                cellStyle = Map.of(
+                        Stylist.Element.ALIGNMENT, Stylist.Style.VerticalAlignment_CENTER,
+                        Stylist.Element.BORDER, Stylist.Style.BorderStyle_THIN
+                );
+                fontStyle = Stylist.Style.Font_TimeNewRoman_BOLD;
+                textStyle = Stylist.Style.Text_CUSTOMBOLD3;
+            }
+case Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_NoBorder -> {
+                cellStyle = Map.of(
+                        Stylist.Element.ALIGNMENT, Stylist.Style.VerticalAlignment_CENTER,
+                        Stylist.Element.BORDER, Stylist.Style.BorderStyle_NO
+                );
+                fontStyle = Stylist.Style.Font_TimeNewRoman_BOLD;
+                textStyle = Stylist.Style.Text_CUSTOMBOLD1;
+            }
 
         }
         applyPreset(cell, data, size, cellStyle, fontStyle, textStyle);
@@ -178,7 +210,14 @@ public class StylistFactory {
         RichTextString appliedTextString = textStyleFactory(textStyle, data, size);
         Font appliedFontStyle = fontStyleFactory(fontStyle, size);
         appliedCellStyle.setFont(appliedFontStyle);
-        cell.setCellStyle(appliedCellStyle);
         cell.setCellValue(appliedTextString);
+//        System.out.println("data: " + data  + " length:" + data.length());
+        if (data.length() >= 80) {
+            cell.getRow().setHeight((short) (cell.getRow().getHeight() + 800));
+        }
+        else {
+            cell.getRow().setHeight((short) (cell.getRow().getHeight() + 50));
+        }
+        cell.setCellStyle(appliedCellStyle);
     }
 }
