@@ -60,19 +60,19 @@
                   <TreeTableColumn fx:id="STT1" prefWidth="59.0" sortable="false" text="Báo Giá Nội Thất Công Ty TNHH Kiến Trúc Xây Dựng Nội Thất A One">
                      <columns>
                         <TreeTableColumn fx:id="STT" prefWidth="59.0" resizable="false" sortable="false" text="STT" />
-                        <TreeTableColumn fx:id="HangMuc" minWidth="200.0" prefWidth="319.0" sortable="false" text="HANG MUC" />
-                        <TreeTableColumn fx:id="VatLieu" minWidth="200.0" prefWidth="248.0" sortable="false" text="VAT LIEU" />
-                        <TreeTableColumn prefWidth="415.0" sortable="false" text="KICH THUOC">
+                        <TreeTableColumn fx:id="HangMuc" minWidth="200.0" prefWidth="319.0" sortable="false" text="HẠNG MỤC " />
+                        <TreeTableColumn fx:id="VatLieu" minWidth="200.0" prefWidth="248.0" sortable="false" text="VẬT LIỆU" />
+                        <TreeTableColumn prefWidth="415.0" sortable="false" text="KÍCH THƯỚC ">
                            <columns>
-                              <TreeTableColumn fx:id="Dai" prefWidth="70.0" resizable="false" sortable="false" text="DAI" />
-                              <TreeTableColumn fx:id="Rong" prefWidth="70.0" resizable="false" sortable="false" text="RONG" />
+                              <TreeTableColumn fx:id="Dai" prefWidth="70.0" resizable="false" sortable="false" text="DÀI" />
+                              <TreeTableColumn fx:id="Rong" prefWidth="70.0" resizable="false" sortable="false" text="RỘNG" />
                               <TreeTableColumn fx:id="Cao" prefWidth="70.0" resizable="false" sortable="false" text="CAO" />
                            </columns>
                         </TreeTableColumn>
-                        <TreeTableColumn fx:id="DonVi" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="DON VI" />
-                        <TreeTableColumn fx:id="DonGia" editable="false" prefWidth="95.0" resizable="false" sortable="false" text="DON GIA" />
+                        <TreeTableColumn fx:id="DonVi" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="ĐƠN VỊ" />
+                        <TreeTableColumn fx:id="DonGia" editable="false" prefWidth="95.0" resizable="false" sortable="false" text="ĐƠN GIÁ" />
                         <TreeTableColumn fx:id="KhoiLuong" prefWidth="70.0" resizable="false" sortable="false" text="KHOI LUONG" />
-                        <TreeTableColumn fx:id="ThanhTien" prefWidth="126.0" resizable="false" sortable="false" text="THANH TIEN" />
+                        <TreeTableColumn fx:id="ThanhTien" prefWidth="126.0" sortable="false" text="THÀNH TIỀN" />
                      </columns>
                   </TreeTableColumn>
               </columns>
