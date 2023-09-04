@@ -53,10 +53,10 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
         TreeTableRow<BangNoiThat> currentRow = getTableRow();
         if (!isEmpty()) {
             if (Utils.RomanNumber.isRoman(getItem())) {
-                currentRow.setStyle("-fx-background-color:#cbf5cb");
+                currentRow.setStyle("-fx-font-weight: bold");
             }
             else if(Utils.isAlpha(getItem())) {
-                currentRow.setStyle("-fx-background-color:#f8c7c7");
+                currentRow.setStyle("-fx-font-weight: bold; -fx-font-size: 14px");
             }
         }
     }
@@ -73,7 +73,7 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
         });
     }
 
-        private String getString() {
-            return getItem() == null ? "" : getItem();
-        }
+    private String getString() {
+        return getItem() == null ? "" : getItem();
+    }
 }

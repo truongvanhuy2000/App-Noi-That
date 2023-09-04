@@ -15,7 +15,6 @@ public class CustomNumberCell<T> extends TextFieldTreeTableCell<BangNoiThat, T> 
     @Override
     public void startEdit(){
         if (!TableUtils.isEditable(TableNoiThat)){
-            System.out.println("we suppose to reach here");
             return;
         }
         super.startEdit();
@@ -27,7 +26,6 @@ public class CustomNumberCell<T> extends TextFieldTreeTableCell<BangNoiThat, T> 
             return;
         }
         super.updateItem(item, empty);
-//        System.out.println(item);
         if (item.equals(0.0) || item.equals(0) || item.equals(0F) || item.equals(0L)){
             setText("");
         }

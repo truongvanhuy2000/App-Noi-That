@@ -5,11 +5,11 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TreeTableCell;
 
-public class CustomComboboxCell extends TreeTableCell<BangNoiThat, String> {
+public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;
     private final ObservableList<String> items;
     private String oldValue;
-    public CustomComboboxCell(ObservableList<String> items) {
+    public CustomHangMucCell(ObservableList<String> items) {
         this.items = items;
     }
     @Override

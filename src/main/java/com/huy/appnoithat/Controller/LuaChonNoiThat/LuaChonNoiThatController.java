@@ -40,13 +40,11 @@ import org.apache.logging.log4j.Logger;
 import java.io.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class LuaChonNoiThatController implements Initializable {
     final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatController.class);
+    private static final String DEFAULT_IMAGE_PATH = "/com/huy/appnoithat/Scene/icons/blank-user.jpg";
     // Thong Tin ve cong ty
     @FXML
     private TextField TenCongTy, VanPhong, DiaChiXuong, DienThoaiCongTy, Email;
@@ -96,6 +94,14 @@ public class LuaChonNoiThatController implements Initializable {
                 SanPham.textProperty().isEmpty()))))))))
         );
         NgayLapBaoGia.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
+        try {
+            ImageView.setImage(new Image(
+                    new FileInputStream(
+                            Objects.requireNonNull(
+                                    LuaChonNoiThatController.class.getResource(DEFAULT_IMAGE_PATH)).getFile())));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         workAroundToCollumWidthBug();
     }
     private void exportButtonHandler(ActionEvent event){
@@ -192,8 +198,8 @@ public class LuaChonNoiThatController implements Initializable {
     }
     private void workAroundToCollumWidthBug(){
         Timeline timeline = new Timeline(new KeyFrame(
-                Duration.millis(1000),
-                ae -> TreeTableView.CONSTRAINED_RESIZE_POLICY.call(new TreeTableView.ResizeFeatures<>(TableNoiThat, HangMuc, 1.0))));
+                Duration.millis(2000),
+                ae -> TreeTableView.CONSTRAINED_RESIZE_POLICY.call(new TreeTableView.ResizeFeatures<>(TableNoiThat, HangMuc, 10.0))));
         timeline.play();
     }
     private ThongTinCongTy getThongTinCongTy() throws IOException {
@@ -312,12 +318,7 @@ public class LuaChonNoiThatController implements Initializable {
     }
 
     private void setUpDonVi(){
-        // Set up collum for Donvi
         DonVi.setCellValueFactory(param -> param.getValue().getValue().getDonVi());
-//        DonVi.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
-//        DonVi.setOnEditCommit(event -> {
-//            event.getRowValue().getValue().setDonVi(event.getNewValue());
-//        });
     }
     private void setUpDonGia(){
         // Set up collum for DonGia

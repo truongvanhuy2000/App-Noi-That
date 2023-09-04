@@ -13,4 +13,9 @@ public class PopupUtils {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK);
         alert.show();
     }
+
+    public static void throwCriticalError(String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
+        alert.showAndWait();
+    }
 }

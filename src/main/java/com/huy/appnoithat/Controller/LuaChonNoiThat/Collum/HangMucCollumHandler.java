@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomComboboxCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Shared.PopupUtils;
 import com.huy.appnoithat.Shared.Utils;
@@ -74,7 +74,7 @@ public class HangMucCollumHandler {
 
     }
     public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param){
-        return new CustomComboboxCell(hangMucList);
+        return new CustomHangMucCell(hangMucList);
     }
     public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param){
         return param.getValue().getValue().getHangMuc();

@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import com.huy.appnoithat.Shared.PopupUtils;
 import com.huy.appnoithat.Shared.Utils;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
@@ -21,7 +20,7 @@ public class TableUtils {
     public static boolean isALlowedToEdit(TreeTableColumn.CellEditEvent<BangNoiThat, String> event){
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         if (!Utils.isNumeric(currentItem.getValue().getSTT().getValue())){
-            PopupUtils.throwErrorSignal("Không được phép chọn trường cho mục ");
+//            PopupUtils.throwErrorSignal("Không được phép chọn trường cho mục ");
             event.consume();
             return false;
         }

@@ -1,14 +1,15 @@
 package com.huy.appnoithat;
 
+import com.huy.appnoithat.Exception.GlobalExceptionHandler;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import java.awt.im.InputContext;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage){
+        Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler());
         UserSessionService sessionService = new UserSessionService();
         if (sessionService.isLogin()){
             stage.setScene(HomeScene.getInstance().getScene());
@@ -21,7 +22,6 @@ public class HelloApplication extends Application {
         stage.show();
     }
     public static void main(String[] args){
-        InputContext.getInstance();
         launch();
     }
 }

@@ -1,18 +1,18 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomVatLieuCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomComboboxCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Shared.Utils;
-
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class VatLieuCollumHandler {
         luaChonNoiThatService = new LuaChonNoiThatService();
     }
     public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param){
-        return new CustomComboboxCell(vatLieuList);
+        return new CustomVatLieuCell(vatLieuList, param.getTreeTableView());
     }
     public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param){
         return param.getValue().getValue().getVatLieu();
@@ -35,7 +35,6 @@ public class VatLieuCollumHandler {
         event.getRowValue().getValue().setVatLieu(vatLieu);
         ThongSo coresspondingThongSo = vatLieuThongSoHashMap.get(vatLieu);
         if (coresspondingThongSo == null){
-
             return;
         }
         float dai = coresspondingThongSo.getDai();
