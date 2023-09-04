@@ -1,9 +1,9 @@
 package com.huy.appnoithat.Service.DatabaseModifyService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
-import com.huy.appnoithat.Entity.PhongCachNoiThat;
+import com.huy.appnoithat.Entity.ThongSo;
+import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DatabaseModifyHangMucService {
-    private final List<HangMuc> tempHangMucList = new ArrayList<>();
+public class DatabaseModifyVatlieuService {
+    private List<VatLieu> tempVatLieuList = new ArrayList<>();
 
     private WebClientService webClientService;
     private ObjectMapper objectMapper;
@@ -21,57 +21,57 @@ public class DatabaseModifyHangMucService {
 
     private final UserSessionService sessionService = new UserSessionService();
 
-    public DatabaseModifyHangMucService(){}
+    public DatabaseModifyVatlieuService(){}
 
-    public List<HangMuc> findHangMucByID(int id){
+    public List<VatLieu> findVatLieuByID(int id){
         token = this.sessionService.getSession().getJwtToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/hangmuc/searchByNoiThat/"+id, token);
+        String response2 = this.webClientService.authorizedHttpGetJson("/api/vatlieu/searchByHangMuc/"+id, token);
         objectMapper = new ObjectMapper();
 
         try {
             // 2. convert JSON array to List of objects
-            List<HangMuc> hangMucList = objectMapper.readValue(response2, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, HangMuc.class));
-            for (HangMuc hangMuc: hangMucList) {
-                HangMuc hangMuc1 = new HangMuc();
-                hangMuc1.setId(hangMuc.getId());
-                hangMuc1.setName(hangMuc.getName());
-                hangMuc1.setVatLieuList(hangMuc.getVatLieuList());
-                tempHangMucList.add(hangMuc1);
+            List<VatLieu> vatLieuList = objectMapper.readValue(response2, objectMapper.getTypeFactory()
+                    .constructCollectionType(List.class, VatLieu.class));
+            for (VatLieu vatLieu: vatLieuList) {
+                VatLieu vatLieu1 = new VatLieu();
+                vatLieu1.setId(vatLieu.getId());
+                vatLieu1.setName(vatLieu.getName());
+                vatLieu1.setThongSo(vatLieu.getThongSo());
+                tempVatLieuList.add(vatLieu1);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return tempHangMucList;
+        return tempVatLieuList;
     }
 
-    public void addNewHangMuc(HangMuc hangMuc,int parentID){
+    public void addNewVatLieu(VatLieu vatLieu,int parentID){
         token = this.sessionService.getSession().getJwtToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         try {
-            this.webClientService.authorizedHttpPostJson("/api/hangmuc?parentId="+parentID,  objectMapper.writeValueAsString(hangMuc),token);
+            this.webClientService.authorizedHttpPostJson("/api/vatlieu?parentId="+parentID,  objectMapper.writeValueAsString(vatLieu),token);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-//    public void EditHangMuc(PhongCachNoiThat phongCachNoiThat){
+//    public void EditNoiThat(NoiThat noiThat){
 //        token = this.sessionService.getSession().getJwtToken();
 //        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
 //        objectMapper = new ObjectMapper();
 //        try {
-//            this.webClientService.authorizedHttpPutJson("/api/noithat",  objectMapper.writeValueAsString(phongCachNoiThat),token);
+//            this.webClientService.authorizedHttpPutJson("/api/noithat",  objectMapper.writeValueAsString(noiThat),token);
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
 //    }
 
-    public void deleteHangMuc(int id){
+    public void deleteVatLieu(int id){
         token = this.sessionService.getSession().getJwtToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
-        this.webClientService.authorizedHttpDeleteJson("/api/hangmuc/"+id,  "",token);
+        this.webClientService.authorizedHttpDeleteJson("/api/vatlieu/"+id,  "",token);
     }
 }

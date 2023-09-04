@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Scene.DatabaseModify;
 
+import com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyHangMucController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -47,7 +48,7 @@ public class DatabaseModifyHangMucScene {
         String cssPath = "css/DatabaseModifyPhongCach.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }
-    public DatabaseModifyHangMucScene getController(){
+    public DatabaseModifyHangMucController getController(){
         return fxmlLoader.getController();
     }
 }

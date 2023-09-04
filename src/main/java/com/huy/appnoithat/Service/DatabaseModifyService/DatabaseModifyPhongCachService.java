@@ -75,18 +75,18 @@ public class DatabaseModifyPhongCachService {
     }
 
 
-    public PhongCachNoiThat findByID(int id){
-        token = this.sessionService.getSession().getJwtToken();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/phongcach/"+id, token);
-        objectMapper = new ObjectMapper();
-        PhongCachNoiThat phongCachNoiThat = new PhongCachNoiThat();
-        try {
-            phongCachNoiThat = objectMapper.readValue(response2,PhongCachNoiThat.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return phongCachNoiThat;
-    }
+//    public PhongCachNoiThat findByID(int id){
+//        token = this.sessionService.getSession().getJwtToken();
+//        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+//        String response2 = this.webClientService.authorizedHttpGetJson("/api/noithat/searchByPhongCach/"+id, token);
+//        objectMapper = new ObjectMapper();
+//        PhongCachNoiThat phongCachNoiThat = new PhongCachNoiThat();
+//        try {
+//            phongCachNoiThat = objectMapper.readValue(response2,PhongCachNoiThat.class);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return phongCachNoiThat;
+//    }
 
 }

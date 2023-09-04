@@ -56,12 +56,12 @@ public class DatabaseModifyNoiThatService {
         }
     }
 
-    public void EditNoiThat(PhongCachNoiThat phongCachNoiThat){
+    public void EditNoiThat(NoiThat noiThat){
         token = this.sessionService.getSession().getJwtToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         try {
-            this.webClientService.authorizedHttpPutJson("/api/noithat",  objectMapper.writeValueAsString(phongCachNoiThat),token);
+            this.webClientService.authorizedHttpPutJson("/api/noithat",  objectMapper.writeValueAsString(noiThat),token);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,30 +1,28 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
 import com.huy.appnoithat.Entity.HangMuc;
-import com.huy.appnoithat.Entity.PhongCachNoiThat;
-import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyChiTietScene;
+import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
-import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
-import com.huy.appnoithat.Scene.HomeScene;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyVatLieuScene;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
+import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyHangMucService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class DatabaseModifyHangMucController implements Initializable {
+public class DatabaseModifyHangMucController {
     List<HangMuc> hangMucList = new ArrayList<>();
-    String[] items = {"Tủ bếp dưới","Tủ bếp trên","Tủ  trên tầng 2","Tủ trang trí"};
+    int parentID;
 
+    DatabaseModifyHangMucService databaseModifyHangMucService = new DatabaseModifyHangMucService();
     @FXML
     private Button EditHangMucButton;
 
@@ -38,7 +36,7 @@ public class DatabaseModifyHangMucController implements Initializable {
     private Button deleteHangMucButton;
 
     @FXML
-    private ListView<String> listViewHangMuc;
+    private ListView<HangMuc> listViewHangMuc;
 
     @FXML
     private Button nextScreenButton;
@@ -50,39 +48,48 @@ public class DatabaseModifyHangMucController implements Initializable {
 
     @FXML
     void AddNewHangMuc(ActionEvent event) {
-        try {
-            Dialog dialog = new Dialog();
+       try {
             String txt = txtHangMuc.getText().trim().toUpperCase();
             boolean hasDuplicate = false;
             if(!txt.isEmpty()){
-                List<String> array = listViewHangMuc.getItems().stream().filter(e->e.equals(txt)).collect(Collectors.toList());
+                List<HangMuc> array = listViewHangMuc.getItems().stream().filter(e->e.getName().equals(txt)).collect(Collectors.toList());
                 for (int i = 0; i < array.size(); i++) {
-                    if(array.get(i).trim().equals(txt.toUpperCase())){
+                    if(array.get(i).equals(txt.toUpperCase())){
                         hasDuplicate = true;
                     }
                 }
                 if(hasDuplicate){
-                    dialog.setTitle("ADD DUPLICATE ERROR");
-                    dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-                    dialog.getDialogPane().setContentText("cannot add duplicate element !!!");
-                    dialog.show();
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("ADD DUPLICATE ERROR");
+                    alert.setHeaderText("look, a error");
+                    alert.setContentText("cannot add duplicate element !!!");
+                    alert.showAndWait();
                 }
                 if(!hasDuplicate){
-                    listViewHangMuc.getItems().add(txt);
+                    HangMuc hangMuc = new HangMuc();
+                    hangMuc.setId(0);
+                    hangMuc.setName(txt);
+                    hangMuc.setVatLieuList(null);
+//                    listViewPhongCach.getItems().add(phongCachNoiThat);
+                    databaseModifyHangMucService.addNewHangMuc(hangMuc,parentID);
                     txtHangMuc.setText("");
+                    hangMucList.clear();
+                    listViewHangMuc.getItems().clear();
+                    listViewHangMuc.refresh();
+                    initializeHangMuc(parentID);
                 }
 
             }else{
-
-                dialog.setTitle("ADD ERROR");
-                dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-                dialog.getDialogPane().setContentText("please input something !!!");
-                dialog.show();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ADD ERROR");
+                alert.setHeaderText("look, a error");
+                alert.setContentText("please input something !!!");
+                alert.showAndWait();
             }
-
         }catch (Exception e){
             System.out.println("co loi add roi dai ca");
         }
+
     }
 
     @FXML
@@ -93,6 +100,7 @@ public class DatabaseModifyHangMucController implements Initializable {
     @FXML
     void DeleteHangMuc(ActionEvent event) {
         try {
+            int deleteID = listViewHangMuc.getSelectionModel().getSelectedItem().getId();
             Alert deleteDialog = new Alert(Alert.AlertType.CONFIRMATION);
             Dialog dialog = new Dialog();
             int selectIndex = listViewHangMuc.getSelectionModel().getSelectedIndex();
@@ -107,7 +115,9 @@ public class DatabaseModifyHangMucController implements Initializable {
                 ButtonType result = deleteDialog.showAndWait().orElse(ButtonType.CANCEL);
                 // Handle the user's choice
                 if (result == ButtonType.YES) {
+                    databaseModifyHangMucService.deleteHangMuc(deleteID);
                     listViewHangMuc.getItems().remove(selectIndex);
+                    listViewHangMuc.refresh();
                 }
             }else{
                 dialog.setTitle("DELETE ERROR");
@@ -122,38 +132,39 @@ public class DatabaseModifyHangMucController implements Initializable {
 
     @FXML
     void EditHangMuc(ActionEvent event) {
-        try {
-            Dialog dialog = new Dialog();
-
-            String txt = txtHangMuc.getText().trim().toUpperCase();
-            int selectIndex = listViewHangMuc.getSelectionModel().getSelectedIndex();
-            if(selectIndex<=0){
-                dialog.setTitle("EDIT ERROR");
-                dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-                dialog.getDialogPane().setContentText("Please select one item to edit !!!");
-                dialog.show();
-            }else if(txt.isEmpty()){
-                dialog.setTitle("EDIT ERROR");
-                dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-                dialog.getDialogPane().setContentText("Cannot edit with text empty !!!");
-                dialog.show();
-            }else{
-                listViewHangMuc.getItems().set(selectIndex, txtHangMuc.getText());
-            }
-        }catch (Exception e){
-            System.out.println("co loi roi dai ca oi");
-        }
+//        try {
+//            Dialog dialog = new Dialog();
+//
+//            String txt = txtHangMuc.getText().trim().toUpperCase();
+//            int selectIndex = listViewHangMuc.getSelectionModel().getSelectedIndex();
+//            if(selectIndex<=0){
+//                dialog.setTitle("EDIT ERROR");
+//                dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+//                dialog.getDialogPane().setContentText("Please select one item to edit !!!");
+//                dialog.show();
+//            }else if(txt.isEmpty()){
+//                dialog.setTitle("EDIT ERROR");
+//                dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+//                dialog.getDialogPane().setContentText("Cannot edit with text empty !!!");
+//                dialog.show();
+//            }else{
+//                listViewHangMuc.getItems().set(selectIndex, txtHangMuc.getText());
+//            }
+//        }catch (Exception e){
+//            System.out.println("co loi roi dai ca oi");
+//        }
     }
 
     @FXML
     void NextScreen(ActionEvent event) {
+        int selectID = listViewHangMuc.getSelectionModel().getSelectedItem().getId();
         Scene scene = null;
         Stage stage = null;
         Object source = event.getSource();
         stage = (Stage) ((Node)source).getScene().getWindow();
         if (source == nextScreenButton){
-            scene = DatabaseModifyChiTietScene.getInstance().getScene();
-
+            scene = DatabaseModifyVatLieuScene.getInstance().getScene();
+            DatabaseModifyVatLieuScene.getInstance().getController().initializeVatLieu(selectID);
         }else {
             return;
         }
@@ -163,13 +174,24 @@ public class DatabaseModifyHangMucController implements Initializable {
 
     @FXML
     void tableClickToSelectItem(MouseEvent event) {
-        String selectedItem = listViewHangMuc.getSelectionModel().getSelectedItem();
-        txtHangMuc.setText(selectedItem);
+        try {
+            if(listViewHangMuc.getSelectionModel().getSelectedItem() !=null){
+                HangMuc selectedItem = listViewHangMuc.getSelectionModel().getSelectedItem();
+                txtHangMuc.setText(selectedItem.getName());
+            }
+        }catch (Exception e){
+            System.out.println("loi roi");
+        }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        listViewHangMuc.getItems().addAll(items);
+
+    public void initializeHangMuc(int id) {
+        hangMucList.clear();
+        parentID=id;
+        hangMucList = databaseModifyHangMucService.findHangMucByID(id);
+        for (HangMuc hm : hangMucList) {
+            listViewHangMuc.getItems().add(new HangMuc(hm.getId(),hm.getName(),hm.getVatLieuList()));
+        }
     }
 
     @FXML
@@ -179,7 +201,9 @@ public class DatabaseModifyHangMucController implements Initializable {
         Object source = actionEvent.getSource();
         stage = (Stage) ((Node)source).getScene().getWindow();
         if (source == backButton){
-            scene = DatabaseModifyPhongCachScene.getInstance().getScene();
+            scene = DatabaseModifyNoiThatScene.getInstance().getScene();
+            hangMucList.clear();
+            listViewHangMuc.getItems().clear();
         }
         else {
             return;

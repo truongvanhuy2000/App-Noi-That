@@ -190,8 +190,8 @@ public class DatabaseModifyPhongCachController {
     @FXML
     void NextScreen(ActionEvent event) {
         int selectID = listViewPhongCach.getSelectionModel().getSelectedItem().getId();
-        PhongCachNoiThat pc = databaseModifyPhongCachService.findByID(selectID);
-        System.out.println(pc.getNoiThatList());
+//        PhongCachNoiThat pc = databaseModifyPhongCachService.findByID(selectID);
+//        System.out.println(pc.getNoiThatList());
         Scene scene = null;
         Stage stage = null;
         Object source = event.getSource();
@@ -199,7 +199,7 @@ public class DatabaseModifyPhongCachController {
         if (source == nextScreenButton){
             scene = DatabaseModifyNoiThatScene.getInstance().getScene();
             DatabaseModifyNoiThatScene.getInstance().getController().initializeNoiThat(selectID);
-            DatabaseModifyNoiThatScene.getInstance().getController().getPhongCachNoiThat(pc);
+//            DatabaseModifyNoiThatScene.getInstance().getController().getPhongCachNoiThat(pc);
         }else {
             return;
         }

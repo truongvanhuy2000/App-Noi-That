@@ -111,10 +111,10 @@ public class DatabaseModifyNoiThatController {
                 alert.showAndWait();
             }else{
                 // cần phải get list nội thất
-                PhongCachNoiThat phongCachNoiThat = new PhongCachNoiThat(listViewNoiThat.getItems().get(selectIndex).getId(),txt,parentPhongCach.getNoiThatList());
-                databaseModifyNoiThatService.EditNoiThat(phongCachNoiThat);
+                NoiThat noiThat = new NoiThat(listViewNoiThat.getItems().get(selectIndex).getId(),txt,listViewNoiThat.getItems().get(selectIndex).getHangMucList());
+                databaseModifyNoiThatService.EditNoiThat(noiThat);
 //                databaseModifyPhongCachService.findAllPhongCach();
-                listViewNoiThat.getItems().set(selectIndex,phongCachNoiThat.getNoiThatList().get(selectIndex));
+                listViewNoiThat.getItems().set(selectIndex,noiThat);
                 listViewNoiThat.refresh();
             }
         }catch (Exception e){
@@ -138,13 +138,14 @@ public class DatabaseModifyNoiThatController {
 
     @FXML
     void NextScreen(ActionEvent event) {
+        int selectID = listViewNoiThat.getSelectionModel().getSelectedItem().getId();
         Scene scene = null;
         Stage stage = null;
         Object source = event.getSource();
         stage = (Stage) ((Node)source).getScene().getWindow();
         if (source == nextScreenButton){
             scene = DatabaseModifyHangMucScene.getInstance().getScene();
-
+            DatabaseModifyHangMucScene.getInstance().getController().initializeHangMuc(selectID);
         }else {
             return;
         }
@@ -162,10 +163,6 @@ public class DatabaseModifyNoiThatController {
         }
     }
 
-    public void getPhongCachNoiThat(PhongCachNoiThat pc){
-        parentPhongCach = new PhongCachNoiThat(pc.getId(),pc.getName(),pc.getNoiThatList());
-    }
-
 
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
@@ -175,6 +172,7 @@ public class DatabaseModifyNoiThatController {
         stage = (Stage) ((Node)source).getScene().getWindow();
         if (source == backButton){
             scene = DatabaseModifyPhongCachScene.getInstance().getScene();
+            noiThatList.clear();
             listViewNoiThat.getItems().clear();
         }
         else {
