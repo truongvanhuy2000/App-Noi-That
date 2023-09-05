@@ -1,9 +1,6 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
-import com.huy.appnoithat.Entity.HangMuc;
-import com.huy.appnoithat.Entity.NoiThat;
-import com.huy.appnoithat.Entity.ThongSo;
-import com.huy.appnoithat.Entity.VatLieu;
+import com.huy.appnoithat.Entity.*;
 import com.huy.appnoithat.Scene.DatabaseModify.ChangeProductSpecificationScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
@@ -141,7 +138,31 @@ public class DatabaseModifyVatLieuController{
 
     @FXML
     void EditVatlieu(ActionEvent event) {
+        try {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
 
+            String txt = txtVatlieu.getText().trim().toUpperCase();
+            int selectIndex = listViewVatlieu.getSelectionModel().getSelectedIndex();
+            if(selectIndex<0){
+                alert.setTitle("EDIT ERROR");
+                alert.setHeaderText("look, a error to edit");
+                alert.setContentText("Please select one item to edit !!!");
+                alert.showAndWait();
+            }else if(txt.isEmpty()){
+                alert.setTitle("EDIT ERROR");
+                alert.setHeaderText("look, a error to edit");
+                alert.setContentText("Cannot edit with text empty !!!");
+                alert.showAndWait();
+            }else{
+                VatLieu vatLieu = new VatLieu(listViewVatlieu.getItems().get(selectIndex).getId(),txt,listViewVatlieu.getItems().get(selectIndex).getThongSo());;
+                databaseModifyVatlieuService.EditVatLieu(vatLieu);
+                databaseModifyVatlieuService.findVatLieuByID(selectIndex);
+                listViewVatlieu.getItems().set(selectIndex,vatLieu);
+                listViewVatlieu.refresh();
+            }
+        }catch (Exception e){
+            System.out.println("co loi roi dai ca oi");
+        }
     }
 
     @FXML

@@ -19,24 +19,24 @@
             <Label layoutX="77.0" layoutY="20.0" prefHeight="16.0" prefWidth="31.0" text="Dài" />
             <Label layoutX="254.0" layoutY="20.0" prefHeight="16.0" prefWidth="46.0" text="Rộng" />
             <Label layoutX="430.0" layoutY="20.0" prefHeight="16.0" prefWidth="31.0" text="Cao" />
-            <TextField layoutX="52.0" layoutY="68.0" prefHeight="16.0" prefWidth="80.0" />
-            <TextField layoutX="230.0" layoutY="70.0" prefHeight="16.0" prefWidth="80.0" />
-            <TextField layoutX="407.0" layoutY="70.0" prefHeight="16.0" prefWidth="80.0" />
+            <TextField fx:id="txtDai" layoutX="52.0" layoutY="68.0" prefHeight="16.0" prefWidth="80.0" />
+            <TextField fx:id="txtRong" layoutX="230.0" layoutY="70.0" prefHeight="16.0" prefWidth="80.0" />
+            <TextField fx:id="txtCao" layoutX="407.0" layoutY="70.0" prefHeight="16.0" prefWidth="80.0" />
          </children>
       </Pane>
       <Pane layoutX="44.0" layoutY="200.0" prefHeight="55.0" prefWidth="526.0" style="-fx-background-color: #E5E7E9;">
          <children>
             <Label layoutX="49.0" layoutY="20.0" prefHeight="16.0" prefWidth="80.0" text="Đơn vị tính" />
-            <TextField layoutX="234.0" layoutY="16.0" prefHeight="24.0" prefWidth="177.0" />
+            <TextField fx:id="txtDonVi" layoutX="234.0" layoutY="16.0" prefHeight="24.0" prefWidth="177.0" />
          </children>
       </Pane>
       <Pane layoutX="44.0" layoutY="278.0" prefHeight="55.0" prefWidth="526.0" style="-fx-background-color: #E5E7E9;">
          <children>
             <Label layoutX="49.0" layoutY="20.0" prefHeight="16.0" prefWidth="80.0" text="Đơn giá" />
-            <TextField layoutX="234.0" layoutY="16.0" prefHeight="24.0" prefWidth="177.0" />
+            <TextField fx:id="txtDonGia" layoutX="234.0" layoutY="16.0" prefHeight="24.0" prefWidth="177.0" />
          </children>
       </Pane>
-      <Button layoutX="525.0" layoutY="354.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="46.0" text="OK" />
+      <Button fx:id="btnOK" layoutX="525.0" layoutY="354.0" mnemonicParsing="false" onAction="#clickOK" prefHeight="24.0" prefWidth="46.0" text="OK" />
       <Button fx:id="backButton" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="&lt;" />
    </children>
 </AnchorPane>

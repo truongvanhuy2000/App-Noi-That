@@ -124,7 +124,6 @@ public class UsersManagementController{
             password.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("password"));
             active.setCellValueFactory(new PropertyValueFactory<AccountTable,ImageView>("activeImage"));
             tableManageUser.setItems(listUser);
-
     }
 
     @FXML
@@ -177,12 +176,12 @@ public class UsersManagementController{
             btnadd.setOnAction(actionEvent -> {
                 try {
                 listUser.add(new AccountTable(listUser.size(),txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),convertActiveIcon(true)));
+                tableManageUser.getItems().clear();
                 tableManageUser.refresh();
                 usersManagementService.addNewAccount(new Account(0,txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),null,true));
+                initialize();
                 userManageMentStage.close();
-                // You might need additional logic to handle saving or updating data
 
-                    initialize();
                 } catch (JsonProcessingException e) {
                     throw new RuntimeException(e);
                 }

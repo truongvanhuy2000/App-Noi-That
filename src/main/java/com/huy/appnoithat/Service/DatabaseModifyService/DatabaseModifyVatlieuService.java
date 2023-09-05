@@ -57,16 +57,16 @@ public class DatabaseModifyVatlieuService {
         }
     }
 
-//    public void EditNoiThat(NoiThat noiThat){
-//        token = this.sessionService.getSession().getJwtToken();
-//        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-//        objectMapper = new ObjectMapper();
-//        try {
-//            this.webClientService.authorizedHttpPutJson("/api/noithat",  objectMapper.writeValueAsString(noiThat),token);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public void EditVatLieu(VatLieu vatLieu){
+        token = this.sessionService.getSession().getJwtToken();
+        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        objectMapper = new ObjectMapper();
+        try {
+            this.webClientService.authorizedHttpPutJson("/api/vatlieu",  objectMapper.writeValueAsString(vatLieu),token);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void deleteVatLieu(int id){
         token = this.sessionService.getSession().getJwtToken();
