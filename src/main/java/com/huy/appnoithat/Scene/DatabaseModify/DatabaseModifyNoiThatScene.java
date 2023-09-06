@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Scene.DatabaseModify;
 
-import com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyHangMucController;
+import com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyNoiThatController;
+import com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyPhongCachController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,16 +9,17 @@ import lombok.Getter;
 
 import java.io.IOException;
 import java.util.Objects;
+
 @Getter
-public class DatabaseModifyHangMucScene {
+public class DatabaseModifyNoiThatScene {
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
-    private static DatabaseModifyHangMucScene single_instance = null;
-    public DatabaseModifyHangMucScene() {
-        String viewPath = "view/DatabaseModifyHangMucLayout.fxml";
+    private static DatabaseModifyNoiThatScene single_instance = null;
+    public DatabaseModifyNoiThatScene() {
+        String viewPath = "view/DatabaseModifyNoiThatLayout.fxml";
         try {
-            fxmlLoader = new FXMLLoader(DatabaseModifyHangMucScene.class.getResource(viewPath));
+            fxmlLoader = new FXMLLoader(DatabaseModifyNoiThatScene.class.getResource(viewPath));
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -27,9 +29,9 @@ public class DatabaseModifyHangMucScene {
     }
 
     // Create an object of this class, call this function
-    public static synchronized DatabaseModifyHangMucScene getInstance() {
+    public static synchronized DatabaseModifyNoiThatScene getInstance() {
         if (single_instance == null)
-            single_instance = new DatabaseModifyHangMucScene();
+            single_instance = new DatabaseModifyNoiThatScene();
         return single_instance;
     }
 
@@ -48,7 +50,7 @@ public class DatabaseModifyHangMucScene {
         String cssPath = "css/DatabaseModifyPhongCach.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }
-    public DatabaseModifyHangMucController getController(){
+    public DatabaseModifyNoiThatController getController(){
         return fxmlLoader.getController();
     }
 }

@@ -6,7 +6,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class VatLieu {
+public class VatLieu extends HangMuc {
     @JsonProperty("id")
     private int id;
     @JsonProperty("name")

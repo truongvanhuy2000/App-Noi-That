@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Service.DatabaseModifyService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
@@ -43,4 +44,49 @@ public class DatabaseModifyPhongCachService {
         }
         return tempPhongCachList;
     }
+
+    public void addNewPhongCach(PhongCachNoiThat phongCachNoiThat){
+        token = this.sessionService.getSession().getJwtToken();
+        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        objectMapper = new ObjectMapper();
+        try {
+            this.webClientService.authorizedHttpPostJson("/api/phongcach",  objectMapper.writeValueAsString(phongCachNoiThat),token);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void EditPhongCach(PhongCachNoiThat phongCachNoiThat){
+        token = this.sessionService.getSession().getJwtToken();
+        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        objectMapper = new ObjectMapper();
+        try {
+            this.webClientService.authorizedHttpPutJson("/api/phongcach",  objectMapper.writeValueAsString(phongCachNoiThat),token);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deletePhongCach(int id){
+        token = this.sessionService.getSession().getJwtToken();
+        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        objectMapper = new ObjectMapper();
+        this.webClientService.authorizedHttpDeleteJson("/api/phongcach/"+id,  "",token);
+    }
+
+
+//    public PhongCachNoiThat findByID(int id){
+//        token = this.sessionService.getSession().getJwtToken();
+//        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+//        String response2 = this.webClientService.authorizedHttpGetJson("/api/noithat/searchByPhongCach/"+id, token);
+//        objectMapper = new ObjectMapper();
+//        PhongCachNoiThat phongCachNoiThat = new PhongCachNoiThat();
+//        try {
+//            phongCachNoiThat = objectMapper.readValue(response2,PhongCachNoiThat.class);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return phongCachNoiThat;
+//    }
+
 }

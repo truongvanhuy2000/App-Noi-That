@@ -44,6 +44,26 @@ public class UsersManagementService {
         findAccountById(id).setActive(false);
     }
 
+    public void enableAccount(int id){
+        token = this.sessionService.getSession().getJwtToken();
+        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        objectMapper = new ObjectMapper();
+        this.webClientService.authorizedHttpPutJson("/api/accounts/enable/"+id,  "long",token);
+    }
+    public List<Account> findAllNotEnabledAccount(){
+        token = this.sessionService.getSession().getJwtToken();
+        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        String response2 = this.webClientService.authorizedHttpGetJson("/api/accounts/notEnabled", token);
+        objectMapper = new ObjectMapper();
+        try {
+            tempAccountList = objectMapper.readValue(response2, objectMapper.getTypeFactory()
+                    .constructCollectionType(List.class, Account.class));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return tempAccountList;
+    }
+
     public void deleteAccount(int id){
         token = this.sessionService.getSession().getJwtToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);

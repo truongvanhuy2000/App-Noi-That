@@ -48,7 +48,7 @@ public class DatabaseModifyPhongCachScene {
         String cssPath = "css/DatabaseModifyPhongCach.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }
-    public DatabaseModifyPhongCachController getHomeController(){
+    public DatabaseModifyPhongCachController getController(){
         return fxmlLoader.getController();
     }
 }

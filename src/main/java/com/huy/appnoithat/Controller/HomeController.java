@@ -74,6 +74,7 @@ public class HomeController {
             scene = UserManagementScene.getInstance().getScene();
         }else if (source == suadoidatabaseButton) {
             scene = DatabaseModifyPhongCachScene.getInstance().getScene();
+            DatabaseModifyPhongCachScene.getInstance().getController().initializePhongCach();
         }
         else {
             return;

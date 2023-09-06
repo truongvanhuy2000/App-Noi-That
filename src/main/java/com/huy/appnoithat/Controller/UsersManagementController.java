@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
+import com.huy.appnoithat.Entity.Role;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.ListAccountWaitToApproveScene;
 import com.huy.appnoithat.Scene.UserManagementAddAccountScene;
@@ -103,6 +104,8 @@ public class UsersManagementController{
     ObservableList<AccountTable> listUser = FXCollections.observableArrayList(
     );
 
+
+
     UsersManagementService usersManagementService = new UsersManagementService();
 
     UserSessionService userSessionService;
@@ -121,7 +124,6 @@ public class UsersManagementController{
             password.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("password"));
             active.setCellValueFactory(new PropertyValueFactory<AccountTable,ImageView>("activeImage"));
             tableManageUser.setItems(listUser);
-
     }
 
     @FXML
@@ -136,6 +138,7 @@ public class UsersManagementController{
         List<AccountTable> listFilter = seach(username);
         ObservableList<AccountTable> listUser = FXCollections.observableArrayList(listFilter);
         tableManageUser.setItems(listUser);
+
     }
 
 
@@ -171,12 +174,17 @@ public class UsersManagementController{
             userManageMentStage.setScene(userManagementAddAccountScene);
 
             btnadd.setOnAction(actionEvent -> {
+                try {
                 listUser.add(new AccountTable(listUser.size(),txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),convertActiveIcon(true)));
-                System.out.println(listUser.size());
+                tableManageUser.getItems().clear();
                 tableManageUser.refresh();
-                usersManagementService.addNewAccount(new Account(0,txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),true));
+                usersManagementService.addNewAccount(new Account(0,txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),null,true));
+                initialize();
                 userManageMentStage.close();
-                // You might need additional logic to handle saving or updating data
+
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
             });
 
             btncancel.setOnAction(actionEvent -> {
@@ -247,14 +255,15 @@ public class UsersManagementController{
 
     @FXML
     void tableClickToSelectItem(MouseEvent event) {
-        String username = tableManageUser.getSelectionModel().getSelectedItem().getUsername();
+//        String username = tableManageUser.getSelectionModel().getSelectedItem().getUsername();
     }
 
 
     @FXML
     void DuyetAccount(ActionEvent event) {
+        ObservableList<Account> listUserNotEnable = FXCollections.observableArrayList(
+        );
         try {
-
             Stage userManageMentStage = new Stage();
             Scene listAccountWaitToApprove = ListAccountWaitToApproveScene.getInstance().getScene();
 
@@ -264,15 +273,59 @@ public class UsersManagementController{
             Button btnReject = (Button) listAccountWaitToApprove.lookup("#btnReject");
             Button btnCancel = (Button) listAccountWaitToApprove.lookup("#btnCancel");
 
+            ObservableList<TableColumn<Account, ?>> columns = tableView.getColumns();
+            TableColumn<Account, String> usernameColumn = null;
+            TableColumn<Account, String> passwordColumn = null;
+            TableColumn<Account, String> sttColumn = null;
+            for (TableColumn<Account, ?> column : columns) {
+                if (column.getId().equals("usernameColumn")) {
+                    usernameColumn = (TableColumn<Account, String>) column;
+                    // Now you can work with the usernameColumn
+
+                }
+                if (column.getId().equals("passwordColumn")) {
+                    passwordColumn = (TableColumn<Account, String>) column;
+                    // Now you can work with the usernameColumn
+//                    break; // Assuming there's only one column with the given ID
+                }
+                if (column.getId().equals("sttColumn")) {
+                    sttColumn = (TableColumn<Account, String>) column;
+                    // Now you can work with the usernameColumn
+//                    break; // Assuming there's only one column with the given ID
+                }
+            }
+
+            List<Account> accountList = usersManagementService.findAllNotEnabledAccount();
+
+            for (Account account : accountList
+            ) {
+                listUserNotEnable.add(new Account(account.getId(), account.getUsername(), account.getPassword(),account.isActive(),account.getAccountInformation(),account.getRoleList(),account.isEnabled()));
+            }
+            usernameColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("username"));
+            passwordColumn.setCellValueFactory(new PropertyValueFactory<Account,String>("password"));
+            sttColumn.setCellValueFactory(new PropertyValueFactory<Account,String>("id"));
+            tableView.setItems(listUserNotEnable);
+
+
+//
             userManageMentStage.setScene(listAccountWaitToApprove);
             userManageMentStage.setTitle("LIST ACCOUNT TO APPROVE");
             userManageMentStage.show();
 
 
             btnApprove.setOnAction(actionEvent -> {
-
+                int enableid = 0;
+                Account acc =(Account)tableView.getSelectionModel().getSelectedItem();
+                enableid = acc.getId();
+                usersManagementService.enableAccount(enableid);
                 userManageMentStage.close();
                 // You might need additional logic to handle saving or updating data
+            });
+
+
+            //chua lam reject
+            btnReject.setOnAction(actionEvent -> {
+
             });
 
             btnCancel.setOnAction(actionEvent -> {

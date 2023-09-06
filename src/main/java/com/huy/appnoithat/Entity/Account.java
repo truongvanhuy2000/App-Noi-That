@@ -2,6 +2,8 @@ package com.huy.appnoithat.Entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,8 +16,10 @@ public class Account {
     private String password;
     @JsonProperty("active")
     private boolean active;
-    @JsonProperty("accountInformation")
+    @JsonProperty("accountInformationEntity")
     private AccountInformation accountInformation;
+    @JsonProperty("roleEntity")
+    private List<Role> roleList;
     @JsonProperty("enabled")
     private boolean enabled;
     @Override
