@@ -90,11 +90,11 @@ public class ChangeProductSpecificationController {
         parentID=id;
         thongSoList = databaseModifyThongSoService.findThongSoByID(id);
         for (ThongSo ts : thongSoList) {
-            txtCao.setText(ts.getCao() !=null ? ts.getCao().toString() : " ");
-            txtDai.setText(ts.getDai() !=null ? ts.getDai().toString() : " ");
-            txtRong.setText(ts.getRong() !=null ? ts.getRong().toString() : " ");
-            txtDonGia.setText(ts.getDon_gia() != null ? ts.getDon_gia().toString() : " ");
-            txtDonVi.setText(ts.getDon_vi() != null ? ts.getDon_vi() : " ");
+            txtCao.setText(ts.getCao() !=null ? ts.getCao().toString() : "");
+            txtDai.setText(ts.getDai() !=null ? ts.getDai().toString() : "");
+            txtRong.setText(ts.getRong() !=null ? ts.getRong().toString() : "");
+            txtDonGia.setText(ts.getDon_gia() != null ? ts.getDon_gia().toString() : "");
+            txtDonVi.setText(ts.getDon_vi() != null ? ts.getDon_vi() : "");
         }
     }
 

@@ -57,16 +57,16 @@ public class DatabaseModifyHangMucService {
         }
     }
 
-//    public void EditHangMuc(PhongCachNoiThat phongCachNoiThat){
-//        token = this.sessionService.getSession().getJwtToken();
-//        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-//        objectMapper = new ObjectMapper();
-//        try {
-//            this.webClientService.authorizedHttpPutJson("/api/noithat",  objectMapper.writeValueAsString(phongCachNoiThat),token);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public void EditHangMuc(HangMuc hangMuc){
+        token = this.sessionService.getSession().getJwtToken();
+        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        objectMapper = new ObjectMapper();
+        try {
+            this.webClientService.authorizedHttpPutJson("/api/hangmuc",  objectMapper.writeValueAsString(hangMuc),token);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void deleteHangMuc(int id){
         token = this.sessionService.getSession().getJwtToken();

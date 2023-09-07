@@ -2,6 +2,7 @@ package com.huy.appnoithat.Service.UsersManagement;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Entity.Account;
+import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
@@ -22,10 +23,10 @@ public class UsersManagementService {
     public UsersManagementService() {
     }
 
-    public List<Account> findAllAccount(){
+    public List<Account> findAllAccountEnable(){
         token = this.sessionService.getSession().getJwtToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/accounts", token);
+        String response2 = this.webClientService.authorizedHttpGetJson("/api/accounts/enabled", token);
         objectMapper = new ObjectMapper();
         try {
             tempAccountList = objectMapper.readValue(response2, objectMapper.getTypeFactory()
@@ -70,8 +71,19 @@ public class UsersManagementService {
         objectMapper = new ObjectMapper();
         this.webClientService.authorizedHttpDeleteJson("/api/accounts/"+id,  "",token);
     }
-    Account findAccountById(int id){
-        return tempAccountList.stream().filter(account -> id == account.getId()).findFirst().orElse(null);
+    public Account findAccountById(int id){
+//        return tempAccountList.stream().filter(account -> id == account.getId()).findFirst().orElse(null);
+        Account account = new Account();
+        token = this.sessionService.getSession().getJwtToken();
+        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        String response2 = this.webClientService.authorizedHttpGetJson("/api/accounts/"+id, token);
+        objectMapper = new ObjectMapper();
+        try {
+            account = objectMapper.readValue(response2,Account.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return account;
     }
 
     public void addNewAccount(Account account){
@@ -83,5 +95,30 @@ public class UsersManagementService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void EditAccount(Account account){
+        token = this.sessionService.getSession().getJwtToken();
+        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        objectMapper = new ObjectMapper();
+        try {
+            this.webClientService.authorizedHttpPutJson("/api/accounts",  objectMapper.writeValueAsString(account),token);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void ActiveAccount(int id){
+        token = this.sessionService.getSession().getJwtToken();
+        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        objectMapper = new ObjectMapper();
+        this.webClientService.authorizedHttpPutJson("/api/accounts/activate/"+id,  " ",token);
+    }
+
+    public void InActiveAccount(int id){
+        token = this.sessionService.getSession().getJwtToken();
+        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        objectMapper = new ObjectMapper();
+        this.webClientService.authorizedHttpPutJson("/api/accounts/deactivate/"+id,  " ",token);
     }
 }

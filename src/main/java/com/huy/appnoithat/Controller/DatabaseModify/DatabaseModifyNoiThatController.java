@@ -113,7 +113,6 @@ public class DatabaseModifyNoiThatController {
                 // cần phải get list nội thất
                 NoiThat noiThat = new NoiThat(listViewNoiThat.getItems().get(selectIndex).getId(),txt,listViewNoiThat.getItems().get(selectIndex).getHangMucList());
                 databaseModifyNoiThatService.EditNoiThat(noiThat);
-//                databaseModifyPhongCachService.findAllPhongCach();
                 listViewNoiThat.getItems().set(selectIndex,noiThat);
                 listViewNoiThat.refresh();
             }

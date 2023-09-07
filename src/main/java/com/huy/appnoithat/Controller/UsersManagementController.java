@@ -89,7 +89,7 @@ public class UsersManagementController{
     UsersManagementService user = new UsersManagementService();
 
     @Getter
-    List<Account> list = user.findAllAccount();
+    List<Account> list = user.findAllAccountEnable();
     public ImageView convertActiveIcon(boolean checked){
         ImageView activeIcon;
         if(checked){
@@ -114,7 +114,7 @@ public class UsersManagementController{
     }
     public void initialize() throws JsonProcessingException {
             // 2. convert JSON array to List of objects
-            List<Account> accountList = usersManagementService.findAllAccount();
+            List<Account> accountList = usersManagementService.findAllAccountEnable();
 
             for (Account account: accountList
                  ) {
@@ -124,6 +124,11 @@ public class UsersManagementController{
             password.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("password"));
             active.setCellValueFactory(new PropertyValueFactory<AccountTable,ImageView>("activeImage"));
             tableManageUser.setItems(listUser);
+    }
+
+    void clearData(){
+        list.clear();
+        tableManageUser.getItems().clear();
     }
 
     @FXML
@@ -144,8 +149,10 @@ public class UsersManagementController{
 
     @FXML
     void ActiveAccount(ActionEvent event) {
+        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
+        int activeID = tableManageUser.getItems().get(indexSelector).getId();
         tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(true));
-
+        usersManagementService.ActiveAccount(activeID);
         tableManageUser.refresh();
 
     }
@@ -154,7 +161,7 @@ public class UsersManagementController{
     void InActiveAccount(ActionEvent event) {
         int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
         int inactiveID = tableManageUser.getItems().get(indexSelector).getId();
-
+        usersManagementService.InActiveAccount(inactiveID);
         tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(false));
         tableManageUser.refresh();
     }
@@ -179,6 +186,7 @@ public class UsersManagementController{
                 tableManageUser.getItems().clear();
                 tableManageUser.refresh();
                 usersManagementService.addNewAccount(new Account(0,txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),null,true));
+                clearData();
                 initialize();
                 userManageMentStage.close();
 
@@ -210,7 +218,7 @@ public class UsersManagementController{
     @FXML
     void EditAccount(ActionEvent event) {
         try {
-
+            int selectIndex = tableManageUser.getSelectionModel().getSelectedIndex();
             Stage userManageMentStage = new Stage();
             Scene userManagementEditorScene = UserManagementEditorScene.getInstance().getScene();
 //element field of AccountTable
@@ -240,6 +248,11 @@ public class UsersManagementController{
             btnedit.setOnAction(actionEvent -> {
                 tableManageUser.getSelectionModel().getSelectedItem().setUsername(txtusername.getText());
                 tableManageUser.getSelectionModel().getSelectedItem().setPassword(txtpassword.getText());
+                int id = tableManageUser.getItems().get(selectIndex).getId();
+                Account account = usersManagementService.findAccountById(id);
+                account.setUsername(txtusername.getText());
+                account.setPassword(txtpassword.getText());
+                usersManagementService.EditAccount(account);
                 tableManageUser.refresh();
                 userManageMentStage.close();
                 // You might need additional logic to handle saving or updating data

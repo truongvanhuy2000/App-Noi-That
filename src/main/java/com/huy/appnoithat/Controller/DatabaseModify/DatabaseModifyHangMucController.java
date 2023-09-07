@@ -132,27 +132,31 @@ public class DatabaseModifyHangMucController {
 
     @FXML
     void EditHangMuc(ActionEvent event) {
-//        try {
-//            Dialog dialog = new Dialog();
-//
-//            String txt = txtHangMuc.getText().trim().toUpperCase();
-//            int selectIndex = listViewHangMuc.getSelectionModel().getSelectedIndex();
-//            if(selectIndex<=0){
-//                dialog.setTitle("EDIT ERROR");
-//                dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-//                dialog.getDialogPane().setContentText("Please select one item to edit !!!");
-//                dialog.show();
-//            }else if(txt.isEmpty()){
-//                dialog.setTitle("EDIT ERROR");
-//                dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
-//                dialog.getDialogPane().setContentText("Cannot edit with text empty !!!");
-//                dialog.show();
-//            }else{
-//                listViewHangMuc.getItems().set(selectIndex, txtHangMuc.getText());
-//            }
-//        }catch (Exception e){
-//            System.out.println("co loi roi dai ca oi");
-//        }
+        try {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            String txt = txtHangMuc.getText().trim().toUpperCase();
+            int selectIndex = listViewHangMuc.getSelectionModel().getSelectedIndex();
+            if(selectIndex<0){
+                alert.setTitle("EDIT ERROR");
+                alert.setHeaderText("look, a error to edit");
+                alert.setContentText("Please select one item to edit !!!");
+                alert.showAndWait();
+            }else if(txt.isEmpty()){
+                alert.setTitle("EDIT ERROR");
+                alert.setHeaderText("look, a error to edit");
+                alert.setContentText("Cannot edit with text empty !!!");
+                alert.showAndWait();
+            }else{
+                // cần phải get list nội thất
+                HangMuc hangMuc = new HangMuc(listViewHangMuc.getItems().get(selectIndex).getId(),txt,listViewHangMuc.getItems().get(selectIndex).getVatLieuList());
+                databaseModifyHangMucService.EditHangMuc(hangMuc);
+                listViewHangMuc.getItems().set(selectIndex,hangMuc);
+                listViewHangMuc.refresh();
+            }
+        }catch (Exception e){
+            System.out.println("co loi roi dai ca oi");
+        }
     }
 
     @FXML
