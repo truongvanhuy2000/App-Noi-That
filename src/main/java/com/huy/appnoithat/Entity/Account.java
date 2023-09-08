@@ -16,7 +16,7 @@ public class Account {
     private String password;
     @JsonProperty("active")
     private boolean active;
-    @JsonProperty("accountInformationEntity")
+    @JsonProperty("accountInformation")
     private AccountInformation accountInformation;
     @JsonProperty("roles")
     private List<String> roleList;
