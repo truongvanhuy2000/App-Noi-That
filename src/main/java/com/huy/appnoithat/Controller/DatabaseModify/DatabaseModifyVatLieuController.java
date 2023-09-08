@@ -104,33 +104,43 @@ public class DatabaseModifyVatLieuController{
     @FXML
     void DeleteVatlieu(ActionEvent event) {
         try {
-            int selectIndex = listViewVatlieu.getSelectionModel().getSelectedIndex();
-            int deleteID = listViewVatlieu.getSelectionModel().getSelectedItem().getId();
-            System.out.println(deleteID);
-            Alert deleteDialog = new Alert(Alert.AlertType.CONFIRMATION);
-            if(selectIndex>=0){
-                deleteDialog.setTitle("Delete Confirmation");
-                deleteDialog.setHeaderText("Are you sure you want to delete this item?");
-                deleteDialog.setContentText("This action cannot be undone.");
-                // Add "Yes" button
-                deleteDialog.getDialogPane().getButtonTypes().add(ButtonType.YES);
-                deleteDialog.getDialogPane().getButtonTypes().remove(ButtonType.OK);
-                // Show the dialog and wait for user interaction
-                ButtonType result = deleteDialog.showAndWait().orElse(ButtonType.CANCEL);
-                // Handle the user's choice
-                if (result == ButtonType.YES) {
+            int selectIndex =0;
+            Alert alert = new Alert(Alert.AlertType.ERROR);
 
-                    databaseModifyVatlieuService.deleteVatLieu(deleteID);
-                    listViewVatlieu.getItems().remove(selectIndex);
-                    listViewVatlieu.refresh();
-                }
-            }else{
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("DELETE ERROR");
-                alert.setHeaderText("look, a error");
-                alert.setContentText("Please choose one item to delete");
+            if(listViewVatlieu.getSelectionModel().getSelectedItem() ==null){
+                alert.setTitle("NEXT ERROR");
+                alert.setHeaderText("look, a error to next");
+                alert.setContentText("Please choose one item to next !!!");
                 alert.showAndWait();
+            }else{
+                selectIndex = listViewVatlieu.getSelectionModel().getSelectedIndex();
+                int deleteID = listViewVatlieu.getSelectionModel().getSelectedItem().getId();
+                System.out.println(deleteID);
+                Alert deleteDialog = new Alert(Alert.AlertType.CONFIRMATION);
+                if(selectIndex>=0){
+                    deleteDialog.setTitle("Delete Confirmation");
+                    deleteDialog.setHeaderText("Are you sure you want to delete this item?");
+                    deleteDialog.setContentText("This action cannot be undone.");
+                    // Add "Yes" button
+                    deleteDialog.getDialogPane().getButtonTypes().add(ButtonType.YES);
+                    deleteDialog.getDialogPane().getButtonTypes().remove(ButtonType.OK);
+                    // Show the dialog and wait for user interaction
+                    ButtonType result = deleteDialog.showAndWait().orElse(ButtonType.CANCEL);
+                    // Handle the user's choice
+                    if (result == ButtonType.YES) {
+                        databaseModifyVatlieuService.deleteVatLieu(deleteID);
+                        listViewVatlieu.getItems().remove(selectIndex);
+                        txtVatlieu.clear();
+                        listViewVatlieu.refresh();
+                    }
+                }else{
+                    alert.setTitle("DELETE ERROR");
+                    alert.setHeaderText("look, a error");
+                    alert.setContentText("Please choose one item to delete");
+                    alert.showAndWait();
+                }
             }
+
         }catch (Exception e){
             System.out.println("Something went wrong.");
         }
@@ -167,19 +177,29 @@ public class DatabaseModifyVatLieuController{
 
     @FXML
     void NextScreen(ActionEvent event) {
-        int selectID = listViewVatlieu.getSelectionModel().getSelectedItem().getId();
-        Scene scene = null;
-        Stage stage = null;
-        Object source = event.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
-        if (source == nextScreenButton){
-            scene = ChangeProductSpecificationScene.getInstance().getScene();
-            ChangeProductSpecificationScene.getInstance().getController().initializeThongSo(selectID);
-        }else {
-            return;
-        }
-        stage.setScene(scene);
-        stage.show();
+        int selectID =0;
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        if(listViewVatlieu.getSelectionModel().getSelectedItem() ==null){
+                alert.setTitle("NEXT ERROR");
+                alert.setHeaderText("look, a error to next");
+                alert.setContentText("Please choose one item to next !!!");
+                alert.showAndWait();
+            }else{
+                selectID = listViewVatlieu.getSelectionModel().getSelectedItem().getId();
+                Scene scene = null;
+                Stage stage = null;
+                Object source = event.getSource();
+                stage = (Stage) ((Node)source).getScene().getWindow();
+                if (source == nextScreenButton){
+                    scene = ChangeProductSpecificationScene.getInstance().getScene();
+                    ChangeProductSpecificationScene.getInstance().getController().initializeThongSo(selectID);
+                }else {
+                    return;
+                }
+                stage.setScene(scene);
+                stage.show();
+            }
     }
 
     @FXML

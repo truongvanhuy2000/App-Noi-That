@@ -104,32 +104,41 @@ public class DatabaseModifyPhongCachController {
     @FXML
     void DeletePhongCach(ActionEvent event) {
         try {
-            int selectIndex = listViewPhongCach.getSelectionModel().getSelectedIndex();
-            int deleteID = listViewPhongCach.getSelectionModel().getSelectedItem().getId();
-            System.out.println(deleteID);
-            Alert deleteDialog = new Alert(Alert.AlertType.CONFIRMATION);
-            if(selectIndex>=0){
-                deleteDialog.setTitle("Delete Confirmation");
-                deleteDialog.setHeaderText("Are you sure you want to delete this item?");
-                deleteDialog.setContentText("This action cannot be undone.");
-                // Add "Yes" button
-                deleteDialog.getDialogPane().getButtonTypes().add(ButtonType.YES);
-                deleteDialog.getDialogPane().getButtonTypes().remove(ButtonType.OK);
-                // Show the dialog and wait for user interaction
-                ButtonType result = deleteDialog.showAndWait().orElse(ButtonType.CANCEL);
-                // Handle the user's choice
-                if (result == ButtonType.YES) {
+            int selectIndex =0;
+            Alert alert = new Alert(Alert.AlertType.ERROR);
 
-                    databaseModifyPhongCachService.deletePhongCach(deleteID);
-                    listViewPhongCach.getItems().remove(selectIndex);
-                    listViewPhongCach.refresh();
-                }
-            }else{
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("DELETE ERROR");
-                alert.setHeaderText("look, a error");
-                alert.setContentText("Please choose one item to delete");
+            if(listViewPhongCach.getSelectionModel().getSelectedItem() ==null){
+                alert.setTitle("NEXT ERROR");
+                alert.setHeaderText("look, a error to next");
+                alert.setContentText("Please choose one item to next !!!");
                 alert.showAndWait();
+            }else{
+                selectIndex = listViewPhongCach.getSelectionModel().getSelectedIndex();
+                int deleteID = listViewPhongCach.getSelectionModel().getSelectedItem().getId();
+                Alert deleteDialog = new Alert(Alert.AlertType.CONFIRMATION);
+                if(selectIndex>=0){
+                    deleteDialog.setTitle("Delete Confirmation");
+                    deleteDialog.setHeaderText("Are you sure you want to delete this item?");
+                    deleteDialog.setContentText("This action cannot be undone.");
+                    // Add "Yes" button
+                    deleteDialog.getDialogPane().getButtonTypes().add(ButtonType.YES);
+                    deleteDialog.getDialogPane().getButtonTypes().remove(ButtonType.OK);
+                    // Show the dialog and wait for user interaction
+                    ButtonType result = deleteDialog.showAndWait().orElse(ButtonType.CANCEL);
+                    // Handle the user's choice
+                    if (result == ButtonType.YES) {
+
+                        databaseModifyPhongCachService.deletePhongCach(deleteID);
+                        listViewPhongCach.getItems().remove(selectIndex);
+                        txtPhongCach.clear();
+                        listViewPhongCach.refresh();
+                    }
+                }else{
+                    alert.setTitle("DELETE ERROR");
+                    alert.setHeaderText("look, a error");
+                    alert.setContentText("Please choose one item to delete");
+                    alert.showAndWait();
+                }
             }
         }catch (Exception e){
             System.out.println("Something went wrong.");
@@ -189,22 +198,30 @@ public class DatabaseModifyPhongCachController {
 
     @FXML
     void NextScreen(ActionEvent event) {
-        int selectID = listViewPhongCach.getSelectionModel().getSelectedItem().getId();
-//        PhongCachNoiThat pc = databaseModifyPhongCachService.findByID(selectID);
-//        System.out.println(pc.getNoiThatList());
-        Scene scene = null;
-        Stage stage = null;
-        Object source = event.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
-        if (source == nextScreenButton){
-            scene = DatabaseModifyNoiThatScene.getInstance().getScene();
-            DatabaseModifyNoiThatScene.getInstance().getController().initializeNoiThat(selectID);
-//            DatabaseModifyNoiThatScene.getInstance().getController().getPhongCachNoiThat(pc);
-        }else {
-            return;
+        int selectID =0;
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        if(listViewPhongCach.getSelectionModel().getSelectedItem() ==null){
+            alert.setTitle("NEXT ERROR");
+            alert.setHeaderText("look, a error to next");
+            alert.setContentText("Please choose one item to next !!!");
+            alert.showAndWait();
+        }else{
+             selectID = listViewPhongCach.getSelectionModel().getSelectedItem().getId();
+            Scene scene = null;
+            Stage stage = null;
+            Object source = event.getSource();
+            stage = (Stage) ((Node)source).getScene().getWindow();
+            if (source == nextScreenButton){
+                scene = DatabaseModifyNoiThatScene.getInstance().getScene();
+                DatabaseModifyNoiThatScene.getInstance().getController().initializeNoiThat(selectID);
+            }else {
+                return;
+            }
+            stage.setScene(scene);
+            stage.show();
         }
-        stage.setScene(scene);
-        stage.show();
+
     }
 
 
