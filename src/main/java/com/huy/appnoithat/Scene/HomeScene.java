@@ -1,15 +1,20 @@
 package com.huy.appnoithat.Scene;
 
 import com.huy.appnoithat.Controller.HomeController;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.Objects;
 @Getter
 public class HomeScene {
+    final static Logger LOGGER = LogManager.getLogger(HomeScene.class);
     private static final String VIEW_PATH = "view/HomeLayout.fxml";
     private static final String CSS_PATH = "css/HomeLayout.css";
     private Scene scene;
@@ -21,6 +26,7 @@ public class HomeScene {
             fxmlLoader = new FXMLLoader(HomeScene.class.getResource(VIEW_PATH));
             root = fxmlLoader.load();
         } catch (IOException e) {
+            LOGGER.error("Error loading HomeScene: " + e.getMessage());
             throw new RuntimeException(e);
         }
         scene = new Scene(root);

@@ -42,7 +42,6 @@ public class LoginController {
             alert.showAndWait();
             passwordField.setText("");
             return;
-//            throw new RuntimeException("Login fail");
         }
         sceneSwitcher(actionEvent);
     }

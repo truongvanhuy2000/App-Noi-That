@@ -11,10 +11,10 @@ public class UserSessionService {
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
     }
     public boolean isLogin() {
-        if (UserSession.getInstance().getAccount() != null) {
-            return true;
+        if (!isSessionValid()) {
+            return false;
         }
-        return false;
+        return true;
     }
     public void cleanUserSession() {
         UserSession session = UserSession.getInstance();
@@ -32,11 +32,13 @@ public class UserSessionService {
         }
         return UserSession.getInstance();
     }
-    private boolean isSessionValid() {
-
+    public boolean isSessionValid() {
+        loadSessionFromDisk();
+        String response = webClientService.authorizedHttpGetJson("/api/index", UserSession.getInstance().getJwtToken());
+        return response != null;
     }
     // Haven't implemented yet
-    public void loadInstanceFromDisk() {
-        return;
+    public void loadSessionFromDisk() {
+        UserSession.getInstance().setJwtToken(":))");
     }
 }

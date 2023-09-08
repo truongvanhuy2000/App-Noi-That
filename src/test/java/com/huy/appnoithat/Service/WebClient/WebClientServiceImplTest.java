@@ -7,6 +7,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 class WebClientServiceImplTest {
     private WebClientService webClientService;
     private ObjectMapper objectMapper;
@@ -15,7 +17,7 @@ class WebClientServiceImplTest {
     void setUp() {
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
-        Account account = new Account(1, "admin", "admin", true, null, true);
+        Account account = new Account(1, "admin", "admin", true, null, new ArrayList<>(), true);
         try {
             token = webClientService.unauthorizedHttpPostJson("/api/login", objectMapper.writeValueAsString(account));
         } catch (JsonProcessingException e) {

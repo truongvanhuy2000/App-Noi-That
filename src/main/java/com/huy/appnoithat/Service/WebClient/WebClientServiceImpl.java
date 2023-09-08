@@ -80,10 +80,10 @@ public class WebClientServiceImpl implements WebClientService {
             HttpRequest httpRequest = buildJsonHttpRequest(method, path, authenticationToken, data);
             HttpResponse<String> response = client.send(httpRequest, BodyHandlers.ofString());
             if (response.statusCode() != 200) {
-                throw new RuntimeException("Exception: " + response.statusCode() + " " + response.body());
+                return null;
             }
             return response.body();
-        } catch (IOException | InterruptedException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
