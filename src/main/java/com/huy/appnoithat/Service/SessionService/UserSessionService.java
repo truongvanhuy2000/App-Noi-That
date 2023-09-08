@@ -33,7 +33,7 @@ public class UserSessionService {
         return UserSession.getInstance();
     }
     private boolean isSessionValid() {
-
+    return false;
     }
     // Haven't implemented yet
     public void loadInstanceFromDisk() {

@@ -29,6 +29,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -180,7 +181,9 @@ public class UsersManagementController{
                 listUser.add(new AccountTable(listUser.size(),txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),convertActiveIcon(true)));
                 tableManageUser.getItems().clear();
                 tableManageUser.refresh();
-                usersManagementService.addNewAccount(new Account(0,txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),null,true));
+                List<String> roleList = new ArrayList<>();
+                roleList.add("ROLE_USER");
+                usersManagementService.addNewAccount(new Account(0,txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),roleList,true));
                 clearData();
                 initialize();
                 userManageMentStage.close();
