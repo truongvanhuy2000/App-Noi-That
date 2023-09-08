@@ -83,7 +83,6 @@ public class STTCollumHandler {
             return;
         }
         addNodeToTheYoungestLeaf(tempNoiThatList, newItem);
-
     }
 
     private ObservableList<TreeItem<BangNoiThat>> findPhongCachList(TreeItem<BangNoiThat> currentItem){

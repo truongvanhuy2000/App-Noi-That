@@ -19,7 +19,7 @@ public class Account {
     @JsonProperty("accountInformationEntity")
     private AccountInformation accountInformation;
     @JsonProperty("roles")
-    private List<Role> roleList;
+    private List<String> roleList;
     @JsonProperty("enabled")
     private boolean enabled;
     @Override

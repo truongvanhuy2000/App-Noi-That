@@ -1,18 +1,14 @@
 package com.huy.appnoithat.Controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
-import com.huy.appnoithat.Entity.Role;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.ListAccountWaitToApproveScene;
 import com.huy.appnoithat.Scene.UserManagementAddAccountScene;
 import com.huy.appnoithat.Scene.UserManagementEditorScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
-import com.huy.appnoithat.Service.WebClient.WebClientService;
-import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,7 +29,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
