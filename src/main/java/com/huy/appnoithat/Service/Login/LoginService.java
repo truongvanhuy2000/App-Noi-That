@@ -4,45 +4,42 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
+import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoginService {
-    // Just let them in :))
-    private List<Account> accounts;
-    private WebClientService webClientService;
-    private ObjectMapper objectMapper;
-    private String token;
+    final static Logger LOGGER = LogManager.getLogger(LoginService.class);
+    private final WebClientService webClientService;
+    private UsersManagementService usersManagementService;
+    private final ObjectMapper objectMapper;
+    private final UserSessionService sessionService;
 
-    private final UserSessionService sessionService = new UserSessionService();
 
     public LoginService() {
-        accounts = new ArrayList<>();
-
-
+        this.webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        this.usersManagementService = new UsersManagementService();
+        this.objectMapper = new ObjectMapper();
+        this.sessionService = new UserSessionService();
     }
     public boolean Authorization(String username, String password) {
-//        Account tempAccount = accounts.stream()
-//                .filter(account -> account.getUsername().equals(username) && account.getPassword().equals(password))
-//                .findFirst().orElse(null);
-//        if ( tempAccount != null) {
-//            sessionService.setSession(tempAccount, ":))");
-//
-//            return true;
-//        }
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = new ObjectMapper();
+
         Account account = new Account(0, username, password, true, null,null, false);
         try {
-            token = webClientService.unauthorizedHttpPostJson("/api/login", objectMapper.writeValueAsString(account));
+            String token = webClientService.unauthorizedHttpPostJson("/api/login", objectMapper.writeValueAsString(account));
             if (!token.isEmpty()){
-                this.sessionService.setSession(account,token);
+                this.sessionService.setToken(token);
+                Account loginAccount = this.usersManagementService.findAccountByUsername(username);
+                this.sessionService.setLoginAccount(loginAccount);
                 return true;
             }
         } catch (RuntimeException | JsonProcessingException e) {
+            LOGGER.error("Login failed");
             return false;
         }
         return false;

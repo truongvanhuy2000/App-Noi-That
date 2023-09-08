@@ -15,6 +15,7 @@ import javafx.scene.control.TreeTableColumn;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class VatLieuCollumHandler {
     private final ObservableList<String> vatLieuList;
@@ -37,13 +38,13 @@ public class VatLieuCollumHandler {
         if (coresspondingThongSo == null){
             return;
         }
-        float dai = coresspondingThongSo.getDai();
-        float rong = coresspondingThongSo.getRong();
-        float cao = coresspondingThongSo.getCao();
-        long donGia = coresspondingThongSo.getDon_gia();
+        Float dai = Objects.requireNonNullElse(coresspondingThongSo.getDai(), 0f);
+        Float rong = Objects.requireNonNullElse(coresspondingThongSo.getRong(), 0f);
+        Float cao = Objects.requireNonNullElse(coresspondingThongSo.getCao(), 0f);
+        Long donGia = coresspondingThongSo.getDon_gia();
         String donVi = coresspondingThongSo.getDon_vi();
-        float khoiLuong = TableUtils.calculateKhoiLuong(dai, cao, rong, donVi);
-        long thanhTien = TableUtils.calculateThanhTien(khoiLuong, donGia);
+        Float khoiLuong = TableUtils.calculateKhoiLuong(dai, cao, rong, donVi);
+        Long thanhTien = TableUtils.calculateThanhTien(khoiLuong, donGia);
 
         event.getRowValue().getValue().setThanhTien(thanhTien);
         event.getRowValue().getValue().setKhoiLuong(khoiLuong);

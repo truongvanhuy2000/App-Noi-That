@@ -15,6 +15,10 @@ import com.huy.appnoithat.Service.FileExport.Excel.ExportXLS;
 import com.huy.appnoithat.Shared.PopupUtils;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.binding.DoubleBinding;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,6 +30,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -75,6 +80,7 @@ public class LuaChonNoiThatController implements Initializable {
     }
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
+        resizeToFit();
         setUpBangThanhToan();
         setUpBangNoiThat();
         ButtonHandler buttonHandler = new ButtonHandler(TableNoiThat);
@@ -102,7 +108,24 @@ public class LuaChonNoiThatController implements Initializable {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        workAroundToCollumWidthBug();
+    }
+    private void resizeToFit() {
+        VatLieu.setResizable(false);
+        TableNoiThat.widthProperty().addListener((observableValue, number, t1) -> {
+            DoubleBinding usedWidth = STT.widthProperty()
+                    .add(VatLieu.widthProperty())
+                    .add(HangMuc.widthProperty())
+                    .add(DonVi.widthProperty())
+                    .add(DonGia.widthProperty())
+                    .add(KhoiLuong.widthProperty())
+                    .add(Cao.widthProperty())
+                    .add(Dai.widthProperty())
+                    .add(Rong.widthProperty())
+                    .add(ThanhTien.widthProperty());
+            double width = t1.doubleValue() - usedWidth.doubleValue() + VatLieu.getWidth();
+            DoubleProperty observableDouble = new SimpleDoubleProperty(width);
+            VatLieu.prefWidthProperty().bind(observableDouble);
+        });
     }
     private void exportButtonHandler(ActionEvent event){
         try {
@@ -195,12 +218,6 @@ public class LuaChonNoiThatController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-    private void workAroundToCollumWidthBug(){
-        Timeline timeline = new Timeline(new KeyFrame(
-                Duration.millis(2000),
-                ae -> TreeTableView.CONSTRAINED_RESIZE_POLICY.call(new TreeTableView.ResizeFeatures<>(TableNoiThat, HangMuc, 10.0))));
-        timeline.play();
     }
     private ThongTinCongTy getThongTinCongTy() throws IOException {
         return new ThongTinCongTy(

@@ -34,8 +34,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UsersManagementController{
-
-
     @Data
     @AllArgsConstructor
     @NoArgsConstructor

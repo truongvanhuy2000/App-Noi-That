@@ -69,9 +69,7 @@ public class LoginController {
             loginStage.setTitle("REGISTER ACCOUNT");
             loginStage.show();
 
-
             btnSave.setOnAction(actionEvent -> {
-
                 loginStage.close();
                 // You might need additional logic to handle saving or updating data
             });

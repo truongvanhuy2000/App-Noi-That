@@ -7,7 +7,6 @@ import java.util.Objects;
 
 @Data
 @NoArgsConstructor
-
 public class ThongSo {
     @JsonProperty("id")
     private int id;

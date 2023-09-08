@@ -27,7 +27,7 @@ public class TableUtils {
         return true;
     }
 
-    public static Float calculateKhoiLuong(float chieuDai, float chieuCao, float rong, String donVi){
+    public static Float calculateKhoiLuong(Float chieuDai, Float chieuCao, Float rong, String donVi){
         String metDai = "mét dài";
         String metVuong = "mét vuông";
         Float khoiLuong = 0f;
@@ -47,7 +47,7 @@ public class TableUtils {
         return khoiLuong;
     }
 
-    public static Long calculateThanhTien(float khoiLuong, long donGia){
+    public static Long calculateThanhTien(Float khoiLuong, Long donGia){
         return (long) (khoiLuong*donGia);
     }
 
