@@ -17,6 +17,7 @@ import lombok.Data;
 import lombok.Getter;
 
 public class LoginController {
+
     @FXML
     TextField usernameTextField;
     @FXML
