@@ -97,6 +97,7 @@ public class LuaChonNoiThatService {
         if (hangMucList == null) throw new NullPointerException("Not found");
         HangMuc foundHangMuc = hangMucList.stream().filter(hm -> hm.getName().equals(hangMuc)).findFirst().orElse(null);
         if (foundHangMuc == null) throw new NullPointerException("Hang muc not found");
+
         String path = "/api/vatlieu/searchByHangMuc";
         String token = userSessionService.getSession().getJwtToken();
         String response = webClientService.authorizedHttpGetJson(path + "/" + foundHangMuc.getId(), token);
