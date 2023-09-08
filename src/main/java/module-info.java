@@ -7,11 +7,12 @@ module com.huy.appnoithat {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires lombok;
-    requires org.apache.poi.poi;
-    requires org.apache.poi.ooxml;
-    requires org.apache.logging.log4j;
     requires java.net.http;
     requires com.fasterxml.jackson.databind;
+    requires org.apache.poi.ooxml;
+    requires org.apache.poi.poi;
+    requires org.apache.logging.log4j;
+    requires java.desktop;
 
     exports com.huy.appnoithat.Controller;
     opens com.huy.appnoithat.Controller to javafx.fxml;
@@ -27,5 +28,7 @@ module com.huy.appnoithat {
 
     exports com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
     opens com.huy.appnoithat.Controller.LuaChonNoiThat.Cell to javafx.fxml;
+    exports com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel;
+    opens com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel to javafx.fxml;
 
 }

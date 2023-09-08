@@ -1,25 +1,21 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.BangNoiThat;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomComboboxCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
-import com.huy.appnoithat.Shared.ErrorUtils;
+import com.huy.appnoithat.Shared.PopupUtils;
 import com.huy.appnoithat.Shared.Utils;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HangMucCollumHandler {
     private ObservableList<String> hangMucList;
-    private final static Logger logger = LogManager.getLogger(HangMucCollumHandler.class);
-
     private final LuaChonNoiThatService luaChonNoiThatService;
 
     public HangMucCollumHandler(ObservableList<String> hangMucList) {
@@ -44,8 +40,7 @@ public class HangMucCollumHandler {
             try {
                 items = Utils.getObjectNameList(luaChonNoiThatService.findNoiThatByPhongCachName(phongCach));
             } catch (NullPointerException e) {
-                logger.error(e.getMessage());
-                ErrorUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
+                PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
                 return;
             }
             hangMucList.addAll(items);
@@ -56,8 +51,7 @@ public class HangMucCollumHandler {
             try {
                 items = Utils.getObjectNameList(luaChonNoiThatService.findAllPhongCachNoiThat());
             } catch (NullPointerException e) {
-                logger.error(e.getMessage());
-                ErrorUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
+                PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
                 return;
             }
             hangMucList.clear();
@@ -71,8 +65,7 @@ public class HangMucCollumHandler {
             try{
                 items = Utils.getObjectNameList(luaChonNoiThatService.findHangMucListByPhongCachAndNoiThat(phongCach, noiThat));
             } catch (NullPointerException e) {
-                logger.error(e.getMessage());
-                ErrorUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
+                PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
                 return;
             }
             hangMucList.clear();
@@ -81,7 +74,7 @@ public class HangMucCollumHandler {
 
     }
     public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param){
-        return new CustomComboboxCell(hangMucList);
+        return new CustomHangMucCell(hangMucList);
     }
     public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param){
         return param.getValue().getValue().getHangMuc();

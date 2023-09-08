@@ -1,10 +1,11 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
+import com.huy.appnoithat.Shared.Utils;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeTableCell;
-import javafx.scene.control.TreeTableView;
+import javafx.scene.control.TreeTableRow;
+
 public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, String> {
     private TextField textField;
     public CustomEditingCell() {
@@ -49,6 +50,15 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
                 setGraphic(null);
             }
         }
+        TreeTableRow<BangNoiThat> currentRow = getTableRow();
+        if (!isEmpty()) {
+            if (Utils.RomanNumber.isRoman(getItem())) {
+                currentRow.setStyle("-fx-font-weight: bold");
+            }
+            else if(Utils.isAlpha(getItem())) {
+                currentRow.setStyle("-fx-font-weight: bold; -fx-font-size: 14px");
+            }
+        }
     }
 
     private void createTextField() {
@@ -58,13 +68,12 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
         textField.setOnAction((e) -> commitEdit(textField.getText()));
         textField.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
             if (!newValue) {
-                System.out.println("Commiting " + textField.getText());
                 commitEdit(textField.getText());
             }
         });
     }
 
-        private String getString() {
-            return getItem() == null ? "" : getItem();
-        }
+    private String getString() {
+        return getItem() == null ? "" : getItem();
+    }
 }

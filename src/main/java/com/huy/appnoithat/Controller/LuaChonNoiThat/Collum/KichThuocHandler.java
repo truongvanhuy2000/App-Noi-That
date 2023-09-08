@@ -1,18 +1,22 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.BangNoiThat;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 public class KichThuocHandler {
     private TreeTableView<BangNoiThat> TableNoiThat;
     private TreeTableColumn<BangNoiThat, Float> Cao, Dai, Rong;
 
-    public KichThuocHandler(TreeTableView<BangNoiThat> tableNoiThat, TreeTableColumn<BangNoiThat, Float> cao, TreeTableColumn<BangNoiThat, Float> dai, TreeTableColumn<BangNoiThat, Float> rong) {
+    public KichThuocHandler(TreeTableView<BangNoiThat> tableNoiThat,
+                            TreeTableColumn<BangNoiThat,
+                                    Float> cao,
+                            TreeTableColumn<BangNoiThat,
+                                    Float> dai,
+                            TreeTableColumn<BangNoiThat,
+                                    Float> rong) {
         TableNoiThat = tableNoiThat;
         Cao = cao;
         Dai = dai;
@@ -38,5 +42,7 @@ public class KichThuocHandler {
         long thanhTien = TableUtils.calculateThanhTien(khoiluong, dongia);
         event.getRowValue().getValue().setKhoiLuong(khoiluong);
         event.getRowValue().getValue().setThanhTien(thanhTien);
+
+        TableUtils.calculateTongTien(event.getRowValue().getParent());
     }
 }

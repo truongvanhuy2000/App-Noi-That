@@ -37,7 +37,7 @@
                   <Font name="Noto Serif Display Regular" size="27.0" />
                </font>
             </Label>
-            <Label text="Password" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <Label text="Password" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -51,8 +51,8 @@
                   <Insets top="10.0" />
                </padding>
             </TextField>
-            <PasswordField fx:id="passwordField" prefHeight="24.0" prefWidth="164.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Button fx:id="LoginButton" mnemonicParsing="false" onAction="#login" text="Login" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <PasswordField fx:id="passwordField" prefHeight="24.0" prefWidth="164.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button fx:id="LoginButton" mnemonicParsing="false" onAction="#login" text="Login" GridPane.columnIndex="3" GridPane.rowIndex="4" />
             <Label lineSpacing="1.0" onMouseClicked="#registerAccount" prefHeight="16.0" prefWidth="203.0" text="Create new Account ?" textFill="#1736bcdb" underline="true" GridPane.columnIndex="3" GridPane.rowIndex="6">
                <font>
                   <Font name="System Italic" size="14.0" />

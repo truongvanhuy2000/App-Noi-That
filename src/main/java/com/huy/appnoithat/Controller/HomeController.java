@@ -1,15 +1,15 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.Scene.*;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
+import com.huy.appnoithat.Scene.LoginScene;
+import com.huy.appnoithat.Scene.NewTabScene;
+import com.huy.appnoithat.Scene.UserManagementScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -20,10 +20,8 @@ public class HomeController {
     private Button LuaChonNoiThatButton;
     @FXML
     private Button QuanLyNguoiDungButton;
-
     @FXML
     private Button suadoidatabaseButton;
-
     @FXML
     private Text UserName;
     private final UserSessionService sessionService;

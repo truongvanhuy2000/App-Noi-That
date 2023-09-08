@@ -1,20 +1,18 @@
 package com.huy.appnoithat.Controller;
 
 import com.huy.appnoithat.Scene.HomeScene;
-import com.huy.appnoithat.Scene.ListAccountWaitToApproveScene;
-import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Scene.RegisterScene;
 import com.huy.appnoithat.Service.Login.LoginService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import lombok.Data;
-import lombok.Getter;
 
 public class LoginController {
 
@@ -45,6 +43,7 @@ public class LoginController {
             alert.showAndWait();
             passwordField.setText("");
             return;
+//            throw new RuntimeException("Login fail");
         }
         sceneSwitcher(actionEvent);
     }
@@ -82,7 +81,7 @@ public class LoginController {
                 loginStage.close();
             });
         }catch (Exception e){
-            System.out.println("co loi dialog pane roi dai ca oi");
+            throw new RuntimeException(e);
         }
     }
 

@@ -1,9 +1,12 @@
 package com.huy.appnoithat.Shared;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
+import java.text.DecimalFormat;
 
 public class Utils {
     public static boolean isAlpha(String name) {
@@ -11,6 +14,12 @@ public class Utils {
     }
     public static boolean isNumeric(String str) {
         return str.matches("-?\\d+(\\.\\d+)?");
+    }
+    public static String encodeValue(String value) {
+        return URLEncoder.encode(value, StandardCharsets.UTF_8);
+    }
+    public static String decodeValue(String value) {
+        return URLEncoder.encode(value, StandardCharsets.UTF_8);
     }
     public static class RomanNumber {
         public static String toRoman(int number) {
@@ -62,5 +71,12 @@ public class Utils {
     }
     public static List<String> getObjectNameList(List<?> list){
         return list.stream().map(Object::toString).collect(Collectors.toList());
+    }
+
+    public static String convertLongToDecimal(long number) {
+        // Create a DecimalFormat object with comma delimiter
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        // Format the long number to a string with commas
+        return decimalFormat.format(number);
     }
 }

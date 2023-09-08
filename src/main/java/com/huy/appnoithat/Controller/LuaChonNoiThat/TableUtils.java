@@ -1,11 +1,10 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
-import com.huy.appnoithat.Shared.ErrorUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Shared.Utils;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
-import javafx.scene.control.skin.TableColumnHeader;
 
 public class TableUtils {
     public static TreeItem<BangNoiThat> findYoungestChildern(TreeItem<BangNoiThat> root){
@@ -21,7 +20,7 @@ public class TableUtils {
     public static boolean isALlowedToEdit(TreeTableColumn.CellEditEvent<BangNoiThat, String> event){
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         if (!Utils.isNumeric(currentItem.getValue().getSTT().getValue())){
-            ErrorUtils.throwErrorSignal("Không được phép chọn trường cho mục ");
+//            PopupUtils.throwErrorSignal("Không được phép chọn trường cho mục ");
             event.consume();
             return false;
         }
@@ -50,6 +49,18 @@ public class TableUtils {
 
     public static Long calculateThanhTien(float khoiLuong, long donGia){
         return (long) (khoiLuong*donGia);
+    }
+
+    public static void calculateTongTien(TreeItem<BangNoiThat> item){
+        Long tongTien = 0L;
+        if (item == null){
+            return;
+        }
+        for (TreeItem<BangNoiThat> child : item.getChildren()){
+            tongTien += child.getValue().getThanhTien().getValue();
+        }
+        item.getValue().setThanhTien(tongTien);
+        calculateTongTien(item.getParent());
     }
 
     public static boolean isEditable(TreeTableView<BangNoiThat> TableNoiThat){

@@ -18,7 +18,7 @@ public class Account {
     private boolean active;
     @JsonProperty("accountInformationEntity")
     private AccountInformation accountInformation;
-    @JsonProperty("roleEntity")
+    @JsonProperty("roles")
     private List<Role> roleList;
     @JsonProperty("enabled")
     private boolean enabled;

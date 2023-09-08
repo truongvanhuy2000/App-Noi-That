@@ -1,23 +1,20 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomEditingCell;
-import com.huy.appnoithat.Shared.ErrorUtils;
+import com.huy.appnoithat.Shared.PopupUtils;
 import com.huy.appnoithat.Shared.Utils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 
 public class STTCollumHandler {
-    private TreeTableView<BangNoiThat> TableNoiThat;
-    private final static Logger logger = LogManager.getLogger(STTCollumHandler.class);
+    private final TreeTableView<BangNoiThat> TableNoiThat;
 
     public STTCollumHandler(TreeTableView<BangNoiThat> tableNoiThat) {
         this.TableNoiThat = tableNoiThat;
@@ -57,11 +54,10 @@ public class STTCollumHandler {
         TreeItem<BangNoiThat> newItem = new TreeItem<>(currentItem.getValue());
         ObservableList<TreeItem<BangNoiThat>> tempPhongCachList = findPhongCachList(currentItem);
         if (tempPhongCachList == null){
-            logger.error("tempPhongCachList is null");
             return;
         }
         if (tempPhongCachList.isEmpty()){
-            ErrorUtils.throwErrorSignal("Chưa lựa chọn phong cách");
+            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
             event.consume();
             return;
         }
@@ -75,14 +71,14 @@ public class STTCollumHandler {
         ObservableList<TreeItem<BangNoiThat>> tempPhongCachList = findPhongCachList(currentItem);
         assert tempPhongCachList != null;
         if (tempPhongCachList.isEmpty()){
-            ErrorUtils.throwErrorSignal("Chưa lựa chọn phong cách");
+            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
             event.consume();
             return;
         }
         removeFromParent(currentItem);
         ObservableList<TreeItem<BangNoiThat>> tempNoiThatList = tempPhongCachList.get(tempPhongCachList.size() - 1).getChildren();
         if (tempNoiThatList.isEmpty()){
-            ErrorUtils.throwErrorSignal("Chưa lựa chọn phong cách");
+            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
             event.consume();
             return;
         }
