@@ -40,7 +40,6 @@ public class HomeController {
         // Hide all button
 //        LuaChonNoiThatButton.setVisible(false);
 //        QuanLyNguoiDungButton.setVisible(false);
-
         // Set username using current session
         String username = sessionService.getSession().getAccount().getUsername();
         UserName.setText(username);
@@ -63,6 +62,7 @@ public class HomeController {
         Stage stage = null;
         Object source = actionEvent.getSource();
         stage = (Stage) ((Node)source).getScene().getWindow();
+        stage.setResizable(false);
         if (source == LogoutButton){
             scene = LoginScene.getInstance().getScene();
         }

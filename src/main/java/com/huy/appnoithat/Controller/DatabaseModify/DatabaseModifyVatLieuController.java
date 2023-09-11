@@ -49,7 +49,7 @@ public class DatabaseModifyVatLieuController{
     private Button nextScreenButton;
 
     @FXML
-    private TextField txtVatlieu;
+    private TextArea txtVatlieu;
 
     @FXML
     void AddNewVatLieu(ActionEvent event) {

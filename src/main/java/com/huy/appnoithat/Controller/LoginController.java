@@ -90,6 +90,7 @@ public class LoginController {
         Stage stage = null;
         Object source = actionEvent.getSource();
         stage = (Stage) ((Node)source).getScene().getWindow();
+        stage.setResizable(false);
         if (source == LoginButton){
             scene = HomeScene.getInstance().getScene();
             HomeScene.getInstance().getHomeController().initialize();
