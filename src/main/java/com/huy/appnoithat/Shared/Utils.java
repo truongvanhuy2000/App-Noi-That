@@ -2,11 +2,12 @@ package com.huy.appnoithat.Shared;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
-import java.text.DecimalFormat;
 
 public class Utils {
     public static boolean isAlpha(String name) {
@@ -78,5 +79,15 @@ public class Utils {
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         // Format the long number to a string with commas
         return decimalFormat.format(number);
+    }
+
+    public static long convertDecimalToLong(String formattedNumber) {
+        // Remove commas from the string
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        try {
+            return decimalFormat.parse(formattedNumber).longValue();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

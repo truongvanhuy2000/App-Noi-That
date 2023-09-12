@@ -31,3 +31,37 @@
     -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-focus-color;
     -fx-background-insets: 0, 1, 2;
 }
+
+.table-row-cell {
+    -fx-indent: 0;
+}
+/* Disable gradient and set background color for column headers */
+.table-view .column-header {
+    -fx-background-color: #f6f6f6; /* Set your desired background color */
+    -fx-background-insets: 1, 1, 1, 1;
+    -fx-padding: 3px;
+    -fx-text-fill: #000000; /* Set the text color for column headers */
+    -fx-border-color: #777777; /* Set the border color if needed */
+    -fx-border-width: 0 0 1 0; /* Add a bottom border if needed */
+}
+
+.table-row-cell {
+    -fx-background-color: -fx-table-cell-border-color, -fx-control-inner-background;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+    -fx-text-fill: -fx-text-inner-color;
+}
+.table-row-cell:selected {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-focus-color;
+    -fx-background-insets: 0, 1, 2;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: -fx-table-cell-border-color, derive(-fx-control-inner-background,-2%);
+    -fx-background-insets: 0, 0 0 1 0;
+}
+
+.table-row-cell:selected:odd {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-focus-color;
+    -fx-background-insets: 0, 1, 2;
+}

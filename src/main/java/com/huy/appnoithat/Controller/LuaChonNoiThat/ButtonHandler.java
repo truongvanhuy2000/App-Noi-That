@@ -75,7 +75,7 @@ public class ButtonHandler {
 
     private void continuousLineAddForNumericStt(TreeItem<BangNoiThat> currentSelectedItem) {
         TreeItem<BangNoiThat> parent = currentSelectedItem.getParent();
-        TreeItem<BangNoiThat> tempNewItem = new TreeItem<>(new BangNoiThat("1", 212321f, 12313f, 12313f, 123213L,
+        TreeItem<BangNoiThat> tempNewItem = new TreeItem<>(new BangNoiThat("1", 0f, 0f, 0f, 0L,
                 "", "", "", 0L, 0f));
 
         String nextStt = findTheNextStt(currentSelectedItem.getValue().getSTT().getValue());

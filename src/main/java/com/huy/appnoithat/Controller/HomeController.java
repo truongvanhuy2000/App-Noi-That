@@ -74,8 +74,12 @@ public class HomeController {
             scene = LoginScene.getInstance().getScene();
         }
         else if (source == LuaChonNoiThatButton) {
+            Stage newStage = new Stage();
             scene = NewTabScene.getInstance().getScene();
-            stage.setMaximized(true);
+            newStage.setMaximized(true);
+            newStage.setScene(scene);
+            newStage.show();
+            return;
         }
         else if (source == QuanLyNguoiDungButton) {
             scene = UserManagementScene.getInstance().getScene();

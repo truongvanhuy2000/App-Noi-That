@@ -5,6 +5,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.HangMucCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.KichThuocHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.STTCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.VatLieuCollumHandler;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.CustomConverter.CustomLongStringConverter;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
@@ -13,30 +14,25 @@ import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import com.huy.appnoithat.DataModel.ThongTinThanhToan;
 import com.huy.appnoithat.Service.FileExport.Excel.ExportXLS;
 import com.huy.appnoithat.Shared.PopupUtils;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import javafx.util.converter.FloatStringConverter;
-import javafx.util.converter.LongStringConverter;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
@@ -256,9 +252,17 @@ public class LuaChonNoiThatController implements Initializable {
     }
     private void setUpBangThanhToan() {
         DatCocThietKe10.setCellValueFactory(param -> param.getValue().getDatCocThietKe10().asObject());
+        DatCocThietKe10.setCellFactory(param -> new TextFieldTableCell<>(new CustomLongStringConverter()));
+
         DatCocThiCong30.setCellValueFactory(param -> param.getValue().getDatCocThiCong30().asObject());
+        DatCocThiCong30.setCellFactory(param -> new TextFieldTableCell<>(new CustomLongStringConverter()));
+
         HangDenChanCongTrinh50.setCellValueFactory(param -> param.getValue().getHangDenChanCongTrinh50().asObject());
+        HangDenChanCongTrinh50.setCellFactory(param -> new TextFieldTableCell<>(new CustomLongStringConverter()));
+
         NghiemThuQuyet.setCellValueFactory(param -> param.getValue().getNghiemThuQuyet().asObject());
+        NghiemThuQuyet.setCellFactory(param -> new TextFieldTableCell<>(new CustomLongStringConverter()));
+
         if (bangThanhToan.getItems().isEmpty()){
             bangThanhToan.setItems(FXCollections.observableArrayList(
                     new BangThanhToan(0L, 0L, 0L, 0L)
@@ -310,7 +314,7 @@ public class LuaChonNoiThatController implements Initializable {
     private void setUpThanhTien(){
         // Set up collum for ThanhTien
         ThanhTien.setCellValueFactory(param -> param.getValue().getValue().getThanhTien().asObject());
-        ThanhTien.setCellFactory(param -> new CustomNumberCell<>(new LongStringConverter(), TableNoiThat));
+        ThanhTien.setCellFactory(param -> new CustomNumberCell<>(new CustomLongStringConverter(), TableNoiThat));
         ThanhTien.setOnEditCommit(event ->
             event.getRowValue().getValue().setThanhTien(event.getNewValue()));
     }
@@ -340,7 +344,7 @@ public class LuaChonNoiThatController implements Initializable {
     private void setUpDonGia(){
         // Set up collum for DonGia
         DonGia.setCellValueFactory(param -> param.getValue().getValue().getDonGia().asObject());
-        DonGia.setCellFactory(param -> new CustomNumberCell<>(new LongStringConverter(), TableNoiThat));
+        DonGia.setCellFactory(param -> new CustomNumberCell<>(new CustomLongStringConverter(), TableNoiThat));
         DonGia.setOnEditCommit(event -> {
             event.getRowValue().getValue().setDonGia(event.getNewValue());
         });

@@ -40,8 +40,15 @@ public class UserSessionService {
     public void setSession(String username, String jwtToken) {
         setToken(jwtToken);
         if (!username.isEmpty()) {
-//            Account account = usersManagementService.findAccountByUsername(username);
-//            setLoginAccount(account);
+            String info = webClientService.authorizedHttpGetJson("/api/info?username=" + username, getToken());
+            Account account = null;
+            try {
+                account = objectMapper.readValue(info, Account.class);
+            } catch (JsonProcessingException e) {
+                LOGGER.error("Error when parsing account from response");
+                throw new RuntimeException(e);
+            }
+            setLoginAccount(account);
         }
     }
     public void setToken(String jwtToken) {
