@@ -2,6 +2,7 @@ package com.huy.appnoithat.Entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -22,6 +23,8 @@ public class Account {
     private List<String> roleList;
     @JsonProperty("enabled")
     private boolean enabled;
+    @JsonProperty("expiredDate")
+    private Date expiredDate;
     @Override
     public String toString() {
         return "Account{" +

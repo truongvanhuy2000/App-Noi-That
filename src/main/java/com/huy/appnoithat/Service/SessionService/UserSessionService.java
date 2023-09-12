@@ -1,6 +1,8 @@
 package com.huy.appnoithat.Service.SessionService;
 
-import com.huy.appnoithat.Controller.HomeController;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
@@ -8,52 +10,111 @@ import com.huy.appnoithat.Session.UserSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Date;
+
 public class UserSessionService {
     final static Logger LOGGER = LogManager.getLogger(UserSessionService.class);
-    WebClientService webClientService;
+    private static final String SESSION_DIRECTORY = "/home/huy/Project/Java/AppNoiThat/AppNoiThat/data/userSession/session";
+    private final WebClientService webClientService;
+    private final ObjectMapper objectMapper;
     public UserSessionService() {
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        objectMapper = new ObjectMapper();
     }
     public boolean isLogin() {
-        if (!isSessionValid()) {
-            return false;
-        }
-        return true;
+        return isSessionValid();
     }
     public void cleanUserSession() {
         UserSession session = UserSession.getInstance();
-        session.setAccount(null);
-        session.setJwtToken(null);
+        session.setAccount(new Account(0, "", "", false, null, new ArrayList<>(), false, new Date()));
+        session.setJwtToken("");
+        try {
+            saveSessionToDisk();
+        } catch (IOException e) {
+            LOGGER.error("Error when saving session to disk");
+            throw new RuntimeException(e);
+        }
     }
-    public void setSession(Account account, String jwtToken) {
-        UserSession session = UserSession.getInstance();
-        session.setAccount(account);
-        session.setJwtToken(jwtToken);
+    public void setSession(String username, String jwtToken) {
+        setToken(jwtToken);
+        if (!username.isEmpty()) {
+//            Account account = usersManagementService.findAccountByUsername(username);
+//            setLoginAccount(account);
+        }
     }
     public void setToken(String jwtToken) {
         UserSession session = UserSession.getInstance();
         session.setJwtToken(jwtToken);
     }
+    public String getToken() {
+        UserSession session = UserSession.getInstance();
+        return session.getJwtToken();
+    }
     public void setLoginAccount(Account account) {
         UserSession session = UserSession.getInstance();
         session.setAccount(account);
     }
+    public Account getLoginAccount() {
+        UserSession session = UserSession.getInstance();
+        return session.getAccount();
+    }
     public UserSession getSession() {
         if (!isLogin()) {
-            LOGGER.error("User is not login");
+            LOGGER.error("No session found");
             throw new RuntimeException("User is not login");
         }
         return UserSession.getInstance();
     }
     public boolean isSessionValid() {
-        if (UserSession.getInstance().getJwtToken() == null) {
-            loadSessionFromDisk();
+        if (getToken().isEmpty()) {
+            try {
+                loadSessionFromDisk();
+            } catch (IOException e) {
+                LOGGER.error("Error when loading session from disk");
+                throw new RuntimeException(e);
+            }
         }
-        String response = webClientService.authorizedHttpGetJson("/api/index", UserSession.getInstance().getJwtToken());
+        String response = webClientService.authorizedHttpGetJson("/api/index", getToken());
         return response != null;
     }
     // Haven't implemented yet
-    public void loadSessionFromDisk() {
-        UserSession.getInstance().setJwtToken(":))");
+    public void loadSessionFromDisk() throws IOException {
+        InputStream is = null;
+        is = new FileInputStream(SESSION_DIRECTORY);
+        byte[] data = is.readAllBytes();
+        try {
+            parseSessionJsonObject(new String(data));
+        } catch (JsonProcessingException e) {
+            LOGGER.error("Error when parsing session json object");
+            setToken("");
+        }
+    }
+    public void saveSessionToDisk() throws IOException {
+        String sessionObject = getSessionJsonObject();
+        OutputStream os = new FileOutputStream(SESSION_DIRECTORY);
+        os.write(sessionObject.getBytes(), 0, sessionObject.length());
+        os.close();
+    }
+    private String getSessionJsonObject(){
+        ObjectNode jsonObject = objectMapper.createObjectNode();
+        jsonObject.put("username", getLoginAccount().getUsername());
+        jsonObject.put("token", getToken());
+        try {
+            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonObject);
+        } catch (JsonProcessingException e) {
+            LOGGER.error("Error when creating session json object");
+            throw new RuntimeException(e);
+        }
+    }
+    private void parseSessionJsonObject(String jsonObject) throws JsonProcessingException {
+            ObjectNode node = (ObjectNode) objectMapper.readTree(jsonObject);
+            String username = node.get("username").asText();
+            String token = node.get("token").asText();
+//            if (username.equals("") || token.equals("")) {
+//                return;
+//            }
+            setSession(username, token);
     }
 }

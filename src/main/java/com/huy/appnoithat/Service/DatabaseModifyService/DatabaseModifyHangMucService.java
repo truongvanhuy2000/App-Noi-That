@@ -2,8 +2,6 @@ package com.huy.appnoithat.Service.DatabaseModifyService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Entity.HangMuc;
-import com.huy.appnoithat.Entity.NoiThat;
-import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
@@ -24,7 +22,7 @@ public class DatabaseModifyHangMucService {
     public DatabaseModifyHangMucService(){}
 
     public List<HangMuc> findHangMucByID(int id){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         String response2 = this.webClientService.authorizedHttpGetJson("/api/hangmuc/searchByNoiThat/"+id, token);
         objectMapper = new ObjectMapper();
@@ -47,7 +45,7 @@ public class DatabaseModifyHangMucService {
     }
 
     public void addNewHangMuc(HangMuc hangMuc,int parentID){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         try {
@@ -58,7 +56,7 @@ public class DatabaseModifyHangMucService {
     }
 
     public void EditHangMuc(HangMuc hangMuc){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         try {
@@ -69,7 +67,7 @@ public class DatabaseModifyHangMucService {
     }
 
     public void deleteHangMuc(int id){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         this.webClientService.authorizedHttpDeleteJson("/api/hangmuc/"+id,  "",token);

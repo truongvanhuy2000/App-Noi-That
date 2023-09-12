@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Service.DatabaseModifyService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
@@ -23,7 +22,7 @@ public class DatabaseModifyPhongCachService {
     public DatabaseModifyPhongCachService(){}
 
     public List<PhongCachNoiThat> findAllPhongCach(){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         String response2 = this.webClientService.authorizedHttpGetJson("/api/phongcach", token);
         objectMapper = new ObjectMapper();
@@ -46,7 +45,7 @@ public class DatabaseModifyPhongCachService {
     }
 
     public void addNewPhongCach(PhongCachNoiThat phongCachNoiThat){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         try {
@@ -57,7 +56,7 @@ public class DatabaseModifyPhongCachService {
     }
 
     public void EditPhongCach(PhongCachNoiThat phongCachNoiThat){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         try {
@@ -68,7 +67,7 @@ public class DatabaseModifyPhongCachService {
     }
 
     public void deletePhongCach(int id){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         this.webClientService.authorizedHttpDeleteJson("/api/phongcach/"+id,  "",token);
@@ -76,7 +75,7 @@ public class DatabaseModifyPhongCachService {
 
 
 //    public PhongCachNoiThat findByID(int id){
-//        token = this.sessionService.getSession().getJwtToken();
+//        token = this.sessionService.getToken();
 //        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
 //        String response2 = this.webClientService.authorizedHttpGetJson("/api/noithat/searchByPhongCach/"+id, token);
 //        objectMapper = new ObjectMapper();

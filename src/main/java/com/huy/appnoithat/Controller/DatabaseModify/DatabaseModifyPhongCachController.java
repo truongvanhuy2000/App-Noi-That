@@ -52,7 +52,7 @@ public class DatabaseModifyPhongCachController {
     private Button nextScreenButton;
 
     @FXML
-    private TextField txtPhongCach;
+    private TextArea txtPhongCach;
 
 
     @FXML

@@ -2,7 +2,6 @@ package com.huy.appnoithat.Service.DatabaseModifyService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Entity.NoiThat;
-import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
@@ -23,7 +22,7 @@ public class DatabaseModifyNoiThatService {
     public DatabaseModifyNoiThatService(){}
 
     public List<NoiThat> findNoiThatByID(int id){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         String response2 = this.webClientService.authorizedHttpGetJson("/api/noithat/searchByPhongCach/"+id, token);
         objectMapper = new ObjectMapper();
@@ -46,7 +45,7 @@ public class DatabaseModifyNoiThatService {
     }
 
     public void addNewNoiThat(NoiThat noiThat,int parentID){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         try {
@@ -57,7 +56,7 @@ public class DatabaseModifyNoiThatService {
     }
 
     public void EditNoiThat(NoiThat noiThat){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         try {
@@ -68,7 +67,7 @@ public class DatabaseModifyNoiThatService {
     }
 
     public void deleteNoiThat(int id){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         this.webClientService.authorizedHttpDeleteJson("/api/noithat/"+id,  "",token);

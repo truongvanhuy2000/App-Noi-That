@@ -42,7 +42,7 @@ public class DatabaseModifyHangMucController {
     private Button nextScreenButton;
 
     @FXML
-    private TextField txtHangMuc;
+    private TextArea txtHangMuc;
     @FXML
     private Button backButton;
 

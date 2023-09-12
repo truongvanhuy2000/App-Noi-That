@@ -49,7 +49,7 @@ public class DatabaseModifyNoiThatController {
     private Button nextScreenButton;
 
     @FXML
-    private TextField txtNoiThat;
+    private TextArea txtNoiThat;
 
 
     @FXML

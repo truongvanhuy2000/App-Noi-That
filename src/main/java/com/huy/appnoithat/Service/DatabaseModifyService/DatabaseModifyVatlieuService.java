@@ -1,8 +1,6 @@
 package com.huy.appnoithat.Service.DatabaseModifyService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huy.appnoithat.Entity.NoiThat;
-import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
@@ -24,7 +22,7 @@ public class DatabaseModifyVatlieuService {
     public DatabaseModifyVatlieuService(){}
 
     public List<VatLieu> findVatLieuByID(int id){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         String response2 = this.webClientService.authorizedHttpGetJson("/api/vatlieu/searchByHangMuc/"+id, token);
         objectMapper = new ObjectMapper();
@@ -47,7 +45,7 @@ public class DatabaseModifyVatlieuService {
     }
 
     public void addNewVatLieu(VatLieu vatLieu,int parentID){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         try {
@@ -58,7 +56,7 @@ public class DatabaseModifyVatlieuService {
     }
 
     public void EditVatLieu(VatLieu vatLieu){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         try {
@@ -69,7 +67,7 @@ public class DatabaseModifyVatlieuService {
     }
 
     public void deleteVatLieu(int id){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         this.webClientService.authorizedHttpDeleteJson("/api/vatlieu/"+id,  "",token);

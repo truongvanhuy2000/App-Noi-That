@@ -2,7 +2,6 @@ package com.huy.appnoithat.Service.DatabaseModifyService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Entity.ThongSo;
-import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
@@ -23,7 +22,7 @@ public class DatabaseModifyThongSoService {
     public DatabaseModifyThongSoService(){}
 
     public List<ThongSo> findThongSoByID(int id){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         String response2 = this.webClientService.authorizedHttpGetJson("/api/thongso/searchByVatlieu/"+id, token);
         objectMapper = new ObjectMapper();
@@ -50,7 +49,7 @@ public class DatabaseModifyThongSoService {
 
 
     public void EditThongSo(ThongSo thongSo){
-        token = this.sessionService.getSession().getJwtToken();
+        token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         objectMapper = new ObjectMapper();
         try {

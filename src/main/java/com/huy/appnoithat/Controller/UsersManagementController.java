@@ -30,6 +30,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -176,12 +177,23 @@ public class UsersManagementController{
 
             btnadd.setOnAction(actionEvent -> {
                 try {
-                listUser.add(new AccountTable(listUser.size(),txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),convertActiveIcon(true)));
+                listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(txtactive.getText()),convertActiveIcon(true)));
                 tableManageUser.getItems().clear();
                 tableManageUser.refresh();
                 List<String> roleList = new ArrayList<>();
                 roleList.add("ROLE_USER");
-                usersManagementService.addNewAccount(new Account(0,txtusername.getText(),txtpassword.getText(),Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),roleList,true));
+                // --- REMEMBER TO SUA DATE
+                    // --- REMEMBER TO SUA SAU
+                    // --- REMEMBER TO SUA SAU
+                    // --- REMEMBER TO SUA SAU
+                    // --- REMEMBER TO SUA SAU
+                    // --- REMEMBER TO SUA SAU
+                    // --- REMEMBER TO SUA SAU
+                usersManagementService.addNewAccount(
+                        new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),roleList,true, new Date()));
+                    // --- REMEMBER TO SUA SAU
+                    // --- REMEMBER TO SUA SAU
+
                 clearData();
                 initialize();
                 userManageMentStage.close();
@@ -308,7 +320,7 @@ public class UsersManagementController{
 
             for (Account account : accountList
             ) {
-                listUserNotEnable.add(new Account(account.getId(), account.getUsername(), account.getPassword(),account.isActive(),account.getAccountInformation(),account.getRoleList(),account.isEnabled()));
+                listUserNotEnable.add(account);
             }
             usernameColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("username"));
             passwordColumn.setCellValueFactory(new PropertyValueFactory<Account,String>("password"));
