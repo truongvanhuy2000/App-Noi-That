@@ -29,6 +29,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -190,7 +191,7 @@ public class UsersManagementController{
                     // --- REMEMBER TO SUA SAU
                     // --- REMEMBER TO SUA SAU
                 usersManagementService.addNewAccount(
-                        new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),roleList,true, new Date()));
+                        new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),roleList,true, null));
                     // --- REMEMBER TO SUA SAU
                     // --- REMEMBER TO SUA SAU
 

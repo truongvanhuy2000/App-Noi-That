@@ -4,6 +4,7 @@ import com.huy.appnoithat.Entity.Account;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -21,7 +22,7 @@ public class UserSession {
     public static synchronized UserSession getInstance() {
         if (instance == null) {
             instance = new UserSession(
-                    new Account(0, "", "", false, null, new ArrayList<>(), false, new Date()), "");
+                    new Account(0, "", "", false, null, new ArrayList<>(), false, null), "");
         }
         return instance;
     }
