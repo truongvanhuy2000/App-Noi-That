@@ -1,6 +1,5 @@
 package com.huy.appnoithat.Scene;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.Controller.NewTabController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,10 +14,12 @@ public class NewTabScene {
     private Scene scene;
     private Parent root;
     private static NewTabScene single_instance = null;
+    private NewTabController newTabController;
     public NewTabScene() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(NewTabScene.class.getResource(viewPath));
-            fxmlLoader.setController(new NewTabController());
+            newTabController = new NewTabController();
+            fxmlLoader.setController(newTabController);
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);

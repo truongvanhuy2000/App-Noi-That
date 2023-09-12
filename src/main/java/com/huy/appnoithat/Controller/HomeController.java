@@ -76,6 +76,7 @@ public class HomeController {
         else if (source == LuaChonNoiThatButton) {
             Stage newStage = new Stage();
             scene = NewTabScene.getInstance().getScene();
+            NewTabScene.getInstance().getNewTabController().init();
             newStage.setMaximized(true);
             newStage.setScene(scene);
             newStage.show();

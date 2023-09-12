@@ -2,6 +2,8 @@ package com.huy.appnoithat.Service.LuaChonNoiThat;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
@@ -21,7 +23,9 @@ public class LuaChonNoiThatService {
     public LuaChonNoiThatService() {
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         userSessionService = new UserSessionService();
-        objectMapper = new ObjectMapper();
+        objectMapper = JsonMapper.builder()
+                .addModule(new JavaTimeModule())
+                .build();
     }
 
     public List<PhongCachNoiThat> findAllPhongCachNoiThat() {

@@ -19,9 +19,13 @@ public class NewTabController implements Initializable {
     private TabPane tabPane;
     @FXML
     void newTabButtonHandler(ActionEvent event) {
-        createNewTab();
+        Tab newtab = createNewTab();
+        if (tabPane.getSelectionModel() != null) {
+            Node nodeFromCurrentTab = tabPane.getSelectionModel().getSelectedItem().getContent();
+            duplicateTruongThongTin(nodeFromCurrentTab, newtab.getContent());
+        }
     }
-    private void createNewTab(){
+    private Tab createNewTab(){
         Tab newTab = setUpTab();
         try {
             Node root = LuaChonNoiThatScene.getNewRoot();
@@ -30,6 +34,7 @@ public class NewTabController implements Initializable {
             throw new RuntimeException(e);
         }
         addNewTabToPane(newTab);
+        return newTab;
     }
     private void addNewTabToPane(Tab newTab){
         tabPane.getTabs().add(newTab);
@@ -118,6 +123,9 @@ public class NewTabController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
+    public void init() {
+        tabPane.getTabs().clear();
         createNewTab();
     }
 }

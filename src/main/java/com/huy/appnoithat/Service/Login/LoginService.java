@@ -2,6 +2,8 @@ package com.huy.appnoithat.Service.Login;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
@@ -10,8 +12,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Date;
 
 public class LoginService {
     final static Logger LOGGER = LogManager.getLogger(LoginService.class);
@@ -22,7 +22,9 @@ public class LoginService {
 
     public LoginService() {
         this.webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        this.objectMapper = new ObjectMapper();
+        this.objectMapper = JsonMapper.builder()
+                .addModule(new JavaTimeModule())
+                .build();
         this.sessionService = new UserSessionService();
     }
     public boolean Authorization(String username, String password) {
@@ -30,7 +32,7 @@ public class LoginService {
         Account account = new Account(0, username, password, true, null,null, false, null);
         try {
             String token = webClientService.unauthorizedHttpPostJson("/api/login", objectMapper.writeValueAsString(account));
-            if (!token.isEmpty()){
+            if (token != null){
                 this.sessionService.setSession(username, token);
                 this.sessionService.saveSessionToDisk();
                 return true;

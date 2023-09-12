@@ -1,6 +1,8 @@
 package com.huy.appnoithat.Service.DatabaseModifyService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
@@ -25,7 +27,9 @@ public class DatabaseModifyThongSoService {
         token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         String response2 = this.webClientService.authorizedHttpGetJson("/api/thongso/searchByVatlieu/"+id, token);
-        objectMapper = new ObjectMapper();
+        objectMapper = JsonMapper.builder()
+                .addModule(new JavaTimeModule())
+                .build();
 
         try {
             // 2. convert JSON array to List of objects
@@ -51,7 +55,9 @@ public class DatabaseModifyThongSoService {
     public void EditThongSo(ThongSo thongSo){
         token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = new ObjectMapper();
+        objectMapper = JsonMapper.builder()
+                .addModule(new JavaTimeModule())
+                .build();
         try {
             this.webClientService.authorizedHttpPutJson("/api/thongso",  objectMapper.writeValueAsString(thongSo),token);
         } catch (IOException e) {

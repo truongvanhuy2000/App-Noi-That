@@ -2,7 +2,9 @@ package com.huy.appnoithat.Service.SessionService;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
@@ -11,18 +13,18 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class UserSessionService {
     final static Logger LOGGER = LogManager.getLogger(UserSessionService.class);
-    private static final String SESSION_DIRECTORY = "/home/long/Project/Java/App-noi-that/data/userSession/session";
+    private static final String SESSION_DIRECTORY = "/home/huy/Project/Java/AppNoiThat/AppNoiThat/data/userSession/session";
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     public UserSessionService() {
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = new ObjectMapper();
+        objectMapper = JsonMapper.builder()
+                .addModule(new JavaTimeModule())
+                .build();
     }
     public boolean isLogin() {
         return isSessionValid();

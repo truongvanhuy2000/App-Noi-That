@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Shared.Utils;
+import javafx.event.EventHandler;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
@@ -69,5 +70,12 @@ public class TableUtils {
         }
         String stt = TableNoiThat.getSelectionModel().getSelectedItem().getValue().getSTT().getValue();
         return Utils.isNumeric(stt);
+    }
+    public static TreeItem<BangNoiThat> createNewItem(String id) {
+        TreeItem<BangNoiThat> newItem = new TreeItem<>(new BangNoiThat(id, 0f, 0f, 0f, 0L,
+                "", "", "", 0L, 0f));
+        newItem.addEventHandler(TreeItem.branchCollapsedEvent(),
+                (EventHandler<TreeItem.TreeModificationEvent<String>>) event -> event.getTreeItem().setExpanded(true));
+        return newItem;
     }
 }

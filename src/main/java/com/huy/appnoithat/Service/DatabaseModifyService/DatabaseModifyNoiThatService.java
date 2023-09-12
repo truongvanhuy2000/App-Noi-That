@@ -1,6 +1,8 @@
 package com.huy.appnoithat.Service.DatabaseModifyService;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
@@ -25,7 +27,9 @@ public class DatabaseModifyNoiThatService {
         token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         String response2 = this.webClientService.authorizedHttpGetJson("/api/noithat/searchByPhongCach/"+id, token);
-        objectMapper = new ObjectMapper();
+        objectMapper = JsonMapper.builder()
+                .addModule(new JavaTimeModule())
+                .build();
 
         try {
             // 2. convert JSON array to List of objects
@@ -47,7 +51,9 @@ public class DatabaseModifyNoiThatService {
     public void addNewNoiThat(NoiThat noiThat,int parentID){
         token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = new ObjectMapper();
+        objectMapper = JsonMapper.builder()
+                .addModule(new JavaTimeModule())
+                .build();
         try {
             this.webClientService.authorizedHttpPostJson("/api/noithat?parentId="+parentID,  objectMapper.writeValueAsString(noiThat),token);
         } catch (IOException e) {
@@ -58,7 +64,9 @@ public class DatabaseModifyNoiThatService {
     public void EditNoiThat(NoiThat noiThat){
         token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = new ObjectMapper();
+        objectMapper = JsonMapper.builder()
+                .addModule(new JavaTimeModule())
+                .build();
         try {
             this.webClientService.authorizedHttpPutJson("/api/noithat",  objectMapper.writeValueAsString(noiThat),token);
         } catch (IOException e) {
@@ -69,7 +77,9 @@ public class DatabaseModifyNoiThatService {
     public void deleteNoiThat(int id){
         token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = new ObjectMapper();
+        objectMapper = JsonMapper.builder()
+                .addModule(new JavaTimeModule())
+                .build();
         this.webClientService.authorizedHttpDeleteJson("/api/noithat/"+id,  "",token);
     }
 }

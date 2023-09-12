@@ -15,9 +15,7 @@ public class ButtonHandler {
     }
     public void addNewLine(ActionEvent event) {
 //        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
-        TableNoiThat.getRoot().getChildren().add(new TreeItem<>(new BangNoiThat(
-                "A", 0f, 0f, 0f, 0L,
-                "", "", "", 0L, 0f)));
+        TableNoiThat.getRoot().getChildren().add(TableUtils.createNewItem("A"));
         return;
 //        }
 //        if (isReachedLimit(TableNoiThat.getRoot())){
@@ -75,8 +73,7 @@ public class ButtonHandler {
 
     private void continuousLineAddForNumericStt(TreeItem<BangNoiThat> currentSelectedItem) {
         TreeItem<BangNoiThat> parent = currentSelectedItem.getParent();
-        TreeItem<BangNoiThat> tempNewItem = new TreeItem<>(new BangNoiThat("1", 0f, 0f, 0f, 0L,
-                "", "", "", 0L, 0f));
+        TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem("1");
 
         String nextStt = findTheNextStt(currentSelectedItem.getValue().getSTT().getValue());
         tempNewItem.getValue().getSTT().setValue(nextStt);
@@ -85,16 +82,14 @@ public class ButtonHandler {
     }
 
     private void continuousLineAddForAlphaStt(TreeItem<BangNoiThat> currentSelectedItem) {
-        TreeItem<BangNoiThat> tempNewItem = new TreeItem<>(new BangNoiThat("I", 0f, 0f, 0f, 0L,
-                "", "", "", 0L, 0f));
+        TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem("I");
         currentSelectedItem.getChildren().add(tempNewItem);
         currentSelectedItem.setExpanded(true);
         selectNewItem(tempNewItem);
     }
 
     private void continuousLineAddForRomanStt(TreeItem<BangNoiThat> currentSelectedItem) {
-        TreeItem<BangNoiThat> tempNewItem = new TreeItem<>(new BangNoiThat("1", 0f, 0f, 0f, 0L,
-                "", "", "", 0L, 0f));
+        TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem("1");
         currentSelectedItem.getChildren().add(tempNewItem);
         currentSelectedItem.setExpanded(true);
         selectNewItem(tempNewItem);

@@ -11,6 +11,7 @@ public class CustomNumberCell<T> extends TextFieldTreeTableCell<BangNoiThat, T> 
     public CustomNumberCell(StringConverter<T> var0, TreeTableView<BangNoiThat> TableNoiThat) {
         super(var0);
         this.TableNoiThat = TableNoiThat;
+
     }
     @Override
     public void startEdit(){

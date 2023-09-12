@@ -2,13 +2,14 @@ package com.huy.appnoithat.Service.WebClient;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Entity.Account;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 class WebClientServiceImplTest {
     private WebClientService webClientService;
@@ -17,8 +18,10 @@ class WebClientServiceImplTest {
     @BeforeEach
     void setUp() {
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = new ObjectMapper();
-        Account account = new Account(1, "admin", "admin", true, null, new ArrayList<>(), true, new Date());
+        objectMapper = JsonMapper.builder()
+                .addModule(new JavaTimeModule())
+                .build();
+        Account account = new Account(1, "admin", "admin", true, null, new ArrayList<>(), true, null);
         try {
             token = webClientService.unauthorizedHttpPostJson("/api/login", objectMapper.writeValueAsString(account));
         } catch (JsonProcessingException e) {

@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
 import com.huy.appnoithat.Entity.ThongSo;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyVatLieuScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyThongSoService;
 import javafx.event.ActionEvent;
@@ -65,7 +66,13 @@ public class ChangeProductSpecificationController {
             thongSo.setDon_gia(Long.valueOf(txtDonGia.getText()));
             databaseModifyThongSoService.EditThongSo(thongSo);
             initializeThongSo(parentID);
+
+            Scene scene = DatabaseModifyPhongCachScene.getInstance().getScene();
+            Stage stage = (Stage) btnOK.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
         }
+
     }
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {

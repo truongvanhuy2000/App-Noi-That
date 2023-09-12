@@ -238,17 +238,14 @@ public class LuaChonNoiThatController implements Initializable {
         setUpCollum();
         TableNoiThat.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         if (TableNoiThat.getRoot() != null) return;
-        TreeItem<BangNoiThat> itemRoot = new TreeItem<>(
-                new BangNoiThat("0", 0f, 0f, 0f, 0L, "", "IM root", "", 0L, 0f));
+        TreeItem<BangNoiThat> itemRoot = TableUtils.createNewItem("0");
         itemRoot.getValue().getThanhTien().addListener((observableValue, aLong, t1) -> {
             calculateBangThanhToan(t1.longValue());
         });
         TableNoiThat.setRoot(itemRoot);
         TableNoiThat.setShowRoot(false);
         TableNoiThat.setEditable(true);
-        TreeItem<BangNoiThat> newItem = new TreeItem<>(
-                new BangNoiThat("A", 0f, 0f, 0f, 0L, "", "", "", 0L, 0f));
-        itemRoot.getChildren().add(newItem);
+        itemRoot.getChildren().add(TableUtils.createNewItem("A"));
     }
     private void setUpBangThanhToan() {
         DatCocThietKe10.setCellValueFactory(param -> param.getValue().getDatCocThietKe10().asObject());
