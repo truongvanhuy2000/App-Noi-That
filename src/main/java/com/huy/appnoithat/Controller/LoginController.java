@@ -1,18 +1,27 @@
 package com.huy.appnoithat.Controller;
 
+import com.huy.appnoithat.Entity.Account;
+import com.huy.appnoithat.Entity.AccountInformation;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.RegisterScene;
 import com.huy.appnoithat.Service.Login.LoginService;
+import com.huy.appnoithat.Service.Register.RegisterService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class LoginController {
 
@@ -51,17 +60,25 @@ public class LoginController {
     @FXML
     void registerAccount(MouseEvent event) {
         try {
+            List<String> roleList = new ArrayList<>();
+            roleList.add("ROLE_USER");
 
+            ObservableList<String> listTime = FXCollections.observableArrayList("1 tháng","3 tháng","6 tháng");
+            ObservableList<String> listGender = FXCollections.observableArrayList("Male","FaMale");
             Stage loginStage = new Stage();
             Scene register = RegisterScene.getInstance().getScene();
 
 //element field of userManagementEditorScene
             TextField txtUsername = (TextField) register.lookup("#txtUsername");
-            TextField txtRepassword = (TextField) register.lookup("#txtRepassword");
+            TextField txtName = (TextField) register.lookup("#txtName");
             TextField txtPassword = (TextField) register.lookup("#txtPassword");
             TextField txtEmail = (TextField) register.lookup("#txtEmail");
-            TextField txtBirth = (TextField) register.lookup("#txtBirth");
             TextField txtPhone = (TextField) register.lookup("#txtPhone");
+            TextField txtAddress = (TextField) register.lookup("#txtAddress");
+            ComboBox comboBoxGender = (ComboBox) register.lookup("#txtGender");
+            ComboBox comboBoxTime = (ComboBox) register.lookup("#txtTime");
+            comboBoxTime.setItems(listTime);
+            comboBoxGender.setItems(listGender);
             Button btnSave = (Button) register.lookup("#btnSave");
             Button btnCancel = (Button) register.lookup("#btnCancel");
 
@@ -70,6 +87,25 @@ public class LoginController {
             loginStage.show();
 
             btnSave.setOnAction(actionEvent -> {
+                String Gender = comboBoxGender.getSelectionModel().getSelectedItem().toString();
+                String time = comboBoxTime.getSelectionModel().getSelectedItem().toString();
+                LocalDate localDate;
+
+                if(time.equals("1 tháng")){
+                    localDate = LocalDate.now().plusDays( 30 );
+                    System.out.println("30 ngay");
+                }else if(time.equals("3 tháng")){
+                    System.out.println("90 ngay");
+                    localDate = LocalDate.now().plusDays( 90 );
+                }else{
+                    localDate = LocalDate.now().plusDays( 180 );
+                    System.out.println("180 ngay");
+                }
+                AccountInformation accountInformation = new AccountInformation(0,txtName.getText(),Gender,txtEmail.getText(),txtAddress.getText(),txtPhone.getText());
+                Account account = new Account(0,txtUsername.getText(),txtPassword.getText(),false,accountInformation,roleList,false, localDate);
+                System.out.println(account);
+                RegisterService registerService = new RegisterService();
+                registerService.registerNewAccount(account);
                 loginStage.close();
                 // You might need additional logic to handle saving or updating data
             });

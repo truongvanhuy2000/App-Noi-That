@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class LoginService {
@@ -26,7 +27,7 @@ public class LoginService {
     }
     public boolean Authorization(String username, String password) {
 
-        Account account = new Account(0, username, password, true, null,null, false, new Date());
+        Account account = new Account(0, username, password, true, null,null, false, null);
         try {
             String token = webClientService.unauthorizedHttpPostJson("/api/login", objectMapper.writeValueAsString(account));
             if (!token.isEmpty()){

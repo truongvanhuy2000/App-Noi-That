@@ -11,12 +11,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class UserSessionService {
     final static Logger LOGGER = LogManager.getLogger(UserSessionService.class);
-    private static final String SESSION_DIRECTORY = "/home/huy/Project/Java/AppNoiThat/AppNoiThat/data/userSession/session";
+    private static final String SESSION_DIRECTORY = "/home/long/Project/Java/App-noi-that/data/userSession/session";
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     public UserSessionService() {
@@ -28,7 +29,7 @@ public class UserSessionService {
     }
     public void cleanUserSession() {
         UserSession session = UserSession.getInstance();
-        session.setAccount(new Account(0, "", "", false, null, new ArrayList<>(), false, new Date()));
+        session.setAccount(new Account(0, "", "", false, null, new ArrayList<>(), false, null));
         session.setJwtToken("");
         try {
             saveSessionToDisk();
