@@ -24,6 +24,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -32,6 +33,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.util.converter.FloatStringConverter;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
@@ -65,14 +67,51 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private Button deleteButton, addContinuousButton, addNewButton, ExportButton;
     @FXML
+    private CheckBox editCheckBox;
+    @FXML
     private ImageView ImageView;
-
     @FXML
     private TableColumn<BangThanhToan, Long> DatCocThiCong30, DatCocThietKe10, HangDenChanCongTrinh50, NghiemThuQuyet;
     @FXML
     private TableView<BangThanhToan> bangThanhToan;
     private ByteArrayOutputStream imageStream;
     public void initialize() {
+    }
+    @FXML
+    void OnMouseClickedHandler(MouseEvent event) {
+        Object source = event.getSource();
+        if (source == ImageView){
+            imageViewHandler();
+        }
+    }
+    @FXML
+    void onKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.DELETE){
+            if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
+                return;
+            }
+            ObservableList<TreeItem<BangNoiThat>> listItem = TableNoiThat.getSelectionModel().getSelectedItems();
+            for (int i = listItem.size() - 1; i >= 0; i--) {
+                if(listItem.get(i) == null) continue;
+                if(listItem.get(i).getParent() == null) continue;
+
+                listItem.get(i).getParent().getChildren().remove(listItem.get(i));
+            }
+            TableNoiThat.getSelectionModel().clearSelection();
+        }
+        if (event.getCode() == KeyCode.ESCAPE) {
+            TableNoiThat.getSelectionModel().clearSelection();
+        }
+    }
+    @FXML
+    void onCheckBoxAction(ActionEvent event) {
+        ObservableList<String> hangMucList = FXCollections.observableArrayList();
+        HangMucCollumHandler hangMucCollumHandler = new HangMucCollumHandler(hangMucList);
+        if (editCheckBox.isSelected()){
+            setUpHangMuc(true);
+        } else {
+            setUpHangMuc(false);
+        }
     }
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
@@ -170,32 +209,6 @@ public class LuaChonNoiThatController implements Initializable {
     private ThongTinNoiThat convertFromTreeItem(TreeItem<BangNoiThat> item) {
         return new ThongTinNoiThat(item.getValue());
     }
-    @FXML
-    void OnMouseClickedHandler(MouseEvent event) {
-        Object source = event.getSource();
-        if (source == ImageView){
-            imageViewHandler();
-        }
-    }
-    @FXML
-    void onKeyPressed(KeyEvent event) {
-        if (event.getCode() == KeyCode.DELETE){
-            if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
-                return;
-            }
-            ObservableList<TreeItem<BangNoiThat>> listItem = TableNoiThat.getSelectionModel().getSelectedItems();
-            for (int i = listItem.size() - 1; i >= 0; i--) {
-                if(listItem.get(i) == null) continue;
-                if(listItem.get(i).getParent() == null) continue;
-
-                listItem.get(i).getParent().getChildren().remove(listItem.get(i));
-            }
-            TableNoiThat.getSelectionModel().clearSelection();
-        }
-        if (event.getCode() == KeyCode.ESCAPE) {
-            TableNoiThat.getSelectionModel().clearSelection();
-        }
-    }
     private void imageViewHandler(){
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(new Stage());
@@ -281,7 +294,7 @@ public class LuaChonNoiThatController implements Initializable {
         setUpKichThuoc();
         setUpDonGia();
         setUpDonVi();
-        setUpHangMuc();
+        setUpHangMuc(false);
         setUpVatLieu();
         setUpThanhTien();
         setUpKhoiLuong();
@@ -325,14 +338,29 @@ public class LuaChonNoiThatController implements Initializable {
         VatLieu.setOnEditStart(vatLieuCollumHandler::onStartEditVatLieu);
     }
 
-    private void setUpHangMuc(){
+    private void setUpHangMuc(boolean editable){
         ObservableList<String> hangMucList = FXCollections.observableArrayList();
         HangMucCollumHandler hangMucCollumHandler = new HangMucCollumHandler(hangMucList);
         // Set up collum for HangMuc
         HangMuc.setCellValueFactory(hangMucCollumHandler::getCustomCellValueFactory);
         HangMuc.setOnEditCommit(hangMucCollumHandler::onEditCommitHangMuc);
-        HangMuc.setCellFactory(hangMucCollumHandler::getCustomCellFactory);
+        if (editable) {
+            HangMuc.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+        }
+        else {
+            HangMuc.setCellFactory(hangMucCollumHandler::getCustomCellFactory);
+        }
+        // Remember to make change to this
+        //
+        //
+        //
+        //
         HangMuc.setOnEditStart(hangMucCollumHandler::onStartEditHangMuc);
+        // Remember to make change to this
+        //
+        //
+        //
+        //
     }
 
     private void setUpDonVi(){

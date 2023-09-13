@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class UserSessionService {
     final static Logger LOGGER = LogManager.getLogger(UserSessionService.class);
-    private static final String SESSION_DIRECTORY = "/home/huy/Project/Java/AppNoiThat/AppNoiThat/data/userSession/session";
+    private static final String SESSION_DIRECTORY = "/home/huy/Project/Java/App-noi-that/data/userSession/session";
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     public UserSessionService() {
@@ -44,6 +44,9 @@ public class UserSessionService {
         setToken(jwtToken);
         if (!username.isEmpty()) {
             String info = webClientService.authorizedHttpGetJson("/api/info?username=" + username, getToken());
+            if (info == null) {
+                return;
+            }
             Account account = null;
             try {
                 account = objectMapper.readValue(info, Account.class);
