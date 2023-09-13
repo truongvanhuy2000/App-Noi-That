@@ -8,7 +8,6 @@ import javafx.scene.control.TreeTableCell;
 public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;
     private final ObservableList<String> items;
-    private String oldValue;
     public CustomHangMucCell(ObservableList<String> items) {
         this.items = items;
     }
@@ -20,7 +19,6 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
             setGraphic(comboBox);
         }
     }
-
     @Override
     public void cancelEdit() {
         super.cancelEdit();
@@ -53,8 +51,19 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         comboBox.valueProperty().set(super.getItem());
         comboBox.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
         comboBox.setOnAction((e) -> {
-            super.commitEdit(comboBox.getSelectionModel().getSelectedItem());
+            if (comboBox.getSelectionModel().getSelectedItem() != null){
+//                System.out.println("Commiting combo box");
+                super.commitEdit(comboBox.getSelectionModel().getSelectedItem());
+                updateItem(comboBox.getSelectionModel().getSelectedItem(), false);
+            }
         });
+//        comboBox.setOnKeyPressed((key) -> {
+//            if (key.getCode().equals(KeyCode.ENTER)) {
+//                System.out.println("Commiting combo box");
+//                commitEdit(comboBox.getSelectionModel().getSelectedItem());
+//                updateItem(comboBox.getSelectionModel().getSelectedItem(), false);
+//            }
+//        });
     }
 
 }

@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomNumberCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomTextAreaCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.HangMucCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.KichThuocHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.STTCollumHandler;
@@ -33,7 +34,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import javafx.util.converter.FloatStringConverter;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
@@ -105,12 +105,12 @@ public class LuaChonNoiThatController implements Initializable {
     }
     @FXML
     void onCheckBoxAction(ActionEvent event) {
-        ObservableList<String> hangMucList = FXCollections.observableArrayList();
-        HangMucCollumHandler hangMucCollumHandler = new HangMucCollumHandler(hangMucList);
         if (editCheckBox.isSelected()){
             setUpHangMuc(true);
+            setUpVatLieu(true);
         } else {
             setUpHangMuc(false);
+            setUpVatLieu(false);
         }
     }
     @Override
@@ -295,7 +295,7 @@ public class LuaChonNoiThatController implements Initializable {
         setUpDonGia();
         setUpDonVi();
         setUpHangMuc(false);
-        setUpVatLieu();
+        setUpVatLieu(false);
         setUpThanhTien();
         setUpKhoiLuong();
         setUpSTT();
@@ -328,14 +328,23 @@ public class LuaChonNoiThatController implements Initializable {
         ThanhTien.setOnEditCommit(event ->
             event.getRowValue().getValue().setThanhTien(event.getNewValue()));
     }
-    private void setUpVatLieu(){
+    private void setUpVatLieu(boolean editable){
         // Set up collum for VatLieu
         ObservableList<String> vatLieuList = FXCollections.observableArrayList();
         VatLieuCollumHandler vatLieuCollumHandler = new VatLieuCollumHandler(vatLieuList);
         VatLieu.setCellValueFactory(vatLieuCollumHandler::getCustomCellValueFactory);
-        VatLieu.setCellFactory(vatLieuCollumHandler::getCustomCellFactory);
-        VatLieu.setOnEditCommit(vatLieuCollumHandler::onEditCommitVatLieu);
-        VatLieu.setOnEditStart(vatLieuCollumHandler::onStartEditVatLieu);
+        if (editable) {
+            VatLieu.setCellFactory(param -> new CustomTextAreaCell());
+            VatLieu.setOnEditCommit(event -> {
+                event.getRowValue().getValue().setVatLieu(event.getNewValue());
+//                System.out.println(event.getNewValue());
+            });
+        }
+        else {
+            VatLieu.setCellFactory(vatLieuCollumHandler::getCustomCellFactory);
+            VatLieu.setOnEditStart(vatLieuCollumHandler::onStartEditVatLieu);
+            VatLieu.setOnEditCommit(vatLieuCollumHandler::onEditCommitVatLieu);
+        }
     }
 
     private void setUpHangMuc(boolean editable){
@@ -343,24 +352,18 @@ public class LuaChonNoiThatController implements Initializable {
         HangMucCollumHandler hangMucCollumHandler = new HangMucCollumHandler(hangMucList);
         // Set up collum for HangMuc
         HangMuc.setCellValueFactory(hangMucCollumHandler::getCustomCellValueFactory);
-        HangMuc.setOnEditCommit(hangMucCollumHandler::onEditCommitHangMuc);
+
         if (editable) {
             HangMuc.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+            HangMuc.setOnEditCommit(event -> {
+                event.getRowValue().getValue().setHangMuc(event.getNewValue());
+            });
         }
         else {
             HangMuc.setCellFactory(hangMucCollumHandler::getCustomCellFactory);
+            HangMuc.setOnEditCommit(hangMucCollumHandler::onEditCommitHangMuc);
+            HangMuc.setOnEditStart(hangMucCollumHandler::onStartEditHangMuc);
         }
-        // Remember to make change to this
-        //
-        //
-        //
-        //
-        HangMuc.setOnEditStart(hangMucCollumHandler::onStartEditHangMuc);
-        // Remember to make change to this
-        //
-        //
-        //
-        //
     }
 
     private void setUpDonVi(){
