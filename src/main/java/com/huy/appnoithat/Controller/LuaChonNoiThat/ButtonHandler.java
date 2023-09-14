@@ -107,11 +107,10 @@ public class ButtonHandler {
             return;
         }
         TreeItem<BangNoiThat> parent = currentSelectedItem.getParent();
-        if (isReachedLimit(parent)) {
+        TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem("1");
+        if (currentSelectedItem.getValue() == null) {
             return;
         }
-        TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem("1");
-
         String nextStt = findTheNextStt(currentSelectedItem.getValue().getSTT().getValue());
         tempNewItem.getValue().getSTT().setValue(nextStt);
         parent.getChildren().add(tempNewItem);
