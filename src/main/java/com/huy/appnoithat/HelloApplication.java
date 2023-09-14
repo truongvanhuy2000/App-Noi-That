@@ -7,6 +7,7 @@ import com.huy.appnoithat.Session.UserSession;
 import javafx.application.Application;
 import javafx.stage.Stage;
 public class HelloApplication extends Application {
+    int n = 9;
     @Override
     public void start(Stage stage){
 //        Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler(stage));
@@ -23,6 +24,7 @@ public class HelloApplication extends Application {
         stage.show();
     }
     public static void main(String[] args){
+        System.out.println(new HelloApplication().n);
         launch();
     }
 }
