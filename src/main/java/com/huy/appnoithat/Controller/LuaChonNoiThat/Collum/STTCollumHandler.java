@@ -22,7 +22,7 @@ public class STTCollumHandler {
 
     public void onEditCommitSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         handleInputedSTT(event);
-        event.getTreeTableView().getSelectionModel().clearSelection();
+//        event.getTreeTableView().getSelectionModel().clearSelection();
     }
     private void handleInputedSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event)
     {
@@ -107,6 +107,9 @@ public class STTCollumHandler {
     }
 
     public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param){
+        if (param.getValue() == null){
+            return null;
+        }
         SimpleStringProperty tempSTT = param.getValue().getValue().getSTT();
         return tempSTT.getValue().isEmpty() ? null : tempSTT;
     }

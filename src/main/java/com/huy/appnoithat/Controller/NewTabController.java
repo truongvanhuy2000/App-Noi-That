@@ -4,6 +4,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Scene.LuaChonNoiThatScene;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -115,11 +116,18 @@ public class NewTabController implements Initializable {
         DuplicateBangThanhToan.getItems().addAll(bangThanhToan.getItems());
     }
     private TreeItem<BangNoiThat> deepcopy(TreeItem<BangNoiThat> item) {
-        TreeItem<BangNoiThat> copy = new TreeItem<>(item.getValue());
+        TreeItem<BangNoiThat> copy = createNewItem(item.getValue());
         for (TreeItem<BangNoiThat> child : item.getChildren()) {
             copy.getChildren().add(deepcopy(child));
         }
         return copy;
+    }
+    private TreeItem<BangNoiThat> createNewItem(BangNoiThat item) {
+        TreeItem<BangNoiThat> newItem = new TreeItem<>(item);
+        newItem.setExpanded(true);
+        newItem.addEventHandler(TreeItem.branchCollapsedEvent(),
+                (EventHandler<TreeItem.TreeModificationEvent<String>>) event -> event.getTreeItem().setExpanded(true));
+        return newItem;
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

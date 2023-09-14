@@ -45,6 +45,9 @@ public class TableUtils {
             }
             khoiLuong = chieuDai*chieuCao/1000000;
         }
+        else {
+            khoiLuong = 1f;
+        }
         return khoiLuong;
     }
 
@@ -76,6 +79,11 @@ public class TableUtils {
                 "", "", "", 0L, 0f));
         newItem.addEventHandler(TreeItem.branchCollapsedEvent(),
                 (EventHandler<TreeItem.TreeModificationEvent<String>>) event -> event.getTreeItem().setExpanded(true));
+        newItem.setExpanded(true);
         return newItem;
+    }
+    public static void selectSingleItem(TreeTableView<BangNoiThat> TableNoiThat, TreeItem<BangNoiThat> item){
+        TableNoiThat.getSelectionModel().clearSelection();
+        TableNoiThat.getSelectionModel().select(item);
     }
 }

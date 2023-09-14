@@ -4,6 +4,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
@@ -11,15 +12,23 @@ import java.util.stream.Collectors;
 
 public class Utils {
     public static boolean isAlpha(String name) {
+        if (name == null)
+            return false;
         return name.matches("[a-zA-Z]+");
     }
     public static boolean isNumeric(String str) {
+        if (str == null)
+            return false;
         return str.matches("-?\\d+(\\.\\d+)?");
     }
     public static String encodeValue(String value) {
+        if (value == null)
+            return "";
         return URLEncoder.encode(value, StandardCharsets.UTF_8);
     }
     public static String decodeValue(String value) {
+        if (value == null)
+            return "";
         return URLEncoder.encode(value, StandardCharsets.UTF_8);
     }
     public static class RomanNumber {
@@ -41,6 +50,9 @@ public class Utils {
         }
 
         public static int romanToInt(String s) {
+            if (s == null || s.isEmpty()) {
+                return -1;
+            }
             HashMap<Character, Integer> romanValues = new HashMap<>();
             romanValues.put('I', 1);
             romanValues.put('V', 5);
@@ -67,10 +79,14 @@ public class Utils {
 
 
         public static boolean isRoman(String roman) {
+            if (roman == null)
+                return false;
             return roman.matches("^(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$");
         }
     }
     public static List<String> getObjectNameList(List<?> list){
+        if (list == null)
+            new ArrayList<>();
         return list.stream().map(Object::toString).collect(Collectors.toList());
     }
 
@@ -82,6 +98,8 @@ public class Utils {
     }
 
     public static long convertDecimalToLong(String formattedNumber) {
+        if (formattedNumber == null)
+            return 0L;
         // Remove commas from the string
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         try {

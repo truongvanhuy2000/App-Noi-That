@@ -27,7 +27,7 @@ public class HangMucCollumHandler {
 //        System.out.println("Hang muc: " + event.getNewValue());
         String newValue =  event.getNewValue();
         event.getRowValue().getValue().setHangMuc(newValue);
-        event.getTreeTableView().getSelectionModel().clearSelection();
+//        event.getTreeTableView().getSelectionModel().clearSelection();
     }
 
     public void onStartEditHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
@@ -78,6 +78,9 @@ public class HangMucCollumHandler {
         return new CustomHangMucCell(hangMucList);
     }
     public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param){
+        if (param.getValue() == null){
+            return null;
+        }
         return param.getValue().getValue().getHangMuc();
     }
 }

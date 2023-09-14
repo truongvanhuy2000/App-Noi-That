@@ -59,14 +59,11 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         comboBox.valueProperty().set(super.getItem());
         comboBox.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
         comboBox.setOnAction((e) -> {
-            super.commitEdit(comboBox.getSelectionModel().getSelectedItem());
+            if (comboBox.getSelectionModel().getSelectedItem() != null){
+//                System.out.println("Commiting combo box");
+                super.commitEdit(comboBox.getSelectionModel().getSelectedItem());
+                updateItem(comboBox.getSelectionModel().getSelectedItem(), false);
+            }
         });
     }
-//    private boolean isCellEditable(){
-//        String STT = TableNoiThat.getSelectionModel().getSelectedItem().getValue().getSTT().getValue();
-//        if (Utils.isAlpha(STT) || Utils.RomanNumber.isRoman(STT)){
-//            return false;
-//        }
-//        return true;
-//    }
 }

@@ -13,7 +13,6 @@ import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
 import com.huy.appnoithat.Shared.Utils;
 
-import java.awt.desktop.PreferencesEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +48,9 @@ public class LuaChonNoiThatService {
     public PhongCachNoiThat findPhongCachNoiThatById(int id) {
         String path = "/api/phongcach";
         String response = webClientService.authorizedHttpGetJson(path + "/" + id, userSessionService.getToken());
+        if (response == null) {
+            return null;
+        }
         try {
             PhongCachNoiThat phongCachNoiThat = objectMapper.readValue(response, PhongCachNoiThat.class);
             return phongCachNoiThat;
@@ -60,6 +62,9 @@ public class LuaChonNoiThatService {
         String path = "/api/phongcach/search";
         String param = "?" + "name=" + Utils.encodeValue(name);
         String response = webClientService.authorizedHttpGetJson(path + param, userSessionService.getToken());
+        if (response == null) {
+            return null;
+        }
         try {
             PhongCachNoiThat phongCachNoiThat = objectMapper.readValue(response, PhongCachNoiThat.class);
             return phongCachNoiThat;

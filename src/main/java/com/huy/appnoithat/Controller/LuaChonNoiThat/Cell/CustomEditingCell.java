@@ -52,11 +52,17 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
         }
         TreeTableRow<BangNoiThat> currentRow = getTableRow();
         if (!isEmpty()) {
+            if (Utils.isNumeric(getItem())) {
+                currentRow.setStyle("-fx-font-weight: normal");
+                return;
+            }
             if (Utils.RomanNumber.isRoman(getItem())) {
                 currentRow.setStyle("-fx-font-weight: bold");
+                return;
             }
-            else if(Utils.isAlpha(getItem())) {
+            if(Utils.isAlpha(getItem())) {
                 currentRow.setStyle("-fx-font-weight: bold; -fx-font-size: 14px");
+                return;
             }
         }
     }

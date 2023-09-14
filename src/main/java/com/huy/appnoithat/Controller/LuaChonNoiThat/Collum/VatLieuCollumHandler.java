@@ -29,6 +29,9 @@ public class VatLieuCollumHandler {
         return new CustomVatLieuCell(vatLieuList, param.getTreeTableView());
     }
     public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param){
+        if (param.getValue() == null){
+            return null;
+        }
         return param.getValue().getValue().getVatLieu();
     }
     public void onEditCommitVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
@@ -56,7 +59,7 @@ public class VatLieuCollumHandler {
 
         TableUtils.calculateTongTien(event.getRowValue().getParent());
 
-        event.getTreeTableView().getSelectionModel().clearSelection();
+//        event.getTreeTableView().getSelectionModel().clearSelection();
     }
     public void onStartEditVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
