@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class UserSessionService {
     final static Logger LOGGER = LogManager.getLogger(UserSessionService.class);
-    private static final String SESSION_DIRECTORY = "/home/huy/Project/Java/AppNoiThat/AppNoiThat/data/userSession/session";
+    private static final String SESSION_DIRECTORY = System.getProperty("user.dir") + "/data/userSession/session";
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     public UserSessionService() {

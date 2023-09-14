@@ -13,12 +13,15 @@ import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
 import com.huy.appnoithat.Shared.Utils;
 
+import java.awt.desktop.PreferencesEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LuaChonNoiThatService {
     private final WebClientService webClientService;
     private final UserSessionService userSessionService;
     private final ObjectMapper objectMapper;
+
     // Fake the data
     public LuaChonNoiThatService() {
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
@@ -30,8 +33,10 @@ public class LuaChonNoiThatService {
 
     public List<PhongCachNoiThat> findAllPhongCachNoiThat() {
         String path = "/api/phongcach";
-        String token = userSessionService.getToken();
-        String response = webClientService.authorizedHttpGetJson(path, token);
+        String response = webClientService.authorizedHttpGetJson(path, userSessionService.getToken());
+        if (response == null) {
+            return new ArrayList<>();
+        }
         try {
             List<PhongCachNoiThat> phongCachNoiThatList = objectMapper.readValue(response, objectMapper.getTypeFactory()
                     .constructCollectionType(List.class, PhongCachNoiThat.class));
@@ -43,8 +48,7 @@ public class LuaChonNoiThatService {
 
     public PhongCachNoiThat findPhongCachNoiThatById(int id) {
         String path = "/api/phongcach";
-        String token = userSessionService.getToken();
-        String response = webClientService.authorizedHttpGetJson(path + "/" + id, token);
+        String response = webClientService.authorizedHttpGetJson(path + "/" + id, userSessionService.getToken());
         try {
             PhongCachNoiThat phongCachNoiThat = objectMapper.readValue(response, PhongCachNoiThat.class);
             return phongCachNoiThat;
@@ -53,24 +57,26 @@ public class LuaChonNoiThatService {
         }
     }
     public PhongCachNoiThat findPhongCachNoiThatByName(String name) {
-        String path = "/api/phongcach";
+        String path = "/api/phongcach/search";
         String param = "?" + "name=" + Utils.encodeValue(name);
-        String token = userSessionService.getToken();
-        String response = webClientService.authorizedHttpGetJson(path + param, token);
+        String response = webClientService.authorizedHttpGetJson(path + param, userSessionService.getToken());
         try {
-            List<PhongCachNoiThat> phongCachNoiThatList = objectMapper.readValue(response, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, PhongCachNoiThat.class));
-            return phongCachNoiThatList.stream().filter(item -> item.getName().equals(name)).findFirst().orElse(null);
+            PhongCachNoiThat phongCachNoiThat = objectMapper.readValue(response, PhongCachNoiThat.class);
+            return phongCachNoiThat;
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
     }
     public List<NoiThat> findNoiThatByPhongCachName(String name) {
         PhongCachNoiThat foundPhongCachNoiThat = findPhongCachNoiThatByName(name);
-        if (foundPhongCachNoiThat == null) throw new NullPointerException("Phong cach not found");
+        if (foundPhongCachNoiThat == null) {
+            return new ArrayList<>();
+        }
         String path = "/api/noithat/searchByPhongCach";
-        String token = userSessionService.getToken();
-        String response = webClientService.authorizedHttpGetJson(path + "/" + foundPhongCachNoiThat.getId(), token);
+        String response = webClientService.authorizedHttpGetJson(path + "/" + foundPhongCachNoiThat.getId(), userSessionService.getToken());
+        if (response == null) {
+            return new ArrayList<>();
+        }
         try {
             List<NoiThat> noiThatList = objectMapper.readValue(response, objectMapper.getTypeFactory()
                     .constructCollectionType(List.class, NoiThat.class));
@@ -82,12 +88,18 @@ public class LuaChonNoiThatService {
 
     public List<HangMuc> findHangMucListByPhongCachAndNoiThat(String phongCach, String noiThat){
         List<NoiThat> noiThatList = findNoiThatByPhongCachName(phongCach);
-        if (noiThatList == null) throw new NullPointerException("Not found");
+        if (noiThatList == null) {
+            return new ArrayList<>();
+        }
         NoiThat foundNoiThat = noiThatList.stream().filter(nt -> nt.getName().equals(noiThat)).findFirst().orElse(null);
-        if (foundNoiThat == null) throw new NullPointerException("Noi that not found");
+        if (foundNoiThat == null) {
+            return new ArrayList<>();
+        }
         String path = "/api/hangmuc/searchByNoiThat";
-        String token = userSessionService.getToken();
-        String response = webClientService.authorizedHttpGetJson(path + "/" + foundNoiThat.getId(), token);
+        String response = webClientService.authorizedHttpGetJson(path + "/" + foundNoiThat.getId(), userSessionService.getToken());
+        if (response == null) {
+            return new ArrayList<>();
+        }
         try {
             List<HangMuc> hangMucList = objectMapper.readValue(response, objectMapper.getTypeFactory()
                     .constructCollectionType(List.class, HangMuc.class));
@@ -98,13 +110,18 @@ public class LuaChonNoiThatService {
     }
     public List<VatLieu> findVatLieuListByParentsName(String phongCach, String noiThat, String hangMuc){
         List<HangMuc> hangMucList = findHangMucListByPhongCachAndNoiThat(phongCach, noiThat);
-        if (hangMucList == null) throw new NullPointerException("Not found");
+        if (hangMucList == null) {
+            return new ArrayList<>();
+        }
         HangMuc foundHangMuc = hangMucList.stream().filter(hm -> hm.getName().equals(hangMuc)).findFirst().orElse(null);
-        if (foundHangMuc == null) throw new NullPointerException("Hang muc not found");
-
+        if (foundHangMuc == null) {
+            return new ArrayList<>();
+        }
         String path = "/api/vatlieu/searchByHangMuc";
-        String token = userSessionService.getToken();
-        String response = webClientService.authorizedHttpGetJson(path + "/" + foundHangMuc.getId(), token);
+        String response = webClientService.authorizedHttpGetJson(path + "/" + foundHangMuc.getId(), userSessionService.getToken());
+        if (response == null) {
+            return new ArrayList<>();
+        }
         try {
             List<VatLieu> vatLieuList = objectMapper.readValue(response, objectMapper.getTypeFactory()
                     .constructCollectionType(List.class, VatLieu.class));
