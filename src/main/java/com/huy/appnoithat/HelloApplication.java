@@ -1,5 +1,6 @@
 package com.huy.appnoithat;
 
+import com.huy.appnoithat.Exception.GlobalExceptionHandler;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
@@ -9,7 +10,7 @@ import javafx.stage.Stage;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage){
-//        Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler(stage));
+        Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler(stage));
         UserSession.getInstance();
         UserSessionService sessionService = new UserSessionService();
         if (sessionService.isLogin()){
@@ -17,7 +18,6 @@ public class HelloApplication extends Application {
         }
         else{
             stage.setScene(LoginScene.getInstance().getScene());
-
         }
         stage.setTitle("App Noi That");
         stage.show();

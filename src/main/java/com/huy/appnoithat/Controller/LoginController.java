@@ -6,21 +6,22 @@ import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.RegisterScene;
 import com.huy.appnoithat.Service.Login.LoginService;
 import com.huy.appnoithat.Service.Register.RegisterService;
+import com.huy.appnoithat.Shared.PopupUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class LoginController {
@@ -45,11 +46,7 @@ public class LoginController {
         String userName = usernameTextField.getText();
         String password = passwordField.getText();
         if (!loginService.Authorization(userName, password)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("LOGIN FAIL!!");
-            alert.setHeaderText("look, a error");
-            alert.setContentText("Username or Password wrong, please input again !!");
-            alert.showAndWait();
+            PopupUtils.throwCriticalError("Sai tên đăng nhập hoặc mật khẩu");
             passwordField.setText("");
             return;
         }

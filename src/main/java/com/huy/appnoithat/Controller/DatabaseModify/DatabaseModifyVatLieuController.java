@@ -1,24 +1,20 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
-import com.huy.appnoithat.Entity.*;
+import com.huy.appnoithat.Entity.ThongSo;
+import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Scene.DatabaseModify.ChangeProductSpecificationScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
-import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
-import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyHangMucService;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyVatlieuService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class DatabaseModifyVatLieuController{
@@ -234,7 +230,7 @@ public class DatabaseModifyVatLieuController{
 
     public void initializeVatLieu(int id) {
         vatLieuList.clear();
-        parentID=id;
+        parentID = id;
         vatLieuList = databaseModifyVatlieuService.findVatLieuByID(id);
         for (VatLieu vl : vatLieuList) {
             listViewVatlieu.getItems().add(new VatLieu(vl.getId(),vl.getName(),new ThongSo()));

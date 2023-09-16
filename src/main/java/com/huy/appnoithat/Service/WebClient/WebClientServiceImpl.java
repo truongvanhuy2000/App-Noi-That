@@ -1,6 +1,5 @@
 package com.huy.appnoithat.Service.WebClient;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -84,7 +83,7 @@ public class WebClientServiceImpl implements WebClientService {
             }
             return response.body();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            return null;
         }
     }
     private HttpRequest buildJsonHttpRequest(String method, String path, String authenticationToken, String data) {

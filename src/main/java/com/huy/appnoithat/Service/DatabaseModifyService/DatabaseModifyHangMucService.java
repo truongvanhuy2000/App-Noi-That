@@ -13,24 +13,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseModifyHangMucService {
-    private final List<HangMuc> tempHangMucList = new ArrayList<>();
 
-    private WebClientService webClientService;
-    private ObjectMapper objectMapper;
+    private final WebClientService webClientService;
+    private final ObjectMapper objectMapper;
     private String token;
+    private final UserSessionService sessionService;
 
-    private final UserSessionService sessionService = new UserSessionService();
-
-    public DatabaseModifyHangMucService(){}
-
-    public List<HangMuc> findHangMucByID(int id){
-        token = this.sessionService.getToken();
+    public DatabaseModifyHangMucService(){
+        sessionService = new UserSessionService();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/hangmuc/searchByNoiThat/"+id, token);
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
+    }
 
+    public List<HangMuc> findHangMucByID(int id){
+        List<HangMuc> tempHangMucList = new ArrayList<>();
+        token = this.sessionService.getToken();
+        String response2 = this.webClientService.authorizedHttpGetJson("/api/hangmuc/searchByNoiThat/"+id, token);
         try {
             // 2. convert JSON array to List of objects
             List<HangMuc> hangMucList = objectMapper.readValue(response2, objectMapper.getTypeFactory()
@@ -50,10 +50,6 @@ public class DatabaseModifyHangMucService {
 
     public void addNewHangMuc(HangMuc hangMuc,int parentID){
         token = this.sessionService.getToken();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
         try {
             this.webClientService.authorizedHttpPostJson("/api/hangmuc?parentId="+parentID,  objectMapper.writeValueAsString(hangMuc),token);
         } catch (IOException e) {
@@ -63,10 +59,6 @@ public class DatabaseModifyHangMucService {
 
     public void EditHangMuc(HangMuc hangMuc){
         token = this.sessionService.getToken();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
         try {
             this.webClientService.authorizedHttpPutJson("/api/hangmuc",  objectMapper.writeValueAsString(hangMuc),token);
         } catch (IOException e) {
@@ -76,10 +68,6 @@ public class DatabaseModifyHangMucService {
 
     public void deleteHangMuc(int id){
         token = this.sessionService.getToken();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
         this.webClientService.authorizedHttpDeleteJson("/api/hangmuc/"+id,  "",token);
     }
 }

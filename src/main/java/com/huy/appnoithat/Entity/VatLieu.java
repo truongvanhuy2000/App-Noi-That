@@ -1,12 +1,15 @@
 package com.huy.appnoithat.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import com.huy.appnoithat.Entity.Common.CommonItemInterface;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class VatLieu extends HangMuc {
+public class VatLieu implements CommonItemInterface {
     @JsonProperty("id")
     private int id;
     @JsonProperty("name")

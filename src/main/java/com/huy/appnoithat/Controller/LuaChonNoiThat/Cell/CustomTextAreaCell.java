@@ -13,10 +13,10 @@ public class CustomTextAreaCell extends TreeTableCell<BangNoiThat, String> {
     public void startEdit() {
         if (!isEmpty()) {
             super.startEdit();
-            createTextField();
+            createTextArea();
             setText(null);
             setGraphic(textArea);
-//            textField.selectAll();
+            textArea.selectAll();
         }
     }
     @Override
@@ -45,7 +45,7 @@ public class CustomTextAreaCell extends TreeTableCell<BangNoiThat, String> {
             }
         }
     }
-    private void createTextField() {
+    private void createTextArea() {
         textArea = new TextArea(getString());
         textArea.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
         textArea.setOnKeyPressed((key) -> {

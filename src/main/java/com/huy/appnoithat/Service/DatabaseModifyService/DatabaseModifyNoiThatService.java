@@ -13,24 +13,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseModifyNoiThatService {
-    private List<NoiThat> tempNoiThatList = new ArrayList<>();
 
-    private WebClientService webClientService;
-    private ObjectMapper objectMapper;
+    private final WebClientService webClientService;
+    private final ObjectMapper objectMapper;
     private String token;
 
-    private final UserSessionService sessionService = new UserSessionService();
+    private final UserSessionService sessionService;
 
-    public DatabaseModifyNoiThatService(){}
-
-    public List<NoiThat> findNoiThatByID(int id){
-        token = this.sessionService.getToken();
+    public DatabaseModifyNoiThatService(){
+        sessionService = new UserSessionService();
         webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/noithat/searchByPhongCach/"+id, token);
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
+    }
 
+    public List<NoiThat> findNoiThatByID(int id){
+        List<NoiThat> tempNoiThatList = new ArrayList<>();
+        token = this.sessionService.getToken();
+        String response2 = this.webClientService.authorizedHttpGetJson("/api/noithat/searchByPhongCach/"+id, token);
         try {
             // 2. convert JSON array to List of objects
             List<NoiThat> noiThatList = objectMapper.readValue(response2, objectMapper.getTypeFactory()
@@ -50,10 +51,6 @@ public class DatabaseModifyNoiThatService {
 
     public void addNewNoiThat(NoiThat noiThat,int parentID){
         token = this.sessionService.getToken();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
         try {
             this.webClientService.authorizedHttpPostJson("/api/noithat?parentId="+parentID,  objectMapper.writeValueAsString(noiThat),token);
         } catch (IOException e) {
@@ -63,10 +60,6 @@ public class DatabaseModifyNoiThatService {
 
     public void EditNoiThat(NoiThat noiThat){
         token = this.sessionService.getToken();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
         try {
             this.webClientService.authorizedHttpPutJson("/api/noithat",  objectMapper.writeValueAsString(noiThat),token);
         } catch (IOException e) {
@@ -76,10 +69,6 @@ public class DatabaseModifyNoiThatService {
 
     public void deleteNoiThat(int id){
         token = this.sessionService.getToken();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
         this.webClientService.authorizedHttpDeleteJson("/api/noithat/"+id,  "",token);
     }
 }

@@ -38,29 +38,28 @@ public class HomeController {
     // Initialize scene
     public void initialize() {
         // Hide all button
-        suadoidatabaseButton.setDisable(true);
-        QuanLyNguoiDungButton.setDisable(true);
-        LuaChonNoiThatButton.setDisable(true);
+        toggleButton(false, false, false);
         // Set username using current session
         String username = sessionService.getLoginAccount().getUsername();
-        UserName.setText(username);
-
+        UserName.setText(" " + username);
         // Show button based on role
         String role = sessionService.getLoginAccount().getRoleList().contains("ROLE_ADMIN") ? "Admin" : "User";
         switch (role) {
             case "Admin" -> {
-                QuanLyNguoiDungButton.setDisable(false);
-                suadoidatabaseButton.setDisable(false);
-                LuaChonNoiThatButton.setDisable(true);
+                toggleButton(false, true, true);
             }
             case "User" -> {
-                LuaChonNoiThatButton.setDisable(false);
-                QuanLyNguoiDungButton.setDisable(true);
-                suadoidatabaseButton.setDisable(true);
+                toggleButton(true, false, false);
             }
             default -> {
             }
         }
+    }
+
+    private void toggleButton(boolean luaChonNoiThatBtn, boolean quanLyNguoiDungBtn, boolean suadoidatabaseBtn) {
+        LuaChonNoiThatButton.setDisable(!luaChonNoiThatBtn);
+        QuanLyNguoiDungButton.setDisable(!quanLyNguoiDungBtn);
+        suadoidatabaseButton.setDisable(!suadoidatabaseBtn);
     }
     // Central unit to switch scene based on context
     @FXML
@@ -86,7 +85,7 @@ public class HomeController {
             scene = UserManagementScene.getInstance().getScene();
         }else if (source == suadoidatabaseButton) {
             scene = DatabaseModifyPhongCachScene.getInstance().getScene();
-            DatabaseModifyPhongCachScene.getInstance().getController().initializePhongCach();
+            DatabaseModifyPhongCachScene.getInstance().getController().init();
         }
         else {
             return;

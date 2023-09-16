@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
     final static Logger LOGGER = LogManager.getLogger(GlobalExceptionHandler.class);
-    private Stage stage;
+    private final Stage stage;
     public GlobalExceptionHandler(Stage stage) {
         this.stage = stage;
     }

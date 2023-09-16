@@ -18,8 +18,6 @@ public class LoginService {
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     private final UserSessionService sessionService;
-
-
     public LoginService() {
         this.webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
         this.objectMapper = JsonMapper.builder()

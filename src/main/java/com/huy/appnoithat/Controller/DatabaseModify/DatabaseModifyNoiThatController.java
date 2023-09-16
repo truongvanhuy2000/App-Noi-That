@@ -1,200 +1,93 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
 
+import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
+import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
-import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
-import com.huy.appnoithat.Scene.HomeScene;
+import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyHangMucService;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyNoiThatService;
-import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyPhongCachService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.ResourceBundle;
 
-public class DatabaseModifyNoiThatController {
-
-    List<NoiThat> noiThatList = new ArrayList<>();
-    int parentID;
-
-    PhongCachNoiThat parentPhongCach;
-    DatabaseModifyNoiThatService databaseModifyNoiThatService = new DatabaseModifyNoiThatService();
-    @FXML
-    private Button EditNoiThatButton;
+public class DatabaseModifyNoiThatController implements Initializable {
 
     @FXML
-    private Button addNoiThatButton;
-
+    private Button addButton, backButton, deleteButton, nextButton;
     @FXML
-    private Button backButton;
-
-    @FXML
-    private Button clearTextbtn;
-
-    @FXML
-    private Button deleteNoiThatButton;
-
+    private ListView<HangMuc> childrenList;
     @FXML
     private ListView<NoiThat> listViewNoiThat;
-
-    @FXML
-    private Button nextScreenButton;
-
-    @FXML
-    private TextArea txtNoiThat;
-
-
-    @FXML
-    void ClearText(ActionEvent event) {
-        txtNoiThat.setText("");
+    int parentID;
+    private final DatabaseModifyHangMucService databaseModifyHangMucService;
+    private final DatabaseModifyNoiThatService databaseModifyNoiThatService;
+    private final ObservableList<HangMuc> hangMucObservableList;
+    private final ObservableList<NoiThat> noiThatObservableList;
+    public DatabaseModifyNoiThatController() {
+        databaseModifyNoiThatService = new DatabaseModifyNoiThatService();
+        databaseModifyHangMucService = new DatabaseModifyHangMucService();
+        noiThatObservableList = FXCollections.observableArrayList();
+        hangMucObservableList = FXCollections.observableArrayList();
     }
-
     @FXML
-    void DeleteNoiThat(ActionEvent event) {
-            try {
-                int selectIndex =0;
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-
-                if(listViewNoiThat.getSelectionModel().getSelectedItem() ==null){
-                    alert.setTitle("NEXT ERROR");
-                    alert.setHeaderText("look, a error to next");
-                    alert.setContentText("Please choose one item to next !!!");
-                    alert.showAndWait();
-                }else{
-                    selectIndex = listViewNoiThat.getSelectionModel().getSelectedIndex();
-                    int deleteID = listViewNoiThat.getSelectionModel().getSelectedItem().getId();
-                    Alert deleteDialog = new Alert(Alert.AlertType.CONFIRMATION);
-                    if(selectIndex>=0){
-                        deleteDialog.setTitle("Delete Confirmation");
-                        deleteDialog.setHeaderText("Are you sure you want to delete this item?");
-                        deleteDialog.setContentText("This action cannot be undone.");
-                        // Add "Yes" button
-                        deleteDialog.getDialogPane().getButtonTypes().add(ButtonType.YES);
-                        deleteDialog.getDialogPane().getButtonTypes().remove(ButtonType.OK);
-                        // Show the dialog and wait for user interaction
-                        ButtonType result = deleteDialog.showAndWait().orElse(ButtonType.CANCEL);
-                        // Handle the user's choice
-                        if (result == ButtonType.YES) {
-
-                            databaseModifyNoiThatService.deleteNoiThat(deleteID);
-                            listViewNoiThat.getItems().remove(selectIndex);
-                            txtNoiThat.clear();
-                            listViewNoiThat.refresh();
-                        }
-                    }else{
-                        alert.setTitle("DELETE ERROR");
-                        alert.setHeaderText("look, a error");
-                        alert.setContentText("Please choose one item to delete");
-                        alert.showAndWait();
-                    }
-                }
-
-        }catch (Exception e){
-            System.out.println("Something went wrong.");
+    void addAction(ActionEvent event) {
+        noiThatObservableList.add(new NoiThat(0, "<Thêm mới>", new ArrayList<>()));
+    }
+    @FXML
+    void deleteAction(ActionEvent event) {
+        NoiThat noiThat = listViewNoiThat.getSelectionModel().getSelectedItem();
+        if (noiThat == null) {
+            return;
         }
-    }
-
-    @FXML
-    void EditNoiThat(ActionEvent event) {
-        try {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-
-            String txt = txtNoiThat.getText().trim().toUpperCase();
-            int selectIndex = listViewNoiThat.getSelectionModel().getSelectedIndex();
-            if(selectIndex<0){
-                alert.setTitle("EDIT ERROR");
-                alert.setHeaderText("look, a error to edit");
-                alert.setContentText("Please select one item to edit !!!");
-                alert.showAndWait();
-            }else if(txt.isEmpty()){
-                alert.setTitle("EDIT ERROR");
-                alert.setHeaderText("look, a error to edit");
-                alert.setContentText("Cannot edit with text empty !!!");
-                alert.showAndWait();
-            }else{
-                // cần phải get list nội thất
-                NoiThat noiThat = new NoiThat(listViewNoiThat.getItems().get(selectIndex).getId(),txt,listViewNoiThat.getItems().get(selectIndex).getHangMucList());
-                databaseModifyNoiThatService.EditNoiThat(noiThat);
-                listViewNoiThat.getItems().set(selectIndex,noiThat);
-                listViewNoiThat.refresh();
-            }
-        }catch (Exception e){
-            System.out.println("co loi roi dai ca oi");
+        if (noiThat.getId() == 0) {
+            noiThatObservableList.remove(noiThat);
+            return;
         }
+        databaseModifyNoiThatService.deleteNoiThat(noiThat.getId());
+        refreshList();
     }
-
-
     @FXML
-    void tableClickToSelectItem(MouseEvent event) {
-        try {
-            if(listViewNoiThat.getSelectionModel().getSelectedItem() !=null){
-                NoiThat selectedItem = listViewNoiThat.getSelectionModel().getSelectedItem();
-                txtNoiThat.setText(selectedItem.getName());
-            }
-        }catch (Exception e){
-            System.out.println("loi roi");
+    void nextAction(ActionEvent event) {
+        if(listViewNoiThat.getSelectionModel().getSelectedItem() == null){
+            return;
         }
-    }
-
-
-    @FXML
-    void NextScreen(ActionEvent event) {
-
-        int selectID =0;
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-
-        if(listViewNoiThat.getSelectionModel().getSelectedItem() ==null){
-            alert.setTitle("NEXT ERROR");
-            alert.setHeaderText("look, a error to next");
-            alert.setContentText("Please choose one item to next !!!");
-            alert.showAndWait();
-        }else {
-             selectID = listViewNoiThat.getSelectionModel().getSelectedItem().getId();
-            Scene scene = null;
-            Stage stage = null;
-            Object source = event.getSource();
-            stage = (Stage) ((Node)source).getScene().getWindow();
-            if (source == nextScreenButton){
-                scene = DatabaseModifyHangMucScene.getInstance().getScene();
-                DatabaseModifyHangMucScene.getInstance().getController().initializeHangMuc(selectID);
-            }else {
-                return;
-            }
-            stage.setScene(scene);
-            stage.show();
-        }
-
-    }
-
-
-    public void initializeNoiThat(int id) {
-        noiThatList.clear();
-        parentID=id;
-        noiThatList = databaseModifyNoiThatService.findNoiThatByID(id);
-        for (NoiThat nt : noiThatList) {
-            listViewNoiThat.getItems().add(new NoiThat(nt.getId(),nt.getName(),nt.getHangMucList()));
-        }
-    }
-
-
-    @FXML
-    private void sceneSwitcher(ActionEvent actionEvent) {
+        int selectID = listViewNoiThat.getSelectionModel().getSelectedItem().getId();
         Scene scene = null;
         Stage stage = null;
-        Object source = actionEvent.getSource();
+        Object source = event.getSource();
+        stage = (Stage) ((Node)source).getScene().getWindow();
+        if (source == nextButton){
+            scene = DatabaseModifyHangMucScene.getInstance().getScene();
+            DatabaseModifyHangMucScene.getInstance().getController().init(selectID);
+        }else {
+            return;
+        }
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    void sceneSwitcher(ActionEvent event) {
+        Scene scene = null;
+        Stage stage = null;
+        Object source = event.getSource();
         stage = (Stage) ((Node)source).getScene().getWindow();
         if (source == backButton){
             scene = DatabaseModifyPhongCachScene.getInstance().getScene();
-            noiThatList.clear();
-            listViewNoiThat.getItems().clear();
         }
         else {
             return;
@@ -203,47 +96,64 @@ public class DatabaseModifyNoiThatController {
         stage.show();
     }
 
-    public void NoiThatAdd(ActionEvent actionEvent) {
-        try {
-            String txt = txtNoiThat.getText().trim().toUpperCase();
-            boolean hasDuplicate = false;
-            if(!txt.isEmpty()){
-                List<NoiThat> array = listViewNoiThat.getItems().stream().filter(e->e.getName().equals(txt)).collect(Collectors.toList());
-                for (int i = 0; i < array.size(); i++) {
-                    if(array.get(i).equals(txt.toUpperCase())){
-                        hasDuplicate = true;
-                    }
-                }
-                if(hasDuplicate){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("ADD DUPLICATE ERROR");
-                    alert.setHeaderText("look, a error");
-                    alert.setContentText("cannot add duplicate element !!!");
-                    alert.showAndWait();
-                }
-                if(!hasDuplicate){
-                    NoiThat noiThat = new NoiThat();
-                    noiThat.setId(0);
-                    noiThat.setName(txt);
-                    noiThat.setHangMucList(null);
-//                    listViewPhongCach.getItems().add(phongCachNoiThat);
-                    databaseModifyNoiThatService.addNewNoiThat(noiThat,parentID);
-                    txtNoiThat.setText("");
-                    noiThatList.clear();
-                    listViewNoiThat.getItems().clear();
-                    listViewNoiThat.refresh();
-                    initializeNoiThat(parentID);
-                }
+    @FXML
+    void tableClickToSelectItem(MouseEvent event) {
 
-            }else{
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("ADD ERROR");
-                alert.setHeaderText("look, a error");
-                alert.setContentText("please input something !!!");
-                alert.showAndWait();
-            }
-        }catch (Exception e){
-            System.out.println("co loi add roi dai ca");
+    }
+
+    public void init(int parentID) {
+        this.parentID = parentID;
+        refreshList();
+        refreshChildrenList(0);
+    }
+
+    private void refreshList() {
+        List<NoiThat> noiThatList = databaseModifyNoiThatService.findNoiThatByID(parentID);
+        if (noiThatList == null) {
+            noiThatList = new ArrayList<>();
         }
+        noiThatObservableList.clear();
+        noiThatObservableList.addAll(noiThatList);
+    }
+    private void refreshChildrenList(int parentID) {
+        if (parentID == 0) {
+            hangMucObservableList.clear();
+            return;
+        }
+        List<HangMuc> hangMucList = databaseModifyHangMucService.findHangMucByID(parentID);
+        if (hangMucList == null) {
+            hangMucList = new ArrayList<>();
+        }
+        hangMucObservableList.clear();
+        hangMucObservableList.addAll(hangMucList);
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        listViewNoiThat.setItems(noiThatObservableList);
+        listViewNoiThat.setEditable(true);
+        listViewNoiThat.setCellFactory(param -> new CustomEditingListCell<>());
+        listViewNoiThat.setOnEditCommit(event -> {
+            NoiThat item = event.getNewValue();
+            item.setName(event.getNewValue().getName());
+            if (item.getId() == 0) {
+                databaseModifyNoiThatService.addNewNoiThat(item, this.parentID);
+            }
+            else {
+                databaseModifyNoiThatService.EditNoiThat(item);
+            }
+            refreshList();
+        });
+        listViewNoiThat.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                NoiThat noiThat = listViewNoiThat.getSelectionModel().getSelectedItem();
+                if (noiThat == null) {
+                    return;
+                }
+                refreshChildrenList(noiThat.getId());
+            }
+        });
+        childrenList.setEditable(false);
+        childrenList.setCellFactory(param -> new CustomEditingListCell<>());
+        childrenList.setItems(hangMucObservableList);
     }
 }

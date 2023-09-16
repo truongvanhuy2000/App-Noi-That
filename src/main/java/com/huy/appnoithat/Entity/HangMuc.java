@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.huy.appnoithat.Entity.Common.CommonItemInterface;
 import lombok.*;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class HangMuc {
+public class HangMuc implements CommonItemInterface {
     @JsonProperty("id")
     private int id;
     @JsonProperty("name")
