@@ -137,11 +137,10 @@ public class LuaChonNoiThatController implements Initializable {
         );
         NgayLapBaoGia.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
         try {
-            ImageView.setImage(new Image(
-                    new FileInputStream(
-                            Objects.requireNonNull(
-                                    LuaChonNoiThatController.class.getResource(DEFAULT_IMAGE_PATH)).getFile())));
-        } catch (FileNotFoundException e) {
+            ImageView.setImage(
+                    new Image(Objects.requireNonNull(
+                            LuaChonNoiThatController.class.getResourceAsStream(DEFAULT_IMAGE_PATH))));
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

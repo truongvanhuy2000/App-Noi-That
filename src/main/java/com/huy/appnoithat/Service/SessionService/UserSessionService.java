@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 
 public class UserSessionService {
     final static Logger LOGGER = LogManager.getLogger(UserSessionService.class);
-    private static final String SESSION_DIRECTORY = System.getProperty("user.dir") + "/data/userSession/session";
+    private static final String SESSION_DIRECTORY = Config.USER.SESSION_DIRECTORY;
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     public UserSessionService() {

@@ -1,9 +1,10 @@
 package com.huy.appnoithat.Service.FileExport.Excel;
 
-import com.huy.appnoithat.DataModel.ThongTinThanhToan;
+import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
+import com.huy.appnoithat.DataModel.ThongTinThanhToan;
 import com.huy.appnoithat.Service.FileExport.ExportFileService;
 import com.huy.appnoithat.Shared.Utils;
 import lombok.Getter;
@@ -20,15 +21,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
 import java.util.List;
-import java.util.Objects;
 
 @Getter
 @Setter
 public class ExportXLS implements ExportFileService {
     final static Logger LOGGER = LogManager.getLogger(ExportFileService.class);
     // USED FOR TESTING ONLY
-    private static final String DEFAULT_TEMPLATE_PATH = "/template.xlsx";
-    private static final String DEFAULT_OUTPUT_PATH = "target/object_collection_output.xlsx";
+    private static final String DEFAULT_TEMPLATE_PATH = Config.FILE_EXPORT.XLSX_TEMPLATE_DIRECTORY;
+    private static final String DEFAULT_OUTPUT_PATH = Config.FILE_EXPORT.XLSX_DEFAULT_OUTPUT_DIRECTORY;
 
     private ThongTinCongTy thongTinCongTy;
     private ThongTinKhachHang thongTinKhachHang;
@@ -42,7 +42,7 @@ public class ExportXLS implements ExportFileService {
     StylistFactory stylistFactory;
     public ExportXLS(OutputStream outputFile) {
         try {
-            this.inputTemplate = new FileInputStream(Objects.requireNonNull(ExportXLS.class.getResource(DEFAULT_TEMPLATE_PATH)).getFile());
+            this.inputTemplate = new FileInputStream(DEFAULT_TEMPLATE_PATH);
             this.outputFile = outputFile;
             initWorkbook();
         } catch (IOException e) {
@@ -51,7 +51,7 @@ public class ExportXLS implements ExportFileService {
     }
     public ExportXLS() {
         try {
-            this.inputTemplate = new FileInputStream(Objects.requireNonNull(ExportXLS.class.getResource(DEFAULT_TEMPLATE_PATH)).getFile());
+            this.inputTemplate = new FileInputStream(DEFAULT_TEMPLATE_PATH);
             this.outputFile = new FileOutputStream(DEFAULT_OUTPUT_PATH);
             initWorkbook();
         } catch (IOException e) {

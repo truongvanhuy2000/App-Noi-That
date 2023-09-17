@@ -1,5 +1,7 @@
 package com.huy.appnoithat.Service.WebClient;
 
+import com.huy.appnoithat.Configuration.Config;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -14,8 +16,8 @@ public class WebClientServiceImpl implements WebClientService {
     private static final String POST = "POST";
     private static final String PUT = "PUT";
     private static final String DELETE = "DELETE";
-    private static final String SERVER_ADDRESS  = "http://localhost:8080";
-    private static final long TIME_OUT = 10;
+    private static final String SERVER_ADDRESS  = Config.WEB_CLIENT.BASE_URL;
+    private static final long TIME_OUT = Config.WEB_CLIENT.TIME_OUT;
     private final String host;
     private final long timeOut;
     private final HttpClient client;
