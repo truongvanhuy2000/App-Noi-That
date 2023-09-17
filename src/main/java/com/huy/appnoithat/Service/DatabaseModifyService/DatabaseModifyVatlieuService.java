@@ -13,24 +13,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseModifyVatlieuService {
-    private List<VatLieu> tempVatLieuList = new ArrayList<>();
 
-    private WebClientService webClientService;
-    private ObjectMapper objectMapper;
+    private final WebClientService webClientService;
+    private final ObjectMapper objectMapper;
     private String token;
 
-    private final UserSessionService sessionService = new UserSessionService();
+    private final UserSessionService sessionService;
 
-    public DatabaseModifyVatlieuService(){}
-
-    public List<VatLieu> findVatLieuByID(int id){
-        token = this.sessionService.getToken();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/vatlieu/searchByHangMuc/"+id, token);
+    public DatabaseModifyVatlieuService(){
+        sessionService = new UserSessionService();
+        webClientService = new WebClientServiceImpl();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
+    }
 
+    public List<VatLieu> findVatLieuByID(int id){
+        List<VatLieu> tempVatLieuList = new ArrayList<>();
+        token = this.sessionService.getToken();
+        String response2 = this.webClientService.authorizedHttpGetJson("/api/vatlieu/searchByHangMuc/"+id, token);
         try {
             // 2. convert JSON array to List of objects
             List<VatLieu> vatLieuList = objectMapper.readValue(response2, objectMapper.getTypeFactory()
@@ -43,43 +44,31 @@ public class DatabaseModifyVatlieuService {
                 tempVatLieuList.add(vatLieu1);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return tempVatLieuList;
     }
 
     public void addNewVatLieu(VatLieu vatLieu,int parentID){
         token = this.sessionService.getToken();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
         try {
             this.webClientService.authorizedHttpPostJson("/api/vatlieu?parentId="+parentID,  objectMapper.writeValueAsString(vatLieu),token);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
     public void EditVatLieu(VatLieu vatLieu){
         token = this.sessionService.getToken();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
         try {
             this.webClientService.authorizedHttpPutJson("/api/vatlieu",  objectMapper.writeValueAsString(vatLieu),token);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
     public void deleteVatLieu(int id){
         token = this.sessionService.getToken();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
         this.webClientService.authorizedHttpDeleteJson("/api/vatlieu/"+id,  "",token);
     }
 }

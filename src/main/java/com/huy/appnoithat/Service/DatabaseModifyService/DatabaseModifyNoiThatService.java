@@ -22,7 +22,7 @@ public class DatabaseModifyNoiThatService {
 
     public DatabaseModifyNoiThatService(){
         sessionService = new UserSessionService();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        webClientService = new WebClientServiceImpl();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
@@ -44,7 +44,7 @@ public class DatabaseModifyNoiThatService {
                 tempNoiThatList.add(noiThat1);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return tempNoiThatList;
     }
@@ -54,7 +54,7 @@ public class DatabaseModifyNoiThatService {
         try {
             this.webClientService.authorizedHttpPostJson("/api/noithat?parentId="+parentID,  objectMapper.writeValueAsString(noiThat),token);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -63,7 +63,7 @@ public class DatabaseModifyNoiThatService {
         try {
             this.webClientService.authorizedHttpPutJson("/api/noithat",  objectMapper.writeValueAsString(noiThat),token);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

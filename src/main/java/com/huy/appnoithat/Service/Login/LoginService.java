@@ -19,7 +19,7 @@ public class LoginService {
     private final ObjectMapper objectMapper;
     private final UserSessionService sessionService;
     public LoginService() {
-        this.webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        this.webClientService = new WebClientServiceImpl();
         this.objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();

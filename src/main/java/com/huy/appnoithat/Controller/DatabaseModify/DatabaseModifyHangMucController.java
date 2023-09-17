@@ -1,8 +1,10 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
+import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.VatLieu;
-import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyVatLieuScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyHangMucService;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyVatlieuService;
 import javafx.collections.FXCollections;
@@ -19,6 +21,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class DatabaseModifyHangMucController implements Initializable {
@@ -27,8 +30,8 @@ public class DatabaseModifyHangMucController implements Initializable {
     @FXML
     private ListView<VatLieu> childrenList;
     @FXML
-    private ListView<HangMuc> hangMucListView;
-    int parentID;
+    private ListView<HangMuc> listViewHangMuc;
+    private int parentID;
     private final DatabaseModifyHangMucService databaseModifyHangMucService;
     private final DatabaseModifyVatlieuService databaseModifyVatlieuService;
     private final ObservableList<HangMuc> hangMucObservableList;
@@ -45,35 +48,36 @@ public class DatabaseModifyHangMucController implements Initializable {
     }
     @FXML
     void deleteAction(ActionEvent event) {
-//        HangMuc hangMuc = hangMucListView.getSelectionModel().getSelectedItem();
-//        if (hangMuc == null) {
-//            return;
-//        }
-//        if (hangMuc.getId() == 0) {
-//            hangMucObservableList.remove(hangMuc);
-//            return;
-//        }
-//        databaseModifyHangMucService.
-//                refreshList();
+        HangMuc hangMuc = listViewHangMuc.getSelectionModel().getSelectedItem();
+        if (hangMuc == null) {
+            return;
+        }
+        if (hangMuc.getId() == 0) {
+            hangMucObservableList.remove(hangMuc);
+            return;
+        }
+        databaseModifyHangMucService.deleteHangMuc(hangMuc.getId());
+        refreshList();
+        refreshChildrenList(0);
     }
     @FXML
     void nextAction(ActionEvent event) {
-//        if(listViewNoiThat.getSelectionModel().getSelectedItem() == null){
-//            return;
-//        }
-//        int selectID = listViewNoiThat.getSelectionModel().getSelectedItem().getId();
-//        Scene scene = null;
-//        Stage stage = null;
-//        Object source = event.getSource();
-//        stage = (Stage) ((Node)source).getScene().getWindow();
-//        if (source == nextButton){
-//            scene = DatabaseModifyHangMucScene.getInstance().getScene();
-//            DatabaseModifyHangMucScene.getInstance().getController().init(selectID);
-//        }else {
-//            return;
-//        }
-//        stage.setScene(scene);
-//        stage.show();
+        if(listViewHangMuc.getSelectionModel().getSelectedItem() == null){
+            return;
+        }
+        int selectID = listViewHangMuc.getSelectionModel().getSelectedItem().getId();
+        Scene scene = null;
+        Stage stage = null;
+        Object source = event.getSource();
+        stage = (Stage) ((Node)source).getScene().getWindow();
+        if (source == nextButton){
+            scene = DatabaseModifyVatLieuScene.getInstance().getScene();
+            DatabaseModifyVatLieuScene.getInstance().getController().init(selectID);
+        }else {
+            return;
+        }
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML
     void sceneSwitcher(ActionEvent event) {
@@ -82,7 +86,7 @@ public class DatabaseModifyHangMucController implements Initializable {
         Object source = event.getSource();
         stage = (Stage) ((Node)source).getScene().getWindow();
         if (source == backButton){
-            scene = DatabaseModifyPhongCachScene.getInstance().getScene();
+            scene = DatabaseModifyNoiThatScene.getInstance().getScene();
         }
         else {
             return;
@@ -103,53 +107,53 @@ public class DatabaseModifyHangMucController implements Initializable {
     }
 
     private void refreshList() {
-//        List<NoiThat> noiThatList = databaseModifyNoiThatService.findNoiThatByID(parentID);
-//        if (noiThatList == null) {
-//            noiThatList = new ArrayList<>();
-//        }
-//        noiThatObservableList.clear();
-//        noiThatObservableList.addAll(noiThatList);
+        List<HangMuc> hangMucList = databaseModifyHangMucService.findHangMucByID(parentID);
+        if (hangMucList == null) {
+            hangMucList = new ArrayList<>();
+        }
+        hangMucObservableList.clear();
+        hangMucObservableList.addAll(hangMucList);
     }
     private void refreshChildrenList(int parentID) {
-//        if (parentID == 0) {
-//            hangMucObservableList.clear();
-//            return;
-//        }
-//        List<HangMuc> hangMucList = databaseModifyHangMucService.findHangMucByID(parentID);
-//        if (hangMucList == null) {
-//            hangMucList = new ArrayList<>();
-//        }
-//        hangMucObservableList.clear();
-//        hangMucObservableList.addAll(hangMucList);
+        if (parentID == 0) {
+            vatLieuObservableList.clear();
+            return;
+        }
+        List<VatLieu> vatLieuList = databaseModifyVatlieuService.findVatLieuByID(parentID);
+        if (vatLieuList == null) {
+            vatLieuList = new ArrayList<>();
+        }
+        vatLieuObservableList.clear();
+        vatLieuObservableList.addAll(vatLieuList);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        listViewNoiThat.setItems(noiThatObservableList);
-//        listViewNoiThat.setEditable(true);
-//        listViewNoiThat.setCellFactory(param -> new CustomEditingListCell<>());
-//        listViewNoiThat.setOnEditCommit(event -> {
-//            NoiThat item = event.getNewValue();
-//            item.setName(event.getNewValue().getName());
-//            if (item.getId() == 0) {
-//                databaseModifyNoiThatService.addNewNoiThat(item, this.parentID);
-//            }
-//            else {
-//                databaseModifyNoiThatService.EditNoiThat(item);
-//            }
-//            refreshList();
-//        });
-//        listViewNoiThat.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-//            if (newValue != null) {
-//                NoiThat noiThat = listViewNoiThat.getSelectionModel().getSelectedItem();
-//                if (noiThat == null) {
-//                    return;
-//                }
-//                refreshChildrenList(noiThat.getId());
-//            }
-//        });
-//        childrenList.setEditable(false);
-//        childrenList.setCellFactory(param -> new CustomEditingListCell<>());
-//        childrenList.setItems(hangMucObservableList);
+        listViewHangMuc.setItems(hangMucObservableList);
+        listViewHangMuc.setEditable(true);
+        listViewHangMuc.setCellFactory(param -> new CustomEditingListCell<>());
+        listViewHangMuc.setOnEditCommit(event -> {
+            HangMuc item = event.getNewValue();
+            item.setName(event.getNewValue().getName());
+            if (item.getId() == 0) {
+                databaseModifyHangMucService.addNewHangMuc(item, this.parentID);
+            }
+            else {
+                databaseModifyHangMucService.EditHangMuc(item);
+            }
+            refreshList();
+        });
+        listViewHangMuc.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                HangMuc noiThat = listViewHangMuc.getSelectionModel().getSelectedItem();
+                if (noiThat == null) {
+                    return;
+                }
+                refreshChildrenList(noiThat.getId());
+            }
+        });
+        childrenList.setEditable(false);
+        childrenList.setCellFactory(param -> new CustomEditingListCell<>());
+        childrenList.setItems(vatLieuObservableList);
     }
 }
 

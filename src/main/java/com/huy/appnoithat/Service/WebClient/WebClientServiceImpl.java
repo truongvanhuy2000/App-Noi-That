@@ -14,12 +14,14 @@ public class WebClientServiceImpl implements WebClientService {
     private static final String POST = "POST";
     private static final String PUT = "PUT";
     private static final String DELETE = "DELETE";
+    private static final String SERVER_ADDRESS  = "http://localhost:8080";
+    private static final long TIME_OUT = 10;
     private final String host;
     private final long timeOut;
     private final HttpClient client;
-    public WebClientServiceImpl(String host, long timeOut) {
-        this.host = host;
-        this.timeOut = timeOut;
+    public WebClientServiceImpl() {
+        this.host = SERVER_ADDRESS;
+        this.timeOut = TIME_OUT;
         client = HttpClient.newHttpClient();
     }
     //    Use this api to do an unauthorized Http Post request.
@@ -43,7 +45,7 @@ public class WebClientServiceImpl implements WebClientService {
     //    Path is the path to the api, token is the bearer token provided after login
     //    jsonData is the data to be sent to the server. Must be in json format
     public String authorizedHttpPostJson(String path, String jsonData, String token) {
-        if (path == null) {
+        if (path == null || jsonData == null || token == null) {
             throw new IllegalArgumentException();
         }
         return doSendRequest(POST, path, token, jsonData);
@@ -51,17 +53,16 @@ public class WebClientServiceImpl implements WebClientService {
     //    Use this api to do an authorized Http Get request.
     //    Path is the path to the api, token is the bearer token provided after login
     public String authorizedHttpGetJson(String path, String token) {
-        if (path == null) {
+        if (path == null || token == null) {
             throw new IllegalArgumentException();
         }
         return doSendRequest(GET, path, token, null);
     }
-
     //    Use this api to do an authorized Http Put request.
     //    Path is the path to the api, token is the bearer token provided after login
     //    jsonData is the data to be sent to the server. Must be in json format
     public String authorizedHttpPutJson(String path, String jsonData, String token) {
-        if (path == null) {
+        if (path == null || jsonData == null || token == null) {
             throw new IllegalArgumentException();
         }
         return doSendRequest(PUT, path, token, jsonData);
@@ -69,7 +70,7 @@ public class WebClientServiceImpl implements WebClientService {
     //    Use this api to do an authorized Http Delete request.
     //    Path is the path to the api, token is the bearer token provided after login
     public String authorizedHttpDeleteJson(String path, String jsonData, String token) {
-        if (path == null) {
+        if (path == null || jsonData == null || token == null) {
             throw new IllegalArgumentException();
         }
         return doSendRequest(DELETE, path, token, jsonData);

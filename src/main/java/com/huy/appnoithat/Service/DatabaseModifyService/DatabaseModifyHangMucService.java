@@ -21,7 +21,7 @@ public class DatabaseModifyHangMucService {
 
     public DatabaseModifyHangMucService(){
         sessionService = new UserSessionService();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        webClientService = new WebClientServiceImpl();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
@@ -30,7 +30,7 @@ public class DatabaseModifyHangMucService {
     public List<HangMuc> findHangMucByID(int id){
         List<HangMuc> tempHangMucList = new ArrayList<>();
         token = this.sessionService.getToken();
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/hangmuc/searchByNoiThat/"+id, token);
+        String response2 = this.webClientService.authorizedHttpGetJson("/api/hangmuc/searchByNoiThat/" + id, token);
         try {
             // 2. convert JSON array to List of objects
             List<HangMuc> hangMucList = objectMapper.readValue(response2, objectMapper.getTypeFactory()
@@ -43,7 +43,7 @@ public class DatabaseModifyHangMucService {
                 tempHangMucList.add(hangMuc1);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return tempHangMucList;
     }
@@ -53,7 +53,7 @@ public class DatabaseModifyHangMucService {
         try {
             this.webClientService.authorizedHttpPostJson("/api/hangmuc?parentId="+parentID,  objectMapper.writeValueAsString(hangMuc),token);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -62,7 +62,7 @@ public class DatabaseModifyHangMucService {
         try {
             this.webClientService.authorizedHttpPutJson("/api/hangmuc",  objectMapper.writeValueAsString(hangMuc),token);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

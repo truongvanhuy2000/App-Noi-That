@@ -21,7 +21,7 @@ public class DatabaseModifyPhongCachService {
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        webClientService = new WebClientServiceImpl();
         sessionService = new UserSessionService();
     }
 
@@ -41,7 +41,6 @@ public class DatabaseModifyPhongCachService {
                 tempPhongCachList.add(phongCachNoiThat);
             }
         } catch (IOException e) {
-            e.printStackTrace();
             throw new RuntimeException("Error when convert JSON to List<PhongCachNoiThat>");
         }
         return tempPhongCachList;
@@ -52,8 +51,7 @@ public class DatabaseModifyPhongCachService {
         try {
             this.webClientService.authorizedHttpPostJson("/api/phongcach",  objectMapper.writeValueAsString(phongCachNoiThat),token);
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("");
+            throw new RuntimeException(e);
         }
     }
 
@@ -62,8 +60,7 @@ public class DatabaseModifyPhongCachService {
         try {
             this.webClientService.authorizedHttpPutJson("/api/phongcach",  objectMapper.writeValueAsString(phongCachNoiThat),token);
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("");
+            throw new RuntimeException(e);
         }
     }
 
@@ -73,7 +70,7 @@ public class DatabaseModifyPhongCachService {
     }
 //    public PhongCachNoiThat findByID(int id){
 //        token = this.sessionService.getToken();
-//        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+//        webClientService = new WebClientServiceImpl();
 //        String response2 = this.webClientService.authorizedHttpGetJson("/api/noithat/searchByPhongCach/"+id, token);
 //        objectMapper = JsonMapper.builder()
 //                .addModule(new JavaTimeModule())

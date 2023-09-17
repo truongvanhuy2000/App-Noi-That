@@ -60,6 +60,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
         }
         databaseModifyNoiThatService.deleteNoiThat(noiThat.getId());
         refreshList();
+        refreshChildrenList(0);
     }
     @FXML
     void nextAction(ActionEvent event) {

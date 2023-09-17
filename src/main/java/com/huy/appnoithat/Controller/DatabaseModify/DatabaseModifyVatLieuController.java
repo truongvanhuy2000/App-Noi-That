@@ -1,213 +1,101 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
+import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Scene.DatabaseModify.ChangeProductSpecificationScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
+import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyThongSoService;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyVatlieuService;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.ResourceBundle;
 
-public class DatabaseModifyVatLieuController{
-
-    List<VatLieu> vatLieuList = new ArrayList<>();
-    int parentID;
-
-    DatabaseModifyVatlieuService databaseModifyVatlieuService = new DatabaseModifyVatlieuService();
+public class DatabaseModifyVatLieuController implements Initializable {
     @FXML
-    private Button EditVatlieuButton;
-
+    private Button addButton, backButton, deleteButton, nextButton;
     @FXML
-    private Button addVatlieuButton;
-
+    private TableView<ThongSo> tableViewThongSo;
     @FXML
-    private Button backButton;
-
+    private TableColumn<ThongSo, Float> Cao, Dai, Rong;
     @FXML
-    private Button clearTextbtn;
-
+    private TableColumn<ThongSo, Long> DonGia;
     @FXML
-    private Button deleteVatLieuButton;
-
+    private TableColumn<ThongSo, String> DonVi;
     @FXML
-    private ListView<VatLieu> listViewVatlieu;
-
+    private ListView<VatLieu> listViewVatLieu;
+    private int parentID;
+    private final DatabaseModifyVatlieuService databaseModifyVatlieuService;
+    private final DatabaseModifyThongSoService databaseModifyThongSoService;
+    private final ObservableList<ThongSo> thongSoObservableList;
+    private final ObservableList<VatLieu> vatLieuObservableList;
+    public DatabaseModifyVatLieuController() {
+        databaseModifyThongSoService = new DatabaseModifyThongSoService();
+        databaseModifyVatlieuService = new DatabaseModifyVatlieuService();
+        vatLieuObservableList = FXCollections.observableArrayList();
+        thongSoObservableList = FXCollections.observableArrayList();
+    }
     @FXML
-    private Button nextScreenButton;
-
+    void addAction(ActionEvent event) {
+        vatLieuObservableList.add(new VatLieu(0, "<Thêm mới>",
+                new ThongSo(0, 0f, 0f, 0f, " ", 0L)));
+    }
     @FXML
-    private TextArea txtVatlieu;
-
-    @FXML
-    void AddNewVatLieu(ActionEvent event) {
-        try {
-            String txt = txtVatlieu.getText().trim().toUpperCase();
-            boolean hasDuplicate = false;
-            if(!txt.isEmpty()){
-                List<VatLieu> array = listViewVatlieu.getItems().stream().filter(e->e.getName().equals(txt)).collect(Collectors.toList());
-                for (int i = 0; i < array.size(); i++) {
-                    if(array.get(i).equals(txt.toUpperCase())){
-                        hasDuplicate = true;
-                    }
-                }
-                if(hasDuplicate){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("ADD DUPLICATE ERROR");
-                    alert.setHeaderText("look, a error");
-                    alert.setContentText("cannot add duplicate element !!!");
-                    alert.showAndWait();
-                }
-                if(!hasDuplicate){
-                    VatLieu vatLieu = new VatLieu();
-                    vatLieu.setId(0);
-                    vatLieu.setName(txt);
-                    vatLieu.setThongSo(null);
-//                    listViewPhongCach.getItems().add(phongCachNoiThat);
-                    databaseModifyVatlieuService.addNewVatLieu(vatLieu,parentID);
-                    txtVatlieu.setText("");
-                    vatLieuList.clear();
-                    listViewVatlieu.getItems().clear();
-                    listViewVatlieu.refresh();
-                    initializeVatLieu(parentID);
-                }
-
-            }else{
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("ADD ERROR");
-                alert.setHeaderText("look, a error");
-                alert.setContentText("please input something !!!");
-                alert.showAndWait();
-            }
-        }catch (Exception e){
-            System.out.println("co loi add roi dai ca");
+    void deleteAction(ActionEvent event) {
+        VatLieu vatLieu = listViewVatLieu.getSelectionModel().getSelectedItem();
+        if (vatLieu == null) {
+            return;
         }
-    }
-
-    @FXML
-    void ClearText(ActionEvent event) {
-        txtVatlieu.setText("");
-    }
-
-    @FXML
-    void DeleteVatlieu(ActionEvent event) {
-        try {
-            int selectIndex =0;
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-
-            if(listViewVatlieu.getSelectionModel().getSelectedItem() ==null){
-                alert.setTitle("NEXT ERROR");
-                alert.setHeaderText("look, a error to next");
-                alert.setContentText("Please choose one item to next !!!");
-                alert.showAndWait();
-            }else{
-                selectIndex = listViewVatlieu.getSelectionModel().getSelectedIndex();
-                int deleteID = listViewVatlieu.getSelectionModel().getSelectedItem().getId();
-                System.out.println(deleteID);
-                Alert deleteDialog = new Alert(Alert.AlertType.CONFIRMATION);
-                if(selectIndex>=0){
-                    deleteDialog.setTitle("Delete Confirmation");
-                    deleteDialog.setHeaderText("Are you sure you want to delete this item?");
-                    deleteDialog.setContentText("This action cannot be undone.");
-                    // Add "Yes" button
-                    deleteDialog.getDialogPane().getButtonTypes().add(ButtonType.YES);
-                    deleteDialog.getDialogPane().getButtonTypes().remove(ButtonType.OK);
-                    // Show the dialog and wait for user interaction
-                    ButtonType result = deleteDialog.showAndWait().orElse(ButtonType.CANCEL);
-                    // Handle the user's choice
-                    if (result == ButtonType.YES) {
-                        databaseModifyVatlieuService.deleteVatLieu(deleteID);
-                        listViewVatlieu.getItems().remove(selectIndex);
-                        txtVatlieu.clear();
-                        listViewVatlieu.refresh();
-                    }
-                }else{
-                    alert.setTitle("DELETE ERROR");
-                    alert.setHeaderText("look, a error");
-                    alert.setContentText("Please choose one item to delete");
-                    alert.showAndWait();
-                }
-            }
-
-        }catch (Exception e){
-            System.out.println("Something went wrong.");
+        if (vatLieu.getId() == 0) {
+            vatLieuObservableList.remove(vatLieu);
+            return;
         }
+        databaseModifyVatlieuService.deleteVatLieu(vatLieu.getId());
+        refreshList();
     }
-
     @FXML
-    void EditVatlieu(ActionEvent event) {
-        try {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-
-            String txt = txtVatlieu.getText().trim().toUpperCase();
-            int selectIndex = listViewVatlieu.getSelectionModel().getSelectedIndex();
-            if(selectIndex<0){
-                alert.setTitle("EDIT ERROR");
-                alert.setHeaderText("look, a error to edit");
-                alert.setContentText("Please select one item to edit !!!");
-                alert.showAndWait();
-            }else if(txt.isEmpty()){
-                alert.setTitle("EDIT ERROR");
-                alert.setHeaderText("look, a error to edit");
-                alert.setContentText("Cannot edit with text empty !!!");
-                alert.showAndWait();
-            }else{
-                VatLieu vatLieu = new VatLieu(listViewVatlieu.getItems().get(selectIndex).getId(),txt,listViewVatlieu.getItems().get(selectIndex).getThongSo());;
-                databaseModifyVatlieuService.EditVatLieu(vatLieu);
-                databaseModifyVatlieuService.findVatLieuByID(selectIndex);
-                listViewVatlieu.getItems().set(selectIndex,vatLieu);
-                listViewVatlieu.refresh();
-            }
-        }catch (Exception e){
-            System.out.println("co loi roi dai ca oi");
+    void nextAction(ActionEvent event) {
+        if(listViewVatLieu.getSelectionModel().getSelectedItem() == null){
+            return;
         }
-    }
-
-    @FXML
-    void NextScreen(ActionEvent event) {
-        int selectID =0;
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-
-        if(listViewVatlieu.getSelectionModel().getSelectedItem() ==null){
-                alert.setTitle("NEXT ERROR");
-                alert.setHeaderText("look, a error to next");
-                alert.setContentText("Please choose one item to next !!!");
-                alert.showAndWait();
-            }else{
-                selectID = listViewVatlieu.getSelectionModel().getSelectedItem().getId();
-                Scene scene = null;
-                Stage stage = null;
-                Object source = event.getSource();
-                stage = (Stage) ((Node)source).getScene().getWindow();
-                if (source == nextScreenButton){
-                    scene = ChangeProductSpecificationScene.getInstance().getScene();
-                    ChangeProductSpecificationScene.getInstance().getController().initializeThongSo(selectID);
-                }else {
-                    return;
-                }
-                stage.setScene(scene);
-                stage.show();
-            }
-    }
-
-    @FXML
-    void sceneSwitcher(ActionEvent actionEvent) {
+        int selectID = listViewVatLieu.getSelectionModel().getSelectedItem().getId();
         Scene scene = null;
         Stage stage = null;
-        Object source = actionEvent.getSource();
+        Object source = event.getSource();
+        stage = (Stage) ((Node)source).getScene().getWindow();
+        if (source == nextButton){
+            scene = ChangeProductSpecificationScene.getInstance().getScene();
+            ChangeProductSpecificationScene.getInstance().getController().initializeThongSo(selectID);
+        }else {
+            return;
+        }
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    void sceneSwitcher(ActionEvent event) {
+        Scene scene = null;
+        Stage stage = null;
+        Object source = event.getSource();
         stage = (Stage) ((Node)source).getScene().getWindow();
         if (source == backButton){
             scene = DatabaseModifyHangMucScene.getInstance().getScene();
-            vatLieuList.clear();
-            listViewVatlieu.getItems().clear();
         }
         else {
             return;
@@ -218,24 +106,86 @@ public class DatabaseModifyVatLieuController{
 
     @FXML
     void tableClickToSelectItem(MouseEvent event) {
-        try {
-            if(listViewVatlieu.getSelectionModel().getSelectedItem() !=null){
-                VatLieu selectedItem = listViewVatlieu.getSelectionModel().getSelectedItem();
-                txtVatlieu.setText(selectedItem.getName());
+
+    }
+
+    public void init(int parentID) {
+        this.parentID = parentID;
+        refreshList();
+        refreshChildrenList(0);
+    }
+
+    private void refreshList() {
+        List<VatLieu> vatLieuList = databaseModifyVatlieuService.findVatLieuByID(parentID);
+        if (vatLieuList == null) {
+            vatLieuList = new ArrayList<>();
+        }
+        vatLieuObservableList.clear();
+        vatLieuObservableList.addAll(vatLieuList);
+    }
+    private void refreshChildrenList(int parentID) {
+        if (parentID == 0) {
+            thongSoObservableList.clear();
+            return;
+        }
+        List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByID(parentID);
+        if (thongSoList == null) {
+            thongSoList = new ArrayList<>();
+        }
+        thongSoObservableList.clear();
+        thongSoObservableList.addAll(thongSoList);
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setUpVatLieuListView();
+        setUpThongSoTableView();
+    }
+    private void setUpVatLieuListView() {
+        listViewVatLieu.setItems(vatLieuObservableList);
+        listViewVatLieu.setEditable(true);
+        listViewVatLieu.setCellFactory(param -> new CustomEditingListCell<>());
+        listViewVatLieu.setOnEditCommit(event -> {
+            VatLieu item = event.getNewValue();
+            item.setName(event.getNewValue().getName());
+            if (item.getId() == 0) {
+                databaseModifyVatlieuService.addNewVatLieu(item, this.parentID);
             }
-        }catch (Exception e){
-            System.out.println("loi roi");
-        }
+            else {
+                databaseModifyVatlieuService.EditVatLieu(item);
+            }
+            refreshList();
+        });
+        listViewVatLieu.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                VatLieu noiThat = listViewVatLieu.getSelectionModel().getSelectedItem();
+                if (noiThat == null) {
+                    return;
+                }
+                refreshChildrenList(noiThat.getId());
+            }
+        });
     }
-
-    public void initializeVatLieu(int id) {
-        vatLieuList.clear();
-        parentID = id;
-        vatLieuList = databaseModifyVatlieuService.findVatLieuByID(id);
-        for (VatLieu vl : vatLieuList) {
-            listViewVatlieu.getItems().add(new VatLieu(vl.getId(),vl.getName(),new ThongSo()));
-        }
+    private void setUpThongSoTableView() {
+        tableViewThongSo.setItems(thongSoObservableList);
+        Dai.setCellValueFactory(param -> {
+            if (param.getValue() == null) return null;
+            return new SimpleObjectProperty<>(param.getValue().getDai());
+        });
+        Rong.setCellValueFactory(param -> {
+            if (param.getValue() == null) return null;
+            return new SimpleObjectProperty<>(param.getValue().getRong());
+        });
+        Cao.setCellValueFactory(param -> {
+            if (param.getValue() == null) return null;
+            return new SimpleObjectProperty<>(param.getValue().getCao());
+        });
+        DonGia.setCellValueFactory(param -> {
+            if (param.getValue() == null) return null;
+            return new SimpleObjectProperty<>(param.getValue().getDon_gia());
+        });
+        DonVi.setCellValueFactory(param -> {
+            if (param.getValue() == null) return null;
+            return new SimpleObjectProperty<>(param.getValue().getDon_vi());
+        });
     }
-
-
 }

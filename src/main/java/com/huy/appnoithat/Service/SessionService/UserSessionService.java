@@ -21,7 +21,7 @@ public class UserSessionService {
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     public UserSessionService() {
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        webClientService = new WebClientServiceImpl();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
@@ -95,20 +95,36 @@ public class UserSessionService {
     // Haven't implemented yet
     public void loadSessionFromDisk() throws IOException {
         InputStream is = null;
-        is = new FileInputStream(SESSION_DIRECTORY);
-        byte[] data = is.readAllBytes();
         try {
-            parseSessionJsonObject(new String(data));
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Error when parsing session json object");
+            is = new FileInputStream(SESSION_DIRECTORY);
+            byte[] data = is.readAllBytes();
+            try {
+                parseSessionJsonObject(new String(data));
+            } catch (JsonProcessingException e) {
+                LOGGER.error("Error when parsing session json object");
+                setToken("");
+            }
+        }
+        catch (FileNotFoundException e) {
+            LOGGER.error("Session file not found");
             setToken("");
+        }
+        finally {
+            if (is != null) {
+                is.close();
+            }
         }
     }
     public void saveSessionToDisk() throws IOException {
-        String sessionObject = getSessionJsonObject();
-        OutputStream os = new FileOutputStream(SESSION_DIRECTORY);
-        os.write(sessionObject.getBytes(), 0, sessionObject.length());
-        os.close();
+        try {
+            String sessionObject = getSessionJsonObject();
+            OutputStream os = new FileOutputStream(SESSION_DIRECTORY);
+            os.write(sessionObject.getBytes(), 0, sessionObject.length());
+            os.close();
+        } catch (IOException e) {
+            LOGGER.error("Error when saving session to disk");
+            throw new RuntimeException(e);
+        }
     }
     private String getSessionJsonObject(){
         ObjectNode jsonObject = objectMapper.createObjectNode();

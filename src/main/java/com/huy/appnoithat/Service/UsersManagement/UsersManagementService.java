@@ -22,7 +22,7 @@ public class UsersManagementService {
     private final UserSessionService sessionService;
 
     public UsersManagementService() {
-        this.webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        this.webClientService = new WebClientServiceImpl();
         this.objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();

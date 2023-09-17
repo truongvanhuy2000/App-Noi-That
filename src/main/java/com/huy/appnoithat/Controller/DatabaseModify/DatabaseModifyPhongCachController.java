@@ -71,6 +71,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
         }
         databaseModifyPhongCachService.deletePhongCach(phongCachNoiThat.getId());
         refreshList();
+        refreshChildrenList(0);
     }
     @FXML
     void tableClickToSelectItem(MouseEvent event) {

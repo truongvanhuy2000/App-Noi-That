@@ -23,7 +23,7 @@ public class LuaChonNoiThatService {
 
     // Fake the data
     public LuaChonNoiThatService() {
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        webClientService = new WebClientServiceImpl();
         userSessionService = new UserSessionService();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())

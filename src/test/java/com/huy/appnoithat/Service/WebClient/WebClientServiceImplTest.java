@@ -17,7 +17,7 @@ class WebClientServiceImplTest {
     private String token;
     @BeforeEach
     void setUp() {
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
+        webClientService = new WebClientServiceImpl();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();

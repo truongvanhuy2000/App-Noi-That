@@ -13,24 +13,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseModifyThongSoService {
-    private List<ThongSo> tempThongSoList = new ArrayList<>();
-
     private WebClientService webClientService;
     private ObjectMapper objectMapper;
     private String token;
+    private final UserSessionService sessionService;
 
-    private final UserSessionService sessionService = new UserSessionService();
-
-    public DatabaseModifyThongSoService(){}
-
-    public List<ThongSo> findThongSoByID(int id){
-        token = this.sessionService.getToken();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/thongso/searchByVatlieu/"+id, token);
+    public DatabaseModifyThongSoService(){
+        webClientService = new WebClientServiceImpl();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
+        sessionService = new UserSessionService();
+    }
 
+    public List<ThongSo> findThongSoByID(int id){
+        List<ThongSo> tempThongSoList = new ArrayList<>();
+        token = this.sessionService.getToken();
+        String response2 = this.webClientService.authorizedHttpGetJson("/api/thongso/searchByVatlieu/"+id, token);
         try {
             // 2. convert JSON array to List of objects
             List<ThongSo> thongSoList = objectMapper.readValue(response2, objectMapper.getTypeFactory()
@@ -46,22 +45,16 @@ public class DatabaseModifyThongSoService {
                 tempThongSoList.add(thongSo1);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return tempThongSoList;
     }
-
-
     public void EditThongSo(ThongSo thongSo){
         token = this.sessionService.getToken();
-        webClientService = new WebClientServiceImpl("http://localhost:8080", 10);
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
         try {
             this.webClientService.authorizedHttpPutJson("/api/thongso",  objectMapper.writeValueAsString(thongSo),token);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

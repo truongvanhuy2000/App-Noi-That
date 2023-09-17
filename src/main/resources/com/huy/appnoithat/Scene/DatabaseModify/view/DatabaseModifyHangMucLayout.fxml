@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -12,19 +11,17 @@
       <AnchorPane prefHeight="620.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ListView fx:id="listViewHangMuc" layoutX="14.0" layoutY="78.0" onMouseClicked="#tableClickToSelectItem" prefHeight="501.0" prefWidth="639.0" />
-            <Label layoutX="122.0" layoutY="14.0" prefHeight="26.0" prefWidth="288.0" text="Hang Muc cua ban" textFill="#171616">
+            <Label layoutX="122.0" layoutY="14.0" prefHeight="30.0" prefWidth="327.0" text="Danh sách hạng mục " textFill="#171616">
                <font>
-                  <Font name="DejaVu Serif Bold Italic" size="24.0" />
+                  <Font name="DejaVu Serif Bold" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="clearTextbtn" layoutX="741.0" layoutY="352.0" mnemonicParsing="false" onAction="#ClearText" prefHeight="29.0" prefWidth="389.0" text="CLEAR TEXT" textFill="#110000" />
-            <Button fx:id="addHangMucButton" layoutX="741.0" layoutY="401.0" mnemonicParsing="false" onAction="#AddNewHangMuc" prefHeight="29.0" prefWidth="389.0" text="ADD NEW HANG MUC" />
-            <Button fx:id="EditHangMucButton" layoutX="741.0" layoutY="450.0" mnemonicParsing="false" onAction="#EditHangMuc" prefHeight="29.0" prefWidth="389.0" text="EDIT HANG MUC" />
-            <Button fx:id="deleteHangMucButton" layoutX="741.0" layoutY="502.0" mnemonicParsing="false" onAction="#DeleteHangMuc" prefHeight="29.0" prefWidth="389.0" text="DELETE HANG MUC" />
-            <Button fx:id="nextScreenButton" layoutX="741.0" layoutY="550.0" mnemonicParsing="false" onAction="#NextScreen" prefHeight="29.0" prefWidth="389.0" text="NEXT" textFill="#110000" />
-            <TextArea fx:id="txtHangMuc" layoutX="675.0" layoutY="78.0" prefHeight="256.0" prefWidth="511.0" />
          </children>
       </AnchorPane>
       <Button fx:id="backButton" layoutX="17.0" layoutY="15.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="&lt;" />
+      <Button fx:id="addButton" layoutX="760.0" layoutY="487.0" mnemonicParsing="false" onAction="#addAction" prefHeight="29.0" prefWidth="357.0" text="Thêm" />
+      <Button fx:id="deleteButton" layoutX="760.0" layoutY="526.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="29.0" prefWidth="357.0" text="Xóa" />
+      <Button fx:id="nextButton" layoutX="760.0" layoutY="565.0" mnemonicParsing="false" onAction="#nextAction" prefHeight="29.0" prefWidth="357.0" text="Tiếp" textFill="#110000" />
+      <ListView fx:id="childrenList" layoutX="705.0" layoutY="78.0" onMouseClicked="#tableClickToSelectItem" prefHeight="378.0" prefWidth="474.0" />
    </children>
 </AnchorPane>
