@@ -94,9 +94,7 @@ public class UserSessionService {
     }
     // Haven't implemented yet
     public void loadSessionFromDisk() throws IOException {
-        InputStream is = null;
-        try {
-            is = new FileInputStream(SESSION_DIRECTORY);
+        try (InputStream is = new FileInputStream(SESSION_DIRECTORY)) {
             byte[] data = is.readAllBytes();
             try {
                 parseSessionJsonObject(new String(data));
@@ -104,15 +102,9 @@ public class UserSessionService {
                 LOGGER.error("Error when parsing session json object");
                 setToken("");
             }
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             LOGGER.error("Session file not found");
             setToken("");
-        }
-        finally {
-            if (is != null) {
-                is.close();
-            }
         }
     }
     public void saveSessionToDisk() throws IOException {
@@ -123,7 +115,7 @@ public class UserSessionService {
             os.close();
         } catch (IOException e) {
             LOGGER.error("Error when saving session to disk");
-            throw new RuntimeException(e);
+//            throw new RuntimeException(e);
         }
     }
     private String getSessionJsonObject(){
@@ -138,12 +130,13 @@ public class UserSessionService {
         }
     }
     private void parseSessionJsonObject(String jsonObject) throws JsonProcessingException {
-            ObjectNode node = (ObjectNode) objectMapper.readTree(jsonObject);
-            String username = node.get("username").asText();
-            String token = node.get("token").asText();
-//            if (username.equals("") || token.equals("")) {
-//                return;
-//            }
-            setSession(username, token);
+        if (jsonObject == null) {
+            LOGGER.error("jsonObject cannot be null");
+            throw new IllegalArgumentException("jsonObject cannot be null");
+        }
+        ObjectNode node = (ObjectNode) objectMapper.readTree(jsonObject);
+        String username = node.get("username").asText();
+        String token = node.get("token").asText();
+        setSession(username, token);
     }
 }
