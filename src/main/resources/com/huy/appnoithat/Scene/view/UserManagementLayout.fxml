@@ -40,7 +40,7 @@
             </Button>
          </children>
       </Pane>
-      <Button fx:id="btnAddacount" layoutX="35.0" layoutY="200.0" mnemonicParsing="false" onAction="#AddAccount" prefHeight="30.0" prefWidth="120.0" text="Add">
+      <Button fx:id="btnAddacount" layoutX="35.0" layoutY="170.0" mnemonicParsing="false" onAction="#AddAccount" prefHeight="30.0" prefWidth="120.0" text="Add">
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -48,7 +48,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btnEditAccount" layoutX="177.0" layoutY="200.0" mnemonicParsing="false" onAction="#EditAccount" prefHeight="30.0" prefWidth="120.0" text="Edit">
+      <Button fx:id="btnEditAccount" layoutX="177.0" layoutY="170.0" mnemonicParsing="false" onAction="#EditAccount" prefHeight="30.0" prefWidth="120.0" text="Edit">
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,7 +57,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnDeleteAccount" layoutX="310.0" layoutY="200.0" mnemonicParsing="false" onAction="#DeleteAccount" prefHeight="30.0" prefWidth="120.0" text="Delete">
+      <Button fx:id="btnDeleteAccount" layoutX="310.0" layoutY="170.0" mnemonicParsing="false" onAction="#DeleteAccount" prefHeight="30.0" prefWidth="120.0" text="Delete">
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -66,7 +66,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnActiveAccount" layoutX="456.0" layoutY="200.0" mnemonicParsing="false" onAction="#ActiveAccount" prefHeight="30.0" prefWidth="120.0" text="Active">
+      <Button fx:id="btnActiveAccount" layoutX="456.0" layoutY="170.0" mnemonicParsing="false" onAction="#ActiveAccount" prefHeight="30.0" prefWidth="120.0" text="Active">
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -75,14 +75,15 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView fx:id="tableManageUser" layoutX="34.0" layoutY="250.0" onMouseClicked="#tableClickToSelectItem" prefHeight="361.0" prefWidth="835.0">
+      <TableView fx:id="tableManageUser" layoutX="52.0" layoutY="220.0" prefHeight="383.0" prefWidth="789.0">
          <columns>
-            <TableColumn fx:id="username" prefWidth="307.0" text="Username" />
-            <TableColumn fx:id="password" prefWidth="282.0" text="Password" />
-            <TableColumn fx:id="active" minWidth="0.0" prefWidth="245.0" text="Active" />
+            <TableColumn fx:id="username" prefWidth="232.0" text="Username" />
+            <TableColumn fx:id="password" prefWidth="207.0" text="Password" />
+            <TableColumn fx:id="active" minWidth="0.0" prefWidth="83.0" text="Active" />
+            <TableColumn fx:id="expiredDate" minWidth="0.0" prefWidth="266.0" text="Ngày hết hạn" />
          </columns>
       </TableView>
-      <Button fx:id="btnInactiveAccount" layoutX="605.0" layoutY="200.0" mnemonicParsing="false" onAction="#InActiveAccount" prefHeight="30.0" prefWidth="120.0" text="Inactive">
+      <Button fx:id="btnInactiveAccount" layoutX="605.0" layoutY="170.0" mnemonicParsing="false" onAction="#InActiveAccount" prefHeight="30.0" prefWidth="120.0" text="Inactive">
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -91,7 +92,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnDuyet" layoutX="741.0" layoutY="200.0" mnemonicParsing="false" onAction="#DuyetAccount" prefHeight="30.0" prefWidth="120.0" text="Duyet">
+      <Button fx:id="btnDuyet" layoutX="741.0" layoutY="170.0" mnemonicParsing="false" onAction="#DuyetAccount" prefHeight="30.0" prefWidth="120.0" text="Duyet">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -30,6 +30,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,6 +46,7 @@ public class UsersManagementController{
         private String password;
         private boolean active;
         private ImageView activeImage;
+        private String expiredDate;
     }
     @FXML
     private Button backButton;
@@ -71,6 +73,9 @@ public class UsersManagementController{
 
     @FXML
     private TableColumn<AccountTable, String> password;
+
+    @FXML
+    private TableColumn<AccountTable, LocalDate> expiredDate;
 
     @FXML
     private TableView<AccountTable> tableManageUser;
@@ -114,11 +119,12 @@ public class UsersManagementController{
 
             for (Account account: accountList
                  ) {
-                listUser.add(new AccountTable(account.getId(),account.getUsername(), account.getPassword(),account.isActive(),convertActiveIcon(account.isActive())));
+                listUser.add(new AccountTable(account.getId(),account.getUsername(), account.getPassword(),account.isActive(),convertActiveIcon(account.isActive()),account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
             }
             username.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("username"));
             password.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("password"));
             active.setCellValueFactory(new PropertyValueFactory<AccountTable,ImageView>("activeImage"));
+            expiredDate.setCellValueFactory(new PropertyValueFactory<AccountTable,LocalDate>("expiredDate"));
             tableManageUser.setItems(listUser);
     }
 
@@ -178,22 +184,16 @@ public class UsersManagementController{
 
             btnadd.setOnAction(actionEvent -> {
                 try {
-                listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(txtactive.getText()),convertActiveIcon(true)));
+                    LocalDate localDate = LocalDate.now().plusDays( 30 );
+
+                    listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(txtactive.getText()),convertActiveIcon(true),localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
                 tableManageUser.getItems().clear();
                 tableManageUser.refresh();
                 List<String> roleList = new ArrayList<>();
                 roleList.add("ROLE_USER");
                 // --- REMEMBER TO SUA DATE
-                    // --- REMEMBER TO SUA SAU
-                    // --- REMEMBER TO SUA SAU
-                    // --- REMEMBER TO SUA SAU
-                    // --- REMEMBER TO SUA SAU
-                    // --- REMEMBER TO SUA SAU
-                    // --- REMEMBER TO SUA SAU
                 usersManagementService.addNewAccount(
-                        new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),roleList,true, null));
-                    // --- REMEMBER TO SUA SAU
-                    // --- REMEMBER TO SUA SAU
+                        new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),roleList,true, localDate));
 
                 clearData();
                 initialize();
