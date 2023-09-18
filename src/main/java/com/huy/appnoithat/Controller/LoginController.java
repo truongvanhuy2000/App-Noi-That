@@ -3,6 +3,7 @@ package com.huy.appnoithat.Controller;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
 import com.huy.appnoithat.Scene.HomeScene;
+import com.huy.appnoithat.Scene.QRScene;
 import com.huy.appnoithat.Scene.RegisterScene;
 import com.huy.appnoithat.Service.Login.LoginService;
 import com.huy.appnoithat.Service.Register.RegisterService;
@@ -64,6 +65,7 @@ public class LoginController {
             ObservableList<String> listGender = FXCollections.observableArrayList("Male","FaMale");
             Stage loginStage = new Stage();
             Scene register = RegisterScene.getInstance().getScene();
+            Scene QRpopup = QRScene.getInstance().getScene();
 
 //element field of userManagementEditorScene
             TextField txtUsername = (TextField) register.lookup("#txtUsername");
@@ -90,13 +92,10 @@ public class LoginController {
 
                 if(time.equals("1 tháng")){
                     localDate = LocalDate.now().plusDays( 30 );
-                    System.out.println("30 ngay");
                 }else if(time.equals("3 tháng")){
-                    System.out.println("90 ngay");
                     localDate = LocalDate.now().plusDays( 90 );
                 }else{
                     localDate = LocalDate.now().plusDays( 180 );
-                    System.out.println("180 ngay");
                 }
                 AccountInformation accountInformation = new AccountInformation(0,txtName.getText(),Gender,txtEmail.getText(),txtAddress.getText(),txtPhone.getText());
                 Account account = new Account(0,txtUsername.getText(),txtPassword.getText(),false,accountInformation,roleList,false, localDate);
@@ -104,6 +103,10 @@ public class LoginController {
                 RegisterService registerService = new RegisterService();
                 registerService.registerNewAccount(account);
                 loginStage.close();
+
+                loginStage.setScene(QRpopup);
+                loginStage.setTitle("QR Layout");
+                loginStage.show();
                 // You might need additional logic to handle saving or updating data
             });
 
