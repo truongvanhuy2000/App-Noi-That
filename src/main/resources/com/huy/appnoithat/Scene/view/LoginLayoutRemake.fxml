@@ -48,7 +48,7 @@
                   <Font size="15.0" />
                </font>
             </PasswordField>
-            <Button fx:id="LoginButton" layoutX="94.0" layoutY="471.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="338.0" style="-fx-background-color: #BC7FF7;" text="LOGIN" textFill="WHITE">
+            <Button fx:id="LoginButton" layoutX="94.0" layoutY="471.0" mnemonicParsing="false" onAction="#login" prefHeight="41.0" prefWidth="338.0" style="-fx-background-color: #BC7FF7;" text="LOGIN" textFill="WHITE">
                <font>
                   <Font name="Abyssinica SIL" size="20.0" />
                </font>

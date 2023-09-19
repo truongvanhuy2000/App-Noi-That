@@ -15,10 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -62,6 +59,10 @@ public class UsersManagementController{
     @FXML
     private Button btnAllAccount;
 
+
+    @FXML
+    private Button btnInactiveAccount;
+
     @FXML
     private Button btnDeleteAccount;
 
@@ -94,9 +95,9 @@ public class UsersManagementController{
     public ImageView convertActiveIcon(boolean checked){
         ImageView activeIcon;
         if(checked){
-             activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/activeicon.png")));
+             activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/check-mark.png")));
         }else{
-             activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/notActive.png")));
+             activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/cancel.png")));
         }
         activeIcon.setFitHeight(20);
         activeIcon.setFitWidth(20);
@@ -151,6 +152,9 @@ public class UsersManagementController{
 
     @FXML
     void ActiveAccount(ActionEvent event) {
+        if(tableManageUser.getSelectionModel().getSelectedItem() == null){
+            return;
+        }
         int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
         int activeID = tableManageUser.getItems().get(indexSelector).getId();
         tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(true));
@@ -161,6 +165,9 @@ public class UsersManagementController{
 
     @FXML
     void InActiveAccount(ActionEvent event) {
+        if(tableManageUser.getSelectionModel().getSelectedItem() == null){
+            return;
+        }
         int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
         int inactiveID = tableManageUser.getItems().get(indexSelector).getId();
         usersManagementService.InActiveAccount(inactiveID);
@@ -171,29 +178,32 @@ public class UsersManagementController{
     @FXML
     void AddAccount(ActionEvent event) {
         try {
+            if(tableManageUser.getSelectionModel().getSelectedItem() == null){
+                return;
+            }
             Stage userManageMentStage = new Stage();
             Scene userManagementAddAccountScene = UserManagementAddAccountScene.getInstance().getScene();
-
+            ObservableList<String> listActive = FXCollections.observableArrayList("true","false");
             TextField txtusername = (TextField) userManagementAddAccountScene.lookup("#txtaddusername");
             TextField txtpassword = (TextField) userManagementAddAccountScene.lookup("#txtaddpassword");
-            TextField txtactive = (TextField) userManagementAddAccountScene.lookup("#txtaddactive");
+            ComboBox comboBoxActive = (ComboBox) userManagementAddAccountScene.lookup("#txtaddactive");
             Button btnadd = (Button) userManagementAddAccountScene.lookup("#btnadd");
             Button btncancel = (Button) userManagementAddAccountScene.lookup("#btncancel");
-
+            comboBoxActive.setItems(listActive);
             userManageMentStage.setScene(userManagementAddAccountScene);
 
             btnadd.setOnAction(actionEvent -> {
                 try {
                     LocalDate localDate = LocalDate.now().plusDays( 30 );
-
-                    listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(txtactive.getText()),convertActiveIcon(true),localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
+                    String active = comboBoxActive.getSelectionModel().getSelectedItem().toString();
+                    listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active),convertActiveIcon(true),localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
                 tableManageUser.getItems().clear();
                 tableManageUser.refresh();
                 List<String> roleList = new ArrayList<>();
                 roleList.add("ROLE_USER");
                 // --- REMEMBER TO SUA DATE
                 usersManagementService.addNewAccount(
-                        new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(txtactive.getText()),new AccountInformation(),roleList,true, localDate));
+                        new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active),new AccountInformation(),roleList,true, localDate));
 
                 clearData();
                 initialize();
@@ -218,15 +228,26 @@ public class UsersManagementController{
 
     @FXML
     void DeleteAccount(ActionEvent event) {
+        if(tableManageUser.getSelectionModel().getSelectedItem() == null){
+            return;
+        }
         int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
         int deleteid = tableManageUser.getItems().get(indexSelector).getId();
-        usersManagementService.deleteAccount(deleteid);
-        tableManageUser.getItems().remove(indexSelector);
+        Account account = usersManagementService.findAccountById(deleteid);
+        System.out.println(account.getRoleList().get(0));
+        if(account.getRoleList().get(0).equals("ROLE_ADMIN")){
+        }else{
+            usersManagementService.deleteAccount(deleteid);
+            tableManageUser.getItems().remove(indexSelector);
+        }
     }
 
     @FXML
     void EditAccount(ActionEvent event) {
         try {
+            if(tableManageUser.getSelectionModel().getSelectedItem() == null){
+                return;
+            }
             int selectIndex = tableManageUser.getSelectionModel().getSelectedIndex();
             Stage userManageMentStage = new Stage();
             Scene userManagementEditorScene = UserManagementEditorScene.getInstance().getScene();
@@ -277,7 +298,22 @@ public class UsersManagementController{
 
     @FXML
     void tableClickToSelectItem(MouseEvent event) {
-//        String username = tableManageUser.getSelectionModel().getSelectedItem().getUsername();
+        try {
+            if(tableManageUser.getSelectionModel().getSelectedItem() !=null){
+        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
+        int deleteid = tableManageUser.getItems().get(indexSelector).getId();
+        Account account = usersManagementService.findAccountById(deleteid);
+        if(account.getRoleList().get(0).equals("ROLE_ADMIN")) {
+            btnDeleteAccount.setDisable(true);
+            btnInactiveAccount.setDisable(true);
+        }else{
+            btnDeleteAccount.setDisable(false);
+            btnInactiveAccount.setDisable(false);
+        }
+            }
+        }catch (Exception e){
+            System.out.println("loi roi");
+        }
     }
 
 
@@ -336,17 +372,35 @@ public class UsersManagementController{
 
 
             btnApprove.setOnAction(actionEvent -> {
-                int enableid = 0;
-                Account acc =(Account)tableView.getSelectionModel().getSelectedItem();
-                enableid = acc.getId();
-                usersManagementService.enableAccount(enableid);
-                userManageMentStage.close();
+                try {
+                    if(tableView.getSelectionModel().getSelectedItem()!=null){
+                        int enableid = 0;
+                        Account acc =(Account)tableView.getSelectionModel().getSelectedItem();
+                        enableid = acc.getId();
+                        usersManagementService.enableAccount(enableid);
+                        listUser.clear();
+                        initialize();
+                        userManageMentStage.close();
+                    }
+                }catch (Exception e){
+                    System.out.println("loi roi");
+                }
+
                 // You might need additional logic to handle saving or updating data
             });
 
-
-            //chua lam reject
             btnReject.setOnAction(actionEvent -> {
+                try {
+                    if(tableView.getSelectionModel().getSelectedItem()!=null){
+                        int rejectid = 0;
+                        Account acc =(Account)tableView.getSelectionModel().getSelectedItem();
+                        rejectid = acc.getId();
+                        usersManagementService.deleteAccount(rejectid);
+                        userManageMentStage.close();
+                    }
+                }catch (Exception e){
+                    System.out.println("loi roi");
+                }
 
             });
 

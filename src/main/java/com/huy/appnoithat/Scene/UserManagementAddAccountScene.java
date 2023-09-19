@@ -47,7 +47,7 @@ public class UserManagementAddAccountScene {
     }
 
     private void addCssToScence(){
-        String cssPath = "css/UserManagementLayout.css";
+        String cssPath = "css/UserManagementAddAccount.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }
 }

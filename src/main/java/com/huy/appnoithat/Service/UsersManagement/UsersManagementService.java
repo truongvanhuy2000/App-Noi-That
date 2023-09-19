@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsersManagementService {
-    private List<Account> tempAccountList = new ArrayList<>();
+
     final static Logger LOGGER = LogManager.getLogger(UsersManagementService.class);
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
@@ -31,7 +31,7 @@ public class UsersManagementService {
 
     public List<Account> findAllAccountEnable(){
         String token = this.sessionService.getToken();
-
+        List<Account> tempAccountList = new ArrayList<>();
         String response2 = this.webClientService.authorizedHttpGetJson("/api/accounts/enabled", token);
         try {
             tempAccountList = this.objectMapper.readValue(response2, objectMapper.getTypeFactory()
@@ -48,6 +48,7 @@ public class UsersManagementService {
     }
     public List<Account> findAllNotEnabledAccount(){
         String token = this.sessionService.getToken();
+         List<Account> tempAccountList = new ArrayList<>();
         String response2 = this.webClientService.authorizedHttpGetJson("/api/accounts/notEnabled", token);
         try {
             tempAccountList = this.objectMapper.readValue(response2, this.objectMapper.getTypeFactory()
