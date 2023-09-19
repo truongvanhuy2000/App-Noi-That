@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -18,10 +20,38 @@
             </Label>
          </children>
       </AnchorPane>
-      <Button fx:id="backButton" layoutX="17.0" layoutY="15.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="&lt;" />
-      <Button fx:id="addButton" layoutX="760.0" layoutY="487.0" mnemonicParsing="false" onAction="#addAction" prefHeight="29.0" prefWidth="357.0" text="Thêm" />
-      <Button fx:id="deleteButton" layoutX="760.0" layoutY="526.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="29.0" prefWidth="357.0" text="Xóa" />
-      <Button fx:id="nextButton" layoutX="760.0" layoutY="565.0" mnemonicParsing="false" onAction="#nextAction" prefHeight="29.0" prefWidth="357.0" text="Tiếp" textFill="#110000" />
+      <Button fx:id="backButton" layoutX="17.0" layoutY="15.0" mnemonicParsing="false" onAction="#sceneSwitcher">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+               <image>
+                  <Image url="@../../icons/back.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="addButton" contentDisplay="RIGHT" layoutX="760.0" layoutY="487.0" mnemonicParsing="false" onAction="#addAction" prefHeight="29.0" prefWidth="357.0" styleClass="windows7-default" text="Thêm">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+               <image>
+                  <Image url="@../../icons/addPC.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="deleteButton" contentDisplay="RIGHT" layoutX="760.0" layoutY="526.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="29.0" prefWidth="357.0" styleClass="windows7-default" text="Xóa">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+               <image>
+                  <Image url="@../../icons/deletePC.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="nextButton" contentDisplay="RIGHT" layoutX="760.0" layoutY="565.0" mnemonicParsing="false" onAction="#nextAction" prefHeight="29.0" prefWidth="357.0" styleClass="windows7-default" text="Tiếp" textFill="#110000">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+               <image>
+                  <Image url="@../../icons/next-button.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <ListView fx:id="childrenList" layoutX="705.0" layoutY="78.0" onMouseClicked="#tableClickToSelectItem" prefHeight="378.0" prefWidth="474.0" />
    </children>
 </AnchorPane>

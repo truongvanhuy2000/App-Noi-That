@@ -20,10 +20,13 @@ public class NewTabController implements Initializable {
     private TabPane tabPane;
     @FXML
     void newTabButtonHandler(ActionEvent event) {
-        Tab newtab = createNewTab();
-        if (tabPane.getSelectionModel() != null) {
+        if (tabPane.getSelectionModel().getSelectedItem() != null) {
             Node nodeFromCurrentTab = tabPane.getSelectionModel().getSelectedItem().getContent();
+            Tab newtab = createNewTab();
             duplicateTruongThongTin(nodeFromCurrentTab, newtab.getContent());
+        }
+        else {
+            createNewTab();
         }
     }
     private Tab createNewTab(){

@@ -3,10 +3,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="407.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -19,8 +20,29 @@
             </TableView>
          </children>
       </AnchorPane>
-      <Button fx:id="btnApprove" layoutX="514.0" layoutY="105.0" mnemonicParsing="false" text="Approve" />
-      <Button fx:id="btnReject" layoutX="514.0" layoutY="176.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="73.0" text="Reject" />
-      <Button fx:id="btnCancel" layoutX="514.0" layoutY="242.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="73.0" text="Cancel" />
+      <Button fx:id="btnApprove" layoutX="518.0" layoutY="86.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="107.0" style="-fx-background-color: linear-gradient(#f0ff35, #a9ff00),            radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%); -fx-background-radius: 6, 5; -fx-background-insets: 0, 1; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 ); -fx-text-fill: #ffff;" text="APPROVE">
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/validation.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btnReject" layoutX="518.0" layoutY="172.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="107.0" style="-fx-background-color: linear-gradient(#FFD700, #FEBE10),            radial-gradient(center 50% -40%, radius 200%, #FFD700 45%, #FEBE10 50%); -fx-background-radius: 6, 5; -fx-background-insets: 0, 1; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 ); -fx-text-fill: #ffff;" text="REJECT">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/stamp.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btnCancel" layoutX="518.0" layoutY="250.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="107.0" style="-fx-background-color: linear-gradient(#fc2d4f, #9e1c3c),            radial-gradient(center 50% -40%, radius 200%, #fc2d4f 45%, #9e1c3c 50%); -fx-background-radius: 6, 5; -fx-background-insets: 0, 1; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 ); -fx-text-fill: #ffff;" text="CANCEL">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/close.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
 </AnchorPane>

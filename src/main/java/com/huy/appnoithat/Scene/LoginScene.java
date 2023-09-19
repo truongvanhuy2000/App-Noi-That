@@ -16,7 +16,7 @@ public class LoginScene {
     private final FXMLLoader fxmlLoader;
     private static LoginScene single_instance = null;
     public LoginScene() {
-        String viewPath = "view/LoginLayout.fxml";
+        String viewPath = "view/LoginLayoutRemake.fxml";
         try {
             fxmlLoader = new FXMLLoader(LoginScene.class.getResource(viewPath));
             root = fxmlLoader.load();

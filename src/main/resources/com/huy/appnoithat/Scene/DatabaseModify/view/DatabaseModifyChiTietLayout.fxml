@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -27,7 +29,14 @@
             <Button fx:id="deleteVatLieuButton" layoutX="535.0" layoutY="284.0" mnemonicParsing="false" onAction="#DeleteVatlieu" prefHeight="29.0" prefWidth="230.0" text="DELETE CHI TIET" />
             <Button fx:id="nextScreenButton" layoutX="535.0" layoutY="343.0" mnemonicParsing="false" onAction="#NextScreen" prefHeight="29.0" prefWidth="230.0" text="NEXT" textFill="#110000" />
             <Button fx:id="clearTextbtn" layoutX="535.0" layoutY="131.0" mnemonicParsing="false" onAction="#ClearText" prefHeight="29.0" prefWidth="230.0" text="CLEAR TEXT" textFill="#110000" />
-            <Button fx:id="backButton" layoutX="13.0" layoutY="17.0" mnemonicParsing="false" onAction="#sceneSwitcher" text="&lt;" />
+            <Button fx:id="backButton" layoutX="13.0" layoutY="17.0" mnemonicParsing="false" onAction="#sceneSwitcher">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+                     <image>
+                        <Image url="@../../icons/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </AnchorPane>
       <TextField fx:id="txtVatlieu" layoutX="536.0" layoutY="82.0" prefHeight="29.0" prefWidth="230.0" />
