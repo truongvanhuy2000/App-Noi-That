@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage){
-//        Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler(stage));
+        Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler(stage));
         UserSession.getInstance();
         UserSessionService sessionService = new UserSessionService();
         if (sessionService.isLogin()){

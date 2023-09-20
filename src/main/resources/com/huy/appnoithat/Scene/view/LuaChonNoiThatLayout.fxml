@@ -44,7 +44,7 @@
             <TextField fx:id="DiaChiKhachHang" layoutX="820.0" layoutY="74.0" prefHeight="24.0" prefWidth="350.0" promptText="Địa chỉ" AnchorPane.leftAnchor="820.0" />
             <TextField fx:id="SanPham" layoutX="820.0" layoutY="134.0" prefHeight="24.0" prefWidth="350.0" promptText="Sản phẩm" AnchorPane.leftAnchor="820.0" />
             <Button fx:id="ExportButton" layoutX="13.0" layoutY="14.0" mnemonicParsing="false" text="Export" />
-            <TableView fx:id="bangThanhToan" layoutX="73.0" layoutY="805.0" prefHeight="58.0" prefWidth="1254.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
+            <TableView fx:id="bangThanhToan" layoutX="73.0" layoutY="793.0" prefHeight="58.0" prefWidth="1254.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
               <columns>
                 <TableColumn fx:id="DatCocThietKe10" prefWidth="339.0" text="Đặt cọc thiết kế 10%" />
                 <TableColumn fx:id="DatCocThiCong30" prefWidth="314.0" text="Đặt cọc thi công 30%" />
@@ -55,7 +55,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <TextArea layoutX="73.0" layoutY="874.0" prefHeight="112.0" prefWidth="1336.0" text="Chú thích:&#10;- Báo giá đã bao gồm vận chuyển nội thành, lắp đặt, phí đo đạc thiết kế.&#10;- Đơn giá trên chưa bao gồm VAT, khách hàng chỉ chịu phí VAT = 10% tổng gía trị hợp đồng khi muốn xuất hóa đơn đỏ.&#10;- Bảo hành phần gỗ 3 năm, phụ kiện bảo hành 2 năm theo hãng.&#10;- Báo giá cuối cùng được tính theo khối lượng thực tế tại công trình.&#10;- Báo giá có giá trị trong vòng 20 ngày kể từ ngày lập báo giá." AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0" />
+            <TextArea fx:id="noteTextArea" layoutX="73.0" layoutY="849.0" prefHeight="118.0" prefWidth="1254.0" text="Chú thích:&#10;- Báo giá đã bao gồm vận chuyển nội thành, lắp đặt, phí đo đạc thiết kế.&#10;- Đơn giá trên chưa bao gồm VAT, khách hàng chỉ chịu phí VAT = 10% tổng gía trị hợp đồng khi muốn xuất hóa đơn đỏ.&#10;- Bảo hành phần gỗ 3 năm, phụ kiện bảo hành 2 năm theo hãng.&#10;- Báo giá cuối cùng được tính theo khối lượng thực tế tại công trình.&#10;- Báo giá có giá trị trong vòng 20 ngày kể từ ngày lập báo giá." AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0" />
             <TreeTableView fx:id="TableNoiThat" layoutX="71.0" layoutY="170.0" onKeyPressed="#onKeyPressed" prefHeight="624.0" prefWidth="1254.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
               <columns>
                   <TreeTableColumn fx:id="STT1" prefWidth="59.0" sortable="false" text="Báo Giá Nội Thất Công Ty TNHH Kiến Trúc Xây Dựng Nội Thất A One">

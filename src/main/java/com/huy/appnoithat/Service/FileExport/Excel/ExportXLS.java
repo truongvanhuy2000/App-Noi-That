@@ -32,6 +32,7 @@ public class ExportXLS implements ExportFileService {
 
     private ThongTinCongTy thongTinCongTy;
     private ThongTinKhachHang thongTinKhachHang;
+    private String noteArea;
     private List<ThongTinNoiThat> thongTinNoiThatList;
     private ThongTinThanhToan thongTinThanhToan;
 
@@ -73,8 +74,15 @@ public class ExportXLS implements ExportFileService {
         exportThongTinKhachHang(this.thongTinKhachHang);
         int rowID = exportNoiThat(this.thongTinNoiThatList);
         exportBangThanhToan(++rowID, this.thongTinThanhToan);
+        exportNoteArea(++rowID, this.noteArea);
         save();
     }
+
+    private void exportNoteArea(int rowId, String noteArea) {
+        Cell cell0 = spreadsheet.getRow(rowId).getCell(0);
+        stylistFactory.CellPresetFactory(cell0, noteArea, 13, Stylist.Preset.BoldText03_TimeNewRoman_VerticalCenter_ThinBorder);
+    }
+
     private void mergeCells(int row, int col, int rowSpan, int colSpan, int howMany) {
         for (int i = 0; i < howMany; i++) {
             spreadsheet.addMergedRegion(new org.apache.poi.ss.util.CellRangeAddress(row + i, row + rowSpan + i, col, col + colSpan));

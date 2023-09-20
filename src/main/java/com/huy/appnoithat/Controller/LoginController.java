@@ -12,20 +12,25 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController{
 
     @FXML
     TextField usernameTextField;
@@ -41,6 +46,16 @@ public class LoginController {
 
     // Call this method everytime you switch scene
     public void initialize() {
+        usernameTextField.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                LoginButton.fire();
+            }
+        });
+        passwordField.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                LoginButton.fire();
+            }
+        });
     }
     @FXML
     public void login(ActionEvent actionEvent) {

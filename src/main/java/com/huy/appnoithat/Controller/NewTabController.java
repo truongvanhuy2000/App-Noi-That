@@ -86,6 +86,8 @@ public class NewTabController implements Initializable {
         TextField SanPham = (TextField) nodeFromCurrentTab.lookup("#SanPham");
         ImageView imageView = (ImageView) nodeFromCurrentTab.lookup("#ImageView");
 
+        TextArea noteTextArea = (TextArea) nodeFromCurrentTab.lookup("#noteTextArea");
+
         TextField DuplicateTenCongTy = (TextField) nodeFromNewTab.lookup("#TenCongTy");
         DuplicateTenCongTy.setText(TenCongTy.getText());
         TextField DuplicateVanPhong = (TextField) nodeFromNewTab.lookup("#VanPhong");
@@ -106,6 +108,9 @@ public class NewTabController implements Initializable {
         DuplicateSanPham.setText(SanPham.getText());
         ImageView DuplicateImageView = (ImageView) nodeFromNewTab.lookup("#ImageView");
         DuplicateImageView.setImage(imageView.getImage());
+
+        TextArea DuplicateNoteTextArea = (TextArea) nodeFromNewTab.lookup("#noteTextArea");
+        DuplicateNoteTextArea.setText(noteTextArea.getText());
     }
     private void duplicateBangNoiThat(Node nodeFromCurrentTab, Node nodeFromNewTab){
         TreeTableView<BangNoiThat> bangNoiThat = (TreeTableView<BangNoiThat>) nodeFromCurrentTab.lookup("#TableNoiThat");

@@ -193,13 +193,21 @@ public class StylistFactory {
                 fontStyle = Stylist.Style.Font_TimeNewRoman_BOLD;
                 textStyle = Stylist.Style.Text_CUSTOMBOLD3;
             }
-case Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_NoBorder -> {
+            case Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_NoBorder -> {
                 cellStyle = Map.of(
                         Stylist.Element.ALIGNMENT, Stylist.Style.VerticalAlignment_CENTER,
                         Stylist.Element.BORDER, Stylist.Style.BorderStyle_NO
                 );
                 fontStyle = Stylist.Style.Font_TimeNewRoman_BOLD;
                 textStyle = Stylist.Style.Text_CUSTOMBOLD1;
+            }
+            case Stylist.Preset.Italic01_TimeNewRoman_VerticalCenter_NoBorder -> {
+                cellStyle = Map.of(
+                        Stylist.Element.ALIGNMENT, Stylist.Style.VerticalAlignment_CENTER,
+                        Stylist.Element.BORDER, Stylist.Style.BorderStyle_NO
+                );
+                fontStyle = Stylist.Style.Font_TimeNewRoman_ITALIC;
+                textStyle = Stylist.Style.Text_NORMAL;
             }
 
         }

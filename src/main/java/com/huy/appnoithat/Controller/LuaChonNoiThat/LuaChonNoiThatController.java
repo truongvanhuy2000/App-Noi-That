@@ -72,6 +72,8 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private ImageView ImageView;
     @FXML
+    private TextArea noteTextArea;
+    @FXML
     private TableColumn<BangThanhToan, Long> DatCocThiCong30, DatCocThietKe10, HangDenChanCongTrinh50, NghiemThuQuyet;
     @FXML
     private TableView<BangThanhToan> bangThanhToan;
@@ -172,6 +174,7 @@ public class LuaChonNoiThatController implements Initializable {
             exportXLS.setThongTinKhachHang(getThongTinKhachHang());
             exportXLS.setThongTinNoiThatList(getThongTinNoiThatList());
             exportXLS.setThongTinThanhToan(getThongTinThanhToan());
+            exportXLS.setNoteArea(noteTextArea.getText());
             exportXLS.export();
         } catch (IOException e) {
             LOGGER.error("Some thing is wrong with the export operation", e);
