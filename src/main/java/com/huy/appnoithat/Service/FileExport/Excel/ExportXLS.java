@@ -32,6 +32,7 @@ public class ExportXLS implements ExportFileService {
 
     private ThongTinCongTy thongTinCongTy;
     private ThongTinKhachHang thongTinKhachHang;
+    private String noteArea;
     private List<ThongTinNoiThat> thongTinNoiThatList;
     private ThongTinThanhToan thongTinThanhToan;
 
@@ -40,7 +41,6 @@ public class ExportXLS implements ExportFileService {
     private XSSFWorkbook workbook;
     private XSSFSheet spreadsheet;
     StylistFactory stylistFactory;
-
     public ExportXLS(OutputStream outputFile) {
         try {
             this.inputTemplate = new FileInputStream(DEFAULT_TEMPLATE_PATH);
@@ -50,7 +50,6 @@ public class ExportXLS implements ExportFileService {
             throw new RuntimeException(e);
         }
     }
-
     public ExportXLS() {
         try {
             this.inputTemplate = new FileInputStream(DEFAULT_TEMPLATE_PATH);
@@ -75,7 +74,13 @@ public class ExportXLS implements ExportFileService {
         exportThongTinKhachHang(this.thongTinKhachHang);
         int rowID = exportNoiThat(this.thongTinNoiThatList);
         exportBangThanhToan(++rowID, this.thongTinThanhToan);
+        exportNoteArea(++rowID, this.noteArea);
         save();
+    }
+
+    private void exportNoteArea(int rowId, String noteArea) {
+        Cell cell0 = spreadsheet.getRow(rowId).getCell(0);
+        stylistFactory.CellPresetFactory(cell0, noteArea, 13, Stylist.Preset.BoldText03_TimeNewRoman_VerticalCenter_ThinBorder);
     }
 
     private void mergeCells(int row, int col, int rowSpan, int colSpan, int howMany) {
@@ -83,7 +88,6 @@ public class ExportXLS implements ExportFileService {
             spreadsheet.addMergedRegion(new org.apache.poi.ss.util.CellRangeAddress(row + i, row + rowSpan + i, col, col + colSpan));
         }
     }
-
     private void exportThongTinCongTy(ThongTinCongTy thongTinCongTy) {
         int mergeColumnRange = 7;
         int mergeColumnId = 2;
@@ -151,7 +155,7 @@ public class ExportXLS implements ExportFileService {
             spreadsheet.shiftRows(rowId, spreadsheet.getLastRowNum(), 1, true, true);
             Row newRow = createPopulatedRow(rowId, 10);
             // If STT is roman, that mean it's the merge Row, we can call it title row
-            if (Utils.RomanNumber.isRoman(thongTinNoiThat.getSTT())) {
+            if (Utils.RomanNumber.isRoman(thongTinNoiThat.getSTT())){
                 exportNoiThatTitle(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, cellId, thongTinNoiThat);
             }
             // If it's not roman, that mean it's the non merge row, we can call it content row
@@ -163,7 +167,6 @@ public class ExportXLS implements ExportFileService {
         }
         return rowId;
     }
-
     private void exportNoiThatTitle(int mergeRowId, int mergeColumnId, int mergeRowRange, int mergeColumnRange, int cellId, ThongTinNoiThat thongTinNoiThat) {
         mergeCells(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, 1);
 
@@ -176,7 +179,6 @@ public class ExportXLS implements ExportFileService {
         Cell cell2 = spreadsheet.getRow(mergeRowId).getCell(cellId + 9);
         stylistFactory.CellPresetFactory(cell2, thongTinNoiThat.getThanhTien(), 18, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
     }
-
     private void exportNoiThatContent(int mergeRowId, int mergeColumnId, int mergeRowRange, int mergeColumnRange, int cellId, ThongTinNoiThat thongTinNoiThat) {
         Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
         stylistFactory.CellPresetFactory(cell0, thongTinNoiThat.getSTT(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
@@ -231,7 +233,6 @@ public class ExportXLS implements ExportFileService {
         Cell cell3 = spreadsheet.getRow(mergeRowId).getCell(cellId + 7);
         stylistFactory.CellPresetFactory(cell3, thongTinThanhToan.getNghiemThuQuyet(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
     }
-
     private Row createPopulatedRow(int rowId, int num) {
         Row newRow = spreadsheet.createRow(rowId);
         for (int i = 0; i < num; i++) {
@@ -239,7 +240,6 @@ public class ExportXLS implements ExportFileService {
         }
         return newRow;
     }
-
     public void exportLogo(InputStream image) throws IOException {
         byte[] bytes = image.readAllBytes();
         int pictureIdx = workbook.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);

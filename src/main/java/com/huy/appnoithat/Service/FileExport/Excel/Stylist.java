@@ -39,6 +39,8 @@ public class Stylist {
         public static final String BoldText02_TimeNewRoman_VerticalCenter_ThinBorder = "BoldText02_TimeNewRoman_VerticalCenter_ThinBorder";
         public static final String BoldText03_TimeNewRoman_VerticalCenter_ThinBorder = "BoldText03_TimeNewRoman_VerticalCenter_ThinBorder";
 
+        public static final String Italic01_TimeNewRoman_VerticalCenter_NoBorder = "Italic01_TimeNewRoman_VerticalCenter_NoBorder";
+
         public static final String BoldAll_TimeNewRoman_VerticalCenter_ThinBorder = "BoldAll_TimeNewRoman_VerticalCenter_ThinBorder";
 
     }

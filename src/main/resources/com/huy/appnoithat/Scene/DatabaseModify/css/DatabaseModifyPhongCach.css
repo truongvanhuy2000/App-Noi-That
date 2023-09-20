@@ -3,7 +3,7 @@
 }
 
 .list-view .list-cell:even {
-    -fx-background-color: #dddddd;
+    -fx-background-color: #e3e3e3;
 }
 
 .list-view .list-cell:selected:odd,
