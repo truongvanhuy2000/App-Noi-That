@@ -161,12 +161,7 @@ public class LuaChonNoiThatController implements Initializable {
 
     private void exportButtonHandler(ActionEvent event) {
         try {
-            FileChooser chooser = new FileChooser();
-            chooser.setTitle("Choose location To Save Report");
-            File selectedFile = null;
-            while(selectedFile== null){
-                selectedFile = chooser.showSaveDialog(null);
-            }
+            File selectedFile = PopupUtils.fileChooser();
 
             ExportXLS exportXLS = new ExportXLS(new FileOutputStream(selectedFile.getPath()));
             exportXLS.setThongTinCongTy(getThongTinCongTy());
