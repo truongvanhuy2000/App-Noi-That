@@ -6,6 +6,6 @@
     -fx-background-color: #C0D5F7;
 }
 
-.button:pressed{
+.button:pressed {
     -fx-background-color: #73A3EF;
 }

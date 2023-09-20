@@ -9,9 +9,11 @@ import org.apache.logging.log4j.Logger;
 public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
     final static Logger LOGGER = LogManager.getLogger(GlobalExceptionHandler.class);
     private final Stage stage;
+
     public GlobalExceptionHandler(Stage stage) {
         this.stage = stage;
     }
+
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
         PopupUtils.throwCriticalError("Critical Error! Please report back to the developer!");

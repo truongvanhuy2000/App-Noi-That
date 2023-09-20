@@ -21,15 +21,18 @@ public class UserSessionService {
     private static final String SESSION_DIRECTORY = Config.USER.SESSION_DIRECTORY;
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
+
     public UserSessionService() {
         webClientService = new WebClientServiceImpl();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
     }
+
     public boolean isLogin() {
         return isSessionValid();
     }
+
     public void cleanUserSession() {
         UserSession session = UserSession.getInstance();
         session.setAccount(new Account(0, "", "", false, null, new ArrayList<>(), false, null));
@@ -41,6 +44,7 @@ public class UserSessionService {
             throw new RuntimeException(e);
         }
     }
+
     public void setSession(String username, String jwtToken) {
         setToken(jwtToken);
         if (!username.isEmpty()) {
@@ -58,22 +62,27 @@ public class UserSessionService {
             setLoginAccount(account);
         }
     }
+
     public void setToken(String jwtToken) {
         UserSession session = UserSession.getInstance();
         session.setJwtToken(jwtToken);
     }
+
     public String getToken() {
         UserSession session = UserSession.getInstance();
         return session.getJwtToken();
     }
+
     public void setLoginAccount(Account account) {
         UserSession session = UserSession.getInstance();
         session.setAccount(account);
     }
+
     public Account getLoginAccount() {
         UserSession session = UserSession.getInstance();
         return session.getAccount();
     }
+
     public UserSession getSession() {
         if (!isLogin()) {
             LOGGER.error("No session found");
@@ -81,6 +90,7 @@ public class UserSessionService {
         }
         return UserSession.getInstance();
     }
+
     public boolean isSessionValid() {
         if (getToken().isEmpty()) {
             try {
@@ -93,6 +103,7 @@ public class UserSessionService {
         String response = webClientService.authorizedHttpGetJson("/api/index", getToken());
         return response != null;
     }
+
     // Haven't implemented yet
     public void loadSessionFromDisk() throws IOException {
         try (InputStream is = new FileInputStream(SESSION_DIRECTORY)) {
@@ -108,6 +119,7 @@ public class UserSessionService {
             setToken("");
         }
     }
+
     public void saveSessionToDisk() throws IOException {
         try {
             String sessionObject = getSessionJsonObject();
@@ -119,7 +131,8 @@ public class UserSessionService {
 //            throw new RuntimeException(e);
         }
     }
-    private String getSessionJsonObject(){
+
+    private String getSessionJsonObject() {
         ObjectNode jsonObject = objectMapper.createObjectNode();
         jsonObject.put("username", getLoginAccount().getUsername());
         jsonObject.put("token", getToken());
@@ -130,6 +143,7 @@ public class UserSessionService {
             throw new RuntimeException(e);
         }
     }
+
     private void parseSessionJsonObject(String jsonObject) throws JsonProcessingException {
         if (jsonObject == null) {
             LOGGER.error("jsonObject cannot be null");

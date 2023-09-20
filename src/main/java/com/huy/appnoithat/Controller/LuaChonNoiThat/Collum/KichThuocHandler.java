@@ -23,14 +23,14 @@ public class KichThuocHandler {
         Rong = rong;
     }
 
-    public void onCommitEditKichThuoc(TreeTableColumn.CellEditEvent<BangNoiThat, Float> event){
-        if (event.getSource().equals(Cao)){
+    public void onCommitEditKichThuoc(TreeTableColumn.CellEditEvent<BangNoiThat, Float> event) {
+        if (event.getSource().equals(Cao)) {
             event.getRowValue().getValue().setCao(event.getNewValue());
         }
-        if (event.getSource().equals(Dai)){
+        if (event.getSource().equals(Dai)) {
             event.getRowValue().getValue().setDai(event.getNewValue());
         }
-        if (event.getSource().equals(Rong)){
+        if (event.getSource().equals(Rong)) {
             event.getRowValue().getValue().setRong(event.getNewValue());
         }
         float dai = event.getRowValue().getValue().getDai().getValue();

@@ -7,13 +7,14 @@ public class Stylist {
         public static final String FONT = "FONT";
         public static final String TEXT = "TEXT";
     }
+
     static class Style {
-        public static final String HorizontalAlignment_CENTER  = "HorizontalAlignment_CENTER";
-        public static final String VerticalAlignment_CENTER  = "VerticalAlignment_CENTER";
-        public static final String Alignment_BOTH  = "Alignment_BOTH";
-        public static final String BorderStyle_NO  = "BorderStyle_NO";
-        public static final String BorderStyle_THIN  = "BorderStyle_THIN";
-        public static final String BorderStyle_MEDIUM  = "BorderStyle_MEDIUM";
+        public static final String HorizontalAlignment_CENTER = "HorizontalAlignment_CENTER";
+        public static final String VerticalAlignment_CENTER = "VerticalAlignment_CENTER";
+        public static final String Alignment_BOTH = "Alignment_BOTH";
+        public static final String BorderStyle_NO = "BorderStyle_NO";
+        public static final String BorderStyle_THIN = "BorderStyle_THIN";
+        public static final String BorderStyle_MEDIUM = "BorderStyle_MEDIUM";
         public static final String Font_TimeNewRoman_NORMAL = "Font_TimeNewRoman_NORMAL";
         public static final String Font_TimeNewRoman_BOLD = "Font_TimeNewRoman_BOLD";
         public static final String Font_TimeNewRoman_ITALIC = "Font_TimeNewRoman_ITALIC";
@@ -25,6 +26,7 @@ public class Stylist {
         public static final String Text_BOLDALL = "Text_BOLDALL";
         public static final String Text_NORMAL = "Text_NORMAL";
     }
+
     static class Preset {
         public static final String NormalText_TimeNewRoman_CenterBoth_ThinBorder = "NormalText_TimeNewRoman_CenterBoth_ThinBorder";
         public static final String BoldText01_TimeNewRoman_CenterBoth_ThinBorder = "BoldText01_TimeNewRoman_CenterBoth_ThinBorder";

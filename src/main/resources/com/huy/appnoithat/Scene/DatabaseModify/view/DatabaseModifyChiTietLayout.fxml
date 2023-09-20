@@ -1,44 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyVatLieuController">
-   <children>
-      <AnchorPane layoutX="10.0" prefHeight="420.0" prefWidth="791.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <ListView fx:id="listViewVatlieu" layoutX="14.0" layoutY="67.0" onMouseClicked="#tableClickToSelectItem" prefHeight="311.0" prefWidth="500.0" />
-            <Label layoutX="119.0" layoutY="14.0" prefHeight="26.0" prefWidth="288.0" text="Chi Tiet Vat Lieu" textFill="#171616">
-               <font>
-                  <Font name="DejaVu Serif Bold Italic" size="24.0" />
-               </font>
-            </Label>
-            <Button fx:id="addVatlieuButton" layoutX="535.0" layoutY="186.0" mnemonicParsing="false" onAction="#AddNewVatLieu" prefHeight="29.0" prefWidth="230.0" text="ADD NEW CHI TIET" />
-            <Label layoutX="535.0" layoutY="30.0" text="Vat lieu">
-               <font>
-                  <Font name="Dyuthi Regular" size="18.0" />
-               </font>
-            </Label>
-            <Button fx:id="EditVatlieuButton" layoutX="535.0" layoutY="239.0" mnemonicParsing="false" onAction="#EditVatlieu" prefHeight="29.0" prefWidth="230.0" text="EDIT CHI TIET" />
-            <Button fx:id="deleteVatLieuButton" layoutX="535.0" layoutY="284.0" mnemonicParsing="false" onAction="#DeleteVatlieu" prefHeight="29.0" prefWidth="230.0" text="DELETE CHI TIET" />
-            <Button fx:id="nextScreenButton" layoutX="535.0" layoutY="343.0" mnemonicParsing="false" onAction="#NextScreen" prefHeight="29.0" prefWidth="230.0" text="NEXT" textFill="#110000" />
-            <Button fx:id="clearTextbtn" layoutX="535.0" layoutY="131.0" mnemonicParsing="false" onAction="#ClearText" prefHeight="29.0" prefWidth="230.0" text="CLEAR TEXT" textFill="#110000" />
-            <Button fx:id="backButton" layoutX="13.0" layoutY="17.0" mnemonicParsing="false" onAction="#sceneSwitcher">
-               <graphic>
-                  <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
-                     <image>
-                        <Image url="@../../icons/back.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-         </children>
-      </AnchorPane>
-      <TextField fx:id="txtVatlieu" layoutX="536.0" layoutY="82.0" prefHeight="29.0" prefWidth="230.0" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyVatLieuController">
+    <children>
+        <AnchorPane layoutX="10.0" prefHeight="420.0" prefWidth="791.0" AnchorPane.bottomAnchor="0.0"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <ListView fx:id="listViewVatlieu" layoutX="14.0" layoutY="67.0" onMouseClicked="#tableClickToSelectItem"
+                          prefHeight="311.0" prefWidth="500.0"/>
+                <Label layoutX="119.0" layoutY="14.0" prefHeight="26.0" prefWidth="288.0" text="Chi Tiet Vat Lieu"
+                       textFill="#171616">
+                    <font>
+                        <Font name="DejaVu Serif Bold Italic" size="24.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="addVatlieuButton" layoutX="535.0" layoutY="186.0" mnemonicParsing="false"
+                        onAction="#AddNewVatLieu" prefHeight="29.0" prefWidth="230.0" text="ADD NEW CHI TIET"/>
+                <Label layoutX="535.0" layoutY="30.0" text="Vat lieu">
+                    <font>
+                        <Font name="Dyuthi Regular" size="18.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="EditVatlieuButton" layoutX="535.0" layoutY="239.0" mnemonicParsing="false"
+                        onAction="#EditVatlieu" prefHeight="29.0" prefWidth="230.0" text="EDIT CHI TIET"/>
+                <Button fx:id="deleteVatLieuButton" layoutX="535.0" layoutY="284.0" mnemonicParsing="false"
+                        onAction="#DeleteVatlieu" prefHeight="29.0" prefWidth="230.0" text="DELETE CHI TIET"/>
+                <Button fx:id="nextScreenButton" layoutX="535.0" layoutY="343.0" mnemonicParsing="false"
+                        onAction="#NextScreen" prefHeight="29.0" prefWidth="230.0" text="NEXT" textFill="#110000"/>
+                <Button fx:id="clearTextbtn" layoutX="535.0" layoutY="131.0" mnemonicParsing="false"
+                        onAction="#ClearText" prefHeight="29.0" prefWidth="230.0" text="CLEAR TEXT" textFill="#110000"/>
+                <Button fx:id="backButton" layoutX="13.0" layoutY="17.0" mnemonicParsing="false"
+                        onAction="#sceneSwitcher">
+                    <graphic>
+                        <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true"
+                                   styleClass="Button">
+                            <image>
+                                <Image url="@../../icons/back.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </AnchorPane>
+        <TextField fx:id="txtVatlieu" layoutX="536.0" layoutY="82.0" prefHeight="29.0" prefWidth="230.0"/>
+    </children>
 </AnchorPane>

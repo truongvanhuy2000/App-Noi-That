@@ -7,8 +7,10 @@ import javafx.scene.input.KeyCode;
 
 public class CustomTextAreaCell extends TreeTableCell<BangNoiThat, String> {
     private TextArea textArea;
+
     public CustomTextAreaCell() {
     }
+
     @Override
     public void startEdit() {
         if (!isEmpty()) {
@@ -19,12 +21,14 @@ public class CustomTextAreaCell extends TreeTableCell<BangNoiThat, String> {
             textArea.selectAll();
         }
     }
+
     @Override
     public void cancelEdit() {
         super.cancelEdit();
         setText(getItem());
         setGraphic(null);
     }
+
     @Override
     public void updateItem(String item, boolean empty) {
         super.updateItem(item, empty);
@@ -45,6 +49,7 @@ public class CustomTextAreaCell extends TreeTableCell<BangNoiThat, String> {
             }
         }
     }
+
     private void createTextArea() {
         textArea = new TextArea(getString());
         textArea.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
@@ -56,6 +61,7 @@ public class CustomTextAreaCell extends TreeTableCell<BangNoiThat, String> {
             }
         });
     }
+
     private String getString() {
         return getItem() == null ? "" : getItem();
     }

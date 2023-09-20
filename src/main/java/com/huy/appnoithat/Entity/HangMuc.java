@@ -5,6 +5,7 @@ import com.huy.appnoithat.Entity.Common.CommonItemInterface;
 import lombok.*;
 
 import java.util.List;
+
 @Data
 @Getter
 @Setter
@@ -18,9 +19,11 @@ public class HangMuc implements CommonItemInterface {
     private String name;
     @JsonProperty("vatLieu")
     List<VatLieu> vatLieuList;
+
     public void add(VatLieu vatLieu) {
         vatLieuList.add(vatLieu);
     }
+
     @Override
     public String toString() {
         return this.name;

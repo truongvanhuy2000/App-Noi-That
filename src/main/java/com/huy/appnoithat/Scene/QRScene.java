@@ -26,6 +26,7 @@ public class QRScene {
         scene = new Scene(root);
         addCssToScence();
     }
+
     public void setRoot(Parent root) {
         this.root = root;
         scene.setRoot(this.root);
@@ -36,6 +37,7 @@ public class QRScene {
         scene.setRoot(this.root);
         addCssToScence();
     }
+
     // Create an object of this class, call this function
     public static synchronized QRScene getInstance() {
         if (single_instance == null)
@@ -43,7 +45,7 @@ public class QRScene {
         return single_instance;
     }
 
-    private void addCssToScence(){
+    private void addCssToScence() {
         String cssPath = "css/UserManagementLayout.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }

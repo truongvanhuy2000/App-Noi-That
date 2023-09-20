@@ -18,6 +18,7 @@ public class ThongTinNoiThat {
     String DonGia;
     String SoLuong;
     String ThanhTien;
+
     public ThongTinNoiThat(BangNoiThat bangNoiThat) {
         STT = bangNoiThat.getSTT().getValue();
         TenHangMuc = bangNoiThat.getHangMuc().getValue();

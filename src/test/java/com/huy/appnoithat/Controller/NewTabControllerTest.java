@@ -1,6 +1,5 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.Scene.LuaChonNoiThatScene;
 import com.huy.appnoithat.Scene.NewTabScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -8,10 +7,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class NewTabControllerTest extends Application {
     private Thread thread;
+
     @BeforeEach
     void setUp() {
         thread = new Thread("JavaFX Init Thread") {

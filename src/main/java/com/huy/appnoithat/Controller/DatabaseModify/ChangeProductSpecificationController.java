@@ -20,18 +20,20 @@ public class ChangeProductSpecificationController {
     private Button backButton, btnOK;
     @FXML
     private TextField txtCao, txtDai, txtDonGia, txtDonVi, txtRong;
+
     public ChangeProductSpecificationController() {
         databaseModifyThongSoService = new DatabaseModifyThongSoService();
     }
+
     @FXML
     void clickOK(ActionEvent event) {
         //click to Edit thong so
         String regex = "[0-9].+";
         ThongSo thongSo = new ThongSo();
         thongSo.setId(parentID);
-        if(!txtCao.getText().matches(regex) || !txtDai.getText().matches(regex) || !txtRong.getText().matches(regex) || !txtDonGia.getText().matches(regex)) {
+        if (!txtCao.getText().matches(regex) || !txtDai.getText().matches(regex) || !txtRong.getText().matches(regex) || !txtDonGia.getText().matches(regex)) {
             PopupUtils.throwErrorSignal("Please input is a number !!!");
-        }else {
+        } else {
             thongSo.setCao(Float.valueOf(txtCao.getText()));
             thongSo.setDai(Float.valueOf(txtDai.getText()));
             thongSo.setRong(Float.valueOf(txtRong.getText()));
@@ -42,22 +44,23 @@ public class ChangeProductSpecificationController {
         }
 
     }
+
     void backToMain() {
         Scene scene = DatabaseModifyPhongCachScene.getInstance().getScene();
         Stage stage = (Stage) btnOK.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
         Scene scene = null;
         Stage stage = null;
         Object source = actionEvent.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
-        if (source == backButton){
+        stage = (Stage) ((Node) source).getScene().getWindow();
+        if (source == backButton) {
             scene = DatabaseModifyVatLieuScene.getInstance().getScene();
-        }
-        else {
+        } else {
             return;
         }
         stage.setScene(scene);
@@ -73,9 +76,9 @@ public class ChangeProductSpecificationController {
             return;
         }
         ThongSo ts = databaseModifyThongSoService.findThongSoByID(id).get(0);
-        txtCao.setText(ts.getCao() !=null ? ts.getCao().toString() : "0.0");
-        txtDai.setText(ts.getDai() !=null ? ts.getDai().toString() : "0.0");
-        txtRong.setText(ts.getRong() !=null ? ts.getRong().toString() : "0.0");
+        txtCao.setText(ts.getCao() != null ? ts.getCao().toString() : "0.0");
+        txtDai.setText(ts.getDai() != null ? ts.getDai().toString() : "0.0");
+        txtRong.setText(ts.getRong() != null ? ts.getRong().toString() : "0.0");
         txtDonGia.setText(ts.getDon_gia() != null ? ts.getDon_gia().toString() : " ");
         txtDonVi.setText(ts.getDon_vi() != null ? ts.getDon_vi() : " ");
     }

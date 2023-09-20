@@ -18,7 +18,7 @@ public class DatabaseModifyThongSoService {
     private String token;
     private final UserSessionService sessionService;
 
-    public DatabaseModifyThongSoService(){
+    public DatabaseModifyThongSoService() {
         webClientService = new WebClientServiceImpl();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
@@ -26,15 +26,15 @@ public class DatabaseModifyThongSoService {
         sessionService = new UserSessionService();
     }
 
-    public List<ThongSo> findThongSoByID(int id){
+    public List<ThongSo> findThongSoByID(int id) {
         List<ThongSo> tempThongSoList = new ArrayList<>();
         token = this.sessionService.getToken();
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/thongso/searchByVatlieu/"+id, token);
+        String response2 = this.webClientService.authorizedHttpGetJson("/api/thongso/searchByVatlieu/" + id, token);
         try {
             // 2. convert JSON array to List of objects
             List<ThongSo> thongSoList = objectMapper.readValue(response2, objectMapper.getTypeFactory()
                     .constructCollectionType(List.class, ThongSo.class));
-            for (ThongSo thongSo: thongSoList) {
+            for (ThongSo thongSo : thongSoList) {
                 ThongSo thongSo1 = new ThongSo();
                 thongSo1.setId(thongSo.getId());
                 thongSo1.setCao(thongSo.getCao());
@@ -49,10 +49,11 @@ public class DatabaseModifyThongSoService {
         }
         return tempThongSoList;
     }
-    public void EditThongSo(ThongSo thongSo){
+
+    public void EditThongSo(ThongSo thongSo) {
         token = this.sessionService.getToken();
         try {
-            this.webClientService.authorizedHttpPutJson("/api/thongso",  objectMapper.writeValueAsString(thongSo),token);
+            this.webClientService.authorizedHttpPutJson("/api/thongso", objectMapper.writeValueAsString(thongSo), token);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

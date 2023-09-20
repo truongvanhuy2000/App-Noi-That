@@ -73,47 +73,51 @@ public class DatabaseModifyPhongCachController implements Initializable {
         refreshList();
         refreshChildrenList(0);
     }
+
     @FXML
     void tableClickToSelectItem(MouseEvent event) {
     }
+
     @FXML
     void NextScreen(ActionEvent event) {
-        if(listViewPhongCach.getSelectionModel().getSelectedItem() ==null){
+        if (listViewPhongCach.getSelectionModel().getSelectedItem() == null) {
             return;
         }
         int selectID = listViewPhongCach.getSelectionModel().getSelectedItem().getId();
         Scene scene = null;
         Stage stage = null;
         Object source = event.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
-        if (source == nextScreenButton){
+        stage = (Stage) ((Node) source).getScene().getWindow();
+        if (source == nextScreenButton) {
             scene = DatabaseModifyNoiThatScene.getInstance().getScene();
             DatabaseModifyNoiThatScene.getInstance().getController().init(selectID);
-        }else {
+        } else {
             return;
         }
         stage.setScene(scene);
         stage.show();
     }
+
     public void init() {
         refreshList();
     }
+
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
         Scene scene = null;
         Stage stage = null;
         Object source = actionEvent.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
-        if (source == backButton){
+        stage = (Stage) ((Node) source).getScene().getWindow();
+        if (source == backButton) {
             scene = HomeScene.getInstance().getScene();
             listViewPhongCach.getItems().clear();
-        }
-        else {
+        } else {
             return;
         }
         stage.setScene(scene);
         stage.show();
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listViewPhongCach.setItems(phongCachNoiThatObservableList);
@@ -124,8 +128,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
             item.setName(event.getNewValue().getName());
             if (item.getId() == 0) {
                 databaseModifyPhongCachService.addNewPhongCach(item);
-            }
-            else {
+            } else {
                 databaseModifyPhongCachService.EditPhongCach(item);
             }
             refreshList();
@@ -143,6 +146,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
         childrenList.setCellFactory(param -> new CustomEditingListCell<>());
         childrenList.setItems(noiThatObservableList);
     }
+
     private void refreshList() {
         List<PhongCachNoiThat> phongCachNoiThatList = databaseModifyPhongCachService.findAllPhongCach();
         if (phongCachNoiThatList == null) {
@@ -151,6 +155,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
         phongCachNoiThatObservableList.clear();
         phongCachNoiThatObservableList.addAll(phongCachNoiThatList);
     }
+
     private void refreshChildrenList(int parentID) {
         List<NoiThat> noiThatList = databaseModifyNoiThatService.findNoiThatByID(parentID);
         if (noiThatList == null) {

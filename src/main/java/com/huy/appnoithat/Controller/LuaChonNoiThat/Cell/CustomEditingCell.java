@@ -8,6 +8,7 @@ import javafx.scene.control.TreeTableRow;
 
 public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, String> {
     private TextField textField;
+
     public CustomEditingCell() {
     }
 
@@ -60,7 +61,7 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
                 currentRow.setStyle("-fx-font-weight: bold");
                 return;
             }
-            if(Utils.isAlpha(getItem())) {
+            if (Utils.isAlpha(getItem())) {
                 currentRow.setStyle("-fx-font-weight: bold; -fx-font-size: 14px");
                 return;
             }

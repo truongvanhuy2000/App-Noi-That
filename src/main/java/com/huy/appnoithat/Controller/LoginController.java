@@ -42,6 +42,7 @@ public class LoginController {
     // Call this method everytime you switch scene
     public void initialize() {
     }
+
     @FXML
     public void login(ActionEvent actionEvent) {
         String userName = usernameTextField.getText();
@@ -61,8 +62,8 @@ public class LoginController {
             List<String> roleList = new ArrayList<>();
             roleList.add("ROLE_USER");
 
-            ObservableList<String> listTime = FXCollections.observableArrayList("1 tháng","3 tháng","6 tháng");
-            ObservableList<String> listGender = FXCollections.observableArrayList("Male","FaMale");
+            ObservableList<String> listTime = FXCollections.observableArrayList("1 tháng", "3 tháng", "6 tháng");
+            ObservableList<String> listGender = FXCollections.observableArrayList("Male", "FaMale");
             Stage loginStage = new Stage();
             Scene register = RegisterScene.getInstance().getScene();
             Scene QRpopup = QRScene.getInstance().getScene();
@@ -90,15 +91,15 @@ public class LoginController {
                 String time = comboBoxTime.getSelectionModel().getSelectedItem().toString();
                 LocalDate localDate;
 
-                if(time.equals("1 tháng")){
-                    localDate = LocalDate.now().plusDays( 30 );
-                }else if(time.equals("3 tháng")){
-                    localDate = LocalDate.now().plusDays( 90 );
-                }else{
-                    localDate = LocalDate.now().plusDays( 180 );
+                if (time.equals("1 tháng")) {
+                    localDate = LocalDate.now().plusDays(30);
+                } else if (time.equals("3 tháng")) {
+                    localDate = LocalDate.now().plusDays(90);
+                } else {
+                    localDate = LocalDate.now().plusDays(180);
                 }
-                AccountInformation accountInformation = new AccountInformation(0,txtName.getText(),Gender,txtEmail.getText(),txtAddress.getText(),txtPhone.getText());
-                Account account = new Account(0,txtUsername.getText(),txtPassword.getText(),false,accountInformation,roleList,false, localDate);
+                AccountInformation accountInformation = new AccountInformation(0, txtName.getText(), Gender, txtEmail.getText(), txtAddress.getText(), txtPhone.getText());
+                Account account = new Account(0, txtUsername.getText(), txtPassword.getText(), false, accountInformation, roleList, false, localDate);
                 System.out.println(account);
                 RegisterService registerService = new RegisterService();
                 registerService.registerNewAccount(account);
@@ -113,7 +114,7 @@ public class LoginController {
             btnCancel.setOnAction(actionEvent -> {
                 loginStage.close();
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -122,12 +123,11 @@ public class LoginController {
         Scene scene = null;
         Stage stage = null;
         Object source = actionEvent.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
-        if (source == LoginButton){
+        stage = (Stage) ((Node) source).getScene().getWindow();
+        if (source == LoginButton) {
             scene = HomeScene.getInstance().getScene();
             HomeScene.getInstance().getHomeController().initialize();
-        }
-        else {
+        } else {
             return;
         }
         stage.setScene(scene);

@@ -17,16 +17,18 @@ public class RegisterService {
 
     private final UserSessionService sessionService = new UserSessionService();
 
-    public RegisterService(){}
+    public RegisterService() {
+    }
 
-    public void registerNewAccount(Account account){
+    public void registerNewAccount(Account account) {
         token = this.sessionService.getToken();
         webClientService = new WebClientServiceImpl();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
-                .build();;
+                .build();
+        ;
         try {
-            this.webClientService.authorizedHttpPostJson("/api/register",  objectMapper.writeValueAsString(account),token);
+            this.webClientService.authorizedHttpPostJson("/api/register", objectMapper.writeValueAsString(account), token);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -45,17 +45,20 @@ public class DatabaseModifyVatLieuController implements Initializable {
     private final DatabaseModifyThongSoService databaseModifyThongSoService;
     private final ObservableList<ThongSo> thongSoObservableList;
     private final ObservableList<VatLieu> vatLieuObservableList;
+
     public DatabaseModifyVatLieuController() {
         databaseModifyThongSoService = new DatabaseModifyThongSoService();
         databaseModifyVatlieuService = new DatabaseModifyVatlieuService();
         vatLieuObservableList = FXCollections.observableArrayList();
         thongSoObservableList = FXCollections.observableArrayList();
     }
+
     @FXML
     void addAction(ActionEvent event) {
         vatLieuObservableList.add(new VatLieu(0, "<Thêm mới>",
                 new ThongSo(0, 0f, 0f, 0f, " ", 0L)));
     }
+
     @FXML
     void deleteAction(ActionEvent event) {
         VatLieu vatLieu = listViewVatLieu.getSelectionModel().getSelectedItem();
@@ -69,35 +72,36 @@ public class DatabaseModifyVatLieuController implements Initializable {
         databaseModifyVatlieuService.deleteVatLieu(vatLieu.getId());
         refreshList();
     }
+
     @FXML
     void nextAction(ActionEvent event) {
-        if(listViewVatLieu.getSelectionModel().getSelectedItem() == null){
+        if (listViewVatLieu.getSelectionModel().getSelectedItem() == null) {
             return;
         }
         int selectID = listViewVatLieu.getSelectionModel().getSelectedItem().getId();
         Scene scene = null;
         Stage stage = null;
         Object source = event.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
-        if (source == nextButton){
+        stage = (Stage) ((Node) source).getScene().getWindow();
+        if (source == nextButton) {
             scene = ChangeProductSpecificationScene.getInstance().getScene();
             ChangeProductSpecificationScene.getInstance().getController().initializeThongSo(selectID);
-        }else {
+        } else {
             return;
         }
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     void sceneSwitcher(ActionEvent event) {
         Scene scene = null;
         Stage stage = null;
         Object source = event.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
-        if (source == backButton){
+        stage = (Stage) ((Node) source).getScene().getWindow();
+        if (source == backButton) {
             scene = DatabaseModifyHangMucScene.getInstance().getScene();
-        }
-        else {
+        } else {
             return;
         }
         stage.setScene(scene);
@@ -123,6 +127,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
         vatLieuObservableList.clear();
         vatLieuObservableList.addAll(vatLieuList);
     }
+
     private void refreshChildrenList(int parentID) {
         if (parentID == 0) {
             thongSoObservableList.clear();
@@ -135,11 +140,13 @@ public class DatabaseModifyVatLieuController implements Initializable {
         thongSoObservableList.clear();
         thongSoObservableList.addAll(thongSoList);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUpVatLieuListView();
         setUpThongSoTableView();
     }
+
     private void setUpVatLieuListView() {
         listViewVatLieu.setItems(vatLieuObservableList);
         listViewVatLieu.setEditable(true);
@@ -149,8 +156,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
             item.setName(event.getNewValue().getName());
             if (item.getId() == 0) {
                 databaseModifyVatlieuService.addNewVatLieu(item, this.parentID);
-            }
-            else {
+            } else {
                 databaseModifyVatlieuService.EditVatLieu(item);
             }
             refreshList();
@@ -165,6 +171,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
             }
         });
     }
+
     private void setUpThongSoTableView() {
         tableViewThongSo.setItems(thongSoObservableList);
         Dai.setCellValueFactory(param -> {

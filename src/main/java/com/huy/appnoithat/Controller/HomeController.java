@@ -25,9 +25,11 @@ public class HomeController {
     @FXML
     private Text UserName;
     private final UserSessionService sessionService;
+
     public HomeController() {
         this.sessionService = new UserSessionService();
     }
+
     @FXML
     void logout(ActionEvent event) {
         sessionService.cleanUserSession();
@@ -61,18 +63,18 @@ public class HomeController {
         QuanLyNguoiDungButton.setDisable(!quanLyNguoiDungBtn);
         suadoidatabaseButton.setDisable(!suadoidatabaseBtn);
     }
+
     // Central unit to switch scene based on context
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
         Scene scene = null;
         Stage stage = null;
         Object source = actionEvent.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
+        stage = (Stage) ((Node) source).getScene().getWindow();
         stage.setResizable(false);
-        if (source == LogoutButton){
+        if (source == LogoutButton) {
             scene = LoginScene.getInstance().getScene();
-        }
-        else if (source == LuaChonNoiThatButton) {
+        } else if (source == LuaChonNoiThatButton) {
             Stage newStage = new Stage();
             scene = NewTabScene.getInstance().getScene();
             NewTabScene.getInstance().getNewTabController().init();
@@ -80,14 +82,12 @@ public class HomeController {
             newStage.setScene(scene);
             newStage.show();
             return;
-        }
-        else if (source == QuanLyNguoiDungButton) {
+        } else if (source == QuanLyNguoiDungButton) {
             scene = UserManagementScene.getInstance().getScene();
-        }else if (source == suadoidatabaseButton) {
+        } else if (source == suadoidatabaseButton) {
             scene = DatabaseModifyPhongCachScene.getInstance().getScene();
             DatabaseModifyPhongCachScene.getInstance().getController().init();
-        }
-        else {
+        } else {
             return;
         }
         stage.setScene(scene);

@@ -15,6 +15,7 @@ class WebClientServiceImplTest {
     private WebClientService webClientService;
     private ObjectMapper objectMapper;
     private String token;
+
     @BeforeEach
     void setUp() {
         webClientService = new WebClientServiceImpl();

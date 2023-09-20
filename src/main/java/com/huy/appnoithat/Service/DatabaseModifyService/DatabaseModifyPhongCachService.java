@@ -17,7 +17,7 @@ public class DatabaseModifyPhongCachService {
     private final ObjectMapper objectMapper;
     private final UserSessionService sessionService;
 
-    public DatabaseModifyPhongCachService(){
+    public DatabaseModifyPhongCachService() {
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
@@ -25,7 +25,7 @@ public class DatabaseModifyPhongCachService {
         sessionService = new UserSessionService();
     }
 
-    public List<PhongCachNoiThat> findAllPhongCach(){
+    public List<PhongCachNoiThat> findAllPhongCach() {
         List<PhongCachNoiThat> tempPhongCachList = new ArrayList<>();
         String token = this.sessionService.getToken();
         String response2 = this.webClientService.authorizedHttpGetJson("/api/phongcach", token);
@@ -33,7 +33,7 @@ public class DatabaseModifyPhongCachService {
             // 2. convert JSON array to List of objects
             List<PhongCachNoiThat> PhongCachNoiThatList = objectMapper.readValue(response2, objectMapper.getTypeFactory()
                     .constructCollectionType(List.class, PhongCachNoiThat.class));
-            for (PhongCachNoiThat phongcach: PhongCachNoiThatList) {
+            for (PhongCachNoiThat phongcach : PhongCachNoiThatList) {
                 PhongCachNoiThat phongCachNoiThat = new PhongCachNoiThat();
                 phongCachNoiThat.setId(phongcach.getId());
                 phongCachNoiThat.setName(phongcach.getName());
@@ -46,27 +46,27 @@ public class DatabaseModifyPhongCachService {
         return tempPhongCachList;
     }
 
-    public void addNewPhongCach(PhongCachNoiThat phongCachNoiThat){
+    public void addNewPhongCach(PhongCachNoiThat phongCachNoiThat) {
         String token = this.sessionService.getToken();
         try {
-            this.webClientService.authorizedHttpPostJson("/api/phongcach",  objectMapper.writeValueAsString(phongCachNoiThat),token);
+            this.webClientService.authorizedHttpPostJson("/api/phongcach", objectMapper.writeValueAsString(phongCachNoiThat), token);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void EditPhongCach(PhongCachNoiThat phongCachNoiThat){
+    public void EditPhongCach(PhongCachNoiThat phongCachNoiThat) {
         String token = this.sessionService.getToken();
         try {
-            this.webClientService.authorizedHttpPutJson("/api/phongcach",  objectMapper.writeValueAsString(phongCachNoiThat),token);
+            this.webClientService.authorizedHttpPutJson("/api/phongcach", objectMapper.writeValueAsString(phongCachNoiThat), token);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void deletePhongCach(int id){
+    public void deletePhongCach(int id) {
         String token = this.sessionService.getToken();
-        this.webClientService.authorizedHttpDeleteJson("/api/phongcach/"+id,  "",token);
+        this.webClientService.authorizedHttpDeleteJson("/api/phongcach/" + id, "", token);
     }
 //    public PhongCachNoiThat findByID(int id){
 //        token = this.sessionService.getToken();

@@ -8,12 +8,14 @@ import lombok.Getter;
 
 import java.io.IOException;
 import java.util.Objects;
+
 @Getter
 public class DatabaseModifyPhongCachScene {
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
     private static DatabaseModifyPhongCachScene single_instance = null;
+
     public DatabaseModifyPhongCachScene() {
         String viewPath = "view/DatabaseModifyPhongCachLayout.fxml";
         try {
@@ -44,11 +46,12 @@ public class DatabaseModifyPhongCachScene {
         addCssToScence();
     }
 
-    private void addCssToScence(){
+    private void addCssToScence() {
         String cssPath = "css/DatabaseModifyPhongCach.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }
-    public DatabaseModifyPhongCachController getController(){
+
+    public DatabaseModifyPhongCachController getController() {
         return fxmlLoader.getController();
     }
 }

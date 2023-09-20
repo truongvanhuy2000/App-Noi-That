@@ -46,4 +46,5 @@ public class LoginControllerTest extends Application {
         stage.setScene(LoginScene.getInstance().getScene());
         stage.setTitle("App Noi That");
         stage.show();
-    }}
+    }
+}

@@ -58,6 +58,7 @@ public class LuaChonNoiThatService {
             throw new RuntimeException(e);
         }
     }
+
     public PhongCachNoiThat findPhongCachNoiThatByName(String name) {
         String path = "/api/phongcach/search";
         String param = "?" + "name=" + Utils.encodeValue(name);
@@ -72,6 +73,7 @@ public class LuaChonNoiThatService {
             throw new RuntimeException(e);
         }
     }
+
     public List<NoiThat> findNoiThatByPhongCachName(String name) {
         PhongCachNoiThat foundPhongCachNoiThat = findPhongCachNoiThatByName(name);
         if (foundPhongCachNoiThat == null) {
@@ -91,7 +93,7 @@ public class LuaChonNoiThatService {
         }
     }
 
-    public List<HangMuc> findHangMucListByPhongCachAndNoiThat(String phongCach, String noiThat){
+    public List<HangMuc> findHangMucListByPhongCachAndNoiThat(String phongCach, String noiThat) {
         List<NoiThat> noiThatList = findNoiThatByPhongCachName(phongCach);
         if (noiThatList == null) {
             return new ArrayList<>();
@@ -113,7 +115,8 @@ public class LuaChonNoiThatService {
             throw new RuntimeException(e);
         }
     }
-    public List<VatLieu> findVatLieuListByParentsName(String phongCach, String noiThat, String hangMuc){
+
+    public List<VatLieu> findVatLieuListByParentsName(String phongCach, String noiThat, String hangMuc) {
         List<HangMuc> hangMucList = findHangMucListByPhongCachAndNoiThat(phongCach, noiThat);
         if (hangMucList == null) {
             return new ArrayList<>();

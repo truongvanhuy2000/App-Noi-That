@@ -1,6 +1,5 @@
 package com.huy.appnoithat.DataModel;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.InputStream;

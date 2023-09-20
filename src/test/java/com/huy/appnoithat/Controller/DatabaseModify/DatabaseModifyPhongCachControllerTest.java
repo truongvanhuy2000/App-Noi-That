@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 public class DatabaseModifyPhongCachControllerTest extends Application {
     DatabaseModifyPhongCachController databaseModifyPhongCachController;
     private Thread thread;
+
     @BeforeEach
     void setUp() {
         thread = new Thread("JavaFX Init Thread") {

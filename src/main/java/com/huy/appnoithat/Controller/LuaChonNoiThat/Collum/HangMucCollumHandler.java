@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Shared.PopupUtils;
 import com.huy.appnoithat.Shared.Utils;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HangMucCollumHandler {
-    private ObservableList<String> hangMucList;
+    private final ObservableList<String> hangMucList;
     private final LuaChonNoiThatService luaChonNoiThatService;
 
     public HangMucCollumHandler(ObservableList<String> hangMucList) {
@@ -25,7 +25,7 @@ public class HangMucCollumHandler {
 
     public void onEditCommitHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
 //        System.out.println("Hang muc: " + event.getNewValue());
-        String newValue =  event.getNewValue();
+        String newValue = event.getNewValue();
         event.getRowValue().getValue().setHangMuc(newValue);
 //        event.getTreeTableView().getSelectionModel().clearSelection();
     }
@@ -36,7 +36,7 @@ public class HangMucCollumHandler {
         List<String> items = new ArrayList<>();
         hangMucList.clear();
         // Roman mean it's a noi that, mean that its parent is phong cach
-        if (Utils.RomanNumber.isRoman(stt)){
+        if (Utils.RomanNumber.isRoman(stt)) {
             String phongCach = currentItem.getParent().getValue().getHangMuc().getValue();
             try {
                 items = Utils.getObjectNameList(luaChonNoiThatService.findNoiThatByPhongCachName(phongCach));
@@ -48,7 +48,7 @@ public class HangMucCollumHandler {
             return;
         }
         // Alpha mean it's a phong cach
-        if (Utils.isAlpha(stt)){
+        if (Utils.isAlpha(stt)) {
             try {
                 items = Utils.getObjectNameList(luaChonNoiThatService.findAllPhongCachNoiThat());
             } catch (NullPointerException e) {
@@ -60,10 +60,10 @@ public class HangMucCollumHandler {
             return;
         }
         // Numeric mean it's a hang muc
-        if (Utils.isNumeric(stt)){
+        if (Utils.isNumeric(stt)) {
             String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
             String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
-            try{
+            try {
                 items = Utils.getObjectNameList(luaChonNoiThatService.findHangMucListByPhongCachAndNoiThat(phongCach, noiThat));
             } catch (NullPointerException e) {
                 PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
@@ -74,11 +74,13 @@ public class HangMucCollumHandler {
         }
 
     }
-    public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param){
+
+    public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param) {
         return new CustomHangMucCell(hangMucList);
     }
-    public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param){
-        if (param.getValue() == null){
+
+    public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {
+        if (param.getValue() == null) {
             return null;
         }
         return param.getValue().getValue().getHangMuc();

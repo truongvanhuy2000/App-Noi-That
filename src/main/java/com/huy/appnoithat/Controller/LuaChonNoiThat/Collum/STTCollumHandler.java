@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomEditingCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Shared.PopupUtils;
 import com.huy.appnoithat.Shared.Utils;
 import javafx.beans.property.SimpleStringProperty;
@@ -24,19 +24,19 @@ public class STTCollumHandler {
         handleInputedSTT(event);
 //        event.getTreeTableView().getSelectionModel().clearSelection();
     }
-    private void handleInputedSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event)
-    {
+
+    private void handleInputedSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         String newValue = event.getNewValue();
         event.getRowValue().getValue().setSTT(newValue);
-        if(Utils.RomanNumber.isRoman(newValue)){
+        if (Utils.RomanNumber.isRoman(newValue)) {
             handleCommitedRomanSTT(event, newValue);
             return;
         }
-        if (Utils.isAlpha(newValue)){
+        if (Utils.isAlpha(newValue)) {
             handleComitedAlphaSTT(event, newValue);
             return;
         }
-        if (Utils.isNumeric(newValue)){
+        if (Utils.isNumeric(newValue)) {
             handleCommitedNumericSTT(event, newValue);
         }
     }
@@ -49,14 +49,14 @@ public class STTCollumHandler {
     }
 
     // This mean we are choosing noi that
-    public void handleCommitedRomanSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event, String item){
+    public void handleCommitedRomanSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event, String item) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         TreeItem<BangNoiThat> newItem = new TreeItem<>(currentItem.getValue());
         ObservableList<TreeItem<BangNoiThat>> tempPhongCachList = findPhongCachList(currentItem);
-        if (tempPhongCachList == null){
+        if (tempPhongCachList == null) {
             return;
         }
-        if (tempPhongCachList.isEmpty()){
+        if (tempPhongCachList.isEmpty()) {
             PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
             event.consume();
             return;
@@ -64,20 +64,21 @@ public class STTCollumHandler {
         removeFromParent(currentItem);
         addNodeToTheYoungestLeaf(tempPhongCachList, newItem);
     }
+
     // This mean we are choosing hang muc
-    public void handleCommitedNumericSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event, String item){
+    public void handleCommitedNumericSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event, String item) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         TreeItem<BangNoiThat> newItem = new TreeItem<>(currentItem.getValue());
         ObservableList<TreeItem<BangNoiThat>> tempPhongCachList = findPhongCachList(currentItem);
         assert tempPhongCachList != null;
-        if (tempPhongCachList.isEmpty()){
+        if (tempPhongCachList.isEmpty()) {
             PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
             event.consume();
             return;
         }
         removeFromParent(currentItem);
         ObservableList<TreeItem<BangNoiThat>> tempNoiThatList = tempPhongCachList.get(tempPhongCachList.size() - 1).getChildren();
-        if (tempNoiThatList.isEmpty()){
+        if (tempNoiThatList.isEmpty()) {
             PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
             event.consume();
             return;
@@ -85,29 +86,29 @@ public class STTCollumHandler {
         addNodeToTheYoungestLeaf(tempNoiThatList, newItem);
     }
 
-    private ObservableList<TreeItem<BangNoiThat>> findPhongCachList(TreeItem<BangNoiThat> currentItem){
+    private ObservableList<TreeItem<BangNoiThat>> findPhongCachList(TreeItem<BangNoiThat> currentItem) {
         ObservableList<TreeItem<BangNoiThat>> tempPhongCachList;
         TreeItem<BangNoiThat> root = TableNoiThat.getRoot();
         tempPhongCachList = root.getChildren();
         return tempPhongCachList;
     }
 
-    private void removeFromParent(TreeItem<BangNoiThat> node){
+    private void removeFromParent(TreeItem<BangNoiThat> node) {
         node.getParent().getChildren().remove(node);
     }
 
-    private void addNodeToTheYoungestLeaf(ObservableList<TreeItem<BangNoiThat>> leafList, TreeItem<BangNoiThat> newItem){
+    private void addNodeToTheYoungestLeaf(ObservableList<TreeItem<BangNoiThat>> leafList, TreeItem<BangNoiThat> newItem) {
         TreeItem<BangNoiThat> youngestLeaf = leafList.get(leafList.size() - 1);
         youngestLeaf.getChildren().add(newItem);
         youngestLeaf.setExpanded(true);
     }
 
-    public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param){
+    public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param) {
         return new CustomEditingCell<>();
     }
 
-    public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param){
-        if (param.getValue() == null){
+    public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {
+        if (param.getValue() == null) {
             return null;
         }
         SimpleStringProperty tempSTT = param.getValue().getValue().getSTT();

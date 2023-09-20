@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Scene.DatabaseModify;
 
 import com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyNoiThatController;
-import com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyPhongCachController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,6 +15,7 @@ public class DatabaseModifyNoiThatScene {
     private Parent root;
     private final FXMLLoader fxmlLoader;
     private static DatabaseModifyNoiThatScene single_instance = null;
+
     public DatabaseModifyNoiThatScene() {
         String viewPath = "view/DatabaseModifyNoiThatLayout.fxml";
         try {
@@ -46,11 +46,12 @@ public class DatabaseModifyNoiThatScene {
         addCssToScence();
     }
 
-    private void addCssToScence(){
+    private void addCssToScence() {
         String cssPath = "css/DatabaseModifyPhongCach.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }
-    public DatabaseModifyNoiThatController getController(){
+
+    public DatabaseModifyNoiThatController getController() {
         return fxmlLoader.getController();
     }
 }

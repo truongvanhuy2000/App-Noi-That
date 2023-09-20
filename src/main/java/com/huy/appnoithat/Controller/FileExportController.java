@@ -1,8 +1,5 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.Scene.LoginScene;
-import com.huy.appnoithat.Scene.LuaChonNoiThatScene;
-import com.huy.appnoithat.Scene.UserManagementScene;
 import com.huy.appnoithat.Service.FileExport.ExportFileService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,7 +19,7 @@ public class FileExportController {
         Scene scene = null;
         Stage stage = null;
         Object source = actionEvent.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
+        stage = (Stage) ((Node) source).getScene().getWindow();
 //        if (source == LogoutButton){
 //            scene = LoginScene.getInstance().getScene();
 //        }

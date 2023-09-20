@@ -4,7 +4,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -15,6 +14,7 @@ public class LoginScene {
     private Parent root;
     private final FXMLLoader fxmlLoader;
     private static LoginScene single_instance = null;
+
     public LoginScene() {
         String viewPath = "view/LoginLayoutRemake.fxml";
         try {
@@ -45,7 +45,7 @@ public class LoginScene {
         addCssToScence();
     }
 
-    private void addCssToScence(){
+    private void addCssToScence() {
         String cssPath = "css/LoginLayout.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }

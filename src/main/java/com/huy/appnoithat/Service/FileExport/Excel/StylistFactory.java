@@ -19,8 +19,7 @@ public class StylistFactory {
         if (style.containsKey(Stylist.Element.ALIGNMENT)) {
             switch (style.get(Stylist.Element.ALIGNMENT)) {
                 case Stylist.Style.HorizontalAlignment_CENTER -> cellStyle.setAlignment(HorizontalAlignment.CENTER);
-                case Stylist.Style.VerticalAlignment_CENTER ->
-                        cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+                case Stylist.Style.VerticalAlignment_CENTER -> cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
                 case Stylist.Style.Alignment_BOTH -> {
                     cellStyle.setAlignment(HorizontalAlignment.CENTER);
                     cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
@@ -49,28 +48,29 @@ public class StylistFactory {
         cellStyle.setWrapText(true);
         return cellStyle;
     }
+
     public Font fontStyleFactory(String style, int size) {
         Font font = this.workbook.createFont();
-            switch (style) {
-                case Stylist.Style.Font_TimeNewRoman_NORMAL -> {
-                    font.setFontName("Times New Roman");
-                    font.setBold(false);
-                    font.setItalic(false);
-                }
-                case Stylist.Style.Font_TimeNewRoman_BOLD -> {
-                    font.setFontName("Times New Roman");
-                    font.setBold(true);
-                    font.setItalic(false);
-                }
-                case Stylist.Style.Font_TimeNewRoman_ITALIC -> {
-                    font.setFontName("Times New Roman");
-                    font.setBold(false);
-                    font.setItalic(true);
-                }
-                case Stylist.Style.Font_TimeNewRoman_BOLDTALIC -> {
-                    font.setFontName("Times New Roman");
-                    font.setBold(true);
-                    font.setItalic(true);
+        switch (style) {
+            case Stylist.Style.Font_TimeNewRoman_NORMAL -> {
+                font.setFontName("Times New Roman");
+                font.setBold(false);
+                font.setItalic(false);
+            }
+            case Stylist.Style.Font_TimeNewRoman_BOLD -> {
+                font.setFontName("Times New Roman");
+                font.setBold(true);
+                font.setItalic(false);
+            }
+            case Stylist.Style.Font_TimeNewRoman_ITALIC -> {
+                font.setFontName("Times New Roman");
+                font.setBold(false);
+                font.setItalic(true);
+            }
+            case Stylist.Style.Font_TimeNewRoman_BOLDTALIC -> {
+                font.setFontName("Times New Roman");
+                font.setBold(true);
+                font.setItalic(true);
             }
         }
         font.setFontHeightInPoints((short) size);
@@ -81,7 +81,7 @@ public class StylistFactory {
         int endPos = 0;
         if (data.contains(":")) {
             endPos = data.indexOf(":");
-        }else {
+        } else {
             endPos = data.length();
         }
         RichTextString textString = new XSSFRichTextString(data);
@@ -193,7 +193,7 @@ public class StylistFactory {
                 fontStyle = Stylist.Style.Font_TimeNewRoman_BOLD;
                 textStyle = Stylist.Style.Text_CUSTOMBOLD3;
             }
-case Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_NoBorder -> {
+            case Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_NoBorder -> {
                 cellStyle = Map.of(
                         Stylist.Element.ALIGNMENT, Stylist.Style.VerticalAlignment_CENTER,
                         Stylist.Element.BORDER, Stylist.Style.BorderStyle_NO
@@ -205,6 +205,7 @@ case Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_NoBorder -> {
         }
         applyPreset(cell, data, size, cellStyle, fontStyle, textStyle);
     }
+
     private void applyPreset(Cell cell, String data, int size, Map<String, String> cellStyle, String fontStyle, String textStyle) {
         CellStyle appliedCellStyle = cellStyleFactory(cellStyle);
         RichTextString appliedTextString = textStyleFactory(textStyle, data, size);
@@ -214,8 +215,7 @@ case Stylist.Preset.BoldText01_TimeNewRoman_VerticalCenter_NoBorder -> {
 //        System.out.println("data: " + data  + " length:" + data.length());
         if (data.length() >= 80) {
             cell.getRow().setHeight((short) (cell.getRow().getHeight() + 800));
-        }
-        else {
+        } else {
             cell.getRow().setHeight((short) (cell.getRow().getHeight() + 50));
         }
         cell.setCellStyle(appliedCellStyle);

@@ -7,6 +7,7 @@ import javafx.scene.input.KeyCode;
 
 public class CustomEditingListCell<T extends CommonItemInterface> extends ListCell<T> {
     private TextArea textArea;
+
     @Override
     protected void updateItem(T item, boolean empty) {
         super.updateItem(item, empty);
@@ -60,6 +61,7 @@ public class CustomEditingListCell<T extends CommonItemInterface> extends ListCe
             }
         });
     }
+
     private String getString() {
         return getItem() == null ? "" : getItem().getName();
     }

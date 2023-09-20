@@ -4,6 +4,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Shared.Utils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
 @Data
 @AllArgsConstructor
 public class ThongTinThanhToan {
@@ -11,6 +12,7 @@ public class ThongTinThanhToan {
     private String DatCocThiCong30;
     private String HangDenChanCongTrinh50;
     private String NghiemThuQuyet;
+
     public ThongTinThanhToan(BangThanhToan bangThanhToan) {
         DatCocThietKe10 = Utils.convertLongToDecimal(bangThanhToan.getDatCocThietKe10().getValue());
         DatCocThiCong30 = Utils.convertLongToDecimal(bangThanhToan.getDatCocThiCong30().getValue());
