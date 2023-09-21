@@ -1,6 +1,9 @@
 package com.huy.appnoithat.Scene;
 
+import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
+import com.huy.appnoithat.Controller.UsersManagementController;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import lombok.Getter;
@@ -47,5 +50,12 @@ public class UserManagementScene {
     private void addCssToScence(){
         String cssPath = "css/UserManagementLayout.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
+    }
+
+    static public Node getNewRoot() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(UserManagementScene.class.getResource("view/UserManagementLayout.fxml"));
+        fxmlLoader.setController(new UsersManagementController());
+        Parent root = fxmlLoader.load();
+        return root;
     }
 }

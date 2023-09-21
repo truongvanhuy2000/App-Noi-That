@@ -5,13 +5,22 @@ import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Scene.NewTabScene;
 import com.huy.appnoithat.Scene.UserManagementScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
+import javafx.animation.FadeTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class HomeController {
     @FXML
@@ -25,6 +34,19 @@ public class HomeController {
     @FXML
     private Text UserName;
     private final UserSessionService sessionService;
+
+    @FXML
+    private ImageView logoutIMG;
+
+    @FXML
+    private AnchorPane mainPane;
+    @FXML
+    private Label menu;
+    @FXML
+    private Label menuback;
+
+    @FXML
+    private AnchorPane slider;
     public HomeController() {
         this.sessionService = new UserSessionService();
     }
@@ -34,10 +56,38 @@ public class HomeController {
         LogoutButton.getScene().getWindow().hide();
         sceneSwitcher(event);
     }
+    TranslateTransition slide = new TranslateTransition();
+    @FXML
+    void ClickedMenu(MouseEvent event) {
+        slider.setTranslateX(-400);
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(slider);
+        slide.setToX(0);
+        slide.play();
+        slider.setTranslateX(-400);
+        slide.setOnFinished((actionEvent -> {
+            menu.setVisible(false);
+            menuback.setVisible(true);
+        }));
+    }
 
+    @FXML
+    void ClickedMenuBack(MouseEvent event) {
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(slider);
+        slide.setToX(-400);
+        slide.play();
+        slider.setTranslateX(0);
+        slide.setOnFinished((actionEvent -> {
+            menu.setVisible(true);
+            menuback.setVisible(false);
+        }));
+    }
     // Initialize scene
     public void initialize() {
-        // Hide all button
+
+            // Hide all button
         toggleButton(false, false, false);
         // Set username using current session
         String username = sessionService.getLoginAccount().getUsername();
@@ -82,7 +132,9 @@ public class HomeController {
             return;
         }
         else if (source == QuanLyNguoiDungButton) {
-            scene = UserManagementScene.getInstance().getScene();
+//            scene = UserManagementScene.getInstance().getScene();
+            Node root = UserManagementScene.getInstance().getRoot();
+            mainPane.getChildren().add(root);
         }else if (source == suadoidatabaseButton) {
             scene = DatabaseModifyPhongCachScene.getInstance().getScene();
             DatabaseModifyPhongCachScene.getInstance().getController().init();

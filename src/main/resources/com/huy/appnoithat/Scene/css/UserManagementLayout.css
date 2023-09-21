@@ -104,7 +104,7 @@
     -fx-text-fill: #ffff;
 }
 
-#btnSearchcss,#btnAllAccountcss{
+#btnAddcss,#btnEditcss,#btnDeletecss,#btnActivecss,#btnInactivecss,#btnDuyetcss,#btnSearchcss,#btnAllAccountcss{
     -fx-background-color:
             linear-gradient(#0dccea, #0d70ea),
             radial-gradient(center 50% -40%, radius 200%, #0dccea 45%, #0d70ea 50%);

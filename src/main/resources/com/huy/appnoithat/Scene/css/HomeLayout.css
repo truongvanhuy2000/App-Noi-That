@@ -1,11 +1,11 @@
-/*.button{*/
-/*    -fx-background-color: #F3F3F3;*/
-/*}*/
+.menuItem{
+    -fx-background-color:  #0A4969;
+}
+.menuItem:hover{
+    -fx-background-color: #0e6286;
+    -fx-border-width: 0px 0px 0px 10px;
+    -fx-border-color: WHITE;
 
-.button:hover {
-    -fx-background-color: #C0D5F7;
 }
 
-.button:pressed{
-    -fx-background-color: #73A3EF;
-}
+
