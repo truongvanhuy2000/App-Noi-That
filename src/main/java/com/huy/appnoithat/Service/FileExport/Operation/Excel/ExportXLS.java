@@ -1,11 +1,12 @@
-package com.huy.appnoithat.Service.FileExport.Excel;
+package com.huy.appnoithat.Service.FileExport.Operation.Excel;
 
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import com.huy.appnoithat.DataModel.ThongTinThanhToan;
-import com.huy.appnoithat.Service.FileExport.ExportFileService;
+import com.huy.appnoithat.Service.FileExport.ExportData.CommonExportData;
+import com.huy.appnoithat.Service.FileExport.ExportFile;
 import com.huy.appnoithat.Shared.Utils;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,8 +25,8 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ExportXLS implements ExportFileService {
-    final static Logger LOGGER = LogManager.getLogger(ExportFileService.class);
+public class ExportXLS implements ExportFile {
+    final static Logger LOGGER = LogManager.getLogger(ExportFile.class);
     // USED FOR TESTING ONLY
     private static final String DEFAULT_TEMPLATE_PATH = Config.FILE_EXPORT.XLSX_TEMPLATE_DIRECTORY;
     private static final String DEFAULT_OUTPUT_PATH = Config.FILE_EXPORT.XLSX_DEFAULT_OUTPUT_DIRECTORY;
@@ -35,16 +36,16 @@ public class ExportXLS implements ExportFileService {
     private String noteArea;
     private List<ThongTinNoiThat> thongTinNoiThatList;
     private ThongTinThanhToan thongTinThanhToan;
+    private OutputStream outputFile;
 
     private InputStream inputTemplate;
-    private OutputStream outputFile;
+
     private XSSFWorkbook workbook;
     private XSSFSheet spreadsheet;
-    StylistFactory stylistFactory;
-    public ExportXLS(OutputStream outputFile) {
+    private StylistFactory stylistFactory;
+    public ExportXLS(File outputFile) {
         try {
             this.inputTemplate = new FileInputStream(DEFAULT_TEMPLATE_PATH);
-            this.outputFile = outputFile;
             initWorkbook();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -76,6 +77,19 @@ public class ExportXLS implements ExportFileService {
         exportBangThanhToan(++rowID, this.thongTinThanhToan);
         exportNoteArea(++rowID, this.noteArea);
         save();
+    }
+
+    @Override
+    public void setUpDataForExport(CommonExportData dataForExport) {
+        setThongTinCongTy(dataForExport.getThongTinCongTy());
+        setThongTinKhachHang(dataForExport.getThongTinKhachHang());
+        setThongTinNoiThatList(dataForExport.getThongTinNoiThatList());
+        setThongTinThanhToan(dataForExport.getThongTinThanhToan());
+        setNoteArea(dataForExport.getNoteArea());
+    }
+
+    @Override
+    public void importData() {
     }
 
     private void exportNoteArea(int rowId, String noteArea) {

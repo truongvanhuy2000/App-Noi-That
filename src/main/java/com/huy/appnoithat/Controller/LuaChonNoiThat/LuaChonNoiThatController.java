@@ -13,7 +13,8 @@ import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import com.huy.appnoithat.DataModel.ThongTinThanhToan;
-import com.huy.appnoithat.Service.FileExport.Excel.ExportXLS;
+import com.huy.appnoithat.Enums.FileType;
+import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Shared.PopupUtils;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.DoubleProperty;
@@ -78,10 +79,10 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private TableView<BangThanhToan> bangThanhToan;
     private ByteArrayOutputStream imageStream;
-
-    public void initialize() {
+    private final LuaChonNoiThatService luaChonNoiThatService;
+    public LuaChonNoiThatController () {
+        luaChonNoiThatService = new LuaChonNoiThatService();
     }
-
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {
         Object source = event.getSource();
@@ -92,6 +93,7 @@ public class LuaChonNoiThatController implements Initializable {
 
     @FXML
     void onKeyPressed(KeyEvent event) {
+//        AnchorPane anchorPane = new AnchorPane();
         if (event.getCode() == KeyCode.DELETE) {
             if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
                 return;
@@ -131,13 +133,6 @@ public class LuaChonNoiThatController implements Initializable {
                 SanPham.textProperty().isEmpty()))))))))
         );
         NgayLapBaoGia.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
-//        try {
-//            ImageView.setImage(
-//                    new Image(Objects.requireNonNull(
-//                            LuaChonNoiThatController.class.getResourceAsStream(DEFAULT_IMAGE_PATH))));
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
     }
 
     private void resizeToFit() {
@@ -160,25 +155,19 @@ public class LuaChonNoiThatController implements Initializable {
     }
 
     private void exportButtonHandler(ActionEvent event) {
-        try {
-            File selectedFile = PopupUtils.fileChooser();
-
-            ExportXLS exportXLS = new ExportXLS(new FileOutputStream(selectedFile.getPath()));
-            exportXLS.setThongTinCongTy(getThongTinCongTy());
-            exportXLS.setThongTinKhachHang(getThongTinKhachHang());
-            exportXLS.setThongTinNoiThatList(getThongTinNoiThatList());
-            exportXLS.setThongTinThanhToan(getThongTinThanhToan());
-            exportXLS.setNoteArea(noteTextArea.getText());
-            exportXLS.export();
-        } catch (IOException e) {
-            LOGGER.error("Some thing is wrong with the export operation", e);
-            throw new RuntimeException(e);
+        File selectedFile = PopupUtils.fileChooser();
+        boolean result = luaChonNoiThatService.exportFile(selectedFile,
+                FileType.EXCEL,
+                getThongTinCongTy(),
+                getThongTinKhachHang(),
+                getThongTinNoiThatList(),
+                getThongTinThanhToan(),
+                noteTextArea.getText());
+        if (!result) {
+            PopupUtils.throwErrorSignal("Xuất file thất bại");
+            return;
         }
         PopupUtils.throwSuccessSignal("Xuất file thành công");
-    }
-
-    private String populateFileName() {
-        return null;
     }
 
     private List<ThongTinNoiThat> getThongTinNoiThatList() {
@@ -231,7 +220,7 @@ public class LuaChonNoiThatController implements Initializable {
         }
     }
 
-    private ThongTinCongTy getThongTinCongTy() throws IOException {
+    private ThongTinCongTy getThongTinCongTy(){
         return new ThongTinCongTy(
                 new ByteArrayInputStream(imageStream.toByteArray()),
                 TenCongTy.getText(),

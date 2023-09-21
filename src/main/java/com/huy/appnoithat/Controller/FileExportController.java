@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.Service.FileExport.ExportFileService;
+import com.huy.appnoithat.Service.FileExport.ExportFile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class FileExportController {
-    private ExportFileService exportFileService;
+    private ExportFile exportFileService;
 
     // Call this method everytime you switch scene
     public void initialize() {
