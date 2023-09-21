@@ -3,10 +3,12 @@ package com.huy.appnoithat.DataModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.InputStream;
 
 @Data
+@NoArgsConstructor
 public class ThongTinCongTy {
     @JsonIgnore
     InputStream logo;

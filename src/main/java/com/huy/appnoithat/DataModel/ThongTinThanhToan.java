@@ -5,9 +5,11 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Shared.Utils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class ThongTinThanhToan {
     @JsonProperty("DatCocThietKe10")
     private String DatCocThietKe10;

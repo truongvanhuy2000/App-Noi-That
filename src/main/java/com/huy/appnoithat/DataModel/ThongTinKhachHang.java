@@ -2,8 +2,10 @@ package com.huy.appnoithat.DataModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class ThongTinKhachHang {
     @JsonProperty("tenKhachHang")
     String tenKhachHang;

@@ -1,11 +1,10 @@
 package com.huy.appnoithat.Service.FileExport.Operation.NtFile;
 
-import com.huy.appnoithat.DataModel.ThongTinCongTy;
-import com.huy.appnoithat.DataModel.ThongTinKhachHang;
-import com.huy.appnoithat.DataModel.ThongTinNoiThat;
-import com.huy.appnoithat.DataModel.ThongTinThanhToan;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Service.FileExport.ExportData.CommonExportData;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
+import com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.Metadata;
+import com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,20 +12,19 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-import java.util.List;
+import java.time.LocalDate;
+
 @Getter
 @Setter
 public class ExportNtFile implements ExportFile {
-    private ThongTinCongTy thongTinCongTy;
-    private ThongTinKhachHang thongTinKhachHang;
-    private String noteArea;
-    private List<ThongTinNoiThat> thongTinNoiThatList;
-    private ThongTinThanhToan thongTinThanhToan;
-
+    private CommonExportData dataForExport;
+    private ObjectData objectData;
     private OutputStream outputFile;
+    private ObjectMapper mapper;
     public ExportNtFile() {
     }
     public ExportNtFile(File outputFile) {
+        this.mapper = new ObjectMapper();
         try {
             this.outputFile = new FileOutputStream(outputFile.getPath());
         } catch (FileNotFoundException e) {
@@ -36,15 +34,13 @@ public class ExportNtFile implements ExportFile {
     @Override
     public void export(){
 
+        String outPutJson = mapper.writeValueAsString()
     }
 
     @Override
     public void setUpDataForExport(CommonExportData dataForExport) {
-        setThongTinCongTy(dataForExport.getThongTinCongTy());
-        setThongTinKhachHang(dataForExport.getThongTinKhachHang());
-        setThongTinNoiThatList(dataForExport.getThongTinNoiThatList());
-        setThongTinThanhToan(dataForExport.getThongTinThanhToan());
-        setNoteArea(dataForExport.getNoteArea());
+        this.dataForExport = dataForExport;
+        this.objectData = new ObjectData(dataForExport, new Metadata("test file", LocalDate.now()));
     }
 
     @Override
