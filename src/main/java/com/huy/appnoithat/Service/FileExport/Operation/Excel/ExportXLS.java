@@ -61,6 +61,15 @@ public class ExportXLS implements ExportFile {
         }
     }
 
+    public void setThongTinNoiThatList(List<ThongTinNoiThat> thongTinNoiThatList) {
+        thongTinNoiThatList.forEach(item -> {
+            String stt = item.getSTT();
+            if (Utils.RomanNumber.isRoman(stt) || Utils.isNumeric(stt)) {
+                this.thongTinNoiThatList.add(item);
+            }
+        });
+    }
+
     private void initWorkbook() throws IOException {
         workbook = new XSSFWorkbook(inputTemplate);
         spreadsheet = workbook.getSheet("Sheet1");

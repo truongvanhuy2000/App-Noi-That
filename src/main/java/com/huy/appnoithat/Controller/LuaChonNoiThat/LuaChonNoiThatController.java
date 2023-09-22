@@ -157,7 +157,7 @@ public class LuaChonNoiThatController implements Initializable {
     private void exportButtonHandler(ActionEvent event) {
         File selectedFile = PopupUtils.fileChooser();
         boolean result = luaChonNoiThatService.exportFile(selectedFile,
-                FileType.NT,
+                FileType.EXCEL,
                 getThongTinCongTy(),
                 getThongTinKhachHang(),
                 getThongTinNoiThatList(),
@@ -176,6 +176,7 @@ public class LuaChonNoiThatController implements Initializable {
         // Get a list of phong cach item
         TableNoiThat.getRoot().getChildren().forEach(
                 item -> {
+                    listNoiThat.add(convertFromTreeItem(item));
                     item.getChildren().forEach(
                             item1 -> {
                                 listNoiThat.add(convertFromTreeItem(item1));
