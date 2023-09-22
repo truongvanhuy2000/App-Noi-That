@@ -157,7 +157,7 @@ public class LuaChonNoiThatController implements Initializable {
     private void exportButtonHandler(ActionEvent event) {
         File selectedFile = PopupUtils.fileChooser();
         boolean result = luaChonNoiThatService.exportFile(selectedFile,
-                FileType.EXCEL,
+                FileType.NT,
                 getThongTinCongTy(),
                 getThongTinKhachHang(),
                 getThongTinNoiThatList(),

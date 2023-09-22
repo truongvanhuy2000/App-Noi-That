@@ -1,6 +1,9 @@
 package com.huy.appnoithat.Service.FileExport.Operation.NtFile;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Service.FileExport.ExportData.CommonExportData;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
 import com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.Metadata;
@@ -24,7 +27,9 @@ public class ExportNtFile implements ExportFile {
     public ExportNtFile() {
     }
     public ExportNtFile(File outputFile) {
-        this.mapper = new ObjectMapper();
+        this.mapper = JsonMapper.builder()
+                .addModule(new JavaTimeModule())
+                .build();
         try {
             this.outputFile = new FileOutputStream(outputFile.getPath());
         } catch (FileNotFoundException e) {
@@ -33,8 +38,12 @@ public class ExportNtFile implements ExportFile {
     }
     @Override
     public void export(){
-
-        String outPutJson = mapper.writeValueAsString()
+        try {
+            String outPutJson = mapper.writeValueAsString(objectData);
+            outputFile.write(outPutJson.getBytes());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
