@@ -69,7 +69,7 @@ public class LuaChonNoiThatController implements Initializable {
     private TreeTableColumn<BangNoiThat, String> DonVi, HangMuc, VatLieu, STT;
     // Button
     @FXML
-    private Button deleteButton, addContinuousButton, addNewButton, ExportButton;
+    private Button addContinuousButton, addNewButton, ExportButton;
     @FXML
     private ImageView ImageView;
     @FXML
@@ -111,13 +111,16 @@ public class LuaChonNoiThatController implements Initializable {
             TableNoiThat.getSelectionModel().clearSelection();
         }
     }
+    @FXML
+    void onSaveAction(ActionEvent event) {
+        exportFile(FileType.NT);
+    }
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
         resizeToFit();
         setUpBangThanhToan();
         setUpBangNoiThat();
         ButtonHandler buttonHandler = new ButtonHandler(TableNoiThat);
-        deleteButton.setOnAction(buttonHandler::onDeleteLine);
         addNewButton.setOnAction(buttonHandler::addNewLine);
         addContinuousButton.setOnAction(buttonHandler::continuousLineAdd);
         ExportButton.setOnAction(this::exportButtonHandler);
@@ -155,9 +158,13 @@ public class LuaChonNoiThatController implements Initializable {
     }
 
     private void exportButtonHandler(ActionEvent event) {
+        exportFile(FileType.EXCEL);
+    }
+
+    private void exportFile(FileType fileType) {
         File selectedFile = PopupUtils.fileChooser();
         boolean result = luaChonNoiThatService.exportFile(selectedFile,
-                FileType.EXCEL,
+                fileType,
                 getThongTinCongTy(),
                 getThongTinKhachHang(),
                 getThongTinNoiThatList(),

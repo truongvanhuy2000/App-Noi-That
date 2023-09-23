@@ -38,8 +38,10 @@ public class KichThuocHandler {
         float cao = event.getRowValue().getValue().getCao().getValue();
         String donvi = event.getRowValue().getValue().getDonVi().getValue();
         float khoiluong = TableUtils.calculateKhoiLuong(dai, rong, cao, donvi);
+        System.out.println(khoiluong);
         Long dongia = event.getRowValue().getValue().getDonGia().getValue();
         long thanhTien = TableUtils.calculateThanhTien(khoiluong, dongia);
+        System.out.println(thanhTien);
         event.getRowValue().getValue().setKhoiLuong(khoiluong);
         event.getRowValue().getValue().setThanhTien(thanhTien);
 

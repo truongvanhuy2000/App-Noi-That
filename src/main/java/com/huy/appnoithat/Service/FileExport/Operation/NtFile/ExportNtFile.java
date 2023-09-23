@@ -1,6 +1,5 @@
 package com.huy.appnoithat.Service.FileExport.Operation.NtFile;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -24,8 +23,6 @@ public class ExportNtFile implements ExportFile {
     private ObjectData objectData;
     private OutputStream outputFile;
     private ObjectMapper mapper;
-    public ExportNtFile() {
-    }
     public ExportNtFile(File outputFile) {
         this.mapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())

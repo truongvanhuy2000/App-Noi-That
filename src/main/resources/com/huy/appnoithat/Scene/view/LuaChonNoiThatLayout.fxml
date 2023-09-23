@@ -82,6 +82,7 @@
                 </TreeTableView>
                 <Button fx:id="deleteButton" layoutX="11.0" layoutY="544.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" text="X" />
                 <Button fx:id="addContinuousButton" layoutX="4.0" layoutY="487.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="44.0" rotate="90.0" text="&gt;&gt;" />
+            <Button layoutX="13.0" layoutY="52.0" mnemonicParsing="false" onAction="#onSaveAction" text="Save" />
             </children>
         </AnchorPane>
     </children>

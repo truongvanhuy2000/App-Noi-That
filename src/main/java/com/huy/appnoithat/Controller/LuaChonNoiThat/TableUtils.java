@@ -38,6 +38,7 @@ public class TableUtils {
                 return 0f;
             }
             khoiLuong = chieuDai / 1000;
+            return khoiLuong;
         }
 
         if (donVi.trim().equalsIgnoreCase(metVuong)) {
