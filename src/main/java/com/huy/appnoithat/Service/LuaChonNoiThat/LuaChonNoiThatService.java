@@ -4,16 +4,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.huy.appnoithat.DataModel.ThongTinCongTy;
-import com.huy.appnoithat.DataModel.ThongTinKhachHang;
-import com.huy.appnoithat.DataModel.ThongTinNoiThat;
-import com.huy.appnoithat.DataModel.ThongTinThanhToan;
+import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Enums.FileType;
-import com.huy.appnoithat.Service.FileExport.ExportData.CommonExportData;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
 import com.huy.appnoithat.Service.FileExport.FileExportService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
@@ -158,17 +154,11 @@ public class LuaChonNoiThatService {
             throw new RuntimeException(e);
         }
     }
-    public boolean exportFile(File selectedFile, FileType fileType,
-                           ThongTinCongTy thongTinCongTy,
-                           ThongTinKhachHang thongTinKhachHang,
-                           List<ThongTinNoiThat> thongTinNoiThatList,
-                           ThongTinThanhToan thongTinThanhToan, String noteArea) {
+    public boolean exportFile(File selectedFile, FileType fileType, DataPackage dataPackage) {
         ExportFile exportFile = fileExportService.getExportService(selectedFile, fileType);
-        CommonExportData dataForExport = new CommonExportData(
-                thongTinCongTy, thongTinKhachHang, noteArea, thongTinNoiThatList, thongTinThanhToan);
-        exportFile.setUpDataForExport(dataForExport);
+        exportFile.setUpDataForExport(dataPackage);
         try {
-            exportFile.export();
+            exportFile.export(selectedFile);
             return true;
         }
         catch (IOException e) {
@@ -176,4 +166,10 @@ public class LuaChonNoiThatService {
             return false;
         }
     }
+
+    public DataPackage importFile(File selectedFile) {
+        ExportFile exportFile = fileExportService.getExportService(selectedFile, FileType.NT);
+        return exportFile.importData(selectedFile);
+    }
+
 }

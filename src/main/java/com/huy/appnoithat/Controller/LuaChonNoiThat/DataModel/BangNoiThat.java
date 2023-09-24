@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel;
 
+import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -31,6 +32,19 @@ public class BangNoiThat {
         VatLieu = new SimpleStringProperty(vatLieu);
         ThanhTien = new SimpleLongProperty(thanhTien);
         KhoiLuong = new SimpleFloatProperty(khoiLuong);
+    }
+
+    public BangNoiThat(ThongTinNoiThat thongTinNoiThat) {
+        this.STT = new SimpleStringProperty(thongTinNoiThat.getSTT());
+        this.Cao = new SimpleFloatProperty(Float.parseFloat(thongTinNoiThat.getCao()));
+        this.Dai = new SimpleFloatProperty(Float.parseFloat(thongTinNoiThat.getDai()));
+        this.Rong = new SimpleFloatProperty(Float.parseFloat(thongTinNoiThat.getRong()));
+        this.DonGia = new SimpleLongProperty(Long.parseLong(thongTinNoiThat.getDonGia()));
+        this.DonVi = new SimpleStringProperty(thongTinNoiThat.getDonViTinh());
+        this.HangMuc = new SimpleStringProperty(thongTinNoiThat.getTenHangMuc());
+        this.VatLieu = new SimpleStringProperty(thongTinNoiThat.getChiTiet());
+        this.ThanhTien = new SimpleLongProperty(Long.parseLong(thongTinNoiThat.getThanhTien()));
+        this.KhoiLuong = new SimpleFloatProperty(Float.parseFloat(thongTinNoiThat.getSoLuong()));
     }
 
     public void setSTT(String STT) {

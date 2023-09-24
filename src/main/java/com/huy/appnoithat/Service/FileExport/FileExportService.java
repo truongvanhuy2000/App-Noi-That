@@ -9,8 +9,8 @@ import java.io.File;
 public class FileExportService {
     public ExportFile getExportService(File outputFile, FileType fileType) {
         return switch (fileType) {
-            case EXCEL -> new ExportXLS(outputFile);
-            case NT -> new ExportNtFile(outputFile);
+            case EXCEL -> new ExportXLS();
+            case NT -> new ExportNtFile();
             default -> null;
         };
     }

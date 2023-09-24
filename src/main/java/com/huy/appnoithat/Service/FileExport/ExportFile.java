@@ -1,11 +1,12 @@
 package com.huy.appnoithat.Service.FileExport;
 
-import com.huy.appnoithat.Service.FileExport.ExportData.CommonExportData;
+import com.huy.appnoithat.DataModel.DataPackage;
 
+import java.io.File;
 import java.io.IOException;
 
 public interface ExportFile {
-    void export() throws IOException;
-    void setUpDataForExport(CommonExportData dataForExport);
-    void importData();
+    void export(File exportDirectory) throws IOException;
+    void setUpDataForExport(DataPackage dataForExport);
+    DataPackage importData(File importDirectory);
 }

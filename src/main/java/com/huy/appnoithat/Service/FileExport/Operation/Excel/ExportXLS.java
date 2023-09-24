@@ -5,7 +5,7 @@ import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import com.huy.appnoithat.DataModel.ThongTinThanhToan;
-import com.huy.appnoithat.Service.FileExport.ExportData.CommonExportData;
+import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
 import com.huy.appnoithat.Shared.Utils;
 import lombok.Getter;
@@ -44,34 +44,36 @@ public class ExportXLS implements ExportFile {
     private XSSFWorkbook workbook;
     private XSSFSheet spreadsheet;
     private StylistFactory stylistFactory;
-    public ExportXLS(File outputFile) {
-        try {
-            this.inputTemplate = new FileInputStream(DEFAULT_TEMPLATE_PATH);
-            if (!outputFile.getAbsolutePath().contains(".xlsx")) {
-                this.outputFile = new FileOutputStream(outputFile.getAbsolutePath() + ".xlsx");
-            }
-            else {
-                this.outputFile = new FileOutputStream(outputFile.getAbsolutePath());
-            }
-            initWorkbook();
-        } catch (IOException e) {
-            LOGGER.error("Error while init ExportXLS");
-            throw new RuntimeException(e);
-        }
-    }
     public ExportXLS() {
         try {
             this.inputTemplate = new FileInputStream(DEFAULT_TEMPLATE_PATH);
-            this.outputFile = new FileOutputStream(DEFAULT_OUTPUT_PATH);
             initWorkbook();
         } catch (IOException e) {
             LOGGER.error("Error while init ExportXLS");
             throw new RuntimeException(e);
         }
     }
+    private void setOutputFile(File outputFile) throws FileNotFoundException {
+        if (!outputFile.getAbsolutePath().contains(".xlsx")) {
+            this.outputFile = new FileOutputStream(outputFile.getAbsolutePath() + ".xlsx");
+        }
+        else {
+            this.outputFile = new FileOutputStream(outputFile.getAbsolutePath());
+        }
+    }
+//    public ExportXLS() {
+//        try {
+//            this.inputTemplate = new FileInputStream(DEFAULT_TEMPLATE_PATH);
+//            this.outputFile = new FileOutputStream(DEFAULT_OUTPUT_PATH);
+//            initWorkbook();
+//        } catch (IOException e) {
+//            LOGGER.error("Error while init ExportXLS");
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     public void setThongTinNoiThatList(List<ThongTinNoiThat> thongTinNoiThatList) {
-        this.thongTinNoiThatList = new ArrayList<>();
+        setThongTinNoiThatList(new ArrayList<>());
         thongTinNoiThatList.forEach(item -> {
             String stt = item.getSTT();
             if (Utils.RomanNumber.isRoman(stt) || Utils.isNumeric(stt)) {
@@ -87,7 +89,9 @@ public class ExportXLS implements ExportFile {
     }
 
     @Override
-    public void export() throws IOException {
+    public void export(File exportDirectory) throws IOException {
+        setOutputFile(exportDirectory);
+
         LOGGER.info("Exporting to XLSX file");
         exportThongTinCongTy(this.thongTinCongTy);
         exportLogo(this.thongTinCongTy.getLogo());
@@ -99,7 +103,7 @@ public class ExportXLS implements ExportFile {
     }
 
     @Override
-    public void setUpDataForExport(CommonExportData dataForExport) {
+    public void setUpDataForExport(DataPackage dataForExport) {
         setThongTinCongTy(dataForExport.getThongTinCongTy());
         setThongTinKhachHang(dataForExport.getThongTinKhachHang());
         setThongTinNoiThatList(dataForExport.getThongTinNoiThatList());
@@ -108,7 +112,8 @@ public class ExportXLS implements ExportFile {
     }
 
     @Override
-    public void importData() {
+    public DataPackage importData(File importDirectory) {
+        return null;
     }
 
     private void exportNoteArea(int rowId, String noteArea) {

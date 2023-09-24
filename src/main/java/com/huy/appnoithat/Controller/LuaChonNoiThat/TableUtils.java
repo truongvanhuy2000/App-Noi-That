@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import com.huy.appnoithat.Shared.Utils;
 import javafx.event.EventHandler;
 import javafx.scene.control.TreeItem;
@@ -84,9 +85,22 @@ public class TableUtils {
         newItem.setExpanded(true);
         return newItem;
     }
+    public static TreeItem<BangNoiThat> createNewItem(BangNoiThat bangNoiThat) {
+        TreeItem<BangNoiThat> newItem = new TreeItem<>(bangNoiThat);
+        newItem.addEventHandler(TreeItem.branchCollapsedEvent(),
+                (EventHandler<TreeItem.TreeModificationEvent<String>>) event -> event.getTreeItem().setExpanded(true));
+        newItem.setExpanded(true);
+        return newItem;
+    }
 
     public static void selectSingleItem(TreeTableView<BangNoiThat> TableNoiThat, TreeItem<BangNoiThat> item) {
         TableNoiThat.getSelectionModel().clearSelection();
         TableNoiThat.getSelectionModel().select(item);
+    }
+    public static ThongTinNoiThat convertFromTreeItem(TreeItem<BangNoiThat> item) {
+        return new ThongTinNoiThat(item.getValue());
+    }
+    public static  TreeItem<BangNoiThat> convertToTreeItem(ThongTinNoiThat thongTinNoiThat) {
+        return TableUtils.createNewItem(new BangNoiThat(thongTinNoiThat));
     }
 }
