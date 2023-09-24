@@ -50,7 +50,6 @@ import java.util.ResourceBundle;
 
 public class LuaChonNoiThatController implements Initializable {
     final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatController.class);
-    private static final String DEFAULT_IMAGE_PATH = "/com/huy/appnoithat/Scene/icons/blank-user.jpg";
     private int itemCount = 0;
     // Thong Tin ve cong ty
     @FXML
@@ -135,6 +134,7 @@ public class LuaChonNoiThatController implements Initializable {
                 DiaChiKhachHang.textProperty().isEmpty().or(
                 SanPham.textProperty().isEmpty()))))))))
         );
+        imageStream = new ByteArrayOutputStream();
         NgayLapBaoGia.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
     }
 
@@ -227,6 +227,7 @@ public class LuaChonNoiThatController implements Initializable {
             Image image = new Image(new ByteArrayInputStream(imageStream.toByteArray()));
             ImageView.setImage(image);
         } catch (IOException e) {
+            LOGGER.error("Error while reading image file", e);
             throw new RuntimeException(e);
         }
     }

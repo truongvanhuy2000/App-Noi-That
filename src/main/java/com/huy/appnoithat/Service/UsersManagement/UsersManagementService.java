@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsersManagementService {
-
     final static Logger LOGGER = LogManager.getLogger(UsersManagementService.class);
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
@@ -37,7 +36,8 @@ public class UsersManagementService {
             tempAccountList = this.objectMapper.readValue(response2, objectMapper.getTypeFactory()
                     .constructCollectionType(List.class, Account.class));
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("Can't parse response from server when get all account");
+            throw new RuntimeException(e);
         }
         return tempAccountList;
     }
@@ -55,7 +55,8 @@ public class UsersManagementService {
             tempAccountList = this.objectMapper.readValue(response2, this.objectMapper.getTypeFactory()
                     .constructCollectionType(List.class, Account.class));
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("Can't parse response from server when get all account");
+            throw new RuntimeException(e);
         }
         return tempAccountList;
     }
@@ -73,7 +74,8 @@ public class UsersManagementService {
         try {
             account = this.objectMapper.readValue(response2, Account.class);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("Can't parse response from server when find account by id");
+            throw new RuntimeException(e);
         }
         return account;
     }
@@ -83,7 +85,8 @@ public class UsersManagementService {
         try {
             this.webClientService.authorizedHttpPostJson("/api/accounts", this.objectMapper.writeValueAsString(account), token);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("Can't parse response from server when add new account: " + account.toString());
+            throw new RuntimeException(e);
         }
     }
 
@@ -92,7 +95,9 @@ public class UsersManagementService {
         try {
             this.webClientService.authorizedHttpPutJson("/api/accounts", this.objectMapper.writeValueAsString(account), token);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("Can't parse response from server when edit account");
+            LOGGER.info(account.toString());
+            throw new RuntimeException(e);
         }
     }
 
@@ -112,7 +117,7 @@ public class UsersManagementService {
         try {
             return this.objectMapper.readValue(response, Account.class);
         } catch (IOException e) {
-            LOGGER.error("Error when find account by username");
+            LOGGER.error("Error when find account by username: " + username);
             throw new RuntimeException(e);
         }
     }

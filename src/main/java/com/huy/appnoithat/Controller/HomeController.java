@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Controller;
 
+import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Scene.NewTabScene;
@@ -12,8 +13,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class HomeController {
+    final static Logger LOGGER = LogManager.getLogger(HomeController.class);
     @FXML
     private Button LogoutButton;
     @FXML
@@ -56,6 +60,7 @@ public class HomeController {
             default -> {
             }
         }
+        LOGGER.info("Login as " + username + " with role " + role);
     }
 
     private void toggleButton(boolean luaChonNoiThatBtn, boolean quanLyNguoiDungBtn, boolean suadoidatabaseBtn) {
