@@ -149,7 +149,6 @@ public class UsersManagementController {
         List<AccountTable> listFilter = seach(username);
         ObservableList<AccountTable> listUser = FXCollections.observableArrayList(listFilter);
         tableManageUser.setItems(listUser);
-
     }
 
 
@@ -181,9 +180,6 @@ public class UsersManagementController {
     @FXML
     void AddAccount(ActionEvent event) {
         try {
-            if (tableManageUser.getSelectionModel().getSelectedItem() == null) {
-                return;
-            }
             Stage userManageMentStage = new Stage();
             Scene userManagementAddAccountScene = UserManagementAddAccountScene.getInstance().getScene();
             ObservableList<String> listActive = FXCollections.observableArrayList("true", "false");
