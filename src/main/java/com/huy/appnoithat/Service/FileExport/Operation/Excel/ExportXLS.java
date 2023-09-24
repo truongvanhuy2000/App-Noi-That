@@ -21,6 +21,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -46,6 +47,12 @@ public class ExportXLS implements ExportFile {
     public ExportXLS(File outputFile) {
         try {
             this.inputTemplate = new FileInputStream(DEFAULT_TEMPLATE_PATH);
+            if (!outputFile.getAbsolutePath().contains(".xlsx")) {
+                this.outputFile = new FileOutputStream(outputFile.getAbsolutePath() + ".xlsx");
+            }
+            else {
+                this.outputFile = new FileOutputStream(outputFile.getAbsolutePath());
+            }
             initWorkbook();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -62,6 +69,7 @@ public class ExportXLS implements ExportFile {
     }
 
     public void setThongTinNoiThatList(List<ThongTinNoiThat> thongTinNoiThatList) {
+        this.thongTinNoiThatList = new ArrayList<>();
         thongTinNoiThatList.forEach(item -> {
             String stt = item.getSTT();
             if (Utils.RomanNumber.isRoman(stt) || Utils.isNumeric(stt)) {

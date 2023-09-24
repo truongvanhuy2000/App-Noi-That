@@ -25,10 +25,6 @@ public class PopupUtils {
     public static File fileChooser() {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Choose location To Save Report");
-        File selectedFile = null;
-        while(selectedFile== null){
-            selectedFile = chooser.showSaveDialog(null);
-        }
-        return selectedFile;
+        return chooser.showSaveDialog(null);
     }
 }
