@@ -209,6 +209,7 @@ public class LuaChonNoiThatController implements Initializable {
      * This function will import the table from a file
      */
     private void importFile(File file) {
+        LOGGER.info("Import file: " + file.getName());
         DataPackage dataPackage = luaChonNoiThatService.importFile(file);
         if (dataPackage == null) {
             PopupUtils.throwErrorSignal("File không hợp lệ");
