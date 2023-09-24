@@ -163,6 +163,9 @@ public class LuaChonNoiThatController implements Initializable {
 
     private void exportFile(FileType fileType) {
         File selectedFile = PopupUtils.fileChooser();
+        if (selectedFile == null) {
+            return;
+        }
         boolean result = luaChonNoiThatService.exportFile(selectedFile,
                 fileType,
                 getThongTinCongTy(),
