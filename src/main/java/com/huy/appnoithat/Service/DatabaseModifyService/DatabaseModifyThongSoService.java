@@ -7,14 +7,17 @@ import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseModifyThongSoService {
-    private WebClientService webClientService;
-    private ObjectMapper objectMapper;
+    final static Logger LOGGER = LogManager.getLogger(DatabaseModifyThongSoService.class);
+    private final WebClientService webClientService;
+    private final ObjectMapper objectMapper;
     private String token;
     private final UserSessionService sessionService;
 
@@ -45,6 +48,7 @@ public class DatabaseModifyThongSoService {
                 tempThongSoList.add(thongSo1);
             }
         } catch (IOException e) {
+            LOGGER.error("Error when finding thong so");
             throw new RuntimeException(e);
         }
         return tempThongSoList;
@@ -55,6 +59,7 @@ public class DatabaseModifyThongSoService {
         try {
             this.webClientService.authorizedHttpPutJson("/api/thongso", objectMapper.writeValueAsString(thongSo), token);
         } catch (IOException e) {
+            LOGGER.error("Error when editing ThongSo");
             throw new RuntimeException(e);
         }
     }

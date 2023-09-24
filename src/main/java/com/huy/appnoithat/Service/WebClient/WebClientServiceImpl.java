@@ -1,6 +1,9 @@
 package com.huy.appnoithat.Service.WebClient;
 
 import com.huy.appnoithat.Configuration.Config;
+import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -9,6 +12,7 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 
 public class WebClientServiceImpl implements WebClientService {
+    final static Logger LOGGER = LogManager.getLogger(WebClientServiceImpl.class);
     private static final String CONTENT_TYPE = "Content-Type";
     private static final String JSON = "application/json";
     private static final String AUTHORIZATION = "Authorization";
@@ -94,6 +98,7 @@ public class WebClientServiceImpl implements WebClientService {
             }
             return response.body();
         } catch (Exception e) {
+            LOGGER.error("Error when sending request to server" + method + " " + path + " " + authenticationToken + " " + data);
             return null;
         }
     }

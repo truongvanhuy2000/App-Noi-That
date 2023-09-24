@@ -7,13 +7,15 @@ import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseModifyNoiThatService {
-
+    final static Logger LOGGER = LogManager.getLogger(DatabaseModifyNoiThatService.class);
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     private String token;
@@ -44,6 +46,7 @@ public class DatabaseModifyNoiThatService {
                 tempNoiThatList.add(noiThat1);
             }
         } catch (IOException e) {
+            LOGGER.error("Error when finding noi that");
             throw new RuntimeException(e);
         }
         return tempNoiThatList;
@@ -54,6 +57,7 @@ public class DatabaseModifyNoiThatService {
         try {
             this.webClientService.authorizedHttpPostJson("/api/noithat?parentId=" + parentID, objectMapper.writeValueAsString(noiThat), token);
         } catch (IOException e) {
+            LOGGER.error("Error when adding new NoiThat");
             throw new RuntimeException(e);
         }
     }
@@ -63,6 +67,7 @@ public class DatabaseModifyNoiThatService {
         try {
             this.webClientService.authorizedHttpPutJson("/api/noithat", objectMapper.writeValueAsString(noiThat), token);
         } catch (IOException e) {
+            LOGGER.error("Error when editing NoiThat");
             throw new RuntimeException(e);
         }
     }

@@ -9,6 +9,7 @@ import com.huy.appnoithat.Scene.UserManagementAddAccountScene;
 import com.huy.appnoithat.Scene.UserManagementEditorScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
+import com.huy.appnoithat.Shared.PopupUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +26,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -44,7 +47,7 @@ public class UsersManagementController {
         private ImageView activeImage;
         private String expiredDate;
     }
-
+    final static Logger LOGGER = LogManager.getLogger(UsersManagementController.class);
     @FXML
     private Button backButton;
     @FXML
@@ -209,6 +212,7 @@ public class UsersManagementController {
                     userManageMentStage.close();
 
                 } catch (JsonProcessingException e) {
+                    LOGGER.error("Error when add new account", e);
                     throw new RuntimeException(e);
                 }
             });
@@ -220,7 +224,8 @@ public class UsersManagementController {
             userManageMentStage.setTitle("ADD NEW USER");
             userManageMentStage.show();
         } catch (Exception e) {
-            System.out.println("co loi dialog pane roi dai ca oi");
+            LOGGER.error("Error when add new account", e);
+            throw new RuntimeException(e);
         }
 
     }
@@ -234,10 +239,12 @@ public class UsersManagementController {
         int deleteid = tableManageUser.getItems().get(indexSelector).getId();
         Account account = usersManagementService.findAccountById(deleteid);
         System.out.println(account.getRoleList().get(0));
-        if (account.getRoleList().get(0).equals("ROLE_ADMIN")) {
-        } else {
+        if (!account.getRoleList().get(0).equals("ROLE_ADMIN")) {
             usersManagementService.deleteAccount(deleteid);
             tableManageUser.getItems().remove(indexSelector);
+        }
+        else {
+            PopupUtils.throwErrorSignal("Không thể xóa tài khoản admin");
         }
     }
 
@@ -291,7 +298,8 @@ public class UsersManagementController {
                 userManageMentStage.close();
             });
         } catch (Exception e) {
-            System.out.println("co loi dialog pane roi dai ca oi");
+            LOGGER.error("Error when EDIT account", e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -311,7 +319,8 @@ public class UsersManagementController {
                 }
             }
         } catch (Exception e) {
-            System.out.println("loi roi");
+            LOGGER.error("Error when click selected item", e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -382,7 +391,8 @@ public class UsersManagementController {
                         userManageMentStage.close();
                     }
                 } catch (Exception e) {
-                    System.out.println("loi roi");
+                    LOGGER.error("Error when duyet account", e);
+                    throw new RuntimeException(e);
                 }
 
                 // You might need additional logic to handle saving or updating data
@@ -398,7 +408,8 @@ public class UsersManagementController {
                         userManageMentStage.close();
                     }
                 } catch (Exception e) {
-                    System.out.println("loi roi");
+                    LOGGER.error("Error when duyet account", e);
+                    throw new RuntimeException(e);
                 }
 
             });
@@ -407,7 +418,8 @@ public class UsersManagementController {
                 userManageMentStage.close();
             });
         } catch (Exception e) {
-            System.out.println("co loi dialog pane roi dai ca oi");
+            LOGGER.error("Error when duyet account", e);
+            throw new RuntimeException(e);
         }
     }
 

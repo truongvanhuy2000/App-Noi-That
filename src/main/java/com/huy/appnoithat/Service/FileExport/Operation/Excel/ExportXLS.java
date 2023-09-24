@@ -55,6 +55,7 @@ public class ExportXLS implements ExportFile {
             }
             initWorkbook();
         } catch (IOException e) {
+            LOGGER.error("Error while init ExportXLS");
             throw new RuntimeException(e);
         }
     }
@@ -64,6 +65,7 @@ public class ExportXLS implements ExportFile {
             this.outputFile = new FileOutputStream(DEFAULT_OUTPUT_PATH);
             initWorkbook();
         } catch (IOException e) {
+            LOGGER.error("Error while init ExportXLS");
             throw new RuntimeException(e);
         }
     }
@@ -243,10 +245,7 @@ public class ExportXLS implements ExportFile {
     }
 
     private void exportBangThanhToan(int rowId, ThongTinThanhToan thongTinThanhToan) {
-        int mergeColumnRange = 7;
-        int mergeColumnId = 1;
         int mergeRowId = rowId;
-        int mergeRowRange = 0;
 
         int cellId = 0;
 

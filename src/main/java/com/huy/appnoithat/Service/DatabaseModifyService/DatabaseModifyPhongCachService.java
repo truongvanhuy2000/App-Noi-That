@@ -7,12 +7,15 @@ import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseModifyPhongCachService {
+    final static Logger LOGGER = LogManager.getLogger(DatabaseModifyPhongCachService.class);
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     private final UserSessionService sessionService;
@@ -41,6 +44,7 @@ public class DatabaseModifyPhongCachService {
                 tempPhongCachList.add(phongCachNoiThat);
             }
         } catch (IOException e) {
+            LOGGER.error("Error when finding phong cach");
             throw new RuntimeException("Error when convert JSON to List<PhongCachNoiThat>");
         }
         return tempPhongCachList;
@@ -51,6 +55,7 @@ public class DatabaseModifyPhongCachService {
         try {
             this.webClientService.authorizedHttpPostJson("/api/phongcach", objectMapper.writeValueAsString(phongCachNoiThat), token);
         } catch (IOException e) {
+            LOGGER.error("Error when adding new PhongCach");
             throw new RuntimeException(e);
         }
     }
@@ -60,6 +65,7 @@ public class DatabaseModifyPhongCachService {
         try {
             this.webClientService.authorizedHttpPutJson("/api/phongcach", objectMapper.writeValueAsString(phongCachNoiThat), token);
         } catch (IOException e) {
+            LOGGER.error("Error when editing PhongCach");
             throw new RuntimeException(e);
         }
     }

@@ -29,11 +29,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LuaChonNoiThatService {
+    final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatService.class);
     private final WebClientService webClientService;
     private final UserSessionService userSessionService;
     private final ObjectMapper objectMapper;
     private final FileExportService fileExportService;
-    final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatService.class);
 
     // Fake the data
     public LuaChonNoiThatService() {
@@ -56,6 +56,7 @@ public class LuaChonNoiThatService {
                     .constructCollectionType(List.class, PhongCachNoiThat.class));
             return phongCachNoiThatList;
         } catch (JsonProcessingException e) {
+            LOGGER.error("Can't parse response from server");
             throw new RuntimeException(e);
         }
     }
@@ -70,6 +71,7 @@ public class LuaChonNoiThatService {
             PhongCachNoiThat phongCachNoiThat = objectMapper.readValue(response, PhongCachNoiThat.class);
             return phongCachNoiThat;
         } catch (JsonProcessingException e) {
+            LOGGER.error("Can't parse response from server");
             throw new RuntimeException(e);
         }
     }
@@ -85,6 +87,7 @@ public class LuaChonNoiThatService {
             PhongCachNoiThat phongCachNoiThat = objectMapper.readValue(response, PhongCachNoiThat.class);
             return phongCachNoiThat;
         } catch (JsonProcessingException e) {
+            LOGGER.error("Can't parse response from server");
             throw new RuntimeException(e);
         }
     }
@@ -104,6 +107,7 @@ public class LuaChonNoiThatService {
                     .constructCollectionType(List.class, NoiThat.class));
             return noiThatList;
         } catch (JsonProcessingException e) {
+            LOGGER.error("Can't parse response from server");
             throw new RuntimeException(e);
         }
     }
@@ -127,6 +131,7 @@ public class LuaChonNoiThatService {
                     .constructCollectionType(List.class, HangMuc.class));
             return hangMucList;
         } catch (JsonProcessingException e) {
+            LOGGER.error("Can't parse response from server");
             throw new RuntimeException(e);
         }
     }

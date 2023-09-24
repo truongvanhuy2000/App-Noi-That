@@ -4,16 +4,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Entity.HangMuc;
+import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseModifyHangMucService {
-
+    final static Logger LOGGER = LogManager.getLogger(DatabaseModifyHangMucService.class);
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     private String token;
@@ -43,6 +46,7 @@ public class DatabaseModifyHangMucService {
                 tempHangMucList.add(hangMuc1);
             }
         } catch (IOException e) {
+            LOGGER.error("Error when finding hang muc");
             throw new RuntimeException(e);
         }
         return tempHangMucList;
@@ -53,6 +57,7 @@ public class DatabaseModifyHangMucService {
         try {
             this.webClientService.authorizedHttpPostJson("/api/hangmuc?parentId=" + parentID, objectMapper.writeValueAsString(hangMuc), token);
         } catch (IOException e) {
+            LOGGER.error("Error when adding new HangMuc");
             throw new RuntimeException(e);
         }
     }
@@ -62,6 +67,7 @@ public class DatabaseModifyHangMucService {
         try {
             this.webClientService.authorizedHttpPutJson("/api/hangmuc", objectMapper.writeValueAsString(hangMuc), token);
         } catch (IOException e) {
+            LOGGER.error("Error when editing HangMuc");
             throw new RuntimeException(e);
         }
     }
