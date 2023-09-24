@@ -117,7 +117,6 @@ public class UsersManagementController{
     public void initialize() throws JsonProcessingException {
             // 2. convert JSON array to List of objects
             List<Account> accountList = usersManagementService.findAllAccountEnable();
-
             for (Account account: accountList
                  ) {
                 listUser.add(new AccountTable(account.getId(),account.getUsername(), account.getPassword(),account.isActive(),convertActiveIcon(account.isActive()),account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
@@ -178,9 +177,7 @@ public class UsersManagementController{
     @FXML
     void AddAccount(ActionEvent event) {
         try {
-            if(tableManageUser.getSelectionModel().getSelectedItem() == null){
-                return;
-            }
+
             Stage userManageMentStage = new Stage();
             Scene userManagementAddAccountScene = UserManagementAddAccountScene.getInstance().getScene();
             ObservableList<String> listActive = FXCollections.observableArrayList("true","false");

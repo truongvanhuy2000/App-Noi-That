@@ -18,9 +18,12 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.IOException;
 
 public class HomeController {
     @FXML
@@ -51,7 +54,7 @@ public class HomeController {
         this.sessionService = new UserSessionService();
     }
     @FXML
-    void logout(ActionEvent event) {
+    void logout(ActionEvent event) throws IOException {
         sessionService.cleanUserSession();
         LogoutButton.getScene().getWindow().hide();
         sceneSwitcher(event);
@@ -113,9 +116,10 @@ public class HomeController {
     }
     // Central unit to switch scene based on context
     @FXML
-    private void sceneSwitcher(ActionEvent actionEvent) {
+    private void sceneSwitcher(ActionEvent actionEvent) throws IOException {
         Scene scene = null;
         Stage stage = null;
+        AnchorPane root = null;
         Object source = actionEvent.getSource();
         stage = (Stage) ((Node)source).getScene().getWindow();
         stage.setResizable(false);
@@ -133,16 +137,33 @@ public class HomeController {
         }
         else if (source == QuanLyNguoiDungButton) {
 //            scene = UserManagementScene.getInstance().getScene();
-            Node root = UserManagementScene.getInstance().getRoot();
-            mainPane.getChildren().add(root);
+            root = (AnchorPane)UserManagementScene.getInstance().getRoot();
+            mainPane.getChildren().clear();
+            mainPane.getChildren().addAll(root.getChildren());
+            return;
         }else if (source == suadoidatabaseButton) {
-            scene = DatabaseModifyPhongCachScene.getInstance().getScene();
-            DatabaseModifyPhongCachScene.getInstance().getController().init();
+//            scene = DatabaseModifyPhongCachScene.getInstance().getScene();
+//            DatabaseModifyPhongCachScene.getInstance().getController().init();
+             root = (AnchorPane)DatabaseModifyPhongCachScene.getInstance().getRoot();
+            mainPane.getChildren().clear();
+            mainPane.getChildren().addAll(root.getChildren());
+            return;
+
+//            FXMLLoader fxmlLoader = new FXMLLoader(DatabaseModifyPhongCachScene.class.getResource("view/DatabaseModifyPhongCachLayout.fxml"));
+//            Pane registerPane = (Pane) fxmlLoader.load();
+//            try {
+//                mainPane.getChildren().clear();
+//                mainPane.getChildren().add(registerPane);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            return;
         }
         else {
             return;
         }
-        stage.setScene(scene);
+//        stage.setScene(scene);
+        stage.setScene(new Scene(root));
         stage.show();
     }
 

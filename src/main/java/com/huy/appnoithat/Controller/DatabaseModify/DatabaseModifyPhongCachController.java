@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class DatabaseModifyPhongCachController implements Initializable {
+public class DatabaseModifyPhongCachController {
     @FXML
     private ListView<PhongCachNoiThat> listViewPhongCach;
     @FXML
@@ -114,8 +114,37 @@ public class DatabaseModifyPhongCachController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+//    @Override
+//    public void initialize(URL url, ResourceBundle resourceBundle) {
+//        listViewPhongCach.setItems(phongCachNoiThatObservableList);
+//        listViewPhongCach.setEditable(true);
+//        listViewPhongCach.setCellFactory(param -> new CustomEditingListCell<>());
+//        listViewPhongCach.setOnEditCommit(event -> {
+//            PhongCachNoiThat item = event.getNewValue();
+//            item.setName(event.getNewValue().getName());
+//            if (item.getId() == 0) {
+//                databaseModifyPhongCachService.addNewPhongCach(item);
+//            }
+//            else {
+//                databaseModifyPhongCachService.EditPhongCach(item);
+//            }
+//            refreshList();
+//        });
+//        listViewPhongCach.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+//            if (newValue != null) {
+//                PhongCachNoiThat phongCachNoiThat = listViewPhongCach.getSelectionModel().getSelectedItem();
+//                if (phongCachNoiThat == null) {
+//                    return;
+//                }
+//                refreshChildrenList(phongCachNoiThat.getId());
+//            }
+//        });
+//        childrenList.setEditable(false);
+//        childrenList.setCellFactory(param -> new CustomEditingListCell<>());
+//        childrenList.setItems(noiThatObservableList);
+//    }
+
+    public void initialize(){
         listViewPhongCach.setItems(phongCachNoiThatObservableList);
         listViewPhongCach.setEditable(true);
         listViewPhongCach.setCellFactory(param -> new CustomEditingListCell<>());
@@ -143,6 +172,9 @@ public class DatabaseModifyPhongCachController implements Initializable {
         childrenList.setCellFactory(param -> new CustomEditingListCell<>());
         childrenList.setItems(noiThatObservableList);
     }
+
+
+
     private void refreshList() {
         List<PhongCachNoiThat> phongCachNoiThatList = databaseModifyPhongCachService.findAllPhongCach();
         if (phongCachNoiThatList == null) {
