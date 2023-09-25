@@ -1,27 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="423.0" prefWidth="604.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ImageView fitHeight="248.0" fitWidth="290.0" layoutX="167.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="376.0" fitWidth="370.0" layoutX="108.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../icons/QRfake.png" />
+                <Image url="@../icons/QR.jpg" />
             </image>
         </ImageView>
-        <Label layoutX="226.0" layoutY="306.0" prefHeight="29.0" prefWidth="172.0" text="Truong Van Huy">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </Label>
-        <Label layoutX="198.0" layoutY="349.0" prefHeight="29.0" prefWidth="247.0" text="0123123123- TP Bank">
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </Label>
     </children>
 </AnchorPane>

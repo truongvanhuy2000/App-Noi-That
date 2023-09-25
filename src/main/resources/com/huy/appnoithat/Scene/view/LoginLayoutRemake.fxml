@@ -20,14 +20,14 @@
                         <Image url="@../icons/loginimage.jpg" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="118.0" fitWidth="171.0" layoutX="145.0" layoutY="56.0" opacity="0.83" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="140.0" fitWidth="234.0" layoutX="162.0" layoutY="81.0" opacity="0.83" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../icons/app-noi-that-low-resolution-color-logo.png" />
+                        <Image url="@../icons/logoapp1l.jpg" />
                     </image>
                 </ImageView>
-                <Label layoutX="145.0" layoutY="198.0" prefHeight="30.0" prefWidth="227.0" text="App Nội Thất" textFill="#fffbfb">
+                <Label layoutX="118.0" layoutY="572.0" prefHeight="61.0" prefWidth="309.0" text="LẬP BÁO GIÁ" textFill="#fffbfb">
                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
+                        <Font name="System Bold Italic" size="30.0" />
                     </font>
                 </Label>
             </children>

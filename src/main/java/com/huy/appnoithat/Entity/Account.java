@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import javafx.scene.control.CheckBox;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -10,18 +10,24 @@ import com.huy.appnoithat.Scene.UserManagementEditorScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
 import com.huy.appnoithat.Shared.PopupUtils;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -44,14 +50,14 @@ public class UsersManagementController {
         private String username;
         private String password;
         private boolean active;
-        private ImageView activeImage;
+        private CheckBox activeCB;
         private String expiredDate;
     }
     final static Logger LOGGER = LogManager.getLogger(UsersManagementController.class);
     @FXML
     private Button backButton;
     @FXML
-    private TableColumn<AccountTable, ImageView> active;
+    private TableColumn<AccountTable, CheckBox> active;
 
     @FXML
     private Button btnActiveAccount;
@@ -90,22 +96,19 @@ public class UsersManagementController {
     @FXML
     private TableColumn<AccountTable, String> username;
 
-
     UsersManagementService user = new UsersManagementService();
 
     @Getter
     List<Account> list = user.findAllAccountEnable();
 
-    public ImageView convertActiveIcon(boolean checked) {
-        ImageView activeIcon;
-        if (checked) {
-            activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/check-mark.png")));
-        } else {
-            activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/cancel.png")));
-        }
-        activeIcon.setFitHeight(20);
-        activeIcon.setFitWidth(20);
-        return activeIcon;
+    public CheckBox convertChecked(boolean checked){
+        CheckBox select = new CheckBox();
+            if(checked){
+                select.setSelected(true);
+            }else{
+                select.setSelected(false);
+            }
+            return select;
     }
 
     ObservableList<AccountTable> listUser = FXCollections.observableArrayList(
@@ -126,13 +129,14 @@ public class UsersManagementController {
 
         for (Account account : accountList
         ) {
-            listUser.add(new AccountTable(account.getId(), account.getUsername(), account.getPassword(), account.isActive(), convertActiveIcon(account.isActive()), account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
+            listUser.add(new AccountTable(account.getId(), account.getUsername(), account.getPassword(), account.isActive(), convertChecked(account.isActive()), account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
         }
         username.setCellValueFactory(new PropertyValueFactory<AccountTable, String>("username"));
         password.setCellValueFactory(new PropertyValueFactory<AccountTable, String>("password"));
-        active.setCellValueFactory(new PropertyValueFactory<AccountTable, ImageView>("activeImage"));
+        active.setCellValueFactory(new PropertyValueFactory<AccountTable, CheckBox>("activeCB"));
         expiredDate.setCellValueFactory(new PropertyValueFactory<AccountTable, LocalDate>("expiredDate"));
         tableManageUser.setItems(listUser);
+
     }
 
     void clearData() {
@@ -160,11 +164,11 @@ public class UsersManagementController {
         if (tableManageUser.getSelectionModel().getSelectedItem() == null) {
             return;
         }
-        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
-        int activeID = tableManageUser.getItems().get(indexSelector).getId();
-        tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(true));
-        usersManagementService.ActiveAccount(activeID);
-        tableManageUser.refresh();
+//        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
+//        int activeID = tableManageUser.getItems().get(indexSelector).getId();
+//        tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(true));
+//        usersManagementService.ActiveAccount(activeID);
+//        tableManageUser.refresh();
 
     }
 
@@ -173,11 +177,11 @@ public class UsersManagementController {
         if (tableManageUser.getSelectionModel().getSelectedItem() == null) {
             return;
         }
-        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
-        int inactiveID = tableManageUser.getItems().get(indexSelector).getId();
-        usersManagementService.InActiveAccount(inactiveID);
-        tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(false));
-        tableManageUser.refresh();
+//        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
+//        int inactiveID = tableManageUser.getItems().get(indexSelector).getId();
+//        usersManagementService.InActiveAccount(inactiveID);
+//        tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(false));
+//        tableManageUser.refresh();
     }
 
     @FXML
@@ -198,7 +202,7 @@ public class UsersManagementController {
                 try {
                     LocalDate localDate = LocalDate.now().plusDays(30);
                     String active = comboBoxActive.getSelectionModel().getSelectedItem().toString();
-                    listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
+                    listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), convertChecked(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
                     tableManageUser.getItems().clear();
                     tableManageUser.refresh();
                     List<String> roleList = new ArrayList<>();

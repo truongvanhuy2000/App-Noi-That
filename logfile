@@ -5,3 +5,62 @@
 [INFO ] 24-09-2023 16:07:17 [main] HelloApplication:32 - Start application
 [ERROR] 24-09-2023 16:07:45 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "java.io.ByteArrayOutputStream.toByteArray()" because "this.imageStream" is null
 [ERROR] 24-09-2023 16:07:45 [JavaFX Application Thread] GlobalExceptionHandler:22 - java.lang.NullPointerException: Cannot invoke "java.io.ByteArrayOutputStream.toByteArray()" because "this.imageStream" is null
+[INFO ] 25-09-2023 16:41:03 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 16:41:04 [JavaFX Application Thread] HomeController:63 - Login as john_doe with role User
+[INFO ] 25-09-2023 16:47:56 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 16:48:05 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 16:48:05 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 16:48:54 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 16:49:16 [JavaFX Application Thread] HomeController:63 - Login as huysomot with role User
+[INFO ] 25-09-2023 16:49:30 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 17:21:40 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 17:21:41 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[ERROR] 25-09-2023 17:21:44 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 25-09-2023 17:21:54 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 17:21:55 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[ERROR] 25-09-2023 17:21:57 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 25-09-2023 17:24:11 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 17:24:12 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[ERROR] 25-09-2023 17:24:15 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 25-09-2023 17:29:19 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 17:29:20 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[ERROR] 25-09-2023 17:29:23 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 25-09-2023 17:30:03 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 17:30:03 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 17:39:14 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 17:39:14 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 17:46:15 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 17:46:16 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 17:47:26 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 17:47:27 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 18:12:59 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 18:13:00 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[ERROR] 25-09-2023 18:13:02 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 25-09-2023 18:13:35 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 18:13:35 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[ERROR] 25-09-2023 18:13:37 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 25-09-2023 18:14:00 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 18:14:01 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[ERROR] 25-09-2023 18:14:04 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 25-09-2023 18:14:08 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[ERROR] 25-09-2023 18:14:15 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 25-09-2023 18:14:18 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[ERROR] 25-09-2023 18:14:20 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 25-09-2023 18:14:46 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 18:14:47 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[ERROR] 25-09-2023 18:14:49 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 25-09-2023 18:15:43 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 18:15:44 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[ERROR] 25-09-2023 18:15:46 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 25-09-2023 18:17:30 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 18:17:30 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 18:20:36 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 18:20:37 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 18:21:22 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 18:21:23 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 18:24:47 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 18:24:48 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 18:29:09 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 18:29:10 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 18:31:18 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 18:31:19 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
