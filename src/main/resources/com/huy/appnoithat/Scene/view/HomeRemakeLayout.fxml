@@ -68,10 +68,14 @@
             </children>
         </AnchorPane>
         <AnchorPane fx:id="mainPane" layoutX="312.0" layoutY="83.0" prefHeight="721.0" prefWidth="869.0" />
-            <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="1141.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@../icons/logout.png" />
-                </image>
-            </ImageView>
+        <Button fx:id="LogoutButton" layoutX="1117.0" layoutY="11.0" mnemonicParsing="false" onAction="#logout" prefHeight="50.0" prefWidth="51.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/logout.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
     </children>
 </AnchorPane>
