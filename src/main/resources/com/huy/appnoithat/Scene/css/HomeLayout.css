@@ -1,13 +1,44 @@
 /*.button{*/
 /*    -fx-background-color: #F3F3F3;*/
 /*}*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&family=Roboto+Condensed:wght@700&display=swap');
 
+
+*{
+    -fx-font-family: 'Roboto Condensed', sans-serif;
+    -fx-font-size: 20px;
+}
 .menuItem{
     -fx-background-color:  #152259;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-border-style: solid;
+    -fx-border-color: rgba(20, 19, 19, 0.41);
 }
 .menuItem:hover{
     -fx-background-color: #509cda;
     -fx-border-width: 0px 0px 0px 10px;
     -fx-border-color: WHITE;
+    -fx-font-family: 'Roboto Condensed', sans-serif;
 
+}
+
+#inner_pane{
+    -fx-background-color:#748CF1;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+
+}
+
+.side_ankerpane{
+    -fx-background-color: #152259;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-font-family: 'Roboto Condensed', sans-serif;
 }
