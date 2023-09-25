@@ -44,14 +44,15 @@ public class UsersManagementController {
         private String username;
         private String password;
         private boolean active;
-        private ImageView activeImage;
+//        private ImageView activeImage;
+        private CheckBox checkboxActive;
         private String expiredDate;
     }
     final static Logger LOGGER = LogManager.getLogger(UsersManagementController.class);
     @FXML
     private Button backButton;
     @FXML
-    private TableColumn<AccountTable, ImageView> active;
+    private TableColumn<AccountTable, CheckBox> active;
 
     @FXML
     private Button btnActiveAccount;
@@ -96,16 +97,26 @@ public class UsersManagementController {
     @Getter
     List<Account> list = user.findAllAccountEnable();
 
-    public ImageView convertActiveIcon(boolean checked) {
-        ImageView activeIcon;
-        if (checked) {
-            activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/check-mark.png")));
-        } else {
-            activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/cancel.png")));
+//    public ImageView convertActiveIcon(boolean checked) {
+//        ImageView activeIcon;
+//        if (checked) {
+//            activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/check-mark.png")));
+//        } else {
+//            activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/cancel.png")));
+//        }
+//        activeIcon.setFitHeight(20);
+//        activeIcon.setFitWidth(20);
+//        return activeIcon;
+//    }
+
+    public CheckBox convertActiveCheckBox(boolean checked){
+        CheckBox checkBox = new CheckBox();
+        if(checked){
+            checkBox.setSelected(true);
+        }else{
+            checkBox.setSelected(false);
         }
-        activeIcon.setFitHeight(20);
-        activeIcon.setFitWidth(20);
-        return activeIcon;
+        return checkBox;
     }
 
     ObservableList<AccountTable> listUser = FXCollections.observableArrayList(
@@ -126,11 +137,11 @@ public class UsersManagementController {
 
         for (Account account : accountList
         ) {
-            listUser.add(new AccountTable(account.getId(), account.getUsername(), account.getPassword(), account.isActive(), convertActiveIcon(account.isActive()), account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
+            listUser.add(new AccountTable(account.getId(), account.getUsername(), account.getPassword(), account.isActive(), convertActiveCheckBox(account.isActive()), account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
         }
         username.setCellValueFactory(new PropertyValueFactory<AccountTable, String>("username"));
         password.setCellValueFactory(new PropertyValueFactory<AccountTable, String>("password"));
-        active.setCellValueFactory(new PropertyValueFactory<AccountTable, ImageView>("activeImage"));
+        active.setCellValueFactory(new PropertyValueFactory<AccountTable, CheckBox>("checkboxActive"));
         expiredDate.setCellValueFactory(new PropertyValueFactory<AccountTable, LocalDate>("expiredDate"));
         tableManageUser.setItems(listUser);
     }
@@ -160,11 +171,11 @@ public class UsersManagementController {
         if (tableManageUser.getSelectionModel().getSelectedItem() == null) {
             return;
         }
-        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
-        int activeID = tableManageUser.getItems().get(indexSelector).getId();
-        tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(true));
-        usersManagementService.ActiveAccount(activeID);
-        tableManageUser.refresh();
+//        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
+//        int activeID = tableManageUser.getItems().get(indexSelector).getId();
+//        tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(true));
+//        usersManagementService.ActiveAccount(activeID);
+//        tableManageUser.refresh();
 
     }
 
@@ -173,11 +184,11 @@ public class UsersManagementController {
         if (tableManageUser.getSelectionModel().getSelectedItem() == null) {
             return;
         }
-        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
-        int inactiveID = tableManageUser.getItems().get(indexSelector).getId();
-        usersManagementService.InActiveAccount(inactiveID);
-        tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(false));
-        tableManageUser.refresh();
+//        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
+//        int inactiveID = tableManageUser.getItems().get(indexSelector).getId();
+//        usersManagementService.InActiveAccount(inactiveID);
+//        tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(false));
+//        tableManageUser.refresh();
     }
 
     @FXML
@@ -198,7 +209,7 @@ public class UsersManagementController {
                 try {
                     LocalDate localDate = LocalDate.now().plusDays(30);
                     String active = comboBoxActive.getSelectionModel().getSelectedItem().toString();
-                    listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
+                    listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), convertActiveCheckBox(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
                     tableManageUser.getItems().clear();
                     tableManageUser.refresh();
                     List<String> roleList = new ArrayList<>();

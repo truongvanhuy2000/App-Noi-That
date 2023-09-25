@@ -1,4 +1,4 @@
 {
-  "username" : "john_doe",
-  "token" : "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb2huX2RvZSIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTU1NDI5MDAsImV4cCI6NDI4NzU0MjkwMH0.Zjy5h9JWZ0BizSr77FYjp2_bHqRAfqzSl0n_newklpAkVns47pntYSsnl3E-Xz0y8fjHziSq88JvThQaoFYc2Q"
+  "username" : "admin",
+  "token" : "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTU2NTIyMDQsImV4cCI6NDI4NzY1MjIwNH0.5P5fyKT1sEE3YmgQ7z9Wea6Xo-7Bjy4Vm1UeLJUWZqJD8Lr1FgA785u-5GsTXGERdcBNFlhaxDk8v0DuBaGyWw"
 }

@@ -78,7 +78,7 @@ public class LoginController{
             roleList.add("ROLE_USER");
 
             ObservableList<String> listTime = FXCollections.observableArrayList("1 tháng", "3 tháng", "6 tháng");
-            ObservableList<String> listGender = FXCollections.observableArrayList("Male", "FaMale");
+            ObservableList<String> listGender = FXCollections.observableArrayList("Nam", "Nữ");
             Stage loginStage = new Stage();
             Scene register = RegisterScene.getInstance().getScene();
             Scene QRpopup = QRScene.getInstance().getScene();
@@ -102,7 +102,7 @@ public class LoginController{
             loginStage.show();
 
             btnSave.setOnAction(actionEvent -> {
-                String Gender = comboBoxGender.getSelectionModel().getSelectedItem().toString();
+                String Gender = comboBoxGender.getSelectionModel().getSelectedItem().toString().equals("Nam") ? "Male" :"Female";
                 String time = comboBoxTime.getSelectionModel().getSelectedItem().toString();
                 LocalDate localDate;
 

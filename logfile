@@ -5,3 +5,37 @@
 [INFO ] 24-09-2023 16:07:17 [main] HelloApplication:32 - Start application
 [ERROR] 24-09-2023 16:07:45 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "java.io.ByteArrayOutputStream.toByteArray()" because "this.imageStream" is null
 [ERROR] 24-09-2023 16:07:45 [JavaFX Application Thread] GlobalExceptionHandler:22 - java.lang.NullPointerException: Cannot invoke "java.io.ByteArrayOutputStream.toByteArray()" because "this.imageStream" is null
+[INFO ] 25-09-2023 20:29:22 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 20:29:23 [JavaFX Application Thread] HomeController:63 - Login as john_doe with role User
+[INFO ] 25-09-2023 20:29:34 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 20:35:48 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 20:35:48 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 20:37:07 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 20:37:17 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 20:37:17 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 20:38:01 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 20:40:36 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 20:40:37 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 20:41:16 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 20:41:16 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 25-09-2023 20:46:03 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 20:46:37 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 20:47:38 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 20:49:50 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 21:01:10 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 21:03:46 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 21:04:50 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 21:05:03 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 21:29:45 [main] HelloApplication:31 - Start application
+[ERROR] 25-09-2023 21:29:56 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: showAndWait is not allowed during animation or layout processing
+[ERROR] 25-09-2023 21:30:07 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: showAndWait is not allowed during animation or layout processing
+[INFO ] 25-09-2023 21:30:48 [main] HelloApplication:31 - Start application
+[ERROR] 25-09-2023 21:30:48 [JavaFX Application Thread] HomeScene:29 - Error loading HomeScene: Error resolving onMouseClicked='#ClickedMenu', either the event handler is not in the Namespace or there is an error in the script.
+/home/long/Project/Java/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/HomeRemakeLayout.fxml:25
+
+[INFO ] 25-09-2023 21:33:51 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 21:34:21 [main] HelloApplication:31 - Start application
+[ERROR] 25-09-2023 21:34:27 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/phongcach eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTU2NTIyMDQsImV4cCI6NDI4NzY1MjIwNH0.5P5fyKT1sEE3YmgQ7z9Wea6Xo-7Bjy4Vm1UeLJUWZqJD8Lr1FgA785u-5GsTXGERdcBNFlhaxDk8v0DuBaGyWw null
+[ERROR] 25-09-2023 21:34:29 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[ERROR] 25-09-2023 21:34:34 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[ERROR] 25-09-2023 21:34:40 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}

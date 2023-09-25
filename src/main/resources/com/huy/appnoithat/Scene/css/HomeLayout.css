@@ -2,10 +2,12 @@
 /*    -fx-background-color: #F3F3F3;*/
 /*}*/
 
-.button:hover {
-    -fx-background-color: #C0D5F7;
+.menuItem{
+    -fx-background-color:  #152259;
 }
+.menuItem:hover{
+    -fx-background-color: #509cda;
+    -fx-border-width: 0px 0px 0px 10px;
+    -fx-border-color: WHITE;
 
-.button:pressed {
-    -fx-background-color: #73A3EF;
 }
