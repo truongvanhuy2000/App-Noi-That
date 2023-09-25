@@ -39,3 +39,8 @@
 [ERROR] 25-09-2023 21:34:29 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
 [ERROR] 25-09-2023 21:34:34 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
 [ERROR] 25-09-2023 21:34:40 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[INFO ] 25-09-2023 21:36:16 [main] HelloApplication:31 - Start application
+[ERROR] 25-09-2023 21:36:20 [JavaFX Application Thread] HomeScene:29 - Error loading HomeScene: Error resolving onMouseClicked='#ClickedMenu', either the event handler is not in the Namespace or there is an error in the script.
+/home/long/Project/Java/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/HomeRemakeLayout.fxml:47
+
+[INFO ] 25-09-2023 21:36:56 [main] HelloApplication:31 - Start application

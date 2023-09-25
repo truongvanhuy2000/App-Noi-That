@@ -27,9 +27,9 @@
                             <font>
                                 <Font name="Linux Biolinum O Bold" size="20.0" />
                             </font></Button>
-                        <Button fx:id="LuaChonNoiThatButton" alignment="BASELINE_LEFT" graphicTextGap="30.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="67.0" prefWidth="315.0" styleClass="menuItem" text="Lựa Chọn Nội Thất" textFill="WHITE">
+                        <Button fx:id="LuaChonNoiThatButton" alignment="BASELINE_LEFT" graphicTextGap="30.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="67.0" prefWidth="315.0" styleClass="menuItem" text="Lập báo giá" textFill="WHITE">
                             <graphic>
-                                <ImageView fx:id="menuIMG111" fitHeight="57.0" fitWidth="53.0" layoutX="5.0" layoutY="5.0"  pickOnBounds="true" preserveRatio="true" x="13.0">
+                                <ImageView fx:id="menuIMG111" fitHeight="57.0" fitWidth="53.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" x="13.0">
                                     <image>
                                         <Image url="@../icons/sofa.png" />
                                     </image>
@@ -38,9 +38,9 @@
                             <font>
                                 <Font name="Linux Biolinum O Bold" size="20.0" />
                             </font></Button>
-                        <Button fx:id="suadoidatabaseButton" alignment="BASELINE_LEFT" graphicTextGap="30.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="67.0" prefWidth="317.0" styleClass="menuItem" text="Sửa Đổi Database" textFill="WHITE">
+                        <Button fx:id="suadoidatabaseButton" alignment="BASELINE_LEFT" graphicTextGap="30.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="67.0" prefWidth="317.0" styleClass="menuItem" text="Dữ liệu gốc" textFill="WHITE">
                             <graphic>
-                                <ImageView fx:id="menuIMG112" fitHeight="55.0" fitWidth="53.0"  pickOnBounds="true" preserveRatio="true">
+                                <ImageView fx:id="menuIMG112" fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../icons/database.png" />
                                     </image>
@@ -54,7 +54,7 @@
                         <Insets top="290.0" />
                     </padding>
                 </VBox>
-            <ImageView fx:id="menuIMG113" fitHeight="132.0" fitWidth="101.0" layoutX="10.0" layoutY="10.0"  pickOnBounds="true" preserveRatio="true" x="100.0">
+            <ImageView fx:id="menuIMG113" fitHeight="132.0" fitWidth="101.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" x="100.0">
                <image>
                   <Image url="@../icons/logoapp.jpg" />
                </image>
