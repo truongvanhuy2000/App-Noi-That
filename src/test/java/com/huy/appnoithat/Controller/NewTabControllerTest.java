@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.Scene.NewTabScene;
+import com.huy.appnoithat.Scene.LuaChonNoiThat.NewTabScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.AfterEach;

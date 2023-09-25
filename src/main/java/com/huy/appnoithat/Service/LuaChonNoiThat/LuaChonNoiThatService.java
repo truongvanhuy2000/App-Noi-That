@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
@@ -15,7 +16,6 @@ import com.huy.appnoithat.Service.FileExport.FileExportService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
-import com.huy.appnoithat.Shared.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,7 +31,6 @@ public class LuaChonNoiThatService {
     private final ObjectMapper objectMapper;
     private final FileExportService fileExportService;
 
-    // Fake the data
     public LuaChonNoiThatService() {
         webClientService = new WebClientServiceImpl();
         userSessionService = new UserSessionService();
@@ -154,14 +153,14 @@ public class LuaChonNoiThatService {
             throw new RuntimeException(e);
         }
     }
+
     public boolean exportFile(File selectedFile, FileType fileType, DataPackage dataPackage) {
         ExportFile exportFile = fileExportService.getExportService(selectedFile, fileType);
         exportFile.setUpDataForExport(dataPackage);
         try {
             exportFile.export(selectedFile);
             return true;
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             LOGGER.error("Some thing is wrong with the export operation", e);
             return false;
         }

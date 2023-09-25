@@ -7,6 +7,8 @@ import java.io.IOException;
 
 public interface ExportFile {
     void export(File exportDirectory) throws IOException;
+
     void setUpDataForExport(DataPackage dataForExport);
+
     DataPackage importData(File importDirectory);
 }

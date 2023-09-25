@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Shared;
+package com.huy.appnoithat.Common;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

@@ -13,6 +13,7 @@ import java.util.List;
 
 public class LuaChonNoiThatControllerTest extends LuaChonNoiThatController {
     List<ThongTinNoiThat> thongTinNoiThatList;
+
     @BeforeEach
     void setUp() {
         thongTinNoiThatList = new ArrayList<>();
@@ -30,8 +31,9 @@ public class LuaChonNoiThatControllerTest extends LuaChonNoiThatController {
     @AfterEach
     void tearDown() {
     }
+
     @Test
-    void testImportFromThongTinList () {
+    void testImportFromThongTinList() {
         TreeItem<BangNoiThat> root = importFromThongTinList(thongTinNoiThatList);
         System.out.println(root);
     }

@@ -1,15 +1,16 @@
-package com.huy.appnoithat.Controller;
+package com.huy.appnoithat.Controller.UserManagement;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Controller.UserManagement.DataModel.AccountTable;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
 import com.huy.appnoithat.Scene.HomeScene;
-import com.huy.appnoithat.Scene.ListAccountWaitToApproveScene;
-import com.huy.appnoithat.Scene.UserManagementAddAccountScene;
-import com.huy.appnoithat.Scene.UserManagementEditorScene;
+import com.huy.appnoithat.Scene.UseManagement.ListAccountWaitToApproveScene;
+import com.huy.appnoithat.Scene.UseManagement.UserManagementAddAccountScene;
+import com.huy.appnoithat.Scene.UseManagement.UserManagementEditorScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
-import com.huy.appnoithat.Shared.PopupUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,10 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,60 +34,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UsersManagementController {
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class AccountTable {
-        private int id;
-        private String username;
-        private String password;
-        private boolean active;
-        private ImageView activeImage;
-        private String expiredDate;
-    }
     final static Logger LOGGER = LogManager.getLogger(UsersManagementController.class);
     @FXML
-    private Button backButton;
-    @FXML
     private TableColumn<AccountTable, ImageView> active;
-
     @FXML
-    private Button btnActiveAccount;
-
-    @FXML
-    private Button btnAddacount;
-
-    @FXML
-    private Button btnAllAccount;
-
-
-    @FXML
-    private Button btnInactiveAccount;
-
-    @FXML
-    private Button btnDeleteAccount;
-
-    @FXML
-    private Button btnEditAccount;
-
-    @FXML
-    private Button btnSearch;
-
+    private Button btnActiveAccount, btnAddacount, btnAllAccount, btnInactiveAccount, btnDeleteAccount, btnEditAccount, btnSearch, backButton;
     @FXML
     private TableColumn<AccountTable, String> password;
-
     @FXML
     private TableColumn<AccountTable, LocalDate> expiredDate;
-
     @FXML
     private TableView<AccountTable> tableManageUser;
-
     @FXML
     private TextField txtSearchUser;
-
     @FXML
     private TableColumn<AccountTable, String> username;
-
 
     UsersManagementService user = new UsersManagementService();
 
@@ -246,8 +205,7 @@ public class UsersManagementController {
         if (!account.getRoleList().get(0).equals("ROLE_ADMIN")) {
             usersManagementService.deleteAccount(deleteid);
             tableManageUser.getItems().remove(indexSelector);
-        }
-        else {
+        } else {
             PopupUtils.throwErrorSignal("Không thể xóa tài khoản admin");
         }
     }

@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Scene;
+package com.huy.appnoithat.Scene.UseManagement;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +14,7 @@ public class ListAccountWaitToApproveScene {
     private final FXMLLoader fxmlLoader;
 
     public ListAccountWaitToApproveScene() {
-        String viewPath = "view/ListAccountWaitToApproveLayout.fxml";
+        String viewPath = "/com/huy/appnoithat/Scene/view/ListAccountWaitToApproveLayout.fxml";
         try {
             fxmlLoader = new FXMLLoader(getClass().getResource(viewPath));
             root = fxmlLoader.load();
@@ -48,7 +48,7 @@ public class ListAccountWaitToApproveScene {
     }
 
     private void addCssToScence() {
-        String cssPath = "css/UserManagementLayout.css";
+        String cssPath = "/com/huy/appnoithat/Scene/css/UserManagementLayout.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }
 }

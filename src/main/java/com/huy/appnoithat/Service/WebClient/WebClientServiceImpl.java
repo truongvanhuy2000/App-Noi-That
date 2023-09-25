@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Service.WebClient;
 
 import com.huy.appnoithat.Configuration.Config;
-import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

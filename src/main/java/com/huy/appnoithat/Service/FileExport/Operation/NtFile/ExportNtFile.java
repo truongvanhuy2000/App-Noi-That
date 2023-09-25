@@ -22,19 +22,21 @@ public class ExportNtFile implements ExportFile {
 
     private OutputStream outputFile;
     private InputStream inputStream;
+
     public ExportNtFile() {
         this.mapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
     }
+
     private void setOutputFile(File outputFile) throws FileNotFoundException {
         if (!outputFile.getAbsolutePath().contains(".nt")) {
             this.outputFile = new FileOutputStream(outputFile.getAbsolutePath() + ".nt");
-        }
-        else {
+        } else {
             this.outputFile = new FileOutputStream(outputFile.getAbsolutePath());
         }
     }
+
     @Override
     public void export(File exportDirectory) throws IOException {
         setOutputFile(exportDirectory);
@@ -55,7 +57,7 @@ public class ExportNtFile implements ExportFile {
     @Override
     public DataPackage importData(File importDirectory) {
         ObjectData objectData1 = null;
-        try(InputStream inputStream = new FileInputStream(importDirectory)) {
+        try (InputStream inputStream = new FileInputStream(importDirectory)) {
             this.inputStream = inputStream;
             objectData1 = mapper.readValue(inputStream, ObjectData.class);
         } catch (IOException e) {

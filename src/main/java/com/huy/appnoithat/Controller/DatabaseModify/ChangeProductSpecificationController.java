@@ -1,10 +1,10 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyVatLieuScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyThongSoService;
-import com.huy.appnoithat.Shared.PopupUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;

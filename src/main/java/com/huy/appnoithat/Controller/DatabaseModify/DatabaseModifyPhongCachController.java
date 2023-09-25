@@ -56,7 +56,8 @@ public class DatabaseModifyPhongCachController implements Initializable {
 
     @FXML
     void AddNewPhongCach(ActionEvent event) {
-        phongCachNoiThatObservableList.add(new PhongCachNoiThat(0, "<Thêm mới>", new ArrayList<>()));
+        databaseModifyPhongCachService.addNewPhongCach(new PhongCachNoiThat(0, "<Thêm mới>", new ArrayList<>()));
+        refreshList();
     }
 
     @FXML

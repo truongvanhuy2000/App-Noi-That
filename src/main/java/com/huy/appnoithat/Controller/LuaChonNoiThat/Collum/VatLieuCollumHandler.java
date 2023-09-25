@@ -1,12 +1,12 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomVatLieuCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
-import com.huy.appnoithat.Shared.Utils;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
@@ -69,7 +69,7 @@ public class VatLieuCollumHandler {
     public void onStartEditVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         List<String> items;
-        if (!TableUtils.isALlowedToEdit(event)) {
+        if (!TableUtils.isAllowedToEdit(event)) {
             return;
         }
         String hangMuc = currentItem.getValue().getHangMuc().getValue();

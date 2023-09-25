@@ -1,22 +1,25 @@
-package com.huy.appnoithat.Scene;
+package com.huy.appnoithat.Scene.UseManagement;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class UserManagementEditorScene {
+@Getter
+public class UserManagementScene {
+    private static final String VIEW_PATH = "/com/huy/appnoithat/Scene/view/UserManagementLayout.fxml";
+    private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/UserManagementLayout.css";
     private Scene scene;
     private Parent root;
-    private static UserManagementEditorScene single_instance = null;
+    private static UserManagementScene single_instance = null;
     private final FXMLLoader fxmlLoader;
 
-    public UserManagementEditorScene() {
-        String viewPath = "view/UserManagementEditorLayout.fxml";
+    public UserManagementScene() {
         try {
-            fxmlLoader = new FXMLLoader(getClass().getResource(viewPath));
+            fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH));
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -36,19 +39,14 @@ public class UserManagementEditorScene {
         addCssToScence();
     }
 
-    public Scene getScene() {
-        return scene;
-    }
-
     // Create an object of this class, call this function
-    public static synchronized UserManagementEditorScene getInstance() {
+    public static synchronized UserManagementScene getInstance() {
         if (single_instance == null)
-            single_instance = new UserManagementEditorScene();
+            single_instance = new UserManagementScene();
         return single_instance;
     }
 
     private void addCssToScence() {
-        String cssPath = "css/UserManagementLayout.css";
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(CSS_PATH)).toExternalForm());
     }
 }

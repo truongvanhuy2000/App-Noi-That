@@ -10,15 +10,16 @@ import java.util.Objects;
 
 @Getter
 public class QRScene {
+    private static final String VIEW_PATH = "/com/huy/appnoithat/Scene/view/QRLayout.fxml";
+    private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/UserManagementLayout.css";
     private Scene scene;
     private Parent root;
     private static QRScene single_instance = null;
     private final FXMLLoader fxmlLoader;
 
     public QRScene() {
-        String viewPath = "view/QRLayout.fxml";
         try {
-            fxmlLoader = new FXMLLoader(getClass().getResource(viewPath));
+            fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH));
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -46,7 +47,6 @@ public class QRScene {
     }
 
     private void addCssToScence() {
-        String cssPath = "css/UserManagementLayout.css";
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(CSS_PATH)).toExternalForm());
     }
 }
