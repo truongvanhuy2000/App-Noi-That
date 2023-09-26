@@ -157,7 +157,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
     }
 
     private void refreshChildrenList(int parentID) {
-        List<NoiThat> noiThatList = databaseModifyNoiThatService.findNoiThatByID(parentID);
+        List<NoiThat> noiThatList = databaseModifyNoiThatService.findNoiThatListByParentID(parentID);
         if (noiThatList == null) {
             noiThatList = new ArrayList<>();
         }

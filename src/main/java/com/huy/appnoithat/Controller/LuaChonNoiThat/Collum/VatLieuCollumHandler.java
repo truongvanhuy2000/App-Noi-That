@@ -75,7 +75,7 @@ public class VatLieuCollumHandler {
         String hangMuc = currentItem.getValue().getHangMuc().getValue();
         String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
         String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
-        List<VatLieu> vatLieus = luaChonNoiThatService.findVatLieuListByParentsName(phongCach, noiThat, hangMuc);
+        List<VatLieu> vatLieus = luaChonNoiThatService.findVatLieuListBy(phongCach, noiThat, hangMuc);
         if (vatLieus == null) {
             return;
         }

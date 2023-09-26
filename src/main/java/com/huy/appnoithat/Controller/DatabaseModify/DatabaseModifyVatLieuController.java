@@ -120,7 +120,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
     }
 
     private void refreshList() {
-        List<VatLieu> vatLieuList = databaseModifyVatlieuService.findVatLieuByID(parentID);
+        List<VatLieu> vatLieuList = databaseModifyVatlieuService.findVatLieuByParentId(parentID);
         if (vatLieuList == null) {
             vatLieuList = new ArrayList<>();
         }
@@ -133,7 +133,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
             thongSoObservableList.clear();
             return;
         }
-        List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByID(parentID);
+        List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByParentId(parentID);
         if (thongSoList == null) {
             thongSoList = new ArrayList<>();
         }

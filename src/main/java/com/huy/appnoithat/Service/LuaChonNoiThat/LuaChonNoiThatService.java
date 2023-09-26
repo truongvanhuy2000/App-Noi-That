@@ -10,12 +10,12 @@ import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Enums.FileType;
+import com.huy.appnoithat.Service.RestService.PhongCachRestService;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
 import com.huy.appnoithat.Service.FileExport.FileExportService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
-import com.huy.appnoithat.Shared.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -30,6 +30,7 @@ public class LuaChonNoiThatService {
     private final UserSessionService userSessionService;
     private final ObjectMapper objectMapper;
     private final FileExportService fileExportService;
+    private final PhongCachRestService phongCachRestService;
 
     // Fake the data
     public LuaChonNoiThatService() {
@@ -39,57 +40,23 @@ public class LuaChonNoiThatService {
                 .addModule(new JavaTimeModule())
                 .build();
         fileExportService = new FileExportService();
+        phongCachRestService = PhongCachRestService.getInstance();
     }
 
     public List<PhongCachNoiThat> findAllPhongCachNoiThat() {
-        String path = "/api/phongcach";
-        String response = webClientService.authorizedHttpGetJson(path, userSessionService.getToken());
-        if (response == null) {
-            return new ArrayList<>();
-        }
-        try {
-            List<PhongCachNoiThat> phongCachNoiThatList = objectMapper.readValue(response, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, PhongCachNoiThat.class));
-            return phongCachNoiThatList;
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Can't parse response from server");
-            throw new RuntimeException(e);
-        }
+        return phongCachRestService.findAll();
     }
 
-    public PhongCachNoiThat findPhongCachNoiThatById(int id) {
-        String path = "/api/phongcach";
-        String response = webClientService.authorizedHttpGetJson(path + "/" + id, userSessionService.getToken());
-        if (response == null) {
-            return null;
-        }
-        try {
-            PhongCachNoiThat phongCachNoiThat = objectMapper.readValue(response, PhongCachNoiThat.class);
-            return phongCachNoiThat;
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Can't parse response from server");
-            throw new RuntimeException(e);
-        }
+    public PhongCachNoiThat findPhongCachById(int id) {
+        return phongCachRestService.findById(id);
     }
 
     public PhongCachNoiThat findPhongCachNoiThatByName(String name) {
-        String path = "/api/phongcach/search";
-        String param = "?" + "name=" + Utils.encodeValue(name);
-        String response = webClientService.authorizedHttpGetJson(path + param, userSessionService.getToken());
-        if (response == null) {
-            return null;
-        }
-        try {
-            PhongCachNoiThat phongCachNoiThat = objectMapper.readValue(response, PhongCachNoiThat.class);
-            return phongCachNoiThat;
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Can't parse response from server");
-            throw new RuntimeException(e);
-        }
+        return phongCachRestService.findUsingName(name);
     }
 
-    public List<NoiThat> findNoiThatByPhongCachName(String name) {
-        PhongCachNoiThat foundPhongCachNoiThat = findPhongCachNoiThatByName(name);
+    public List<NoiThat> findNoiThatListBy(String phongCach) {
+        PhongCachNoiThat foundPhongCachNoiThat = findPhongCachNoiThatByName(phongCach);
         if (foundPhongCachNoiThat == null) {
             return new ArrayList<>();
         }
@@ -108,8 +75,8 @@ public class LuaChonNoiThatService {
         }
     }
 
-    public List<HangMuc> findHangMucListByPhongCachAndNoiThat(String phongCach, String noiThat) {
-        List<NoiThat> noiThatList = findNoiThatByPhongCachName(phongCach);
+    public List<HangMuc> findHangMucListBy(String phongCach, String noiThat) {
+        List<NoiThat> noiThatList = findNoiThatListBy(phongCach);
         if (noiThatList == null) {
             return new ArrayList<>();
         }
@@ -132,8 +99,8 @@ public class LuaChonNoiThatService {
         }
     }
 
-    public List<VatLieu> findVatLieuListByParentsName(String phongCach, String noiThat, String hangMuc) {
-        List<HangMuc> hangMucList = findHangMucListByPhongCachAndNoiThat(phongCach, noiThat);
+    public List<VatLieu> findVatLieuListBy(String phongCach, String noiThat, String hangMuc) {
+        List<HangMuc> hangMucList = findHangMucListBy(phongCach, noiThat);
         if (hangMucList == null) {
             return new ArrayList<>();
         }

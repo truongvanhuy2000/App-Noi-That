@@ -111,7 +111,7 @@ public class DatabaseModifyHangMucController implements Initializable {
     }
 
     private void refreshList() {
-        List<HangMuc> hangMucList = databaseModifyHangMucService.findHangMucByID(parentID);
+        List<HangMuc> hangMucList = databaseModifyHangMucService.findHangMucByParentId(parentID);
         if (hangMucList == null) {
             hangMucList = new ArrayList<>();
         }
@@ -124,7 +124,7 @@ public class DatabaseModifyHangMucController implements Initializable {
             vatLieuObservableList.clear();
             return;
         }
-        List<VatLieu> vatLieuList = databaseModifyVatlieuService.findVatLieuByID(parentID);
+        List<VatLieu> vatLieuList = databaseModifyVatlieuService.findVatLieuByParentId(parentID);
         if (vatLieuList == null) {
             vatLieuList = new ArrayList<>();
         }

@@ -1,9 +1,12 @@
 package com.huy.appnoithat.Service.WebClient;
 
 public interface WebClientService {
-    //    Use this api to do an unauthorized Http Post request.
-    //    Path is the path to the api
-    //    jsonData is the data to be sent to the server. Must be in json format
+    /**
+     * Use this api to do an unauthorized Http Post request.
+     * @param path Path is the path to the api
+     * @param jsonData jsonData is the data to be sent to the server. Must be in json format
+     * @return
+     */
     String unauthorizedHttpPostJson(String path, String jsonData);
 
     //    Use this api to do an unauthorized Http GET request.
@@ -27,5 +30,4 @@ public interface WebClientService {
     //    Use this api to do an authorized Http Delete request.
     //    Path is the path to the api, token is the bearer token provided after login
     String authorizedHttpDeleteJson(String path, String jsonData, String token);
-
 }

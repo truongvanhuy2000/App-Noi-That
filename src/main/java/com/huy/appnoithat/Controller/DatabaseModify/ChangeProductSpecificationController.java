@@ -72,10 +72,10 @@ public class ChangeProductSpecificationController {
         if (id == 0) {
             return;
         }
-        if (databaseModifyThongSoService.findThongSoByID(id) == null || databaseModifyThongSoService.findThongSoByID(id).isEmpty()) {
+        if (databaseModifyThongSoService.findThongSoByParentId(id) == null || databaseModifyThongSoService.findThongSoByParentId(id).isEmpty()) {
             return;
         }
-        ThongSo ts = databaseModifyThongSoService.findThongSoByID(id).get(0);
+        ThongSo ts = databaseModifyThongSoService.findThongSoByParentId(id).get(0);
         txtCao.setText(ts.getCao() != null ? ts.getCao().toString() : "0.0");
         txtDai.setText(ts.getDai() != null ? ts.getDai().toString() : "0.0");
         txtRong.setText(ts.getRong() != null ? ts.getRong().toString() : "0.0");

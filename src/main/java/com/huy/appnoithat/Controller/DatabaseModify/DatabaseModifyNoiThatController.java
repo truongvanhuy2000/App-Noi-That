@@ -113,7 +113,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
     }
 
     private void refreshList() {
-        List<NoiThat> noiThatList = databaseModifyNoiThatService.findNoiThatByID(parentID);
+        List<NoiThat> noiThatList = databaseModifyNoiThatService.findNoiThatListByParentID(parentID);
         if (noiThatList == null) {
             noiThatList = new ArrayList<>();
         }
@@ -126,7 +126,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
             hangMucObservableList.clear();
             return;
         }
-        List<HangMuc> hangMucList = databaseModifyHangMucService.findHangMucByID(parentID);
+        List<HangMuc> hangMucList = databaseModifyHangMucService.findHangMucByParentId(parentID);
         if (hangMucList == null) {
             hangMucList = new ArrayList<>();
         }

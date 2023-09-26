@@ -303,3 +303,8 @@ java.lang.NullPointerException: Cannot invoke "javafx.scene.control.TreeItem.get
 	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35) [junit-rt.jar:?]
 	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232) [junit-rt.jar:?]
 	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55) [junit-rt.jar:?]
+[INFO ] 25-09-2023 23:02:36 [main] HelloApplication:31 - Start application
+[INFO ] 25-09-2023 23:02:38 [JavaFX Application Thread] HomeController:63 - Login as john_doe with role User
+[INFO ] 25-09-2023 23:02:53 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
+[INFO ] 27-09-2023 01:06:35 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 01:06:39 [JavaFX Application Thread] HomeController:63 - Login as admin with role Admin
