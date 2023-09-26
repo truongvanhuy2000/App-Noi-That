@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Shared;
+package com.huy.appnoithat.Common;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -11,24 +11,40 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class Utils {
+    /**
+     * @param name This function will check if the input is belonged to the alhabet or not
+     * @return
+     */
     public static boolean isAlpha(String name) {
         if (name == null)
             return false;
         return name.matches("[a-zA-Z]+");
     }
 
+    /**
+     * @param str This function will check if the input is numeric or not
+     * @return
+     */
     public static boolean isNumeric(String str) {
         if (str == null)
             return false;
         return str.matches("-?\\d+(\\.\\d+)?");
     }
 
+    /**
+     * @param value This function will encode the input value to UTF-8
+     * @return
+     */
     public static String encodeValue(String value) {
         if (value == null)
             return "";
         return URLEncoder.encode(value, StandardCharsets.UTF_8);
     }
 
+    /**
+     * @param value This function will decode the input value to UTF-8
+     * @return
+     */
     public static String decodeValue(String value) {
         if (value == null)
             return "";
@@ -89,12 +105,20 @@ public class Utils {
         }
     }
 
+    /**
+     * @param list This function will convert the input object list to the list of string
+     * @return
+     */
     public static List<String> getObjectNameList(List<?> list) {
-        if (list == null)
+        if (list == null || list.isEmpty())
             new ArrayList<>();
         return list.stream().map(Object::toString).collect(Collectors.toList());
     }
 
+    /**
+     * @param number This function will convert the input long number to the string with commas
+     * @return
+     */
     public static String convertLongToDecimal(long number) {
         // Create a DecimalFormat object with comma delimiter
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
@@ -102,10 +126,13 @@ public class Utils {
         return decimalFormat.format(number);
     }
 
+    /**
+     * @param formattedNumber This function will convert the input string with commas to the long number
+     * @return
+     */
     public static long convertDecimalToLong(String formattedNumber) {
         if (formattedNumber == null)
             return 0L;
-        // Remove commas from the string
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         try {
             return decimalFormat.parse(formattedNumber).longValue();

@@ -1,10 +1,9 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.LoginScene;
-import com.huy.appnoithat.Scene.NewTabScene;
-import com.huy.appnoithat.Scene.UserManagementScene;
+import com.huy.appnoithat.Scene.LuaChonNoiThat.NewTabScene;
+import com.huy.appnoithat.Scene.UseManagement.UserManagementScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

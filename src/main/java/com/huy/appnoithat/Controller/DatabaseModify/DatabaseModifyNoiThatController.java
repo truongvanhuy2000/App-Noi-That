@@ -48,7 +48,8 @@ public class DatabaseModifyNoiThatController implements Initializable {
 
     @FXML
     void addAction(ActionEvent event) {
-        noiThatObservableList.add(new NoiThat(0, "<Thêm mới>", new ArrayList<>()));
+        databaseModifyNoiThatService.addNewNoiThat(new NoiThat(0, "<Thêm mới>", new ArrayList<>()), this.parentID);
+        refreshList();
     }
 
     @FXML

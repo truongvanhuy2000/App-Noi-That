@@ -46,7 +46,8 @@ public class DatabaseModifyHangMucController implements Initializable {
 
     @FXML
     void addAction(ActionEvent event) {
-        hangMucObservableList.add(new HangMuc(0, "<Thêm mới>", new ArrayList<>()));
+        databaseModifyHangMucService.addNewHangMuc(new HangMuc(0, "<Thêm mới>", new ArrayList<>()), this.parentID);
+        refreshList();
     }
 
     @FXML

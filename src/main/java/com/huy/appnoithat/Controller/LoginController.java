@@ -1,36 +1,33 @@
 package com.huy.appnoithat.Controller;
 
+import com.huy.appnoithat.Common.KeyboardUtils;
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
+import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.QRScene;
 import com.huy.appnoithat.Scene.RegisterScene;
 import com.huy.appnoithat.Service.Login.LoginService;
 import com.huy.appnoithat.Service.Register.RegisterService;
-import com.huy.appnoithat.Shared.PopupUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
 
-public class LoginController{
+public class LoginController {
 
     @FXML
     TextField usernameTextField;
@@ -47,12 +44,12 @@ public class LoginController{
     // Call this method everytime you switch scene
     public void initialize() {
         usernameTextField.setOnKeyPressed(keyEvent -> {
-            if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (KeyboardUtils.isRightKeyCombo(Action.LOGIN, keyEvent)) {
                 LoginButton.fire();
             }
         });
         passwordField.setOnKeyPressed(keyEvent -> {
-            if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (KeyboardUtils.isRightKeyCombo(Action.LOGIN, keyEvent)) {
                 LoginButton.fire();
             }
         });
@@ -78,7 +75,7 @@ public class LoginController{
             roleList.add("ROLE_USER");
 
             ObservableList<String> listTime = FXCollections.observableArrayList("1 tháng", "3 tháng", "6 tháng");
-            ObservableList<String> listGender = FXCollections.observableArrayList("Male", "FaMale");
+            ObservableList<String> listGender = FXCollections.observableArrayList("Nam", "Nữ");
             Stage loginStage = new Stage();
             Scene register = RegisterScene.getInstance().getScene();
             Scene QRpopup = QRScene.getInstance().getScene();

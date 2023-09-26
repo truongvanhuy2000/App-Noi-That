@@ -34,4 +34,6 @@ module com.huy.appnoithat {
 
     exports com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel;
     exports com.huy.appnoithat.DataModel;
+    exports com.huy.appnoithat.Controller.UserManagement;
+    opens com.huy.appnoithat.Controller.UserManagement to javafx.fxml;
 }

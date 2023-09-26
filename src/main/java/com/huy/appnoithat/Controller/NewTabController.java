@@ -2,7 +2,7 @@ package com.huy.appnoithat.Controller;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
-import com.huy.appnoithat.Scene.LuaChonNoiThatScene;
+import com.huy.appnoithat.Scene.LuaChonNoiThat.LuaChonNoiThatScene;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,7 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +18,7 @@ import java.util.ResourceBundle;
 public class NewTabController implements Initializable {
     @FXML
     private TabPane tabPane;
+
     @FXML
     void newTabButtonHandler(ActionEvent event) {
         if (tabPane.getSelectionModel().getSelectedItem() != null) {

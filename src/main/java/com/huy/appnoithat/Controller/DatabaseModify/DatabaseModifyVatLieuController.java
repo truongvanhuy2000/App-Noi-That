@@ -55,8 +55,9 @@ public class DatabaseModifyVatLieuController implements Initializable {
 
     @FXML
     void addAction(ActionEvent event) {
-        vatLieuObservableList.add(new VatLieu(0, "<Thêm mới>",
-                new ThongSo(0, 0f, 0f, 0f, " ", 0L)));
+        databaseModifyVatlieuService.addNewVatLieu(new VatLieu(0, "<Thêm mới>",
+                new ThongSo(0, 0f, 0f, 0f, " ", 0L)), this.parentID);
+        refreshList();
     }
 
     @FXML

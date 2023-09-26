@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.CustomConverter;
 
-import com.huy.appnoithat.Shared.Utils;
+import com.huy.appnoithat.Common.Utils;
 import javafx.util.StringConverter;
 
 public class CustomLongStringConverter extends StringConverter<Long> {

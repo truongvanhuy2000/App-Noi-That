@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel;
 
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.DataModel.ThongTinThanhToan;
-import com.huy.appnoithat.Shared.Utils;
 import javafx.beans.property.SimpleLongProperty;
 import lombok.Getter;
 
@@ -41,6 +41,7 @@ public class BangThanhToan {
     public void setNghiemThuQuyet(long nghiemThuQuyet) {
         this.NghiemThuQuyet.set(nghiemThuQuyet);
     }
+
     @Override
     public String toString() {
         return "BangThanhToan{" +

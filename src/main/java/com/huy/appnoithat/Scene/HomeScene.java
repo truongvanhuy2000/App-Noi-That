@@ -14,8 +14,8 @@ import java.util.Objects;
 @Getter
 public class HomeScene {
     final static Logger LOGGER = LogManager.getLogger(HomeScene.class);
-    private static final String VIEW_PATH = "view/HomeLayout.fxml";
-    private static final String CSS_PATH = "css/HomeLayout.css";
+    private static final String VIEW_PATH = "/com/huy/appnoithat/Scene/view/HomeLayout.fxml";
+    private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/HomeLayout.css";
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;

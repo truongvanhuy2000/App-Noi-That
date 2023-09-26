@@ -60,6 +60,9 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
     }
 
     private void createComboBox() {
+        if (comboBox != null) {
+            return;
+        }
         comboBox = new ComboBox<>(items);
         comboBox.valueProperty().set(super.getItem());
         comboBox.setMinWidth(this.getWidth());
@@ -69,7 +72,5 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
                 updateItem(comboBox.getSelectionModel().getSelectedItem(), false);
             }
         });
-//        comboBox.getStyleClass().add("combo-border");
-//        comboBox.setEditable(true);
     }
 }
