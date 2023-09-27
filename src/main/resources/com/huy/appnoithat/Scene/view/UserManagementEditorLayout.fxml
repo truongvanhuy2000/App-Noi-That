@@ -24,6 +24,7 @@
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
@@ -31,7 +32,7 @@
                         <Label text="Mật khẩu" GridPane.rowIndex="1" />
                         <TextField fx:id="txteditusername" GridPane.columnIndex="1" />
                         <TextField fx:id="txteditpassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button fx:id="btnedit" mnemonicParsing="false" prefHeight="28.0" prefWidth="94.0" style="-fx-background-color: linear-gradient(#FFD700, #FEBE10),            radial-gradient(center 50% -40%, radius 200%, #FFD700 45%, #FEBE10 50%); -fx-background-radius: 6, 5; -fx-background-insets: 0, 1; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 ); -fx-text-fill: #ffff;" text="EDIT" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="btnedit" mnemonicParsing="false" prefHeight="28.0" prefWidth="94.0" style="-fx-background-color: linear-gradient(#FFD700, #FEBE10),            radial-gradient(center 50% -40%, radius 200%, #FFD700 45%, #FEBE10 50%); -fx-background-radius: 6, 5; -fx-background-insets: 0, 1; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 ); -fx-text-fill: #ffff;" text="EDIT" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <graphic>
                                 <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -40,12 +41,14 @@
                                 </ImageView>
                             </graphic>
                         </Button>
+                  <TextField fx:id="txtGiaHan" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Số tháng cần gia hạn thêm :" GridPane.rowIndex="2" />
                     </children>
                     <padding>
                         <Insets left="20.0" right="20.0" />
                     </padding>
                 </GridPane>
-                <Button fx:id="btncancel" layoutX="468.0" layoutY="324.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: linear-gradient(#fc2d4f, #9e1c3c),            radial-gradient(center 50% -40%, radius 200%, #fc2d4f 45%, #9e1c3c 50%); -fx-background-radius: 6, 5; -fx-background-insets: 0, 1; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 ); -fx-text-fill: #ffff;" text="CANCEL">
+                <Button fx:id="btncancel" layoutX="468.0" layoutY="339.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: linear-gradient(#fc2d4f, #9e1c3c),            radial-gradient(center 50% -40%, radius 200%, #fc2d4f 45%, #9e1c3c 50%); -fx-background-radius: 6, 5; -fx-background-insets: 0, 1; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 ); -fx-text-fill: #ffff;" text="CANCEL">
                     <graphic>
                         <ImageView fitHeight="18.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
                             <image>

@@ -87,3 +87,46 @@
 [INFO ] 25-09-2023 23:28:14 [main] HelloApplication:31 - Start application
 [INFO ] 25-09-2023 23:28:37 [main] HelloApplication:31 - Start application
 [INFO ] 25-09-2023 23:29:16 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:26:46 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:27:07 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:27:34 [main] HelloApplication:31 - Start application
+[ERROR] 27-09-2023 11:27:42 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[ERROR] 27-09-2023 11:27:51 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 27-09-2023 11:31:07 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:31:50 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:32:25 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:33:05 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:34:01 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:34:27 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:34:37 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:37:00 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:37:24 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:39:44 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:43:10 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:45:54 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:46:33 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:53:37 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 11:54:30 [main] HelloApplication:31 - Start application
+[ERROR] 27-09-2023 11:55:04 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.text.Text.setText(String)" because "giaTienQR" is null
+[INFO ] 27-09-2023 11:56:48 [main] HelloApplication:31 - Start application
+[ERROR] 27-09-2023 11:57:16 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.Label.setText(String)" because "giaTienQR" is null
+[INFO ] 27-09-2023 11:58:25 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:04:15 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:06:39 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:07:42 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:25:59 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:27:46 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:28:55 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:29:27 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:36:10 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:37:13 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:38:50 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:39:37 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:39:49 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:45:30 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:46:09 [main] HelloApplication:31 - Start application
+[ERROR] 27-09-2023 12:46:21 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: For input string: ""
+[INFO ] 27-09-2023 12:46:40 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:47:13 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:48:52 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 12:49:43 [main] HelloApplication:31 - Start application

@@ -15,12 +15,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -77,7 +75,7 @@ public class LoginController{
             List<String> roleList = new ArrayList<>();
             roleList.add("ROLE_USER");
 
-            ObservableList<String> listTime = FXCollections.observableArrayList("1 tháng", "3 tháng", "6 tháng");
+            ObservableList<String> listTime = FXCollections.observableArrayList("1 tháng", "6 tháng", "12 tháng");
             ObservableList<String> listGender = FXCollections.observableArrayList("Nam", "Nữ");
             Stage loginStage = new Stage();
             Scene register = RegisterScene.getInstance().getScene();
@@ -97,6 +95,7 @@ public class LoginController{
             Button btnSave = (Button) register.lookup("#btnSave");
             Button btnCancel = (Button) register.lookup("#btnCancel");
 
+            Label giaTienQR = (Label) QRpopup.lookup("#giaTienQR");
             loginStage.setScene(register);
             loginStage.setTitle("REGISTER ACCOUNT");
             loginStage.show();
@@ -105,13 +104,17 @@ public class LoginController{
                 String Gender = comboBoxGender.getSelectionModel().getSelectedItem().toString().equals("Nam") ? "Male" :"Female";
                 String time = comboBoxTime.getSelectionModel().getSelectedItem().toString();
                 LocalDate localDate;
-
                 if (time.equals("1 tháng")) {
-                    localDate = LocalDate.now().plusDays(30);
-                } else if (time.equals("3 tháng")) {
-                    localDate = LocalDate.now().plusDays(90);
+                    localDate = LocalDate.now().plusMonths(1);
+                    giaTienQR.setText("Đăng ký tài khoản 1 tháng giá 300,000 vnđ/ tháng");
+                } else if (time.equals("6 tháng")) {
+                    localDate = LocalDate.now().plusMonths(7);
+                    giaTienQR.setText("Đăng ký tài khoản 6 tháng giá 1,500,000 vnđ/ 6 tháng.\n" +
+                            " tặng thêm 1 tháng ( 1,500,000 vnđ/7 tháng)\n");
                 } else {
-                    localDate = LocalDate.now().plusDays(180);
+                    localDate = LocalDate.now().plusMonths(15);
+                    giaTienQR.setText("Đăng ký tài khoản 12 tháng giá 2.400,000 vnđ/ 12 tháng.\n" +
+                            " tặng thêm 3 tháng (2.400,000 vnđ/15 tháng)\n");
                 }
                 AccountInformation accountInformation = new AccountInformation(0, txtName.getText(), Gender, txtEmail.getText(), txtAddress.getText(), txtPhone.getText());
                 Account account = new Account(0, txtUsername.getText(), txtPassword.getText(), false, accountInformation, roleList, false, localDate);

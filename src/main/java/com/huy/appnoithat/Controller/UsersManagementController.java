@@ -91,6 +91,9 @@ public class UsersManagementController {
     @FXML
     private TableColumn<AccountTable, String> username;
 
+    @FXML
+    private TextField txtGiaHan;
+
 
     UsersManagementService user = new UsersManagementService();
 
@@ -275,6 +278,8 @@ public class UsersManagementController {
 //element field of userManagementEditorScene
             TextField txtusername = (TextField) userManagementEditorScene.lookup("#txteditusername");
             TextField txtpassword = (TextField) userManagementEditorScene.lookup("#txteditpassword");
+            TextField txtGiaHan = (TextField) userManagementEditorScene.lookup("#txtGiaHan");
+
             Button btnedit = (Button) userManagementEditorScene.lookup("#btnedit");
             Button btncancel = (Button) userManagementEditorScene.lookup("#btncancel");
 
@@ -295,10 +300,13 @@ public class UsersManagementController {
             btnedit.setOnAction(actionEvent -> {
                 tableManageUser.getSelectionModel().getSelectedItem().setUsername(txtusername.getText());
                 tableManageUser.getSelectionModel().getSelectedItem().setPassword(txtpassword.getText());
+
                 int id = tableManageUser.getItems().get(selectIndex).getId();
                 Account account = usersManagementService.findAccountById(id);
+                LocalDate soThangGiaHanThem = account.getExpiredDate().plusMonths(Integer.parseInt(txtGiaHan.getText()));
                 account.setUsername(txtusername.getText());
                 account.setPassword(txtpassword.getText());
+                account.setExpiredDate(soThangGiaHanThem);
                 usersManagementService.EditAccount(account);
                 tableManageUser.refresh();
                 userManageMentStage.close();
