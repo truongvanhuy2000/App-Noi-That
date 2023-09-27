@@ -83,8 +83,7 @@ public class UsersManagementController {
         // 2. convert JSON array to List of objects
         List<Account> accountList = usersManagementService.findAllAccountEnable();
 
-        for (Account account : accountList
-        ) {
+        for (Account account : accountList) {
             listUser.add(new AccountTable(account.getId(), account.getUsername(), account.getPassword(), account.isActive(), convertActiveIcon(account.isActive()), account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
         }
         username.setCellValueFactory(new PropertyValueFactory<AccountTable, String>("username"));
