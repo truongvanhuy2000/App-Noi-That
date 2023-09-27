@@ -22,6 +22,10 @@ public class PhongCachRestService {
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     private final UserSessionService userSessionService;
+    private static final String BASE_ENDPOINT = "/api/phongcach";
+    private static final String ID_TEMPLATE = "/%d";
+    private static final String OWNER_TEMPLATE = "?owner=%s";
+    private static final String NAME_TEMPLATE = "&name=%s";
     public static synchronized PhongCachRestService getInstance() {
         if (instance == null) {
             instance = new PhongCachRestService();
@@ -36,7 +40,7 @@ public class PhongCachRestService {
                 .build();
     }
     public List<PhongCachNoiThat> findAll() {
-        String path = "/api/phongcach";
+        String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());
         String response = webClientService.authorizedHttpGetJson(path, userSessionService.getToken());
         if (response == null) {
             return new ArrayList<>();
@@ -50,8 +54,8 @@ public class PhongCachRestService {
         }
     }
     public PhongCachNoiThat findById(int id) {
-        String path = "/api/phongcach";
-        String response = webClientService.authorizedHttpGetJson(path + "/" + id, userSessionService.getToken());
+        String path = String.format(BASE_ENDPOINT + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
+        String response = webClientService.authorizedHttpGetJson(path, userSessionService.getToken());
         if (response == null) {
             return null;
         }
@@ -63,9 +67,9 @@ public class PhongCachRestService {
         }
     }
     public PhongCachNoiThat findUsingName(String name) {
-        String path = "/api/phongcach/search";
-        String param = "?" + "name=" + Utils.encodeValue(name);
-        String response = webClientService.authorizedHttpGetJson(path + param, userSessionService.getToken());
+        String path = String.format(BASE_ENDPOINT + "/search" + OWNER_TEMPLATE + NAME_TEMPLATE,
+                userSessionService.getUsername(), Utils.encodeValue(name));
+        String response = webClientService.authorizedHttpGetJson(path, userSessionService.getToken());
         if (response == null) {
             return null;
         }
@@ -77,26 +81,29 @@ public class PhongCachRestService {
         }
     }
     public void save(PhongCachNoiThat phongCachNoiThat) {
+        String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());
         String token = this.userSessionService.getToken();
         try {
-            this.webClientService.authorizedHttpPostJson("/api/phongcach", objectMapper.writeValueAsString(phongCachNoiThat), token);
+            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(phongCachNoiThat), token);
         } catch (IOException e) {
             LOGGER.error("Error when adding new PhongCach");
             throw new RuntimeException(e);
         }
     }
     public void update(PhongCachNoiThat phongCachNoiThat) {
+        String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());
         String token = this.userSessionService.getToken();
         try {
-            this.webClientService.authorizedHttpPutJson("/api/phongcach", objectMapper.writeValueAsString(phongCachNoiThat), token);
+            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(phongCachNoiThat), token);
         } catch (IOException e) {
             LOGGER.error("Error when editing PhongCach");
             throw new RuntimeException(e);
         }
     }
     public void deleteById(int id) {
+        String path = String.format(BASE_ENDPOINT + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
         String token = this.userSessionService.getToken();
-        this.webClientService.authorizedHttpDeleteJson("/api/phongcach/" + id, "", token);
+        this.webClientService.authorizedHttpDeleteJson(path, "", token);
     }
 
 }

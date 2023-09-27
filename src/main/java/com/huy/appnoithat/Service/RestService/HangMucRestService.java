@@ -19,6 +19,10 @@ public class HangMucRestService {
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     private final UserSessionService userSessionService;
+    private static final String BASE_ENDPOINT = "/api/hangmuc";
+    private static final String ID_TEMPLATE = "/%d";
+    private static final String OWNER_TEMPLATE = "?owner=%s";
+    private static final String PARENT_ID_TEMPLATE = "&parentId=%d";
     public static synchronized HangMucRestService getInstance() {
         if (instance == null) {
             instance = new HangMucRestService();
@@ -34,7 +38,8 @@ public class HangMucRestService {
     }
     public List<HangMuc> searchByNoiThat(int id) {
         String token = this.userSessionService.getToken();
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/hangmuc/searchByNoiThat/" + id, token);
+        String path = String.format(BASE_ENDPOINT + "/searchByNoiThat" + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
+        String response2 = this.webClientService.authorizedHttpGetJson(path, token);
         if (response2 == null) {
             return null;
         }
@@ -49,8 +54,9 @@ public class HangMucRestService {
     }
     public void save(HangMuc hangMuc, int parentID) {
         String token = this.userSessionService.getToken();
+        String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE + PARENT_ID_TEMPLATE, userSessionService.getUsername(), parentID);
         try {
-            this.webClientService.authorizedHttpPostJson("/api/hangmuc?parentId=" + parentID, objectMapper.writeValueAsString(hangMuc), token);
+            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(hangMuc), token);
         } catch (IOException e) {
             LOGGER.error("Error when adding new HangMuc");
             throw new RuntimeException(e);
@@ -58,8 +64,9 @@ public class HangMucRestService {
     }
     public void update(HangMuc hangMuc) {
         String token = this.userSessionService.getToken();
+        String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());
         try {
-            this.webClientService.authorizedHttpPutJson("/api/hangmuc", objectMapper.writeValueAsString(hangMuc), token);
+            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(hangMuc), token);
         } catch (IOException e) {
             LOGGER.error("Error when editing HangMuc");
             throw new RuntimeException(e);
@@ -67,6 +74,7 @@ public class HangMucRestService {
     }
     public void deleteById(int id) {
         String token = this.userSessionService.getToken();
-        this.webClientService.authorizedHttpDeleteJson("/api/hangmuc/" + id, "", token);
+        String path = String.format(BASE_ENDPOINT + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
+        this.webClientService.authorizedHttpDeleteJson(path, "", token);
     }
 }

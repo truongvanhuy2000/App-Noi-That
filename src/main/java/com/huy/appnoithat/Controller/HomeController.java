@@ -51,10 +51,10 @@ public class HomeController {
         String role = sessionService.getLoginAccount().getRoleList().contains("ROLE_ADMIN") ? "Admin" : "User";
         switch (role) {
             case "Admin" -> {
-                toggleButton(false, true, true);
+                toggleButton(false, true, false);
             }
             case "User" -> {
-                toggleButton(true, false, false);
+                toggleButton(true, false, true);
             }
             default -> {
             }

@@ -355,3 +355,28 @@ java.lang.NullPointerException: Cannot invoke "javafx.scene.control.TreeItem.get
 [INFO ] 27-09-2023 14:01:18 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
 [INFO ] 27-09-2023 14:02:39 [main] HelloApplication:31 - Start application
 [INFO ] 27-09-2023 14:02:39 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 28-09-2023 00:14:59 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 00:15:00 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 28-09-2023 00:15:53 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 00:15:55 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 28-09-2023 00:29:44 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 00:29:46 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 28-09-2023 00:30:50 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 00:30:51 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 28-09-2023 00:31:19 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 00:41:03 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 00:41:04 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 00:54:45 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 00:54:46 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 00:56:17 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 00:56:19 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 00:58:11 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 00:58:13 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 01:02:27 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 01:02:30 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 01:03:32 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 01:03:36 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 01:05:52 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 01:05:55 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 01:13:33 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 01:13:35 [JavaFX Application Thread] HomeController:62 - Login as user with role User
