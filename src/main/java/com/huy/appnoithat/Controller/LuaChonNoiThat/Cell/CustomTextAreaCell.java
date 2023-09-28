@@ -1,23 +1,28 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
+import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Enums.Action;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeTableCell;
-import javafx.scene.input.KeyCode;
+import javafx.scene.layout.VBox;
 
 public class CustomTextAreaCell extends TreeTableCell<BangNoiThat, String> {
     private TextArea textArea;
+    private VBox vBox;
 
     public CustomTextAreaCell() {
     }
 
     @Override
     public void startEdit() {
+        createTextArea();
+        createVBox();
         if (!isEmpty()) {
             super.startEdit();
-            createTextArea();
             setText(null);
-            setGraphic(textArea);
+            setGraphic(vBox);
             textArea.selectAll();
         }
     }
@@ -42,7 +47,7 @@ public class CustomTextAreaCell extends TreeTableCell<BangNoiThat, String> {
                     setGraphic(null);
                 }
                 setText(null);
-                setGraphic(textArea);
+                setGraphic(vBox);
             } else {
                 setText(getString());
                 setGraphic(null);
@@ -51,15 +56,26 @@ public class CustomTextAreaCell extends TreeTableCell<BangNoiThat, String> {
     }
 
     private void createTextArea() {
+        if (textArea != null) {
+            return;
+        }
         textArea = new TextArea(getString());
         textArea.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
         textArea.setOnKeyPressed((key) -> {
-            if (key.getCode().equals(KeyCode.TAB)) {
-//                System.out.println("Commiting " + textArea.getText());
+            if (KeyboardUtils.isRightKeyCombo(Action.SAVE, key)) {
                 commitEdit(textArea.getText());
                 updateItem(textArea.getText(), false);
             }
         });
+    }
+
+    private void createVBox() {
+        if (vBox != null) {
+            return;
+        }
+        vBox = new VBox();
+        vBox.getChildren().add(new Label("Nhấn Ctrl + S để lưu"));
+        vBox.getChildren().add(textArea);
     }
 
     private String getString() {

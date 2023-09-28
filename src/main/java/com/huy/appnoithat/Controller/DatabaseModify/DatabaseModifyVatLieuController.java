@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
+import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Scene.DatabaseModify.ChangeProductSpecificationScene;
@@ -55,8 +56,10 @@ public class DatabaseModifyVatLieuController implements Initializable {
 
     @FXML
     void addAction(ActionEvent event) {
-        vatLieuObservableList.add(new VatLieu(0, "<Thêm mới>",
-                new ThongSo(0, 0f, 0f, 0f, " ", 0L)));
+        int currentPos = vatLieuObservableList.size();
+        databaseModifyVatlieuService.addNewVatLieu(new VatLieu(0, DBModifyUtils.getNewName(currentPos),
+                new ThongSo(0, 0f, 0f, 0f, " ", 0L)), this.parentID);
+        refreshList();
     }
 
     @FXML
@@ -101,6 +104,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
         stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == backButton) {
             scene = DatabaseModifyHangMucScene.getInstance().getScene();
+            DatabaseModifyHangMucScene.getInstance().getController().refresh();
         } else {
             return;
         }
@@ -118,9 +122,12 @@ public class DatabaseModifyVatLieuController implements Initializable {
         refreshList();
         refreshChildrenList(0);
     }
-
+    public void refresh() {
+        refreshList();
+        refreshChildrenList(0);
+    }
     private void refreshList() {
-        List<VatLieu> vatLieuList = databaseModifyVatlieuService.findVatLieuByID(parentID);
+        List<VatLieu> vatLieuList = databaseModifyVatlieuService.findVatLieuByParentId(parentID);
         if (vatLieuList == null) {
             vatLieuList = new ArrayList<>();
         }
@@ -133,7 +140,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
             thongSoObservableList.clear();
             return;
         }
-        List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByID(parentID);
+        List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByParentId(parentID);
         if (thongSoList == null) {
             thongSoList = new ArrayList<>();
         }
@@ -153,7 +160,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
         listViewVatLieu.setCellFactory(param -> new CustomEditingListCell<>());
         listViewVatLieu.setOnEditCommit(event -> {
             VatLieu item = event.getNewValue();
-            item.setName(event.getNewValue().getName());
+            item.setName(DBModifyUtils.getNotDuplicateName(item.getName(), vatLieuObservableList));
             if (item.getId() == 0) {
                 databaseModifyVatlieuService.addNewVatLieu(item, this.parentID);
             } else {

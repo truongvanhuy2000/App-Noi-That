@@ -1,8 +1,8 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
+import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import com.huy.appnoithat.Shared.PopupUtils;
-import com.huy.appnoithat.Shared.Utils;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TreeItem;
@@ -36,7 +36,8 @@ public class ButtonHandler {
 //        parent.setExpanded(true);
     }
 
-    //    public void continuousLineAdd(ActionEvent event) {
+    //    @Deprecated
+//    public void continuousLineAdd() {
 //        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
 //            return;
 //        }
@@ -45,7 +46,7 @@ public class ButtonHandler {
 //        String stt = parent.getChildren().get(parent.getChildren().size() - 1).getValue().getSTT().getValue();
 //        String nextStt = findTheNextStt(stt);
 //        if (isReachedLimit(parent)) {
-//            ErrorUtils.throwErrorSignal("Đã đạt giới hạn số lượng 30");
+//            PopupUtils.throwErrorSignal("Đã đạt giới hạn số lượng 30");
 //            return;
 //        }
 //        parent.getChildren().add(new TreeItem<>(new BangNoiThat(

@@ -1,10 +1,10 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyVatLieuScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyThongSoService;
-import com.huy.appnoithat.Shared.PopupUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 public class ChangeProductSpecificationController {
     int parentID;
@@ -60,6 +62,7 @@ public class ChangeProductSpecificationController {
         stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == backButton) {
             scene = DatabaseModifyVatLieuScene.getInstance().getScene();
+            DatabaseModifyVatLieuScene.getInstance().getController().refresh();
         } else {
             return;
         }
@@ -68,19 +71,23 @@ public class ChangeProductSpecificationController {
     }
 
     public void initializeThongSo(int id) {
-        parentID = id;
+        this.parentID = id;
         if (id == 0) {
             return;
         }
-        if (databaseModifyThongSoService.findThongSoByID(id) == null || databaseModifyThongSoService.findThongSoByID(id).isEmpty()) {
-            return;
+        ThongSo thongSo = new ThongSo(0, 0.0f, 0.0f, 0.0f, "", 0L);
+        List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByParentId(id);
+        if (thongSoList == null || thongSoList.isEmpty()) {
+            databaseModifyThongSoService.addNewThongSo(thongSo, this.parentID);
         }
-        ThongSo ts = databaseModifyThongSoService.findThongSoByID(id).get(0);
-        txtCao.setText(ts.getCao() != null ? ts.getCao().toString() : "0.0");
-        txtDai.setText(ts.getDai() != null ? ts.getDai().toString() : "0.0");
-        txtRong.setText(ts.getRong() != null ? ts.getRong().toString() : "0.0");
-        txtDonGia.setText(ts.getDon_gia() != null ? ts.getDon_gia().toString() : " ");
-        txtDonVi.setText(ts.getDon_vi() != null ? ts.getDon_vi() : " ");
+        else {
+            thongSo = thongSoList.get(0);
+        }
+        txtCao.setText(thongSo.getCao().toString());
+        txtDai.setText(thongSo.getDai().toString());
+        txtRong.setText(thongSo.getRong().toString());
+        txtDonGia.setText(thongSo.getDon_gia().toString());
+        txtDonVi.setText(thongSo.getDon_vi());
     }
 
 }

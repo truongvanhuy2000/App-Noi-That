@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Controller;
+package com.huy.appnoithat.Controller.UserManagement;
 
 public class ListAccountWaitToApproveController {
 

@@ -1,22 +1,20 @@
-package com.huy.appnoithat.Scene;
+package com.huy.appnoithat.Scene.UseManagement;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import lombok.Getter;
 
 import java.io.IOException;
 import java.util.Objects;
 
-@Getter
-public class UserManagementScene {
+public class UserManagementAddAccountScene {
     private Scene scene;
     private Parent root;
-    private static UserManagementScene single_instance = null;
+    private static UserManagementAddAccountScene single_instance = null;
     private final FXMLLoader fxmlLoader;
 
-    public UserManagementScene() {
-        String viewPath = "view/UserManagementLayout.fxml";
+    public UserManagementAddAccountScene() {
+        String viewPath = "/com/huy/appnoithat/Scene/view/UserManagementAddAccountLayout.fxml";
         try {
             fxmlLoader = new FXMLLoader(getClass().getResource(viewPath));
             root = fxmlLoader.load();
@@ -38,15 +36,19 @@ public class UserManagementScene {
         addCssToScence();
     }
 
+    public Scene getScene() {
+        return scene;
+    }
+
     // Create an object of this class, call this function
-    public static synchronized UserManagementScene getInstance() {
+    public static synchronized UserManagementAddAccountScene getInstance() {
         if (single_instance == null)
-            single_instance = new UserManagementScene();
+            single_instance = new UserManagementAddAccountScene();
         return single_instance;
     }
 
     private void addCssToScence() {
-        String cssPath = "css/UserManagementLayout.css";
+        String cssPath = "/com/huy/appnoithat/Scene/css/UserManagementAddAccount.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }
 }

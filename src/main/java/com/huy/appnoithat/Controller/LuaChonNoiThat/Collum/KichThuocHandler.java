@@ -1,16 +1,13 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
 public class KichThuocHandler {
-//    final static Logger LOGGER = LogManager.getLogger(KichThuocHandler.class);
+    //    final static Logger LOGGER = LogManager.getLogger(KichThuocHandler.class);
     private TreeTableView<BangNoiThat> TableNoiThat;
     private TreeTableColumn<BangNoiThat, Float> Cao, Dai, Rong;
 

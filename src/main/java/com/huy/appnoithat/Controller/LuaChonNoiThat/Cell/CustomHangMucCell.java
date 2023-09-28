@@ -55,6 +55,9 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
     }
 
     private void createComboBox() {
+        if (comboBox != null) {
+            return;
+        }
         comboBox = new ComboBox<>(items);
         comboBox.valueProperty().set(super.getItem());
         comboBox.setMinWidth(this.getWidth());

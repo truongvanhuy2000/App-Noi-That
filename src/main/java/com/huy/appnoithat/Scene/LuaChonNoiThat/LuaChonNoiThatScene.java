@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Scene;
+package com.huy.appnoithat.Scene.LuaChonNoiThat;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import javafx.fxml.FXMLLoader;
@@ -12,14 +12,15 @@ import java.util.Objects;
 
 @Getter
 public class LuaChonNoiThatScene {
-    private static final String viewPath = "view/LuaChonNoiThatLayout.fxml";
+    private static final String VIEW_PATH = "/com/huy/appnoithat/Scene/view/LuaChonNoiThatLayout.fxml";
+    private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/LuaChonNoiThatLayout.css";
     private Scene scene;
     private Parent root;
     private static LuaChonNoiThatScene single_instance = null;
 
     public LuaChonNoiThatScene() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(LuaChonNoiThatScene.class.getResource(viewPath));
+            FXMLLoader fxmlLoader = new FXMLLoader(LuaChonNoiThatScene.class.getResource(VIEW_PATH));
             fxmlLoader.setController(new LuaChonNoiThatController());
             root = fxmlLoader.load();
         } catch (IOException e) {
@@ -48,12 +49,11 @@ public class LuaChonNoiThatScene {
     }
 
     private void addCssToScence() {
-        String cssPath = "css/LuaChonNoiThatLayout.css";
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(CSS_PATH)).toExternalForm());
     }
 
     static public Node getNewRoot() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(LuaChonNoiThatScene.class.getResource(viewPath));
+        FXMLLoader fxmlLoader = new FXMLLoader(LuaChonNoiThatScene.class.getResource(VIEW_PATH));
         fxmlLoader.setController(new LuaChonNoiThatController());
         Parent root = fxmlLoader.load();
         return root;

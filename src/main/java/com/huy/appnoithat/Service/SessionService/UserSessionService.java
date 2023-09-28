@@ -82,6 +82,9 @@ public class UserSessionService {
         UserSession session = UserSession.getInstance();
         return session.getAccount();
     }
+    public String getUsername() {
+        return getLoginAccount().getUsername();
+    }
 
     public UserSession getSession() {
         if (!isLogin()) {

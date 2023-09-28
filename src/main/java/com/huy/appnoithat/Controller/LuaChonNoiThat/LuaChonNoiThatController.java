@@ -1,5 +1,8 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
+import com.huy.appnoithat.Common.KeyboardUtils;
+import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomNumberCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomTextAreaCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.HangMucCollumHandler;
@@ -9,13 +12,10 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.VatLieuCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.CustomConverter.CustomLongStringConverter;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
-import com.huy.appnoithat.DataModel.ThongTinCongTy;
-import com.huy.appnoithat.DataModel.ThongTinKhachHang;
-import com.huy.appnoithat.DataModel.ThongTinNoiThat;
-import com.huy.appnoithat.DataModel.ThongTinThanhToan;
+import com.huy.appnoithat.DataModel.*;
+import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Enums.FileType;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
-import com.huy.appnoithat.Shared.PopupUtils;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -29,7 +29,6 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
@@ -79,9 +78,11 @@ public class LuaChonNoiThatController implements Initializable {
     private TableView<BangThanhToan> bangThanhToan;
     private ByteArrayOutputStream imageStream;
     private final LuaChonNoiThatService luaChonNoiThatService;
-    public LuaChonNoiThatController () {
+
+    public LuaChonNoiThatController() {
         luaChonNoiThatService = new LuaChonNoiThatService();
     }
+
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {
         Object source = event.getSource();
@@ -90,10 +91,14 @@ public class LuaChonNoiThatController implements Initializable {
         }
     }
 
+    /**
+     * @param event
+     * @see javafx.scene.input.KeyEvent
+     * This function will handle some key pressed event that will trigger clear selection and delete selection
+     */
     @FXML
     void onKeyPressed(KeyEvent event) {
-//        AnchorPane anchorPane = new AnchorPane();
-        if (event.getCode() == KeyCode.DELETE) {
+        if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
             if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
                 return;
             }
@@ -106,14 +111,24 @@ public class LuaChonNoiThatController implements Initializable {
             }
             TableNoiThat.getSelectionModel().clearSelection();
         }
-        if (event.getCode() == KeyCode.ESCAPE) {
+        if (KeyboardUtils.isRightKeyCombo(Action.CLEAR_SELECTION, event)) {
             TableNoiThat.getSelectionModel().clearSelection();
         }
     }
+
+    /**
+     * @param event This function will handle the event when user want to save the table
+     */
     @FXML
     void onSaveAction(ActionEvent event) {
         exportFile(FileType.NT);
     }
+
+    /**
+     * @param url
+     * @param resourceBundle
+     * @see Initializable#initialize(URL, ResourceBundle)
+     */
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
         resizeToFit();
@@ -125,19 +140,22 @@ public class LuaChonNoiThatController implements Initializable {
         ExportButton.setOnAction(this::exportButtonHandler);
         ExportButton.disableProperty().bind(
                 TenCongTy.textProperty().isEmpty().or(
-                VanPhong.textProperty().isEmpty().or(
-                DiaChiXuong.textProperty().isEmpty().or(
-                DienThoaiCongTy.textProperty().isEmpty().or(
-                Email.textProperty().isEmpty().or(
-                TenKhachHang.textProperty().isEmpty().or(
-                DienThoaiKhachHang.textProperty().isEmpty().or(
-                DiaChiKhachHang.textProperty().isEmpty().or(
-                SanPham.textProperty().isEmpty()))))))))
+                        VanPhong.textProperty().isEmpty().or(
+                                DiaChiXuong.textProperty().isEmpty().or(
+                                        DienThoaiCongTy.textProperty().isEmpty().or(
+                                                Email.textProperty().isEmpty().or(
+                                                        TenKhachHang.textProperty().isEmpty().or(
+                                                                DienThoaiKhachHang.textProperty().isEmpty().or(
+                                                                        DiaChiKhachHang.textProperty().isEmpty().or(
+                                                                                SanPham.textProperty().isEmpty()))))))))
         );
         imageStream = new ByteArrayOutputStream();
         NgayLapBaoGia.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
     }
 
+    /**
+     * This function will resize the table to fit the current screen
+     */
     private void resizeToFit() {
         VatLieu.setResizable(false);
         TableNoiThat.widthProperty().addListener((observableValue, number, t1) -> {
@@ -157,22 +175,29 @@ public class LuaChonNoiThatController implements Initializable {
         });
     }
 
+    /**
+     * @param event This function will handle the event when user want to export the table
+     */
     private void exportButtonHandler(ActionEvent event) {
         exportFile(FileType.EXCEL);
     }
 
+    /**
+     * @param fileType This function will export the table to a file
+     */
     private void exportFile(FileType fileType) {
         File selectedFile = PopupUtils.fileChooser();
         if (selectedFile == null) {
             return;
         }
-        boolean result = luaChonNoiThatService.exportFile(selectedFile,
-                fileType,
+        DataPackage dataPackage = new DataPackage(
                 getThongTinCongTy(),
                 getThongTinKhachHang(),
+                noteTextArea.getText(),
                 getThongTinNoiThatList(),
-                getThongTinThanhToan(),
-                noteTextArea.getText());
+                getThongTinThanhToan()
+        );
+        boolean result = luaChonNoiThatService.exportFile(selectedFile, fileType, dataPackage);
         if (!result) {
             PopupUtils.throwErrorSignal("Xuất file thất bại");
             return;
@@ -180,19 +205,149 @@ public class LuaChonNoiThatController implements Initializable {
         PopupUtils.throwSuccessSignal("Xuất file thành công");
     }
 
+    /**
+     * @param file This function will import the table from a file
+     */
+    private void importFile(File file) {
+        LOGGER.info("Import file: " + file.getName());
+        DataPackage dataPackage = luaChonNoiThatService.importFile(file);
+        if (dataPackage == null) {
+            PopupUtils.throwErrorSignal("File không hợp lệ");
+            return;
+        }
+        // Set up thong tin cong ty
+        importThongTinCongTy(dataPackage.getThongTinCongTy());
+        // Set up thong tin khach hang
+        importThongTinKhachHang(dataPackage.getThongTinKhachHang());
+        // Set up note
+        importNoteArea(dataPackage.getNoteArea());
+        // Set up bang thanh toan
+        importBangThanhToan(dataPackage.getThongTinThanhToan());
+        // Set up bang noi that
+        TreeItem<BangNoiThat> itemRoot = importFromThongTinList(dataPackage.getThongTinNoiThatList());
+        if (itemRoot == null) {
+            PopupUtils.throwErrorSignal("Thông tin nội thất không hợp lệ");
+            return;
+        }
+        TableNoiThat.setRoot(itemRoot);
+    }
+
+    /**
+     * @param thongTinCongTy This function will import thong tin cong ty to the table
+     */
+    private void importThongTinCongTy(ThongTinCongTy thongTinCongTy) {
+        if (thongTinCongTy == null) return;
+        TenCongTy.setText(thongTinCongTy.getTenCongTy());
+        VanPhong.setText(thongTinCongTy.getDiaChiVanPhong());
+        DiaChiXuong.setText(thongTinCongTy.getDiaChiXuong());
+        DienThoaiCongTy.setText(thongTinCongTy.getSoDienThoai());
+        Email.setText(thongTinCongTy.getEmail());
+    }
+
+    /**
+     * @param thongTinKhachHang This function will import thong tin khach hang to the table
+     */
+    private void importThongTinKhachHang(ThongTinKhachHang thongTinKhachHang) {
+        if (thongTinKhachHang == null) return;
+        TenKhachHang.setText(thongTinKhachHang.getTenKhachHang());
+        DienThoaiKhachHang.setText(thongTinKhachHang.getSoDienThoai());
+        DiaChiKhachHang.setText(thongTinKhachHang.getDiaChi());
+        NgayLapBaoGia.setText(thongTinKhachHang.getDate());
+        SanPham.setText(thongTinKhachHang.getSanPham());
+    }
+
+    /**
+     * @param noteArea This function will import note area to the table
+     */
+    public void importNoteArea(String noteArea) {
+        noteTextArea.setText(noteArea);
+    }
+
+    /**
+     * @param thongTinThanhToan This function will import bang thanh toan to the table
+     */
+    public void importBangThanhToan(ThongTinThanhToan thongTinThanhToan) {
+        if (thongTinThanhToan == null) return;
+        bangThanhToan.getItems().clear();
+        bangThanhToan.getItems().add(new BangThanhToan(thongTinThanhToan));
+    }
+
+    /**
+     * @param thongTinNoiThatList
+     * @return
+     * @see ThongTinNoiThat
+     * This function will import bang noi that to the table
+     * @see TreeItem
+     */
+    public TreeItem<BangNoiThat> importFromThongTinList(List<ThongTinNoiThat> thongTinNoiThatList) {
+        TreeItem<BangNoiThat> itemRoot = TableUtils.createNewItem("0");
+        TreeItem<BangNoiThat> lv1Item = null;
+        TreeItem<BangNoiThat> lv2Item = null;
+        TreeItem<BangNoiThat> lv3Item = null;
+        boolean isNewLv1 = false;
+        boolean isNewLv2 = false;
+        boolean isNewLv3 = false;
+        try {
+            for (ThongTinNoiThat item : thongTinNoiThatList) {
+                String stt = item.getSTT();
+                TreeItem<BangNoiThat> tempItem = TableUtils.convertToTreeItem(item);
+                if (!Utils.RomanNumber.isRoman(stt) && Utils.isAlpha(stt)) {
+                    // Must be alpha numeric
+                    if (tempItem != lv1Item) {
+                        lv1Item = tempItem;
+                        isNewLv1 = true;
+                    }
+                }
+                if (Utils.RomanNumber.isRoman(stt)) {
+                    if (tempItem != lv2Item) {
+                        lv2Item = tempItem;
+                        isNewLv2 = true;
+                    }
+                }
+                if (Utils.isNumeric(stt)) {
+                    if (tempItem != lv3Item) {
+                        lv3Item = tempItem;
+                        isNewLv3 = true;
+                    }
+                }
+                if (isNewLv1) {
+                    itemRoot.getChildren().add(lv1Item);
+                    isNewLv1 = false;
+                }
+                if (isNewLv2) {
+                    lv1Item.getChildren().add(lv2Item);
+                    isNewLv2 = false;
+                }
+                if (isNewLv3) {
+                    lv2Item.getChildren().add(lv3Item);
+                    isNewLv3 = false;
+                }
+            }
+        } catch (Exception e) {
+            LOGGER.error("Error while importing file", e);
+            return null;
+        }
+        return itemRoot;
+    }
+
+    /**
+     * THis function will return a list of ThongTinNoiThat from item root from the table
+     *
+     * @return
+     */
     private List<ThongTinNoiThat> getThongTinNoiThatList() {
         // This function will return a list of ThongTinNoiThat
         List<ThongTinNoiThat> listNoiThat = new ArrayList<>();
         // Get a list of phong cach item
         TableNoiThat.getRoot().getChildren().forEach(
                 item -> {
-                    listNoiThat.add(convertFromTreeItem(item));
+                    listNoiThat.add(TableUtils.convertFromTreeItem(item));
                     item.getChildren().forEach(
                             item1 -> {
-                                listNoiThat.add(convertFromTreeItem(item1));
+                                listNoiThat.add(TableUtils.convertFromTreeItem(item1));
                                 item1.getChildren().forEach(
                                         item2 -> {
-                                            listNoiThat.add(convertFromTreeItem(item2));
+                                            listNoiThat.add(TableUtils.convertFromTreeItem(item2));
                                         }
                                 );
                             }
@@ -202,15 +357,50 @@ public class LuaChonNoiThatController implements Initializable {
         return listNoiThat;
     }
 
+    /**
+     * This function will return ThongTinThanhToan from bang thanh toan
+     *
+     * @return
+     */
     private ThongTinThanhToan getThongTinThanhToan() {
         return new ThongTinThanhToan(
                 bangThanhToan.getItems().get(0));
     }
 
-    private ThongTinNoiThat convertFromTreeItem(TreeItem<BangNoiThat> item) {
-        return new ThongTinNoiThat(item.getValue());
+    /**
+     * This function will return ThongTinCongTy from thong tin cong ty text field
+     *
+     * @return
+     */
+    private ThongTinCongTy getThongTinCongTy() {
+        return new ThongTinCongTy(
+                new ByteArrayInputStream(imageStream.toByteArray()),
+                TenCongTy.getText(),
+                VanPhong.getText(),
+                DiaChiXuong.getText(),
+                DienThoaiCongTy.getText(),
+                Email.getText()
+        );
     }
 
+    /**
+     * This function will return ThongTinKhachHang from thong tin khach hang text field
+     *
+     * @return
+     */
+    private ThongTinKhachHang getThongTinKhachHang() {
+        return new ThongTinKhachHang(
+                TenKhachHang.getText(),
+                DiaChiKhachHang.getText(),
+                DienThoaiKhachHang.getText(),
+                NgayLapBaoGia.getText(),
+                SanPham.getText()
+        );
+    }
+
+    /**
+     * This function will handle the event when user want to choose an image
+     */
     private void imageViewHandler() {
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(new Stage());
@@ -232,27 +422,9 @@ public class LuaChonNoiThatController implements Initializable {
         }
     }
 
-    private ThongTinCongTy getThongTinCongTy(){
-        return new ThongTinCongTy(
-                new ByteArrayInputStream(imageStream.toByteArray()),
-                TenCongTy.getText(),
-                VanPhong.getText(),
-                DiaChiXuong.getText(),
-                DienThoaiCongTy.getText(),
-                Email.getText()
-        );
-    }
-
-    private ThongTinKhachHang getThongTinKhachHang() {
-        return new ThongTinKhachHang(
-                TenKhachHang.getText(),
-                DiaChiKhachHang.getText(),
-                DienThoaiKhachHang.getText(),
-                NgayLapBaoGia.getText(),
-                SanPham.getText()
-        );
-    }
-
+    /**
+     * This function will set up the bang noi that
+     */
     private void setUpBangNoiThat() {
         setUpCollum();
         TableNoiThat.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -271,6 +443,9 @@ public class LuaChonNoiThatController implements Initializable {
         itemRoot.getChildren().add(TableUtils.createNewItem("A"));
     }
 
+    /**
+     * This function will set up the collum for KichThuoc
+     */
     private void setUpBangThanhToan() {
         DatCocThietKe10.setCellValueFactory(param -> param.getValue().getDatCocThietKe10().asObject());
         DatCocThietKe10.setCellFactory(param -> new TextFieldTableCell<>(new CustomLongStringConverter()));
@@ -291,18 +466,9 @@ public class LuaChonNoiThatController implements Initializable {
         }
     }
 
-    private void calculateBangThanhToan(Long tongTien) {
-        Long datCocThietKe10 = (long) (tongTien * 0.1);
-        Long datCocThiCong30 = (long) (tongTien * 0.3);
-        Long hangDenChanCongTrinh50 = (long) (tongTien * 0.5);
-        Long nghiemThuQuyet = tongTien - datCocThietKe10 - datCocThiCong30 - hangDenChanCongTrinh50;
-
-        bangThanhToan.getItems().get(0).setDatCocThietKe10(datCocThietKe10);
-        bangThanhToan.getItems().get(0).setDatCocThiCong30(datCocThiCong30);
-        bangThanhToan.getItems().get(0).setHangDenChanCongTrinh50(hangDenChanCongTrinh50);
-        bangThanhToan.getItems().get(0).setNghiemThuQuyet(nghiemThuQuyet);
-    }
-
+    /**
+     * This function will set up all the collum
+     */
     private void setUpCollum() {
         setUpKichThuoc();
         setUpDonGia();
@@ -314,6 +480,9 @@ public class LuaChonNoiThatController implements Initializable {
         setUpSTT();
     }
 
+    /**
+     * This function will set up the collum for KichThuoc
+     */
     private void setUpSTT() {
         STTCollumHandler sttCollumHandler = new STTCollumHandler(TableNoiThat);
         // Set up collum for STT
@@ -322,6 +491,9 @@ public class LuaChonNoiThatController implements Initializable {
         STT.setOnEditCommit(sttCollumHandler::onEditCommitSTT);
     }
 
+    /**
+     * This function will set up the collum for KichThuoc
+     */
     private void setUpKhoiLuong() {
         // Set up collum for KhoiLuong
         KhoiLuong.setText("Khối\nlượng");
@@ -340,6 +512,9 @@ public class LuaChonNoiThatController implements Initializable {
         });
     }
 
+    /**
+     * This function will set up the collum for ThanhTien
+     */
     private void setUpThanhTien() {
         // Set up collum for ThanhTien
         ThanhTien.setCellValueFactory(param -> {
@@ -351,6 +526,9 @@ public class LuaChonNoiThatController implements Initializable {
                 event.getRowValue().getValue().setThanhTien(event.getNewValue()));
     }
 
+    /**
+     * This function will set up the collum for VatLieu
+     */
     private void setUpVatLieu() {
         // Set up collum for VatLieu
         ObservableList<String> vatLieuList = FXCollections.observableArrayList();
@@ -363,8 +541,7 @@ public class LuaChonNoiThatController implements Initializable {
                 VatLieu.setOnEditCommit(event -> {
                     event.getRowValue().getValue().setVatLieu(event.getNewValue());
                 });
-            }
-            else {
+            } else {
                 VatLieu.setCellFactory(vatLieuCollumHandler::getCustomCellFactory);
                 VatLieu.setOnEditStart(vatLieuCollumHandler::onStartEditVatLieu);
                 VatLieu.setOnEditCommit(vatLieuCollumHandler::onEditCommitVatLieu);
@@ -377,6 +554,9 @@ public class LuaChonNoiThatController implements Initializable {
         VatLieu.setOnEditCommit(vatLieuCollumHandler::onEditCommitVatLieu);
     }
 
+    /**
+     * This function will set up the collum for HangMuc
+     */
     private void setUpHangMuc() {
 
         ObservableList<String> hangMucList = FXCollections.observableArrayList();
@@ -388,8 +568,7 @@ public class LuaChonNoiThatController implements Initializable {
                 HangMuc.setOnEditCommit(event -> {
                     event.getRowValue().getValue().setHangMuc(event.getNewValue());
                 });
-            }
-            else {
+            } else {
                 HangMuc.setCellFactory(hangMucCollumHandler::getCustomCellFactory);
                 HangMuc.setOnEditCommit(hangMucCollumHandler::onEditCommitHangMuc);
                 HangMuc.setOnEditStart(hangMucCollumHandler::onStartEditHangMuc);
@@ -404,6 +583,9 @@ public class LuaChonNoiThatController implements Initializable {
         HangMuc.setOnEditStart(hangMucCollumHandler::onStartEditHangMuc);
     }
 
+    /**
+     * This function will set up the collum for DonVi
+     */
     private void setUpDonVi() {
         DonVi.setCellValueFactory(param -> {
             if (param.getValue() == null) return null;
@@ -411,6 +593,9 @@ public class LuaChonNoiThatController implements Initializable {
         });
     }
 
+    /**
+     * This function will set up the collum for DonGia
+     */
     private void setUpDonGia() {
         // Set up collum for DonGia
         DonGia.setCellValueFactory(param -> {
@@ -423,6 +608,9 @@ public class LuaChonNoiThatController implements Initializable {
         });
     }
 
+    /**
+     * This function will set up the collum for KichThuoc
+     */
     private void setUpKichThuoc() {
         KichThuocHandler kichThuocHandler = new KichThuocHandler(TableNoiThat, Cao, Dai, Rong);
 
@@ -447,4 +635,22 @@ public class LuaChonNoiThatController implements Initializable {
         Rong.setCellFactory(param -> new CustomNumberCell<>(new FloatStringConverter(), TableNoiThat));
         Rong.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
     }
+
+    /**
+     * This function will set be used to calculate bang thanh toan
+     *
+     * @param tongTien
+     */
+    private void calculateBangThanhToan(Long tongTien) {
+        Long datCocThietKe10 = (long) (tongTien * 0.1);
+        Long datCocThiCong30 = (long) (tongTien * 0.3);
+        Long hangDenChanCongTrinh50 = (long) (tongTien * 0.5);
+        Long nghiemThuQuyet = tongTien - datCocThietKe10 - datCocThiCong30 - hangDenChanCongTrinh50;
+
+        bangThanhToan.getItems().get(0).setDatCocThietKe10(datCocThietKe10);
+        bangThanhToan.getItems().get(0).setDatCocThiCong30(datCocThiCong30);
+        bangThanhToan.getItems().get(0).setHangDenChanCongTrinh50(hangDenChanCongTrinh50);
+        bangThanhToan.getItems().get(0).setNghiemThuQuyet(nghiemThuQuyet);
+    }
+
 }
