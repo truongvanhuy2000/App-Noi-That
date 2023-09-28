@@ -140,3 +140,50 @@
 [ERROR] 29-09-2023 00:02:58 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
 [INFO ] 29-09-2023 00:03:03 [main] HelloApplication:31 - Start application
 [INFO ] 29-09-2023 00:06:18 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:23:18 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:26:35 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:26:42 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:26:42 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:29:31 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:29:37 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:29:37 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:30:40 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:30:41 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:32:52 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:33:29 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:33:29 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:39:00 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:39:01 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:39:12 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:41:37 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:41:38 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:42:13 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:42:14 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:45:28 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:45:29 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:46:54 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:46:54 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:47:37 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:47:38 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:48:19 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:48:19 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[ERROR] 29-09-2023 01:48:25 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: For input string: ""
+[INFO ] 29-09-2023 01:48:30 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[ERROR] 29-09-2023 01:48:36 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: For input string: ""
+[INFO ] 29-09-2023 01:52:56 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:52:57 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:54:58 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:54:59 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[ERROR] 29-09-2023 01:55:07 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "Object.toString()" because the return value of "javafx.scene.control.SingleSelectionModel.getSelectedItem()" is null
+[INFO ] 29-09-2023 01:56:36 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:56:36 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[ERROR] 29-09-2023 01:56:42 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "Object.toString()" because the return value of "javafx.scene.control.SingleSelectionModel.getSelectedItem()" is null
+[INFO ] 29-09-2023 01:58:28 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:58:29 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 02:00:06 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 02:00:35 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 02:00:54 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 02:01:22 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 02:01:43 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 02:01:51 [JavaFX Application Thread] HomeController:62 - Login as huy with role User
+[INFO ] 29-09-2023 02:02:11 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin

@@ -37,6 +37,7 @@ public class Account {
                 ", password='" + password + '\'' +
                 ", active=" + active +
                 ", accountInformation=" + accountInformation +
+                ", expiredDate=" + expiredDate +
                 '}';
     }
 }

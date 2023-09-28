@@ -138,16 +138,14 @@ public class UsersManagementController {
         tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(false));
         tableManageUser.refresh();
     }
-
+    // khi add 1 user mới thì mặc định expire date + 1 tháng
     @FXML
     void AddAccount(ActionEvent event) {
         try {
-//            if (tableManageUser.getSelectionModel().getSelectedItem() == null) {
-//                return;
-//            }
+//
             Stage userManageMentStage = new Stage();
             Scene userManagementAddAccountScene = UserManagementAddAccountScene.getInstance().getScene();
-            ObservableList<String> listActive = FXCollections.observableArrayList("true", "false");
+            ObservableList<String> listActive = FXCollections.observableArrayList("Có", "Không");
             TextField txtusername = (TextField) userManagementAddAccountScene.lookup("#txtaddusername");
             TextField txtpassword = (TextField) userManagementAddAccountScene.lookup("#txtaddpassword");
             ComboBox comboBoxActive = (ComboBox) userManagementAddAccountScene.lookup("#txtaddactive");
@@ -158,8 +156,11 @@ public class UsersManagementController {
 
             btnadd.setOnAction(actionEvent -> {
                 try {
+                    String active = "false";
                     LocalDate localDate = LocalDate.now().plusDays(30);
-                    String active = comboBoxActive.getSelectionModel().getSelectedItem().toString();
+                    if(comboBoxActive.getSelectionModel().getSelectedItem()!=null){
+                        active = comboBoxActive.getSelectionModel().getSelectedItem().toString().equals("Có") ? "true" : "false";
+                    }
                     listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
                     tableManageUser.getItems().clear();
                     tableManageUser.refresh();
@@ -172,6 +173,8 @@ public class UsersManagementController {
                     clearData();
                     initialize();
                     userManageMentStage.close();
+                    txtusername.clear();
+                    txtpassword.clear();
 
                 } catch (JsonProcessingException e) {
                     LOGGER.error("Error when add new account", e);
@@ -209,6 +212,14 @@ public class UsersManagementController {
         }
     }
 
+    public Integer parseStringToINT(String data,int def) {
+        Integer val = def;
+        try {
+            val = Integer.parseInt(data);
+        } catch (NumberFormatException nfe) { }
+        return val;
+    }
+
     @FXML
     void EditAccount(ActionEvent event) {
         try {
@@ -225,6 +236,8 @@ public class UsersManagementController {
 //element field of userManagementEditorScene
             TextField txtusername = (TextField) userManagementEditorScene.lookup("#txteditusername");
             TextField txtpassword = (TextField) userManagementEditorScene.lookup("#txteditpassword");
+            TextField txtGiaHan = (TextField) userManagementEditorScene.lookup("#txtGiaHan");
+
             Button btnedit = (Button) userManagementEditorScene.lookup("#btnedit");
             Button btncancel = (Button) userManagementEditorScene.lookup("#btncancel");
 
@@ -245,13 +258,18 @@ public class UsersManagementController {
             btnedit.setOnAction(actionEvent -> {
                 tableManageUser.getSelectionModel().getSelectedItem().setUsername(txtusername.getText());
                 tableManageUser.getSelectionModel().getSelectedItem().setPassword(txtpassword.getText());
+
                 int id = tableManageUser.getItems().get(selectIndex).getId();
                 Account account = usersManagementService.findAccountById(id);
+                LocalDate soThangGiaHanThem = account.getExpiredDate().plusMonths(parseStringToINT(txtGiaHan.getText(),0));
                 account.setUsername(txtusername.getText());
                 account.setPassword(txtpassword.getText());
+                account.setExpiredDate(soThangGiaHanThem);
                 usersManagementService.EditAccount(account);
                 tableManageUser.refresh();
                 userManageMentStage.close();
+                txtusername.setText("");
+                txtpassword.clear();
                 // You might need additional logic to handle saving or updating data
             });
 
