@@ -380,3 +380,9 @@ java.lang.NullPointerException: Cannot invoke "javafx.scene.control.TreeItem.get
 [INFO ] 28-09-2023 01:05:55 [JavaFX Application Thread] HomeController:62 - Login as user with role User
 [INFO ] 28-09-2023 01:13:33 [main] HelloApplication:31 - Start application
 [INFO ] 28-09-2023 01:13:35 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 10:18:46 [main] HelloApplication:31 - Start application
+[ERROR] 28-09-2023 10:18:46 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username=user eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5NTgzNTg3OSwiZXhwIjo0Mjg3ODM1ODc5fQ.-6Rr4IRbM-_rf_v3XHtf-7Y9VQhMLDCqqOYEYVL1n9sXCEAGwToI78Z8wzwcw4Bld9CI79FxFdE2s76OFP8gIw null
+[ERROR] 28-09-2023 10:18:46 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5NTgzNTg3OSwiZXhwIjo0Mjg3ODM1ODc5fQ.-6Rr4IRbM-_rf_v3XHtf-7Y9VQhMLDCqqOYEYVL1n9sXCEAGwToI78Z8wzwcw4Bld9CI79FxFdE2s76OFP8gIw null
+[INFO ] 28-09-2023 10:19:00 [main] HelloApplication:31 - Start application
+[ERROR] 28-09-2023 10:19:00 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username=user eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5NTgzNTg3OSwiZXhwIjo0Mjg3ODM1ODc5fQ.-6Rr4IRbM-_rf_v3XHtf-7Y9VQhMLDCqqOYEYVL1n9sXCEAGwToI78Z8wzwcw4Bld9CI79FxFdE2s76OFP8gIw null
+[ERROR] 28-09-2023 10:19:00 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5NTgzNTg3OSwiZXhwIjo0Mjg3ODM1ODc5fQ.-6Rr4IRbM-_rf_v3XHtf-7Y9VQhMLDCqqOYEYVL1n9sXCEAGwToI78Z8wzwcw4Bld9CI79FxFdE2s76OFP8gIw null

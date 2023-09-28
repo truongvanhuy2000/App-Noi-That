@@ -86,10 +86,10 @@ public class UsersManagementController {
         for (Account account : accountList) {
             listUser.add(new AccountTable(account.getId(), account.getUsername(), account.getPassword(), account.isActive(), convertActiveIcon(account.isActive()), account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
         }
-        username.setCellValueFactory(new PropertyValueFactory<AccountTable, String>("username"));
-        password.setCellValueFactory(new PropertyValueFactory<AccountTable, String>("password"));
-        active.setCellValueFactory(new PropertyValueFactory<AccountTable, ImageView>("activeImage"));
-        expiredDate.setCellValueFactory(new PropertyValueFactory<AccountTable, LocalDate>("expiredDate"));
+        username.setCellValueFactory(new PropertyValueFactory<>("username"));
+        password.setCellValueFactory(new PropertyValueFactory<>("password"));
+        active.setCellValueFactory(new PropertyValueFactory<>("activeImage"));
+        expiredDate.setCellValueFactory(new PropertyValueFactory<>("expiredDate"));
         tableManageUser.setItems(listUser);
     }
 

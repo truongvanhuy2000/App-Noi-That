@@ -36,6 +36,16 @@ public class ThongSoRestService {
                 .addModule(new JavaTimeModule())
                 .build();
     }
+    public void save(ThongSo thongSo, int parentId) {
+        String token = this.userSessionService.getToken();
+        String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE + PARENT_ID_TEMPLATE, userSessionService.getUsername(), parentId);
+        try {
+            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(thongSo), token);
+        } catch (IOException e) {
+            LOGGER.error("Error when saving ThongSo");
+            throw new RuntimeException(e);
+        }
+    }
     public List<ThongSo> searchByVatLieu(int id) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/searchByVatlieu" + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());

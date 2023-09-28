@@ -22,5 +22,8 @@ public class DatabaseModifyThongSoService {
     public void EditThongSo(ThongSo thongSo) {
         thongSoRestService.update(thongSo);
     }
+    public void addNewThongSo(ThongSo thongSo, int parentId) {
+        thongSoRestService.save(thongSo, parentId);
+    }
 
 }
