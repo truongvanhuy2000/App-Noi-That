@@ -418,3 +418,15 @@ java.lang.NullPointerException: Cannot invoke "javafx.scene.control.TreeItem.get
 [INFO ] 28-09-2023 16:02:39 [JavaFX Application Thread] HomeController:62 - Login as user with role User
 [INFO ] 28-09-2023 16:03:02 [main] HelloApplication:31 - Start application
 [INFO ] 28-09-2023 16:03:03 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 23:09:58 [main] HelloApplication:31 - Start application
+[ERROR] 28-09-2023 23:09:58 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username=user eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5NTg4OTE1MCwiZXhwIjo0Mjg3ODg5MTUwfQ.OLLpOihZeZEHLWExPQ8isjDneCrHSqM_m8Z7zgtJYNo9liyR4HPoblCWXCeLdmBHiYRf01936Z1_cvXAkE2XNg null
+[ERROR] 28-09-2023 23:09:58 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5NTg4OTE1MCwiZXhwIjo0Mjg3ODg5MTUwfQ.OLLpOihZeZEHLWExPQ8isjDneCrHSqM_m8Z7zgtJYNo9liyR4HPoblCWXCeLdmBHiYRf01936Z1_cvXAkE2XNg null
+[INFO ] 28-09-2023 23:10:14 [main] HelloApplication:31 - Start application
+[ERROR] 28-09-2023 23:10:15 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username=user eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5NTg4OTE1MCwiZXhwIjo0Mjg3ODg5MTUwfQ.OLLpOihZeZEHLWExPQ8isjDneCrHSqM_m8Z7zgtJYNo9liyR4HPoblCWXCeLdmBHiYRf01936Z1_cvXAkE2XNg null
+[ERROR] 28-09-2023 23:10:15 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5NTg4OTE1MCwiZXhwIjo0Mjg3ODg5MTUwfQ.OLLpOihZeZEHLWExPQ8isjDneCrHSqM_m8Z7zgtJYNo9liyR4HPoblCWXCeLdmBHiYRf01936Z1_cvXAkE2XNg null
+[ERROR] 28-09-2023 23:10:22 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[INFO ] 28-09-2023 23:11:04 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 23:11:08 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 23:11:24 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 23:27:35 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 23:27:39 [JavaFX Application Thread] HomeController:62 - Login as user with role User
