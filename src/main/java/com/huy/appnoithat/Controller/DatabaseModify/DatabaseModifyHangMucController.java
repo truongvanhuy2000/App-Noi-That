@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
+import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
@@ -46,7 +47,8 @@ public class DatabaseModifyHangMucController implements Initializable {
 
     @FXML
     void addAction(ActionEvent event) {
-        databaseModifyHangMucService.addNewHangMuc(new HangMuc(0, "<Thêm mới>", new ArrayList<>()), this.parentID);
+        int currentPos = hangMucObservableList.size();
+        databaseModifyHangMucService.addNewHangMuc(new HangMuc(0, DBModifyUtils.getNewName(currentPos), new ArrayList<>()), this.parentID);
         refreshList();
     }
 
@@ -93,6 +95,7 @@ public class DatabaseModifyHangMucController implements Initializable {
         stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == backButton) {
             scene = DatabaseModifyNoiThatScene.getInstance().getScene();
+            DatabaseModifyNoiThatScene.getInstance().getController().refresh();
         } else {
             return;
         }
@@ -107,6 +110,10 @@ public class DatabaseModifyHangMucController implements Initializable {
 
     public void init(int parentID) {
         this.parentID = parentID;
+        refreshList();
+        refreshChildrenList(0);
+    }
+    public void refresh() {
         refreshList();
         refreshChildrenList(0);
     }
@@ -140,7 +147,7 @@ public class DatabaseModifyHangMucController implements Initializable {
         listViewHangMuc.setCellFactory(param -> new CustomEditingListCell<>());
         listViewHangMuc.setOnEditCommit(event -> {
             HangMuc item = event.getNewValue();
-            item.setName(event.getNewValue().getName());
+            item.setName(DBModifyUtils.getNotDuplicateName(item.getName(), hangMucObservableList));
             if (item.getId() == 0) {
                 databaseModifyHangMucService.addNewHangMuc(item, this.parentID);
             } else {

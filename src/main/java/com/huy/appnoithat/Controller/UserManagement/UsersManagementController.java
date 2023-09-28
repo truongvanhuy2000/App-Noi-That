@@ -142,9 +142,9 @@ public class UsersManagementController {
     @FXML
     void AddAccount(ActionEvent event) {
         try {
-            if (tableManageUser.getSelectionModel().getSelectedItem() == null) {
-                return;
-            }
+//            if (tableManageUser.getSelectionModel().getSelectedItem() == null) {
+//                return;
+//            }
             Stage userManageMentStage = new Stage();
             Scene userManagementAddAccountScene = UserManagementAddAccountScene.getInstance().getScene();
             ObservableList<String> listActive = FXCollections.observableArrayList("true", "false");

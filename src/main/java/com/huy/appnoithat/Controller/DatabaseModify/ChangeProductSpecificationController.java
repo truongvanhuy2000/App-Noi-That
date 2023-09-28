@@ -62,6 +62,7 @@ public class ChangeProductSpecificationController {
         stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == backButton) {
             scene = DatabaseModifyVatLieuScene.getInstance().getScene();
+            DatabaseModifyVatLieuScene.getInstance().getController().refresh();
         } else {
             return;
         }

@@ -386,3 +386,35 @@ java.lang.NullPointerException: Cannot invoke "javafx.scene.control.TreeItem.get
 [INFO ] 28-09-2023 10:19:00 [main] HelloApplication:31 - Start application
 [ERROR] 28-09-2023 10:19:00 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username=user eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5NTgzNTg3OSwiZXhwIjo0Mjg3ODM1ODc5fQ.-6Rr4IRbM-_rf_v3XHtf-7Y9VQhMLDCqqOYEYVL1n9sXCEAGwToI78Z8wzwcw4Bld9CI79FxFdE2s76OFP8gIw null
 [ERROR] 28-09-2023 10:19:00 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5NTgzNTg3OSwiZXhwIjo0Mjg3ODM1ODc5fQ.-6Rr4IRbM-_rf_v3XHtf-7Y9VQhMLDCqqOYEYVL1n9sXCEAGwToI78Z8wzwcw4Bld9CI79FxFdE2s76OFP8gIw null
+[INFO ] 28-09-2023 10:25:57 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 10:25:58 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 13:50:10 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 13:50:11 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 14:55:19 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 14:55:20 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 14:58:06 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 14:58:07 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 14:59:07 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 14:59:08 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 14:59:21 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 28-09-2023 15:00:05 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 15:00:06 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 28-09-2023 15:01:11 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 15:01:12 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 28-09-2023 15:01:44 [JavaFX Application Thread] HomeController:62 - Login as huy with role User
+[INFO ] 28-09-2023 15:02:52 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 15:02:52 [JavaFX Application Thread] HomeController:62 - Login as huy with role User
+[INFO ] 28-09-2023 15:03:07 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 28-09-2023 15:18:59 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 15:19:00 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 28-09-2023 15:19:10 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 15:23:43 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 15:23:44 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 15:56:31 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 15:56:31 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 16:01:34 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 16:01:35 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 16:02:38 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 16:02:39 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 28-09-2023 16:03:02 [main] HelloApplication:31 - Start application
+[INFO ] 28-09-2023 16:03:03 [JavaFX Application Thread] HomeController:62 - Login as user with role User

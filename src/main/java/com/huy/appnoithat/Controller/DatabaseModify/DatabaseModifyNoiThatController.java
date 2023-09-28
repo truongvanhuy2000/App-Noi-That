@@ -2,9 +2,11 @@ package com.huy.appnoithat.Controller.DatabaseModify;
 
 
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
+import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyHangMucService;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyNoiThatService;
@@ -48,7 +50,8 @@ public class DatabaseModifyNoiThatController implements Initializable {
 
     @FXML
     void addAction(ActionEvent event) {
-        databaseModifyNoiThatService.addNewNoiThat(new NoiThat(0, "<Thêm mới>", new ArrayList<>()), this.parentID);
+        int currentPos = noiThatObservableList.size();
+        databaseModifyNoiThatService.addNewNoiThat(new NoiThat(0, DBModifyUtils.getNewName(currentPos), new ArrayList<>()), this.parentID);
         refreshList();
     }
 
@@ -95,6 +98,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
         stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == backButton) {
             scene = DatabaseModifyPhongCachScene.getInstance().getScene();
+            DatabaseModifyPhongCachScene.getInstance().getController().refresh();
         } else {
             return;
         }
@@ -112,7 +116,10 @@ public class DatabaseModifyNoiThatController implements Initializable {
         refreshList();
         refreshChildrenList(0);
     }
-
+    public void refresh() {
+        refreshList();
+        refreshChildrenList(0);
+    }
     private void refreshList() {
         List<NoiThat> noiThatList = databaseModifyNoiThatService.findNoiThatListByParentID(parentID);
         if (noiThatList == null) {
@@ -142,7 +149,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
         listViewNoiThat.setCellFactory(param -> new CustomEditingListCell<>());
         listViewNoiThat.setOnEditCommit(event -> {
             NoiThat item = event.getNewValue();
-            item.setName(event.getNewValue().getName());
+            item.setName(DBModifyUtils.getNotDuplicateName(item.getName(), noiThatObservableList));
             if (item.getId() == 0) {
                 databaseModifyNoiThatService.addNewNoiThat(item, this.parentID);
             } else {

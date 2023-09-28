@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller.DatabaseModify;
 
 
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
+import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
@@ -56,7 +57,8 @@ public class DatabaseModifyPhongCachController implements Initializable {
 
     @FXML
     void AddNewPhongCach(ActionEvent event) {
-        databaseModifyPhongCachService.addNewPhongCach(new PhongCachNoiThat(0, "<Thêm mới>", new ArrayList<>()));
+        int currentPos = phongCachNoiThatObservableList.size();
+        databaseModifyPhongCachService.addNewPhongCach(new PhongCachNoiThat(0, DBModifyUtils.getNewName(currentPos), new ArrayList<>()));
         refreshList();
     }
 
@@ -101,8 +103,12 @@ public class DatabaseModifyPhongCachController implements Initializable {
 
     public void init() {
         refreshList();
+        refreshChildrenList(0);
     }
-
+    public void refresh() {
+        refreshList();
+        refreshChildrenList(0);
+    }
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
         Scene scene = null;
@@ -126,7 +132,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
         listViewPhongCach.setCellFactory(param -> new CustomEditingListCell<>());
         listViewPhongCach.setOnEditCommit(event -> {
             PhongCachNoiThat item = event.getNewValue();
-            item.setName(event.getNewValue().getName());
+            item.setName(DBModifyUtils.getNotDuplicateName(item.getName(), phongCachNoiThatObservableList));
             if (item.getId() == 0) {
                 databaseModifyPhongCachService.addNewPhongCach(item);
             } else {
