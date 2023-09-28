@@ -121,7 +121,7 @@
                 <Font name="FreeMono Bold" size="13.0" />
             </font>
         </Button>
-        <Button fx:id="backButton" layoutX="6.0" layoutY="25.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="14.0" prefWidth="28.0" visible="false">
+        <Button fx:id="backButton" layoutX="6.0" layoutY="25.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="14.0" prefWidth="28.0">
             <graphic>
                 <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
                     <image>

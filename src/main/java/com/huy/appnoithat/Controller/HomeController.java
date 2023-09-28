@@ -100,20 +100,10 @@ public class HomeController {
             return;
         }
         else if (source == QuanLyNguoiDungButton) {
-//            scene = UserManagementScene.getInstance().getScene();
-            PCPane.setVisible(false);
-            mainPane.setVisible(true);
-            AnchorPane root =(AnchorPane) UserManagementScene.getInstance().getRoot();
-            mainPane.getChildren().addAll(root.getChildren());
-            return;
+            scene = UserManagementScene.getInstance().getScene();
         }else if (source == suadoidatabaseButton) {
-//            scene = DatabaseModifyPhongCachScene.getInstance().getScene();
-//            DatabaseModifyPhongCachScene.getInstance().getController().init();
-            mainPane.setVisible(false);
-            PCPane.setVisible(true);
-            AnchorPane root = (AnchorPane)DatabaseModifyPhongCachScene.getInstance().getRoot();
-            PCPane.getChildren().addAll(root.getChildren());
-            return;
+            scene = DatabaseModifyPhongCachScene.getInstance().getScene();
+            DatabaseModifyPhongCachScene.getInstance().getController().init();
         }
         else {
             return;

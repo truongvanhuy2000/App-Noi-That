@@ -134,3 +134,9 @@
 [INFO ] 27-09-2023 22:42:55 [main] HelloApplication:31 - Start application
 [INFO ] 27-09-2023 22:46:23 [main] HelloApplication:31 - Start application
 [INFO ] 27-09-2023 22:47:11 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 00:02:12 [main] HelloApplication:31 - Start application
+[ERROR] 29-09-2023 00:02:32 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 29-09-2023 00:02:53 [main] HelloApplication:31 - Start application
+[ERROR] 29-09-2023 00:02:58 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 29-09-2023 00:03:03 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 00:06:18 [main] HelloApplication:31 - Start application
