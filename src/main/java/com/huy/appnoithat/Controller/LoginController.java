@@ -71,7 +71,7 @@ public class LoginController {
             List<String> roleList = new ArrayList<>();
             roleList.add("ROLE_USER");
 
-            ObservableList<String> listTime = FXCollections.observableArrayList("1 tháng", "6 tháng", "12 tháng");
+            ObservableList<String> listTime = FXCollections.observableArrayList("1 tháng", "6 +  tháng", "12 + 3 tháng");
             ObservableList<String> listGender = FXCollections.observableArrayList("Nam", "Nữ");
             Stage loginStage = new Stage();
             Scene register = RegisterScene.getInstance().getScene();

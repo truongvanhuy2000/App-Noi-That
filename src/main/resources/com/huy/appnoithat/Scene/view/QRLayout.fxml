@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="462.0" prefWidth="623.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ImageView fitHeight="385.0" fitWidth="413.0" layoutX="96.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="385.0" fitWidth="413.0" layoutX="120.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="119.02392578125">
             <image>
                 <Image url="@../icons/QRcode.jpg" />
             </image>
