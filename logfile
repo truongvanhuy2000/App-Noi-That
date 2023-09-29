@@ -206,3 +206,11 @@
 [INFO ] 29-09-2023 13:59:39 [main] HelloApplication:31 - Start application
 [INFO ] 29-09-2023 13:59:47 [JavaFX Application Thread] HomeController:62 - Login as user with role User
 [INFO ] 29-09-2023 13:59:47 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 29-09-2023 22:55:12 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 22:55:14 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 29-09-2023 22:57:18 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 22:57:19 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 29-09-2023 23:00:07 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 23:00:08 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 29-09-2023 23:02:03 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 23:02:04 [JavaFX Application Thread] HomeController:62 - Login as user with role User

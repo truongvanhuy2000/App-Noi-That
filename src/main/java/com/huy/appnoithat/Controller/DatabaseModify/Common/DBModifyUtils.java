@@ -9,13 +9,14 @@ public class DBModifyUtils {
         return String.format("<Thêm mới %d>", currentPos);
     }
     public static String getNotDuplicateName(String currentName, ObservableList<? extends CommonItemInterface> list) {
-        if (list.stream().anyMatch(item -> {
-            if (item.getName() == null) {
-                return false;
+        int count = 0;
+        for(CommonItemInterface item : list) {
+            if(item.getName().trim().equals(currentName.trim())) {
+                count++;
             }
-            return item.getName().trim().equals(currentName.trim());
-        })) {
-            return currentName + "(1)";
+        }
+        if (count > 1) {
+            return String.format("%s (%d)", currentName, count - 1);
         }
         return currentName;
     }
