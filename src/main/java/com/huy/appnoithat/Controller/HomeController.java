@@ -46,7 +46,7 @@ public class HomeController {
         toggleButton(false, false, false);
         // Set username using current session
         String username = sessionService.getLoginAccount().getUsername();
-        UserName.setText(" " + username);
+        UserName.setText("Welcome " + username);
         // Show button based on role
         String role = sessionService.getLoginAccount().getRoleList().contains("ROLE_ADMIN") ? "Admin" : "User";
         switch (role) {
