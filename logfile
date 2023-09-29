@@ -203,3 +203,6 @@
 [INFO ] 29-09-2023 09:36:49 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
 [INFO ] 29-09-2023 09:37:58 [main] HelloApplication:31 - Start application
 [INFO ] 29-09-2023 09:39:32 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 13:59:39 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 13:59:47 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 29-09-2023 13:59:47 [JavaFX Application Thread] HomeController:62 - Login as user with role User

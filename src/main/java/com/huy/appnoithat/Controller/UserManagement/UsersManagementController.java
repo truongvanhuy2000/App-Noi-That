@@ -70,7 +70,6 @@ public class UsersManagementController {
     ObservableList<AccountTable> listUser = FXCollections.observableArrayList(
     );
 
-
     UsersManagementService usersManagementService = new UsersManagementService();
 
     UserSessionService userSessionService;
