@@ -47,8 +47,7 @@
 
 /*  style classes for button */
 #btnAddcss {
-    -fx-background-color: linear-gradient(#f0ff35, #a9ff00),
-    radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
+    -fx-background-color: #0487D9;
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
@@ -56,8 +55,7 @@
 }
 
 #btnEditcss {
-    -fx-background-color: linear-gradient(#FFD700, #FEBE10),
-    radial-gradient(center 50% -40%, radius 200%, #FFD700 45%, #FEBE10 50%);
+    -fx-background-color: #0487D9;
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
@@ -65,8 +63,7 @@
 }
 
 #btnDeletecss {
-    -fx-background-color: linear-gradient(#fc2d4f, #9e1c3c),
-    radial-gradient(center 50% -40%, radius 200%, #fc2d4f 45%, #9e1c3c 50%);
+    -fx-background-color: #0487D9;
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
@@ -74,8 +71,7 @@
 }
 
 #btnActivecss {
-    -fx-background-color: linear-gradient(#0dccea, #0d70ea),
-    radial-gradient(center 50% -40%, radius 200%, #0dccea 45%, #0d70ea 50%);
+    -fx-background-color: #0487D9;
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
@@ -83,8 +79,7 @@
 }
 
 #btnInactivecss {
-    -fx-background-color: linear-gradient(#FF7E31, #E62C03),
-    radial-gradient(center 50% -40%, radius 200%, #FF7E31 45%, #E62C03 50%);
+    -fx-background-color: #0487D9;
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
@@ -92,8 +87,7 @@
 }
 
 #btnDuyetcss {
-    -fx-background-color: linear-gradient(#455EB5, #5643CC),
-    radial-gradient(center 50% -40%, radius 200%, #455EB5 45%, #5643CC 50%);
+    -fx-background-color: #0487D9;
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
@@ -101,8 +95,7 @@
 }
 
 #btnSearchcss, #btnAllAccountcss {
-    -fx-background-color: linear-gradient(#0dccea, #0d70ea),
-    radial-gradient(center 50% -40%, radius 200%, #0dccea 45%, #0d70ea 50%);
+    -fx-background-color: #0487D9;
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
