@@ -108,6 +108,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
     public void refresh() {
         refreshList();
         refreshChildrenList(0);
+        listViewPhongCach.getSelectionModel().clearSelection();
     }
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {

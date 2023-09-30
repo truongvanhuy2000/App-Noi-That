@@ -116,6 +116,7 @@ public class DatabaseModifyHangMucController implements Initializable {
     public void refresh() {
         refreshList();
         refreshChildrenList(0);
+        listViewHangMuc.getSelectionModel().clearSelection();
     }
 
     private void refreshList() {

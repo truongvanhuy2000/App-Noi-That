@@ -6,7 +6,6 @@ import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
-import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyHangMucService;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyNoiThatService;
@@ -119,6 +118,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
     public void refresh() {
         refreshList();
         refreshChildrenList(0);
+        listViewNoiThat.getSelectionModel().clearSelection();
     }
     private void refreshList() {
         List<NoiThat> noiThatList = databaseModifyNoiThatService.findNoiThatListByParentID(parentID);

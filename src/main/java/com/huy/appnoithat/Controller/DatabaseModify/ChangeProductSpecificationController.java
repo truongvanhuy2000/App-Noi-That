@@ -2,7 +2,6 @@ package com.huy.appnoithat.Controller.DatabaseModify;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Entity.ThongSo;
-import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyVatLieuScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyThongSoService;
 import javafx.event.ActionEvent;
@@ -16,13 +15,13 @@ import javafx.stage.Stage;
 import java.util.List;
 
 public class ChangeProductSpecificationController {
-    int parentID;
+    private int parentID;
     private final DatabaseModifyThongSoService databaseModifyThongSoService;
     @FXML
     private Button backButton, btnOK;
     @FXML
     private TextField txtCao, txtDai, txtDonGia, txtDonVi, txtRong;
-
+    private ThongSo currentThongSoItem;
     public ChangeProductSpecificationController() {
         databaseModifyThongSoService = new DatabaseModifyThongSoService();
     }
@@ -31,25 +30,32 @@ public class ChangeProductSpecificationController {
     void clickOK(ActionEvent event) {
         //click to Edit thong so
         String regex = "[0-9].+";
-        ThongSo thongSo = new ThongSo();
-        thongSo.setId(parentID);
-        if (!txtCao.getText().matches(regex) || !txtDai.getText().matches(regex) || !txtRong.getText().matches(regex) || !txtDonGia.getText().matches(regex)) {
-            PopupUtils.throwErrorSignal("Please input is a number !!!");
-        } else {
-            thongSo.setCao(Float.valueOf(txtCao.getText()));
-            thongSo.setDai(Float.valueOf(txtDai.getText()));
-            thongSo.setRong(Float.valueOf(txtRong.getText()));
-            thongSo.setDon_vi(txtDonVi.getText());
-            thongSo.setDon_gia(Long.valueOf(txtDonGia.getText()));
-            databaseModifyThongSoService.EditThongSo(thongSo);
-            initializeThongSo(parentID);
-        }
 
+        if (!txtCao.getText().matches(regex) ||
+                !txtDai.getText().matches(regex) ||
+                !txtRong.getText().matches(regex) ||
+                !txtDonGia.getText().matches(regex)) {
+            PopupUtils.throwErrorSignal("Please input is a number !!!");
+            return;
+        }
+        List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByParentId(this.parentID);
+        if (thongSoList == null || thongSoList.isEmpty()) {
+            return;
+        }
+        ThongSo thongSo = thongSoList.get(0);
+        thongSo.setCao(Float.valueOf(txtCao.getText()));
+        thongSo.setDai(Float.valueOf(txtDai.getText()));
+        thongSo.setRong(Float.valueOf(txtRong.getText()));
+        thongSo.setDon_vi(txtDonVi.getText());
+        thongSo.setDon_gia(Long.valueOf(txtDonGia.getText()));
+        databaseModifyThongSoService.EditThongSo(thongSo);
+        backToMain();
     }
 
     void backToMain() {
-        Scene scene = DatabaseModifyPhongCachScene.getInstance().getScene();
+        Scene scene = DatabaseModifyVatLieuScene.getInstance().getScene();
         Stage stage = (Stage) btnOK.getScene().getWindow();
+        DatabaseModifyVatLieuScene.getInstance().getController().refresh();
         stage.setScene(scene);
         stage.show();
     }
@@ -76,7 +82,7 @@ public class ChangeProductSpecificationController {
             return;
         }
         ThongSo thongSo = new ThongSo(0, 0.0f, 0.0f, 0.0f, "", 0L);
-        List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByParentId(id);
+        List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByParentId(this.parentID);
         if (thongSoList == null || thongSoList.isEmpty()) {
             databaseModifyThongSoService.addNewThongSo(thongSo, this.parentID);
         }

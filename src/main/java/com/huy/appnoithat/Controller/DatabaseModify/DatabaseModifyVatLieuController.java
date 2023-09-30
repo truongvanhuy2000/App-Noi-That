@@ -125,6 +125,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
     public void refresh() {
         refreshList();
         refreshChildrenList(0);
+        listViewVatLieu.getSelectionModel().clearSelection();
     }
     private void refreshList() {
         List<VatLieu> vatLieuList = databaseModifyVatlieuService.findVatLieuByParentId(parentID);
