@@ -106,11 +106,11 @@ public class LoginController {
                 } else if (time.equals("6 + 1 tháng")) {
                     localDate = LocalDate.now().plusMonths(7);
                     giaTienQR.setText("Đăng ký tài khoản 6 tháng giá 1,500,000 vnđ/ 6 tháng.\n" +
-                            " tặng thêm 1 tháng ( 1,500,000 vnđ/7 tháng)\n");
+                            " Tặng thêm 1 tháng ( 1,500,000 vnđ/7 tháng)\n");
                 } else {
                     localDate = LocalDate.now().plusMonths(15);
                     giaTienQR.setText("Đăng ký tài khoản 12 tháng giá 2.400,000 vnđ/ 12 tháng.\n" +
-                            " tặng thêm 3 tháng (2.400,000 vnđ/15 tháng)\n");
+                            " Tặng thêm 3 tháng (2.400,000 vnđ/15 tháng)\n");
                 }
                 AccountInformation accountInformation = new AccountInformation(0, txtName.getText(), Gender, txtEmail.getText(), txtAddress.getText(), txtPhone.getText());
                 Account account = new Account(0, txtUsername.getText(), txtPassword.getText(), false, accountInformation, roleList, false, localDate);
@@ -120,7 +120,7 @@ public class LoginController {
                 loginStage.close();
 
                 loginStage.setScene(QRpopup);
-                loginStage.setTitle("QR Layout");
+                loginStage.setTitle("quét QR để thanh toán");
                 loginStage.show();
                 // You might need additional logic to handle saving or updating data
             });

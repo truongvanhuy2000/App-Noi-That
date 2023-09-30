@@ -6,7 +6,6 @@
 
 .btnClass{
     -fx-font-family: 'Roboto Condensed', sans-serif;
-    -fx-font-size: 20px;
 }
 .button:hover {
     -fx-background-color: #C0D5F7;

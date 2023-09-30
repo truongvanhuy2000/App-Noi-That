@@ -203,6 +203,7 @@
 [INFO ] 29-09-2023 09:36:49 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
 [INFO ] 29-09-2023 09:37:58 [main] HelloApplication:31 - Start application
 [INFO ] 29-09-2023 09:39:32 [main] HelloApplication:31 - Start application
+<<<<<<< HEAD
 [INFO ] 29-09-2023 13:59:39 [main] HelloApplication:31 - Start application
 [INFO ] 29-09-2023 13:59:47 [JavaFX Application Thread] HomeController:62 - Login as user with role User
 [INFO ] 29-09-2023 13:59:47 [JavaFX Application Thread] HomeController:62 - Login as user with role User
@@ -214,3 +215,40 @@
 [INFO ] 29-09-2023 23:00:08 [JavaFX Application Thread] HomeController:62 - Login as user with role User
 [INFO ] 29-09-2023 23:02:03 [main] HelloApplication:31 - Start application
 [INFO ] 29-09-2023 23:02:04 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+=======
+[INFO ] 29-09-2023 10:42:36 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 10:42:41 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 10:42:41 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 10:43:25 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 10:43:26 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 10:45:14 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 10:45:14 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 10:45:37 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 10:45:38 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 10:48:19 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 10:48:20 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 10:49:42 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 10:49:43 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 10:53:48 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 10:53:49 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 10:56:22 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 10:56:22 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 10:57:06 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 10:57:07 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 10:58:10 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 10:58:27 [JavaFX Application Thread] HomeController:62 - Login as long with role User
+[INFO ] 29-09-2023 11:01:05 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 11:01:11 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 11:01:11 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 11:02:38 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 11:02:39 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 11:03:42 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 11:03:43 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 11:04:10 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 11:04:10 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 11:06:04 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 11:06:04 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 11:06:45 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 15:34:01 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 15:34:02 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+>>>>>>> f10c724 (change require cua Thuong)
