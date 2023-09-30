@@ -20,16 +20,6 @@
                         <Image url="@../icons/loginimage.jpg" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="118.0" fitWidth="171.0" layoutX="156.0" layoutY="104.0" opacity="0.83" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icons/logoapp.jpg" />
-                    </image>
-                </ImageView>
-                <Label layoutX="111.0" layoutY="593.0" prefHeight="49.0" prefWidth="260.0" text="LẬP BÁO GIÁ" textFill="#fffbfb">
-                    <font>
-                        <Font name="System Bold Italic" size="30.0" />
-                    </font>
-                </Label>
             </children>
         </AnchorPane>
         <AnchorPane layoutX="458.0" prefHeight="693.0" prefWidth="550.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -39,11 +29,6 @@
                         <Font size="15.0" />
                     </font>
                 </TextField>
-                <Label layoutX="178.0" layoutY="62.0" prefHeight="41.0" prefWidth="260.0" text="ĐĂNG NHẬP" textFill="#1b00e8">
-                    <font>
-                        <Font name="DejaVu Sans Bold" size="34.0" />
-                    </font>
-                </Label>
                 <PasswordField fx:id="passwordField" layoutX="94.0" layoutY="347.0" opacity="0.5" prefHeight="41.0" prefWidth="338.0" promptText="PASSWORD" style="-fx-background-color: transparent; -fx-border-color: none; -fx-text-fill: black;">
                     <font>
                         <Font size="15.0" />
