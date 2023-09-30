@@ -6,6 +6,7 @@ import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Session.UserSession;
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,6 +25,7 @@ public class HelloApplication extends Application {
             stage.setScene(LoginScene.getInstance().getScene());
         }
         stage.setTitle("App Noi That");
+        stage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/logoapp.jpg")));
         stage.show();
     }
 

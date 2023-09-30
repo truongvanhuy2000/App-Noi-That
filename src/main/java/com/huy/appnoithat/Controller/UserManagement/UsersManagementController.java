@@ -5,6 +5,7 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.UserManagement.DataModel.AccountTable;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
+import com.huy.appnoithat.HelloApplication;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.UseManagement.ListAccountWaitToApproveScene;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementAddAccountScene;
@@ -186,6 +187,7 @@ public class UsersManagementController {
             });
 
             userManageMentStage.setTitle("ADD NEW USER");
+            userManageMentStage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/logoapp.jpg")));
             userManageMentStage.show();
         } catch (Exception e) {
             LOGGER.error("Error when add new account", e);
@@ -251,6 +253,7 @@ public class UsersManagementController {
 
             userManageMentStage.setScene(userManagementEditorScene);
             userManageMentStage.setTitle("EDIT USER");
+            userManageMentStage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/logoapp.jpg")));
             userManageMentStage.show();
 
 

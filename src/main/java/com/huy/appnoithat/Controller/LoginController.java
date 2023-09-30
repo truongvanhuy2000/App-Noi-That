@@ -5,6 +5,7 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
 import com.huy.appnoithat.Enums.Action;
+import com.huy.appnoithat.HelloApplication;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.QRScene;
 import com.huy.appnoithat.Scene.RegisterScene;
@@ -17,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -94,6 +96,7 @@ public class LoginController {
             Label giaTienQR = (Label) QRpopup.lookup("#giaTienQR");
             loginStage.setScene(register);
             loginStage.setTitle("REGISTER ACCOUNT");
+            loginStage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/logoapp.jpg")));
             loginStage.show();
 
             btnSave.setOnAction(actionEvent -> {
