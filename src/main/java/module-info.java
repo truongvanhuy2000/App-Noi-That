@@ -37,4 +37,8 @@ module com.huy.appnoithat {
     exports com.huy.appnoithat.Controller.UserManagement;
     exports com.huy.appnoithat.Controller.UserManagement.DataModel;
     opens com.huy.appnoithat.Controller.UserManagement to javafx.fxml;
+    exports com.huy.appnoithat.Controller.FileNoiThatExplorer;
+    opens com.huy.appnoithat.Controller.FileNoiThatExplorer to javafx.fxml;
+    exports com.huy.appnoithat.Controller.NewTab;
+    opens com.huy.appnoithat.Controller.NewTab to javafx.fxml;
 }

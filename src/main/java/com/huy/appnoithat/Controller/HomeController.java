@@ -2,7 +2,7 @@ package com.huy.appnoithat.Controller;
 
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.LoginScene;
-import com.huy.appnoithat.Scene.LuaChonNoiThat.NewTabScene;
+import com.huy.appnoithat.Scene.LuaChonNoiThat.FileNoiThatExplorerScene;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import javafx.event.ActionEvent;
@@ -79,13 +79,8 @@ public class HomeController {
         if (source == LogoutButton) {
             scene = LoginScene.getInstance().getScene();
         } else if (source == LuaChonNoiThatButton) {
-            Stage newStage = new Stage();
-            scene = NewTabScene.getInstance().getScene();
-            NewTabScene.getInstance().getNewTabController().init();
-            newStage.setMaximized(true);
-            newStage.setScene(scene);
-            newStage.show();
-            return;
+            scene = FileNoiThatExplorerScene.getInstance().getScene();
+            FileNoiThatExplorerScene.getInstance().getController().init();
         }
         else if (source == QuanLyNguoiDungButton) {
             scene = UserManagementScene.getInstance().getScene();

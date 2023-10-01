@@ -4,8 +4,6 @@ import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.*;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
-import lombok.Getter;
-import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.poi.ss.usermodel.Cell;
@@ -20,8 +18,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
 public class ExportXLS implements ExportFile {
     final static Logger LOGGER = LogManager.getLogger(ExportFile.class);
     // USED FOR TESTING ONLY
@@ -70,7 +66,7 @@ public class ExportXLS implements ExportFile {
 //    }
 
     public void setThongTinNoiThatList(List<ThongTinNoiThat> thongTinNoiThatList) {
-        setThongTinNoiThatList(new ArrayList<>());
+        this.thongTinNoiThatList = new ArrayList<>();
         thongTinNoiThatList.forEach(item -> {
             String stt = item.getSTT();
             if (Utils.RomanNumber.isRoman(stt) || Utils.isNumeric(stt)) {
@@ -104,10 +100,24 @@ public class ExportXLS implements ExportFile {
         setThongTinCongTy(dataForExport.getThongTinCongTy());
         setThongTinKhachHang(dataForExport.getThongTinKhachHang());
         setThongTinNoiThatList(dataForExport.getThongTinNoiThatList());
-        setThongTinThanhToan(dataForExport.getThongTinThanhToan());
-        setNoteArea(dataForExport.getNoteArea());
+        this.thongTinThanhToan = dataForExport.getThongTinThanhToan();
+        this.noteArea = dataForExport.getNoteArea();
     }
-
+    private void setThongTinCongTy(ThongTinCongTy thongTinCongTy) {
+        this.thongTinCongTy.setLogo(thongTinCongTy.getLogo());
+        this.thongTinCongTy.setTenCongTy(thongTinCongTy.getTenCongTy());
+        this.thongTinCongTy.setDiaChiVanPhong("Địa chỉ văn phòng: " + thongTinCongTy.getDiaChiVanPhong());
+        this.thongTinCongTy.setDiaChiXuong("Địa chỉ nhà xưởng: " + thongTinCongTy.getDiaChiXuong());
+        this.thongTinCongTy.setSoDienThoai("Hotline: " + thongTinCongTy.getSoDienThoai());
+        this.thongTinCongTy.setEmail("Email: " + thongTinCongTy.getEmail());
+    }
+    private void setThongTinKhachHang(ThongTinKhachHang thongTinKhachHang) {
+        this.thongTinKhachHang.setTenKhachHang("Khách hàng : " + thongTinKhachHang.getTenKhachHang());
+        this.thongTinKhachHang.setDiaChi("Địa chỉ: " + thongTinKhachHang.getDiaChi());
+        this.thongTinKhachHang.setSoDienThoai("Điện thoại: " + thongTinKhachHang.getSoDienThoai());
+        this.thongTinKhachHang.setDate("Ngày: " + thongTinKhachHang.getDate());
+        this.thongTinKhachHang.setSanPham("Sản phẩm: " + thongTinKhachHang.getSanPham());
+    }
     @Override
     public DataPackage importData(File importDirectory) {
         return null;

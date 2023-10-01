@@ -5,5 +5,7 @@ public enum Action {
     DELETE,
     LOGIN,
     EXIT,
-    CLEAR_SELECTION
+    CLEAR_SELECTION,
+    ADD_NEW_ROW,
+    NEXT_SCREEN,
 }

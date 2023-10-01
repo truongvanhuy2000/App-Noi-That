@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Scene.LuaChonNoiThat;
 
-import com.huy.appnoithat.Controller.NewTabController;
+import com.huy.appnoithat.Controller.NewTab.NewTabController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,8 +14,7 @@ public class NewTabScene {
     private static final String viewPath = "/com/huy/appnoithat/Scene/view/TabLayout.fxml";
     private Scene scene;
     private Parent root;
-    private static NewTabScene single_instance = null;
-    private NewTabController newTabController;
+    private final NewTabController newTabController;
 
     public NewTabScene() {
         try {
@@ -29,25 +28,6 @@ public class NewTabScene {
         scene = new Scene(root);
         addCssToScence();
     }
-
-    // Create an object of this class, call this function
-    public static synchronized NewTabScene getInstance() {
-        if (single_instance == null)
-            single_instance = new NewTabScene();
-        return single_instance;
-    }
-
-    public void setRoot(Parent root) {
-        this.root = root;
-        scene.setRoot(this.root);
-    }
-
-    public void setScene(Scene scene) {
-        this.scene = scene;
-        scene.setRoot(this.root);
-        addCssToScence();
-    }
-
     private void addCssToScence() {
         String cssPath = "/com/huy/appnoithat/Scene/css/TabLayout.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());

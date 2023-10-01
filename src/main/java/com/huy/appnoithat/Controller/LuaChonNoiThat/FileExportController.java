@@ -20,12 +20,6 @@ public class FileExportController {
         Stage stage = null;
         Object source = actionEvent.getSource();
         stage = (Stage) ((Node) source).getScene().getWindow();
-//        if (source == LogoutButton){
-//            scene = LoginScene.getInstance().getScene();
-//        }
-//        else {
-//            return;
-//        }
         stage.setScene(scene);
         stage.show();
     }

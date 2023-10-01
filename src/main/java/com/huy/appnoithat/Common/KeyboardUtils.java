@@ -20,6 +20,12 @@ public class KeyboardUtils {
             case EXIT, CLEAR_SELECTION -> {
                 return keyEvent.getCode().equals(KeyCode.ESCAPE);
             }
+            case ADD_NEW_ROW -> {
+                return keyEvent.getCode().equals(KeyCode.ADD);
+            }
+            case NEXT_SCREEN -> {
+                return keyEvent.getCode().equals(KeyCode.RIGHT);
+            }
         }
         return false;
     }

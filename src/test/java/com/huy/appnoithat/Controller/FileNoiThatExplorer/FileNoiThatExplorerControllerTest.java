@@ -1,19 +1,20 @@
-package com.huy.appnoithat.Controller;
+package com.huy.appnoithat.Controller.FileNoiThatExplorer;
 
+import com.huy.appnoithat.Scene.LuaChonNoiThat.FileNoiThatExplorerScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class NewTabControllerTest extends Application {
+public class FileNoiThatExplorerControllerTest extends Application {
     private Thread thread;
 
     @BeforeEach
     void setUp() {
         thread = new Thread("JavaFX Init Thread") {
             public void run() {
-                Application.launch(NewTabControllerTest.class, new String[0]);
+                Application.launch(FileNoiThatExplorerControllerTest.class, new String[0]);
             }
         };
         thread.start();
@@ -40,9 +41,10 @@ public class NewTabControllerTest extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-//        stage.setScene(NewTabScene.getInstance().getScene());
-//        stage.setTitle("App Noi That");
-//        stage.setMaximized(true);
-//        stage.show();
+        stage.setScene(FileNoiThatExplorerScene.getInstance().getScene());
+        FileNoiThatExplorerScene.getInstance().getController().init();
+        stage.setTitle("App Noi That");
+        stage.setMaximized(true);
+        stage.show();
     }
 }

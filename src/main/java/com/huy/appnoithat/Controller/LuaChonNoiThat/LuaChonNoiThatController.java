@@ -206,9 +206,10 @@ public class LuaChonNoiThatController implements Initializable {
     }
 
     /**
-     * @param file This function will import the table from a file
+     * @param directory This function will import the table from a file
      */
-    private void importFile(File file) {
+    public void importFile(String directory) {
+        File file = new File(directory);
         LOGGER.info("Import file: " + file.getName());
         DataPackage dataPackage = luaChonNoiThatService.importFile(file);
         if (dataPackage == null) {

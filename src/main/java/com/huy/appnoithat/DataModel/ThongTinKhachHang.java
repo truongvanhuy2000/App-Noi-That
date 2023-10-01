@@ -19,11 +19,10 @@ public class ThongTinKhachHang {
     String SanPham;
 
     public ThongTinKhachHang(String tenKhachHang, String diaChi, String soDienThoai, String date, String sanPham) {
-        this.tenKhachHang = "Khách hàng : " + tenKhachHang;
-        this.diaChi = "Địa chỉ: " + diaChi;
-        this.soDienThoai = "Điện thoại: " + soDienThoai;
-        this.date = "Ngày: " + date;
-        SanPham = "Sản phẩm: " + sanPham;
+        this.tenKhachHang = tenKhachHang;
+        this.diaChi = diaChi;
+        this.soDienThoai = soDienThoai;
+        this.date = date;
+        SanPham = sanPham;
     }
-
 }

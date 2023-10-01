@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Controller;
+package com.huy.appnoithat.Controller.NewTab;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
@@ -11,7 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -23,21 +22,21 @@ public class NewTabController implements Initializable {
     void newTabButtonHandler(ActionEvent event) {
         if (tabPane.getSelectionModel().getSelectedItem() != null) {
             Node nodeFromCurrentTab = tabPane.getSelectionModel().getSelectedItem().getContent();
-            Tab newtab = createNewTab();
+            Tab newtab = createNewTab(TabState.BLANK_TAB, null);
             duplicateTruongThongTin(nodeFromCurrentTab, newtab.getContent());
         } else {
-            createNewTab();
+            createNewTab(TabState.BLANK_TAB, null);
         }
     }
 
-    private Tab createNewTab() {
+    private Tab createNewTab(TabState tabState, String importDirectory) {
+        LuaChonNoiThatScene luaChonNoiThatScene = new LuaChonNoiThatScene();
         Tab newTab = setUpTab();
-        try {
-            Node root = LuaChonNoiThatScene.getNewRoot();
-            newTab.setContent(root);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        Node root = luaChonNoiThatScene.getRoot();
+        if (tabState == TabState.IMPORT_TAB) {
+            luaChonNoiThatScene.getLuaChonNoiThatController().importFile(importDirectory);
         }
+        newTab.setContent(root);
         addNewTabToPane(newTab);
         return newTab;
     }
@@ -65,12 +64,8 @@ public class NewTabController implements Initializable {
     private void duplicateTab(ActionEvent action, Tab currentTab) {
         Node nodeFromCurrentTab = currentTab.getContent();
         Tab newTab = setUpTab();
-        try {
-            Node root = LuaChonNoiThatScene.getNewRoot();
-            newTab.setContent(duplicateContent(nodeFromCurrentTab, root));
-        } catch (IOException e) {
-            throw new RuntimeException();
-        }
+        Node root = new LuaChonNoiThatScene().getRoot();
+        newTab.setContent(duplicateContent(nodeFromCurrentTab, root));
         addNewTabToPane(newTab);
     }
 
@@ -153,8 +148,8 @@ public class NewTabController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
-    public void init() {
+    public void init(TabState tabState, String importDirectory) {
         tabPane.getTabs().clear();
-        createNewTab();
+        createNewTab(tabState, importDirectory);
     }
 }

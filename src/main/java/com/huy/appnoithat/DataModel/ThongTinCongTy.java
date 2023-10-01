@@ -26,9 +26,9 @@ public class ThongTinCongTy {
     public ThongTinCongTy(InputStream logo, String tenCongTy, String diaChiVanPhong, String diaChiXuong, String soDienThoai, String email) {
         this.logo = logo;
         this.tenCongTy = tenCongTy;
-        this.diaChiVanPhong = "Địa chỉ văn phòng: " + diaChiVanPhong;
-        this.diaChiXuong = "Địa chỉ nhà xưởng: " + diaChiXuong;
-        this.soDienThoai = "Hotline: " + soDienThoai;
-        this.email = "Email: " + email;
+        this.diaChiVanPhong = diaChiVanPhong;
+        this.diaChiXuong = diaChiXuong;
+        this.soDienThoai = soDienThoai;
+        this.email = email;
     }
 }
