@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.util.StringConverter;
@@ -24,10 +24,11 @@ public class CustomNumberCell<T> extends TextFieldTreeTableCell<BangNoiThat, T> 
 
     @Override
     public void updateItem(T item, boolean empty) {
+        super.updateItem(item, empty);
         if (item == null || empty) {
+            setGraphic(null);
             return;
         }
-        super.updateItem(item, empty);
         if (item.equals(0.0) || item.equals(0) || item.equals(0F) || item.equals(0L)) {
             setText("");
         }

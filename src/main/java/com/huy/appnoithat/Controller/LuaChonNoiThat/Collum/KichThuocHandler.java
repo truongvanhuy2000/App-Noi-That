@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 
@@ -38,14 +38,14 @@ public class KichThuocHandler {
         float rong = event.getRowValue().getValue().getRong().getValue();
         float cao = event.getRowValue().getValue().getCao().getValue();
         String donvi = event.getRowValue().getValue().getDonVi().getValue();
-        float khoiluong = TableUtils.calculateKhoiLuong(dai, rong, cao, donvi);
+        float khoiluong = TableCalculationUtils.calculateKhoiLuong(dai, rong, cao, donvi);
         System.out.println(khoiluong);
         Long dongia = event.getRowValue().getValue().getDonGia().getValue();
-        long thanhTien = TableUtils.calculateThanhTien(khoiluong, dongia);
+        long thanhTien = TableCalculationUtils.calculateThanhTien(khoiluong, dongia);
         System.out.println(thanhTien);
         event.getRowValue().getValue().setKhoiLuong(khoiluong);
         event.getRowValue().getValue().setThanhTien(thanhTien);
 
-        TableUtils.calculateTongTien(event.getRowValue().getParent());
+        TableCalculationUtils.calculateTongTien(event.getRowValue().getParent());
     }
 }

@@ -38,7 +38,7 @@
                 <TextField fx:id="txtDonGia" layoutX="234.0" layoutY="16.0" prefHeight="24.0" prefWidth="177.0" />
             </children>
         </Pane>
-        <Button fx:id="btnOK" layoutX="507.0" layoutY="354.0" mnemonicParsing="false" onAction="#clickOK" prefHeight="24.0" prefWidth="64.0" styleClass="windows7-default" text="OK" />
+        <Button fx:id="btnOK" layoutX="497.0" layoutY="353.0" mnemonicParsing="false" onAction="#clickOK" prefHeight="29.0" prefWidth="74.0" text="Lưu" />
         <Button fx:id="backButton" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#sceneSwitcher">
             <graphic>
                 <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">

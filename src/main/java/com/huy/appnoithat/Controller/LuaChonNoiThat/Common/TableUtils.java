@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Controller.LuaChonNoiThat;
+package com.huy.appnoithat.Controller.LuaChonNoiThat.Common;
 
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
@@ -7,6 +7,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.PixelFormat;
 
 public class TableUtils {
     /**
@@ -37,59 +39,7 @@ public class TableUtils {
         return true;
     }
 
-    /**
-     * @param chieuDai
-     * @param chieuCao
-     * @param rong
-     * @param donVi    This method will calculate the khoi luong of the item
-     * @return
-     */
-    public static Float calculateKhoiLuong(Float chieuDai, Float chieuCao, Float rong, String donVi) {
-        String metDai = "mét dài";
-        String metVuong = "mét vuông";
-        Float khoiLuong = 0f;
-        if (donVi.trim().equalsIgnoreCase(metDai)) {
-            if (chieuDai == 0f) {
-                return 0f;
-            }
-            khoiLuong = chieuDai / 1000;
-            return khoiLuong;
-        }
 
-        if (donVi.trim().equalsIgnoreCase(metVuong)) {
-            if (chieuDai == 0f || chieuCao == 0f) {
-                return 0f;
-            }
-            khoiLuong = chieuDai * chieuCao / 1000000;
-        } else {
-            khoiLuong = 1f;
-        }
-        return khoiLuong;
-    }
-
-    /**
-     * @param khoiLuong
-     * @param donGia    This method will calculate the thanh tien of the item
-     * @return
-     */
-    public static Long calculateThanhTien(Float khoiLuong, Long donGia) {
-        return (long) (khoiLuong * donGia);
-    }
-
-    /**
-     * @param item This method will calculate the tong tien of the item
-     */
-    public static void calculateTongTien(TreeItem<BangNoiThat> item) {
-        Long tongTien = 0L;
-        if (item == null) {
-            return;
-        }
-        for (TreeItem<BangNoiThat> child : item.getChildren()) {
-            tongTien += child.getValue().getThanhTien().getValue();
-        }
-        item.getValue().setThanhTien(tongTien);
-        calculateTongTien(item.getParent());
-    }
 
     /**
      * @param TableNoiThat This method will check if the current cell is editable
@@ -151,5 +101,12 @@ public class TableUtils {
      */
     public static TreeItem<BangNoiThat> convertToTreeItem(ThongTinNoiThat thongTinNoiThat) {
         return TableUtils.createNewItem(new BangNoiThat(thongTinNoiThat));
+    }
+    public static byte[] readFromImage(Image img) {
+        int w = (int)img.getWidth();
+        int h = (int)img.getHeight();
+        byte[] buf = new byte[w * h * 4];
+        img.getPixelReader().getPixels(0, 0, w, h, PixelFormat.getByteBgraInstance(), buf, 0, w * 4);
+        return buf;
     }
 }

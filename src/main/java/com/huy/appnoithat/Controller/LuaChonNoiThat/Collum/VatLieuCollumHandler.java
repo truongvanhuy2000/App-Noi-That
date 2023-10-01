@@ -2,8 +2,9 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomVatLieuCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
@@ -50,8 +51,8 @@ public class VatLieuCollumHandler {
         Float cao = Objects.requireNonNullElse(coresspondingThongSo.getCao(), 0f);
         Long donGia = coresspondingThongSo.getDon_gia();
         String donVi = coresspondingThongSo.getDon_vi();
-        Float khoiLuong = TableUtils.calculateKhoiLuong(dai, cao, rong, donVi);
-        Long thanhTien = TableUtils.calculateThanhTien(khoiLuong, donGia);
+        Float khoiLuong = TableCalculationUtils.calculateKhoiLuong(dai, cao, rong, donVi);
+        Long thanhTien = TableCalculationUtils.calculateThanhTien(khoiLuong, donGia);
 
         event.getRowValue().getValue().setThanhTien(thanhTien);
         event.getRowValue().getValue().setKhoiLuong(khoiLuong);
@@ -61,7 +62,7 @@ public class VatLieuCollumHandler {
         event.getRowValue().getValue().setDonGia(donGia);
         event.getRowValue().getValue().setDonVi(donVi);
 
-        TableUtils.calculateTongTien(event.getRowValue().getParent());
+        TableCalculationUtils.calculateTongTien(event.getRowValue().getParent());
 
 //        event.getTreeTableView().getSelectionModel().clearSelection();
     }

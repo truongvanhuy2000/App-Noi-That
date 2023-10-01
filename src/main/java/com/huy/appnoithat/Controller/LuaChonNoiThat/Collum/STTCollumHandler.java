@@ -1,7 +1,5 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomEditingCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.beans.property.SimpleStringProperty;
@@ -22,25 +20,25 @@ public class STTCollumHandler {
 
     public void onEditCommitSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         handleInputedSTT(event);
-//        event.getTreeTableView().getSelectionModel().clearSelection();
+        event.getTreeTableView().getSelectionModel().clearSelection();
     }
 
     private void handleInputedSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         String newValue = event.getNewValue();
         event.getRowValue().getValue().setSTT(newValue);
-        if (Utils.RomanNumber.isRoman(newValue)) {
-            handleCommitedRomanSTT(event, newValue);
-            return;
-        }
-        if (Utils.isAlpha(newValue)) {
-            handleComitedAlphaSTT(event, newValue);
-            return;
-        }
-        if (Utils.isNumeric(newValue)) {
-            handleCommitedNumericSTT(event, newValue);
-        }
+//        if (Utils.RomanNumber.isRoman(newValue)) {
+//            handleCommitedRomanSTT(event, newValue);
+//            return;
+//        }
+//        if (Utils.isAlpha(newValue)) {
+//            handleComitedAlphaSTT(event, newValue);
+//            return;
+//        }
+//        if (Utils.isNumeric(newValue)) {
+//            handleCommitedNumericSTT(event, newValue);
+//        }
     }
-
+    @Deprecated
     private void handleComitedAlphaSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event, String item) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         TreeItem<BangNoiThat> newItem = new TreeItem<>(currentItem.getValue());
@@ -49,6 +47,7 @@ public class STTCollumHandler {
     }
 
     // This mean we are choosing noi that
+    @Deprecated
     public void handleCommitedRomanSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event, String item) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         TreeItem<BangNoiThat> newItem = new TreeItem<>(currentItem.getValue());
@@ -57,8 +56,8 @@ public class STTCollumHandler {
             return;
         }
         if (tempPhongCachList.isEmpty()) {
-            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
-            event.consume();
+//            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
+//            event.consume();
             return;
         }
         removeFromParent(currentItem);
@@ -66,37 +65,40 @@ public class STTCollumHandler {
     }
 
     // This mean we are choosing hang muc
+    @Deprecated
     public void handleCommitedNumericSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event, String item) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         TreeItem<BangNoiThat> newItem = new TreeItem<>(currentItem.getValue());
         ObservableList<TreeItem<BangNoiThat>> tempPhongCachList = findPhongCachList(currentItem);
-        assert tempPhongCachList != null;
+        if (tempPhongCachList == null) {
+            return;
+        }
         if (tempPhongCachList.isEmpty()) {
-            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
-            event.consume();
+//            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
+//            event.consume();
             return;
         }
         removeFromParent(currentItem);
         ObservableList<TreeItem<BangNoiThat>> tempNoiThatList = tempPhongCachList.get(tempPhongCachList.size() - 1).getChildren();
         if (tempNoiThatList.isEmpty()) {
-            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
-            event.consume();
+//            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
+//            event.consume();
             return;
         }
         addNodeToTheYoungestLeaf(tempNoiThatList, newItem);
     }
-
+    @Deprecated
     private ObservableList<TreeItem<BangNoiThat>> findPhongCachList(TreeItem<BangNoiThat> currentItem) {
         ObservableList<TreeItem<BangNoiThat>> tempPhongCachList;
         TreeItem<BangNoiThat> root = TableNoiThat.getRoot();
         tempPhongCachList = root.getChildren();
         return tempPhongCachList;
     }
-
+    @Deprecated
     private void removeFromParent(TreeItem<BangNoiThat> node) {
         node.getParent().getChildren().remove(node);
     }
-
+    @Deprecated
     private void addNodeToTheYoungestLeaf(ObservableList<TreeItem<BangNoiThat>> leafList, TreeItem<BangNoiThat> newItem) {
         TreeItem<BangNoiThat> youngestLeaf = leafList.get(leafList.size() - 1);
         youngestLeaf.getChildren().add(newItem);
@@ -104,7 +106,7 @@ public class STTCollumHandler {
     }
 
     public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param) {
-        return new CustomEditingCell<>();
+        return new CustomEditingCell<>(true);
     }
 
     public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {

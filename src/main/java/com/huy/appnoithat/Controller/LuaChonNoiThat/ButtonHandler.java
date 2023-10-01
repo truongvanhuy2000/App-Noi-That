@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,8 +12,8 @@ import javafx.scene.control.TreeTableView;
 public class ButtonHandler {
     private TreeTableView<BangNoiThat> TableNoiThat;
 
-    public ButtonHandler(TreeTableView<BangNoiThat> tableNoiThat) {
-        this.TableNoiThat = tableNoiThat;
+    public ButtonHandler(LuaChonNoiThatController luaChonNoiThatController) {
+        this.TableNoiThat = luaChonNoiThatController.getTableNoiThat();
     }
 
     public void addNewLine(ActionEvent event) {

@@ -10,8 +10,9 @@ import javafx.scene.control.TreeTableRow;
 
 public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, String> {
     private TextField textField;
-
-    public CustomEditingCell() {
+    boolean isSttCell = false;
+    public CustomEditingCell(boolean isSttCell) {
+        this.isSttCell = isSttCell;
     }
 
     @Override
@@ -55,6 +56,9 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
         }
         TreeTableRow<BangNoiThat> currentRow = getTableRow();
         if (!isEmpty()) {
+            if (!isSttCell) {
+                return;
+            }
             if (Utils.isNumeric(getItem())) {
                 currentRow.setStyle("-fx-font-weight: normal");
                 return;

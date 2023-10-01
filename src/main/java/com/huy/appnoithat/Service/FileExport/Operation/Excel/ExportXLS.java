@@ -45,6 +45,8 @@ public class ExportXLS implements ExportFile {
             LOGGER.error("Error while init ExportXLS");
             throw new RuntimeException(e);
         }
+        this.thongTinCongTy = new ThongTinCongTy();
+        this.thongTinKhachHang = new ThongTinKhachHang();
     }
 
     private void setOutputFile(File outputFile) throws FileNotFoundException {

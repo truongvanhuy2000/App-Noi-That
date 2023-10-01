@@ -82,10 +82,7 @@ public class NewTabController implements Initializable {
         TextField DiaChiXuong = (TextField) nodeFromCurrentTab.lookup("#DiaChiXuong");
         TextField DienThoaiCongTy = (TextField) nodeFromCurrentTab.lookup("#DienThoaiCongTy");
         TextField Email = (TextField) nodeFromCurrentTab.lookup("#Email");
-        TextField TenKhachHang = (TextField) nodeFromCurrentTab.lookup("#TenKhachHang");
-        TextField DienThoaiKhachHang = (TextField) nodeFromCurrentTab.lookup("#DienThoaiKhachHang");
-        TextField DiaChiKhachHang = (TextField) nodeFromCurrentTab.lookup("#DiaChiKhachHang");
-        TextField SanPham = (TextField) nodeFromCurrentTab.lookup("#SanPham");
+
         ImageView imageView = (ImageView) nodeFromCurrentTab.lookup("#ImageView");
 
         TextArea noteTextArea = (TextArea) nodeFromCurrentTab.lookup("#noteTextArea");
@@ -100,14 +97,6 @@ public class NewTabController implements Initializable {
         DuplicateDienThoaiCongTy.setText(DienThoaiCongTy.getText());
         TextField DuplicateEmail = (TextField) nodeFromNewTab.lookup("#Email");
         DuplicateEmail.setText(Email.getText());
-        TextField DuplicateTenKhachHang = (TextField) nodeFromNewTab.lookup("#TenKhachHang");
-        DuplicateTenKhachHang.setText(TenKhachHang.getText());
-        TextField DuplicateDienThoaiKhachHang = (TextField) nodeFromNewTab.lookup("#DienThoaiKhachHang");
-        DuplicateDienThoaiKhachHang.setText(DienThoaiKhachHang.getText());
-        TextField DuplicateDiaChiKhachHang = (TextField) nodeFromNewTab.lookup("#DiaChiKhachHang");
-        DuplicateDiaChiKhachHang.setText(DiaChiKhachHang.getText());
-        TextField DuplicateSanPham = (TextField) nodeFromNewTab.lookup("#SanPham");
-        DuplicateSanPham.setText(SanPham.getText());
         ImageView DuplicateImageView = (ImageView) nodeFromNewTab.lookup("#ImageView");
         DuplicateImageView.setImage(imageView.getImage());
 
