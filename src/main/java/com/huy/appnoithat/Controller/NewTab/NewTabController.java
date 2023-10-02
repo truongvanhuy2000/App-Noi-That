@@ -51,8 +51,17 @@ public class NewTabController implements Initializable {
         ContextMenu contextMenu = new ContextMenu();
         MenuItem nhanBanMenuItem = new MenuItem("Nhân bản");
         nhanBanMenuItem.setOnAction(event -> duplicateTab(event, newTab));
-        contextMenu.getItems().add(nhanBanMenuItem);
+        MenuItem renameTab = new MenuItem("Đổi tên");
+        renameTab.setOnAction(event -> {
+            TextInputDialog dialog = new TextInputDialog(newTab.getText());
+            dialog.setTitle("Đổi tên tab");
+            dialog.setHeaderText("Đổi tên tab");
+            dialog.setContentText("Nhập tên mới:");
+            dialog.showAndWait().ifPresent(newTab::setText);
+        });
 
+        contextMenu.getItems().add(nhanBanMenuItem);
+        contextMenu.getItems().add(renameTab);
         newTab.contextMenuProperty().set(contextMenu);
         return newTab;
     }

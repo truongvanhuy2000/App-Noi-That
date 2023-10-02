@@ -55,7 +55,7 @@ public class ExportOperation {
     }
 
     public void exportFile(FileType fileType) {
-        File selectedFile = PopupUtils.fileChooser();
+        File selectedFile = PopupUtils.fileSaver();
         if (selectedFile == null) {
             return;
         }

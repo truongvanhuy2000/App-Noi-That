@@ -10,29 +10,32 @@ public class KichThuocHandler {
     //    final static Logger LOGGER = LogManager.getLogger(KichThuocHandler.class);
     private TreeTableView<BangNoiThat> TableNoiThat;
     private TreeTableColumn<BangNoiThat, Float> Cao, Dai, Rong;
+    private TreeTableColumn<BangNoiThat, Long> DonGia;
 
     public KichThuocHandler(TreeTableView<BangNoiThat> tableNoiThat,
-                            TreeTableColumn<BangNoiThat,
-                                    Float> cao,
-                            TreeTableColumn<BangNoiThat,
-                                    Float> dai,
-                            TreeTableColumn<BangNoiThat,
-                                    Float> rong) {
+                            TreeTableColumn<BangNoiThat, Float> cao,
+                            TreeTableColumn<BangNoiThat, Float> dai,
+                            TreeTableColumn<BangNoiThat, Float> rong,
+                            TreeTableColumn<BangNoiThat, Long> donGia) {
         TableNoiThat = tableNoiThat;
         Cao = cao;
         Dai = dai;
         Rong = rong;
+        DonGia = donGia;
     }
 
-    public void onCommitEditKichThuoc(TreeTableColumn.CellEditEvent<BangNoiThat, Float> event) {
+    public void onCommitEditKichThuoc(TreeTableColumn.CellEditEvent<BangNoiThat, ?> event) {
         if (event.getSource().equals(Cao)) {
-            event.getRowValue().getValue().setCao(event.getNewValue());
+            event.getRowValue().getValue().setCao((float) event.getNewValue());
         }
         if (event.getSource().equals(Dai)) {
-            event.getRowValue().getValue().setDai(event.getNewValue());
+            event.getRowValue().getValue().setDai((float) event.getNewValue());
         }
         if (event.getSource().equals(Rong)) {
-            event.getRowValue().getValue().setRong(event.getNewValue());
+            event.getRowValue().getValue().setRong((float) event.getNewValue());
+        }
+        if (event.getSource().equals(DonGia)) {
+            event.getRowValue().getValue().setDonGia((long) event.getNewValue());
         }
         float dai = event.getRowValue().getValue().getDai().getValue();
         float rong = event.getRowValue().getValue().getRong().getValue();

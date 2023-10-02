@@ -22,9 +22,14 @@ public class PopupUtils {
         alert.showAndWait();
     }
 
-    public static File fileChooser() {
+    public static File fileSaver() {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Choose location To Save Report");
         return chooser.showSaveDialog(null);
+    }
+    public static File fileOpener() {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Choose location To Open Report");
+        return chooser.showOpenDialog(null);
     }
 }

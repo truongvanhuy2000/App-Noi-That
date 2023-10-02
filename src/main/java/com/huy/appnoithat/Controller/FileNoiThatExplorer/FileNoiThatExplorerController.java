@@ -12,7 +12,6 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.List;
 
 public class FileNoiThatExplorerController {
     @FXML
@@ -33,25 +32,23 @@ public class FileNoiThatExplorerController {
     }
     @FXML
     void openFileButton(ActionEvent event) {
-        File selectedFile = PopupUtils.fileChooser();
+        File selectedFile = PopupUtils.fileOpener();
         if (selectedFile == null) {
             return;
         }
         RecentFile recentFile = new RecentFile(selectedFile.getAbsolutePath(), System.currentTimeMillis());
         // Add to recent file
-        fileNoiThatExplorerService.addRecentFile(recentFile);
         openFile(recentFile);
     }
     public void init() {
         DirectoryCollum.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDirectory()));
         TimeStampCollum.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTimeStamp().toString()));
-        RecentTableView.getItems().addAll(getRecentFileList());
+        RecentTableView.setItems(fileNoiThatExplorerService.getRecentFile());
         RecentTableView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
                 openFile(RecentTableView.getSelectionModel().getSelectedItem());
             }
         });
-
     }
     public void openFile(RecentFile recentFile) {
         if (!isDirectoryExist(recentFile.getDirectory())) {
@@ -60,10 +57,13 @@ public class FileNoiThatExplorerController {
             fileNoiThatExplorerService.removeRecentFile(recentFile);
             return;
         }
-        openNewLuaChonNoiThatTab(TabState.IMPORT_TAB, recentFile.getDirectory());
-    }
-    private List<RecentFile> getRecentFileList() {
-        return fileNoiThatExplorerService.getRecentFile();
+        try {
+            openNewLuaChonNoiThatTab(TabState.IMPORT_TAB, recentFile.getDirectory());
+        } catch (Exception e) {
+            PopupUtils.throwErrorSignal("File không hợp lệ");
+            return;
+        }
+        fileNoiThatExplorerService.addRecentFile(recentFile);
     }
     private void openNewLuaChonNoiThatTab(TabState tabState, String directory) {
         Stage newStage = new Stage();

@@ -57,7 +57,7 @@
                 <TextArea fx:id="noteTextArea" layoutX="73.0" layoutY="849.0" prefHeight="126.0" prefWidth="1254.0" text="Chú thích:" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0" />
                 <TreeTableView fx:id="TableNoiThat" layoutX="71.0" layoutY="170.0" onKeyPressed="#onKeyPressed" prefHeight="624.0" prefWidth="1254.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
                     <columns>
-                        <TreeTableColumn fx:id="STT1" prefWidth="59.0" sortable="false" text="Báo Giá Nội Thất Công Ty TNHH Kiến Trúc Xây Dựng Nội Thất A One">
+                        <TreeTableColumn fx:id="STT1" prefWidth="59.0" sortable="false" text="Báo Giá Nội Thất">
                             <columns>
                                 <TreeTableColumn fx:id="STT" prefWidth="59.0" resizable="false" sortable="false" text="STT" />
                                 <TreeTableColumn fx:id="HangMuc" minWidth="200.0" prefWidth="336.0" resizable="false" sortable="false" text="HẠNG MỤC " />
@@ -69,7 +69,7 @@
                                         <TreeTableColumn fx:id="Cao" prefWidth="70.0" resizable="false" sortable="false" text="CAO" />
                                     </columns>
                                 </TreeTableColumn>
-                                <TreeTableColumn fx:id="DonVi" prefWidth="100.0" resizable="false" sortable="false" text="ĐƠN VỊ" />
+                                <TreeTableColumn fx:id="DonVi" prefWidth="100.0" resizable="false" sortable="false" text="ĐƠN VỊ TÍNH" />
                                 <TreeTableColumn fx:id="DonGia" prefWidth="95.0" resizable="false" sortable="false" text="ĐƠN GIÁ" />
                                 <TreeTableColumn fx:id="KhoiLuong" prefWidth="70.0" resizable="false" sortable="false" text="KHOI LUONG" />
                                 <TreeTableColumn fx:id="ThanhTien" prefWidth="120.0" resizable="false" sortable="false" text="THÀNH TIỀN" />

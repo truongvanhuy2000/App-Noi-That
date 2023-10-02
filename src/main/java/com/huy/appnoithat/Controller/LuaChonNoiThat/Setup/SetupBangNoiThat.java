@@ -88,7 +88,7 @@ public class SetupBangNoiThat {
     }
     private void setUpCollum() {
         setUpKichThuoc();
-        setUpDonGia();
+//        setUpDonGia();
         setUpDonVi();
         setUpHangMuc();
         setUpVatLieu();
@@ -212,25 +212,10 @@ public class SetupBangNoiThat {
     }
 
     /**
-     * This function will set up the collum for DonGia
-     */
-    private void setUpDonGia() {
-        // Set up collum for DonGia
-        DonGia.setCellValueFactory(param -> {
-            if (param.getValue() == null) return null;
-            return param.getValue().getValue().getDonGia().asObject();
-        });
-        DonGia.setCellFactory(param -> new CustomNumberCell<>(new CustomLongStringConverter(), TableNoiThat));
-        DonGia.setOnEditCommit(event -> {
-            event.getRowValue().getValue().setDonGia(event.getNewValue());
-        });
-    }
-
-    /**
      * This function will set up the collum for KichThuoc
      */
     private void setUpKichThuoc() {
-        KichThuocHandler kichThuocHandler = new KichThuocHandler(TableNoiThat, Cao, Dai, Rong);
+        KichThuocHandler kichThuocHandler = new KichThuocHandler(TableNoiThat, Cao, Dai, Rong, DonGia);
 
         Cao.setCellValueFactory(param -> {
             if (param.getValue() == null) return null;
@@ -252,5 +237,12 @@ public class SetupBangNoiThat {
         });
         Rong.setCellFactory(param -> new CustomNumberCell<>(new FloatStringConverter(), TableNoiThat));
         Rong.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
+
+        DonGia.setCellValueFactory(param -> {
+            if (param.getValue() == null) return null;
+            return param.getValue().getValue().getDonGia().asObject();
+        });
+        DonGia.setCellFactory(param -> new CustomNumberCell<>(new CustomLongStringConverter(), TableNoiThat));
+        DonGia.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
     }
 }

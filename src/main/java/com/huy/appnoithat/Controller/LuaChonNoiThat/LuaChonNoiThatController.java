@@ -11,7 +11,6 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupBangThanhToan;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Enums.FileType;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -102,6 +101,10 @@ public class LuaChonNoiThatController implements Initializable {
     private void reArrangeList() {
         ObservableList<TreeItem<BangNoiThat>> listItem = TableNoiThat.getRoot().getChildren();
         for (int i = 0; i < listItem.size(); i++) {
+            TreeItem<BangNoiThat> item = listItem.get(i);
+            for (int j = 0; j < item.getChildren().size(); j++) {
+                item.getChildren().get(j).getValue().setSTT(String.valueOf(i + 1));
+            }
             listItem.get(i).getValue().setSTT(String.valueOf(i + 1));
         }
     }

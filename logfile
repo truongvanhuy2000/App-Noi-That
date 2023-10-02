@@ -662,3 +662,34 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 02-10-2023 10:21:00 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
 [INFO ] 02-10-2023 10:21:30 [main] HelloApplication:33 - Start application
 [INFO ] 02-10-2023 10:21:31 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 23:56:31 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 23:56:33 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 23:57:16 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 23:57:17 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 23:58:02 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 23:58:03 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 23:58:10 [JavaFX Application Thread] ImportOperation:46 - Import file: file.nt
+[INFO ] 02-10-2023 23:58:40 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 23:58:41 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:02:38 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 00:02:40 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:02:49 [JavaFX Application Thread] ImportOperation:46 - Import file: test1.nt
+[INFO ] 03-10-2023 00:04:03 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 00:04:04 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:04:16 [JavaFX Application Thread] ImportOperation:46 - Import file: BaoGia.xls
+[ERROR] 03-10-2023 00:04:18 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 03-10-2023 00:06:24 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 00:06:25 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:06:33 [JavaFX Application Thread] ImportOperation:46 - Import file: BaoGia.xls
+[INFO ] 03-10-2023 00:14:03 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 00:14:04 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:16:14 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 00:16:15 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:16:47 [JavaFX Application Thread] ImportOperation:46 - Import file: test4.nt
+[INFO ] 03-10-2023 00:25:32 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 00:25:33 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:25:39 [JavaFX Application Thread] ImportOperation:46 - Import file: test4.nt
+[INFO ] 03-10-2023 00:27:17 [JavaFX Application Thread] ImportOperation:46 - Import file: test4.nt
+[INFO ] 03-10-2023 00:36:52 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 00:36:53 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:36:59 [JavaFX Application Thread] ImportOperation:46 - Import file: file.nt

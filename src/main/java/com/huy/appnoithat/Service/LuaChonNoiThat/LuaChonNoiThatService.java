@@ -1,9 +1,6 @@
 package com.huy.appnoithat.Service.LuaChonNoiThat;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.huy.appnoithat.Controller.FileNoiThatExplorer.RecentFile;
 import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
@@ -12,13 +9,11 @@ import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Enums.FileType;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
 import com.huy.appnoithat.Service.FileExport.FileExportService;
+import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;
 import com.huy.appnoithat.Service.RestService.HangMucRestService;
 import com.huy.appnoithat.Service.RestService.NoiThatRestService;
 import com.huy.appnoithat.Service.RestService.PhongCachRestService;
 import com.huy.appnoithat.Service.RestService.VatLieuRestService;
-import com.huy.appnoithat.Service.SessionService.UserSessionService;
-import com.huy.appnoithat.Service.WebClient.WebClientService;
-import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -34,12 +29,14 @@ public class LuaChonNoiThatService {
     private final NoiThatRestService noiThatRestService;
     private final HangMucRestService hangMucRestService;
     private final VatLieuRestService vatLieuRestService;
+    private final FileNoiThatExplorerService fileNoiThatExplorerService;
     public LuaChonNoiThatService() {
         fileExportService = new FileExportService();
         phongCachRestService = PhongCachRestService.getInstance();
         noiThatRestService = NoiThatRestService.getInstance();
         hangMucRestService = HangMucRestService.getInstance();
         vatLieuRestService = VatLieuRestService.getInstance();
+        fileNoiThatExplorerService = FileNoiThatExplorerService.getInstance();
     }
 
     public List<PhongCachNoiThat> findAllPhongCachNoiThat() {
@@ -103,11 +100,14 @@ public class LuaChonNoiThatService {
         exportFile.setUpDataForExport(dataPackage);
         try {
             exportFile.export(selectedFile);
-            return true;
         } catch (IOException e) {
             LOGGER.error("Some thing is wrong with the export operation", e);
             return false;
         }
+        if (fileType == FileType.NT) {
+            fileNoiThatExplorerService.addRecentFile(new RecentFile(selectedFile.getAbsolutePath(), System.currentTimeMillis()));
+        }
+        return true;
     }
 
     public DataPackage importFile(File selectedFile) {
