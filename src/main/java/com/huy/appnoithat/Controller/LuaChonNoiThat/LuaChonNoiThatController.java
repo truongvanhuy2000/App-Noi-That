@@ -52,7 +52,7 @@ public class LuaChonNoiThatController implements Initializable {
     private TreeTableColumn<BangNoiThat, String> DonVi, HangMuc, VatLieu, STT;
     // Button
     @FXML
-    private Button addContinuousButton, addNewButton, ExportButton;
+    private Button addContinuousButton, addNewButton, ExportButton, SaveButton;
     @FXML
     private ImageView ImageView;
     @FXML
@@ -63,8 +63,8 @@ public class LuaChonNoiThatController implements Initializable {
     private TableView<BangThanhToan> bangThanhToan;
     private ByteArrayOutputStream imageStream;
     public LuaChonNoiThatController() {
+        imageStream = new ByteArrayOutputStream();
     }
-
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {
         Object source = event.getSource();
@@ -72,7 +72,6 @@ public class LuaChonNoiThatController implements Initializable {
             imageViewHandler();
         }
     }
-
     /**
      * @param event
      * @see javafx.scene.input.KeyEvent
@@ -86,14 +85,6 @@ public class LuaChonNoiThatController implements Initializable {
         if (KeyboardUtils.isRightKeyCombo(Action.CLEAR_SELECTION, event)) {
             TableNoiThat.getSelectionModel().clearSelection();
         }
-    }
-
-    /**
-     * @param event This function will handle the event when user want to save the table
-     */
-    @FXML
-    void onSaveAction(ActionEvent event) {
-        exportFile(FileType.NT);
     }
     private void handleDeleteAction() {
         if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
@@ -114,7 +105,6 @@ public class LuaChonNoiThatController implements Initializable {
             listItem.get(i).getValue().setSTT(String.valueOf(i + 1));
         }
     }
-
     /**
      * @param url
      * @param resourceBundle
@@ -124,44 +114,16 @@ public class LuaChonNoiThatController implements Initializable {
     public final void initialize(URL url, ResourceBundle resourceBundle) {
         setUpBangThanhToan();
         setUpBangNoiThat();
-        ButtonHandler buttonHandler = new ButtonHandler(this);
-//        addNewButton.setOnAction(buttonHandler::addNewLine);
-        addContinuousButton.setOnAction(buttonHandler::continuousLineAdd);
-        ExportButton.setOnAction(this::exportButtonHandler);
-//        bindExportButton();
-        imageStream = new ByteArrayOutputStream();
-        NgayLapBaoGia.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
+        setUpButton();
+        setUpTruongThongTin();
     }
-
-    private void bindExportButton() {
-        ExportButton.disableProperty().bind(
-            TenCongTy.textProperty().isEmpty().or(
-            VanPhong.textProperty().isEmpty().or(
-            DiaChiXuong.textProperty().isEmpty().or(
-            DienThoaiCongTy.textProperty().isEmpty().or(
-            Email.textProperty().isEmpty().or(
-            TenKhachHang.textProperty().isEmpty().or(
-            DienThoaiKhachHang.textProperty().isEmpty().or(
-            DiaChiKhachHang.textProperty().isEmpty().or(
-            SanPham.textProperty().isEmpty()))))))))
-        );
-    }
-
-    /**
-     * @param event This function will handle the event when user want to export the table
-     */
-    private void exportButtonHandler(ActionEvent event) {
-        exportFile(FileType.EXCEL);
-    }
-
     /**
      * @param fileType This function will export the table to a file
      */
-    private void exportFile(FileType fileType) {
+    public void exportFile(FileType fileType) {
         ExportOperation exportOperation = new ExportOperation(this);
         exportOperation.exportFile(fileType);
     }
-
     /**
      * @param directory This function will import the table from a file
      */
@@ -169,8 +131,6 @@ public class LuaChonNoiThatController implements Initializable {
         ImportOperation importOperation = new ImportOperation(this);
         importOperation.importFile(directory);
     }
-
-
     /**
      * This function will handle the event when user want to choose an image
      */
@@ -194,7 +154,6 @@ public class LuaChonNoiThatController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-
     /**
      * This function will set up the bang noi that
      */
@@ -202,7 +161,6 @@ public class LuaChonNoiThatController implements Initializable {
         SetupBangNoiThat setupBangNoiThat = new SetupBangNoiThat(this);
         setupBangNoiThat.setUpBangNoiThat();
     }
-
     /**
      * This function will set up the collum for KichThuoc
      */
@@ -211,5 +169,27 @@ public class LuaChonNoiThatController implements Initializable {
         setupBangThanhToan.setUpBangThanhToan();
     }
 
+    private void setUpButton() {
+        ButtonHandler buttonHandler = new ButtonHandler(this);
+        addContinuousButton.setOnAction(buttonHandler::continuousLineAdd);
+        ExportButton.setOnAction(buttonHandler::exportButtonHandler);
+        SaveButton.setOnAction(buttonHandler::onSaveAction);
+    }
 
+    private void setUpTruongThongTin() {
+        NgayLapBaoGia.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
+    }
+    //    private void bindExportButton() {
+//        ExportButton.disableProperty().bind(
+//            TenCongTy.textProperty().isEmpty().or(
+//            VanPhong.textProperty().isEmpty().or(
+//            DiaChiXuong.textProperty().isEmpty().or(
+//            DienThoaiCongTy.textProperty().isEmpty().or(
+//            Email.textProperty().isEmpty().or(
+//            TenKhachHang.textProperty().isEmpty().or(
+//            DienThoaiKhachHang.textProperty().isEmpty().or(
+//            DiaChiKhachHang.textProperty().isEmpty().or(
+//            SanPham.textProperty().isEmpty()))))))))
+//        );
+//    }
 }

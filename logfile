@@ -654,3 +654,11 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 02-10-2023 01:16:15 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
 [INFO ] 02-10-2023 01:16:25 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
 [INFO ] 02-10-2023 01:16:27 [JavaFX Application Thread] ImportOperation:46 - Import file: file.nt
+[INFO ] 02-10-2023 10:03:37 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 10:03:38 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 10:03:52 [JavaFX Application Thread] ImportOperation:46 - Import file: test1.nt
+[ERROR] 02-10-2023 10:03:54 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.io.FileNotFoundException: /home/huy/Desktop/test1.nt (No such file or directory)
+[INFO ] 02-10-2023 10:20:59 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 10:21:00 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 10:21:30 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 10:21:31 [JavaFX Application Thread] HomeController:62 - Login as kim with role User

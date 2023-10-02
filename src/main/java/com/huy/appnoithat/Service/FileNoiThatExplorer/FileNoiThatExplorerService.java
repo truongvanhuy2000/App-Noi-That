@@ -17,6 +17,7 @@ public class FileNoiThatExplorerService {
     private static final String RECENT_FILE_DIRECTORY = Config.FILE_EXPORT.RECENT_NT_FILE_DIRECTORY;
     private final ObjectMapper objectMapper;
     private static FileNoiThatExplorerService instance;
+    private List<RecentFile> recentFileList;
     public static synchronized FileNoiThatExplorerService getInstance() {
         if (instance == null) {
             instance = new FileNoiThatExplorerService();
@@ -29,11 +30,40 @@ public class FileNoiThatExplorerService {
                 .build();
     }
     public List<RecentFile> getRecentFile() {
+        if (recentFileList == null) {
+            try {
+                this.recentFileList = objectMapper.readValue(new File(RECENT_FILE_DIRECTORY),
+                        objectMapper.getTypeFactory().constructCollectionType(List.class, RecentFile.class));
+                return this.recentFileList;
+            } catch (IOException e) {
+                LOGGER.error("Failed to read recent file" + e.getMessage());
+                throw new RuntimeException(e);
+            }
+        }
+        else {
+            return this.recentFileList;
+        }
+    }
+    public void saveRecentFile() {
         try {
-            return objectMapper.readValue(new File(RECENT_FILE_DIRECTORY),
-                    objectMapper.getTypeFactory().constructCollectionType(List.class, RecentFile.class));
+            objectMapper.writeValue(new File(RECENT_FILE_DIRECTORY), this.recentFileList);
         } catch (IOException e) {
+            LOGGER.error("Failed to write recent file" + e.getMessage());
             throw new RuntimeException(e);
         }
+    }
+    public void addRecentFile(RecentFile recentFile) {
+        if (isFileExist(recentFile)) {
+            return;
+        }
+        recentFileList.add(recentFile);
+        saveRecentFile();
+    }
+    public void removeRecentFile(RecentFile recentFile) {
+        recentFileList.remove(recentFile);
+        saveRecentFile();
+    }
+    private boolean isFileExist(RecentFile recentFile) {
+        return recentFileList.stream().anyMatch(recentFile1 -> recentFile1.getDirectory().equals(recentFile.getDirectory()));
     }
 }

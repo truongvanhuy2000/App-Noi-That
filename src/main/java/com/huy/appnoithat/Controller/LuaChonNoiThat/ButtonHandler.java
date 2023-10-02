@@ -4,6 +4,7 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Enums.FileType;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TreeItem;
@@ -11,9 +12,10 @@ import javafx.scene.control.TreeTableView;
 
 public class ButtonHandler {
     private TreeTableView<BangNoiThat> TableNoiThat;
-
+    private LuaChonNoiThatController luaChonNoiThatController;
     public ButtonHandler(LuaChonNoiThatController luaChonNoiThatController) {
         this.TableNoiThat = luaChonNoiThatController.getTableNoiThat();
+        this.luaChonNoiThatController = luaChonNoiThatController;
     }
 
     public void addNewLine(ActionEvent event) {
@@ -175,47 +177,6 @@ public class ButtonHandler {
         return false;
     }
 
-    public void onDeleteLine(ActionEvent event) {
-        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
-            return;
-        }
-        ObservableList<TreeItem<BangNoiThat>> selectedList = TableNoiThat.getSelectionModel().getSelectedItems();
-
-        for (int index = 0; index < selectedList.size(); index++) {
-            TreeItem<BangNoiThat> item = selectedList.get(index);
-            if (item == null) {
-                return;
-            }
-            if (item.getParent() != null) {
-                item.getParent().getChildren().remove(item);
-                selectedList.remove(item);
-            }
-            if (index >= selectedList.size()) {
-                index = 0;
-            }
-        }
-//        for (TreeItem<BangNoiThat> item : selectedList){
-//            if (item == null) {
-//                return;
-//            }
-//            if (item.getParent() != null) {
-//                item.getParent().getChildren().remove(item);
-//            }
-//        }
-//        selectedList.forEach(
-//                item -> {
-//                    if (item == null) {
-//                        return;
-//                    }
-//                    if (item.getParent() != null) {
-//                        item.getParent().getChildren().remove(item);
-//                        selectedList.remove(item);
-//                    }
-//                }
-//        );
-        TableNoiThat.getSelectionModel().clearSelection();
-    }
-
     private void createNewSibling(TreeItem<BangNoiThat> currentItem) {
         if (currentItem == null) {
             return;
@@ -229,5 +190,15 @@ public class ButtonHandler {
             currentItem.getParent().getChildren().add(currentPos + 1, newItem);
         }
         TableUtils.selectSingleItem(TableNoiThat, newItem);
+    }
+
+    public void exportButtonHandler(ActionEvent event) {
+        this.luaChonNoiThatController.exportFile(FileType.EXCEL);
+    }
+    /**
+     * @param event This function will handle the event when user want to save the table
+     */
+    public void onSaveAction(ActionEvent event) {
+        this.luaChonNoiThatController.exportFile(FileType.NT);
     }
 }

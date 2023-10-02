@@ -37,7 +37,10 @@ public class FileNoiThatExplorerController {
         if (selectedFile == null) {
             return;
         }
-        openFile(selectedFile.getAbsolutePath());
+        RecentFile recentFile = new RecentFile(selectedFile.getAbsolutePath(), System.currentTimeMillis());
+        // Add to recent file
+        fileNoiThatExplorerService.addRecentFile(recentFile);
+        openFile(recentFile);
     }
     public void init() {
         DirectoryCollum.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDirectory()));
@@ -45,13 +48,19 @@ public class FileNoiThatExplorerController {
         RecentTableView.getItems().addAll(getRecentFileList());
         RecentTableView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
-                openFile(RecentTableView.getSelectionModel().getSelectedItem().getDirectory());
+                openFile(RecentTableView.getSelectionModel().getSelectedItem());
             }
         });
 
     }
-    public void openFile(String directory) {
-        openNewLuaChonNoiThatTab(TabState.IMPORT_TAB, directory);
+    public void openFile(RecentFile recentFile) {
+        if (!isDirectoryExist(recentFile.getDirectory())) {
+            PopupUtils.throwErrorSignal("File không tồn tại");
+            // Remove from recent file
+            fileNoiThatExplorerService.removeRecentFile(recentFile);
+            return;
+        }
+        openNewLuaChonNoiThatTab(TabState.IMPORT_TAB, recentFile.getDirectory());
     }
     private List<RecentFile> getRecentFileList() {
         return fileNoiThatExplorerService.getRecentFile();
@@ -63,5 +72,8 @@ public class FileNoiThatExplorerController {
         newStage.setMaximized(true);
         newStage.setScene(newTabScene.getScene());
         newStage.show();
+    }
+    private boolean isDirectoryExist(String directory) {
+        return new File(directory).exists();
     }
 }
