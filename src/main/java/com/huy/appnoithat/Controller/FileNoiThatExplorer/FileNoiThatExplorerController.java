@@ -13,11 +13,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.util.Date;
 
 public class FileNoiThatExplorerController {
+    final static Logger LOGGER = LogManager.getLogger(FileNoiThatExplorerController.class);
     @FXML
     private TableColumn<RecentFile, String> DirectoryCollum;
 
@@ -66,6 +69,7 @@ public class FileNoiThatExplorerController {
             openNewLuaChonNoiThatTab(TabState.IMPORT_TAB, recentFile.getDirectory());
         } catch (Exception e) {
             PopupUtils.throwErrorSignal("File không hợp lệ");
+            LOGGER.error(e.getMessage());
             return;
         }
         fileNoiThatExplorerService.addRecentFile(recentFile);

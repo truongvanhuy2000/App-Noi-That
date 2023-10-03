@@ -3,6 +3,7 @@ package com.huy.appnoithat.Service.FileExport.Operation.NtFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
 import com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.Metadata;
@@ -11,7 +12,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.util.Base64;
 
 @Getter
 @Setter
@@ -42,7 +45,8 @@ public class ExportNtFile implements ExportFile {
         setOutputFile(exportDirectory);
         try {
             String outPutJson = mapper.writeValueAsString(objectData);
-            this.outputFile.write(outPutJson.getBytes());
+            String encodedString = Utils.encodeData(outPutJson);
+            this.outputFile.write(encodedString.getBytes());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -56,10 +60,11 @@ public class ExportNtFile implements ExportFile {
 
     @Override
     public DataPackage importData(File importDirectory) {
-        ObjectData objectData1 = null;
+        ObjectData objectData1;
         try (InputStream inputStream = new FileInputStream(importDirectory)) {
-            this.inputStream = inputStream;
-            objectData1 = mapper.readValue(inputStream, ObjectData.class);
+            String text = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+            String decodedString = Utils.decodeData(text);
+            objectData1 = mapper.readValue(decodedString.getBytes(), ObjectData.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -143,4 +143,10 @@ public class Utils {
     public static String convertMilisToDateTimeString(long milis) {
         return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(milis));
     }
+    public static String encodeData(String data) {
+        return Base64.getEncoder().encodeToString(data.getBytes());
+    }
+    public static String decodeData(String data) {
+        return new String(Base64.getDecoder().decode(data));
+    }
 }

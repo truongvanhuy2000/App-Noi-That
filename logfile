@@ -739,3 +739,23 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 03-10-2023 15:53:28 [JavaFX Application Thread] HomeController:62 - Login as huy with role User
 [INFO ] 03-10-2023 15:55:22 [main] HelloApplication:33 - Start application
 [INFO ] 03-10-2023 15:55:23 [JavaFX Application Thread] HomeController:62 - Login as huy with role User
+[INFO ] 03-10-2023 22:41:03 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 22:41:04 [JavaFX Application Thread] HomeController:62 - Login as huy with role User
+[INFO ] 03-10-2023 22:41:36 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 22:41:52 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 03-10-2023 22:44:39 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 22:44:40 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 22:44:56 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 22:45:07 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 03-10-2023 22:46:36 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 22:46:37 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 22:46:46 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[ERROR] 03-10-2023 22:46:46 [JavaFX Application Thread] FileNoiThatExplorerController:72 - com.fasterxml.jackson.databind.JsonMappingException: Invalid UTF-8 middle byte 0x64
+ at [Source: (FileInputStream); line: 1, column: 49] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["tenCongTy"])
+[INFO ] 03-10-2023 22:58:06 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 22:58:08 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 22:59:16 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:00:02 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:00:40 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:00:49 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:01:12 [JavaFX Application Thread] ExportFile:90 - Exporting to XLSX file
