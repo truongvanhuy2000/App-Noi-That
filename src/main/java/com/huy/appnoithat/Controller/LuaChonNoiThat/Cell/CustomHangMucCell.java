@@ -45,21 +45,18 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
     @Override
     public void updateItem(String item, boolean empty) {
         super.updateItem(item, empty);
-        if (empty) {
-            System.out.println("1");
+        if (empty || item == null) {
             super.setText(null);
             setGraphic(null);
             return;
         }
         if (isEditing()) {
-            System.out.println("2");
             if (comboBox != null) {
                 comboBox.setValue(super.getItem());
             }
             super.setText(super.getItem());
             setGraphic(hBox);
         } else {
-            System.out.println("3");
             super.setText(super.getItem());
             setGraphic(null);
         }

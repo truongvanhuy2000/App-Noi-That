@@ -900,3 +900,6 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 04-10-2023 00:53:08 [main] HelloApplication:33 - Start application
 [INFO ] 04-10-2023 00:53:09 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
 [INFO ] 04-10-2023 00:53:14 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:58:46 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:58:47 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:58:51 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
