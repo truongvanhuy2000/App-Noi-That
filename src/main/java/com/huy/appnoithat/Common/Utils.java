@@ -4,10 +4,8 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.TreeMap;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Utils {
@@ -20,7 +18,9 @@ public class Utils {
             return false;
         return name.matches("[a-zA-Z]+");
     }
-
+    public static String toAlpha(int i) {
+        return i > 0 && i < 27 ? String.valueOf((char)(i + 'A' - 1)) : null;
+    }
     /**
      * @param str This function will check if the input is numeric or not
      * @return
@@ -139,5 +139,8 @@ public class Utils {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+    }
+    public static String convertMilisToDateTimeString(long milis) {
+        return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(milis));
     }
 }

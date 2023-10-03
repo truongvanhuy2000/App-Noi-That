@@ -51,14 +51,7 @@ public class SetupBangNoiThat {
         setUpCollum();
         TableNoiThat.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         if (TableNoiThat.getRoot() != null) return;
-        TreeItem<BangNoiThat> itemRoot = TableUtils.createNewItem("0");
-        itemRoot.getValue().getThanhTien().addListener((observableValue, aLong, t1) -> {
-            TableCalculationUtils.calculateBangThanhToan(bangThanhToan, t1.longValue());
-        });
-        itemRoot.addEventHandler(TreeItem.childrenModificationEvent(), event -> {
-            itemCount++;
-            TableNoiThat.scrollTo(itemCount + 1);
-        });
+        TreeItem<BangNoiThat> itemRoot = TableUtils.createRootItem("0", TableNoiThat, bangThanhToan);
         TableNoiThat.setRoot(itemRoot);
         TableNoiThat.setShowRoot(false);
         TableNoiThat.setEditable(true);

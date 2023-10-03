@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Controller.FileNoiThatExplorer;
 
 import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.NewTab.TabState;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.NewTabScene;
 import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;
@@ -12,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.Date;
 
 public class FileNoiThatExplorerController {
     @FXML
@@ -42,7 +44,8 @@ public class FileNoiThatExplorerController {
     }
     public void init() {
         DirectoryCollum.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDirectory()));
-        TimeStampCollum.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTimeStamp().toString()));
+        TimeStampCollum.setCellValueFactory(cellData -> new SimpleObjectProperty<>(
+                Utils.convertMilisToDateTimeString(cellData.getValue().getTimeStamp())));
         RecentTableView.setItems(fileNoiThatExplorerService.getRecentFile());
         RecentTableView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {

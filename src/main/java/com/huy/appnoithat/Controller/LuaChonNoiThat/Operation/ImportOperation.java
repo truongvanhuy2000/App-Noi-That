@@ -109,7 +109,7 @@ public class ImportOperation {
      * @see TreeItem
      */
     public TreeItem<BangNoiThat> importFromThongTinList(List<ThongTinNoiThat> thongTinNoiThatList) {
-        TreeItem<BangNoiThat> itemRoot = TableUtils.createNewItem("0");
+        TreeItem<BangNoiThat> itemRoot = TableUtils.createRootItem("0", TableNoiThat, bangThanhToan);
         TreeItem<BangNoiThat> lv1Item = null;
         TreeItem<BangNoiThat> lv2Item = null;
         TreeItem<BangNoiThat> lv3Item = null;

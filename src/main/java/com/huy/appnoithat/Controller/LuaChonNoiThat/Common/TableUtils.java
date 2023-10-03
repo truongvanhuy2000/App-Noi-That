@@ -2,8 +2,10 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Common;
 
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import javafx.event.EventHandler;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
@@ -65,7 +67,17 @@ public class TableUtils {
         newItem.setExpanded(true);
         return newItem;
     }
-
+    public static TreeItem<BangNoiThat> createRootItem(String id, TreeTableView<BangNoiThat> bangNoiThat, TableView<BangThanhToan> bangThanhToan) {
+        TreeItem<BangNoiThat> newItem = createNewItem(id);
+        newItem.getValue().getThanhTien().addListener((observableValue, aLong, t1) -> {
+            TableCalculationUtils.calculateBangThanhToan(bangThanhToan, t1.longValue());
+        });
+        newItem.addEventHandler(TreeItem.childrenModificationEvent(), event -> {
+//            System.out.println("new item added");
+            bangNoiThat.scrollTo(9999);
+        });
+        return newItem;
+    }
     /**
      * @param bangNoiThat This method will create a new item with the given BangNoiThat
      * @return
