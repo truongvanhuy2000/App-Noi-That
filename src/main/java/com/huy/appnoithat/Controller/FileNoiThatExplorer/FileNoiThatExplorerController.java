@@ -3,6 +3,7 @@ package com.huy.appnoithat.Controller.FileNoiThatExplorer;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.NewTab.TabState;
+import com.huy.appnoithat.HelloApplication;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.NewTabScene;
 import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;
 import javafx.beans.property.SimpleObjectProperty;
@@ -10,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -74,6 +76,7 @@ public class FileNoiThatExplorerController {
         newTabScene.getNewTabController().init(tabState, directory);
         newStage.setMaximized(true);
         newStage.setScene(newTabScene.getScene());
+        newStage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/logoapp.jpg")));
         newStage.show();
     }
     private boolean isDirectoryExist(String directory) {

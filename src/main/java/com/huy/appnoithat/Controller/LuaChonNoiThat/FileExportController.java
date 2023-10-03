@@ -1,10 +1,12 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
+import com.huy.appnoithat.HelloApplication;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class FileExportController {
@@ -21,6 +23,7 @@ public class FileExportController {
         Object source = actionEvent.getSource();
         stage = (Stage) ((Node) source).getScene().getWindow();
         stage.setScene(scene);
+        stage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/logoapp.jpg")));
         stage.show();
     }
 }
