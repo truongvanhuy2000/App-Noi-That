@@ -54,6 +54,9 @@ public class FileNoiThatExplorerController {
         RecentTableView.setItems(fileNoiThatExplorerService.getRecentFile());
         RecentTableView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
+                if (RecentTableView.getSelectionModel().getSelectedItem() == null) {
+                    return;
+                }
                 openFile(RecentTableView.getSelectionModel().getSelectedItem());
             }
         });
