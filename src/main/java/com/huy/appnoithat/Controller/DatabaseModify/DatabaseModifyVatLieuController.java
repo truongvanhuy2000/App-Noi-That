@@ -34,7 +34,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
     @FXML
     private TableView<ThongSo> tableViewThongSo;
     @FXML
-    private TableColumn<ThongSo, Float> Cao, Dai, Rong;
+    private TableColumn<ThongSo, Double> Cao, Dai, Rong;
     @FXML
     private TableColumn<ThongSo, Long> DonGia;
     @FXML
@@ -58,7 +58,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
     void addAction(ActionEvent event) {
         int currentPos = vatLieuObservableList.size();
         databaseModifyVatlieuService.addNewVatLieu(new VatLieu(0, DBModifyUtils.getNewName(currentPos),
-                new ThongSo(0, 0f, 0f, 0f, " ", 0L)), this.parentID);
+                new ThongSo(0, 0.0, 0.0, 0.0, " ", 0L)), this.parentID);
         refreshList();
     }
 

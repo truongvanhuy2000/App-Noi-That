@@ -12,25 +12,21 @@ public class ThongSo {
     @JsonProperty("id")
     private int id;
     @JsonProperty("dai")
-    private Float dai;
+    private Double dai;
     @JsonProperty("rong")
-    private Float rong;
+    private Double rong;
     @JsonProperty("cao")
-    private Float cao;
+    private Double cao;
     @JsonProperty("donVi")
     private String don_vi;
     @JsonProperty("donGia")
     private Long don_gia;
 
-    public ThongSo(int id, Float dai, Float rong, Float cao, String don_vi, Long don_gia) {
+    public ThongSo(int id, Double dai, Double rong, Double cao, String don_vi, Long don_gia) {
         this.id = id;
-        this.dai = Objects.requireNonNullElse(dai, 0f);
-
-        this.rong = Objects.requireNonNullElse(rong, 0f);
-        ;
-        this.cao = Objects.requireNonNullElse(cao, 0f);
-        ;
-        ;
+        this.dai = Objects.requireNonNullElse(dai, 0.0);
+        this.rong = Objects.requireNonNullElse(rong, 0.0);
+        this.cao = Objects.requireNonNullElse(cao, 0.0);
         this.don_vi = don_vi;
         this.don_gia = don_gia;
     }

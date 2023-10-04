@@ -5,7 +5,6 @@ import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Enums.FileType;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
@@ -17,45 +16,6 @@ public class ButtonHandler {
         this.TableNoiThat = luaChonNoiThatController.getTableNoiThat();
         this.luaChonNoiThatController = luaChonNoiThatController;
     }
-
-    public void addNewLine(ActionEvent event) {
-//        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
-        if (TableNoiThat.getRoot() == null) {
-            return;
-        }
-        TableNoiThat.getRoot().getChildren().add(TableUtils.createNewItem("A"));
-//        }
-//        if (isReachedLimit(TableNoiThat.getRoot())){
-//            ErrorUtils.throwErrorSignal("Đã đạt giới hạn số lượng 30");
-//            return;
-//        }
-//        TreeItem<BangNoiThat> currentSelectedItem = TableNoiThat.getSelectionModel().getSelectedItem();
-//        TreeItem<BangNoiThat> parent = currentSelectedItem.getParent();
-//
-//        int indexOfCurrentItem = parent.getChildren().indexOf(currentSelectedItem);
-//        parent.getChildren().add(indexOfCurrentItem + 1, new TreeItem<>(new BangNoiThat(
-//                "A", 0f, 0f, 0f, 0L,
-//                "", "", "", 0L, 0f)));
-//        parent.setExpanded(true);
-    }
-
-    //    @Deprecated
-//    public void continuousLineAdd() {
-//        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
-//            return;
-//        }
-//        TreeItem<BangNoiThat> currentSelectedItem = TableNoiThat.getSelectionModel().getSelectedItem();
-//        TreeItem<BangNoiThat> parent = currentSelectedItem.getParent();
-//        String stt = parent.getChildren().get(parent.getChildren().size() - 1).getValue().getSTT().getValue();
-//        String nextStt = findTheNextStt(stt);
-//        if (isReachedLimit(parent)) {
-//            PopupUtils.throwErrorSignal("Đã đạt giới hạn số lượng 30");
-//            return;
-//        }
-//        parent.getChildren().add(new TreeItem<>(new BangNoiThat(
-//                nextStt, 0f, 0f, 0f, 0L,
-//                "", "", "", 0L, 0f)));
-//    }
     public void continuousLineAdd(ActionEvent event) {
         if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
             return;

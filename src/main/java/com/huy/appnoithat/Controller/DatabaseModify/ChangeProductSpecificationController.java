@@ -43,9 +43,9 @@ public class ChangeProductSpecificationController {
             return;
         }
         ThongSo thongSo = thongSoList.get(0);
-        thongSo.setCao(Float.valueOf(txtCao.getText()));
-        thongSo.setDai(Float.valueOf(txtDai.getText()));
-        thongSo.setRong(Float.valueOf(txtRong.getText()));
+        thongSo.setCao(Double.valueOf(txtCao.getText()));
+        thongSo.setDai(Double.valueOf(txtDai.getText()));
+        thongSo.setRong(Double.valueOf(txtRong.getText()));
         thongSo.setDon_vi(txtDonVi.getText());
         thongSo.setDon_gia(Long.valueOf(txtDonGia.getText()));
         databaseModifyThongSoService.EditThongSo(thongSo);
@@ -81,7 +81,7 @@ public class ChangeProductSpecificationController {
         if (id == 0) {
             return;
         }
-        ThongSo thongSo = new ThongSo(0, 0.0f, 0.0f, 0.0f, "", 0L);
+        ThongSo thongSo = new ThongSo(0, 0.0, 0.0, 0.0, "", 0L);
         List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByParentId(this.parentID);
         if (thongSoList == null || thongSoList.isEmpty()) {
             databaseModifyThongSoService.addNewThongSo(thongSo, this.parentID);

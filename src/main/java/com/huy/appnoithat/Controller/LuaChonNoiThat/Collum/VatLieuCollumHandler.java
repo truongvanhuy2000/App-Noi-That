@@ -46,12 +46,12 @@ public class VatLieuCollumHandler {
         if (coresspondingThongSo == null) {
             return;
         }
-        Float dai = Objects.requireNonNullElse(coresspondingThongSo.getDai(), 0f);
-        Float rong = Objects.requireNonNullElse(coresspondingThongSo.getRong(), 0f);
-        Float cao = Objects.requireNonNullElse(coresspondingThongSo.getCao(), 0f);
+        Double dai = Objects.requireNonNullElse(coresspondingThongSo.getDai(), 0.0);
+        Double rong = Objects.requireNonNullElse(coresspondingThongSo.getRong(), 0.0);
+        Double cao = Objects.requireNonNullElse(coresspondingThongSo.getCao(), 0.0);
         Long donGia = coresspondingThongSo.getDon_gia();
         String donVi = coresspondingThongSo.getDon_vi();
-        Float khoiLuong = TableCalculationUtils.calculateKhoiLuong(dai, cao, rong, donVi);
+        Double khoiLuong = TableCalculationUtils.calculateKhoiLuong(dai, cao, rong, donVi);
         Long thanhTien = TableCalculationUtils.calculateThanhTien(khoiLuong, donGia);
 
         event.getRowValue().getValue().setThanhTien(thanhTien);
@@ -63,7 +63,6 @@ public class VatLieuCollumHandler {
         event.getRowValue().getValue().setDonVi(donVi);
 
         TableCalculationUtils.calculateTongTien(event.getRowValue().getParent());
-
 //        event.getTreeTableView().getSelectionModel().clearSelection();
     }
 

@@ -20,10 +20,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTreeTableCell;
-import javafx.util.converter.FloatStringConverter;
+import javafx.util.converter.DoubleStringConverter;
 
 public class SetupBangNoiThat {
-    private TreeTableColumn<BangNoiThat, Float> Cao, Dai, Rong, KhoiLuong;
+    private TreeTableColumn<BangNoiThat, Double> Cao, Dai, Rong, KhoiLuong;
     private TreeTableColumn<BangNoiThat, Long> DonGia, ThanhTien;
     private TreeTableColumn<BangNoiThat, String> DonVi, HangMuc, VatLieu, STT;
     private TreeTableView<BangNoiThat> TableNoiThat;
@@ -111,9 +111,9 @@ public class SetupBangNoiThat {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getKhoiLuong().asObject();
         });
-        KhoiLuong.setCellFactory(param -> new CustomNumberCell<>(new FloatStringConverter(), TableNoiThat));
+        KhoiLuong.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat));
         KhoiLuong.setOnEditCommit(event -> {
-            float khoiLuong = event.getNewValue();
+            double khoiLuong = event.getNewValue();
             long donGia = event.getRowValue().getValue().getDonGia().getValue();
             long thanhTien = TableCalculationUtils.calculateThanhTien(khoiLuong, donGia);
             event.getRowValue().getValue().setThanhTien(thanhTien);
@@ -214,21 +214,21 @@ public class SetupBangNoiThat {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getCao().asObject();
         });
-        Cao.setCellFactory(param -> new CustomNumberCell<>(new FloatStringConverter(), TableNoiThat));
+        Cao.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat));
         Cao.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
 
         Dai.setCellValueFactory(param -> {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getDai().asObject();
         });
-        Dai.setCellFactory(param -> new CustomNumberCell<>(new FloatStringConverter(), TableNoiThat));
+        Dai.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat));
         Dai.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
 
         Rong.setCellValueFactory(param -> {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getRong().asObject();
         });
-        Rong.setCellFactory(param -> new CustomNumberCell<>(new FloatStringConverter(), TableNoiThat));
+        Rong.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat));
         Rong.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
 
         DonGia.setCellValueFactory(param -> {

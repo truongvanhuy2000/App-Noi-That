@@ -45,7 +45,7 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private TreeTableView<BangNoiThat> TableNoiThat;
     @FXML
-    private TreeTableColumn<BangNoiThat, Float> Cao, Dai, Rong, KhoiLuong;
+    private TreeTableColumn<BangNoiThat, Double> Cao, Dai, Rong, KhoiLuong;
     @FXML
     private TreeTableColumn<BangNoiThat, Long> DonGia, ThanhTien;
     @FXML

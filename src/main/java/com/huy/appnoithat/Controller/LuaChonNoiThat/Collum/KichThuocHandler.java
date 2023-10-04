@@ -9,13 +9,13 @@ import javafx.scene.control.TreeTableView;
 public class KichThuocHandler {
     //    final static Logger LOGGER = LogManager.getLogger(KichThuocHandler.class);
     private TreeTableView<BangNoiThat> TableNoiThat;
-    private TreeTableColumn<BangNoiThat, Float> Cao, Dai, Rong;
+    private TreeTableColumn<BangNoiThat, Double> Cao, Dai, Rong;
     private TreeTableColumn<BangNoiThat, Long> DonGia;
 
     public KichThuocHandler(TreeTableView<BangNoiThat> tableNoiThat,
-                            TreeTableColumn<BangNoiThat, Float> cao,
-                            TreeTableColumn<BangNoiThat, Float> dai,
-                            TreeTableColumn<BangNoiThat, Float> rong,
+                            TreeTableColumn<BangNoiThat, Double> cao,
+                            TreeTableColumn<BangNoiThat, Double> dai,
+                            TreeTableColumn<BangNoiThat, Double> rong,
                             TreeTableColumn<BangNoiThat, Long> donGia) {
         TableNoiThat = tableNoiThat;
         Cao = cao;
@@ -26,26 +26,24 @@ public class KichThuocHandler {
 
     public void onCommitEditKichThuoc(TreeTableColumn.CellEditEvent<BangNoiThat, ?> event) {
         if (event.getSource().equals(Cao)) {
-            event.getRowValue().getValue().setCao((float) event.getNewValue());
+            event.getRowValue().getValue().setCao((double) event.getNewValue());
         }
         if (event.getSource().equals(Dai)) {
-            event.getRowValue().getValue().setDai((float) event.getNewValue());
+            event.getRowValue().getValue().setDai((double) event.getNewValue());
         }
         if (event.getSource().equals(Rong)) {
-            event.getRowValue().getValue().setRong((float) event.getNewValue());
+            event.getRowValue().getValue().setRong((double) event.getNewValue());
         }
         if (event.getSource().equals(DonGia)) {
             event.getRowValue().getValue().setDonGia((long) event.getNewValue());
         }
-        float dai = event.getRowValue().getValue().getDai().getValue();
-        float rong = event.getRowValue().getValue().getRong().getValue();
-        float cao = event.getRowValue().getValue().getCao().getValue();
+        Double dai = event.getRowValue().getValue().getDai().getValue();
+        Double rong = event.getRowValue().getValue().getRong().getValue();
+        Double cao = event.getRowValue().getValue().getCao().getValue();
         String donvi = event.getRowValue().getValue().getDonVi().getValue();
-        float khoiluong = TableCalculationUtils.calculateKhoiLuong(dai, rong, cao, donvi);
-        System.out.println(khoiluong);
+        Double khoiluong = TableCalculationUtils.calculateKhoiLuong(dai, rong, cao, donvi);
         Long dongia = event.getRowValue().getValue().getDonGia().getValue();
-        long thanhTien = TableCalculationUtils.calculateThanhTien(khoiluong, dongia);
-        System.out.println(thanhTien);
+        Long thanhTien = TableCalculationUtils.calculateThanhTien(khoiluong, dongia);
         event.getRowValue().getValue().setKhoiLuong(khoiluong);
         event.getRowValue().getValue().setThanhTien(thanhTien);
 

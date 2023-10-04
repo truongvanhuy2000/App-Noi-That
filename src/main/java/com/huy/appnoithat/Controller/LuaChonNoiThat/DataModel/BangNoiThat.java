@@ -2,7 +2,7 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel;
 
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
-import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import lombok.Getter;
@@ -12,55 +12,55 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BangNoiThat {
     private SimpleStringProperty STT;
-    private SimpleFloatProperty Cao;
-    private SimpleFloatProperty Dai;
-    private SimpleFloatProperty Rong;
+    private SimpleDoubleProperty Cao;
+    private SimpleDoubleProperty Dai;
+    private SimpleDoubleProperty Rong;
     private SimpleLongProperty DonGia;
     private SimpleStringProperty DonVi;
     private SimpleStringProperty HangMuc;
     private SimpleStringProperty VatLieu;
     private SimpleLongProperty ThanhTien;
-    private SimpleFloatProperty KhoiLuong;
+    private SimpleDoubleProperty KhoiLuong;
 
-    public BangNoiThat(String id, Float cao, Float dai, Float rong, Long donGia, String donVi, String hangMuc, String vatLieu, Long thanhTien, Float khoiLuong) {
+    public BangNoiThat(String id, Double cao, Double dai, Double rong, Long donGia, String donVi, String hangMuc, String vatLieu, Long thanhTien, Double khoiLuong) {
         STT = new SimpleStringProperty(id);
-        Cao = new SimpleFloatProperty(cao);
-        Dai = new SimpleFloatProperty(dai);
-        Rong = new SimpleFloatProperty(rong);
+        Cao = new SimpleDoubleProperty(cao);
+        Dai = new SimpleDoubleProperty(dai);
+        Rong = new SimpleDoubleProperty(rong);
         DonGia = new SimpleLongProperty(donGia);
         DonVi = new SimpleStringProperty(donVi);
         HangMuc = new SimpleStringProperty(hangMuc);
         VatLieu = new SimpleStringProperty(vatLieu);
         ThanhTien = new SimpleLongProperty(thanhTien);
-        KhoiLuong = new SimpleFloatProperty(khoiLuong);
+        KhoiLuong = new SimpleDoubleProperty(khoiLuong);
     }
 
     public BangNoiThat(ThongTinNoiThat thongTinNoiThat) {
         this.STT = new SimpleStringProperty(thongTinNoiThat.getSTT());
-        this.Cao = new SimpleFloatProperty(Float.parseFloat(thongTinNoiThat.getCao()));
-        this.Dai = new SimpleFloatProperty(Float.parseFloat(thongTinNoiThat.getDai()));
-        this.Rong = new SimpleFloatProperty(Float.parseFloat(thongTinNoiThat.getRong()));
+        this.Cao = new SimpleDoubleProperty(Double.parseDouble(thongTinNoiThat.getCao()));
+        this.Dai = new SimpleDoubleProperty(Double.parseDouble(thongTinNoiThat.getDai()));
+        this.Rong = new SimpleDoubleProperty(Double.parseDouble(thongTinNoiThat.getRong()));
         this.DonGia = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinNoiThat.getDonGia()));
         this.DonVi = new SimpleStringProperty(thongTinNoiThat.getDonViTinh());
         this.HangMuc = new SimpleStringProperty(thongTinNoiThat.getTenHangMuc());
         this.VatLieu = new SimpleStringProperty(thongTinNoiThat.getChiTiet());
         this.ThanhTien = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinNoiThat.getThanhTien()));
-        this.KhoiLuong = new SimpleFloatProperty(Float.parseFloat(thongTinNoiThat.getSoLuong()));
+        this.KhoiLuong = new SimpleDoubleProperty(Double.parseDouble(thongTinNoiThat.getSoLuong()));
     }
 
     public void setSTT(String STT) {
         this.STT.setValue(STT);
     }
 
-    public void setCao(float cao) {
+    public void setCao(double cao) {
         this.Cao.setValue(cao);
     }
 
-    public void setDai(float dai) {
+    public void setDai(double dai) {
         this.Dai.setValue(dai);
     }
 
-    public void setRong(float rong) {
+    public void setRong(double rong) {
         this.Rong.setValue(rong);
     }
 
@@ -84,7 +84,7 @@ public class BangNoiThat {
         this.ThanhTien.setValue(thanhTien);
     }
 
-    public void setKhoiLuong(float khoiLuong) {
+    public void setKhoiLuong(double khoiLuong) {
         this.KhoiLuong.setValue(khoiLuong);
     }
 }

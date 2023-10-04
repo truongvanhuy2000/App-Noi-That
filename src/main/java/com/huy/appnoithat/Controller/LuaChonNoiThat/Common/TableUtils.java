@@ -60,8 +60,8 @@ public class TableUtils {
      * @return
      */
     public static TreeItem<BangNoiThat> createNewItem(String id) {
-        TreeItem<BangNoiThat> newItem = new TreeItem<>(new BangNoiThat(id, 0f, 0f, 0f, 0L,
-                "", "", "", 0L, 0f));
+        TreeItem<BangNoiThat> newItem = new TreeItem<>(new BangNoiThat(id, 0.0, 0.0, 0.0, 0L,
+                "", "", "", 0L, 0.0));
         newItem.addEventHandler(TreeItem.branchCollapsedEvent(),
                 (EventHandler<TreeItem.TreeModificationEvent<String>>) event -> event.getTreeItem().setExpanded(true));
         newItem.setExpanded(true);

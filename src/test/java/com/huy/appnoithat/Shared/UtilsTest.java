@@ -40,4 +40,13 @@ class UtilsTest {
         assertEquals(8, Utils.RomanNumber.romanToInt("VIII"));
         assertEquals(9, Utils.RomanNumber.romanToInt("IX"));
     }
+    @Test
+    void testCalculation() {
+        double khoiLuong = 1.3;
+        long donGia = 10850000;
+
+        double thanhTien = khoiLuong * donGia;
+
+        System.out.println("thanh tien: " + thanhTien);
+    }
 }
