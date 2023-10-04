@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Scene.UseManagement;
 
+import com.huy.appnoithat.Controller.UserManagement.UsersManagementController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ public class UserManagementScene {
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/UserManagementLayout.css";
     private Scene scene;
     private Parent root;
+    private UsersManagementController controller;
     private static UserManagementScene single_instance = null;
     private final FXMLLoader fxmlLoader;
 
@@ -21,6 +23,7 @@ public class UserManagementScene {
         try {
             fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH));
             root = fxmlLoader.load();
+            this.controller = fxmlLoader.getController();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

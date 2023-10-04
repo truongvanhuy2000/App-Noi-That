@@ -1,6 +1,5 @@
 package com.huy.appnoithat.Controller.UserManagement;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.UserManagement.DataModel.AccountTable;
 import com.huy.appnoithat.Entity.Account;
@@ -79,10 +78,10 @@ public class UsersManagementController {
         userSessionService = new UserSessionService();
     }
 
-    public void initialize() throws JsonProcessingException {
+    public void initialize(){
         // 2. convert JSON array to List of objects
         List<Account> accountList = usersManagementService.findAllAccountEnable();
-
+        listUser.clear();
         for (Account account : accountList) {
             listUser.add(new AccountTable(account.getId(), account.getUsername(), account.getPassword(), account.isActive(), convertActiveIcon(account.isActive()), account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
         }
@@ -99,7 +98,7 @@ public class UsersManagementController {
     }
 
     @FXML
-    void getAllAcount(ActionEvent event) throws JsonProcessingException {
+    void getAllAcount(ActionEvent event){
         listUser.clear();
         initialize();
     }
@@ -155,31 +154,25 @@ public class UsersManagementController {
             userManageMentStage.setScene(userManagementAddAccountScene);
 
             btnadd.setOnAction(actionEvent -> {
-                try {
-                    String active = "false";
-                    LocalDate localDate = LocalDate.now().plusDays(30);
-                    if(comboBoxActive.getSelectionModel().getSelectedItem()!=null){
-                        active = comboBoxActive.getSelectionModel().getSelectedItem().toString().equals("Có") ? "true" : "false";
-                    }
-                    listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
-                    tableManageUser.getItems().clear();
-                    tableManageUser.refresh();
-                    List<String> roleList = new ArrayList<>();
-                    roleList.add("ROLE_USER");
-                    // --- REMEMBER TO SUA DATE
-                    usersManagementService.addNewAccount(
-                            new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
-
-                    clearData();
-                    initialize();
-                    userManageMentStage.close();
-                    txtusername.clear();
-                    txtpassword.clear();
-
-                } catch (JsonProcessingException e) {
-                    LOGGER.error("Error when add new account", e);
-                    throw new RuntimeException(e);
+                String active = "false";
+                LocalDate localDate = LocalDate.now().plusDays(30);
+                if(comboBoxActive.getSelectionModel().getSelectedItem()!=null){
+                    active = comboBoxActive.getSelectionModel().getSelectedItem().toString().equals("Có") ? "true" : "false";
                 }
+                listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
+                tableManageUser.getItems().clear();
+                tableManageUser.refresh();
+                List<String> roleList = new ArrayList<>();
+                roleList.add("ROLE_USER");
+                // --- REMEMBER TO SUA DATE
+                usersManagementService.addNewAccount(
+                        new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
+
+                clearData();
+                initialize();
+                userManageMentStage.close();
+                txtusername.clear();
+                txtpassword.clear();
             });
 
             btncancel.setOnAction(actionEvent -> {
@@ -273,6 +266,7 @@ public class UsersManagementController {
                 txtusername.setText("");
                 txtpassword.clear();
                 // You might need additional logic to handle saving or updating data
+                initialize();
             });
 
             btncancel.setOnAction(actionEvent -> {

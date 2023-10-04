@@ -84,6 +84,7 @@ public class HomeController {
         }
         else if (source == QuanLyNguoiDungButton) {
             scene = UserManagementScene.getInstance().getScene();
+            UserManagementScene.getInstance().getController().initialize();
         }else if (source == suadoidatabaseButton) {
             scene = DatabaseModifyPhongCachScene.getInstance().getScene();
             DatabaseModifyPhongCachScene.getInstance().getController().init();

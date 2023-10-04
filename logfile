@@ -933,3 +933,20 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 05-10-2023 00:35:53 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
 [INFO ] 05-10-2023 00:36:25 [JavaFX Application Thread] HomeController:62 - Login as huy with role User
 [INFO ] 05-10-2023 00:37:45 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 05-10-2023 00:52:35 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 05-10-2023 00:55:44 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 05-10-2023 00:56:20 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 00:56:41 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 05-10-2023 00:56:41 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 05-10-2023 01:03:10 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 01:03:12 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 05-10-2023 01:03:30 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 01:03:33 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[ERROR] 05-10-2023 01:03:40 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 05-10-2023 01:04:44 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 01:04:46 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 05-10-2023 01:06:20 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 01:06:21 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[ERROR] 05-10-2023 01:06:33 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "com.huy.appnoithat.Controller.UserManagement.DataModel.AccountTable.setUsername(String)" because the return value of "javafx.scene.control.TableView$TableViewSelectionModel.getSelectedItem()" is null
+[INFO ] 05-10-2023 01:07:31 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 01:07:33 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
