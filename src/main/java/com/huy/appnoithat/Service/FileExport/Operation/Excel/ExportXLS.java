@@ -1,15 +1,9 @@
 package com.huy.appnoithat.Service.FileExport.Operation.Excel;
 
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Configuration.Config;
-import com.huy.appnoithat.DataModel.ThongTinCongTy;
-import com.huy.appnoithat.DataModel.ThongTinKhachHang;
-import com.huy.appnoithat.DataModel.ThongTinNoiThat;
-import com.huy.appnoithat.DataModel.ThongTinThanhToan;
-import com.huy.appnoithat.Service.FileExport.ExportData.CommonExportData;
+import com.huy.appnoithat.DataModel.*;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
-import com.huy.appnoithat.Shared.Utils;
-import lombok.Getter;
-import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.poi.ss.usermodel.Cell;
@@ -24,8 +18,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
 public class ExportXLS implements ExportFile {
     final static Logger LOGGER = LogManager.getLogger(ExportFile.class);
     // USED FOR TESTING ONLY
@@ -44,31 +36,36 @@ public class ExportXLS implements ExportFile {
     private XSSFWorkbook workbook;
     private XSSFSheet spreadsheet;
     private StylistFactory stylistFactory;
-    public ExportXLS(File outputFile) {
-        try {
-            this.inputTemplate = new FileInputStream(DEFAULT_TEMPLATE_PATH);
-            if (!outputFile.getAbsolutePath().contains(".xlsx")) {
-                this.outputFile = new FileOutputStream(outputFile.getAbsolutePath() + ".xlsx");
-            }
-            else {
-                this.outputFile = new FileOutputStream(outputFile.getAbsolutePath());
-            }
-            initWorkbook();
-        } catch (IOException e) {
-            LOGGER.error("Error while init ExportXLS");
-            throw new RuntimeException(e);
-        }
-    }
+
     public ExportXLS() {
         try {
             this.inputTemplate = new FileInputStream(DEFAULT_TEMPLATE_PATH);
-            this.outputFile = new FileOutputStream(DEFAULT_OUTPUT_PATH);
             initWorkbook();
         } catch (IOException e) {
             LOGGER.error("Error while init ExportXLS");
             throw new RuntimeException(e);
         }
+        this.thongTinCongTy = new ThongTinCongTy();
+        this.thongTinKhachHang = new ThongTinKhachHang();
     }
+
+    private void setOutputFile(File outputFile) throws FileNotFoundException {
+        if (!outputFile.getAbsolutePath().contains(".xlsx")) {
+            this.outputFile = new FileOutputStream(outputFile.getAbsolutePath() + ".xlsx");
+        } else {
+            this.outputFile = new FileOutputStream(outputFile.getAbsolutePath());
+        }
+    }
+//    public ExportXLS() {
+//        try {
+//            this.inputTemplate = new FileInputStream(DEFAULT_TEMPLATE_PATH);
+//            this.outputFile = new FileOutputStream(DEFAULT_OUTPUT_PATH);
+//            initWorkbook();
+//        } catch (IOException e) {
+//            LOGGER.error("Error while init ExportXLS");
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     public void setThongTinNoiThatList(List<ThongTinNoiThat> thongTinNoiThatList) {
         this.thongTinNoiThatList = new ArrayList<>();
@@ -87,7 +84,9 @@ public class ExportXLS implements ExportFile {
     }
 
     @Override
-    public void export() throws IOException {
+    public void export(File exportDirectory) throws IOException {
+        setOutputFile(exportDirectory);
+
         LOGGER.info("Exporting to XLSX file");
         exportThongTinCongTy(this.thongTinCongTy);
         exportLogo(this.thongTinCongTy.getLogo());
@@ -99,16 +98,31 @@ public class ExportXLS implements ExportFile {
     }
 
     @Override
-    public void setUpDataForExport(CommonExportData dataForExport) {
+    public void setUpDataForExport(DataPackage dataForExport) {
         setThongTinCongTy(dataForExport.getThongTinCongTy());
         setThongTinKhachHang(dataForExport.getThongTinKhachHang());
         setThongTinNoiThatList(dataForExport.getThongTinNoiThatList());
-        setThongTinThanhToan(dataForExport.getThongTinThanhToan());
-        setNoteArea(dataForExport.getNoteArea());
+        this.thongTinThanhToan = dataForExport.getThongTinThanhToan();
+        this.noteArea = dataForExport.getNoteArea();
     }
-
+    private void setThongTinCongTy(ThongTinCongTy thongTinCongTy) {
+        this.thongTinCongTy.setLogo(thongTinCongTy.getLogo());
+        this.thongTinCongTy.setTenCongTy(thongTinCongTy.getTenCongTy());
+        this.thongTinCongTy.setDiaChiVanPhong("Địa chỉ văn phòng: " + thongTinCongTy.getDiaChiVanPhong());
+        this.thongTinCongTy.setDiaChiXuong("Địa chỉ nhà xưởng: " + thongTinCongTy.getDiaChiXuong());
+        this.thongTinCongTy.setSoDienThoai("Hotline: " + thongTinCongTy.getSoDienThoai());
+        this.thongTinCongTy.setEmail("Email: " + thongTinCongTy.getEmail());
+    }
+    private void setThongTinKhachHang(ThongTinKhachHang thongTinKhachHang) {
+        this.thongTinKhachHang.setTenKhachHang("Khách hàng : " + thongTinKhachHang.getTenKhachHang());
+        this.thongTinKhachHang.setDiaChi("Địa chỉ: " + thongTinKhachHang.getDiaChi());
+        this.thongTinKhachHang.setSoDienThoai("Điện thoại: " + thongTinKhachHang.getSoDienThoai());
+        this.thongTinKhachHang.setDate("Ngày: " + thongTinKhachHang.getDate());
+        this.thongTinKhachHang.setSanPham("Sản phẩm: " + thongTinKhachHang.getSanPham());
+    }
     @Override
-    public void importData() {
+    public DataPackage importData(File importDirectory) {
+        return null;
     }
 
     private void exportNoteArea(int rowId, String noteArea) {
@@ -121,6 +135,7 @@ public class ExportXLS implements ExportFile {
             spreadsheet.addMergedRegion(new org.apache.poi.ss.util.CellRangeAddress(row + i, row + rowSpan + i, col, col + colSpan));
         }
     }
+
     private void exportThongTinCongTy(ThongTinCongTy thongTinCongTy) {
         int mergeColumnRange = 7;
         int mergeColumnId = 2;
@@ -188,7 +203,7 @@ public class ExportXLS implements ExportFile {
             spreadsheet.shiftRows(rowId, spreadsheet.getLastRowNum(), 1, true, true);
             Row newRow = createPopulatedRow(rowId, 10);
             // If STT is roman, that mean it's the merge Row, we can call it title row
-            if (Utils.RomanNumber.isRoman(thongTinNoiThat.getSTT())){
+            if (Utils.RomanNumber.isRoman(thongTinNoiThat.getSTT())) {
                 exportNoiThatTitle(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, cellId, thongTinNoiThat);
             }
             // If it's not roman, that mean it's the non merge row, we can call it content row
@@ -200,6 +215,7 @@ public class ExportXLS implements ExportFile {
         }
         return rowId;
     }
+
     private void exportNoiThatTitle(int mergeRowId, int mergeColumnId, int mergeRowRange, int mergeColumnRange, int cellId, ThongTinNoiThat thongTinNoiThat) {
         mergeCells(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, 1);
 
@@ -212,6 +228,7 @@ public class ExportXLS implements ExportFile {
         Cell cell2 = spreadsheet.getRow(mergeRowId).getCell(cellId + 9);
         stylistFactory.CellPresetFactory(cell2, thongTinNoiThat.getThanhTien(), 18, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
     }
+
     private void exportNoiThatContent(int mergeRowId, int mergeColumnId, int mergeRowRange, int mergeColumnRange, int cellId, ThongTinNoiThat thongTinNoiThat) {
         Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
         stylistFactory.CellPresetFactory(cell0, thongTinNoiThat.getSTT(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
@@ -263,6 +280,7 @@ public class ExportXLS implements ExportFile {
         Cell cell3 = spreadsheet.getRow(mergeRowId).getCell(cellId + 7);
         stylistFactory.CellPresetFactory(cell3, thongTinThanhToan.getNghiemThuQuyet(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
     }
+
     private Row createPopulatedRow(int rowId, int num) {
         Row newRow = spreadsheet.createRow(rowId);
         for (int i = 0; i < num; i++) {
@@ -270,6 +288,7 @@ public class ExportXLS implements ExportFile {
         }
         return newRow;
     }
+
     public void exportLogo(InputStream image) throws IOException {
         byte[] bytes = image.readAllBytes();
         int pictureIdx = workbook.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);

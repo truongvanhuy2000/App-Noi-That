@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Service.WebClient;
 
 import com.huy.appnoithat.Configuration.Config;
-import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,7 +30,6 @@ public class WebClientServiceImpl implements WebClientService {
         this.timeOut = TIME_OUT;
         client = HttpClient.newHttpClient();
     }
-
     //    Use this api to do an unauthorized Http Post request.
     //    Path is the path to the api
     //    jsonData is the data to be sent to the server. Must be in json format
@@ -88,7 +86,6 @@ public class WebClientServiceImpl implements WebClientService {
         }
         return doSendRequest(DELETE, path, token, jsonData);
     }
-
     private String doSendRequest(String method, String path, String authenticationToken, String data) {
         try {
             HttpRequest httpRequest = buildJsonHttpRequest(method, path, authenticationToken, data);

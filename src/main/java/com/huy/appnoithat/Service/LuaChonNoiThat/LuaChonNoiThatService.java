@@ -1,25 +1,19 @@
 package com.huy.appnoithat.Service.LuaChonNoiThat;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.huy.appnoithat.DataModel.ThongTinCongTy;
-import com.huy.appnoithat.DataModel.ThongTinKhachHang;
-import com.huy.appnoithat.DataModel.ThongTinNoiThat;
-import com.huy.appnoithat.DataModel.ThongTinThanhToan;
+import com.huy.appnoithat.Controller.FileNoiThatExplorer.RecentFile;
+import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Enums.FileType;
-import com.huy.appnoithat.Service.FileExport.ExportData.CommonExportData;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
 import com.huy.appnoithat.Service.FileExport.FileExportService;
-import com.huy.appnoithat.Service.SessionService.UserSessionService;
-import com.huy.appnoithat.Service.WebClient.WebClientService;
-import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
-import com.huy.appnoithat.Shared.Utils;
+import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;
+import com.huy.appnoithat.Service.RestService.HangMucRestService;
+import com.huy.appnoithat.Service.RestService.NoiThatRestService;
+import com.huy.appnoithat.Service.RestService.PhongCachRestService;
+import com.huy.appnoithat.Service.RestService.VatLieuRestService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -30,90 +24,47 @@ import java.util.List;
 
 public class LuaChonNoiThatService {
     final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatService.class);
-    private final WebClientService webClientService;
-    private final UserSessionService userSessionService;
-    private final ObjectMapper objectMapper;
     private final FileExportService fileExportService;
-
-    // Fake the data
+    private final PhongCachRestService phongCachRestService;
+    private final NoiThatRestService noiThatRestService;
+    private final HangMucRestService hangMucRestService;
+    private final VatLieuRestService vatLieuRestService;
+    private final FileNoiThatExplorerService fileNoiThatExplorerService;
     public LuaChonNoiThatService() {
-        webClientService = new WebClientServiceImpl();
-        userSessionService = new UserSessionService();
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
         fileExportService = new FileExportService();
+        phongCachRestService = PhongCachRestService.getInstance();
+        noiThatRestService = NoiThatRestService.getInstance();
+        hangMucRestService = HangMucRestService.getInstance();
+        vatLieuRestService = VatLieuRestService.getInstance();
+        fileNoiThatExplorerService = FileNoiThatExplorerService.getInstance();
     }
 
     public List<PhongCachNoiThat> findAllPhongCachNoiThat() {
-        String path = "/api/phongcach";
-        String response = webClientService.authorizedHttpGetJson(path, userSessionService.getToken());
-        if (response == null) {
-            return new ArrayList<>();
-        }
-        try {
-            List<PhongCachNoiThat> phongCachNoiThatList = objectMapper.readValue(response, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, PhongCachNoiThat.class));
-            return phongCachNoiThatList;
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Can't parse response from server");
-            throw new RuntimeException(e);
-        }
+        return phongCachRestService.findAll();
     }
 
-    public PhongCachNoiThat findPhongCachNoiThatById(int id) {
-        String path = "/api/phongcach";
-        String response = webClientService.authorizedHttpGetJson(path + "/" + id, userSessionService.getToken());
-        if (response == null) {
-            return null;
-        }
-        try {
-            PhongCachNoiThat phongCachNoiThat = objectMapper.readValue(response, PhongCachNoiThat.class);
-            return phongCachNoiThat;
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Can't parse response from server");
-            throw new RuntimeException(e);
-        }
+    public PhongCachNoiThat findPhongCachById(int id) {
+        return phongCachRestService.findById(id);
     }
 
     public PhongCachNoiThat findPhongCachNoiThatByName(String name) {
-        String path = "/api/phongcach/search";
-        String param = "?" + "name=" + Utils.encodeValue(name);
-        String response = webClientService.authorizedHttpGetJson(path + param, userSessionService.getToken());
-        if (response == null) {
-            return null;
-        }
-        try {
-            PhongCachNoiThat phongCachNoiThat = objectMapper.readValue(response, PhongCachNoiThat.class);
-            return phongCachNoiThat;
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Can't parse response from server");
-            throw new RuntimeException(e);
-        }
+        return phongCachRestService.findUsingName(name);
     }
 
-    public List<NoiThat> findNoiThatByPhongCachName(String name) {
-        PhongCachNoiThat foundPhongCachNoiThat = findPhongCachNoiThatByName(name);
+    public List<NoiThat> findNoiThatListBy(String phongCach) {
+        PhongCachNoiThat foundPhongCachNoiThat = findPhongCachNoiThatByName(phongCach);
         if (foundPhongCachNoiThat == null) {
             return new ArrayList<>();
         }
-        String path = "/api/noithat/searchByPhongCach";
-        String response = webClientService.authorizedHttpGetJson(path + "/" + foundPhongCachNoiThat.getId(), userSessionService.getToken());
-        if (response == null) {
+        List<NoiThat> noiThatList = noiThatRestService.searchByPhongCach(foundPhongCachNoiThat.getId());
+        if (noiThatList == null) {
             return new ArrayList<>();
         }
-        try {
-            List<NoiThat> noiThatList = objectMapper.readValue(response, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, NoiThat.class));
-            return noiThatList;
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Can't parse response from server");
-            throw new RuntimeException(e);
-        }
+        return noiThatList;
     }
 
-    public List<HangMuc> findHangMucListByPhongCachAndNoiThat(String phongCach, String noiThat) {
-        List<NoiThat> noiThatList = findNoiThatByPhongCachName(phongCach);
+    public List<HangMuc> findHangMucListBy(String phongCach, String noiThat) {
+        List<NoiThat> noiThatList = findNoiThatListBy(phongCach);
         if (noiThatList == null) {
             return new ArrayList<>();
         }
@@ -121,23 +72,15 @@ public class LuaChonNoiThatService {
         if (foundNoiThat == null) {
             return new ArrayList<>();
         }
-        String path = "/api/hangmuc/searchByNoiThat";
-        String response = webClientService.authorizedHttpGetJson(path + "/" + foundNoiThat.getId(), userSessionService.getToken());
-        if (response == null) {
+        List<HangMuc> hangMucList = hangMucRestService.searchByNoiThat(foundNoiThat.getId());
+        if (hangMucList == null) {
             return new ArrayList<>();
         }
-        try {
-            List<HangMuc> hangMucList = objectMapper.readValue(response, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, HangMuc.class));
-            return hangMucList;
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Can't parse response from server");
-            throw new RuntimeException(e);
-        }
+        return hangMucList;
     }
 
-    public List<VatLieu> findVatLieuListByParentsName(String phongCach, String noiThat, String hangMuc) {
-        List<HangMuc> hangMucList = findHangMucListByPhongCachAndNoiThat(phongCach, noiThat);
+    public List<VatLieu> findVatLieuListBy(String phongCach, String noiThat, String hangMuc) {
+        List<HangMuc> hangMucList = findHangMucListBy(phongCach, noiThat);
         if (hangMucList == null) {
             return new ArrayList<>();
         }
@@ -145,35 +88,31 @@ public class LuaChonNoiThatService {
         if (foundHangMuc == null) {
             return new ArrayList<>();
         }
-        String path = "/api/vatlieu/searchByHangMuc";
-        String response = webClientService.authorizedHttpGetJson(path + "/" + foundHangMuc.getId(), userSessionService.getToken());
-        if (response == null) {
+        List<VatLieu> vatLieuList = vatLieuRestService.searchByHangMuc(foundHangMuc.getId());
+        if (vatLieuList == null) {
             return new ArrayList<>();
         }
-        try {
-            List<VatLieu> vatLieuList = objectMapper.readValue(response, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, VatLieu.class));
-            return vatLieuList;
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        return vatLieuList;
     }
-    public boolean exportFile(File selectedFile, FileType fileType,
-                           ThongTinCongTy thongTinCongTy,
-                           ThongTinKhachHang thongTinKhachHang,
-                           List<ThongTinNoiThat> thongTinNoiThatList,
-                           ThongTinThanhToan thongTinThanhToan, String noteArea) {
+
+    public boolean exportFile(File selectedFile, FileType fileType, DataPackage dataPackage) {
         ExportFile exportFile = fileExportService.getExportService(selectedFile, fileType);
-        CommonExportData dataForExport = new CommonExportData(
-                thongTinCongTy, thongTinKhachHang, noteArea, thongTinNoiThatList, thongTinThanhToan);
-        exportFile.setUpDataForExport(dataForExport);
+        exportFile.setUpDataForExport(dataPackage);
         try {
-            exportFile.export();
-            return true;
-        }
-        catch (IOException e) {
+            exportFile.export(selectedFile);
+        } catch (IOException e) {
             LOGGER.error("Some thing is wrong with the export operation", e);
             return false;
         }
+        if (fileType == FileType.NT) {
+            fileNoiThatExplorerService.addRecentFile(new RecentFile(selectedFile.getAbsolutePath(), System.currentTimeMillis()));
+        }
+        return true;
     }
+
+    public DataPackage importFile(File selectedFile) {
+        ExportFile exportFile = fileExportService.getExportService(selectedFile, FileType.NT);
+        return exportFile.importData(selectedFile);
+    }
+
 }

@@ -1,10 +1,9 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Entity.ThongSo;
-import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyVatLieuScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyThongSoService;
-import com.huy.appnoithat.Shared.PopupUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -13,14 +12,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class ChangeProductSpecificationController {
-    int parentID;
+    private int parentID;
     private final DatabaseModifyThongSoService databaseModifyThongSoService;
     @FXML
     private Button backButton, btnOK;
     @FXML
     private TextField txtCao, txtDai, txtDonGia, txtDonVi, txtRong;
-
+    private ThongSo currentThongSoItem;
     public ChangeProductSpecificationController() {
         databaseModifyThongSoService = new DatabaseModifyThongSoService();
     }
@@ -29,25 +30,32 @@ public class ChangeProductSpecificationController {
     void clickOK(ActionEvent event) {
         //click to Edit thong so
         String regex = "[0-9].+";
-        ThongSo thongSo = new ThongSo();
-        thongSo.setId(parentID);
-        if (!txtCao.getText().matches(regex) || !txtDai.getText().matches(regex) || !txtRong.getText().matches(regex) || !txtDonGia.getText().matches(regex)) {
-            PopupUtils.throwErrorSignal("Please input is a number !!!");
-        } else {
-            thongSo.setCao(Float.valueOf(txtCao.getText()));
-            thongSo.setDai(Float.valueOf(txtDai.getText()));
-            thongSo.setRong(Float.valueOf(txtRong.getText()));
-            thongSo.setDon_vi(txtDonVi.getText());
-            thongSo.setDon_gia(Long.valueOf(txtDonGia.getText()));
-            databaseModifyThongSoService.EditThongSo(thongSo);
-            initializeThongSo(parentID);
-        }
 
+        if (!txtCao.getText().matches(regex) ||
+                !txtDai.getText().matches(regex) ||
+                !txtRong.getText().matches(regex) ||
+                !txtDonGia.getText().matches(regex)) {
+            PopupUtils.throwErrorSignal("Please input is a number !!!");
+            return;
+        }
+        List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByParentId(this.parentID);
+        if (thongSoList == null || thongSoList.isEmpty()) {
+            return;
+        }
+        ThongSo thongSo = thongSoList.get(0);
+        thongSo.setCao(Double.valueOf(txtCao.getText()));
+        thongSo.setDai(Double.valueOf(txtDai.getText()));
+        thongSo.setRong(Double.valueOf(txtRong.getText()));
+        thongSo.setDon_vi(txtDonVi.getText());
+        thongSo.setDon_gia(Long.valueOf(txtDonGia.getText()));
+        databaseModifyThongSoService.EditThongSo(thongSo);
+        backToMain();
     }
 
     void backToMain() {
-        Scene scene = DatabaseModifyPhongCachScene.getInstance().getScene();
+        Scene scene = DatabaseModifyVatLieuScene.getInstance().getScene();
         Stage stage = (Stage) btnOK.getScene().getWindow();
+        DatabaseModifyVatLieuScene.getInstance().getController().refresh();
         stage.setScene(scene);
         stage.show();
     }
@@ -60,6 +68,7 @@ public class ChangeProductSpecificationController {
         stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == backButton) {
             scene = DatabaseModifyVatLieuScene.getInstance().getScene();
+            DatabaseModifyVatLieuScene.getInstance().getController().refresh();
         } else {
             return;
         }
@@ -68,19 +77,23 @@ public class ChangeProductSpecificationController {
     }
 
     public void initializeThongSo(int id) {
-        parentID = id;
+        this.parentID = id;
         if (id == 0) {
             return;
         }
-        if (databaseModifyThongSoService.findThongSoByID(id) == null || databaseModifyThongSoService.findThongSoByID(id).isEmpty()) {
-            return;
+        ThongSo thongSo = new ThongSo(0, 0.0, 0.0, 0.0, "", 0L);
+        List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByParentId(this.parentID);
+        if (thongSoList == null || thongSoList.isEmpty()) {
+            databaseModifyThongSoService.addNewThongSo(thongSo, this.parentID);
         }
-        ThongSo ts = databaseModifyThongSoService.findThongSoByID(id).get(0);
-        txtCao.setText(ts.getCao() != null ? ts.getCao().toString() : "0.0");
-        txtDai.setText(ts.getDai() != null ? ts.getDai().toString() : "0.0");
-        txtRong.setText(ts.getRong() != null ? ts.getRong().toString() : "0.0");
-        txtDonGia.setText(ts.getDon_gia() != null ? ts.getDon_gia().toString() : " ");
-        txtDonVi.setText(ts.getDon_vi() != null ? ts.getDon_vi() : " ");
+        else {
+            thongSo = thongSoList.get(0);
+        }
+        txtCao.setText(thongSo.getCao().toString());
+        txtDai.setText(thongSo.getDai().toString());
+        txtRong.setText(thongSo.getRong().toString());
+        txtDonGia.setText(thongSo.getDon_gia().toString());
+        txtDonVi.setText(thongSo.getDon_vi());
     }
 
 }

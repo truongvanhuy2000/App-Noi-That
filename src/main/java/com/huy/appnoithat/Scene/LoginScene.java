@@ -10,15 +10,16 @@ import java.util.Objects;
 
 @Getter
 public class LoginScene {
+    private static final String VIEW_PATH = "/com/huy/appnoithat/Scene/view/LoginLayoutRemake.fxml";
+    private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/LoginLayout.css";
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
     private static LoginScene single_instance = null;
 
     public LoginScene() {
-        String viewPath = "view/LoginLayoutRemake.fxml";
         try {
-            fxmlLoader = new FXMLLoader(LoginScene.class.getResource(viewPath));
+            fxmlLoader = new FXMLLoader(LoginScene.class.getResource(VIEW_PATH));
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -46,7 +47,6 @@ public class LoginScene {
     }
 
     private void addCssToScence() {
-        String cssPath = "css/LoginLayout.css";
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(CSS_PATH)).toExternalForm());
     }
 }

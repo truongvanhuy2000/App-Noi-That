@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.huy.appnoithat.Service.FileExport.ExportData.CommonExportData;
+import com.huy.appnoithat.DataModel.DataPackage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ObjectData {
     @JsonProperty("exportData")
-    CommonExportData commonExportData;
+    DataPackage dataPackage;
     @JsonProperty("metadata")
     Metadata metadata;
 }

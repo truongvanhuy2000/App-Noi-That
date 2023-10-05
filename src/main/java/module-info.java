@@ -33,6 +33,14 @@ module com.huy.appnoithat {
     opens com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel to javafx.fxml;
 
     exports com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel;
-    exports com.huy.appnoithat.Service.FileExport.ExportData;
     exports com.huy.appnoithat.DataModel;
+    exports com.huy.appnoithat.Controller.UserManagement;
+    exports com.huy.appnoithat.Controller.UserManagement.DataModel;
+    opens com.huy.appnoithat.Controller.UserManagement to javafx.fxml;
+    exports com.huy.appnoithat.Controller.FileNoiThatExplorer;
+    opens com.huy.appnoithat.Controller.FileNoiThatExplorer to javafx.fxml;
+    exports com.huy.appnoithat.Controller.NewTab;
+    opens com.huy.appnoithat.Controller.NewTab to javafx.fxml;
+    exports com.huy.appnoithat.Controller.LuaChonNoiThat.Common;
+    opens com.huy.appnoithat.Controller.LuaChonNoiThat.Common to javafx.fxml;
 }

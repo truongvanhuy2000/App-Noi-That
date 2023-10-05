@@ -1,57 +1,21 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
+import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import com.huy.appnoithat.Shared.PopupUtils;
-import com.huy.appnoithat.Shared.Utils;
-import javafx.collections.ObservableList;
+import com.huy.appnoithat.Enums.FileType;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
 
 public class ButtonHandler {
     private TreeTableView<BangNoiThat> TableNoiThat;
-
-    public ButtonHandler(TreeTableView<BangNoiThat> tableNoiThat) {
-        this.TableNoiThat = tableNoiThat;
+    private LuaChonNoiThatController luaChonNoiThatController;
+    public ButtonHandler(LuaChonNoiThatController luaChonNoiThatController) {
+        this.TableNoiThat = luaChonNoiThatController.getTableNoiThat();
+        this.luaChonNoiThatController = luaChonNoiThatController;
     }
-
-    public void addNewLine(ActionEvent event) {
-//        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
-        if (TableNoiThat.getRoot() == null) {
-            return;
-        }
-        TableNoiThat.getRoot().getChildren().add(TableUtils.createNewItem("A"));
-//        }
-//        if (isReachedLimit(TableNoiThat.getRoot())){
-//            ErrorUtils.throwErrorSignal("Đã đạt giới hạn số lượng 30");
-//            return;
-//        }
-//        TreeItem<BangNoiThat> currentSelectedItem = TableNoiThat.getSelectionModel().getSelectedItem();
-//        TreeItem<BangNoiThat> parent = currentSelectedItem.getParent();
-//
-//        int indexOfCurrentItem = parent.getChildren().indexOf(currentSelectedItem);
-//        parent.getChildren().add(indexOfCurrentItem + 1, new TreeItem<>(new BangNoiThat(
-//                "A", 0f, 0f, 0f, 0L,
-//                "", "", "", 0L, 0f)));
-//        parent.setExpanded(true);
-    }
-
-    //    public void continuousLineAdd(ActionEvent event) {
-//        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
-//            return;
-//        }
-//        TreeItem<BangNoiThat> currentSelectedItem = TableNoiThat.getSelectionModel().getSelectedItem();
-//        TreeItem<BangNoiThat> parent = currentSelectedItem.getParent();
-//        String stt = parent.getChildren().get(parent.getChildren().size() - 1).getValue().getSTT().getValue();
-//        String nextStt = findTheNextStt(stt);
-//        if (isReachedLimit(parent)) {
-//            ErrorUtils.throwErrorSignal("Đã đạt giới hạn số lượng 30");
-//            return;
-//        }
-//        parent.getChildren().add(new TreeItem<>(new BangNoiThat(
-//                nextStt, 0f, 0f, 0f, 0L,
-//                "", "", "", 0L, 0f)));
-//    }
     public void continuousLineAdd(ActionEvent event) {
         if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
             return;
@@ -173,47 +137,6 @@ public class ButtonHandler {
         return false;
     }
 
-    public void onDeleteLine(ActionEvent event) {
-        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
-            return;
-        }
-        ObservableList<TreeItem<BangNoiThat>> selectedList = TableNoiThat.getSelectionModel().getSelectedItems();
-
-        for (int index = 0; index < selectedList.size(); index++) {
-            TreeItem<BangNoiThat> item = selectedList.get(index);
-            if (item == null) {
-                return;
-            }
-            if (item.getParent() != null) {
-                item.getParent().getChildren().remove(item);
-                selectedList.remove(item);
-            }
-            if (index >= selectedList.size()) {
-                index = 0;
-            }
-        }
-//        for (TreeItem<BangNoiThat> item : selectedList){
-//            if (item == null) {
-//                return;
-//            }
-//            if (item.getParent() != null) {
-//                item.getParent().getChildren().remove(item);
-//            }
-//        }
-//        selectedList.forEach(
-//                item -> {
-//                    if (item == null) {
-//                        return;
-//                    }
-//                    if (item.getParent() != null) {
-//                        item.getParent().getChildren().remove(item);
-//                        selectedList.remove(item);
-//                    }
-//                }
-//        );
-        TableNoiThat.getSelectionModel().clearSelection();
-    }
-
     private void createNewSibling(TreeItem<BangNoiThat> currentItem) {
         if (currentItem == null) {
             return;
@@ -227,5 +150,15 @@ public class ButtonHandler {
             currentItem.getParent().getChildren().add(currentPos + 1, newItem);
         }
         TableUtils.selectSingleItem(TableNoiThat, newItem);
+    }
+
+    public void exportButtonHandler(ActionEvent event) {
+        this.luaChonNoiThatController.exportFile(FileType.EXCEL);
+    }
+    /**
+     * @param event This function will handle the event when user want to save the table
+     */
+    public void onSaveAction(ActionEvent event) {
+        this.luaChonNoiThatController.exportFile(FileType.NT);
     }
 }

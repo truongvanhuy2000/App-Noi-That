@@ -1,5 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel;
 
+import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.DataModel.ThongTinThanhToan;
 import javafx.beans.property.SimpleLongProperty;
 import lombok.Getter;
 
@@ -15,6 +17,13 @@ public class BangThanhToan {
         DatCocThiCong30 = new SimpleLongProperty(datCocThiCong30);
         HangDenChanCongTrinh50 = new SimpleLongProperty(hangDenChanCongTrinh50);
         NghiemThuQuyet = new SimpleLongProperty(nghiemThuQuyet);
+    }
+
+    public BangThanhToan(ThongTinThanhToan thongTinThanhToan) {
+        DatCocThietKe10 = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinThanhToan.getDatCocThietKe10()));
+        DatCocThiCong30 = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinThanhToan.getDatCocThiCong30()));
+        HangDenChanCongTrinh50 = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinThanhToan.getHangDenChanCongTrinh50()));
+        NghiemThuQuyet = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinThanhToan.getNghiemThuQuyet()));
     }
 
     public void setDatCocThietKe10(long datCocThietKe10) {

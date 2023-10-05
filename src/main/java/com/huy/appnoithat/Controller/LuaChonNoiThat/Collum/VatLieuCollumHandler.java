@@ -1,12 +1,13 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomVatLieuCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
-import com.huy.appnoithat.Shared.Utils;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
@@ -45,13 +46,13 @@ public class VatLieuCollumHandler {
         if (coresspondingThongSo == null) {
             return;
         }
-        Float dai = Objects.requireNonNullElse(coresspondingThongSo.getDai(), 0f);
-        Float rong = Objects.requireNonNullElse(coresspondingThongSo.getRong(), 0f);
-        Float cao = Objects.requireNonNullElse(coresspondingThongSo.getCao(), 0f);
+        Double dai = Objects.requireNonNullElse(coresspondingThongSo.getDai(), 0.0);
+        Double rong = Objects.requireNonNullElse(coresspondingThongSo.getRong(), 0.0);
+        Double cao = Objects.requireNonNullElse(coresspondingThongSo.getCao(), 0.0);
         Long donGia = coresspondingThongSo.getDon_gia();
         String donVi = coresspondingThongSo.getDon_vi();
-        Float khoiLuong = TableUtils.calculateKhoiLuong(dai, cao, rong, donVi);
-        Long thanhTien = TableUtils.calculateThanhTien(khoiLuong, donGia);
+        Double khoiLuong = TableCalculationUtils.calculateKhoiLuong(dai, cao, rong, donVi);
+        Long thanhTien = TableCalculationUtils.calculateThanhTien(khoiLuong, donGia);
 
         event.getRowValue().getValue().setThanhTien(thanhTien);
         event.getRowValue().getValue().setKhoiLuong(khoiLuong);
@@ -61,21 +62,20 @@ public class VatLieuCollumHandler {
         event.getRowValue().getValue().setDonGia(donGia);
         event.getRowValue().getValue().setDonVi(donVi);
 
-        TableUtils.calculateTongTien(event.getRowValue().getParent());
-
+        TableCalculationUtils.calculateTongTien(event.getRowValue().getParent());
 //        event.getTreeTableView().getSelectionModel().clearSelection();
     }
 
     public void onStartEditVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         List<String> items;
-        if (!TableUtils.isALlowedToEdit(event)) {
+        if (!TableUtils.isAllowedToEdit(event)) {
             return;
         }
         String hangMuc = currentItem.getValue().getHangMuc().getValue();
         String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
         String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
-        List<VatLieu> vatLieus = luaChonNoiThatService.findVatLieuListByParentsName(phongCach, noiThat, hangMuc);
+        List<VatLieu> vatLieus = luaChonNoiThatService.findVatLieuListBy(phongCach, noiThat, hangMuc);
         if (vatLieus == null) {
             return;
         }

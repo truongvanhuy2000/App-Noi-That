@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Shared;
 
+import com.huy.appnoithat.Common.Utils;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,5 +39,14 @@ class UtilsTest {
         assertEquals(7, Utils.RomanNumber.romanToInt("VII"));
         assertEquals(8, Utils.RomanNumber.romanToInt("VIII"));
         assertEquals(9, Utils.RomanNumber.romanToInt("IX"));
+    }
+    @Test
+    void testCalculation() {
+        double khoiLuong = 1.3;
+        long donGia = 10850000;
+
+        double thanhTien = khoiLuong * donGia;
+
+        System.out.println("thanh tien: " + thanhTien);
     }
 }

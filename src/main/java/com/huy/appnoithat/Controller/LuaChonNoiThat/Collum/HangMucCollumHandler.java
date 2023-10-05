@@ -1,10 +1,10 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
+import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
-import com.huy.appnoithat.Shared.PopupUtils;
-import com.huy.appnoithat.Shared.Utils;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
@@ -39,7 +39,7 @@ public class HangMucCollumHandler {
         if (Utils.RomanNumber.isRoman(stt)) {
             String phongCach = currentItem.getParent().getValue().getHangMuc().getValue();
             try {
-                items = Utils.getObjectNameList(luaChonNoiThatService.findNoiThatByPhongCachName(phongCach));
+                items = Utils.getObjectNameList(luaChonNoiThatService.findNoiThatListBy(phongCach));
             } catch (NullPointerException e) {
                 PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
                 return;
@@ -64,7 +64,7 @@ public class HangMucCollumHandler {
             String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
             String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
             try {
-                items = Utils.getObjectNameList(luaChonNoiThatService.findHangMucListByPhongCachAndNoiThat(phongCach, noiThat));
+                items = Utils.getObjectNameList(luaChonNoiThatService.findHangMucListBy(phongCach, noiThat));
             } catch (NullPointerException e) {
                 PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
                 return;

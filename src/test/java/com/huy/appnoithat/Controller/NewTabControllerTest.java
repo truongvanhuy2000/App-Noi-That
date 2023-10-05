@@ -1,6 +1,5 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.Scene.NewTabScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.AfterEach;
@@ -41,9 +40,9 @@ public class NewTabControllerTest extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setScene(NewTabScene.getInstance().getScene());
-        stage.setTitle("App Noi That");
-        stage.setMaximized(true);
-        stage.show();
+//        stage.setScene(NewTabScene.getInstance().getScene());
+//        stage.setTitle("App Noi That");
+//        stage.setMaximized(true);
+//        stage.show();
     }
 }

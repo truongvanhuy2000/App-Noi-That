@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller.DatabaseModify;
 
 
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
+import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
@@ -48,7 +49,9 @@ public class DatabaseModifyNoiThatController implements Initializable {
 
     @FXML
     void addAction(ActionEvent event) {
-        noiThatObservableList.add(new NoiThat(0, "<Thêm mới>", new ArrayList<>()));
+        int currentPos = noiThatObservableList.size();
+        databaseModifyNoiThatService.addNewNoiThat(new NoiThat(0, DBModifyUtils.getNewName(currentPos), new ArrayList<>()), this.parentID);
+        refreshList();
     }
 
     @FXML
@@ -94,6 +97,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
         stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == backButton) {
             scene = DatabaseModifyPhongCachScene.getInstance().getScene();
+            DatabaseModifyPhongCachScene.getInstance().getController().refresh();
         } else {
             return;
         }
@@ -111,9 +115,13 @@ public class DatabaseModifyNoiThatController implements Initializable {
         refreshList();
         refreshChildrenList(0);
     }
-
+    public void refresh() {
+        refreshList();
+        refreshChildrenList(0);
+        listViewNoiThat.getSelectionModel().clearSelection();
+    }
     private void refreshList() {
-        List<NoiThat> noiThatList = databaseModifyNoiThatService.findNoiThatByID(parentID);
+        List<NoiThat> noiThatList = databaseModifyNoiThatService.findNoiThatListByParentID(parentID);
         if (noiThatList == null) {
             noiThatList = new ArrayList<>();
         }
@@ -126,7 +134,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
             hangMucObservableList.clear();
             return;
         }
-        List<HangMuc> hangMucList = databaseModifyHangMucService.findHangMucByID(parentID);
+        List<HangMuc> hangMucList = databaseModifyHangMucService.findHangMucByParentId(parentID);
         if (hangMucList == null) {
             hangMucList = new ArrayList<>();
         }
@@ -141,7 +149,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
         listViewNoiThat.setCellFactory(param -> new CustomEditingListCell<>());
         listViewNoiThat.setOnEditCommit(event -> {
             NoiThat item = event.getNewValue();
-            item.setName(event.getNewValue().getName());
+            item.setName(DBModifyUtils.getNotDuplicateName(item.getName(), noiThatObservableList));
             if (item.getId() == 0) {
                 databaseModifyNoiThatService.addNewNoiThat(item, this.parentID);
             } else {

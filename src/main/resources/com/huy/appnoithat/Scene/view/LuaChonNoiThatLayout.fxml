@@ -17,7 +17,7 @@
     <children>
         <AnchorPane layoutY="27.0" minHeight="0.0" minWidth="0.0" prefHeight="818.0" prefWidth="1720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Button fx:id="addNewButton" layoutX="11.0" layoutY="423.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" text="+" />
+                <Button fx:id="addNewButton" layoutX="11.0" layoutY="423.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" text="+" visible="false" />
                 <TextField fx:id="TenCongTy" layoutX="275.0" layoutY="14.0" prefHeight="24.0" prefWidth="350.0" promptText="Tên công ty" AnchorPane.leftAnchor="275.0" />
                 <TextField fx:id="VanPhong" layoutX="275.0" layoutY="44.0" prefHeight="24.0" prefWidth="350.0" promptText="Văn phòng" AnchorPane.leftAnchor="275.0" />
                 <TextField fx:id="DiaChiXuong" layoutX="275.0" layoutY="74.0" prefHeight="24.0" prefWidth="350.0" promptText="Địa chỉ xưởng" AnchorPane.leftAnchor="275.0" />
@@ -42,7 +42,7 @@
                 <TextField fx:id="NgayLapBaoGia" layoutX="820.0" layoutY="104.0" prefHeight="24.0" prefWidth="350.0" promptText="Ngày lập báo giá" AnchorPane.leftAnchor="820.0" />
                 <TextField fx:id="DiaChiKhachHang" layoutX="820.0" layoutY="74.0" prefHeight="24.0" prefWidth="350.0" promptText="Địa chỉ" AnchorPane.leftAnchor="820.0" />
                 <TextField fx:id="SanPham" layoutX="820.0" layoutY="134.0" prefHeight="24.0" prefWidth="350.0" promptText="Sản phẩm" AnchorPane.leftAnchor="820.0" />
-                <Button fx:id="ExportButton" layoutX="13.0" layoutY="14.0" mnemonicParsing="false" text="Export" />
+                <Button fx:id="ExportButton" layoutX="13.0" layoutY="14.0" mnemonicParsing="false" text="Xuất file" />
                 <TableView fx:id="bangThanhToan" layoutX="73.0" layoutY="793.0" prefHeight="58.0" prefWidth="1254.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
                     <columns>
                         <TableColumn fx:id="DatCocThietKe10" prefWidth="339.0" text="Đặt cọc thiết kế 10%" />
@@ -57,7 +57,7 @@
                 <TextArea fx:id="noteTextArea" layoutX="73.0" layoutY="849.0" prefHeight="126.0" prefWidth="1254.0" text="Chú thích:" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0" />
                 <TreeTableView fx:id="TableNoiThat" layoutX="71.0" layoutY="170.0" onKeyPressed="#onKeyPressed" prefHeight="624.0" prefWidth="1254.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
                     <columns>
-                        <TreeTableColumn fx:id="STT1" prefWidth="59.0" sortable="false" text="Báo Giá Nội Thất Công Ty TNHH Kiến Trúc Xây Dựng Nội Thất A One">
+                        <TreeTableColumn fx:id="STT1" prefWidth="59.0" sortable="false" text="Báo Giá Nội Thất">
                             <columns>
                                 <TreeTableColumn fx:id="STT" prefWidth="59.0" resizable="false" sortable="false" text="STT" />
                                 <TreeTableColumn fx:id="HangMuc" minWidth="200.0" prefWidth="336.0" resizable="false" sortable="false" text="HẠNG MỤC " />
@@ -69,8 +69,8 @@
                                         <TreeTableColumn fx:id="Cao" prefWidth="70.0" resizable="false" sortable="false" text="CAO" />
                                     </columns>
                                 </TreeTableColumn>
-                                <TreeTableColumn fx:id="DonVi" editable="false" prefWidth="100.0" resizable="false" sortable="false" text="ĐƠN VỊ" />
-                                <TreeTableColumn fx:id="DonGia" editable="false" prefWidth="95.0" resizable="false" sortable="false" text="ĐƠN GIÁ" />
+                                <TreeTableColumn fx:id="DonVi" prefWidth="100.0" resizable="false" sortable="false" text="ĐƠN VỊ TÍNH" />
+                                <TreeTableColumn fx:id="DonGia" prefWidth="95.0" resizable="false" sortable="false" text="ĐƠN GIÁ" />
                                 <TreeTableColumn fx:id="KhoiLuong" prefWidth="70.0" resizable="false" sortable="false" text="KHOI LUONG" />
                                 <TreeTableColumn fx:id="ThanhTien" prefWidth="120.0" resizable="false" sortable="false" text="THÀNH TIỀN" />
                             </columns>
@@ -81,7 +81,7 @@
                     </columnResizePolicy>
                 </TreeTableView>
                 <Button fx:id="addContinuousButton" layoutX="4.0" layoutY="487.0" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="44.0" rotate="90.0" text="&gt;&gt;" />
-            <Button layoutX="13.0" layoutY="52.0" mnemonicParsing="false" onAction="#onSaveAction" text="Save" />
+                <Button fx:id="SaveButton" layoutX="13.0" layoutY="52.0" mnemonicParsing="false" text="Lưu" />
             </children>
         </AnchorPane>
     </children>

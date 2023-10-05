@@ -130,4 +130,825 @@
 [INFO ] 27-09-2023 12:47:13 [main] HelloApplication:31 - Start application
 [INFO ] 27-09-2023 12:48:52 [main] HelloApplication:31 - Start application
 [INFO ] 27-09-2023 12:49:43 [main] HelloApplication:31 - Start application
-[INFO ] 06-10-2023 00:09:52 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 22:42:08 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 22:42:55 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 22:46:23 [main] HelloApplication:31 - Start application
+[INFO ] 27-09-2023 22:47:11 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 00:02:12 [main] HelloApplication:31 - Start application
+[ERROR] 29-09-2023 00:02:32 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 29-09-2023 00:02:53 [main] HelloApplication:31 - Start application
+[ERROR] 29-09-2023 00:02:58 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 29-09-2023 00:03:03 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 00:06:18 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:23:18 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:26:35 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:26:42 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:26:42 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:29:31 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:29:37 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:29:37 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:30:40 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:30:41 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:32:52 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:33:29 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:33:29 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:39:00 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:39:01 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:39:12 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:41:37 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:41:38 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:42:13 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:42:14 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:45:28 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:45:29 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:46:54 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:46:54 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:47:37 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:47:38 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:48:19 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:48:19 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[ERROR] 29-09-2023 01:48:25 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: For input string: ""
+[INFO ] 29-09-2023 01:48:30 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[ERROR] 29-09-2023 01:48:36 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: For input string: ""
+[INFO ] 29-09-2023 01:52:56 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:52:57 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 01:54:58 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:54:59 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[ERROR] 29-09-2023 01:55:07 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "Object.toString()" because the return value of "javafx.scene.control.SingleSelectionModel.getSelectedItem()" is null
+[INFO ] 29-09-2023 01:56:36 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:56:36 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[ERROR] 29-09-2023 01:56:42 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "Object.toString()" because the return value of "javafx.scene.control.SingleSelectionModel.getSelectedItem()" is null
+[INFO ] 29-09-2023 01:58:28 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 01:58:29 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 02:00:06 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 02:00:35 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 02:00:54 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 02:01:22 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 02:01:43 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 02:01:51 [JavaFX Application Thread] HomeController:62 - Login as huy with role User
+[INFO ] 29-09-2023 02:02:11 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 09:00:07 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 09:00:17 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 09:00:17 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 09:04:03 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 09:04:04 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 09:06:36 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 29-09-2023 09:30:38 [JavaFX Application Thread] HomeController:62 - Login as hihi with role User
+[INFO ] 29-09-2023 09:30:47 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 09:33:40 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 09:33:40 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 09:35:14 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 09:35:15 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 09:36:48 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 09:36:49 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 29-09-2023 09:37:58 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 09:39:32 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 13:59:39 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 13:59:47 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 29-09-2023 13:59:47 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 29-09-2023 22:55:12 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 22:55:14 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 29-09-2023 22:57:18 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 22:57:19 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 29-09-2023 23:00:07 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 23:00:08 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 29-09-2023 23:02:03 [main] HelloApplication:31 - Start application
+[INFO ] 29-09-2023 23:02:04 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 30-09-2023 16:34:27 [main] HelloApplication:31 - Start application
+[INFO ] 30-09-2023 16:34:30 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 30-09-2023 16:35:38 [main] HelloApplication:31 - Start application
+[INFO ] 30-09-2023 16:35:40 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 30-09-2023 16:55:45 [main] HelloApplication:31 - Start application
+[INFO ] 30-09-2023 16:55:46 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 30-09-2023 17:00:54 [main] HelloApplication:31 - Start application
+[INFO ] 30-09-2023 17:00:56 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 30-09-2023 17:04:06 [main] HelloApplication:31 - Start application
+[INFO ] 30-09-2023 17:04:08 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 30-09-2023 17:07:25 [main] HelloApplication:31 - Start application
+[INFO ] 30-09-2023 17:07:26 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 30-09-2023 17:11:28 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 30-09-2023 17:22:24 [main] HelloApplication:31 - Start application
+[INFO ] 30-09-2023 17:22:26 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 30-09-2023 17:24:19 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 30-09-2023 17:30:32 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 30-09-2023 17:32:44 [main] HelloApplication:31 - Start application
+[INFO ] 30-09-2023 17:32:47 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 30-09-2023 17:53:22 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 30-09-2023 17:54:19 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 30-09-2023 23:26:45 [main] HelloApplication:31 - Start application
+[INFO ] 30-09-2023 23:26:54 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 30-09-2023 23:26:54 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 30-09-2023 23:48:35 [main] HelloApplication:31 - Start application
+[INFO ] 30-09-2023 23:48:36 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 01-10-2023 16:32:11 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: test1.nt
+[ERROR] 01-10-2023 16:32:11 [JavaFX Application Thread] LuaChonNoiThatController:328 - Error while importing file
+java.lang.NumberFormatException: For input string: "1,999,998"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Long.parseLong(Long.java:711) ~[?:?]
+	at java.lang.Long.parseLong(Long.java:836) ~[?:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat.<init>(BangNoiThat.java:46) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils.convertToTreeItem(TableUtils.java:153) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController.importFromThongTinList(LuaChonNoiThatController.java:294) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController.importFile(LuaChonNoiThatController.java:228) ~[classes/:?]
+	at com.huy.appnoithat.Controller.NewTab.NewTabController.createNewTab(NewTabController.java:37) ~[classes/:?]
+	at com.huy.appnoithat.Controller.NewTab.NewTabController.init(NewTabController.java:153) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.openNewLuaChonNoiThatTab(FileNoiThatExplorerController.java:63) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.openFile(FileNoiThatExplorerController.java:55) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.lambda$init$2(FileNoiThatExplorerController.java:48) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3602) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3906) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[INFO ] 01-10-2023 16:32:33 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: file.nt
+[ERROR] 01-10-2023 16:32:33 [JavaFX Application Thread] LuaChonNoiThatController:328 - Error while importing file
+java.lang.NumberFormatException: For input string: "11,148,298"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Long.parseLong(Long.java:711) ~[?:?]
+	at java.lang.Long.parseLong(Long.java:836) ~[?:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat.<init>(BangNoiThat.java:46) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils.convertToTreeItem(TableUtils.java:153) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController.importFromThongTinList(LuaChonNoiThatController.java:294) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController.importFile(LuaChonNoiThatController.java:228) ~[classes/:?]
+	at com.huy.appnoithat.Controller.NewTab.NewTabController.createNewTab(NewTabController.java:37) ~[classes/:?]
+	at com.huy.appnoithat.Controller.NewTab.NewTabController.init(NewTabController.java:153) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.openNewLuaChonNoiThatTab(FileNoiThatExplorerController.java:63) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.openFile(FileNoiThatExplorerController.java:55) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.lambda$init$2(FileNoiThatExplorerController.java:48) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3602) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3906) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[INFO ] 01-10-2023 16:33:31 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: file.nt
+[ERROR] 01-10-2023 16:33:31 [JavaFX Application Thread] LuaChonNoiThatController:328 - Error while importing file
+java.lang.NumberFormatException: For input string: "11,148,298"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Long.parseLong(Long.java:711) ~[?:?]
+	at java.lang.Long.parseLong(Long.java:836) ~[?:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat.<init>(BangNoiThat.java:46) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils.convertToTreeItem(TableUtils.java:153) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController.importFromThongTinList(LuaChonNoiThatController.java:294) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController.importFile(LuaChonNoiThatController.java:228) ~[classes/:?]
+	at com.huy.appnoithat.Controller.NewTab.NewTabController.createNewTab(NewTabController.java:37) ~[classes/:?]
+	at com.huy.appnoithat.Controller.NewTab.NewTabController.init(NewTabController.java:153) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.openNewLuaChonNoiThatTab(FileNoiThatExplorerController.java:63) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.openFile(FileNoiThatExplorerController.java:55) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.lambda$init$2(FileNoiThatExplorerController.java:48) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3602) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3906) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[INFO ] 01-10-2023 16:35:19 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: test1.nt
+[ERROR] 01-10-2023 16:35:44 [JavaFX Application Thread] LuaChonNoiThatController:328 - Error while importing file
+java.lang.NumberFormatException: For input string: "1,999,998"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Long.parseLong(Long.java:711) ~[?:?]
+	at java.lang.Long.parseLong(Long.java:836) ~[?:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat.<init>(BangNoiThat.java:46) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils.convertToTreeItem(TableUtils.java:153) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController.importFromThongTinList(LuaChonNoiThatController.java:294) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController.importFile(LuaChonNoiThatController.java:228) ~[classes/:?]
+	at com.huy.appnoithat.Controller.NewTab.NewTabController.createNewTab(NewTabController.java:37) ~[classes/:?]
+	at com.huy.appnoithat.Controller.NewTab.NewTabController.init(NewTabController.java:153) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.openNewLuaChonNoiThatTab(FileNoiThatExplorerController.java:63) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.openFile(FileNoiThatExplorerController.java:55) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.lambda$init$2(FileNoiThatExplorerController.java:48) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3602) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3906) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[INFO ] 01-10-2023 16:37:01 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: test1.nt
+[INFO ] 01-10-2023 16:51:44 [main] HelloApplication:31 - Start application
+[INFO ] 01-10-2023 16:51:47 [JavaFX Application Thread] HomeController:61 - Login as user with role User
+[INFO ] 01-10-2023 16:53:31 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: test1.nt
+[ERROR] 01-10-2023 16:53:31 [JavaFX Application Thread] LuaChonNoiThatController:328 - Error while importing file
+java.lang.NumberFormatException: For input string: "1,999,998"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Long.parseLong(Long.java:711) ~[?:?]
+	at java.lang.Long.parseLong(Long.java:836) ~[?:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat.<init>(BangNoiThat.java:46) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils.convertToTreeItem(TableUtils.java:153) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController.importFromThongTinList(LuaChonNoiThatController.java:294) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController.importFile(LuaChonNoiThatController.java:228) ~[classes/:?]
+	at com.huy.appnoithat.Controller.NewTab.NewTabController.createNewTab(NewTabController.java:37) ~[classes/:?]
+	at com.huy.appnoithat.Controller.NewTab.NewTabController.init(NewTabController.java:153) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.openNewLuaChonNoiThatTab(FileNoiThatExplorerController.java:63) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.openFile(FileNoiThatExplorerController.java:55) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.lambda$init$2(FileNoiThatExplorerController.java:48) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3602) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3906) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[INFO ] 01-10-2023 16:54:10 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: test1.nt
+[ERROR] 01-10-2023 16:56:19 [JavaFX Application Thread] LuaChonNoiThatController:328 - Error while importing file
+java.lang.NumberFormatException: For input string: "1,999,998"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Long.parseLong(Long.java:711) ~[?:?]
+	at java.lang.Long.parseLong(Long.java:836) ~[?:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat.<init>(BangNoiThat.java:46) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils.convertToTreeItem(TableUtils.java:153) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController.importFromThongTinList(LuaChonNoiThatController.java:294) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController.importFile(LuaChonNoiThatController.java:228) ~[classes/:?]
+	at com.huy.appnoithat.Controller.NewTab.NewTabController.createNewTab(NewTabController.java:37) ~[classes/:?]
+	at com.huy.appnoithat.Controller.NewTab.NewTabController.init(NewTabController.java:153) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.openNewLuaChonNoiThatTab(FileNoiThatExplorerController.java:63) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.openFile(FileNoiThatExplorerController.java:55) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.lambda$init$2(FileNoiThatExplorerController.java:48) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3602) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3906) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[INFO ] 01-10-2023 16:56:57 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: test1.nt
+[ERROR] 01-10-2023 16:57:38 [JavaFX Application Thread] LuaChonNoiThatController:328 - Error while importing file
+java.lang.NumberFormatException: For input string: "1,999,998"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Long.parseLong(Long.java:711) ~[?:?]
+	at java.lang.Long.parseLong(Long.java:836) ~[?:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat.<init>(BangNoiThat.java:46) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils.convertToTreeItem(TableUtils.java:153) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController.importFromThongTinList(LuaChonNoiThatController.java:294) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController.importFile(LuaChonNoiThatController.java:228) ~[classes/:?]
+	at com.huy.appnoithat.Controller.NewTab.NewTabController.createNewTab(NewTabController.java:37) ~[classes/:?]
+	at com.huy.appnoithat.Controller.NewTab.NewTabController.init(NewTabController.java:153) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.openNewLuaChonNoiThatTab(FileNoiThatExplorerController.java:63) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.openFile(FileNoiThatExplorerController.java:55) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.lambda$init$2(FileNoiThatExplorerController.java:48) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3602) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3906) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[INFO ] 01-10-2023 17:22:31 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: test1.nt
+[INFO ] 01-10-2023 17:40:01 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: file.nt
+[INFO ] 01-10-2023 17:41:08 [main] HelloApplication:31 - Start application
+[INFO ] 01-10-2023 17:41:12 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 01-10-2023 17:42:58 [main] HelloApplication:31 - Start application
+[INFO ] 01-10-2023 17:43:01 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 01-10-2023 17:43:07 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: test1.nt
+[INFO ] 01-10-2023 17:43:12 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: file.nt
+[INFO ] 01-10-2023 17:43:38 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: test1.nt
+[INFO ] 01-10-2023 17:45:10 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: test1.nt
+[INFO ] 01-10-2023 17:45:16 [JavaFX Application Thread] LuaChonNoiThatController:213 - Import file: file.nt
+[INFO ] 01-10-2023 22:30:41 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 22:30:44 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[ERROR] 01-10-2023 22:31:55 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "com.huy.appnoithat.DataModel.ThongTinCongTy.setLogo(java.io.InputStream)" because "this.thongTinCongTy" is null
+[INFO ] 01-10-2023 22:33:40 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 22:33:42 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 01-10-2023 22:34:08 [JavaFX Application Thread] ExportFile:90 - Exporting to XLSX file
+[INFO ] 01-10-2023 22:35:57 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 22:35:59 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 01-10-2023 22:36:50 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 22:36:53 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 01-10-2023 22:37:34 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 22:37:35 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 01-10-2023 22:39:19 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 22:39:22 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 01-10-2023 22:44:56 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 22:44:58 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 01-10-2023 22:47:42 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 22:47:43 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 01-10-2023 22:57:05 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 22:57:07 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 01-10-2023 22:58:15 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 22:58:18 [JavaFX Application Thread] HomeController:62 - Login as user with role User
+[INFO ] 01-10-2023 22:58:25 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 01-10-2023 23:02:36 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 23:02:37 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 01-10-2023 23:03:25 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 23:03:26 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 01-10-2023 23:05:40 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 23:05:42 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 01-10-2023 23:12:08 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 23:12:10 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 01-10-2023 23:12:13 [JavaFX Application Thread] LuaChonNoiThatController:215 - Import file: test1.nt
+[INFO ] 01-10-2023 23:14:05 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 23:14:07 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 01-10-2023 23:14:13 [JavaFX Application Thread] LuaChonNoiThatController:215 - Import file: test1.nt
+[INFO ] 01-10-2023 23:16:44 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 23:16:45 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 01-10-2023 23:16:57 [JavaFX Application Thread] LuaChonNoiThatController:215 - Import file: file.nt
+[INFO ] 01-10-2023 23:17:08 [JavaFX Application Thread] LuaChonNoiThatController:215 - Import file: test1.nt
+[INFO ] 01-10-2023 23:22:48 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 23:22:49 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 01-10-2023 23:23:00 [JavaFX Application Thread] LuaChonNoiThatController:216 - Import file: test1.nt
+[INFO ] 01-10-2023 23:26:28 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 23:26:29 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 01-10-2023 23:26:32 [JavaFX Application Thread] LuaChonNoiThatController:215 - Import file: test1.nt
+[INFO ] 01-10-2023 23:36:46 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 23:36:48 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 01-10-2023 23:37:32 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 23:37:33 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 01-10-2023 23:38:53 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 23:38:55 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 01-10-2023 23:38:58 [JavaFX Application Thread] LuaChonNoiThatController:215 - Import file: file.nt
+[INFO ] 01-10-2023 23:42:42 [JavaFX Application Thread] LuaChonNoiThatController:215 - Import file: file.nt
+[INFO ] 01-10-2023 23:45:12 [JavaFX Application Thread] LuaChonNoiThatController:215 - Import file: test1.nt
+[INFO ] 01-10-2023 23:45:46 [JavaFX Application Thread] LuaChonNoiThatController:215 - Import file: file.nt
+[INFO ] 01-10-2023 23:46:49 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 23:46:51 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 01-10-2023 23:46:54 [JavaFX Application Thread] LuaChonNoiThatController:218 - Import file: file.nt
+[INFO ] 01-10-2023 23:47:52 [main] HelloApplication:33 - Start application
+[INFO ] 01-10-2023 23:47:53 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 01-10-2023 23:47:57 [JavaFX Application Thread] LuaChonNoiThatController:218 - Import file: test1.nt
+[INFO ] 01-10-2023 23:48:03 [JavaFX Application Thread] LuaChonNoiThatController:218 - Import file: file.nt
+[INFO ] 01-10-2023 23:48:16 [JavaFX Application Thread] LuaChonNoiThatController:218 - Import file: file.nt
+[INFO ] 02-10-2023 00:02:13 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 00:02:14 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 00:02:18 [JavaFX Application Thread] LuaChonNoiThatController:220 - Import file: test1.nt
+[INFO ] 02-10-2023 00:16:45 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 00:16:47 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 00:16:50 [JavaFX Application Thread] LuaChonNoiThatController:211 - Import file: test1.nt
+[INFO ] 02-10-2023 00:17:10 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 00:17:12 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 00:17:16 [JavaFX Application Thread] LuaChonNoiThatController:211 - Import file: file.nt
+[INFO ] 02-10-2023 00:17:41 [JavaFX Application Thread] LuaChonNoiThatController:211 - Import file: file.nt
+[INFO ] 02-10-2023 00:25:50 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 00:25:51 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 00:34:38 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 00:34:40 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 00:34:45 [JavaFX Application Thread] ImportOperation:29 - Import file: test1.nt
+[INFO ] 02-10-2023 00:52:24 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 00:52:25 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 00:52:33 [JavaFX Application Thread] ImportOperation:36 - Import file: file.nt
+[INFO ] 02-10-2023 00:52:52 [JavaFX Application Thread] ExportFile:90 - Exporting to XLSX file
+[INFO ] 02-10-2023 00:54:46 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 00:54:47 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 00:54:55 [JavaFX Application Thread] ImportOperation:36 - Import file: file.nt
+[INFO ] 02-10-2023 00:57:09 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 00:57:10 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 00:57:15 [JavaFX Application Thread] ImportOperation:36 - Import file: test1.nt
+[INFO ] 02-10-2023 01:06:00 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 01:06:01 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 01:06:07 [JavaFX Application Thread] ImportOperation:46 - Import file: file.nt
+[INFO ] 02-10-2023 01:06:20 [JavaFX Application Thread] ExportFile:90 - Exporting to XLSX file
+[INFO ] 02-10-2023 01:13:56 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 01:13:57 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 01:14:02 [JavaFX Application Thread] ImportOperation:46 - Import file: file.nt
+[INFO ] 02-10-2023 01:16:13 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 01:16:15 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 01:16:25 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 01:16:27 [JavaFX Application Thread] ImportOperation:46 - Import file: file.nt
+[INFO ] 02-10-2023 10:03:37 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 10:03:38 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 10:03:52 [JavaFX Application Thread] ImportOperation:46 - Import file: test1.nt
+[ERROR] 02-10-2023 10:03:54 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.io.FileNotFoundException: /home/huy/Desktop/test1.nt (No such file or directory)
+[INFO ] 02-10-2023 10:20:59 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 10:21:00 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 10:21:30 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 10:21:31 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 23:56:31 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 23:56:33 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 23:57:16 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 23:57:17 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 23:58:02 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 23:58:03 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 02-10-2023 23:58:10 [JavaFX Application Thread] ImportOperation:46 - Import file: file.nt
+[INFO ] 02-10-2023 23:58:40 [main] HelloApplication:33 - Start application
+[INFO ] 02-10-2023 23:58:41 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:02:38 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 00:02:40 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:02:49 [JavaFX Application Thread] ImportOperation:46 - Import file: test1.nt
+[INFO ] 03-10-2023 00:04:03 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 00:04:04 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:04:16 [JavaFX Application Thread] ImportOperation:46 - Import file: BaoGia.xls
+[ERROR] 03-10-2023 00:04:18 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 03-10-2023 00:06:24 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 00:06:25 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:06:33 [JavaFX Application Thread] ImportOperation:46 - Import file: BaoGia.xls
+[INFO ] 03-10-2023 00:14:03 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 00:14:04 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:16:14 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 00:16:15 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:16:47 [JavaFX Application Thread] ImportOperation:46 - Import file: test4.nt
+[INFO ] 03-10-2023 00:25:32 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 00:25:33 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:25:39 [JavaFX Application Thread] ImportOperation:46 - Import file: test4.nt
+[INFO ] 03-10-2023 00:27:17 [JavaFX Application Thread] ImportOperation:46 - Import file: test4.nt
+[INFO ] 03-10-2023 00:36:52 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 00:36:53 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 00:36:59 [JavaFX Application Thread] ImportOperation:46 - Import file: file.nt
+[INFO ] 03-10-2023 14:07:54 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 14:07:54 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 14:10:05 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 03-10-2023 14:11:47 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 14:11:48 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 14:14:09 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 14:14:10 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 14:20:46 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 14:20:47 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 14:20:52 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 03-10-2023 14:27:33 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 14:27:34 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 14:27:38 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 03-10-2023 14:29:36 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 14:29:37 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 14:29:50 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 14:29:51 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 14:29:57 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 03-10-2023 14:31:04 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 14:31:04 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 14:31:09 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 03-10-2023 14:34:36 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 14:34:37 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 14:38:21 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 14:38:22 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 14:44:38 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 14:44:39 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 14:45:29 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 14:45:30 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 14:45:35 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 03-10-2023 14:48:21 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 14:48:22 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 14:48:30 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 03-10-2023 15:46:13 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 15:46:13 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 15:46:23 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 03-10-2023 15:49:36 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 15:49:38 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 15:50:03 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 15:50:04 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 15:50:37 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 03-10-2023 15:53:16 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 15:53:17 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 03-10-2023 15:53:28 [JavaFX Application Thread] HomeController:62 - Login as huy with role User
+[INFO ] 03-10-2023 15:55:22 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 15:55:23 [JavaFX Application Thread] HomeController:62 - Login as huy with role User
+[INFO ] 03-10-2023 22:41:03 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 22:41:04 [JavaFX Application Thread] HomeController:62 - Login as huy with role User
+[INFO ] 03-10-2023 22:41:36 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 22:41:52 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 03-10-2023 22:44:39 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 22:44:40 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 22:44:56 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 22:45:07 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 03-10-2023 22:46:36 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 22:46:37 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 22:46:46 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[ERROR] 03-10-2023 22:46:46 [JavaFX Application Thread] FileNoiThatExplorerController:72 - com.fasterxml.jackson.databind.JsonMappingException: Invalid UTF-8 middle byte 0x64
+ at [Source: (FileInputStream); line: 1, column: 49] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["tenCongTy"])
+[INFO ] 03-10-2023 22:58:06 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 22:58:08 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 22:59:16 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:00:02 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:00:40 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:00:49 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:01:12 [JavaFX Application Thread] ExportFile:90 - Exporting to XLSX file
+[INFO ] 03-10-2023 23:05:41 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:05:43 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:05:57 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:07:15 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:07:17 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:07:22 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:12:38 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:12:39 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:12:43 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:13:36 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:13:37 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:13:41 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:14:05 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:14:06 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:14:11 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:16:40 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:16:41 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:16:46 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:17:55 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:17:56 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:18:00 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:18:29 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:18:30 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:18:35 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:19:10 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:19:11 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:19:33 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:21:06 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:21:07 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:21:11 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:22:02 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:22:03 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:22:11 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:23:19 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:23:20 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:23:36 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:23:38 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:23:43 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:26:08 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:26:09 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:26:17 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:27:01 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:27:02 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:27:06 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:34:07 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:34:08 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:34:12 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:34:47 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:34:48 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:34:53 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:35:47 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:36:13 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:36:15 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:36:20 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[ERROR] 03-10-2023 23:36:28 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 03-10-2023 23:36:29 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 03-10-2023 23:36:29 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 03-10-2023 23:36:30 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 03-10-2023 23:36:30 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 03-10-2023 23:36:30 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 03-10-2023 23:36:31 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[INFO ] 03-10-2023 23:37:37 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:37:38 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:37:42 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[ERROR] 03-10-2023 23:37:46 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTableColumn.getText()" because "col" is null
+[INFO ] 03-10-2023 23:38:46 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:38:47 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:38:51 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:40:53 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:47:51 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:47:53 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:47:59 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:51:40 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:51:43 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:51:50 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:52:19 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:52:20 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:52:24 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 03-10-2023 23:58:08 [main] HelloApplication:33 - Start application
+[INFO ] 03-10-2023 23:58:11 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 03-10-2023 23:58:16 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:05:18 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:05:19 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:05:24 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:06:12 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:06:13 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:06:17 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:07:30 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:07:32 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:07:37 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:09:02 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:09:05 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:09:29 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:18:30 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:18:31 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:18:37 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:22:24 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:22:25 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:22:30 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:23:17 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:23:18 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:23:22 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:28:11 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:28:12 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:28:16 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:31:56 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:31:57 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:32:02 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:34:56 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:34:56 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:35:07 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[ERROR] 04-10-2023 00:35:12 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: current thread is not owner
+[INFO ] 04-10-2023 00:36:30 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:36:31 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:36:35 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:40:41 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:40:43 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:40:47 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:42:31 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:42:32 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[ERROR] 04-10-2023 00:42:37 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "com.huy.appnoithat.Controller.FileNoiThatExplorer.RecentFile.getDirectory()" because "recentFile" is null
+[INFO ] 04-10-2023 00:42:53 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:42:56 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:43:27 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:43:28 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:43:32 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:44:24 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:44:25 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[ERROR] 04-10-2023 00:44:34 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "com.huy.appnoithat.Controller.FileNoiThatExplorer.RecentFile.getDirectory()" because "recentFile" is null
+[INFO ] 04-10-2023 00:45:09 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:45:11 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:45:15 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:47:43 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:47:44 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:47:49 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:50:51 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:50:53 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:50:57 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:53:08 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:53:09 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:53:14 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 00:58:46 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 00:58:47 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 00:58:51 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
+[INFO ] 04-10-2023 23:49:59 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 23:50:01 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 04-10-2023 23:50:18 [JavaFX Application Thread] ImportOperation:46 - Import file: file.nt
+[ERROR] 04-10-2023 23:50:18 [JavaFX Application Thread] FileNoiThatExplorerController:75 - Illegal base64 character 7b
+[INFO ] 04-10-2023 23:50:31 [JavaFX Application Thread] ImportOperation:46 - Import file: test4.nt
+[ERROR] 04-10-2023 23:50:31 [JavaFX Application Thread] FileNoiThatExplorerController:75 - Illegal base64 character 7b
+[INFO ] 04-10-2023 23:50:37 [JavaFX Application Thread] ImportOperation:46 - Import file: test3.nt
+[ERROR] 04-10-2023 23:50:37 [JavaFX Application Thread] FileNoiThatExplorerController:75 - Illegal base64 character 7b
+[INFO ] 04-10-2023 23:55:15 [main] HelloApplication:33 - Start application
+[INFO ] 04-10-2023 23:55:16 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 05-10-2023 00:01:30 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 00:01:31 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 05-10-2023 00:02:59 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 00:03:00 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 05-10-2023 00:05:29 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 00:05:30 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 05-10-2023 00:06:51 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 00:06:52 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 05-10-2023 00:09:00 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 00:09:02 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 05-10-2023 00:09:45 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 00:09:46 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 05-10-2023 00:24:50 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 00:24:53 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 05-10-2023 00:29:38 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 00:29:39 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 05-10-2023 00:35:51 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 00:35:53 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
+[INFO ] 05-10-2023 00:36:25 [JavaFX Application Thread] HomeController:62 - Login as huy with role User
+[INFO ] 05-10-2023 00:37:45 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 05-10-2023 00:52:35 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 05-10-2023 00:55:44 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 05-10-2023 00:56:20 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 00:56:41 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 05-10-2023 00:56:41 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 05-10-2023 01:03:10 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 01:03:12 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 05-10-2023 01:03:30 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 01:03:33 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[ERROR] 05-10-2023 01:03:40 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 05-10-2023 01:04:44 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 01:04:46 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 05-10-2023 01:06:20 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 01:06:21 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[ERROR] 05-10-2023 01:06:33 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "com.huy.appnoithat.Controller.UserManagement.DataModel.AccountTable.setUsername(String)" because the return value of "javafx.scene.control.TableView$TableViewSelectionModel.getSelectedItem()" is null
+[INFO ] 05-10-2023 01:07:31 [main] HelloApplication:33 - Start application
+[INFO ] 05-10-2023 01:07:33 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 06-10-2023 00:21:07 [main] HelloApplication:33 - Start application
+[INFO ] 06-10-2023 00:21:08 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin

@@ -19,18 +19,18 @@
                         <Label layoutX="50.0" layoutY="243.0" prefHeight="16.0" prefWidth="93.0" text="Địa chỉ" />
                         <Label layoutX="50.0" layoutY="303.0" text="Số điện thoại" />
                         <TextField fx:id="txtUsername" layoutX="189.0" layoutY="34.0" prefHeight="24.0" prefWidth="203.0" />
+                        <TextField fx:id="txtPassword" layoutX="189.0" layoutY="84.0" prefHeight="24.0" prefWidth="203.0" />
                         <TextField fx:id="txtName" layoutX="189.0" layoutY="133.0" prefHeight="24.0" prefWidth="203.0" />
                         <TextField fx:id="txtEmail" layoutX="189.0" layoutY="180.0" prefHeight="24.0" prefWidth="203.0" />
                         <TextField fx:id="txtAddress" layoutX="189.0" layoutY="239.0" prefHeight="24.0" prefWidth="203.0" />
                         <TextField fx:id="txtPhone" layoutX="189.0" layoutY="299.0" prefHeight="24.0" prefWidth="203.0" />
-                        <Button fx:id="btnSave" layoutX="333.0" layoutY="453.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="63.0" text="Save" />
-                        <Button fx:id="btnCancel" layoutX="181.0" layoutY="453.0" mnemonicParsing="false" text="Cancel" />
-                        <TextField fx:id="txtPassword" layoutX="189.0" layoutY="84.0" prefHeight="24.0" prefWidth="203.0" />
+                        <ComboBox fx:id="txtGender" editable="true" layoutX="188.0" layoutY="345.0" prefHeight="24.0" prefWidth="206.0" />
+                        <ComboBox fx:id="txtTime" editable="true" layoutX="188.0" layoutY="405.0" prefHeight="24.0" prefWidth="206.0" />
+                        <Button fx:id="btnSave" layoutX="189.0" layoutY="453.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="63.0" text="Save" />
+                        <Button fx:id="btnCancel" layoutX="333.0" layoutY="453.0" mnemonicParsing="false" text="Cancel" />
                         <Label layoutX="50.0" layoutY="88.0" text="Mật khẩu" />
                         <Label layoutX="50.0" layoutY="409.0" text="Thời gian hết hạn" />
-                        <ComboBox fx:id="txtTime" editable="true" layoutX="188.0" layoutY="405.0" prefHeight="24.0" prefWidth="206.0" />
                         <Label layoutX="50.0" layoutY="357.0" text="Giới tính" />
-                        <ComboBox fx:id="txtGender" editable="true" layoutX="188.0" layoutY="345.0" prefHeight="24.0" prefWidth="206.0" />
                     </children>
                 </AnchorPane>
             </children>

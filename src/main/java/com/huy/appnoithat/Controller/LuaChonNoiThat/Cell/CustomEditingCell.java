@@ -1,6 +1,8 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
-import com.huy.appnoithat.Shared.Utils;
+import com.huy.appnoithat.Common.KeyboardUtils;
+import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Enums.Action;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeTableCell;
@@ -8,8 +10,9 @@ import javafx.scene.control.TreeTableRow;
 
 public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, String> {
     private TextField textField;
-
-    public CustomEditingCell() {
+    boolean isSttCell = false;
+    public CustomEditingCell(boolean isSttCell) {
+        this.isSttCell = isSttCell;
     }
 
     @Override
@@ -53,6 +56,9 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
         }
         TreeTableRow<BangNoiThat> currentRow = getTableRow();
         if (!isEmpty()) {
+            if (!isSttCell) {
+                return;
+            }
             if (Utils.isNumeric(getItem())) {
                 currentRow.setStyle("-fx-font-weight: normal");
                 return;
@@ -69,13 +75,21 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
     }
 
     private void createTextField() {
-
+        if (textField != null) {
+            return;
+        }
         textField = new TextField(getString());
         textField.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
         textField.setOnAction((e) -> commitEdit(textField.getText()));
         textField.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
             if (!newValue) {
                 commitEdit(textField.getText());
+            }
+        });
+        textField.setOnKeyPressed((key) -> {
+            if (KeyboardUtils.isRightKeyCombo(Action.SAVE, key)) {
+                commitEdit(textField.getText());
+                updateItem(textField.getText(), false);
             }
         });
     }
