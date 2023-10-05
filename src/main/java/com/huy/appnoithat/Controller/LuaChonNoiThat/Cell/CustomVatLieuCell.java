@@ -11,19 +11,24 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;
     private final ObservableList<String> items;
     private final TreeTableView<BangNoiThat> TableNoiThat;
+
     public CustomVatLieuCell(ObservableList<String> items, TreeTableView<BangNoiThat> TableNoiThat) {
         this.items = items;
         this.TableNoiThat = TableNoiThat;
     }
+
     @Override
     public void startEdit() {
-        if (!TableUtils.isEditable(TableNoiThat)){
+        if (comboBox == null) {
+            createComboBox();
+        }
+        if (!TableUtils.isEditable(TableNoiThat)) {
             return;
         }
         if (!isEmpty()) {
             super.startEdit();
-            createComboBox();
             setGraphic(comboBox);
+            comboBox.show();
         }
     }
 
@@ -57,13 +62,14 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
     private void createComboBox() {
         comboBox = new ComboBox<>(items);
         comboBox.valueProperty().set(super.getItem());
-        comboBox.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
+        comboBox.setMinWidth(this.getWidth());
         comboBox.setOnAction((e) -> {
-            if (comboBox.getSelectionModel().getSelectedItem() != null){
-//                System.out.println("Commiting combo box");
+            if (comboBox.getSelectionModel().getSelectedItem() != null) {
                 super.commitEdit(comboBox.getSelectionModel().getSelectedItem());
                 updateItem(comboBox.getSelectionModel().getSelectedItem(), false);
             }
         });
+//        comboBox.getStyleClass().add("combo-border");
+//        comboBox.setEditable(true);
     }
 }

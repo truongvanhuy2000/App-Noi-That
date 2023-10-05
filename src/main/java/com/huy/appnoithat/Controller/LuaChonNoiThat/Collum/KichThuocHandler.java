@@ -1,12 +1,16 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.TableUtils;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 public class KichThuocHandler {
+//    final static Logger LOGGER = LogManager.getLogger(KichThuocHandler.class);
     private TreeTableView<BangNoiThat> TableNoiThat;
     private TreeTableColumn<BangNoiThat, Float> Cao, Dai, Rong;
 
@@ -23,14 +27,14 @@ public class KichThuocHandler {
         Rong = rong;
     }
 
-    public void onCommitEditKichThuoc(TreeTableColumn.CellEditEvent<BangNoiThat, Float> event){
-        if (event.getSource().equals(Cao)){
+    public void onCommitEditKichThuoc(TreeTableColumn.CellEditEvent<BangNoiThat, Float> event) {
+        if (event.getSource().equals(Cao)) {
             event.getRowValue().getValue().setCao(event.getNewValue());
         }
-        if (event.getSource().equals(Dai)){
+        if (event.getSource().equals(Dai)) {
             event.getRowValue().getValue().setDai(event.getNewValue());
         }
-        if (event.getSource().equals(Rong)){
+        if (event.getSource().equals(Rong)) {
             event.getRowValue().getValue().setRong(event.getNewValue());
         }
         float dai = event.getRowValue().getValue().getDai().getValue();
@@ -38,8 +42,10 @@ public class KichThuocHandler {
         float cao = event.getRowValue().getValue().getCao().getValue();
         String donvi = event.getRowValue().getValue().getDonVi().getValue();
         float khoiluong = TableUtils.calculateKhoiLuong(dai, rong, cao, donvi);
+        System.out.println(khoiluong);
         Long dongia = event.getRowValue().getValue().getDonGia().getValue();
         long thanhTien = TableUtils.calculateThanhTien(khoiluong, dongia);
+        System.out.println(thanhTien);
         event.getRowValue().getValue().setKhoiLuong(khoiluong);
         event.getRowValue().getValue().setThanhTien(thanhTien);
 

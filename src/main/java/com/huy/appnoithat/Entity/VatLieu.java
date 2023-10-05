@@ -16,6 +16,7 @@ public class VatLieu implements CommonItemInterface {
     private String name;
     @JsonProperty("thongSo")
     ThongSo thongSo;
+
     @Override
     public String toString() {
         return this.name;

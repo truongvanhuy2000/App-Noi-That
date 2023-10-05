@@ -1,11 +1,12 @@
-package com.huy.appnoithat.Service.FileExport.Excel;
+package com.huy.appnoithat.Service.FileExport.Operation.Excel;
 
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import com.huy.appnoithat.DataModel.ThongTinThanhToan;
-import com.huy.appnoithat.Service.FileExport.ExportFileService;
+import com.huy.appnoithat.Service.FileExport.ExportData.CommonExportData;
+import com.huy.appnoithat.Service.FileExport.ExportFile;
 import com.huy.appnoithat.Shared.Utils;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,32 +21,41 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
-public class ExportXLS implements ExportFileService {
-    final static Logger LOGGER = LogManager.getLogger(ExportFileService.class);
+public class ExportXLS implements ExportFile {
+    final static Logger LOGGER = LogManager.getLogger(ExportFile.class);
     // USED FOR TESTING ONLY
     private static final String DEFAULT_TEMPLATE_PATH = Config.FILE_EXPORT.XLSX_TEMPLATE_DIRECTORY;
     private static final String DEFAULT_OUTPUT_PATH = Config.FILE_EXPORT.XLSX_DEFAULT_OUTPUT_DIRECTORY;
 
     private ThongTinCongTy thongTinCongTy;
     private ThongTinKhachHang thongTinKhachHang;
+    private String noteArea;
     private List<ThongTinNoiThat> thongTinNoiThatList;
     private ThongTinThanhToan thongTinThanhToan;
+    private OutputStream outputFile;
 
     private InputStream inputTemplate;
-    private OutputStream outputFile;
+
     private XSSFWorkbook workbook;
     private XSSFSheet spreadsheet;
-    StylistFactory stylistFactory;
-    public ExportXLS(OutputStream outputFile) {
+    private StylistFactory stylistFactory;
+    public ExportXLS(File outputFile) {
         try {
             this.inputTemplate = new FileInputStream(DEFAULT_TEMPLATE_PATH);
-            this.outputFile = outputFile;
+            if (!outputFile.getAbsolutePath().contains(".xlsx")) {
+                this.outputFile = new FileOutputStream(outputFile.getAbsolutePath() + ".xlsx");
+            }
+            else {
+                this.outputFile = new FileOutputStream(outputFile.getAbsolutePath());
+            }
             initWorkbook();
         } catch (IOException e) {
+            LOGGER.error("Error while init ExportXLS");
             throw new RuntimeException(e);
         }
     }
@@ -55,8 +65,19 @@ public class ExportXLS implements ExportFileService {
             this.outputFile = new FileOutputStream(DEFAULT_OUTPUT_PATH);
             initWorkbook();
         } catch (IOException e) {
+            LOGGER.error("Error while init ExportXLS");
             throw new RuntimeException(e);
         }
+    }
+
+    public void setThongTinNoiThatList(List<ThongTinNoiThat> thongTinNoiThatList) {
+        this.thongTinNoiThatList = new ArrayList<>();
+        thongTinNoiThatList.forEach(item -> {
+            String stt = item.getSTT();
+            if (Utils.RomanNumber.isRoman(stt) || Utils.isNumeric(stt)) {
+                this.thongTinNoiThatList.add(item);
+            }
+        });
     }
 
     private void initWorkbook() throws IOException {
@@ -73,8 +94,28 @@ public class ExportXLS implements ExportFileService {
         exportThongTinKhachHang(this.thongTinKhachHang);
         int rowID = exportNoiThat(this.thongTinNoiThatList);
         exportBangThanhToan(++rowID, this.thongTinThanhToan);
+        exportNoteArea(++rowID, this.noteArea);
         save();
     }
+
+    @Override
+    public void setUpDataForExport(CommonExportData dataForExport) {
+        setThongTinCongTy(dataForExport.getThongTinCongTy());
+        setThongTinKhachHang(dataForExport.getThongTinKhachHang());
+        setThongTinNoiThatList(dataForExport.getThongTinNoiThatList());
+        setThongTinThanhToan(dataForExport.getThongTinThanhToan());
+        setNoteArea(dataForExport.getNoteArea());
+    }
+
+    @Override
+    public void importData() {
+    }
+
+    private void exportNoteArea(int rowId, String noteArea) {
+        Cell cell0 = spreadsheet.getRow(rowId).getCell(0);
+        stylistFactory.CellPresetFactory(cell0, noteArea, 13, Stylist.Preset.BoldText03_TimeNewRoman_VerticalCenter_ThinBorder);
+    }
+
     private void mergeCells(int row, int col, int rowSpan, int colSpan, int howMany) {
         for (int i = 0; i < howMany; i++) {
             spreadsheet.addMergedRegion(new org.apache.poi.ss.util.CellRangeAddress(row + i, row + rowSpan + i, col, col + colSpan));
@@ -204,10 +245,7 @@ public class ExportXLS implements ExportFileService {
     }
 
     private void exportBangThanhToan(int rowId, ThongTinThanhToan thongTinThanhToan) {
-        int mergeColumnRange = 7;
-        int mergeColumnId = 1;
         int mergeRowId = rowId;
-        int mergeRowRange = 0;
 
         int cellId = 0;
 

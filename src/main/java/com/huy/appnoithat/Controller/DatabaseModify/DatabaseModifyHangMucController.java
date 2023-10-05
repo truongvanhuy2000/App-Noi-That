@@ -36,16 +36,19 @@ public class DatabaseModifyHangMucController implements Initializable {
     private final DatabaseModifyVatlieuService databaseModifyVatlieuService;
     private final ObservableList<HangMuc> hangMucObservableList;
     private final ObservableList<VatLieu> vatLieuObservableList;
+
     public DatabaseModifyHangMucController() {
         databaseModifyHangMucService = new com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyHangMucService();
         databaseModifyVatlieuService = new DatabaseModifyVatlieuService();
         vatLieuObservableList = FXCollections.observableArrayList();
         hangMucObservableList = FXCollections.observableArrayList();
     }
+
     @FXML
     void addAction(ActionEvent event) {
         hangMucObservableList.add(new HangMuc(0, "<Thêm mới>", new ArrayList<>()));
     }
+
     @FXML
     void deleteAction(ActionEvent event) {
         HangMuc hangMuc = listViewHangMuc.getSelectionModel().getSelectedItem();
@@ -60,35 +63,36 @@ public class DatabaseModifyHangMucController implements Initializable {
         refreshList();
         refreshChildrenList(0);
     }
+
     @FXML
     void nextAction(ActionEvent event) {
-        if(listViewHangMuc.getSelectionModel().getSelectedItem() == null){
+        if (listViewHangMuc.getSelectionModel().getSelectedItem() == null) {
             return;
         }
         int selectID = listViewHangMuc.getSelectionModel().getSelectedItem().getId();
         Scene scene = null;
         Stage stage = null;
         Object source = event.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
-        if (source == nextButton){
+        stage = (Stage) ((Node) source).getScene().getWindow();
+        if (source == nextButton) {
             scene = DatabaseModifyVatLieuScene.getInstance().getScene();
             DatabaseModifyVatLieuScene.getInstance().getController().init(selectID);
-        }else {
+        } else {
             return;
         }
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     void sceneSwitcher(ActionEvent event) {
         Scene scene = null;
         Stage stage = null;
         Object source = event.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
-        if (source == backButton){
+        stage = (Stage) ((Node) source).getScene().getWindow();
+        if (source == backButton) {
             scene = DatabaseModifyNoiThatScene.getInstance().getScene();
-        }
-        else {
+        } else {
             return;
         }
         stage.setScene(scene);
@@ -114,6 +118,7 @@ public class DatabaseModifyHangMucController implements Initializable {
         hangMucObservableList.clear();
         hangMucObservableList.addAll(hangMucList);
     }
+
     private void refreshChildrenList(int parentID) {
         if (parentID == 0) {
             vatLieuObservableList.clear();
@@ -126,6 +131,7 @@ public class DatabaseModifyHangMucController implements Initializable {
         vatLieuObservableList.clear();
         vatLieuObservableList.addAll(vatLieuList);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listViewHangMuc.setItems(hangMucObservableList);
@@ -136,8 +142,7 @@ public class DatabaseModifyHangMucController implements Initializable {
             item.setName(event.getNewValue().getName());
             if (item.getId() == 0) {
                 databaseModifyHangMucService.addNewHangMuc(item, this.parentID);
-            }
-            else {
+            } else {
                 databaseModifyHangMucService.EditHangMuc(item);
             }
             refreshList();

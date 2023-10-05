@@ -40,13 +40,9 @@ public class HomeController {
 
     @FXML
     private AnchorPane mainPane;
-    @FXML
-    private Label menu;
-    @FXML
-    private Label menuback;
 
     @FXML
-    private AnchorPane slider;
+    private AnchorPane PCPane;
     public HomeController() {
         this.sessionService = new UserSessionService();
     }
@@ -56,38 +52,10 @@ public class HomeController {
         LogoutButton.getScene().getWindow().hide();
         sceneSwitcher(event);
     }
-    TranslateTransition slide = new TranslateTransition();
-    @FXML
-    void ClickedMenu(MouseEvent event) {
-        slider.setTranslateX(-400);
-        slide.setDuration(Duration.seconds(0.4));
-        slide.setNode(slider);
-        slide.setToX(0);
-        slide.play();
-        slider.setTranslateX(-400);
-        slide.setOnFinished((actionEvent -> {
-            menu.setVisible(false);
-            menuback.setVisible(true);
-        }));
-    }
-
-    @FXML
-    void ClickedMenuBack(MouseEvent event) {
-        TranslateTransition slide = new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.4));
-        slide.setNode(slider);
-        slide.setToX(-400);
-        slide.play();
-        slider.setTranslateX(0);
-        slide.setOnFinished((actionEvent -> {
-            menu.setVisible(true);
-            menuback.setVisible(false);
-        }));
-    }
     // Initialize scene
     public void initialize() {
 
-            // Hide all button
+        // Hide all button
         toggleButton(false, false, false);
         // Set username using current session
         String username = sessionService.getLoginAccount().getUsername();
@@ -133,11 +101,19 @@ public class HomeController {
         }
         else if (source == QuanLyNguoiDungButton) {
 //            scene = UserManagementScene.getInstance().getScene();
-            Node root = UserManagementScene.getInstance().getRoot();
-            mainPane.getChildren().add(root);
+            PCPane.setVisible(false);
+            mainPane.setVisible(true);
+            AnchorPane root =(AnchorPane) UserManagementScene.getInstance().getRoot();
+            mainPane.getChildren().addAll(root.getChildren());
+            return;
         }else if (source == suadoidatabaseButton) {
-            scene = DatabaseModifyPhongCachScene.getInstance().getScene();
-            DatabaseModifyPhongCachScene.getInstance().getController().init();
+//            scene = DatabaseModifyPhongCachScene.getInstance().getScene();
+//            DatabaseModifyPhongCachScene.getInstance().getController().init();
+            mainPane.setVisible(false);
+            PCPane.setVisible(true);
+            AnchorPane root = (AnchorPane)DatabaseModifyPhongCachScene.getInstance().getRoot();
+            PCPane.getChildren().addAll(root.getChildren());
+            return;
         }
         else {
             return;

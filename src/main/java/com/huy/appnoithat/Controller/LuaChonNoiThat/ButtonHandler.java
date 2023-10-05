@@ -14,9 +14,10 @@ public class ButtonHandler {
     public ButtonHandler(TreeTableView<BangNoiThat> tableNoiThat) {
         this.TableNoiThat = tableNoiThat;
     }
+
     public void addNewLine(ActionEvent event) {
 //        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
-        if (TableNoiThat.getRoot() == null){
+        if (TableNoiThat.getRoot() == null) {
             return;
         }
         TableNoiThat.getRoot().getChildren().add(TableUtils.createNewItem("A"));
@@ -35,7 +36,7 @@ public class ButtonHandler {
 //        parent.setExpanded(true);
     }
 
-//    public void continuousLineAdd(ActionEvent event) {
+    //    public void continuousLineAdd(ActionEvent event) {
 //        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
 //            return;
 //        }
@@ -51,46 +52,46 @@ public class ButtonHandler {
 //                nextStt, 0f, 0f, 0f, 0L,
 //                "", "", "", 0L, 0f)));
 //    }
-    public void continuousLineAdd(ActionEvent event){
-        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
+    public void continuousLineAdd(ActionEvent event) {
+        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
             return;
         }
         TreeItem<BangNoiThat> currentSelectedItem = TableNoiThat.getSelectionModel().getSelectedItem();
-        if (currentSelectedItem == null){
+        if (currentSelectedItem == null) {
             return;
         }
         String currentItemStt = currentSelectedItem.getValue().getSTT().getValue();
-        if (Utils.RomanNumber.isRoman(currentItemStt)){
+        if (Utils.RomanNumber.isRoman(currentItemStt)) {
             handleContinuousAddForRomanStt(currentSelectedItem);
             return;
         }
-        if (Utils.isAlpha(currentItemStt)){
+        if (Utils.isAlpha(currentItemStt)) {
             handleContinuousAddForAlphaStt(currentSelectedItem);
             return;
         }
-        if (Utils.isNumeric(currentItemStt)){
+        if (Utils.isNumeric(currentItemStt)) {
             handleContinuousAddForNumericStt();
         }
     }
+
     private void handleContinuousAddForRomanStt(TreeItem<BangNoiThat> currentSelectedItem) {
         if (isReachedLimit(currentSelectedItem)) {
             return;
         }
         if (currentSelectedItem.getChildren().isEmpty()) {
             continuousLineAddForRomanStt(currentSelectedItem);
-        }
-        else {
+        } else {
             createNewSibling(currentSelectedItem);
         }
     }
+
     private void handleContinuousAddForAlphaStt(TreeItem<BangNoiThat> currentSelectedItem) {
         if (isReachedLimit(currentSelectedItem)) {
             return;
         }
         if (currentSelectedItem.getChildren().isEmpty()) {
             continuousLineAddForAlphaStt(currentSelectedItem);
-        }
-        else {
+        } else {
             createNewSibling(currentSelectedItem);
         }
     }
@@ -134,18 +135,20 @@ public class ButtonHandler {
         currentSelectedItem.getChildren().add(tempNewItem);
         selectNewItem(tempNewItem);
     }
-    private void selectNewItem(TreeItem<BangNoiThat> tempNewItem){
-        if (tempNewItem == null){
+
+    private void selectNewItem(TreeItem<BangNoiThat> tempNewItem) {
+        if (tempNewItem == null) {
             return;
         }
         TableNoiThat.getSelectionModel().clearSelection();
         TableNoiThat.getSelectionModel().select(tempNewItem);
     }
+
     public static String findTheNextStt(String stt) {
-        if (stt == null || stt.isEmpty()){
+        if (stt == null || stt.isEmpty()) {
             return "";
         }
-        if (Utils.RomanNumber.isRoman(stt)){
+        if (Utils.RomanNumber.isRoman(stt)) {
             int nextStt = Utils.RomanNumber.romanToInt(stt) + 1;
             return Utils.RomanNumber.toRoman(nextStt);
         }
@@ -153,17 +156,17 @@ public class ButtonHandler {
             char nextLetter = (char) (stt.charAt(0) + 1);
             return String.valueOf(nextLetter);
         }
-        if (Utils.isNumeric(stt)){
+        if (Utils.isNumeric(stt)) {
             return String.valueOf(Integer.parseInt(stt) + 1);
         }
         return "";
     }
 
-    public boolean isReachedLimit(TreeItem<BangNoiThat> root){
-        if (root == null){
+    public boolean isReachedLimit(TreeItem<BangNoiThat> root) {
+        if (root == null) {
             return false;
         }
-        if (root.getChildren().size() >= 30){
+        if (root.getChildren().size() >= 30) {
             PopupUtils.throwErrorSignal("Đã đạt giới hạn số lượng 30");
             return true;
         }
@@ -171,7 +174,7 @@ public class ButtonHandler {
     }
 
     public void onDeleteLine(ActionEvent event) {
-        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()){
+        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
             return;
         }
         ObservableList<TreeItem<BangNoiThat>> selectedList = TableNoiThat.getSelectionModel().getSelectedItems();
@@ -185,7 +188,7 @@ public class ButtonHandler {
                 item.getParent().getChildren().remove(item);
                 selectedList.remove(item);
             }
-            if (index >= selectedList.size()){
+            if (index >= selectedList.size()) {
                 index = 0;
             }
         }
@@ -210,8 +213,9 @@ public class ButtonHandler {
 //        );
         TableNoiThat.getSelectionModel().clearSelection();
     }
-    private void createNewSibling(TreeItem<BangNoiThat> currentItem){
-        if (currentItem == null){
+
+    private void createNewSibling(TreeItem<BangNoiThat> currentItem) {
+        if (currentItem == null) {
             return;
         }
         TreeItem<BangNoiThat> newItem = TableUtils.createNewItem(findTheNextStt(currentItem.getValue().getSTT().getValue()));
@@ -219,7 +223,7 @@ public class ButtonHandler {
             return;
         }
         int currentPos = currentItem.getParent().getChildren().indexOf(currentItem);
-        if (currentPos != -1){
+        if (currentPos != -1) {
             currentItem.getParent().getChildren().add(currentPos + 1, newItem);
         }
         TableUtils.selectSingleItem(TableNoiThat, newItem);

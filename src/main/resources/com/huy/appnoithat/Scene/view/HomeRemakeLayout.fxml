@@ -2,107 +2,91 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="805.0" prefWidth="1182.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.HomeController">
-   <children>
-      <AnchorPane layoutY="7.0" prefHeight="83.0" prefWidth="1182.0" style="-fx-background-color: #002d40;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Text fx:id="UserName" fill="#42bd8b" layoutX="345.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" translateX="244.0" wrappingWidth="168.0" x="2.0" y="3.0">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Text>
-            <Label fx:id="menu" layoutX="14.0" layoutY="11.0" onMouseClicked="#ClickedMenu" text="MENU" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-               <graphic>
-                  <ImageView fx:id="menuIMG" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#ClickedMenu" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/option.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-            <Label fx:id="menuback" layoutX="14.0" layoutY="11.0" onMouseClicked="#ClickedMenuBack" text="MENU" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-               <graphic>
-                  <ImageView fx:id="menuIMG1" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#ClickedMenu" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/option.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-            <Button fx:id="LogoutButton" layoutX="1117.0" layoutY="11.0" mnemonicParsing="false" onAction="#logout" prefHeight="50.0" prefWidth="51.0" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/logout.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label layoutX="438.0" layoutY="26.0" text="WELCOME" textFill="#42bd8b">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="slider" layoutX="-1.0" prefHeight="721.0" prefWidth="307.0" AnchorPane.bottomAnchor="0.0">
-         <children>
-            <VBox layoutX="-2.0" prefHeight="721.0" prefWidth="315.0" spacing="100.0" style="-fx-background-color: #0A4969;" AnchorPane.topAnchor="0.0">
+<AnchorPane prefHeight="837.0" prefWidth="1552.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.HomeController">
+    <children>
+        <AnchorPane layoutX="-1.0" prefHeight="734.0" prefWidth="296.0" styleClass="side_ankerpane" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+            <Pane id="inner_pane" prefHeight="80.0" prefWidth="268.0" translateX="26.0" translateY="30.0">
                <children>
-                  <Button fx:id="QuanLyNguoiDungButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="60.0" prefWidth="320.0" styleClass="menuItem" text="Quản Lý Người Dùng" textFill="WHITE">
-                     <graphic>
-                        <ImageView fx:id="menuIMG11" fitHeight="55.0" fitWidth="53.0" onMouseClicked="#ClickedMenu" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/management.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font></Button>
-                  <Button fx:id="LuaChonNoiThatButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="67.0" prefWidth="315.0" styleClass="menuItem" text="Lựa Chọn Nội Thất" textFill="WHITE">
-                     <graphic>
-                        <ImageView fx:id="menuIMG111" fitHeight="55.0" fitWidth="53.0" onMouseClicked="#ClickedMenu" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/touch.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font></Button>
-                  <Button fx:id="suadoidatabaseButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="67.0" prefWidth="317.0" styleClass="menuItem" text="Sửa Đổi Database" textFill="WHITE">
-                     <graphic>
-                        <ImageView fx:id="menuIMG112" fitHeight="55.0" fitWidth="53.0" onMouseClicked="#ClickedMenu" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/data-transfer_5411331.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font></Button>
+                  <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" x="21.0" y="14.0">
+                     <image>
+                        <Image url="@../icons/man%20(1).png" />
+                     </image>
+                  </ImageView>
+                      <Text fx:id="UserName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" wrappingWidth="179.0" x="80.0" y="47.0">
+                    
+                </Text>
                </children>
-               <padding>
-                  <Insets top="80.0" />
-               </padding>
-            </VBox>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="mainPane" layoutX="312.0" layoutY="83.0" prefHeight="721.0" prefWidth="869.0" />
-   </children>
+            </Pane>
+                <VBox layoutX="-2.0" layoutY="-84.0" prefHeight="805.0" prefWidth="313.0" spacing="55.0" style="-fx-border-radius: 50%;" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Button fx:id="QuanLyNguoiDungButton" alignment="BASELINE_LEFT" graphicTextGap="30.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="60.0" prefWidth="320.0" styleClass="menuItem" text="Quản Lý Người Dùng" textFill="WHITE">
+                            <graphic>
+                                <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icons/house.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                  </Button>
+                        <Button fx:id="LuaChonNoiThatButton" alignment="BASELINE_LEFT" graphicTextGap="30.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="67.0" prefWidth="315.0" styleClass="menuItem" text="Lập báo giá" textFill="WHITE">
+                            <graphic>
+                                <ImageView fitHeight="57.0" fitWidth="53.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" x="13.0">
+                                    <image>
+                                        <Image url="@../icons/chair1.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="Linux Biolinum O Bold" size="20.0" />
+                            </font>
+                  </Button>
+                        <Button fx:id="suadoidatabaseButton" alignment="BASELINE_LEFT" graphicTextGap="30.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="67.0" prefWidth="317.0" styleClass="menuItem" text="Dữ liệu gốc" textFill="WHITE">
+                            <graphic>
+                                <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icons/database.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="Linux Biolinum O Bold" size="20.0" />
+                            </font>
+                  </Button>
+                  <ImageView fx:id="menuIMG113" fitHeight="123.0" fitWidth="101.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" translateX="97.0" translateY="8.0" x="100.0" y="58.0">
+                     <image>
+                        <Image url="@../icons/logoapp.jpg" />
+                     </image>
+                  </ImageView>
+                    </children>
+                    <padding>
+                        <Insets top="290.0" />
+                    </padding>
+                </VBox>
+            <Separator layoutY="204.0" prefHeight="0.0" prefWidth="313.0" />
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="mainPane" layoutX="312.0" layoutY="83.0" prefHeight="721.0" prefWidth="1200.0" />
+      <AnchorPane fx:id="PCPane" layoutX="320.0" layoutY="83.0" prefHeight="721.0" prefWidth="1200.0" />
+        <Button fx:id="LogoutButton" layoutX="1480.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" prefHeight="50.0" prefWidth="51.0" style="-fx-background-color: transparent;">
+         <graphic>
+                <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/logout.png" />
+                    </image>
+                </ImageView>
+         </graphic></Button>
+    </children>
 </AnchorPane>

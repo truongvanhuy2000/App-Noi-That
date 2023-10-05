@@ -5,6 +5,7 @@ import com.huy.appnoithat.Entity.Common.CommonItemInterface;
 import lombok.*;
 
 import java.util.List;
+
 @Data
 @Getter
 @Setter
@@ -18,9 +19,11 @@ public class NoiThat implements CommonItemInterface {
     private String name;
     @JsonProperty("hangMuc")
     List<HangMuc> hangMucList;
+
     public void add(HangMuc hangMuc) {
         hangMucList.add(hangMuc);
     }
+
     @Override
     public String toString() {
         return this.name;

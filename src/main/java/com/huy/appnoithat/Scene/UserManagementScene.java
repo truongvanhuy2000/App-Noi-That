@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -30,6 +29,7 @@ public class UserManagementScene {
         scene = new Scene(root);
         addCssToScence();
     }
+
     public void setRoot(Parent root) {
         this.root = root;
         scene.setRoot(this.root);
@@ -40,6 +40,7 @@ public class UserManagementScene {
         scene.setRoot(this.root);
         addCssToScence();
     }
+
     // Create an object of this class, call this function
     public static synchronized UserManagementScene getInstance() {
         if (single_instance == null)
@@ -47,7 +48,7 @@ public class UserManagementScene {
         return single_instance;
     }
 
-    private void addCssToScence(){
+    private void addCssToScence() {
         String cssPath = "css/UserManagementLayout.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }

@@ -1,7 +1,9 @@
 package com.huy.appnoithat.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
@@ -20,6 +22,7 @@ public class AccountInformation {
     private String address;
     @JsonProperty("phone")
     private String phone;
+
     @Override
     public String toString() {
         return "AccountInformation{" +

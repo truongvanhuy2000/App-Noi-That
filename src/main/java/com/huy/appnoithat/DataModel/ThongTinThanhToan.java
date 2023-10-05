@@ -1,16 +1,25 @@
 package com.huy.appnoithat.DataModel;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Shared.Utils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class ThongTinThanhToan {
+    @JsonProperty("DatCocThietKe10")
     private String DatCocThietKe10;
+    @JsonProperty("DatCocThiCong30")
     private String DatCocThiCong30;
+    @JsonProperty("HangDenChanCongTrinh50")
     private String HangDenChanCongTrinh50;
+    @JsonProperty("NghiemThuQuyet")
     private String NghiemThuQuyet;
+
     public ThongTinThanhToan(BangThanhToan bangThanhToan) {
         DatCocThietKe10 = Utils.convertLongToDecimal(bangThanhToan.getDatCocThietKe10().getValue());
         DatCocThiCong30 = Utils.convertLongToDecimal(bangThanhToan.getDatCocThiCong30().getValue());

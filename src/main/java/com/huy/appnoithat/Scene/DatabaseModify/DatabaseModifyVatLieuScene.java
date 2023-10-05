@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Scene.DatabaseModify;
 
 import com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyVatLieuController;
-import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyVatlieuService;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,12 +8,14 @@ import lombok.Getter;
 
 import java.io.IOException;
 import java.util.Objects;
+
 @Getter
 public class DatabaseModifyVatLieuScene {
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
     private static DatabaseModifyVatLieuScene single_instance = null;
+
     public DatabaseModifyVatLieuScene() {
         String viewPath = "view/DatabaseModifyVatLieuLayout.fxml";
         try {
@@ -45,11 +46,12 @@ public class DatabaseModifyVatLieuScene {
         addCssToScence();
     }
 
-    private void addCssToScence(){
+    private void addCssToScence() {
         String cssPath = "css/DatabaseModifyPhongCach.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }
-    public DatabaseModifyVatLieuController getController(){
+
+    public DatabaseModifyVatLieuController getController() {
         return fxmlLoader.getController();
     }
 }

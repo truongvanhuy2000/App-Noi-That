@@ -18,6 +18,7 @@ public class LoginService {
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     private final UserSessionService sessionService;
+
     public LoginService() {
         this.webClientService = new WebClientServiceImpl();
         this.objectMapper = JsonMapper.builder()
@@ -25,12 +26,13 @@ public class LoginService {
                 .build();
         this.sessionService = new UserSessionService();
     }
+
     public boolean Authorization(String username, String password) {
 
-        Account account = new Account(0, username, password, true, null,null, false, null);
+        Account account = new Account(0, username, password, true, null, null, false, null);
         try {
             String token = webClientService.unauthorizedHttpPostJson("/api/login", objectMapper.writeValueAsString(account));
-            if (token != null){
+            if (token != null) {
                 this.sessionService.setSession(username, token);
                 this.sessionService.saveSessionToDisk();
                 return true;

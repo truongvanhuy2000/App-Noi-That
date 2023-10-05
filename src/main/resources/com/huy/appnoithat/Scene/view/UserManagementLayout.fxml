@@ -11,122 +11,124 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="638.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.UsersManagementController">
-   <children>
-      <Pane layoutX="38.0" layoutY="29.0" prefHeight="128.0" prefWidth="835.0" style="-fx-background-color: #E5E7E9;">
-         <children>
-            <Text layoutX="14.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search username:" textOrigin="TOP" wrappingWidth="199.6826171875">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font></Text>
-            <TextField fx:id="txtSearchUser" layoutX="226.0" layoutY="53.0" prefHeight="28.0" prefWidth="326.0" />
-            <Button id="btnSearchcss" fx:id="btnSearch" layoutX="571.0" layoutY="51.0" mnemonicParsing="false" onAction="#SearchByUserName" prefHeight="30.0" prefWidth="109.0" text="Search">
-               <graphic>
-                  <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/search1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button id="btnAllAccountcss" fx:id="btnAllAccount" layoutX="694.0" layoutY="52.0" mnemonicParsing="false" onAction="#getAllAcount" prefHeight="30.0" prefWidth="136.0" text="All Account">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/check.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </Pane>
-      <Button id="btnAddcss" fx:id="btnAddacount" layoutX="35.0" layoutY="170.0" mnemonicParsing="false" onAction="#AddAccount" prefHeight="30.0" prefWidth="120.0" text="ADD">
-         <graphic>
-            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
-               <image>
-                  <Image url="@../icons/add-button.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="FreeMono Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button id="btnEditcss" fx:id="btnEditAccount" layoutX="177.0" layoutY="170.0" mnemonicParsing="false" onAction="#EditAccount" prefHeight="30.0" prefWidth="120.0" styleClass="green" text="EDIT">
-         <graphic>
-            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/pencil.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="FreeMono Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button id="btnDeletecss" fx:id="btnDeleteAccount" layoutX="310.0" layoutY="170.0" mnemonicParsing="false" onAction="#DeleteAccount" prefHeight="30.0" prefWidth="120.0" text="DELETE">
-         <graphic>
-            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/delete.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="FreeMono Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button id="btnActivecss" fx:id="btnActiveAccount" layoutX="456.0" layoutY="170.0" mnemonicParsing="false" onAction="#ActiveAccount" prefHeight="30.0" prefWidth="120.0" text="ACTIVE">
-         <graphic>
-            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/check-mark.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <TableView fx:id="tableManageUser" layoutX="52.0" layoutY="220.0" onMouseClicked="#tableClickToSelectItem" prefHeight="383.0" prefWidth="789.0">
-         <columns>
-            <TableColumn fx:id="username" prefWidth="219.0" styleClass="column-header" text="Username" />
-            <TableColumn fx:id="password" prefWidth="220.0" styleClass="column-header" text="Password" />
-            <TableColumn fx:id="active" minWidth="0.0" prefWidth="83.0" styleClass="column-header" text="Active" />
-            <TableColumn fx:id="expiredDate" minWidth="0.0" prefWidth="266.0" styleClass="column-header" text="Ngày hết hạn" />
-         </columns>
-      </TableView>
-      <Button id="btnInactivecss" fx:id="btnInactiveAccount" layoutX="605.0" layoutY="170.0" mnemonicParsing="false" onAction="#InActiveAccount" prefHeight="30.0" prefWidth="120.0" text="INACTIVE">
-         <graphic>
-            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/no.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="FreeMono Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button id="btnDuyetcss" fx:id="btnDuyet" layoutX="741.0" layoutY="170.0" mnemonicParsing="false" onAction="#DuyetAccount" prefHeight="30.0" prefWidth="120.0" text="DUYỆT">
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/approval.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="FreeMono Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="backButton" layoutY="15.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="14.0" prefWidth="28.0">
-         <graphic>
-            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
-               <image>
-                  <Image url="@../icons/back.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
-   </children>
+<AnchorPane prefHeight="638.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.UsersManagementController">
+    <children>
+        <Pane layoutX="53.0" layoutY="25.0" prefHeight="132.0" prefWidth="1081.0" style="-fx-background-color: #E5E7E9;">
+            <children>
+                <Text layoutX="56.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tìm kiếm tên đăng nhập :" textOrigin="TOP" wrappingWidth="292.6826171875">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="txtSearchUser" layoutX="339.0" layoutY="52.0" prefHeight="28.0" prefWidth="393.0" />
+                <Button id="btnSearchcss" fx:id="btnSearch" layoutX="752.0" layoutY="51.0" mnemonicParsing="false" onAction="#SearchByUserName" prefHeight="30.0" prefWidth="120.0" text="Tìm">
+                    <graphic>
+                        <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/search1.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button id="btnAllAccountcss" fx:id="btnAllAccount" layoutX="882.0" layoutY="52.0" mnemonicParsing="false" onAction="#getAllAcount" prefHeight="30.0" prefWidth="189.0" text="Toàn bộ Account">
+                    <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/check.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </Pane>
+        <Button id="btnAddcss" fx:id="btnAddacount" layoutX="52.0" layoutY="170.0" mnemonicParsing="false" onAction="#AddAccount" prefHeight="30.0" prefWidth="120.0" text="Thêm">
+            <graphic>
+                <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+                    <image>
+                        <Image url="@../icons/add-button.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="FreeMono Bold" size="13.0" />
+            </font>
+        </Button>
+        <Button id="btnEditcss" fx:id="btnEditAccount" layoutX="244.0" layoutY="170.0" mnemonicParsing="false" onAction="#EditAccount" prefHeight="30.0" prefWidth="120.0" styleClass="green" text="Sửa">
+            <graphic>
+                <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/pencil.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="FreeMono Bold" size="13.0" />
+            </font>
+        </Button>
+        <Button id="btnDeletecss" fx:id="btnDeleteAccount" layoutX="435.0" layoutY="170.0" mnemonicParsing="false" onAction="#DeleteAccount" prefHeight="30.0" prefWidth="120.0" text="Xoá">
+            <graphic>
+                <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/delete.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="FreeMono Bold" size="13.0" />
+            </font>
+        </Button>
+        <Button id="btnActivecss" fx:id="btnActiveAccount" layoutX="609.0" layoutY="170.0" mnemonicParsing="false" onAction="#ActiveAccount" prefHeight="30.0" prefWidth="149.0" text="Cho phép">
+            <graphic>
+                <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/active-user.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Button>
+        <TableView fx:id="tableManageUser" layoutX="52.0" layoutY="218.0" onMouseClicked="#tableClickToSelectItem" prefHeight="385.0" prefWidth="1081.0">
+            <columns>
+                <TableColumn fx:id="username" prefWidth="284.0" styleClass="column-header" text="Tên đăng nhập" />
+                <TableColumn fx:id="password" prefWidth="269.0" styleClass="column-header" text="Mật khẩu" />
+                <TableColumn fx:id="active" minWidth="0.0" prefWidth="156.0" styleClass="column-header" text="Cấp phép" />
+                <TableColumn fx:id="expiredDate" minWidth="0.0" prefWidth="371.0" styleClass="column-header" text="Ngày hết hạn" />
+            </columns>
+        </TableView>
+        <Button id="btnInactivecss" fx:id="btnInactiveAccount" layoutX="806.0" layoutY="170.0" mnemonicParsing="false" onAction="#InActiveAccount" prefHeight="30.0" prefWidth="149.0" text="Xoá phép">
+            <graphic>
+                <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/no.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="FreeMono Bold" size="13.0" />
+            </font>
+        </Button>
+        <Button id="btnDuyetcss" fx:id="btnDuyet" layoutX="1013.0" layoutY="170.0" mnemonicParsing="false" onAction="#DuyetAccount" prefHeight="30.0" prefWidth="120.0" text="DUYỆT">
+            <graphic>
+                <ImageView fitHeight="20.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/approval.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="FreeMono Bold" size="13.0" />
+            </font>
+        </Button>
+        <Button fx:id="backButton" layoutX="6.0" layoutY="25.0" mnemonicParsing="false" onAction="#sceneSwitcher" prefHeight="14.0" prefWidth="28.0" visible="false">
+            <graphic>
+                <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+                    <image>
+                        <Image url="@../icons/back.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+    </children>
 </AnchorPane>

@@ -8,11 +8,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.TransferQueue;
-
 public class LuaChonNoiThatControllerTest extends Application {
     LuaChonNoiThatController luaChonNoiThatController;
     private Thread thread;
+
     @Test
     void initialize() {
         try {
@@ -21,6 +20,7 @@ public class LuaChonNoiThatControllerTest extends Application {
             throw new RuntimeException(e);
         }
     }
+
     @BeforeEach
     void setUp() {
         thread = new Thread("JavaFX Init Thread") {

@@ -9,6 +9,7 @@ import com.huy.appnoithat.Scene.UserManagementAddAccountScene;
 import com.huy.appnoithat.Scene.UserManagementEditorScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
+import com.huy.appnoithat.Shared.PopupUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,15 +26,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class UsersManagementController{
+public class UsersManagementController {
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
@@ -42,13 +44,15 @@ public class UsersManagementController{
         private String username;
         private String password;
         private boolean active;
-        private ImageView activeImage;
+//        private ImageView activeImage;
+        private CheckBox checkboxActive;
         private String expiredDate;
     }
+    final static Logger LOGGER = LogManager.getLogger(UsersManagementController.class);
     @FXML
     private Button backButton;
     @FXML
-    private TableColumn<AccountTable, ImageView> active;
+    private TableColumn<AccountTable, CheckBox> active;
 
     @FXML
     private Button btnActiveAccount;
@@ -87,103 +91,115 @@ public class UsersManagementController{
     @FXML
     private TableColumn<AccountTable, String> username;
 
+    @FXML
+    private TextField txtGiaHan;
+
 
     UsersManagementService user = new UsersManagementService();
 
     @Getter
     List<Account> list = user.findAllAccountEnable();
-    public ImageView convertActiveIcon(boolean checked){
-        ImageView activeIcon;
+
+//    public ImageView convertActiveIcon(boolean checked) {
+//        ImageView activeIcon;
+//        if (checked) {
+//            activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/check-mark.png")));
+//        } else {
+//            activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/cancel.png")));
+//        }
+//        activeIcon.setFitHeight(20);
+//        activeIcon.setFitWidth(20);
+//        return activeIcon;
+//    }
+
+    public CheckBox convertActiveCheckBox(boolean checked){
+        CheckBox checkBox = new CheckBox();
         if(checked){
-             activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/check-mark.png")));
+            checkBox.setSelected(true);
         }else{
-             activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/cancel.png")));
+            checkBox.setSelected(false);
         }
-        activeIcon.setFitHeight(20);
-        activeIcon.setFitWidth(20);
-        return activeIcon;
+        return checkBox;
     }
+
     ObservableList<AccountTable> listUser = FXCollections.observableArrayList(
     );
-
 
 
     UsersManagementService usersManagementService = new UsersManagementService();
 
     UserSessionService userSessionService;
+
     public UsersManagementController() {
         userSessionService = new UserSessionService();
     }
-    public void initialize() throws JsonProcessingException {
-            // 2. convert JSON array to List of objects
-            List<Account> accountList = usersManagementService.findAllAccountEnable();
 
-            for (Account account: accountList
-                 ) {
-                listUser.add(new AccountTable(account.getId(),account.getUsername(), account.getPassword(),account.isActive(),convertActiveIcon(account.isActive()),account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
-            }
-            username.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("username"));
-            password.setCellValueFactory(new PropertyValueFactory<AccountTable,String>("password"));
-            active.setCellValueFactory(new PropertyValueFactory<AccountTable,ImageView>("activeImage"));
-            expiredDate.setCellValueFactory(new PropertyValueFactory<AccountTable,LocalDate>("expiredDate"));
-            tableManageUser.setItems(listUser);
+    public void initialize() throws JsonProcessingException {
+        // 2. convert JSON array to List of objects
+        List<Account> accountList = usersManagementService.findAllAccountEnable();
+
+        for (Account account : accountList
+        ) {
+            listUser.add(new AccountTable(account.getId(), account.getUsername(), account.getPassword(), account.isActive(), convertActiveCheckBox(account.isActive()), account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
+        }
+        username.setCellValueFactory(new PropertyValueFactory<AccountTable, String>("username"));
+        password.setCellValueFactory(new PropertyValueFactory<AccountTable, String>("password"));
+        active.setCellValueFactory(new PropertyValueFactory<AccountTable, CheckBox>("checkboxActive"));
+        expiredDate.setCellValueFactory(new PropertyValueFactory<AccountTable, LocalDate>("expiredDate"));
+        tableManageUser.setItems(listUser);
     }
 
-    void clearData(){
+    void clearData() {
         list.clear();
         tableManageUser.getItems().clear();
     }
 
     @FXML
-    void getAllAcount(ActionEvent event) throws JsonProcessingException{
+    void getAllAcount(ActionEvent event) throws JsonProcessingException {
         listUser.clear();
         initialize();
     }
 
     @FXML
     void SearchByUserName(ActionEvent event) {
-        String username= txtSearchUser.getText();
+        String username = txtSearchUser.getText();
         List<AccountTable> listFilter = seach(username);
         ObservableList<AccountTable> listUser = FXCollections.observableArrayList(listFilter);
         tableManageUser.setItems(listUser);
-
     }
 
 
     @FXML
     void ActiveAccount(ActionEvent event) {
-        if(tableManageUser.getSelectionModel().getSelectedItem() == null){
+        if (tableManageUser.getSelectionModel().getSelectedItem() == null) {
             return;
         }
-        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
-        int activeID = tableManageUser.getItems().get(indexSelector).getId();
-        tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(true));
-        usersManagementService.ActiveAccount(activeID);
-        tableManageUser.refresh();
+//        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
+//        int activeID = tableManageUser.getItems().get(indexSelector).getId();
+//        tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(true));
+//        usersManagementService.ActiveAccount(activeID);
+//        tableManageUser.refresh();
 
     }
 
     @FXML
     void InActiveAccount(ActionEvent event) {
-        if(tableManageUser.getSelectionModel().getSelectedItem() == null){
+        if (tableManageUser.getSelectionModel().getSelectedItem() == null) {
             return;
         }
-        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
-        int inactiveID = tableManageUser.getItems().get(indexSelector).getId();
-        usersManagementService.InActiveAccount(inactiveID);
-        tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(false));
-        tableManageUser.refresh();
+//        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
+//        int inactiveID = tableManageUser.getItems().get(indexSelector).getId();
+//        usersManagementService.InActiveAccount(inactiveID);
+//        tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(false));
+//        tableManageUser.refresh();
     }
 
     @FXML
     void AddAccount(ActionEvent event) {
         try {
-            if(tableManageUser.getSelectionModel().getSelectedItem() == null){
-                return;
-            }
             Stage userManageMentStage = new Stage();
             Scene userManagementAddAccountScene = UserManagementAddAccountScene.getInstance().getScene();
-            ObservableList<String> listActive = FXCollections.observableArrayList("true","false");
+            ObservableList<String> listActive = FXCollections.observableArrayList("true", "false");
             TextField txtusername = (TextField) userManagementAddAccountScene.lookup("#txtaddusername");
             TextField txtpassword = (TextField) userManagementAddAccountScene.lookup("#txtaddpassword");
             ComboBox comboBoxActive = (ComboBox) userManagementAddAccountScene.lookup("#txtaddactive");
@@ -194,22 +210,23 @@ public class UsersManagementController{
 
             btnadd.setOnAction(actionEvent -> {
                 try {
-                    LocalDate localDate = LocalDate.now().plusDays( 30 );
+                    LocalDate localDate = LocalDate.now().plusDays(30);
                     String active = comboBoxActive.getSelectionModel().getSelectedItem().toString();
-                    listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active),convertActiveIcon(true),localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
-                tableManageUser.getItems().clear();
-                tableManageUser.refresh();
-                List<String> roleList = new ArrayList<>();
-                roleList.add("ROLE_USER");
-                // --- REMEMBER TO SUA DATE
-                usersManagementService.addNewAccount(
-                        new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active),new AccountInformation(),roleList,true, localDate));
+                    listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), convertActiveCheckBox(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
+                    tableManageUser.getItems().clear();
+                    tableManageUser.refresh();
+                    List<String> roleList = new ArrayList<>();
+                    roleList.add("ROLE_USER");
+                    // --- REMEMBER TO SUA DATE
+                    usersManagementService.addNewAccount(
+                            new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
 
-                clearData();
-                initialize();
-                userManageMentStage.close();
+                    clearData();
+                    initialize();
+                    userManageMentStage.close();
 
                 } catch (JsonProcessingException e) {
+                    LOGGER.error("Error when add new account", e);
                     throw new RuntimeException(e);
                 }
             });
@@ -220,32 +237,35 @@ public class UsersManagementController{
 
             userManageMentStage.setTitle("ADD NEW USER");
             userManageMentStage.show();
-        }catch (Exception e){
-            System.out.println("co loi dialog pane roi dai ca oi");
+        } catch (Exception e) {
+            LOGGER.error("Error when add new account", e);
+            throw new RuntimeException(e);
         }
 
     }
 
     @FXML
     void DeleteAccount(ActionEvent event) {
-        if(tableManageUser.getSelectionModel().getSelectedItem() == null){
+        if (tableManageUser.getSelectionModel().getSelectedItem() == null) {
             return;
         }
         int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
         int deleteid = tableManageUser.getItems().get(indexSelector).getId();
         Account account = usersManagementService.findAccountById(deleteid);
         System.out.println(account.getRoleList().get(0));
-        if(account.getRoleList().get(0).equals("ROLE_ADMIN")){
-        }else{
+        if (!account.getRoleList().get(0).equals("ROLE_ADMIN")) {
             usersManagementService.deleteAccount(deleteid);
             tableManageUser.getItems().remove(indexSelector);
+        }
+        else {
+            PopupUtils.throwErrorSignal("Không thể xóa tài khoản admin");
         }
     }
 
     @FXML
     void EditAccount(ActionEvent event) {
         try {
-            if(tableManageUser.getSelectionModel().getSelectedItem() == null){
+            if (tableManageUser.getSelectionModel().getSelectedItem() == null) {
                 return;
             }
             int selectIndex = tableManageUser.getSelectionModel().getSelectedIndex();
@@ -258,6 +278,8 @@ public class UsersManagementController{
 //element field of userManagementEditorScene
             TextField txtusername = (TextField) userManagementEditorScene.lookup("#txteditusername");
             TextField txtpassword = (TextField) userManagementEditorScene.lookup("#txteditpassword");
+            TextField txtGiaHan = (TextField) userManagementEditorScene.lookup("#txtGiaHan");
+
             Button btnedit = (Button) userManagementEditorScene.lookup("#btnedit");
             Button btncancel = (Button) userManagementEditorScene.lookup("#btncancel");
 
@@ -278,10 +300,13 @@ public class UsersManagementController{
             btnedit.setOnAction(actionEvent -> {
                 tableManageUser.getSelectionModel().getSelectedItem().setUsername(txtusername.getText());
                 tableManageUser.getSelectionModel().getSelectedItem().setPassword(txtpassword.getText());
+
                 int id = tableManageUser.getItems().get(selectIndex).getId();
                 Account account = usersManagementService.findAccountById(id);
+                LocalDate soThangGiaHanThem = account.getExpiredDate().plusMonths(Integer.parseInt(txtGiaHan.getText()));
                 account.setUsername(txtusername.getText());
                 account.setPassword(txtpassword.getText());
+                account.setExpiredDate(soThangGiaHanThem);
                 usersManagementService.EditAccount(account);
                 tableManageUser.refresh();
                 userManageMentStage.close();
@@ -291,28 +316,30 @@ public class UsersManagementController{
             btncancel.setOnAction(actionEvent -> {
                 userManageMentStage.close();
             });
-        }catch (Exception e){
-            System.out.println("co loi dialog pane roi dai ca oi");
+        } catch (Exception e) {
+            LOGGER.error("Error when EDIT account", e);
+            throw new RuntimeException(e);
         }
     }
 
     @FXML
     void tableClickToSelectItem(MouseEvent event) {
         try {
-            if(tableManageUser.getSelectionModel().getSelectedItem() !=null){
-        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
-        int deleteid = tableManageUser.getItems().get(indexSelector).getId();
-        Account account = usersManagementService.findAccountById(deleteid);
-        if(account.getRoleList().get(0).equals("ROLE_ADMIN")) {
-            btnDeleteAccount.setDisable(true);
-            btnInactiveAccount.setDisable(true);
-        }else{
-            btnDeleteAccount.setDisable(false);
-            btnInactiveAccount.setDisable(false);
-        }
+            if (tableManageUser.getSelectionModel().getSelectedItem() != null) {
+                int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
+                int deleteid = tableManageUser.getItems().get(indexSelector).getId();
+                Account account = usersManagementService.findAccountById(deleteid);
+                if (account.getRoleList().get(0).equals("ROLE_ADMIN")) {
+                    btnDeleteAccount.setDisable(true);
+                    btnInactiveAccount.setDisable(true);
+                } else {
+                    btnDeleteAccount.setDisable(false);
+                    btnInactiveAccount.setDisable(false);
+                }
             }
-        }catch (Exception e){
-            System.out.println("loi roi");
+        } catch (Exception e) {
+            LOGGER.error("Error when click selected item", e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -360,8 +387,8 @@ public class UsersManagementController{
                 listUserNotEnable.add(account);
             }
             usernameColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("username"));
-            passwordColumn.setCellValueFactory(new PropertyValueFactory<Account,String>("password"));
-            sttColumn.setCellValueFactory(new PropertyValueFactory<Account,String>("id"));
+            passwordColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("password"));
+            sttColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("id"));
             tableView.setItems(listUserNotEnable);
 
 
@@ -373,17 +400,18 @@ public class UsersManagementController{
 
             btnApprove.setOnAction(actionEvent -> {
                 try {
-                    if(tableView.getSelectionModel().getSelectedItem()!=null){
+                    if (tableView.getSelectionModel().getSelectedItem() != null) {
                         int enableid = 0;
-                        Account acc =(Account)tableView.getSelectionModel().getSelectedItem();
+                        Account acc = (Account) tableView.getSelectionModel().getSelectedItem();
                         enableid = acc.getId();
                         usersManagementService.enableAccount(enableid);
                         listUser.clear();
                         initialize();
                         userManageMentStage.close();
                     }
-                }catch (Exception e){
-                    System.out.println("loi roi");
+                } catch (Exception e) {
+                    LOGGER.error("Error when duyet account", e);
+                    throw new RuntimeException(e);
                 }
 
                 // You might need additional logic to handle saving or updating data
@@ -391,15 +419,16 @@ public class UsersManagementController{
 
             btnReject.setOnAction(actionEvent -> {
                 try {
-                    if(tableView.getSelectionModel().getSelectedItem()!=null){
+                    if (tableView.getSelectionModel().getSelectedItem() != null) {
                         int rejectid = 0;
-                        Account acc =(Account)tableView.getSelectionModel().getSelectedItem();
+                        Account acc = (Account) tableView.getSelectionModel().getSelectedItem();
                         rejectid = acc.getId();
                         usersManagementService.deleteAccount(rejectid);
                         userManageMentStage.close();
                     }
-                }catch (Exception e){
-                    System.out.println("loi roi");
+                } catch (Exception e) {
+                    LOGGER.error("Error when duyet account", e);
+                    throw new RuntimeException(e);
                 }
 
             });
@@ -407,8 +436,9 @@ public class UsersManagementController{
             btnCancel.setOnAction(actionEvent -> {
                 userManageMentStage.close();
             });
-        }catch (Exception e){
-            System.out.println("co loi dialog pane roi dai ca oi");
+        } catch (Exception e) {
+            LOGGER.error("Error when duyet account", e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -418,17 +448,17 @@ public class UsersManagementController{
                 .collect(Collectors.toList());
         return listFilter;
     }
+
     // Used to switch between scence
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
         Scene scene = null;
         Stage stage = null;
         Object source = actionEvent.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
-        if (source == backButton){
+        stage = (Stage) ((Node) source).getScene().getWindow();
+        if (source == backButton) {
             scene = HomeScene.getInstance().getScene();
-        }
-        else {
+        } else {
             return;
         }
         stage.setScene(scene);

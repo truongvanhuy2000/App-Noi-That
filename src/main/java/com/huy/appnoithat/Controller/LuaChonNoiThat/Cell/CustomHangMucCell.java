@@ -8,17 +8,24 @@ import javafx.scene.control.TreeTableCell;
 public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;
     private final ObservableList<String> items;
+
     public CustomHangMucCell(ObservableList<String> items) {
         this.items = items;
+
     }
+
     @Override
     public void startEdit() {
+        if (comboBox == null) {
+            createComboBox();
+        }
         if (!isEmpty()) {
             super.startEdit();
-            createComboBox();
             setGraphic(comboBox);
+            comboBox.show();
         }
     }
+
     @Override
     public void cancelEdit() {
         super.cancelEdit();
@@ -40,6 +47,7 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
             }
             super.setText(super.getItem());
             setGraphic(comboBox);
+            comboBox.show();
         } else {
             super.setText(super.getItem());
             setGraphic(null);
@@ -49,21 +57,13 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
     private void createComboBox() {
         comboBox = new ComboBox<>(items);
         comboBox.valueProperty().set(super.getItem());
-        comboBox.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
+        comboBox.setMinWidth(this.getWidth());
         comboBox.setOnAction((e) -> {
-            if (comboBox.getSelectionModel().getSelectedItem() != null){
-//                System.out.println("Commiting combo box");
+            if (comboBox.getSelectionModel().getSelectedItem() != null) {
                 super.commitEdit(comboBox.getSelectionModel().getSelectedItem());
                 updateItem(comboBox.getSelectionModel().getSelectedItem(), false);
             }
         });
-//        comboBox.setOnKeyPressed((key) -> {
-//            if (key.getCode().equals(KeyCode.ENTER)) {
-//                System.out.println("Commiting combo box");
-//                commitEdit(comboBox.getSelectionModel().getSelectedItem());
-//                updateItem(comboBox.getSelectionModel().getSelectedItem(), false);
-//            }
-//        });
+        comboBox.getStyleClass().add("combo-border");
     }
-
 }

@@ -38,16 +38,19 @@ public class DatabaseModifyNoiThatController implements Initializable {
     private final DatabaseModifyNoiThatService databaseModifyNoiThatService;
     private final ObservableList<HangMuc> hangMucObservableList;
     private final ObservableList<NoiThat> noiThatObservableList;
+
     public DatabaseModifyNoiThatController() {
         databaseModifyNoiThatService = new DatabaseModifyNoiThatService();
         databaseModifyHangMucService = new DatabaseModifyHangMucService();
         noiThatObservableList = FXCollections.observableArrayList();
         hangMucObservableList = FXCollections.observableArrayList();
     }
+
     @FXML
     void addAction(ActionEvent event) {
         noiThatObservableList.add(new NoiThat(0, "<Thêm mới>", new ArrayList<>()));
     }
+
     @FXML
     void deleteAction(ActionEvent event) {
         NoiThat noiThat = listViewNoiThat.getSelectionModel().getSelectedItem();
@@ -62,35 +65,36 @@ public class DatabaseModifyNoiThatController implements Initializable {
         refreshList();
         refreshChildrenList(0);
     }
+
     @FXML
     void nextAction(ActionEvent event) {
-        if(listViewNoiThat.getSelectionModel().getSelectedItem() == null){
+        if (listViewNoiThat.getSelectionModel().getSelectedItem() == null) {
             return;
         }
         int selectID = listViewNoiThat.getSelectionModel().getSelectedItem().getId();
         Scene scene = null;
         Stage stage = null;
         Object source = event.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
-        if (source == nextButton){
+        stage = (Stage) ((Node) source).getScene().getWindow();
+        if (source == nextButton) {
             scene = DatabaseModifyHangMucScene.getInstance().getScene();
             DatabaseModifyHangMucScene.getInstance().getController().init(selectID);
-        }else {
+        } else {
             return;
         }
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     void sceneSwitcher(ActionEvent event) {
         Scene scene = null;
         Stage stage = null;
         Object source = event.getSource();
-        stage = (Stage) ((Node)source).getScene().getWindow();
-        if (source == backButton){
+        stage = (Stage) ((Node) source).getScene().getWindow();
+        if (source == backButton) {
             scene = DatabaseModifyPhongCachScene.getInstance().getScene();
-        }
-        else {
+        } else {
             return;
         }
         stage.setScene(scene);
@@ -116,6 +120,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
         noiThatObservableList.clear();
         noiThatObservableList.addAll(noiThatList);
     }
+
     private void refreshChildrenList(int parentID) {
         if (parentID == 0) {
             hangMucObservableList.clear();
@@ -128,6 +133,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
         hangMucObservableList.clear();
         hangMucObservableList.addAll(hangMucList);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listViewNoiThat.setItems(noiThatObservableList);
@@ -138,8 +144,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
             item.setName(event.getNewValue().getName());
             if (item.getId() == 0) {
                 databaseModifyNoiThatService.addNewNoiThat(item, this.parentID);
-            }
-            else {
+            } else {
                 databaseModifyNoiThatService.EditNoiThat(item);
             }
             refreshList();

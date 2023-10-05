@@ -1,10 +1,10 @@
 package com.huy.appnoithat.Service.FileExport;
 
-import com.huy.appnoithat.DataModel.ThongTinThanhToan;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
-import com.huy.appnoithat.Service.FileExport.Excel.ExportXLS;
+import com.huy.appnoithat.DataModel.ThongTinThanhToan;
+import com.huy.appnoithat.Service.FileExport.Operation.Excel.ExportXLS;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 
 class ExportXLSTest {
     private ExportXLS exportXLS;
+
     @BeforeEach
     void setUp() {
         ThongTinCongTy thongTinCongTy = null;
@@ -79,6 +80,7 @@ class ExportXLSTest {
         exportXLS.setThongTinNoiThatList(thongTinNoiThatList);
         exportXLS.setThongTinThanhToan(thongTinThanhToan);
     }
+
     @Test
     void testExtractText() {
         String inputText = "- Thùng: nhựa Picomat 17mm chống nước tuyệt đối.\n" +
@@ -107,6 +109,7 @@ class ExportXLSTest {
             System.out.println("End Position: " + end);
         }
     }
+
     @AfterEach
     void tearDown() {
     }

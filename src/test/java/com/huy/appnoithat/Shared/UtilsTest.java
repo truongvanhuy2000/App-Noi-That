@@ -6,8 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UtilsTest {
     @Test
-    void isRoman()
-    {
+    void isRoman() {
         assertTrue(Utils.RomanNumber.isRoman("I"));
         assertTrue(Utils.RomanNumber.isRoman("II"));
         assertTrue(Utils.RomanNumber.isRoman("III"));
@@ -29,7 +28,7 @@ class UtilsTest {
     }
 
     @Test
-    void getIntegerFromRoman(){
+    void getIntegerFromRoman() {
         assertEquals(1, Utils.RomanNumber.romanToInt("I"));
         assertEquals(2, Utils.RomanNumber.romanToInt("II"));
         assertEquals(3, Utils.RomanNumber.romanToInt("III"));

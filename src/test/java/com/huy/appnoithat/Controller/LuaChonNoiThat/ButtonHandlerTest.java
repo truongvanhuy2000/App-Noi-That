@@ -1,10 +1,9 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
-import javafx.scene.control.TreeTableView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ButtonHandlerTest {
     @BeforeEach

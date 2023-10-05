@@ -5,48 +5,35 @@
 <?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<DialogPane prefHeight="580.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <content>
-      <AnchorPane prefHeight="500.0" prefWidth="544.0">
-         <children>
-            <AnchorPane layoutX="-1.0" prefHeight="571.0" prefWidth="571.0">
-               <children>
-                  <ImageView fitHeight="617.0" fitWidth="610.0" opacity="0.58" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-123.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-22.0" AnchorPane.topAnchor="0.0">
-                     <image>
-                        <Image url="@../icons/noi-that-anh-thanh-vinh-nghe-an_00001.jpg" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="36.0" layoutY="107.0" text="Username :" />
-                  <Label layoutX="44.0" layoutY="219.0" text="Name :" />
-                  <Label layoutX="45.0" layoutY="278.0" text="Email :" />
-                  <Label layoutX="42.0" layoutY="325.0" prefHeight="16.0" prefWidth="93.0" text="Address" />
-                  <Label layoutX="37.0" layoutY="381.0" text="PhoneNumber :" />
-                  <TextField fx:id="txtUsername" layoutX="187.0" layoutY="103.0" prefHeight="19.0" prefWidth="247.0" />
-                  <TextField fx:id="txtName" layoutX="189.0" layoutY="215.0" prefHeight="24.0" prefWidth="247.0" />
-                  <TextField fx:id="txtEmail" layoutX="189.0" layoutY="271.0" prefHeight="27.0" prefWidth="249.0" />
-                  <TextField fx:id="txtAddress" layoutX="187.0" layoutY="321.0" prefHeight="22.0" prefWidth="252.0" />
-                  <TextField fx:id="txtPhone" layoutX="187.0" layoutY="372.0" prefHeight="21.0" prefWidth="252.0" />
-                  <Button fx:id="btnSave" layoutX="263.0" layoutY="533.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="63.0" text="Save" />
-                  <Button fx:id="btnCancel" layoutX="376.0" layoutY="533.0" mnemonicParsing="false" text="Cancel" />
-                  <TextField fx:id="txtPassword" layoutX="187.0" layoutY="154.0" prefHeight="25.0" prefWidth="247.0" />
-                  <Label layoutX="38.0" layoutY="159.0" text="Password :" />
-                  <Label layoutX="47.0" layoutY="476.0" text="Time :" />
-                  <ComboBox fx:id="txtTime" editable="true" layoutX="188.0" layoutY="472.0" prefHeight="24.0" prefWidth="251.0" />
-                  <Label layoutX="45.0" layoutY="432.0" text="Gender :" />
-                  <ComboBox fx:id="txtGender" editable="true" layoutX="188.0" layoutY="428.0" prefHeight="18.0" prefWidth="251.0" />
-                  <Label layoutX="202.0" layoutY="28.0" prefHeight="41.0" prefWidth="206.0" text="SIGN UP" textFill="#1b00e8">
-                     <font>
-                        <Font name="DejaVu Sans Bold" size="34.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-   </content>
+<DialogPane prefHeight="532.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <content>
+        <AnchorPane prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <AnchorPane layoutX="-1.0" prefHeight="500.0" prefWidth="665.0">
+                    <children>
+                        <Label layoutX="50.0" layoutY="38.0" text="Tên đăng nhập" />
+                        <Label layoutX="50.0" layoutY="137.0" text="Tên đầy đủ" />
+                        <Label layoutX="50.0" layoutY="184.0" text="Email" />
+                        <Label layoutX="50.0" layoutY="243.0" prefHeight="16.0" prefWidth="93.0" text="Địa chỉ" />
+                        <Label layoutX="50.0" layoutY="303.0" text="Số điện thoại" />
+                        <TextField fx:id="txtUsername" layoutX="189.0" layoutY="34.0" prefHeight="24.0" prefWidth="203.0" />
+                        <TextField fx:id="txtName" layoutX="189.0" layoutY="133.0" prefHeight="24.0" prefWidth="203.0" />
+                        <TextField fx:id="txtEmail" layoutX="189.0" layoutY="180.0" prefHeight="24.0" prefWidth="203.0" />
+                        <TextField fx:id="txtAddress" layoutX="189.0" layoutY="239.0" prefHeight="24.0" prefWidth="203.0" />
+                        <TextField fx:id="txtPhone" layoutX="189.0" layoutY="299.0" prefHeight="24.0" prefWidth="203.0" />
+                        <Button fx:id="btnSave" layoutX="333.0" layoutY="453.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="63.0" text="Save" />
+                        <Button fx:id="btnCancel" layoutX="181.0" layoutY="453.0" mnemonicParsing="false" text="Cancel" />
+                        <TextField fx:id="txtPassword" layoutX="189.0" layoutY="84.0" prefHeight="24.0" prefWidth="203.0" />
+                        <Label layoutX="50.0" layoutY="88.0" text="Mật khẩu" />
+                        <Label layoutX="50.0" layoutY="409.0" text="Thời gian hết hạn" />
+                        <ComboBox fx:id="txtTime" editable="true" layoutX="188.0" layoutY="405.0" prefHeight="24.0" prefWidth="206.0" />
+                        <Label layoutX="50.0" layoutY="357.0" text="Giới tính" />
+                        <ComboBox fx:id="txtGender" editable="true" layoutX="188.0" layoutY="345.0" prefHeight="24.0" prefWidth="206.0" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </content>
 </DialogPane>

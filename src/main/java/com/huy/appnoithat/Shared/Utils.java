@@ -16,21 +16,25 @@ public class Utils {
             return false;
         return name.matches("[a-zA-Z]+");
     }
+
     public static boolean isNumeric(String str) {
         if (str == null)
             return false;
         return str.matches("-?\\d+(\\.\\d+)?");
     }
+
     public static String encodeValue(String value) {
         if (value == null)
             return "";
         return URLEncoder.encode(value, StandardCharsets.UTF_8);
     }
+
     public static String decodeValue(String value) {
         if (value == null)
             return "";
         return URLEncoder.encode(value, StandardCharsets.UTF_8);
     }
+
     public static class RomanNumber {
         public static String toRoman(int number) {
             TreeMap<Integer, String> map = new TreeMap<Integer, String>();
@@ -42,11 +46,11 @@ public class Utils {
             map.put(4, "IV");
             map.put(1, "I");
 
-            int l =  map.floorKey(number);
-            if ( number == l ) {
+            int l = map.floorKey(number);
+            if (number == l) {
                 return map.get(number);
             }
-            return map.get(l) + toRoman(number-l);
+            return map.get(l) + toRoman(number - l);
         }
 
         public static int romanToInt(String s) {
@@ -84,7 +88,8 @@ public class Utils {
             return roman.matches("^(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$");
         }
     }
-    public static List<String> getObjectNameList(List<?> list){
+
+    public static List<String> getObjectNameList(List<?> list) {
         if (list == null)
             new ArrayList<>();
         return list.stream().map(Object::toString).collect(Collectors.toList());

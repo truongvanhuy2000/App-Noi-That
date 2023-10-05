@@ -24,6 +24,7 @@ public class UserManagementAddAccountScene {
         scene = new Scene(root);
         addCssToScence();
     }
+
     public void setRoot(Parent root) {
         this.root = root;
         scene.setRoot(this.root);
@@ -46,7 +47,7 @@ public class UserManagementAddAccountScene {
         return single_instance;
     }
 
-    private void addCssToScence(){
+    private void addCssToScence() {
         String cssPath = "css/UserManagementAddAccount.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }

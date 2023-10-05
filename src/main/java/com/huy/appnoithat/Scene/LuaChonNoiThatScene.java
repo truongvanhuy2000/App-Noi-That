@@ -6,7 +6,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -17,6 +16,7 @@ public class LuaChonNoiThatScene {
     private Scene scene;
     private Parent root;
     private static LuaChonNoiThatScene single_instance = null;
+
     public LuaChonNoiThatScene() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(LuaChonNoiThatScene.class.getResource(viewPath));
@@ -28,22 +28,26 @@ public class LuaChonNoiThatScene {
         scene = new Scene(root);
         addCssToScence();
     }
+
     // Create an object of this class, call this function
     public static synchronized LuaChonNoiThatScene getInstance() {
         if (single_instance == null)
             single_instance = new LuaChonNoiThatScene();
         return single_instance;
     }
+
     public void setRoot(Parent root) {
         this.root = root;
         scene.setRoot(this.root);
     }
+
     public void setScene(Scene scene) {
         this.scene = scene;
         scene.setRoot(this.root);
         addCssToScence();
     }
-    private void addCssToScence(){
+
+    private void addCssToScence() {
         String cssPath = "css/LuaChonNoiThatLayout.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
     }

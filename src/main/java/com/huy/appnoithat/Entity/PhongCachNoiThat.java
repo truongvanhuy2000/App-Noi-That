@@ -2,9 +2,13 @@ package com.huy.appnoithat.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.huy.appnoithat.Entity.Common.CommonItemInterface;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,9 +21,11 @@ public class PhongCachNoiThat implements CommonItemInterface {
     private String name;
     @JsonProperty("noiThat")
     List<NoiThat> noiThatList;
+
     public void add(NoiThat noiThat) {
         noiThatList.add(noiThat);
     }
+
     @Override
     public String toString() {
         return this.name;

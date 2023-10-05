@@ -1,17 +1,16 @@
 package com.huy.appnoithat.Scene;
 
 import com.huy.appnoithat.Controller.HomeController;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.Objects;
+
 @Getter
 public class HomeScene {
     final static Logger LOGGER = LogManager.getLogger(HomeScene.class);
@@ -21,6 +20,7 @@ public class HomeScene {
     private Parent root;
     private final FXMLLoader fxmlLoader;
     private static HomeScene single_instance = null;
+
     public HomeScene() {
         try {
             fxmlLoader = new FXMLLoader(HomeScene.class.getResource(VIEW_PATH));
@@ -51,15 +51,18 @@ public class HomeScene {
         addCssToScene();
     }
 
-    private void addCssToScene(){
+    private void addCssToScene() {
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(CSS_PATH)).toExternalForm());
     }
-    public HomeController getHomeController(){
+
+    public HomeController getHomeController() {
         return fxmlLoader.getController();
     }
+
     public double getHeight() {
         return scene.getHeight();
     }
+
     public double getWidth() {
         return scene.getWidth();
     }

@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,13 +21,16 @@ public class NewTabController implements Initializable {
     private TabPane tabPane;
     @FXML
     void newTabButtonHandler(ActionEvent event) {
-        Tab newtab = createNewTab();
-        if (tabPane.getSelectionModel() != null) {
+        if (tabPane.getSelectionModel().getSelectedItem() != null) {
             Node nodeFromCurrentTab = tabPane.getSelectionModel().getSelectedItem().getContent();
+            Tab newtab = createNewTab();
             duplicateTruongThongTin(nodeFromCurrentTab, newtab.getContent());
+        } else {
+            createNewTab();
         }
     }
-    private Tab createNewTab(){
+
+    private Tab createNewTab() {
         Tab newTab = setUpTab();
         try {
             Node root = LuaChonNoiThatScene.getNewRoot();
@@ -37,11 +41,13 @@ public class NewTabController implements Initializable {
         addNewTabToPane(newTab);
         return newTab;
     }
-    private void addNewTabToPane(Tab newTab){
+
+    private void addNewTabToPane(Tab newTab) {
         tabPane.getTabs().add(newTab);
         tabPane.getSelectionModel().select(newTab);
     }
-    private Tab setUpTab(){
+
+    private Tab setUpTab() {
         Tab newTab = new Tab("Tab mới");
         ContextMenu contextMenu = new ContextMenu();
         MenuItem nhanBanMenuItem = new MenuItem("Nhân bản");
@@ -51,9 +57,11 @@ public class NewTabController implements Initializable {
         newTab.contextMenuProperty().set(contextMenu);
         return newTab;
     }
+
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
     }
+
     private void duplicateTab(ActionEvent action, Tab currentTab) {
         Node nodeFromCurrentTab = currentTab.getContent();
         Tab newTab = setUpTab();
@@ -65,12 +73,14 @@ public class NewTabController implements Initializable {
         }
         addNewTabToPane(newTab);
     }
-    private Node duplicateContent(Node nodeFromCurrentTab, Node nodeFromNewTab){
+
+    private Node duplicateContent(Node nodeFromCurrentTab, Node nodeFromNewTab) {
         duplicateTruongThongTin(nodeFromCurrentTab, nodeFromNewTab);
         duplicateBangNoiThat(nodeFromCurrentTab, nodeFromNewTab);
         duplicateBangThanhToan(nodeFromCurrentTab, nodeFromNewTab);
         return nodeFromNewTab;
     }
+
     private void duplicateTruongThongTin(Node nodeFromCurrentTab, Node nodeFromNewTab) {
         TextField TenCongTy = (TextField) nodeFromCurrentTab.lookup("#TenCongTy");
         TextField VanPhong = (TextField) nodeFromCurrentTab.lookup("#VanPhong");
@@ -82,6 +92,8 @@ public class NewTabController implements Initializable {
         TextField DiaChiKhachHang = (TextField) nodeFromCurrentTab.lookup("#DiaChiKhachHang");
         TextField SanPham = (TextField) nodeFromCurrentTab.lookup("#SanPham");
         ImageView imageView = (ImageView) nodeFromCurrentTab.lookup("#ImageView");
+
+        TextArea noteTextArea = (TextArea) nodeFromCurrentTab.lookup("#noteTextArea");
 
         TextField DuplicateTenCongTy = (TextField) nodeFromNewTab.lookup("#TenCongTy");
         DuplicateTenCongTy.setText(TenCongTy.getText());
@@ -103,18 +115,24 @@ public class NewTabController implements Initializable {
         DuplicateSanPham.setText(SanPham.getText());
         ImageView DuplicateImageView = (ImageView) nodeFromNewTab.lookup("#ImageView");
         DuplicateImageView.setImage(imageView.getImage());
+
+        TextArea DuplicateNoteTextArea = (TextArea) nodeFromNewTab.lookup("#noteTextArea");
+        DuplicateNoteTextArea.setText(noteTextArea.getText());
     }
-    private void duplicateBangNoiThat(Node nodeFromCurrentTab, Node nodeFromNewTab){
+
+    private void duplicateBangNoiThat(Node nodeFromCurrentTab, Node nodeFromNewTab) {
         TreeTableView<BangNoiThat> bangNoiThat = (TreeTableView<BangNoiThat>) nodeFromCurrentTab.lookup("#TableNoiThat");
         TreeTableView<BangNoiThat> DuplicateBangNoiThat = (TreeTableView<BangNoiThat>) nodeFromNewTab.lookup("#TableNoiThat");
         DuplicateBangNoiThat.setRoot(deepcopy(bangNoiThat.getRoot()));
     }
-    private void duplicateBangThanhToan(Node nodeFromCurrentTab, Node nodeFromNewTab){
+
+    private void duplicateBangThanhToan(Node nodeFromCurrentTab, Node nodeFromNewTab) {
         TableView<BangThanhToan> bangThanhToan = (TableView<BangThanhToan>) nodeFromCurrentTab.lookup("#bangThanhToan");
         TableView<BangThanhToan> DuplicateBangThanhToan = (TableView<BangThanhToan>) nodeFromNewTab.lookup("#bangThanhToan");
         DuplicateBangThanhToan.getItems().clear();
         DuplicateBangThanhToan.getItems().addAll(bangThanhToan.getItems());
     }
+
     private TreeItem<BangNoiThat> deepcopy(TreeItem<BangNoiThat> item) {
         TreeItem<BangNoiThat> copy = createNewItem(item.getValue());
         for (TreeItem<BangNoiThat> child : item.getChildren()) {
@@ -122,6 +140,7 @@ public class NewTabController implements Initializable {
         }
         return copy;
     }
+
     private TreeItem<BangNoiThat> createNewItem(BangNoiThat item) {
         TreeItem<BangNoiThat> newItem = new TreeItem<>(item);
         newItem.setExpanded(true);
@@ -129,9 +148,11 @@ public class NewTabController implements Initializable {
                 (EventHandler<TreeItem.TreeModificationEvent<String>>) event -> event.getTreeItem().setExpanded(true));
         return newItem;
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
+
     public void init() {
         tabPane.getTabs().clear();
         createNewTab();

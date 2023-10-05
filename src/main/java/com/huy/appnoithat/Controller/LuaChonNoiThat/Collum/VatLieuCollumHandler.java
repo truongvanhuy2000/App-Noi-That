@@ -21,24 +21,28 @@ public class VatLieuCollumHandler {
     private final ObservableList<String> vatLieuList;
     private final LuaChonNoiThatService luaChonNoiThatService;
     HashMap<String, ThongSo> vatLieuThongSoHashMap = new HashMap<>();
+
     public VatLieuCollumHandler(ObservableList<String> vatLieuList) {
         this.vatLieuList = vatLieuList;
         luaChonNoiThatService = new LuaChonNoiThatService();
     }
-    public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param){
+
+    public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param) {
         return new CustomVatLieuCell(vatLieuList, param.getTreeTableView());
     }
-    public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param){
-        if (param.getValue() == null){
+
+    public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {
+        if (param.getValue() == null) {
             return null;
         }
         return param.getValue().getValue().getVatLieu();
     }
+
     public void onEditCommitVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         String vatLieu = event.getNewValue();
         event.getRowValue().getValue().setVatLieu(vatLieu);
         ThongSo coresspondingThongSo = vatLieuThongSoHashMap.get(vatLieu);
-        if (coresspondingThongSo == null){
+        if (coresspondingThongSo == null) {
             return;
         }
         Float dai = Objects.requireNonNullElse(coresspondingThongSo.getDai(), 0f);
@@ -61,17 +65,18 @@ public class VatLieuCollumHandler {
 
 //        event.getTreeTableView().getSelectionModel().clearSelection();
     }
+
     public void onStartEditVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         List<String> items;
-        if (!TableUtils.isALlowedToEdit(event)){
+        if (!TableUtils.isALlowedToEdit(event)) {
             return;
         }
         String hangMuc = currentItem.getValue().getHangMuc().getValue();
         String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
         String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
         List<VatLieu> vatLieus = luaChonNoiThatService.findVatLieuListByParentsName(phongCach, noiThat, hangMuc);
-        if (vatLieus == null){
+        if (vatLieus == null) {
             return;
         }
         vatLieus.forEach(vatLieu -> {

@@ -7,20 +7,22 @@ import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseModifyVatlieuService {
-
+    final static Logger LOGGER = LogManager.getLogger(DatabaseModifyVatlieuService.class);
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     private String token;
 
     private final UserSessionService sessionService;
 
-    public DatabaseModifyVatlieuService(){
+    public DatabaseModifyVatlieuService() {
         sessionService = new UserSessionService();
         webClientService = new WebClientServiceImpl();
         objectMapper = JsonMapper.builder()
@@ -28,15 +30,15 @@ public class DatabaseModifyVatlieuService {
                 .build();
     }
 
-    public List<VatLieu> findVatLieuByID(int id){
+    public List<VatLieu> findVatLieuByID(int id) {
         List<VatLieu> tempVatLieuList = new ArrayList<>();
         token = this.sessionService.getToken();
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/vatlieu/searchByHangMuc/"+id, token);
+        String response2 = this.webClientService.authorizedHttpGetJson("/api/vatlieu/searchByHangMuc/" + id, token);
         try {
             // 2. convert JSON array to List of objects
             List<VatLieu> vatLieuList = objectMapper.readValue(response2, objectMapper.getTypeFactory()
                     .constructCollectionType(List.class, VatLieu.class));
-            for (VatLieu vatLieu: vatLieuList) {
+            for (VatLieu vatLieu : vatLieuList) {
                 VatLieu vatLieu1 = new VatLieu();
                 vatLieu1.setId(vatLieu.getId());
                 vatLieu1.setName(vatLieu.getName());
@@ -44,31 +46,34 @@ public class DatabaseModifyVatlieuService {
                 tempVatLieuList.add(vatLieu1);
             }
         } catch (IOException e) {
+            LOGGER.error("Error when finding vat lieu");
             throw new RuntimeException(e);
         }
         return tempVatLieuList;
     }
 
-    public void addNewVatLieu(VatLieu vatLieu,int parentID){
+    public void addNewVatLieu(VatLieu vatLieu, int parentID) {
         token = this.sessionService.getToken();
         try {
-            this.webClientService.authorizedHttpPostJson("/api/vatlieu?parentId="+parentID,  objectMapper.writeValueAsString(vatLieu),token);
+            this.webClientService.authorizedHttpPostJson("/api/vatlieu?parentId=" + parentID, objectMapper.writeValueAsString(vatLieu), token);
         } catch (IOException e) {
+            LOGGER.error("Error when adding new VatLieu");
             throw new RuntimeException(e);
         }
     }
 
-    public void EditVatLieu(VatLieu vatLieu){
+    public void EditVatLieu(VatLieu vatLieu) {
         token = this.sessionService.getToken();
         try {
-            this.webClientService.authorizedHttpPutJson("/api/vatlieu",  objectMapper.writeValueAsString(vatLieu),token);
+            this.webClientService.authorizedHttpPutJson("/api/vatlieu", objectMapper.writeValueAsString(vatLieu), token);
         } catch (IOException e) {
+            LOGGER.error("Error when editing VatLieu");
             throw new RuntimeException(e);
         }
     }
 
-    public void deleteVatLieu(int id){
+    public void deleteVatLieu(int id) {
         token = this.sessionService.getToken();
-        this.webClientService.authorizedHttpDeleteJson("/api/vatlieu/"+id,  "",token);
+        this.webClientService.authorizedHttpDeleteJson("/api/vatlieu/" + id, "", token);
     }
 }

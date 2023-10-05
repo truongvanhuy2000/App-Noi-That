@@ -13,63 +13,64 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.LoginController">
     <children>
         <AnchorPane layoutX="-3.0" prefHeight="610.0" prefWidth="461.0">
-         <children>
-            <AnchorPane prefHeight="693.0" prefWidth="462.0" style="-fx-background-color: black;" />
-            <ImageView fitHeight="693.0" fitWidth="594.0" layoutX="-1.0" opacity="0.37" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/loginimage.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="118.0" fitWidth="171.0" layoutX="145.0" layoutY="56.0" opacity="0.83" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/app-noi-that-low-resolution-color-logo.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="145.0" layoutY="198.0" prefHeight="30.0" prefWidth="227.0" text="App Nội Thất" textFill="#fffbfb">
-               <font>
-                  <Font name="System Bold Italic" size="24.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
-        <AnchorPane layoutX="458.0" prefHeight="693.0" prefWidth="550.0" style="-fx-background-color: #180131;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <TextField fx:id="usernameTextField" layoutX="94.0" layoutY="202.0" opacity="0.5" prefHeight="41.0" prefWidth="338.0" promptText="USERNAME" style="-fx-background-color: transparent; -fx-border-color: none; -fx-text-fill: white;">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </TextField>
-                <Label layoutX="194.0" layoutY="67.0" prefHeight="41.0" prefWidth="206.0" text="SIGN IN" textFill="#1b00e8">
-               <font>
-                  <Font name="DejaVu Sans Bold" size="34.0" />
-               </font>
-            </Label>
-            <PasswordField fx:id="passwordField" layoutX="94.0" layoutY="347.0" opacity="0.5" prefHeight="41.0" prefWidth="338.0" promptText="PASSWORD" style="-fx-background-color: transparent; -fx-border-color: none; -fx-text-fill: white;">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </PasswordField>
-            <Button fx:id="LoginButton" layoutX="94.0" layoutY="471.0" mnemonicParsing="false" onAction="#login" prefHeight="41.0" prefWidth="338.0" style="-fx-background-color: #BC7FF7;" text="LOGIN" textFill="WHITE">
-               <font>
-                  <Font name="Abyssinica SIL" size="20.0" />
-               </font>
-            </Button>
-            <Separator layoutX="94.0" layoutY="254.0" prefHeight="2.0" prefWidth="338.0" />
-            <Separator layoutX="94.0" layoutY="408.0" prefHeight="2.0" prefWidth="338.0" />
-            <Label layoutX="94.0" layoutY="159.0" text="Username" textFill="#1b00e8">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="89.0" layoutY="299.0" text="Password" textFill="#1b00e8">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="142.0" layoutY="627.0" lineSpacing="1.0" onMouseClicked="#registerAccount" prefHeight="30.0" prefWidth="216.0" text="Create new Account ?" textFill="#1736bcdb" underline="true">
-               <font>
-                  <Font name="System Italic" size="17.0" />
-               </font>
-            </Label>
+                <AnchorPane prefHeight="693.0" prefWidth="462.0" style="-fx-background-color: black;" />
+                <ImageView fitHeight="693.0" fitWidth="594.0" layoutX="-1.0" opacity="0.37" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/loginimage.jpg" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="118.0" fitWidth="171.0" layoutX="156.0" layoutY="104.0" opacity="0.83" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/logoapp.jpg" />
+                    </image>
+                </ImageView>
+                <Label layoutX="111.0" layoutY="593.0" prefHeight="49.0" prefWidth="260.0" text="LẬP BÁO GIÁ" textFill="#fffbfb">
+                    <font>
+                        <Font name="System Bold Italic" size="30.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="458.0" prefHeight="693.0" prefWidth="550.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <TextField fx:id="usernameTextField" layoutX="94.0" layoutY="202.0" opacity="0.5" prefHeight="41.0" prefWidth="338.0" promptText="USERNAME" style="-fx-background-color: transparent; -fx-border-color: none; -fx-text-fill: black;">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="178.0" layoutY="62.0" prefHeight="41.0" prefWidth="260.0" text="ĐĂNG NHẬP" textFill="#1b00e8">
+                    <font>
+                        <Font name="DejaVu Sans Bold" size="34.0" />
+                    </font>
+                </Label>
+                <PasswordField fx:id="passwordField" layoutX="94.0" layoutY="347.0" opacity="0.5" prefHeight="41.0" prefWidth="338.0" promptText="PASSWORD" style="-fx-background-color: transparent; -fx-border-color: none; -fx-text-fill: black;">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </PasswordField>
+                <Button fx:id="LoginButton" layoutX="94.0" layoutY="471.0" mnemonicParsing="false" onAction="#login" prefHeight="41.0" prefWidth="338.0" style="-fx-background-color: #BC7FF7;" text="ĐĂNG NHẬP" textFill="WHITE">
+                    <font>
+                        <Font name="Abyssinica SIL" size="20.0" />
+                    </font>
+                </Button>
+                <Separator layoutX="94.0" layoutY="254.0" prefHeight="2.0" prefWidth="338.0" />
+                <Separator layoutX="94.0" layoutY="408.0" prefHeight="2.0" prefWidth="338.0" />
+                <Label layoutX="94.0" layoutY="159.0" text="Tên đăng nhập :" textFill="#1b00e8">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="89.0" layoutY="299.0" text="Mật khẩu :" textFill="#1b00e8">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="187.0" layoutY="620.0" lineSpacing="1.0" onMouseClicked="#registerAccount" prefHeight="30.0" prefWidth="243.0" text="TẠO TÀI KHOẢN MỚI" textFill="#1736bcdb" underline="true">
+                    <font>
+                        <Font name="System Italic" size="17.0" />
+                    </font>
+                </Label>
             </children>
         </AnchorPane>
     </children>
