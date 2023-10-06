@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
@@ -27,6 +28,11 @@ public class HomeController {
     private Button suadoidatabaseButton;
     @FXML
     private Text UserName;
+    @FXML
+    private AnchorPane PCPane;
+
+    @FXML
+    private AnchorPane mainPane;
     private final UserSessionService sessionService;
 
     public HomeController() {
@@ -83,11 +89,21 @@ public class HomeController {
             FileNoiThatExplorerScene.getInstance().getController().init();
         }
         else if (source == QuanLyNguoiDungButton) {
-            scene = UserManagementScene.getInstance().getScene();
-            UserManagementScene.getInstance().getController().initialize();
+//            scene = UserManagementScene.getInstance().getScene();
+//            UserManagementScene.getInstance().getController().initialize();
+            PCPane.setVisible(false);
+            mainPane.setVisible(true);
+            AnchorPane root =(AnchorPane) UserManagementScene.getInstance().getRoot();
+            mainPane.getChildren().addAll(root.getChildren());
+            return;
         }else if (source == suadoidatabaseButton) {
-            scene = DatabaseModifyPhongCachScene.getInstance().getScene();
-            DatabaseModifyPhongCachScene.getInstance().getController().init();
+//            scene = DatabaseModifyPhongCachScene.getInstance().getScene();
+//            DatabaseModifyPhongCachScene.getInstance().getController().init();
+            mainPane.setVisible(false);
+            PCPane.setVisible(true);
+            AnchorPane root = (AnchorPane)DatabaseModifyPhongCachScene.getInstance().getRoot();
+            PCPane.getChildren().addAll(root.getChildren());
+            return;
         }
         else {
             return;

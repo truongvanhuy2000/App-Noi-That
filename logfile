@@ -952,3 +952,25 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 05-10-2023 01:07:33 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
 [INFO ] 06-10-2023 00:21:07 [main] HelloApplication:33 - Start application
 [INFO ] 06-10-2023 00:21:08 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 06-10-2023 15:35:32 [main] HelloApplication:33 - Start application
+[INFO ] 06-10-2023 15:35:37 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 06-10-2023 15:35:37 [JavaFX Application Thread] HomeController:62 - Login as admin with role Admin
+[INFO ] 06-10-2023 15:43:07 [main] HelloApplication:33 - Start application
+[INFO ] 06-10-2023 15:43:08 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 06-10-2023 15:47:03 [main] HelloApplication:33 - Start application
+[INFO ] 06-10-2023 15:47:04 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 06-10-2023 15:47:44 [main] HelloApplication:33 - Start application
+[INFO ] 06-10-2023 15:47:45 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 06-10-2023 15:48:15 [main] HelloApplication:33 - Start application
+[INFO ] 06-10-2023 15:48:16 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 06-10-2023 15:48:57 [main] HelloApplication:33 - Start application
+[INFO ] 06-10-2023 15:48:58 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 06-10-2023 15:50:14 [main] HelloApplication:33 - Start application
+[INFO ] 06-10-2023 15:50:15 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 06-10-2023 15:50:31 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 06-10-2023 15:50:47 [main] HelloApplication:33 - Start application
+[INFO ] 06-10-2023 15:50:48 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 06-10-2023 15:51:31 [main] HelloApplication:33 - Start application
+[INFO ] 06-10-2023 15:51:32 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 06-10-2023 15:51:47 [main] HelloApplication:33 - Start application
+[INFO ] 06-10-2023 15:51:47 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
