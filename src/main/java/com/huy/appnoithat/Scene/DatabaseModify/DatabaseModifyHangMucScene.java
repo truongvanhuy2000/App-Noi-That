@@ -14,25 +14,21 @@ public class DatabaseModifyHangMucScene {
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
-    private static DatabaseModifyHangMucScene single_instance = null;
-
+    @Getter
+    private static DatabaseModifyHangMucController controller;
     public DatabaseModifyHangMucScene() {
         String viewPath = "view/DatabaseModifyHangMucLayout.fxml";
         try {
             fxmlLoader = new FXMLLoader(DatabaseModifyHangMucScene.class.getResource(viewPath));
+            if (controller == null)
+                controller = new DatabaseModifyHangMucController();
+            fxmlLoader.setController(controller);
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         scene = new Scene(root);
         addCssToScence();
-    }
-
-    // Create an object of this class, call this function
-    public static synchronized DatabaseModifyHangMucScene getInstance() {
-        if (single_instance == null)
-            single_instance = new DatabaseModifyHangMucScene();
-        return single_instance;
     }
 
     public void setRoot(Parent root) {
@@ -49,9 +45,5 @@ public class DatabaseModifyHangMucScene {
     private void addCssToScence() {
         String cssPath = "css/DatabaseModifyPhongCach.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
-    }
-
-    public DatabaseModifyHangMucController getController() {
-        return fxmlLoader.getController();
     }
 }

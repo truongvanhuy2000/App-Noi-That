@@ -1,10 +1,14 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
+import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.VatLieu;
+import com.huy.appnoithat.Enums.Action;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyVatLieuScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyHangMucService;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyVatlieuService;
@@ -14,11 +18,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import lombok.Setter;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,17 +37,20 @@ import java.util.ResourceBundle;
 
 public class DatabaseModifyHangMucController implements Initializable {
     @FXML
+    private Label Title;
+    @FXML
     private Button addButton, backButton, deleteButton, nextButton;
     @FXML
     private ListView<VatLieu> childrenList;
     @FXML
-    private ListView<HangMuc> listViewHangMuc;
+    private ListView<HangMuc> listView;
     private int parentID;
     private final DatabaseModifyHangMucService databaseModifyHangMucService;
     private final DatabaseModifyVatlieuService databaseModifyVatlieuService;
     private final ObservableList<HangMuc> hangMucObservableList;
     private final ObservableList<VatLieu> vatLieuObservableList;
-
+    @Setter
+    private Parent root;
     public DatabaseModifyHangMucController() {
         databaseModifyHangMucService = new com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyHangMucService();
         databaseModifyVatlieuService = new DatabaseModifyVatlieuService();
@@ -54,7 +67,7 @@ public class DatabaseModifyHangMucController implements Initializable {
 
     @FXML
     void deleteAction(ActionEvent event) {
-        HangMuc hangMuc = listViewHangMuc.getSelectionModel().getSelectedItem();
+        HangMuc hangMuc = listView.getSelectionModel().getSelectedItem();
         if (hangMuc == null) {
             return;
         }
@@ -69,46 +82,33 @@ public class DatabaseModifyHangMucController implements Initializable {
 
     @FXML
     void nextAction(ActionEvent event) {
-        if (listViewHangMuc.getSelectionModel().getSelectedItem() == null) {
+        if (listView.getSelectionModel().getSelectedItem() == null) {
             return;
         }
-        int selectID = listViewHangMuc.getSelectionModel().getSelectedItem().getId();
-        Scene scene = null;
-        Stage stage = null;
-        Object source = event.getSource();
-        stage = (Stage) ((Node) source).getScene().getWindow();
-        if (source == nextButton) {
-            scene = DatabaseModifyVatLieuScene.getInstance().getScene();
-            DatabaseModifyVatLieuScene.getInstance().getController().init(selectID);
-        } else {
-            return;
-        }
-        stage.setScene(scene);
-        stage.show();
+        int selectID = listView.getSelectionModel().getSelectedItem().getId();
+        DatabaseModifyVatLieuScene databaseModifyVatLieuScene = new DatabaseModifyVatLieuScene();
+        HBox hBox = (HBox) ((AnchorPane)databaseModifyVatLieuScene.getRoot()).getChildren().get(0);
+
+        ((AnchorPane)this.root).getChildren().clear();
+        ((AnchorPane)this.root).getChildren().add(hBox);
+        DatabaseModifyVatLieuScene.getController().init(selectID);
+        DatabaseModifyVatLieuScene.getController().setRoot(this.root);
     }
 
     @FXML
     void sceneSwitcher(ActionEvent event) {
-        Scene scene = null;
-        Stage stage = null;
         Object source = event.getSource();
-        stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == backButton) {
-            scene = DatabaseModifyNoiThatScene.getInstance().getScene();
-            DatabaseModifyNoiThatScene.getInstance().getController().refresh();
-        } else {
-            return;
+            DatabaseModifyNoiThatScene databaseModifyNoiThatScene = new DatabaseModifyNoiThatScene();
+            HBox hBox = (HBox) ((AnchorPane)databaseModifyNoiThatScene.getRoot()).getChildren().get(0);
+            ((AnchorPane)this.root).getChildren().clear();
+            ((AnchorPane)this.root).getChildren().add(hBox);
+            DatabaseModifyNoiThatScene.getController().refresh();
+            DatabaseModifyNoiThatScene.getController().setRoot(this.root);
         }
-        stage.setScene(scene);
-        stage.show();
     }
-
-    @FXML
-    void tableClickToSelectItem(MouseEvent event) {
-
-    }
-
     public void init(int parentID) {
+        System.out.println(parentID);
         this.parentID = parentID;
         refreshList();
         refreshChildrenList(0);
@@ -116,7 +116,7 @@ public class DatabaseModifyHangMucController implements Initializable {
     public void refresh() {
         refreshList();
         refreshChildrenList(0);
-        listViewHangMuc.getSelectionModel().clearSelection();
+        listView.getSelectionModel().clearSelection();
     }
 
     private void refreshList() {
@@ -143,10 +143,11 @@ public class DatabaseModifyHangMucController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listViewHangMuc.setItems(hangMucObservableList);
-        listViewHangMuc.setEditable(true);
-        listViewHangMuc.setCellFactory(param -> new CustomEditingListCell<>());
-        listViewHangMuc.setOnEditCommit(event -> {
+        Title.setText("Danh sách hạng mục");
+        listView.setItems(hangMucObservableList);
+        listView.setEditable(true);
+        listView.setCellFactory(param -> new CustomEditingListCell<>());
+        listView.setOnEditCommit(event -> {
             HangMuc item = event.getNewValue();
             item.setName(DBModifyUtils.getNotDuplicateName(item.getName(), hangMucObservableList));
             if (item.getId() == 0) {
@@ -156,9 +157,9 @@ public class DatabaseModifyHangMucController implements Initializable {
             }
             refreshList();
         });
-        listViewHangMuc.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                HangMuc noiThat = listViewHangMuc.getSelectionModel().getSelectedItem();
+                HangMuc noiThat = listView.getSelectionModel().getSelectedItem();
                 if (noiThat == null) {
                     return;
                 }
@@ -168,6 +169,18 @@ public class DatabaseModifyHangMucController implements Initializable {
         childrenList.setEditable(false);
         childrenList.setCellFactory(param -> new CustomEditingListCell<>());
         childrenList.setItems(vatLieuObservableList);
+    }
+    @FXML
+    void onKeyPressed(KeyEvent event) {
+        if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {
+            addButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
+            deleteButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
+            nextButton.fire();
+        }
     }
 }
 

@@ -14,25 +14,22 @@ public class DatabaseModifyNoiThatScene {
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
-    private static DatabaseModifyNoiThatScene single_instance = null;
-
+    @Getter
+    private static DatabaseModifyNoiThatController controller;
     public DatabaseModifyNoiThatScene() {
         String viewPath = "view/DatabaseModifyNoiThatLayout.fxml";
         try {
             fxmlLoader = new FXMLLoader(DatabaseModifyNoiThatScene.class.getResource(viewPath));
+            if (controller == null) {
+                controller = new DatabaseModifyNoiThatController();
+            }
+            fxmlLoader.setController(controller);
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         scene = new Scene(root);
         addCssToScence();
-    }
-
-    // Create an object of this class, call this function
-    public static synchronized DatabaseModifyNoiThatScene getInstance() {
-        if (single_instance == null)
-            single_instance = new DatabaseModifyNoiThatScene();
-        return single_instance;
     }
 
     public void setRoot(Parent root) {
@@ -49,9 +46,5 @@ public class DatabaseModifyNoiThatScene {
     private void addCssToScence() {
         String cssPath = "css/DatabaseModifyPhongCach.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
-    }
-
-    public DatabaseModifyNoiThatController getController() {
-        return fxmlLoader.getController();
     }
 }

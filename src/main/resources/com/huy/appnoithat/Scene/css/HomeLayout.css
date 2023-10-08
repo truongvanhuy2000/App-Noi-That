@@ -33,8 +33,8 @@
 .menuItem{
     -fx-background-color:  #152259;
     -fx-border-width: 2px 2px 2px 2px;
-    -fx-border-radius: 50px;
-    -fx-background-radius: 50px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
     -fx-border-style: solid;
     -fx-border-color: rgba(20, 19, 19, 0.41);
 }
@@ -43,7 +43,6 @@
     -fx-border-width: 0px 0px 0px 10px;
     -fx-border-color: WHITE;
     -fx-font-family: 'Roboto Condensed', sans-serif;
-
 }
 
 #inner_pane{
@@ -59,8 +58,157 @@
 .side_ankerpane{
     -fx-background-color: #152259;
     -fx-border-width: 2px 2px 2px 2px;
-    -fx-border-radius: 20px;
-    -fx-background-radius: 20px;
+    /*-fx-border-radius: 20px;*/
+    /*-fx-background-radius: 20px;*/
     -fx-border-style: solid;
     -fx-font-family: 'Roboto Condensed', sans-serif;
+}
+
+.table-view {
+    -fx-background-color: transparent;
+}
+
+.table-view:focused {
+    -fx-background-color: transparent;
+}
+
+/* Spaltenköpfe
+    Struktur column-header-background -> column-header */
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(#131313 0%, #424141 100%);
+}
+
+.table-view .column-header-background .label {
+    -fx-background-color: #37314a;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #180131;
+    -fx-alignment: center;
+}
+
+.table-row-cell {
+    -fx-background-color: -fx-table-cell-border-color, #ffffff;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd {
+    -fx-background-color: -fx-table-cell-border-color, #f6f6f6;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #81CCFF;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+/*  style classes for button */
+#btnAddcss {
+    -fx-background-color: #0487D9;
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+    -fx-text-fill: #ffff;
+}
+
+#btnEditcss {
+    -fx-background-color: #0487D9;
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+    -fx-text-fill: #ffff;
+}
+
+#btnDeletecss {
+    -fx-background-color: #0487D9;
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+    -fx-text-fill: #ffff;
+}
+
+#btnActivecss {
+    -fx-background-color: #0487D9;
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+    -fx-text-fill: #ffff;
+}
+
+#btnInactivecss {
+    -fx-background-color: #0487D9;
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+    -fx-text-fill: #ffff;
+}
+
+#btnDuyetcss {
+    -fx-background-color: #0487D9;
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+    -fx-text-fill: #ffff;
+}
+
+#btnSearchcss, #btnAllAccountcss {
+    -fx-background-color: #0487D9;
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+    -fx-text-fill: #ffff;
+}
+
+/*  style classes for button */
+
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background,
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
+    -fx-background-color: transparent;
+}
+
+
+.table-view > .virtual-flow > .scroll-bar > .increment-button,
+.table-view > .virtual-flow > .scroll-bar > .decrement-button {
+    -fx-opacity: 0;
+}
+
+*
+
+
+
+.list-view .list-cell:odd {
+    -fx-background-color: white;
+}
+
+.list-view .list-cell:even {
+    -fx-background-color: #e3e3e3;
+}
+
+.list-view .list-cell:selected:odd,
+.list-view .list-cell:selected:even {
+    -fx-background-color: -fx-background;
+}
+
+.windows7-default {
+    -fx-background-color: #3c7fb1,
+    linear-gradient(#fafdfe, #e8f5fc),
+    linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%);
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 3, 2, 1;
+    -fx-padding: 3 30 3 30;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
 }

@@ -974,3 +974,293 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 06-10-2023 15:51:32 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
 [INFO ] 06-10-2023 15:51:47 [main] HelloApplication:33 - Start application
 [INFO ] 06-10-2023 15:51:47 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 07-10-2023 00:24:06 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 00:24:08 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 07-10-2023 00:24:38 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 00:24:41 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 07-10-2023 00:25:05 [JavaFX Application Thread] HomeController:68 - Login as user with role User
+[INFO ] 07-10-2023 00:25:41 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 07-10-2023 00:34:12 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 00:34:15 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 07-10-2023 00:38:31 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 00:38:32 [JavaFX Application Thread] HomeController:67 - Login as admin with role Admin
+[INFO ] 07-10-2023 00:38:51 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 00:38:54 [JavaFX Application Thread] HomeController:67 - Login as admin with role Admin
+[INFO ] 07-10-2023 00:39:23 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 00:39:25 [JavaFX Application Thread] HomeController:67 - Login as admin with role Admin
+[INFO ] 07-10-2023 00:39:53 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 00:39:54 [JavaFX Application Thread] HomeController:67 - Login as admin with role Admin
+[INFO ] 07-10-2023 00:40:29 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 00:40:30 [JavaFX Application Thread] HomeController:67 - Login as admin with role Admin
+[INFO ] 07-10-2023 00:41:20 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 00:41:22 [JavaFX Application Thread] HomeController:67 - Login as admin with role Admin
+[INFO ] 07-10-2023 00:44:47 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 00:44:49 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 07-10-2023 00:46:57 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 00:46:58 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 07-10-2023 01:02:27 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 01:02:29 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 07-10-2023 01:05:03 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 01:05:06 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 07-10-2023 10:51:24 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 10:51:25 [JavaFX Application Thread] HomeController:69 - Login as admin with role Admin
+[INFO ] 07-10-2023 10:53:44 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 10:53:45 [JavaFX Application Thread] HomeController:69 - Login as admin with role Admin
+[INFO ] 07-10-2023 10:54:03 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 10:54:05 [JavaFX Application Thread] HomeController:69 - Login as admin with role Admin
+[INFO ] 07-10-2023 10:54:28 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 10:54:29 [JavaFX Application Thread] HomeController:69 - Login as admin with role Admin
+[INFO ] 07-10-2023 10:54:50 [JavaFX Application Thread] HomeController:69 - Login as kim with role User
+[INFO ] 07-10-2023 10:55:28 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 10:55:30 [JavaFX Application Thread] HomeController:69 - Login as kim with role User
+[INFO ] 07-10-2023 16:01:44 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 16:01:52 [JavaFX Application Thread] HomeController:69 - Login as admin with role Admin
+[INFO ] 07-10-2023 16:01:52 [JavaFX Application Thread] HomeController:69 - Login as admin with role Admin
+[INFO ] 07-10-2023 16:03:51 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 16:03:53 [JavaFX Application Thread] HomeController:69 - Login as admin with role Admin
+[INFO ] 07-10-2023 16:08:29 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 16:08:31 [JavaFX Application Thread] HomeController:70 - Login as admin with role Admin
+[INFO ] 07-10-2023 16:10:46 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 16:10:47 [JavaFX Application Thread] HomeController:70 - Login as admin with role Admin
+[INFO ] 07-10-2023 16:13:29 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 16:13:31 [JavaFX Application Thread] HomeController:70 - Login as admin with role Admin
+[INFO ] 07-10-2023 16:14:30 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 16:14:31 [JavaFX Application Thread] HomeController:70 - Login as admin with role Admin
+[INFO ] 07-10-2023 16:15:04 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 16:15:05 [JavaFX Application Thread] HomeController:70 - Login as admin with role Admin
+[INFO ] 07-10-2023 16:15:47 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 16:15:49 [JavaFX Application Thread] HomeController:70 - Login as admin with role Admin
+[INFO ] 07-10-2023 16:21:04 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 16:21:05 [JavaFX Application Thread] HomeController:70 - Login as admin with role Admin
+[INFO ] 07-10-2023 20:22:48 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 20:22:50 [JavaFX Application Thread] HomeController:70 - Login as admin with role Admin
+[INFO ] 07-10-2023 20:25:02 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 20:25:03 [JavaFX Application Thread] HomeController:70 - Login as admin with role Admin
+[INFO ] 07-10-2023 20:28:14 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 20:28:16 [JavaFX Application Thread] HomeController:70 - Login as admin with role Admin
+[INFO ] 07-10-2023 20:29:24 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 20:29:26 [JavaFX Application Thread] HomeController:70 - Login as admin with role Admin
+[INFO ] 07-10-2023 20:29:50 [JavaFX Application Thread] HomeController:70 - Login as kim with role User
+[INFO ] 07-10-2023 20:30:43 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 20:30:45 [JavaFX Application Thread] HomeController:70 - Login as kim with role User
+[INFO ] 07-10-2023 21:03:54 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 21:03:55 [JavaFX Application Thread] HomeController:70 - Login as kim with role User
+[INFO ] 07-10-2023 21:04:46 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 21:04:48 [JavaFX Application Thread] HomeController:70 - Login as kim with role User
+[INFO ] 07-10-2023 21:06:47 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 21:06:48 [JavaFX Application Thread] HomeController:71 - Login as kim with role User
+[INFO ] 07-10-2023 21:07:03 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 21:07:05 [JavaFX Application Thread] HomeController:71 - Login as kim with role User
+[INFO ] 07-10-2023 21:08:14 [main] HelloApplication:33 - Start application
+[ERROR] 07-10-2023 21:08:19 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[ERROR] 07-10-2023 21:08:34 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 07-10-2023 21:16:47 [main] HelloApplication:33 - Start application
+[ERROR] 07-10-2023 21:16:54 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 07-10-2023 21:18:05 [main] HelloApplication:33 - Start application
+[ERROR] 07-10-2023 21:18:16 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 07-10-2023 21:18:37 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 21:24:32 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 21:31:40 [main] HelloApplication:33 - Start application
+[ERROR] 07-10-2023 21:31:50 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 07-10-2023 21:32:17 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 21:33:22 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 21:33:59 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 21:34:39 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 21:35:15 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 21:37:12 [main] HelloApplication:33 - Start application
+[ERROR] 07-10-2023 21:37:21 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 07-10-2023 21:46:09 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 21:46:18 [main] HelloApplication:33 - Start application
+[ERROR] 07-10-2023 21:46:32 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 07-10-2023 21:50:48 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 21:53:24 [main] HelloApplication:33 - Start application
+[ERROR] 07-10-2023 21:54:02 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 07-10-2023 21:54:48 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 21:57:07 [main] HelloApplication:33 - Start application
+[ERROR] 07-10-2023 21:57:15 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 07-10-2023 21:58:03 [main] HelloApplication:33 - Start application
+[ERROR] 07-10-2023 21:58:09 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 07-10-2023 21:59:49 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 22:00:17 [main] HelloApplication:33 - Start application
+[ERROR] 07-10-2023 22:00:26 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 07-10-2023 22:02:49 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 22:05:36 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 22:06:21 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 22:07:05 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 22:07:24 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 22:10:47 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 22:10:49 [JavaFX Application Thread] HomeController:69 - Login as admin with role Admin
+[INFO ] 07-10-2023 22:12:18 [main] HelloApplication:33 - Start application
+[ERROR] 07-10-2023 22:12:20 [JavaFX Application Thread] HomeScene:29 - Error loading HomeScene: 
+/home/huy/Project/Java/AppNoiThat/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/HomeRemakeLayout.fxml
+
+[INFO ] 07-10-2023 22:13:16 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 22:13:19 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 07-10-2023 22:13:47 [main] HelloApplication:33 - Start application
+[ERROR] 07-10-2023 22:13:49 [JavaFX Application Thread] HomeScene:29 - Error loading HomeScene: 
+/home/huy/Project/Java/AppNoiThat/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/HomeRemakeLayout.fxml
+
+[INFO ] 07-10-2023 22:14:52 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 22:14:55 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 07-10-2023 22:20:00 [main] HelloApplication:33 - Start application
+[ERROR] 07-10-2023 22:20:01 [JavaFX Application Thread] HomeScene:29 - Error loading HomeScene: 
+/home/huy/Project/Java/AppNoiThat/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/HomeRemakeLayout.fxml:14
+
+[INFO ] 07-10-2023 22:56:23 [main] HelloApplication:33 - Start application
+[ERROR] 07-10-2023 22:56:24 [JavaFX Application Thread] HomeScene:29 - Error loading HomeScene: 
+/home/huy/Project/Java/AppNoiThat/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/HomeRemakeLayout.fxml:14
+
+[INFO ] 07-10-2023 22:57:29 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 22:57:32 [JavaFX Application Thread] HomeController:73 - Login as admin with role Admin
+[INFO ] 07-10-2023 22:59:01 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 22:59:04 [JavaFX Application Thread] HomeController:73 - Login as admin with role Admin
+[INFO ] 07-10-2023 23:01:21 [JavaFX Application Thread] HomeController:73 - Login as kim with role User
+[INFO ] 07-10-2023 23:02:35 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:02:37 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 07-10-2023 23:03:33 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:03:35 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 07-10-2023 23:04:28 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:04:30 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 07-10-2023 23:07:45 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:07:48 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 07-10-2023 23:08:57 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:08:59 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 07-10-2023 23:10:10 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:10:13 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 07-10-2023 23:11:09 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:11:12 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 07-10-2023 23:12:26 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:12:28 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 07-10-2023 23:13:00 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:13:02 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 07-10-2023 23:13:30 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:13:33 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 07-10-2023 23:14:17 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:14:19 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 07-10-2023 23:36:56 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:36:58 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[ERROR] 07-10-2023 23:37:03 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: javafx.fxml.LoadException: Error resolving onAction='#addAction', either the event handler is not in the Namespace or there is an error in the script.
+/home/huy/Project/Java/AppNoiThat/App-noi-that/target/classes/com/huy/appnoithat/Scene/DatabaseModify/view/DatabaseModifyPhongCachLayout.fxml:54
+
+[INFO ] 07-10-2023 23:38:55 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:38:57 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[ERROR] 07-10-2023 23:39:01 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: javafx.fxml.LoadException: Error resolving onMouseClicked='#tableClickToSelectItem', either the event handler is not in the Namespace or there is an error in the script.
+/home/huy/Project/Java/AppNoiThat/App-noi-that/target/classes/com/huy/appnoithat/Scene/DatabaseModify/view/DatabaseModifyPhongCachLayout.fxml:38
+
+[INFO ] 07-10-2023 23:39:42 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:39:44 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[ERROR] 07-10-2023 23:39:49 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: javafx.fxml.LoadException: Error resolving onMouseClicked='#tableClickToSelectItem', either the event handler is not in the Namespace or there is an error in the script.
+/home/huy/Project/Java/AppNoiThat/App-noi-that/target/classes/com/huy/appnoithat/Scene/DatabaseModify/view/DatabaseModifyPhongCachLayout.fxml:45
+
+[INFO ] 07-10-2023 23:40:47 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:40:49 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 07-10-2023 23:43:42 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:43:44 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 07-10-2023 23:47:48 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:47:50 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[ERROR] 07-10-2023 23:48:00 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 07-10-2023 23:49:14 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:49:16 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 07-10-2023 23:51:03 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:51:05 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[ERROR] 07-10-2023 23:51:13 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 07-10-2023 23:52:11 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:52:13 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[ERROR] 07-10-2023 23:52:21 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 07-10-2023 23:53:02 [main] HelloApplication:33 - Start application
+[INFO ] 07-10-2023 23:53:04 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 00:13:34 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 00:13:36 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 00:18:47 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 00:18:49 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[ERROR] 08-10-2023 00:19:06 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 08-10-2023 00:20:17 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 00:20:19 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 00:20:35 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 00:20:37 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[ERROR] 08-10-2023 00:20:49 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 08-10-2023 00:21:38 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 00:21:40 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 00:25:21 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 00:25:23 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[ERROR] 08-10-2023 00:25:32 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 08-10-2023 00:26:01 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 00:26:03 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 00:26:58 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 00:27:00 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 00:31:25 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 00:31:27 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 00:35:51 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 00:35:53 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 00:37:33 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 00:37:35 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 10:54:42 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 10:54:45 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 11:14:10 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 11:14:12 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[ERROR] 08-10-2023 11:14:25 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 08-10-2023 11:14:51 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 11:14:53 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 11:17:09 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 11:17:11 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 11:18:15 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 11:19:43 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 11:19:45 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 11:20:34 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 11:20:37 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 11:22:21 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 11:22:23 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 11:28:58 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 11:29:01 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 11:31:48 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 11:31:51 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 11:32:07 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 11:32:09 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 11:33:31 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 11:33:33 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 11:34:35 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 11:34:36 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 14:44:39 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 14:44:40 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 15:26:04 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:26:05 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[ERROR] 08-10-2023 15:26:18 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 08-10-2023 15:26:42 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:26:43 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[ERROR] 08-10-2023 15:26:57 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 08-10-2023 15:27:32 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:27:34 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[ERROR] 08-10-2023 15:27:46 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[INFO ] 08-10-2023 15:28:16 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:28:17 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 15:29:49 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:29:51 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 15:40:18 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:40:19 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 15:42:43 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:42:45 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 15:46:14 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:46:15 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 15:48:00 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:48:02 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 15:48:52 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:48:53 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 15:50:34 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:50:35 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 15:52:30 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:52:32 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 15:53:32 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:53:33 [JavaFX Application Thread] HomeController:72 - Login as user with role User
+[INFO ] 08-10-2023 15:54:47 [JavaFX Application Thread] HomeController:72 - Login as admin with role Admin
+[INFO ] 08-10-2023 15:58:06 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:58:57 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:59:45 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 16:00:24 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 16:00:26 [JavaFX Application Thread] HomeController:71 - Login as admin with role Admin
+[INFO ] 08-10-2023 16:00:35 [JavaFX Application Thread] HomeController:71 - Login as kim with role User
+[INFO ] 08-10-2023 16:00:59 [JavaFX Application Thread] HomeController:71 - Login as admin with role Admin
+[INFO ] 08-10-2023 16:04:05 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 16:04:06 [JavaFX Application Thread] HomeController:71 - Login as admin with role Admin
+[INFO ] 08-10-2023 16:06:02 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 16:06:04 [JavaFX Application Thread] HomeController:71 - Login as admin with role Admin
+[INFO ] 08-10-2023 16:06:05 [JavaFX Application Thread] HomeController:71 - Login as admin with role Admin

@@ -78,7 +78,7 @@ public class UsersManagementController {
         userSessionService = new UserSessionService();
     }
 
-    public void initialize(){
+    public void init(){
         // 2. convert JSON array to List of objects
         List<Account> accountList = usersManagementService.findAllAccountEnable();
         listUser.clear();
@@ -100,7 +100,7 @@ public class UsersManagementController {
     @FXML
     void getAllAcount(ActionEvent event){
         listUser.clear();
-        initialize();
+        init();
     }
 
     @FXML
@@ -169,7 +169,7 @@ public class UsersManagementController {
                         new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
 
                 clearData();
-                initialize();
+                init();
                 userManageMentStage.close();
                 txtusername.clear();
                 txtpassword.clear();
@@ -266,7 +266,7 @@ public class UsersManagementController {
                 txtusername.setText("");
                 txtpassword.clear();
                 // You might need additional logic to handle saving or updating data
-                initialize();
+                init();
             });
 
             btncancel.setOnAction(actionEvent -> {
@@ -362,7 +362,7 @@ public class UsersManagementController {
                         enableid = acc.getId();
                         usersManagementService.enableAccount(enableid);
                         listUser.clear();
-                        initialize();
+                        init();
                         userManageMentStage.close();
                     }
                 } catch (Exception e) {

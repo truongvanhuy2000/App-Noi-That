@@ -11,6 +11,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
@@ -30,9 +32,6 @@ public class HomeController {
     private Text UserName;
     @FXML
     private AnchorPane PCPane;
-
-    @FXML
-    private AnchorPane mainPane;
     private final UserSessionService sessionService;
 
     public HomeController() {
@@ -45,12 +44,15 @@ public class HomeController {
         LogoutButton.getScene().getWindow().hide();
         sceneSwitcher(event);
     }
+    private void initController() {
+    }
 
     // Initialize scene
     public void initialize() {
-        // Hide all button
+        PCPane.setVisible(true);
         toggleButton(false, false, false);
-        // Set username using current session
+        QuanLyNguoiDungButton.setOnAction(this::OnClickQuanLyNguoiDung);
+        suadoidatabaseButton.setOnAction(this::OnClickSuaDoiDatabase);
         String username = sessionService.getLoginAccount().getUsername();
         UserName.setText("Welcome " + username);
         // Show button based on role
@@ -58,6 +60,7 @@ public class HomeController {
         switch (role) {
             case "Admin" -> {
                 toggleButton(false, true, false);
+                QuanLyNguoiDungButton.fire();
             }
             case "User" -> {
                 toggleButton(true, false, true);
@@ -78,9 +81,8 @@ public class HomeController {
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
         Scene scene = null;
-        Stage stage = null;
         Object source = actionEvent.getSource();
-        stage = (Stage) ((Node) source).getScene().getWindow();
+        Stage stage = (Stage) ((Node) source).getScene().getWindow();
         stage.setResizable(false);
         if (source == LogoutButton) {
             scene = LoginScene.getInstance().getScene();
@@ -88,28 +90,24 @@ public class HomeController {
             scene = FileNoiThatExplorerScene.getInstance().getScene();
             FileNoiThatExplorerScene.getInstance().getController().init();
         }
-        else if (source == QuanLyNguoiDungButton) {
-//            scene = UserManagementScene.getInstance().getScene();
-//            UserManagementScene.getInstance().getController().initialize();
-            PCPane.setVisible(false);
-            mainPane.setVisible(true);
-            AnchorPane root =(AnchorPane) UserManagementScene.getInstance().getRoot();
-            mainPane.getChildren().addAll(root.getChildren());
-            return;
-        }else if (source == suadoidatabaseButton) {
-//            scene = DatabaseModifyPhongCachScene.getInstance().getScene();
-//            DatabaseModifyPhongCachScene.getInstance().getController().init();
-            mainPane.setVisible(false);
-            PCPane.setVisible(true);
-            AnchorPane root = (AnchorPane)DatabaseModifyPhongCachScene.getInstance().getRoot();
-            PCPane.getChildren().addAll(root.getChildren());
-            return;
-        }
-        else {
-            return;
-        }
         stage.setScene(scene);
         stage.show();
     }
 
+    private void OnClickSuaDoiDatabase(ActionEvent actionEvent) {
+        PCPane.getChildren().clear();
+        DatabaseModifyPhongCachScene databaseModifyPhongCachScene = new DatabaseModifyPhongCachScene();
+        HBox hBox = (HBox) ((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren().get(0);
+        PCPane.getChildren().addAll(hBox);
+        DatabaseModifyPhongCachScene.getController().init();
+        DatabaseModifyPhongCachScene.getController().setRoot(PCPane);
+    }
+
+    private void OnClickQuanLyNguoiDung(ActionEvent actionEvent) {
+        PCPane.getChildren().clear();
+        UserManagementScene userManagementScene = new UserManagementScene();
+        VBox vBox = (VBox) ((AnchorPane)userManagementScene.getRoot()).getChildren().get(0);
+        PCPane.getChildren().addAll(vBox);
+        UserManagementScene.getController().init();
+    }
 }

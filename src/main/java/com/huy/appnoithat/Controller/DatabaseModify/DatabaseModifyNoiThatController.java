@@ -1,11 +1,14 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
 
+import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
+import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyHangMucService;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyNoiThatService;
@@ -15,11 +18,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import lombok.Setter;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,18 +35,21 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class DatabaseModifyNoiThatController implements Initializable {
-
+    @FXML
+    private Label Title;
     @FXML
     private Button addButton, backButton, deleteButton, nextButton;
     @FXML
     private ListView<HangMuc> childrenList;
     @FXML
-    private ListView<NoiThat> listViewNoiThat;
+    private ListView<NoiThat> listView;
     int parentID;
     private final DatabaseModifyHangMucService databaseModifyHangMucService;
     private final DatabaseModifyNoiThatService databaseModifyNoiThatService;
     private final ObservableList<HangMuc> hangMucObservableList;
     private final ObservableList<NoiThat> noiThatObservableList;
+    @Setter
+    private Parent root;
 
     public DatabaseModifyNoiThatController() {
         databaseModifyNoiThatService = new DatabaseModifyNoiThatService();
@@ -56,7 +67,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
 
     @FXML
     void deleteAction(ActionEvent event) {
-        NoiThat noiThat = listViewNoiThat.getSelectionModel().getSelectedItem();
+        NoiThat noiThat = listView.getSelectionModel().getSelectedItem();
         if (noiThat == null) {
             return;
         }
@@ -71,46 +82,33 @@ public class DatabaseModifyNoiThatController implements Initializable {
 
     @FXML
     void nextAction(ActionEvent event) {
-        if (listViewNoiThat.getSelectionModel().getSelectedItem() == null) {
+        if (listView.getSelectionModel().getSelectedItem() == null) {
             return;
         }
-        int selectID = listViewNoiThat.getSelectionModel().getSelectedItem().getId();
-        Scene scene = null;
-        Stage stage = null;
-        Object source = event.getSource();
-        stage = (Stage) ((Node) source).getScene().getWindow();
-        if (source == nextButton) {
-            scene = DatabaseModifyHangMucScene.getInstance().getScene();
-            DatabaseModifyHangMucScene.getInstance().getController().init(selectID);
-        } else {
-            return;
-        }
-        stage.setScene(scene);
-        stage.show();
+        int selectID = listView.getSelectionModel().getSelectedItem().getId();
+        DatabaseModifyHangMucScene databaseModifyHangMucScene = new DatabaseModifyHangMucScene();
+        HBox hBox = (HBox) ((AnchorPane)databaseModifyHangMucScene.getRoot()).getChildren().get(0);
+
+        ((AnchorPane)this.root).getChildren().clear();
+        ((AnchorPane)this.root).getChildren().add(hBox);
+        databaseModifyHangMucScene.getController().init(selectID);
+        databaseModifyHangMucScene.getController().setRoot(this.root);
     }
 
     @FXML
     void sceneSwitcher(ActionEvent event) {
-        Scene scene = null;
-        Stage stage = null;
         Object source = event.getSource();
-        stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == backButton) {
-            scene = DatabaseModifyPhongCachScene.getInstance().getScene();
-            DatabaseModifyPhongCachScene.getInstance().getController().refresh();
-        } else {
-            return;
+            DatabaseModifyPhongCachScene databaseModifyPhongCachScene = new DatabaseModifyPhongCachScene();
+            HBox hBox = (HBox) ((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren().get(0);
+            ((AnchorPane)this.root).getChildren().clear();
+            ((AnchorPane)this.root).getChildren().add(hBox);
+            DatabaseModifyPhongCachScene.getController().init();
+            DatabaseModifyPhongCachScene.getController().setRoot(this.root);
         }
-        stage.setScene(scene);
-        stage.show();
     }
-
-    @FXML
-    void tableClickToSelectItem(MouseEvent event) {
-
-    }
-
     public void init(int parentID) {
+        System.out.println(parentID);
         this.parentID = parentID;
         refreshList();
         refreshChildrenList(0);
@@ -118,7 +116,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
     public void refresh() {
         refreshList();
         refreshChildrenList(0);
-        listViewNoiThat.getSelectionModel().clearSelection();
+        listView.getSelectionModel().clearSelection();
     }
     private void refreshList() {
         List<NoiThat> noiThatList = databaseModifyNoiThatService.findNoiThatListByParentID(parentID);
@@ -144,10 +142,11 @@ public class DatabaseModifyNoiThatController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listViewNoiThat.setItems(noiThatObservableList);
-        listViewNoiThat.setEditable(true);
-        listViewNoiThat.setCellFactory(param -> new CustomEditingListCell<>());
-        listViewNoiThat.setOnEditCommit(event -> {
+        Title.setText("Danh sách nội thất");
+        listView.setItems(noiThatObservableList);
+        listView.setEditable(true);
+        listView.setCellFactory(param -> new CustomEditingListCell<>());
+        listView.setOnEditCommit(event -> {
             NoiThat item = event.getNewValue();
             item.setName(DBModifyUtils.getNotDuplicateName(item.getName(), noiThatObservableList));
             if (item.getId() == 0) {
@@ -157,9 +156,9 @@ public class DatabaseModifyNoiThatController implements Initializable {
             }
             refreshList();
         });
-        listViewNoiThat.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                NoiThat noiThat = listViewNoiThat.getSelectionModel().getSelectedItem();
+                NoiThat noiThat = listView.getSelectionModel().getSelectedItem();
                 if (noiThat == null) {
                     return;
                 }
@@ -169,5 +168,17 @@ public class DatabaseModifyNoiThatController implements Initializable {
         childrenList.setEditable(false);
         childrenList.setCellFactory(param -> new CustomEditingListCell<>());
         childrenList.setItems(hangMucObservableList);
+    }
+    @FXML
+    void onKeyPressed(KeyEvent event) {
+        if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {
+            addButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
+            deleteButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
+            nextButton.fire();
+        }
     }
 }

@@ -21,6 +21,7 @@ public class HelloApplication extends Application {
         UserSessionService sessionService = new UserSessionService();
         if (sessionService.isLogin()) {
             stage.setScene(HomeScene.getInstance().getScene());
+            HomeScene.getInstance().getHomeController().initialize();
         } else {
             stage.setScene(LoginScene.getInstance().getScene());
         }

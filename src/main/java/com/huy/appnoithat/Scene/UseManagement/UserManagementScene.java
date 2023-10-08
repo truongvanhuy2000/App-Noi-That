@@ -15,15 +15,15 @@ public class UserManagementScene {
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/UserManagementLayout.css";
     private Scene scene;
     private Parent root;
-    private UsersManagementController controller;
-    private static UserManagementScene single_instance = null;
-    private final FXMLLoader fxmlLoader;
+    @Getter
+    private static UsersManagementController controller;
 
     public UserManagementScene() {
         try {
-            fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH));
+            controller = new UsersManagementController();
+            fxmlLoader.setController(controller);
             root = fxmlLoader.load();
-            this.controller = fxmlLoader.getController();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -40,13 +40,6 @@ public class UserManagementScene {
         this.scene = scene;
         scene.setRoot(this.root);
         addCssToScence();
-    }
-
-    // Create an object of this class, call this function
-    public static synchronized UserManagementScene getInstance() {
-        if (single_instance == null)
-            single_instance = new UserManagementScene();
-        return single_instance;
     }
 
     private void addCssToScence() {

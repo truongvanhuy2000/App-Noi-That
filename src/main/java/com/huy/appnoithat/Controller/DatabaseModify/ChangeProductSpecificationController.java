@@ -2,15 +2,20 @@ package com.huy.appnoithat.Controller.DatabaseModify;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Entity.ThongSo;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyVatLieuScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyThongSoService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -22,6 +27,8 @@ public class ChangeProductSpecificationController {
     @FXML
     private TextField txtCao, txtDai, txtDonGia, txtDonVi, txtRong;
     private ThongSo currentThongSoItem;
+    @Setter
+    private Parent root;
     public ChangeProductSpecificationController() {
         databaseModifyThongSoService = new DatabaseModifyThongSoService();
     }
@@ -30,7 +37,6 @@ public class ChangeProductSpecificationController {
     void clickOK(ActionEvent event) {
         //click to Edit thong so
         String regex = "[0-9].+";
-
         if (!txtCao.getText().matches(regex) ||
                 !txtDai.getText().matches(regex) ||
                 !txtRong.getText().matches(regex) ||
@@ -53,27 +59,20 @@ public class ChangeProductSpecificationController {
     }
 
     void backToMain() {
-        Scene scene = DatabaseModifyVatLieuScene.getInstance().getScene();
-        Stage stage = (Stage) btnOK.getScene().getWindow();
-        DatabaseModifyVatLieuScene.getInstance().getController().refresh();
-        stage.setScene(scene);
-        stage.show();
+        DatabaseModifyVatLieuScene databaseModifyVatLieuScene = new DatabaseModifyVatLieuScene();
+        HBox hBox = (HBox) ((AnchorPane)databaseModifyVatLieuScene.getRoot()).getChildren().get(0);
+        ((AnchorPane)this.root).getChildren().clear();
+        ((AnchorPane)this.root).getChildren().add(hBox);
+        DatabaseModifyVatLieuScene.getController().refresh();
+        DatabaseModifyVatLieuScene.getController().setRoot(this.root);
     }
 
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
-        Scene scene = null;
-        Stage stage = null;
         Object source = actionEvent.getSource();
-        stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == backButton) {
-            scene = DatabaseModifyVatLieuScene.getInstance().getScene();
-            DatabaseModifyVatLieuScene.getInstance().getController().refresh();
-        } else {
-            return;
+            backToMain();
         }
-        stage.setScene(scene);
-        stage.show();
     }
 
     public void initializeThongSo(int id) {

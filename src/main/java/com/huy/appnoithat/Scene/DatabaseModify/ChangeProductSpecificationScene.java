@@ -14,25 +14,22 @@ public class ChangeProductSpecificationScene {
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
-    private static ChangeProductSpecificationScene single_instance = null;
-
+    @Getter
+    private static ChangeProductSpecificationController controller;
     public ChangeProductSpecificationScene() {
         String viewPath = "view/ChangeProductSpecificationLayout.fxml";
         try {
             fxmlLoader = new FXMLLoader(ChangeProductSpecificationScene.class.getResource(viewPath));
+            if (controller == null) {
+                controller = new ChangeProductSpecificationController();
+            }
+            fxmlLoader.setController(controller);
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         scene = new Scene(root);
         addCssToScence();
-    }
-
-    // Create an object of this class, call this function
-    public static synchronized ChangeProductSpecificationScene getInstance() {
-        if (single_instance == null)
-            single_instance = new ChangeProductSpecificationScene();
-        return single_instance;
     }
 
     public void setRoot(Parent root) {
@@ -49,9 +46,5 @@ public class ChangeProductSpecificationScene {
     private void addCssToScence() {
         String cssPath = "css/DatabaseModifyPhongCach.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());
-    }
-
-    public ChangeProductSpecificationController getController() {
-        return fxmlLoader.getController();
     }
 }

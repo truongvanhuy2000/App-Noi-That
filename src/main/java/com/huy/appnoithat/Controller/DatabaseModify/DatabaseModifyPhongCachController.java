@@ -8,6 +8,7 @@ import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
+import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyNoiThatService;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyPhongCachService;
@@ -17,12 +18,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import lombok.Setter;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,26 +37,19 @@ import java.util.ResourceBundle;
 
 public class DatabaseModifyPhongCachController implements Initializable {
     @FXML
-    private ListView<PhongCachNoiThat> listViewPhongCach;
+    private Label Title;
+    @FXML
+    private Button addButton, deleteButton, backButton, nextButton;
     @FXML
     private ListView<NoiThat> childrenList;
     @FXML
-    private Button EditPhongCachButton;
-
-    @FXML
-    private Button addPhongCachButton;
-
-    @FXML
-    private Button deletePhongCachButton;
-    @FXML
-    private Button backButton;
-    @FXML
-    private Button nextScreenButton;
+    private ListView<PhongCachNoiThat> listView;
     private final DatabaseModifyPhongCachService databaseModifyPhongCachService;
     private final DatabaseModifyNoiThatService databaseModifyNoiThatService;
     private final ObservableList<PhongCachNoiThat> phongCachNoiThatObservableList;
     private final ObservableList<NoiThat> noiThatObservableList;
-
+    @Setter
+    private Parent root;
     public DatabaseModifyPhongCachController() {
         databaseModifyPhongCachService = new DatabaseModifyPhongCachService();
         databaseModifyNoiThatService = new DatabaseModifyNoiThatService();
@@ -59,15 +58,15 @@ public class DatabaseModifyPhongCachController implements Initializable {
     }
 
     @FXML
-    void AddNewPhongCach(ActionEvent event) {
+    void addAction(ActionEvent event) {
         int currentPos = phongCachNoiThatObservableList.size();
         databaseModifyPhongCachService.addNewPhongCach(new PhongCachNoiThat(0, DBModifyUtils.getNewName(currentPos), new ArrayList<>()));
         refreshList();
     }
 
     @FXML
-    void DeletePhongCach(ActionEvent event) {
-        PhongCachNoiThat phongCachNoiThat = listViewPhongCach.getSelectionModel().getSelectedItem();
+    void deleteAction(ActionEvent event) {
+        PhongCachNoiThat phongCachNoiThat = listView.getSelectionModel().getSelectedItem();
         if (phongCachNoiThat == null) {
             return;
         }
@@ -79,29 +78,19 @@ public class DatabaseModifyPhongCachController implements Initializable {
         refreshList();
         refreshChildrenList(0);
     }
-
     @FXML
-    void tableClickToSelectItem(MouseEvent event) {
-    }
-
-    @FXML
-    void NextScreen(ActionEvent event) {
-        if (listViewPhongCach.getSelectionModel().getSelectedItem() == null) {
+    void nextAction(ActionEvent event) {
+        if (listView.getSelectionModel().getSelectedItem() == null) {
             return;
         }
-        int selectID = listViewPhongCach.getSelectionModel().getSelectedItem().getId();
-        Scene scene = null;
-        Stage stage = null;
-        Object source = event.getSource();
-        stage = (Stage) ((Node) source).getScene().getWindow();
-        if (source == nextScreenButton) {
-            scene = DatabaseModifyNoiThatScene.getInstance().getScene();
-            DatabaseModifyNoiThatScene.getInstance().getController().init(selectID);
-        } else {
-            return;
-        }
-        stage.setScene(scene);
-        stage.show();
+        int selectID = listView.getSelectionModel().getSelectedItem().getId();
+        DatabaseModifyNoiThatScene databaseModifyNoiThatScene = new DatabaseModifyNoiThatScene();
+        HBox hBox = (HBox) ((AnchorPane)databaseModifyNoiThatScene.getRoot()).getChildren().get(0);
+
+        ((AnchorPane)this.root).getChildren().clear();
+        ((AnchorPane)this.root).getChildren().add(hBox);
+        DatabaseModifyNoiThatScene.getController().init(selectID);
+        DatabaseModifyNoiThatScene.getController().setRoot(this.root);
     }
 
     public void init() {
@@ -111,7 +100,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
     public void refresh() {
         refreshList();
         refreshChildrenList(0);
-        listViewPhongCach.getSelectionModel().clearSelection();
+        listView.getSelectionModel().clearSelection();
     }
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
@@ -121,7 +110,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
         stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == backButton) {
             scene = HomeScene.getInstance().getScene();
-            listViewPhongCach.getItems().clear();
+            listView.getItems().clear();
         } else {
             return;
         }
@@ -130,22 +119,24 @@ public class DatabaseModifyPhongCachController implements Initializable {
     }
     @FXML
     void onKeyPressed(KeyEvent event) {
-        if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {
-            addPhongCachButton.fire();
-        }
-        else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
-            deletePhongCachButton.fire();
-        }
-        else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
-            nextScreenButton.fire();
-        }
+//        if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {
+//            addButton.fire();
+//        }
+//        else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
+//            deleteButton.fire();
+//        }
+//        else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
+//            nextButton.fire();
+//        }
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listViewPhongCach.setItems(phongCachNoiThatObservableList);
-        listViewPhongCach.setEditable(true);
-        listViewPhongCach.setCellFactory(param -> new CustomEditingListCell<>());
-        listViewPhongCach.setOnEditCommit(event -> {
+        backButton.setVisible(false);
+        Title.setText("Danh sách phong cách");
+        listView.setItems(phongCachNoiThatObservableList);
+        listView.setEditable(true);
+        listView.setCellFactory(param -> new CustomEditingListCell<>());
+        listView.setOnEditCommit(event -> {
             PhongCachNoiThat item = event.getNewValue();
             item.setName(DBModifyUtils.getNotDuplicateName(item.getName(), phongCachNoiThatObservableList));
             if (item.getId() == 0) {
@@ -155,9 +146,9 @@ public class DatabaseModifyPhongCachController implements Initializable {
             }
             refreshList();
         });
-        listViewPhongCach.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                PhongCachNoiThat phongCachNoiThat = listViewPhongCach.getSelectionModel().getSelectedItem();
+                PhongCachNoiThat phongCachNoiThat = listView.getSelectionModel().getSelectedItem();
                 if (phongCachNoiThat == null) {
                     return;
                 }
@@ -167,6 +158,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
         childrenList.setEditable(false);
         childrenList.setCellFactory(param -> new CustomEditingListCell<>());
         childrenList.setItems(noiThatObservableList);
+        init();
     }
 
     private void refreshList() {
