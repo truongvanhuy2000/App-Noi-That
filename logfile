@@ -974,3 +974,175 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 06-10-2023 15:51:32 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
 [INFO ] 06-10-2023 15:51:47 [main] HelloApplication:33 - Start application
 [INFO ] 06-10-2023 15:51:47 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 14:52:33 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 14:52:34 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 14:53:45 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 14:53:47 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 14:54:21 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 14:54:25 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 14:55:32 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 14:55:33 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 14:56:10 [main] HelloApplication:33 - Start application
+[ERROR] 08-10-2023 14:56:21 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username=huy eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJodXkiLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk2NTgyMjMxLCJleHAiOjQyODg1ODIyMzF9.YNnvlkLnyMn6oQr4mUBHG9jpV0ne1XbqZvVrTY67kqDdHX_tS1KRfQ9mnzwj9H1bttX14HQKsDtP93Z8te7BLw null
+[ERROR] 08-10-2023 14:56:21 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJodXkiLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk2NTgyMjMxLCJleHAiOjQyODg1ODIyMzF9.YNnvlkLnyMn6oQr4mUBHG9jpV0ne1XbqZvVrTY67kqDdHX_tS1KRfQ9mnzwj9H1bttX14HQKsDtP93Z8te7BLw null
+[INFO ] 08-10-2023 14:56:35 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 14:56:35 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 14:58:17 [main] HelloApplication:33 - Start application
+[ERROR] 08-10-2023 14:58:17 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username=huy eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJodXkiLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk2NzUxNzkyLCJleHAiOjQyODg3NTE3OTJ9.j_wZcMwsX7RyCFVPAq7q6jJbs9tNSfmcndgXI8OlaNP11efLuscdWBvvBtaGpBjoVxjYjJV61h7RlyBM3MbDBg null
+[ERROR] 08-10-2023 14:58:18 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJodXkiLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk2NzUxNzkyLCJleHAiOjQyODg3NTE3OTJ9.j_wZcMwsX7RyCFVPAq7q6jJbs9tNSfmcndgXI8OlaNP11efLuscdWBvvBtaGpBjoVxjYjJV61h7RlyBM3MbDBg null
+[ERROR] 08-10-2023 14:58:21 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"huy","password":"huy","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[ERROR] 08-10-2023 14:58:23 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"huy","password":"","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[ERROR] 08-10-2023 14:58:26 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"huy","password":"huy","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[ERROR] 08-10-2023 14:58:30 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[INFO ] 08-10-2023 14:58:41 [main] HelloApplication:33 - Start application
+[ERROR] 08-10-2023 14:58:42 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username=huy eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJodXkiLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk2NzUxNzkyLCJleHAiOjQyODg3NTE3OTJ9.j_wZcMwsX7RyCFVPAq7q6jJbs9tNSfmcndgXI8OlaNP11efLuscdWBvvBtaGpBjoVxjYjJV61h7RlyBM3MbDBg null
+[ERROR] 08-10-2023 14:58:42 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJodXkiLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk2NzUxNzkyLCJleHAiOjQyODg3NTE3OTJ9.j_wZcMwsX7RyCFVPAq7q6jJbs9tNSfmcndgXI8OlaNP11efLuscdWBvvBtaGpBjoVxjYjJV61h7RlyBM3MbDBg null
+[ERROR] 08-10-2023 14:58:45 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"huy","password":"huy","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[INFO ] 08-10-2023 14:59:27 [main] HelloApplication:33 - Start application
+[ERROR] 08-10-2023 14:59:27 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username=huy eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJodXkiLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk2NzUxNzkyLCJleHAiOjQyODg3NTE3OTJ9.j_wZcMwsX7RyCFVPAq7q6jJbs9tNSfmcndgXI8OlaNP11efLuscdWBvvBtaGpBjoVxjYjJV61h7RlyBM3MbDBg null
+[ERROR] 08-10-2023 14:59:27 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJodXkiLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk2NzUxNzkyLCJleHAiOjQyODg3NTE3OTJ9.j_wZcMwsX7RyCFVPAq7q6jJbs9tNSfmcndgXI8OlaNP11efLuscdWBvvBtaGpBjoVxjYjJV61h7RlyBM3MbDBg null
+[ERROR] 08-10-2023 14:59:30 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[ERROR] 08-10-2023 14:59:34 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[INFO ] 08-10-2023 15:00:28 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:00:28 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:00:47 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:00:48 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:01:43 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:01:45 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:02:03 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:02:04 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:02:21 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:02:23 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:03:12 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:03:13 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:03:30 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:03:31 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:04:15 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:04:17 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:07:20 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:07:21 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:09:25 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:09:26 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:10:31 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:10:33 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:12:14 [JavaFX Application Thread] ImportOperation:46 - Import file: asd.nt
+[INFO ] 08-10-2023 15:12:26 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:12:28 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:12:34 [JavaFX Application Thread] ImportOperation:46 - Import file: asd.nt
+[INFO ] 08-10-2023 15:12:45 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:12:46 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:13:26 [JavaFX Application Thread] ImportOperation:46 - Import file: asd.nt
+[INFO ] 08-10-2023 15:13:42 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:13:43 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:15:24 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:15:26 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:16:01 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:16:02 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:16:45 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:16:47 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:18:27 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:18:28 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:18:46 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:18:48 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:19:02 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:19:03 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:19:27 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:19:28 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:19:56 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:19:57 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:20:38 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:20:40 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:20:54 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:20:55 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:22:43 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:22:44 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:22:53 [JavaFX Application Thread] ImportOperation:46 - Import file: asd.nt
+[INFO ] 08-10-2023 15:23:00 [JavaFX Application Thread] ImportOperation:46 - Import file: asd.nt
+[INFO ] 08-10-2023 15:23:16 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:23:17 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:23:35 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:23:36 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:24:00 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:24:01 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:25:01 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:25:03 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:26:28 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:26:29 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:26:47 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:26:49 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:27:15 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:27:16 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:27:44 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:27:45 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:28:09 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:28:10 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:28:31 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:28:32 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:29:02 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:29:03 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:29:27 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:29:28 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:29:44 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:29:45 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:30:11 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:30:12 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:30:33 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:30:34 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:30:48 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:30:49 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:31:26 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:31:27 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:32:03 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:32:04 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:32:44 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:32:45 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:32:58 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:33:00 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:33:36 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:33:37 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:36:17 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:36:18 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:46:45 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:46:46 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:47:12 [JavaFX Application Thread] ImportOperation:46 - Import file: asd.nt
+[INFO ] 08-10-2023 15:48:09 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:48:10 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:50:53 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:50:55 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:51:52 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:51:53 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:51:58 [JavaFX Application Thread] ImportOperation:46 - Import file: asd.nt
+[INFO ] 08-10-2023 15:52:16 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:52:18 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:55:20 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:55:22 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:56:26 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:56:27 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:59:16 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 15:59:18 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 15:59:24 [JavaFX Application Thread] ImportOperation:46 - Import file: asd.nt
+[INFO ] 08-10-2023 16:00:24 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 16:00:25 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 16:00:40 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 08-10-2023 16:01:35 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 16:01:36 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 08-10-2023 16:02:06 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 16:02:07 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 08-10-2023 16:03:43 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 16:03:44 [JavaFX Application Thread] HomeController:68 - Login as admin with role Admin
+[INFO ] 08-10-2023 16:03:50 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 16:04:11 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 16:04:12 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 16:04:29 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 16:04:30 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 16:07:48 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 16:07:50 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 16:08:09 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 16:08:10 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 16:08:28 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 16:08:29 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 16:08:55 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 16:08:57 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 16:09:08 [main] HelloApplication:33 - Start application
+[INFO ] 08-10-2023 16:09:09 [JavaFX Application Thread] HomeController:68 - Login as huy with role User
+[INFO ] 08-10-2023 16:09:23 [JavaFX Application Thread] ImportOperation:46 - Import file: asd.nt
