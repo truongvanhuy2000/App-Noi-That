@@ -50,9 +50,11 @@ public class HomeController {
     // Initialize scene
     public void initialize() {
         PCPane.setVisible(true);
+        PCPane.getChildren().clear();
         toggleButton(false, false, false);
         QuanLyNguoiDungButton.setOnAction(this::OnClickQuanLyNguoiDung);
         suadoidatabaseButton.setOnAction(this::OnClickSuaDoiDatabase);
+        LuaChonNoiThatButton.setOnAction(this::OnClickLuaChonNoiThat);
         String username = sessionService.getLoginAccount().getUsername();
         UserName.setText("Welcome " + username);
         // Show button based on role
@@ -64,11 +66,20 @@ public class HomeController {
             }
             case "User" -> {
                 toggleButton(true, false, true);
+                LuaChonNoiThatButton.fire();
             }
             default -> {
             }
         }
         LOGGER.info("Login as " + username + " with role " + role);
+    }
+
+    private void OnClickLuaChonNoiThat(ActionEvent actionEvent) {
+        PCPane.getChildren().clear();
+        FileNoiThatExplorerScene fileNoiThatExplorerScene = new FileNoiThatExplorerScene();
+        PCPane.getChildren().addAll(((AnchorPane)fileNoiThatExplorerScene.getRoot()).getChildren());
+        FileNoiThatExplorerScene.getController().init();
+        FileNoiThatExplorerScene.getController().setRoot(PCPane);
     }
 
     private void toggleButton(boolean luaChonNoiThatBtn, boolean quanLyNguoiDungBtn, boolean suadoidatabaseBtn) {
@@ -86,9 +97,6 @@ public class HomeController {
         stage.setResizable(false);
         if (source == LogoutButton) {
             scene = LoginScene.getInstance().getScene();
-        } else if (source == LuaChonNoiThatButton) {
-            scene = FileNoiThatExplorerScene.getInstance().getScene();
-            FileNoiThatExplorerScene.getInstance().getController().init();
         }
         stage.setScene(scene);
         stage.show();

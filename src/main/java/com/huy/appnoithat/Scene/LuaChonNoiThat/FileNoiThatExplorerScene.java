@@ -14,11 +14,16 @@ public class FileNoiThatExplorerScene {
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/FileNoiThatExplorer.css";
     private Scene scene;
     private Parent root;
-    private static FileNoiThatExplorerScene single_instance = null;
     private final FXMLLoader fxmlLoader;
+    @Getter
+    private static FileNoiThatExplorerController controller;
     public FileNoiThatExplorerScene() {
         try {
             this.fxmlLoader = new FXMLLoader(FileNoiThatExplorerScene.class.getResource(VIEW_PATH));
+            if (controller == null) {
+                controller = new FileNoiThatExplorerController();
+            }
+            fxmlLoader.setController(controller);
             root = fxmlLoader.load();
             scene = new Scene(root);
         } catch (IOException e) {
@@ -26,14 +31,6 @@ public class FileNoiThatExplorerScene {
         }
         addCssToScence();
     }
-
-    // Create an object of this class, call this function
-    public static synchronized FileNoiThatExplorerScene getInstance() {
-        if (single_instance == null)
-            single_instance = new FileNoiThatExplorerScene();
-        return single_instance;
-    }
-
     public void setRoot(Parent root) {
         this.root = root;
         scene.setRoot(this.root);
@@ -47,8 +44,5 @@ public class FileNoiThatExplorerScene {
 
     private void addCssToScence() {
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(CSS_PATH)).toExternalForm());
-    }
-    public FileNoiThatExplorerController getController() {
-        return fxmlLoader.getController();
     }
 }

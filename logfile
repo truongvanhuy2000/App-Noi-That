@@ -1264,3 +1264,94 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 08-10-2023 16:06:02 [main] HelloApplication:34 - Start application
 [INFO ] 08-10-2023 16:06:04 [JavaFX Application Thread] HomeController:71 - Login as admin with role Admin
 [INFO ] 08-10-2023 16:06:05 [JavaFX Application Thread] HomeController:71 - Login as admin with role Admin
+[INFO ] 08-10-2023 23:07:21 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:07:23 [JavaFX Application Thread] HomeController:71 - Login as admin with role Admin
+[INFO ] 08-10-2023 23:07:23 [JavaFX Application Thread] HomeController:71 - Login as admin with role Admin
+[INFO ] 08-10-2023 23:07:32 [JavaFX Application Thread] HomeController:71 - Login as kim with role User
+[INFO ] 08-10-2023 23:08:40 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:08:42 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:08:42 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:21:53 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:21:54 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:21:54 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[ERROR] 08-10-2023 23:22:02 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: class javafx.scene.layout.VBox cannot be cast to class javafx.scene.layout.HBox (javafx.scene.layout.VBox and javafx.scene.layout.HBox are in module javafx.graphics of loader 'app')
+[INFO ] 08-10-2023 23:22:46 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:22:47 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:22:47 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:25:50 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:25:52 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:25:52 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:26:10 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:26:12 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:26:12 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:27:28 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:27:30 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:27:30 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:28:43 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:28:44 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:28:44 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:31:24 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:31:25 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:31:25 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:34:57 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:35:00 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:35:00 [JavaFX Application Thread] HomeController:72 - Login as kim with role User
+[INFO ] 08-10-2023 23:35:37 [JavaFX Application Thread] ImportOperation:46 - Import file: file.nt
+[ERROR] 08-10-2023 23:35:37 [JavaFX Application Thread] FileNoiThatExplorerController:77 - Illegal base64 character 7b
+[INFO ] 08-10-2023 23:35:42 [JavaFX Application Thread] ImportOperation:46 - Import file: test4.nt
+[ERROR] 08-10-2023 23:35:42 [JavaFX Application Thread] FileNoiThatExplorerController:77 - Illegal base64 character 7b
+[INFO ] 08-10-2023 23:36:27 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:36:28 [JavaFX Application Thread] HomeController:73 - Login as kim with role User
+[INFO ] 08-10-2023 23:36:29 [JavaFX Application Thread] HomeController:73 - Login as kim with role User
+[INFO ] 08-10-2023 23:36:54 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:36:56 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:36:56 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:40:01 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:40:03 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:40:04 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:42:00 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:42:02 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:42:04 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:45:30 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:45:32 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:45:33 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:46:20 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:46:22 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:46:23 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:48:34 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:48:37 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:48:38 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:49:14 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:49:16 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:49:17 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:50:16 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:50:19 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:50:20 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:51:08 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:51:11 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:51:12 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:52:15 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:52:16 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:52:18 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:54:18 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:54:20 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:54:21 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:54:43 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:54:45 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:54:46 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:55:27 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:58:31 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:58:32 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:58:34 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:59:16 [main] HelloApplication:34 - Start application
+[INFO ] 08-10-2023 23:59:17 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 08-10-2023 23:59:19 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 09-10-2023 00:02:23 [main] HelloApplication:34 - Start application
+[INFO ] 09-10-2023 00:02:24 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 09-10-2023 00:02:26 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 09-10-2023 00:05:34 [main] HelloApplication:34 - Start application
+[INFO ] 09-10-2023 00:05:37 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 09-10-2023 00:05:38 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 09-10-2023 00:06:56 [main] HelloApplication:34 - Start application
+[INFO ] 09-10-2023 00:06:58 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 09-10-2023 00:06:59 [JavaFX Application Thread] HomeController:74 - Login as kim with role User

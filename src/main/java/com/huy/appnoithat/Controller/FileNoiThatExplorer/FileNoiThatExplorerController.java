@@ -9,10 +9,12 @@ import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,13 +25,13 @@ public class FileNoiThatExplorerController {
     final static Logger LOGGER = LogManager.getLogger(FileNoiThatExplorerController.class);
     @FXML
     private TableColumn<RecentFile, String> DirectoryCollum;
-
     @FXML
     private TableView<RecentFile> RecentTableView;
-
     @FXML
     private TableColumn<RecentFile, String> TimeStampCollum;
     private final FileNoiThatExplorerService fileNoiThatExplorerService;
+    @Setter
+    private Parent root;
     public FileNoiThatExplorerController () {
         fileNoiThatExplorerService = FileNoiThatExplorerService.getInstance();
     }
