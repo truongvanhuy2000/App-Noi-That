@@ -27,6 +27,7 @@ public class HelloApplication extends Application {
         }
         stage.setTitle("App Noi That");
         stage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/logoapp.jpg")));
+        stage.setResizable(false);
         stage.show();
     }
 
