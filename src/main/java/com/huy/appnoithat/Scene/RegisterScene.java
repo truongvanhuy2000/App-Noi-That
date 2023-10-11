@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Scene;
 
+import com.huy.appnoithat.Controller.RegisterController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,10 +17,16 @@ public class RegisterScene {
     private Parent root;
     private static RegisterScene single_instance = null;
     private final FXMLLoader fxmlLoader;
+    @Getter
+    private static RegisterController registerController;
 
     public RegisterScene() {
         try {
             fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH));
+            if (registerController == null) {
+                registerController = new RegisterController();
+            }
+            fxmlLoader.setController(registerController);
             root = fxmlLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);

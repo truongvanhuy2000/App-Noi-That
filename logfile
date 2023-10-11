@@ -1444,3 +1444,13 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 12-10-2023 00:05:57 [main] HelloApplication:35 - Start application
 [INFO ] 12-10-2023 00:05:59 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
 [INFO ] 12-10-2023 00:06:00 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 00:19:13 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 00:20:31 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 00:20:43 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 00:49:32 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 00:50:17 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 00:50:23 [JavaFX Application Thread] HomeController:74 - Login as admin with role Admin
+[INFO ] 12-10-2023 00:50:24 [JavaFX Application Thread] HomeController:74 - Login as admin with role Admin
+[INFO ] 12-10-2023 00:52:15 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 00:52:16 [JavaFX Application Thread] HomeController:74 - Login as admin with role Admin
+[INFO ] 12-10-2023 00:52:16 [JavaFX Application Thread] HomeController:74 - Login as admin with role Admin
