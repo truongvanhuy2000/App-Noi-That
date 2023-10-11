@@ -4,6 +4,7 @@ import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
@@ -120,5 +121,20 @@ public class TableUtils {
         byte[] buf = new byte[w * h * 4];
         img.getPixelReader().getPixels(0, 0, w, h, PixelFormat.getByteBgraInstance(), buf, 0, w * 4);
         return buf;
+    }
+    public static void reArrangeList(TreeTableView<BangNoiThat> TableNoiThat) {
+        ObservableList<TreeItem<BangNoiThat>> listItem = TableNoiThat.getRoot().getChildren();
+        for (int i = 0; i < listItem.size(); i++) {
+            TreeItem<BangNoiThat> item1 = listItem.get(i);
+            for (int j = 0; j < item1.getChildren().size(); j++) {
+                TreeItem<BangNoiThat> item2 = item1.getChildren().get(j);
+                for (int z = 0; z < item2.getChildren().size(); z++) {
+                    TreeItem<BangNoiThat> item3 = item2.getChildren().get(z);
+                    item3.getValue().setSTT(String.valueOf(z + 1));
+                }
+                item2.getValue().setSTT(Utils.RomanNumber.toRoman(j + 1));
+            }
+            item1.getValue().setSTT(Utils.toAlpha(i + 1));
+        }
     }
 }

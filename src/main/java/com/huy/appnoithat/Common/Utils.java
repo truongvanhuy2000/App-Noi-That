@@ -144,9 +144,13 @@ public class Utils {
         return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(milis));
     }
     public static String encodeData(String data) {
+        if (data == null)
+            return "";
         return Base64.getEncoder().encodeToString(data.getBytes());
     }
     public static String decodeData(String data) {
+        if (data == null)
+            return "";
         return new String(Base64.getDecoder().decode(data));
     }
 }

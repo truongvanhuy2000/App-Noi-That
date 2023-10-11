@@ -17,7 +17,6 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
 
     @Override
     public void startEdit() {
-
         if (!isEmpty()) {
             super.startEdit();
             createTextField();
@@ -36,11 +35,10 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
 
     @Override
     public void updateItem(String item, boolean empty) {
-//        System.out.println("update editing cell");
         super.updateItem(item, empty);
         if (empty) {
-            setText(item);
             setGraphic(null);
+            setText(item);
         } else {
             if (isEditing()) {
                 if (textField != null) {

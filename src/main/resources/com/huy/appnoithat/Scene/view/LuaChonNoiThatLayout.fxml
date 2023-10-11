@@ -45,6 +45,7 @@
                 <Button fx:id="ExportButton" layoutX="13.0" layoutY="14.0" mnemonicParsing="false" text="Xuất file" />
                 <TableView fx:id="bangThanhToan" layoutX="73.0" layoutY="793.0" prefHeight="63.0" prefWidth="1254.0" AnchorPane.leftAnchor="73.0" AnchorPane.rightAnchor="73.0">
                     <columns>
+                  <TableColumn fx:id="TongTien" prefWidth="339.0" style="-fx-alignment: CENTER;" text="Tổng tiền" />
                         <TableColumn fx:id="DatCocThietKe10" prefWidth="339.0" style="-fx-alignment: CENTER;" text="Đặt cọc thiết kế 10%" />
                         <TableColumn fx:id="DatCocThiCong30" prefWidth="314.0" style="-fx-alignment: CENTER;" text="Đặt cọc thi công 30%" />
                         <TableColumn fx:id="HangDenChanCongTrinh50" prefWidth="294.0" style="-fx-alignment: CENTER;" text="Hàng đến chân công trình 50%" />
@@ -61,8 +62,8 @@
                             <columns>
                                 <TreeTableColumn fx:id="STT" prefWidth="59.0" resizable="false" sortable="false" text="STT" />
                                 <TreeTableColumn fx:id="HangMuc" minWidth="200.0" prefWidth="336.0" resizable="false" sortable="false" text="HẠNG MỤC " />
-                                <TreeTableColumn fx:id="VatLieu" minWidth="200.0" prefWidth="292.0" sortable="false" text="VẬT LIỆU" />
-                                <TreeTableColumn prefWidth="213.0" sortable="false" text="KÍCH THƯỚC ">
+                                <TreeTableColumn fx:id="VatLieu" minWidth="200.0" prefWidth="292.0" sortable="false" text="CHI TIẾT VẬT LIỆU" />
+                                <TreeTableColumn prefWidth="213.0" sortable="false" text="KÍCH THƯỚC (mm)">
                                     <columns>
                                         <TreeTableColumn fx:id="Dai" prefWidth="70.0" resizable="false" sortable="false" text="DÀI" />
                                         <TreeTableColumn fx:id="Rong" prefWidth="70.0" resizable="false" sortable="false" text="RỘNG" />

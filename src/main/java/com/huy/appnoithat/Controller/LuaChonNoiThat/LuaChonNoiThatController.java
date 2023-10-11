@@ -3,6 +3,8 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat;
 import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Operation.ExportOperation;
@@ -58,7 +60,7 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private TextArea noteTextArea;
     @FXML
-    private TableColumn<BangThanhToan, Long> DatCocThiCong30, DatCocThietKe10, HangDenChanCongTrinh50, NghiemThuQuyet;
+    private TableColumn<BangThanhToan, Long> DatCocThiCong30, DatCocThietKe10, HangDenChanCongTrinh50, NghiemThuQuyet, TongTien;
     @FXML
     private TableView<BangThanhToan> bangThanhToan;
     private ByteArrayOutputStream imageStream;
@@ -98,22 +100,8 @@ public class LuaChonNoiThatController implements Initializable {
             listItem.get(i).getParent().getChildren().remove(listItem.get(i));
         }
         TableNoiThat.getSelectionModel().clearSelection();
-        reArrangeList();
-    }
-    private void reArrangeList() {
-        ObservableList<TreeItem<BangNoiThat>> listItem = TableNoiThat.getRoot().getChildren();
-        for (int i = 0; i < listItem.size(); i++) {
-            TreeItem<BangNoiThat> item1 = listItem.get(i);
-            for (int j = 0; j < item1.getChildren().size(); j++) {
-                TreeItem<BangNoiThat> item2 = item1.getChildren().get(j);
-                for (int z = 0; z < item2.getChildren().size(); z++) {
-                    TreeItem<BangNoiThat> item3 = item2.getChildren().get(z);
-                    item3.getValue().setSTT(String.valueOf(z + 1));
-                }
-                item2.getValue().setSTT(Utils.RomanNumber.toRoman(j + 1));
-            }
-            item1.getValue().setSTT(Utils.toAlpha(i + 1));
-        }
+        TableUtils.reArrangeList(TableNoiThat);
+        TableCalculationUtils.recalculateAllTongTien(TableNoiThat.getRoot());
     }
     /**
      * @param url

@@ -1,10 +1,13 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Common;
 
 import com.huy.appnoithat.Common.CalculationUtils;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
+import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableView;
 
 public class TableCalculationUtils {
     private static final String MET_DAI = "mét dài";
@@ -19,6 +22,7 @@ public class TableCalculationUtils {
         bangThanhToan.getItems().get(0).setDatCocThiCong30(datCocThiCong30);
         bangThanhToan.getItems().get(0).setHangDenChanCongTrinh50(hangDenChanCongTrinh50);
         bangThanhToan.getItems().get(0).setNghiemThuQuyet(nghiemThuQuyet);
+        bangThanhToan.getItems().get(0).setTongTien(tongTien);
     }
     /**
      * @param chieuDai
@@ -74,4 +78,19 @@ public class TableCalculationUtils {
         item.getValue().setThanhTien(tongTien);
         calculateTongTien(item.getParent());
     }
+    public static void recalculateAllTongTien(TreeItem<BangNoiThat> item) {
+        if (item == null) {
+            return;
+        }
+        for (TreeItem<BangNoiThat> child : item.getChildren()) {
+            for(TreeItem<BangNoiThat> grandChild : child.getChildren()) {
+                calculateTongTien(grandChild);
+            }
+            calculateTongTien(child);
+        }
+        if (item.getChildren().isEmpty()) {
+            item.getValue().setThanhTien(0L);
+        }
+    }
+
 }

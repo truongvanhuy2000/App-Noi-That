@@ -18,6 +18,10 @@ public class ButtonHandler {
     }
     public void continuousLineAdd(ActionEvent event) {
         if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
+            if (TableNoiThat.getRoot().getChildren().isEmpty()) {
+                TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem("A");
+                TableNoiThat.getRoot().getChildren().add(tempNewItem);
+            }
             return;
         }
         TreeItem<BangNoiThat> currentSelectedItem = TableNoiThat.getSelectionModel().getSelectedItem();
@@ -27,14 +31,17 @@ public class ButtonHandler {
         String currentItemStt = currentSelectedItem.getValue().getSTT().getValue();
         if (Utils.RomanNumber.isRoman(currentItemStt)) {
             handleContinuousAddForRomanStt(currentSelectedItem);
+            TableUtils.reArrangeList(TableNoiThat);
             return;
         }
         if (Utils.isAlpha(currentItemStt)) {
             handleContinuousAddForAlphaStt(currentSelectedItem);
+            TableUtils.reArrangeList(TableNoiThat);
             return;
         }
         if (Utils.isNumeric(currentItemStt)) {
             handleContinuousAddForNumericStt();
+            TableUtils.reArrangeList(TableNoiThat);
         }
     }
 
