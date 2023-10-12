@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="673.0" prefWidth="955.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="673.0" prefWidth="955.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
       <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -21,7 +21,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="285.0" prefWidth="955.0" spacing="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button id="btnNewcss" graphicTextGap="10.0" minHeight="100.0" minWidth="120.0" mnemonicParsing="false" onAction="#newFileButton" prefHeight="100.0" prefWidth="128.0" text="Thêm mới">
+                        <Button id="btnNewcss" graphicTextGap="10.0" minHeight="100.0" minWidth="140.0" mnemonicParsing="false" onAction="#newFileButton" text="Thêm mới">
                            <tooltip><Tooltip text="Tạo bảng nội thất mới" /></tooltip>
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">

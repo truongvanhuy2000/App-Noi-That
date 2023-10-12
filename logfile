@@ -1464,3 +1464,38 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 12-10-2023 13:49:24 [JavaFX Application Thread] HomeController:74 - Login as admin with role Admin
 [INFO ] 12-10-2023 13:49:24 [JavaFX Application Thread] HomeController:74 - Login as admin with role Admin
 [INFO ] 12-10-2023 13:49:55 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:34:14 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 16:34:14 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:34:15 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:34:47 [JavaFX Application Thread] HomeController:74 - Login as admin with role Admin
+[INFO ] 12-10-2023 16:35:09 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 16:35:10 [JavaFX Application Thread] HomeController:74 - Login as admin with role Admin
+[INFO ] 12-10-2023 16:35:10 [JavaFX Application Thread] HomeController:74 - Login as admin with role Admin
+[INFO ] 12-10-2023 16:35:21 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 12-10-2023 16:39:47 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 16:44:10 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 16:44:21 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:44:22 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:44:56 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 16:44:57 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:44:57 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:45:26 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 16:45:27 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:45:27 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:46:26 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 16:46:27 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:46:29 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:47:46 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 16:47:47 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:47:50 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:49:01 [JavaFX Application Thread] ExportFile:90 - Exporting to XLSX file
+[INFO ] 12-10-2023 16:49:50 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[ERROR] 12-10-2023 16:49:50 [JavaFX Application Thread] FileNoiThatExplorerController:77 - Cannot invoke "javafx.beans.property.SimpleLongProperty.set(long)" because "this.TongTien" is null
+[INFO ] 12-10-2023 16:49:52 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[ERROR] 12-10-2023 16:49:52 [JavaFX Application Thread] FileNoiThatExplorerController:77 - Cannot invoke "javafx.beans.property.SimpleLongProperty.set(long)" because "this.TongTien" is null
+[INFO ] 12-10-2023 16:49:53 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[ERROR] 12-10-2023 16:49:53 [JavaFX Application Thread] FileNoiThatExplorerController:77 - Cannot invoke "javafx.beans.property.SimpleLongProperty.set(long)" because "this.TongTien" is null
+[INFO ] 12-10-2023 16:52:57 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 16:52:58 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:52:58 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 16:53:00 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
