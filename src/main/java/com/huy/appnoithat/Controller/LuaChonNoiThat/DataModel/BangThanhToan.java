@@ -26,7 +26,7 @@ public class BangThanhToan {
         DatCocThiCong30 = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinThanhToan.getDatCocThiCong30()));
         HangDenChanCongTrinh50 = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinThanhToan.getHangDenChanCongTrinh50()));
         NghiemThuQuyet = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinThanhToan.getNghiemThuQuyet()));
-        this.TongTien.set(DatCocThiCong30.getValue() + DatCocThietKe10.getValue() + HangDenChanCongTrinh50.getValue() + NghiemThuQuyet.getValue());
+        this.TongTien = new SimpleLongProperty(DatCocThiCong30.getValue() + DatCocThietKe10.getValue() + HangDenChanCongTrinh50.getValue() + NghiemThuQuyet.getValue());
     }
 
     public void setDatCocThietKe10(long datCocThietKe10) {
