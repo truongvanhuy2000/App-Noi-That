@@ -168,6 +168,17 @@
     -fx-text-fill: #ffff;
 }
 
+#btnLogoutcss{
+    -fx-background-color: #651f6a
+}
+
+#btnLogoutcss:hover{
+    -fx-background-color: #B800D2;
+    -fx-border-width: 0px 0px 0px 10px;
+    -fx-border-color: WHITE;
+    -fx-font-family: 'Roboto Condensed', sans-serif;
+}
+
 /*  style classes for button */
 
 .table-view > .virtual-flow > .scroll-bar:vertical,

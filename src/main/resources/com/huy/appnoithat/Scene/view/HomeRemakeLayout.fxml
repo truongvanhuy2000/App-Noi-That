@@ -65,7 +65,7 @@
                                 <Font name="Linux Biolinum O Bold" size="20.0" />
                             </font>
                   </Button>
-                    <Button fx:id="LogoutButton" layoutX="36.0" layoutY="16.0" mnemonicParsing="false" onAction="#logout" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: #651f6a;" text="Đăng xuất" textFill="WHITE">
+                    <Button id="btnLogoutcss" fx:id="LogoutButton" layoutX="36.0" layoutY="16.0" mnemonicParsing="false" onAction="#logout" prefHeight="49.0" prefWidth="318.0" text="Đăng xuất" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="65.0" />
                      </VBox.margin>
