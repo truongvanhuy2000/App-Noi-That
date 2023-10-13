@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Entity.Account;
+import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
 import com.huy.appnoithat.Session.UserSession;
@@ -21,12 +22,14 @@ public class UserSessionService {
     private static final String SESSION_DIRECTORY = Config.USER.SESSION_DIRECTORY;
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
+    private final PersistenceStorageService persistenceStorageService;
 
     public UserSessionService() {
         webClientService = new WebClientServiceImpl();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
+        persistenceStorageService = PersistenceStorageService.getInstance();
     }
 
     public boolean isLogin() {

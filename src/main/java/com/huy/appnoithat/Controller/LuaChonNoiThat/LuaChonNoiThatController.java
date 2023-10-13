@@ -2,7 +2,6 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
@@ -11,6 +10,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Operation.ExportOperation;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Operation.ImportOperation;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupBangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupBangThanhToan;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupTruongThongTin;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Enums.FileType;
 import javafx.collections.ObservableList;
@@ -176,6 +176,8 @@ public class LuaChonNoiThatController implements Initializable {
 
     private void setUpTruongThongTin() {
         NgayLapBaoGia.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
+        SetupTruongThongTin setupTruongThongTin = new SetupTruongThongTin(this);
+        setupTruongThongTin.setup();
     }
     //    private void bindExportButton() {
 //        ExportButton.disableProperty().bind(
