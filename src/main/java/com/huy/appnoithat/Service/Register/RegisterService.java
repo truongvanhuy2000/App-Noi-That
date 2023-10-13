@@ -34,4 +34,8 @@ public class RegisterService {
             LOGGER.error("Can't parse response from server when register new account");
         }
     }
+    public boolean isUsernameValid(String username) {
+        String response = this.webClientService.unauthorizedHttpGetJson("/api/register/usernameValidation?username=" + username);
+        return response != null;
+    }
 }

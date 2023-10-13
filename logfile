@@ -1499,3 +1499,34 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 12-10-2023 16:52:58 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
 [INFO ] 12-10-2023 16:52:58 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
 [INFO ] 12-10-2023 16:53:00 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 12-10-2023 23:18:43 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 23:18:45 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 23:18:47 [JavaFX Application Thread] HomeController:74 - Login as kim with role User
+[INFO ] 12-10-2023 23:18:56 [JavaFX Application Thread] HomeController:74 - Login as admin with role Admin
+[INFO ] 12-10-2023 23:22:50 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 23:22:52 [JavaFX Application Thread] HomeController:74 - Login as admin with role Admin
+[INFO ] 12-10-2023 23:22:52 [JavaFX Application Thread] HomeController:74 - Login as admin with role Admin
+[INFO ] 12-10-2023 23:34:28 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 23:35:36 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 23:37:37 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 23:38:41 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 23:40:40 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 12-10-2023 23:40:41 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 12-10-2023 23:47:21 [main] HelloApplication:35 - Start application
+[INFO ] 12-10-2023 23:47:23 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 12-10-2023 23:47:25 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 13-10-2023 00:39:41 [main] HelloApplication:35 - Start application
+[INFO ] 13-10-2023 00:39:43 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 13-10-2023 00:39:44 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 13-10-2023 00:40:19 [main] HelloApplication:35 - Start application
+[INFO ] 13-10-2023 00:40:21 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 13-10-2023 00:40:22 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 13-10-2023 00:42:30 [main] HelloApplication:35 - Start application
+[INFO ] 13-10-2023 00:42:31 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 13-10-2023 00:42:32 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 13-10-2023 00:56:09 [main] HelloApplication:35 - Start application
+[INFO ] 13-10-2023 00:56:11 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 13-10-2023 00:56:12 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 13-10-2023 00:58:50 [main] HelloApplication:35 - Start application
+[INFO ] 13-10-2023 00:58:53 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 13-10-2023 00:58:54 [JavaFX Application Thread] HomeController:74 - Login as user with role User
