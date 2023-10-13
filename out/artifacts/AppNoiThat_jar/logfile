@@ -8,3 +8,5 @@
 [ERROR] 12-10-2023 13:51:43 [JavaFX Application Thread] UserSessionService:133 - Error when saving session to disk
 [INFO ] 12-10-2023 13:51:43 [JavaFX Application Thread] HomeController:74 - Login as admin with role Admin
 [INFO ] 12-10-2023 13:51:44 [JavaFX Application Thread] HomeController:74 - Login as admin with role Admin
+[INFO ] 12-10-2023 17:23:11 [main] HelloApplication:35 - Start application
+[ERROR] 12-10-2023 17:23:12 [JavaFX Application Thread] UserSessionService:121 - Session file not found
