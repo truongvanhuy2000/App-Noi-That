@@ -172,4 +172,5 @@ public class NewTabController implements Initializable {
         Tab newTab = createNewTab(tabState, importDirectory);
         initSavedThongTinCongTy(newTab.getContent(), persistenceStorageService.getThongTinCongTy());
     }
+
 }

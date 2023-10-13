@@ -2,7 +2,6 @@ package com.huy.appnoithat.Controller.DatabaseModify.Common;
 
 import com.huy.appnoithat.Entity.Common.CommonItemInterface;
 import javafx.collections.ObservableList;
-import org.apache.poi.ss.formula.functions.T;
 
 public class DBModifyUtils {
     public static String getNewName(int currentPos) {

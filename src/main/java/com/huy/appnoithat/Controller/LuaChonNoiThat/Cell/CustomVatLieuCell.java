@@ -1,13 +1,15 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.animation.PauseTransition;
 import javafx.collections.ObservableList;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TreeTableCell;
+import javafx.scene.control.TreeTableView;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
-import org.apache.commons.io.LineIterator;
 
 public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;

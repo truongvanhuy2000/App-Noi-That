@@ -2,29 +2,20 @@ package com.huy.appnoithat.Controller;
 
 import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Entity.Account;
-import com.huy.appnoithat.Entity.AccountInformation;
 import com.huy.appnoithat.Enums.Action;
-import com.huy.appnoithat.HelloApplication;
 import com.huy.appnoithat.Scene.HomeScene;
-import com.huy.appnoithat.Scene.QRScene;
 import com.huy.appnoithat.Scene.RegisterScene;
+import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Service.Login.LoginService;
-import com.huy.appnoithat.Service.Register.RegisterService;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class LoginController {
 
@@ -41,7 +32,7 @@ public class LoginController {
     }
 
     // Call this method everytime you switch scene
-    public void initialize() {
+    public void init() {
         usernameTextField.setOnKeyPressed(keyEvent -> {
             if (KeyboardUtils.isRightKeyCombo(Action.LOGIN, keyEvent)) {
                 LoginButton.fire();
@@ -69,26 +60,19 @@ public class LoginController {
 
     @FXML
     void registerAccount(MouseEvent event) {
-        Stage stage = new Stage();
-        stage.setScene(RegisterScene.getInstance().getScene());
+        Scene scene = RegisterScene.getInstance().getScene();
         RegisterScene.getRegisterController().init();
-        stage.setTitle("REGISTER ACCOUNT");
-        stage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/logoapp.jpg")));
-        stage.show();
+        StageFactory.CreateNewUnresizeableStage(RegisterScene.getInstance().getScene());
     }
 
     private void sceneSwitcher(ActionEvent actionEvent) {
-        Scene scene = null;
-        Stage stage = null;
         Object source = actionEvent.getSource();
-        stage = (Stage) ((Node) source).getScene().getWindow();
+        Stage stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == LoginButton) {
-            scene = HomeScene.getInstance().getScene();
-            HomeScene.getInstance().getHomeController().initialize();
-        } else {
-            return;
+            Scene scene = HomeScene.getInstance().getScene();
+            HomeScene.getInstance().getHomeController().init();
+            StageFactory.closeAndCreateNewMaximizedStage(stage, scene);
         }
-        stage.setScene(scene);
-        stage.show();
     }
+
 }

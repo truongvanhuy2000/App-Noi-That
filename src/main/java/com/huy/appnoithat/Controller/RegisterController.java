@@ -101,8 +101,10 @@ public class RegisterController {
                 PopupUtils.throwSuccessSignal("Tên đăng nhập có thể sử dụng");
             }
         });
-        btnCheckUserName.setOnInputMethodTextChanged(inputMethodEvent -> {
+
+        txtUsername.setOnKeyPressed(keyEvent -> {
             btnSave.setDisable(true);
+            System.out.println("changed");
         });
         btnCancel.setOnAction(actionEvent -> {
             Stage thisStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

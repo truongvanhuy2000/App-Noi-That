@@ -1,62 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.LoginController">
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="615.0" prefWidth="1031.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.huy.appnoithat.Controller.LoginController">
     <children>
-        <AnchorPane layoutX="-3.0" prefHeight="610.0" prefWidth="461.0">
-            <children>
-                <AnchorPane prefHeight="693.0" prefWidth="462.0" style="-fx-background-color: black;" />
-                <ImageView fitHeight="693.0" fitWidth="594.0" layoutX="-1.0" opacity="0.37" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icons/loginimage.jpg" />
-                    </image>
-                </ImageView>
-            </children>
-        </AnchorPane>
-        <AnchorPane layoutX="458.0" prefHeight="693.0" prefWidth="550.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <TextField fx:id="usernameTextField" layoutX="94.0" layoutY="202.0" opacity="0.5" prefHeight="41.0" prefWidth="338.0" promptText="USERNAME" style="-fx-background-color: transparent; -fx-border-color: none; -fx-text-fill: black;">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </TextField>
-                <PasswordField fx:id="passwordField" layoutX="94.0" layoutY="347.0" opacity="0.5" prefHeight="41.0" prefWidth="338.0" promptText="PASSWORD" style="-fx-background-color: transparent; -fx-border-color: none; -fx-text-fill: black;">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </PasswordField>
-                <Button fx:id="LoginButton" layoutX="94.0" layoutY="471.0" mnemonicParsing="false" onAction="#login" prefHeight="41.0" prefWidth="338.0" style="-fx-background-color: #BC7FF7;" text="ĐĂNG NHẬP" textFill="WHITE">
-                    <font>
-                        <Font name="Abyssinica SIL" size="20.0" />
-                    </font>
-                </Button>
-                <Separator layoutX="94.0" layoutY="254.0" prefHeight="2.0" prefWidth="338.0" />
-                <Separator layoutX="94.0" layoutY="408.0" prefHeight="2.0" prefWidth="338.0" />
-                <Label layoutX="94.0" layoutY="159.0" text="Tên đăng nhập :" textFill="#1b00e8">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Label>
-                <Label layoutX="89.0" layoutY="299.0" text="Mật khẩu :" textFill="#1b00e8">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Label>
-                <Label layoutX="187.0" layoutY="620.0" lineSpacing="1.0" onMouseClicked="#registerAccount" prefHeight="30.0" prefWidth="243.0" text="TẠO TÀI KHOẢN MỚI" textFill="#1736bcdb" underline="true">
-                    <font>
-                        <Font name="System Italic" size="17.0" />
-                    </font>
-                </Label>
-            </children>
-        </AnchorPane>
+      <HBox prefHeight="891.0" prefWidth="1214.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+             <AnchorPane fx:id="imageAnchor" maxWidth="582.0" prefHeight="615.0" prefWidth="408.0" style="-fx-background-color: black;" HBox.hgrow="NEVER">
+               <children>
+                      <ImageView fitHeight="615.0" fitWidth="433.0" opacity="0.37" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <image>
+                              <Image url="@../icons/loginimage.jpg" />
+                          </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                      </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="615.0" prefWidth="652.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox alignment="CENTER_LEFT" prefHeight="615.0" prefWidth="698.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                            <Label text="Tên đăng nhập :" textFill="#1b00e8">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <TextField fx:id="usernameTextField" opacity="0.5" prefHeight="41.0" prefWidth="338.0" promptText="USERNAME" style="-fx-background-color: transparent; -fx-border-color: none; -fx-text-fill: black;">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </TextField>
+                            <Separator prefHeight="2.0" prefWidth="338.0">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Separator>
+                            <Label text="Mật khẩu :" textFill="#1b00e8">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </Label>
+                            <PasswordField fx:id="passwordField" opacity="0.5" prefHeight="41.0" prefWidth="338.0" promptText="PASSWORD" style="-fx-background-color: transparent; -fx-border-color: none; -fx-text-fill: black;">
+                                <font>
+                                    <Font size="15.0" />
+                                </font>
+                            </PasswordField>
+                            <Separator prefHeight="2.0" prefWidth="338.0">
+                           <padding>
+                              <Insets bottom="20.0" />
+                           </padding>
+                        </Separator>
+                        <AnchorPane prefHeight="107.0" prefWidth="611.0">
+                           <children>
+                              <VBox alignment="TOP_CENTER" prefWidth="100.0" spacing="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                        <Button fx:id="LoginButton" maxWidth="200.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #BC7FF7;" text="ĐĂNG NHẬP" textFill="WHITE">
+                                            <font>
+                                                <Font name="Abyssinica SIL" size="20.0" />
+                                            </font>
+                                        </Button>
+                                        <Label lineSpacing="1.0" onMouseClicked="#registerAccount" text="TẠO TÀI KHOẢN MỚI" textFill="#1736bcdb" underline="true">
+                                            <font>
+                                                <Font name="System Italic" size="17.0" />
+                                            </font>
+                                        </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <padding>
+                        <Insets left="100.0" right="100.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
     </children>
 </AnchorPane>

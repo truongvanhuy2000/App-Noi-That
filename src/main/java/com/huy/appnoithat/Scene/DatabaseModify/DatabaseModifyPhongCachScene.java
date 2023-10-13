@@ -1,12 +1,9 @@
 package com.huy.appnoithat.Scene.DatabaseModify;
 
 import com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyPhongCachController;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import lombok.Getter;
 
 import java.io.IOException;

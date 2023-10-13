@@ -1530,3 +1530,22 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 13-10-2023 00:58:50 [main] HelloApplication:35 - Start application
 [INFO ] 13-10-2023 00:58:53 [JavaFX Application Thread] HomeController:74 - Login as user with role User
 [INFO ] 13-10-2023 00:58:54 [JavaFX Application Thread] HomeController:74 - Login as user with role User
+[INFO ] 13-10-2023 23:19:07 [main] HelloApplication:35 - Start application
+[INFO ] 13-10-2023 23:19:10 [JavaFX Application Thread] HomeController:75 - Login as user with role User
+[INFO ] 13-10-2023 23:19:28 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
+[INFO ] 13-10-2023 23:19:46 [main] HelloApplication:35 - Start application
+[INFO ] 13-10-2023 23:19:48 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
+[INFO ] 13-10-2023 23:21:42 [main] HelloApplication:35 - Start application
+[INFO ] 13-10-2023 23:22:41 [main] HelloApplication:35 - Start application
+[ERROR] 13-10-2023 23:22:42 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index  null
+[ERROR] 13-10-2023 23:22:48 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/register/usernameValidation?username=asdd null null
+[ERROR] 13-10-2023 23:22:59 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/register/usernameValidation?username=asddasda null null
+[ERROR] 13-10-2023 23:23:23 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/register/usernameValidation?username=asddasda null null
+[ERROR] 13-10-2023 23:23:31 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/register/usernameValidation?username=dmmm null null
+[INFO ] 13-10-2023 23:24:15 [main] HelloApplication:35 - Start application
+[INFO ] 13-10-2023 23:24:52 [main] HelloApplication:35 - Start application
+[INFO ] 13-10-2023 23:26:08 [main] HelloApplication:35 - Start application
+[INFO ] 13-10-2023 23:26:41 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
+[INFO ] 13-10-2023 23:27:12 [JavaFX Application Thread] HomeController:75 - Login as user with role User
+[INFO ] 13-10-2023 23:30:32 [main] HelloApplication:35 - Start application
+[INFO ] 13-10-2023 23:30:36 [JavaFX Application Thread] HomeController:75 - Login as user with role User
