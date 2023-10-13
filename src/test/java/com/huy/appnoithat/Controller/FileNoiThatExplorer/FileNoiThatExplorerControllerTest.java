@@ -1,12 +1,5 @@
 package com.huy.appnoithat.Controller.FileNoiThatExplorer;
 
-import com.huy.appnoithat.Scene.LuaChonNoiThat.FileNoiThatExplorerScene;
-import javafx.application.Application;
-import javafx.stage.Stage;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 //public class FileNoiThatExplorerControllerTest extends Application {
 //    private Thread thread;
 //

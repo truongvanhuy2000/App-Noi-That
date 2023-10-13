@@ -6,6 +6,7 @@ import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
 import com.huy.appnoithat.HelloApplication;
 import com.huy.appnoithat.Scene.HomeScene;
+import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.ListAccountWaitToApproveScene;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementAddAccountScene;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementEditorScene;
@@ -141,9 +142,9 @@ public class UsersManagementController {
     @FXML
     void AddAccount(ActionEvent event) {
         try {
-//
-            Stage userManageMentStage = new Stage();
             Scene userManagementAddAccountScene = UserManagementAddAccountScene.getInstance().getScene();
+            Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(userManagementAddAccountScene);
+
             ObservableList<String> listActive = FXCollections.observableArrayList("Có", "Không");
             TextField txtusername = (TextField) userManagementAddAccountScene.lookup("#txtaddusername");
             TextField txtpassword = (TextField) userManagementAddAccountScene.lookup("#txtaddpassword");
@@ -151,7 +152,6 @@ public class UsersManagementController {
             Button btnadd = (Button) userManagementAddAccountScene.lookup("#btnadd");
             Button btncancel = (Button) userManagementAddAccountScene.lookup("#btncancel");
             comboBoxActive.setItems(listActive);
-            userManageMentStage.setScene(userManagementAddAccountScene);
 
             btnadd.setOnAction(actionEvent -> {
                 String active = "false";
@@ -178,10 +178,6 @@ public class UsersManagementController {
             btncancel.setOnAction(actionEvent -> {
                 userManageMentStage.close();
             });
-
-            userManageMentStage.setTitle("ADD NEW USER");
-            userManageMentStage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/logoapp.jpg")));
-            userManageMentStage.show();
         } catch (Exception e) {
             LOGGER.error("Error when add new account", e);
             throw new RuntimeException(e);
@@ -221,7 +217,7 @@ public class UsersManagementController {
                 return;
             }
             int selectIndex = tableManageUser.getSelectionModel().getSelectedIndex();
-            Stage userManageMentStage = new Stage();
+            Stage userManageMentStage;
             Scene userManagementEditorScene = UserManagementEditorScene.getInstance().getScene();
 //element field of AccountTable
             String username = tableManageUser.getSelectionModel().getSelectedItem().getUsername();
@@ -244,11 +240,7 @@ public class UsersManagementController {
             txtusername.setText(exampleAccount.getUsername());
             txtpassword.setText(exampleAccount.getPassword());
 
-            userManageMentStage.setScene(userManagementEditorScene);
-            userManageMentStage.setTitle("EDIT USER");
-            userManageMentStage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/logoapp.jpg")));
-            userManageMentStage.show();
-
+            userManageMentStage = StageFactory.CreateNewUnresizeableStage(userManagementEditorScene);
 
             btnedit.setOnAction(actionEvent -> {
                 tableManageUser.getSelectionModel().getSelectedItem().setUsername(txtusername.getText());
@@ -305,8 +297,9 @@ public class UsersManagementController {
         ObservableList<Account> listUserNotEnable = FXCollections.observableArrayList(
         );
         try {
-            Stage userManageMentStage = new Stage();
+
             Scene listAccountWaitToApprove = ListAccountWaitToApproveScene.getInstance().getScene();
+            Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(listAccountWaitToApprove);
 
 //element field of userManagementEditorScene
             TableView tableView = (TableView) listAccountWaitToApprove.lookup("#tableViewListAccount");
@@ -347,13 +340,6 @@ public class UsersManagementController {
             sttColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("id"));
             tableView.setItems(listUserNotEnable);
 
-
-//
-            userManageMentStage.setScene(listAccountWaitToApprove);
-            userManageMentStage.setTitle("LIST ACCOUNT TO APPROVE");
-            userManageMentStage.show();
-
-
             btnApprove.setOnAction(actionEvent -> {
                 try {
                     if (tableView.getSelectionModel().getSelectedItem() != null) {
@@ -370,9 +356,7 @@ public class UsersManagementController {
                     throw new RuntimeException(e);
                 }
 
-                // You might need additional logic to handle saving or updating data
             });
-
             btnReject.setOnAction(actionEvent -> {
                 try {
                     if (tableView.getSelectionModel().getSelectedItem() != null) {
@@ -386,7 +370,6 @@ public class UsersManagementController {
                     LOGGER.error("Error when duyet account", e);
                     throw new RuntimeException(e);
                 }
-
             });
 
             btnCancel.setOnAction(actionEvent -> {
@@ -408,16 +391,5 @@ public class UsersManagementController {
     // Used to switch between scence
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
-        Scene scene = null;
-        Stage stage = null;
-        Object source = actionEvent.getSource();
-        stage = (Stage) ((Node) source).getScene().getWindow();
-        if (source == backButton) {
-            scene = HomeScene.getInstance().getScene();
-        } else {
-            return;
-        }
-        stage.setScene(scene);
-        stage.show();
     }
 }

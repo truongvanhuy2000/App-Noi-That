@@ -3,10 +3,11 @@ package com.huy.appnoithat;
 import com.huy.appnoithat.Exception.GlobalExceptionHandler;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.LoginScene;
+import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Session.UserSession;
 import javafx.application.Application;
-import javafx.scene.image.Image;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,15 +21,14 @@ public class HelloApplication extends Application {
         UserSession.getInstance();
         UserSessionService sessionService = new UserSessionService();
         if (sessionService.isLogin()) {
-            stage.setScene(HomeScene.getInstance().getScene());
-            HomeScene.getInstance().getHomeController().initialize();
+            Scene scene = HomeScene.getInstance().getScene();
+            HomeScene.getInstance().getHomeController().init();
+            StageFactory.closeAndCreateNewMaximizedStage(stage, scene);
         } else {
-            stage.setScene(LoginScene.getInstance().getScene());
+            Scene scene = LoginScene.getInstance().getScene();
+            LoginScene.getInstance().getLoginController().init();
+            StageFactory.closeAndCreateNewUnresizeableStage(stage, scene);
         }
-        stage.setTitle("App Noi That");
-        stage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/logoapp.jpg")));
-        stage.setResizable(false);
-        stage.show();
     }
 
     public static void main(String[] args) {

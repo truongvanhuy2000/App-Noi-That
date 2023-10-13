@@ -5,13 +5,9 @@ import javafx.animation.PauseTransition;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-
-import java.awt.event.MouseEvent;
 
 public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;

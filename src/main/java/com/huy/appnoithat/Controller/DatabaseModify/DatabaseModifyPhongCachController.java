@@ -1,14 +1,11 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
 
-import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
-import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
-import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyNoiThatService;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyPhongCachService;
@@ -24,7 +21,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;

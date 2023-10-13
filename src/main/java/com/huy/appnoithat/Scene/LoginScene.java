@@ -1,5 +1,7 @@
 package com.huy.appnoithat.Scene;
 
+import com.huy.appnoithat.Controller.HomeController;
+import com.huy.appnoithat.Controller.LoginController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -48,5 +50,8 @@ public class LoginScene {
 
     private void addCssToScence() {
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(CSS_PATH)).toExternalForm());
+    }
+    public LoginController getLoginController() {
+        return fxmlLoader.getController();
     }
 }

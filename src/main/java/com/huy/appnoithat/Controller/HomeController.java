@@ -3,6 +3,7 @@ package com.huy.appnoithat.Controller;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.FileNoiThatExplorerScene;
+import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import javafx.event.ActionEvent;
@@ -48,7 +49,7 @@ public class HomeController {
     }
 
     // Initialize scene
-    public void initialize() {
+    public void init() {
         PCPane.setVisible(true);
         PCPane.getChildren().clear();
         toggleButton(false, false, false);
@@ -91,15 +92,12 @@ public class HomeController {
     // Central unit to switch scene based on context
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
-        Scene scene = null;
         Object source = actionEvent.getSource();
         Stage stage = (Stage) ((Node) source).getScene().getWindow();
-        stage.setResizable(false);
         if (source == LogoutButton) {
-            scene = LoginScene.getInstance().getScene();
+            Scene scene = LoginScene.getInstance().getScene();
+            StageFactory.closeAndCreateNewUnresizeableStage(stage, scene);
         }
-        stage.setScene(scene);
-        stage.show();
     }
 
     private void OnClickSuaDoiDatabase(ActionEvent actionEvent) {

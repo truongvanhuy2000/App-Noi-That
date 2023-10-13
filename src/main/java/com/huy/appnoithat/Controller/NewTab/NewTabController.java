@@ -150,4 +150,5 @@ public class NewTabController implements Initializable {
         tabPane.getTabs().clear();
         createNewTab(tabState, importDirectory);
     }
+
 }

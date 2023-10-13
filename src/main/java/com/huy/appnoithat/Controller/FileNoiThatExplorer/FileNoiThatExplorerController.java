@@ -5,6 +5,7 @@ import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.NewTab.TabState;
 import com.huy.appnoithat.HelloApplication;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.NewTabScene;
+import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
@@ -19,7 +20,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-import java.util.Date;
 
 public class FileNoiThatExplorerController {
     final static Logger LOGGER = LogManager.getLogger(FileNoiThatExplorerController.class);
@@ -80,13 +80,9 @@ public class FileNoiThatExplorerController {
         fileNoiThatExplorerService.addRecentFile(recentFile);
     }
     private void openNewLuaChonNoiThatTab(TabState tabState, String directory) {
-        Stage newStage = new Stage();
         NewTabScene newTabScene = new NewTabScene();
         newTabScene.getNewTabController().init(tabState, directory);
-        newStage.setMaximized(true);
-        newStage.setScene(newTabScene.getScene());
-        newStage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/logoapp.jpg")));
-        newStage.show();
+        StageFactory.CreateNewMaximizedStage(newTabScene.getScene());
     }
     private boolean isDirectoryExist(String directory) {
         return new File(directory).exists();
