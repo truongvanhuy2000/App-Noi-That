@@ -22,7 +22,6 @@ public class Config {
     }
     public static class WEB_CLIENT {
         public static final String BASE_URL = "http://103.238.234.22:8080";
-//        public static final String BASE_URL = "http://localhost:8082";
         public static final int TIME_OUT = 10;
     }
 }
