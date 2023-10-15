@@ -3,6 +3,7 @@ package com.huy.appnoithat.Service.RestService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
@@ -11,6 +12,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,5 +95,21 @@ public class NoiThatRestService {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
         this.webClientService.authorizedHttpDeleteJson(path, "", token);
+    }
+    public List<NoiThat> searchBy(String phongCachName) {
+        String token = this.userSessionService.getToken();
+        String path = String.format(BASE_ENDPOINT + "/searchBy" + OWNER_TEMPLATE + "&phongCachName=%s", userSessionService.getUsername(), phongCachName);
+        String response2 = this.webClientService.authorizedHttpGetJson(path, token);
+        if (response2 == null) {
+            return null;
+        }
+        try {
+            // 2. convert JSON array to List of objects
+            return objectMapper.readValue(response2, objectMapper.getTypeFactory()
+                    .constructCollectionType(List.class, NoiThat.class));
+        } catch (IOException e) {
+            LOGGER.error("Error when searching noi that");
+            throw new RuntimeException(e);
+        }
     }
 }

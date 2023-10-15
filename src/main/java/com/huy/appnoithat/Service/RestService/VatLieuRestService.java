@@ -80,4 +80,22 @@ public class VatLieuRestService {
         String path = String.format(BASE_ENDPOINT + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
         this.webClientService.authorizedHttpDeleteJson(path, "", token);
     }
+
+    public List<VatLieu> searchBy(String phongCachName, String noiThatName, String hangMucName) {
+        String token = this.userSessionService.getToken();
+        String path = String.format(BASE_ENDPOINT + "/searchBy" + OWNER_TEMPLATE + "&phongCachName=%s&noiThatName=%s&hangMucName=%s",
+                userSessionService.getUsername(), phongCachName, noiThatName, hangMucName);
+        String response = this.webClientService.authorizedHttpGetJson(path, token);
+        if (response == null) {
+            return null;
+        }
+        try {
+            // 2. convert JSON array to List of objects
+            return objectMapper.readValue(response, objectMapper.getTypeFactory()
+                    .constructCollectionType(List.class, VatLieu.class));
+        } catch (IOException e) {
+            LOGGER.error("Error when finding vat lieu");
+            throw new RuntimeException(e);
+        }
+    }
 }

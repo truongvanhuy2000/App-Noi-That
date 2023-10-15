@@ -59,6 +59,9 @@ public class ExportOperation {
         if (selectedFile == null) {
             return;
         }
+        exportFile(fileType, selectedFile);
+    }
+    public void exportFile(FileType fileType, File selectedFile) {
         DataPackage dataPackage = new DataPackage(
                 getThongTinCongTy(),
                 getThongTinKhachHang(),
@@ -68,10 +71,22 @@ public class ExportOperation {
         );
         boolean result = new LuaChonNoiThatService().exportFile(selectedFile, fileType, dataPackage);
         if (!result) {
-            PopupUtils.throwErrorSignal("Xuất file thất bại");
-            return;
+            if (fileType == FileType.NT) {
+                PopupUtils.throwErrorSignal("Lưu thất bại");
+            }
+            else {
+                PopupUtils.throwErrorSignal("Xuất file thất bại");
+            }
         }
-        PopupUtils.throwSuccessSignal("Xuất file thành công");
+        else {
+            if (fileType == FileType.NT) {
+                PopupUtils.throwSuccessSignal("Lưu thất thành công");
+            }
+            else {
+                PopupUtils.throwSuccessSignal("Xuất file thành công");
+            }
+        }
+
     }
     /**
      * THis function will return a list of ThongTinNoiThat from item root from the table

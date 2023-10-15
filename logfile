@@ -1551,5 +1551,134 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 13-10-2023 23:30:36 [JavaFX Application Thread] HomeController:75 - Login as user with role User
 [INFO ] 14-10-2023 14:24:23 [main] HelloApplication:35 - Start application
 [INFO ] 14-10-2023 14:24:27 [JavaFX Application Thread] HomeController:75 - Login as user with role User
-[INFO ] 15-10-2023 19:59:28 [main] HelloApplication:35 - Start application
-[INFO ] 15-10-2023 19:59:30 [JavaFX Application Thread] HomeController:75 - Login as user with role User
+[INFO ] 14-10-2023 16:57:05 [main] HelloApplication:35 - Start application
+[INFO ] 14-10-2023 16:57:08 [JavaFX Application Thread] HomeController:75 - Login as user with role User
+[ERROR] 14-10-2023 16:57:15 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/noithat/searchBy?owner=user&phongCachName=Phong cách hiện đại 2 eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5NzIxNDQzMSwiZXhwIjo0Mjg5MjE0NDMxfQ.NgSGYlN8W_YycAoXbHJ-JAKEn3lTV7Qua74bNAggmdW8Zy4eAIKCMc3MkNBLgSKBMrXArzdhXypfBsiEpGclHw null
+[INFO ] 14-10-2023 16:58:24 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[ERROR] 14-10-2023 16:58:32 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/noithat/searchBy?owner=kim&phongCachName=NỘI THẤT PHONG CÁCH HIỆN ĐẠI  eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk3Mjc3NTAzLCJleHAiOjQyODkyNzc1MDN9.5l0GMwEGMzzIngPEz38GNUbptZZ-Gd6aMRbvNVUl8jCLnbhCn3cYqD2tYy16QqqhLPi8aB3DPqopM8yingFCSA null
+[INFO ] 14-10-2023 16:59:13 [main] HelloApplication:35 - Start application
+[INFO ] 14-10-2023 16:59:17 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 14-10-2023 17:04:19 [main] HelloApplication:35 - Start application
+[INFO ] 14-10-2023 17:04:22 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 14-10-2023 17:06:05 [main] HelloApplication:35 - Start application
+[INFO ] 14-10-2023 17:06:09 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[ERROR] 14-10-2023 17:07:30 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/hangmuc/searchBy?owner=kim&phongCachName=N%E1%BB%98I+TH%E1%BA%A4T+PHONG+C%C3%81CH+HI%E1%BB%86N+%C4%90%E1%BA%A0I+&noiThatName=N%E1%BB%98I+TH%E1%BA%A4T+PH%C3%92NG+B%E1%BA%BEP eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk3Mjc3NTAzLCJleHAiOjQyODkyNzc1MDN9.5l0GMwEGMzzIngPEz38GNUbptZZ-Gd6aMRbvNVUl8jCLnbhCn3cYqD2tYy16QqqhLPi8aB3DPqopM8yingFCSA null
+[INFO ] 14-10-2023 17:29:11 [main] HelloApplication:35 - Start application
+[INFO ] 14-10-2023 17:29:14 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 14-10-2023 17:30:09 [main] HelloApplication:35 - Start application
+[INFO ] 14-10-2023 17:30:26 [main] HelloApplication:35 - Start application
+[INFO ] 14-10-2023 17:31:45 [main] HelloApplication:35 - Start application
+[INFO ] 14-10-2023 17:32:25 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 13:20:35 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 13:24:18 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 13:24:28 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
+[INFO ] 15-10-2023 13:26:29 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 13:26:31 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
+[INFO ] 15-10-2023 17:49:00 [main] HelloApplication:35 - Start application
+[ERROR] 15-10-2023 17:49:01 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username=admin eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTczNTEwNjgsImV4cCI6NDI4OTM1MTA2OH0.hDE_14A0BqoR-5gHNne6Gljyb-gAAg4aa5Hml2T-ofbz9CdQ-8DTuLK7ZArYM0uTpTOk4oxxzZtnLN6vhwvuJg null
+[ERROR] 15-10-2023 17:49:01 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTczNTEwNjgsImV4cCI6NDI4OTM1MTA2OH0.hDE_14A0BqoR-5gHNne6Gljyb-gAAg4aa5Hml2T-ofbz9CdQ-8DTuLK7ZArYM0uTpTOk4oxxzZtnLN6vhwvuJg null
+[ERROR] 15-10-2023 17:49:16 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"kim","password":"kim","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[INFO ] 15-10-2023 17:51:45 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 17:51:47 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
+[INFO ] 15-10-2023 17:51:55 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[ERROR] 15-10-2023 17:52:01 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[ERROR] 15-10-2023 17:52:01 [JavaFX Application Thread] GlobalExceptionHandler:31 - Cannot invoke "javafx.scene.Node.lookup(String)" because "nodeFromCurrentTab" is null
+[ERROR] 15-10-2023 17:52:01 [JavaFX Application Thread] GlobalExceptionHandler:31 - null
+[ERROR] 15-10-2023 17:52:01 [JavaFX Application Thread] GlobalExceptionHandler:31 - java.lang.reflect.InvocationTargetException
+[INFO ] 15-10-2023 17:52:55 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[ERROR] 15-10-2023 17:52:59 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[ERROR] 15-10-2023 17:52:59 [JavaFX Application Thread] GlobalExceptionHandler:31 - Cannot invoke "javafx.scene.Node.lookup(String)" because "nodeFromCurrentTab" is null
+[ERROR] 15-10-2023 17:52:59 [JavaFX Application Thread] GlobalExceptionHandler:31 - null
+[ERROR] 15-10-2023 17:52:59 [JavaFX Application Thread] GlobalExceptionHandler:31 - java.lang.reflect.InvocationTargetException
+[INFO ] 15-10-2023 17:54:50 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 17:54:53 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 17:55:28 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 15-10-2023 17:55:41 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 15-10-2023 17:55:54 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 15-10-2023 17:58:49 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 17:58:52 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 17:58:53 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 15-10-2023 17:59:13 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 15-10-2023 18:01:14 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 18:01:39 [main] HelloApplication:35 - Start application
+[ERROR] 15-10-2023 18:01:40 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index  null
+[ERROR] 15-10-2023 18:01:45 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"kim","password":"kim","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[ERROR] 15-10-2023 18:02:01 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"kim","password":"ki","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[ERROR] 15-10-2023 18:02:08 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/register/usernameValidation?username=safasssadas null null
+[INFO ] 15-10-2023 19:41:42 [main] HelloApplication:35 - Start application
+[ERROR] 15-10-2023 19:41:42 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index  null
+[ERROR] 15-10-2023 19:41:49 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[INFO ] 15-10-2023 19:42:30 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
+[INFO ] 15-10-2023 19:45:56 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 19:45:58 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
+[INFO ] 15-10-2023 19:47:37 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 19:47:39 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
+[INFO ] 15-10-2023 19:48:17 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 19:48:20 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
+[INFO ] 15-10-2023 19:48:27 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 19:54:00 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 19:54:02 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 19:59:23 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 19:59:28 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 19:59:54 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 19:59:56 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:00:25 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:00:27 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:01:29 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:01:32 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:17:47 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:17:50 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:20:35 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:20:39 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:21:56 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:21:59 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:23:04 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:23:07 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:23:54 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:23:57 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:24:15 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:24:17 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:38:23 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:38:27 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:39:39 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:39:42 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:40:33 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:40:37 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:46:02 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:46:04 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:47:16 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:47:19 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:50:17 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:50:21 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:52:44 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:52:46 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:55:15 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:55:18 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:56:37 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:56:40 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:59:14 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:59:17 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 20:59:45 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 20:59:48 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 21:00:53 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 21:00:56 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 21:02:04 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 21:02:06 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 21:02:57 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 21:03:00 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 21:03:44 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 21:03:48 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 21:07:19 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 21:07:22 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 21:08:11 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 21:08:14 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 21:08:46 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
+[INFO ] 15-10-2023 21:21:45 [main] HelloApplication:35 - Start application
+[ERROR] 15-10-2023 21:21:45 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username=admin eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTczNzg5MjYsImV4cCI6NDI4OTM3ODkyNn0.rSS7lbCLF0l-Rd_-NnilIqE_y60qxiJSC8Aap4Y2UaJEw3PEkVQvClqNa75WGZR9JsPgSM1qBg77eYIpHSApwA null
+[ERROR] 15-10-2023 21:21:45 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTczNzg5MjYsImV4cCI6NDI4OTM3ODkyNn0.rSS7lbCLF0l-Rd_-NnilIqE_y60qxiJSC8Aap4Y2UaJEw3PEkVQvClqNa75WGZR9JsPgSM1qBg77eYIpHSApwA null
+[ERROR] 15-10-2023 21:21:54 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/register/usernameValidation?username=kimsadasdsa null null
+[INFO ] 15-10-2023 21:22:30 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 21:22:35 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
+[INFO ] 15-10-2023 21:22:48 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 21:26:33 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 21:26:36 [JavaFX Application Thread] HomeController:75 - Login as kim with role User

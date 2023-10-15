@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Scene;
 
-import com.huy.appnoithat.Controller.RegisterController;
+import com.huy.appnoithat.Controller.Register.RegisterController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
