@@ -1,14 +1,12 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomEditingCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableCell;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
+import javafx.scene.control.*;
 
 
 public class STTCollumHandler {
@@ -106,7 +104,33 @@ public class STTCollumHandler {
     }
 
     public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param) {
-        return new CustomEditingCell<>(true);
+        return new TreeTableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                    setGraphic(null);
+                    return;
+                }
+                setText(item);
+                TreeTableRow<BangNoiThat> currentRow = getTableRow();
+                if (!isEmpty()) {
+                    if (Utils.isNumeric(getItem())) {
+                        currentRow.setStyle("-fx-font-weight: normal");
+                        return;
+                    }
+                    if (Utils.RomanNumber.isRoman(getItem())) {
+                        currentRow.setStyle("-fx-font-weight: bold");
+                        return;
+                    }
+                    if (Utils.isAlpha(getItem())) {
+                        currentRow.setStyle("-fx-font-weight: bold; -fx-font-size: 14px");
+                        return;
+                    }
+                }
+            }
+        };
     }
 
     public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {
