@@ -1673,3 +1673,10 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 15-10-2023 21:08:11 [main] HelloApplication:35 - Start application
 [INFO ] 15-10-2023 21:08:14 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
 [INFO ] 15-10-2023 21:08:46 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
+[INFO ] 15-10-2023 21:21:45 [main] HelloApplication:35 - Start application
+[ERROR] 15-10-2023 21:21:45 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username=admin eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTczNzg5MjYsImV4cCI6NDI4OTM3ODkyNn0.rSS7lbCLF0l-Rd_-NnilIqE_y60qxiJSC8Aap4Y2UaJEw3PEkVQvClqNa75WGZR9JsPgSM1qBg77eYIpHSApwA null
+[ERROR] 15-10-2023 21:21:45 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTczNzg5MjYsImV4cCI6NDI4OTM3ODkyNn0.rSS7lbCLF0l-Rd_-NnilIqE_y60qxiJSC8Aap4Y2UaJEw3PEkVQvClqNa75WGZR9JsPgSM1qBg77eYIpHSApwA null
+[ERROR] 15-10-2023 21:21:54 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/register/usernameValidation?username=kimsadasdsa null null
+[INFO ] 15-10-2023 21:22:30 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 21:22:35 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
+[INFO ] 15-10-2023 21:22:48 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
