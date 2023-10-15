@@ -4,12 +4,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController;
 import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
 import com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.Metadata;
 import com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -18,6 +21,8 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class ExportNtFile implements ExportFile {
+    final static Logger LOGGER = LogManager.getLogger(ExportNtFile.class);
+
     private DataPackage dataForExport;
     private ObjectData objectData;
     private ObjectMapper mapper;
@@ -61,9 +66,9 @@ public class ExportNtFile implements ExportFile {
     public DataPackage importData(File importDirectory) {
         ObjectData objectData1;
         try (InputStream inputStream = new FileInputStream(importDirectory)) {
-            String text = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
-            String decodedString = Utils.decodeData(text);
-            objectData1 = mapper.readValue(decodedString.getBytes(), ObjectData.class);
+            String decodedString = Utils.decodeData(inputStream.readAllBytes());
+//            LOGGER.debug(decodedString);
+            objectData1 = mapper.readValue(decodedString, ObjectData.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
