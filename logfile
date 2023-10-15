@@ -1551,3 +1551,5 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 13-10-2023 23:30:36 [JavaFX Application Thread] HomeController:75 - Login as user with role User
 [INFO ] 14-10-2023 14:24:23 [main] HelloApplication:35 - Start application
 [INFO ] 14-10-2023 14:24:27 [JavaFX Application Thread] HomeController:75 - Login as user with role User
+[INFO ] 15-10-2023 19:59:28 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 19:59:30 [JavaFX Application Thread] HomeController:75 - Login as user with role User
