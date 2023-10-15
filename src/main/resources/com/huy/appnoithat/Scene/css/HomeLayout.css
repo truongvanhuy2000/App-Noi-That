@@ -52,7 +52,6 @@
     -fx-background-radius: 20px;
     -fx-border-style: solid;
     -fx-border-color: #748CF1;
-
 }
 
 .side_ankerpane{
@@ -127,7 +126,6 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
     -fx-text-fill: #ffff;
 }
-
 #btnDeletecss {
     -fx-background-color: #0487D9;
     -fx-background-radius: 6, 5;
