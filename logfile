@@ -1680,5 +1680,29 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 15-10-2023 21:22:30 [main] HelloApplication:35 - Start application
 [INFO ] 15-10-2023 21:22:35 [JavaFX Application Thread] HomeController:75 - Login as admin with role Admin
 [INFO ] 15-10-2023 21:22:48 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
-[INFO ] 15-10-2023 21:26:33 [main] HelloApplication:35 - Start application
-[INFO ] 15-10-2023 21:26:36 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 22:34:08 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 22:34:11 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 22:34:21 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 15-10-2023 22:34:34 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 15-10-2023 22:34:59 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 15-10-2023 22:36:29 [JavaFX Application Thread] ImportOperation:46 - Import file: test2.nt
+[INFO ] 15-10-2023 22:36:42 [JavaFX Application Thread] ImportOperation:46 - Import file: test2.nt
+[INFO ] 15-10-2023 22:36:50 [JavaFX Application Thread] ImportOperation:46 - Import file: test2.nt
+[INFO ] 15-10-2023 22:37:05 [JavaFX Application Thread] ExportFile:90 - Exporting to XLSX file
+[INFO ] 15-10-2023 22:38:18 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 22:38:20 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 22:38:28 [JavaFX Application Thread] ImportOperation:46 - Import file: test2.nt
+[INFO ] 15-10-2023 22:41:41 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 22:41:44 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 22:41:46 [JavaFX Application Thread] ImportOperation:46 - Import file: test2.nt
+[INFO ] 15-10-2023 22:43:45 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 22:43:47 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 22:43:49 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 15-10-2023 22:44:20 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 22:44:22 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 22:44:24 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 15-10-2023 22:45:35 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 15-10-2023 22:53:30 [main] HelloApplication:35 - Start application
+[INFO ] 15-10-2023 22:53:32 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
+[INFO ] 15-10-2023 22:53:35 [JavaFX Application Thread] ImportOperation:46 - Import file: test2.nt
+[INFO ] 15-10-2023 22:53:42 [JavaFX Application Thread] ImportOperation:46 - Import file: test2.nt

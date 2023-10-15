@@ -40,7 +40,14 @@ public class NewTabController implements Initializable {
 
     private Tab createNewTab(TabState tabState, String importDirectory) {
         LuaChonNoiThatScene luaChonNoiThatScene = new LuaChonNoiThatScene();
-        Tab newTab = setUpTab();
+        String tabName = "";
+        if (TabState.IMPORT_TAB == tabState) {
+            tabName = new File(importDirectory).getAbsoluteFile().getName();
+        }
+        else {
+            tabName = "Tab mới";
+        }
+        Tab newTab = setUpTab(tabName);
         Node root = luaChonNoiThatScene.getRoot();
         newTab.setContent(root);
         if (tabState == TabState.IMPORT_TAB) {
@@ -58,8 +65,11 @@ public class NewTabController implements Initializable {
         tabPane.getSelectionModel().select(newTab);
     }
 
-    private Tab setUpTab() {
-        Tab newTab = new Tab("Tab mới");
+    private Tab setUpTab(String name) {
+        if (name == null) {
+            name = "Tab mới";
+        }
+        Tab newTab = new Tab(name);
         ContextMenu contextMenu = new ContextMenu();
         MenuItem nhanBanMenuItem = new MenuItem("Nhân bản");
         nhanBanMenuItem.setOnAction(event -> duplicateTab(event, newTab));
@@ -84,7 +94,7 @@ public class NewTabController implements Initializable {
 
     private void duplicateTab(ActionEvent action, Tab currentTab) {
         Node nodeFromCurrentTab = currentTab.getContent();
-        Tab newTab = setUpTab();
+        Tab newTab = setUpTab(null);
         Node root = new LuaChonNoiThatScene().getRoot();
         newTab.setContent(duplicateContent(nodeFromCurrentTab, root));
         addNewTabToPane(newTab);
