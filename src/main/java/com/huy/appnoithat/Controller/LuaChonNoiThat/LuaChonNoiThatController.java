@@ -64,6 +64,8 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private TableView<BangThanhToan> bangThanhToan;
     private ByteArrayOutputStream imageStream;
+    private State currentState;
+    private String currentDirectory;
     public LuaChonNoiThatController() {
         imageStream = new ByteArrayOutputStream();
     }
@@ -110,6 +112,7 @@ public class LuaChonNoiThatController implements Initializable {
      */
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
+        currentState = State.NEW_FILE;
         setUpBangThanhToan();
         setUpBangNoiThat();
         setUpButton();
@@ -128,6 +131,8 @@ public class LuaChonNoiThatController implements Initializable {
     public void importFile(String directory) {
         ImportOperation importOperation = new ImportOperation(this);
         importOperation.importFile(directory);
+        currentState = State.OPEN_FROM_EXISTING_FILE;
+        currentDirectory = directory;
     }
     /**
      * This function will handle the event when user want to choose an image
@@ -179,17 +184,13 @@ public class LuaChonNoiThatController implements Initializable {
         SetupTruongThongTin setupTruongThongTin = new SetupTruongThongTin(this);
         setupTruongThongTin.setup();
     }
-    //    private void bindExportButton() {
-//        ExportButton.disableProperty().bind(
-//            TenCongTy.textProperty().isEmpty().or(
-//            VanPhong.textProperty().isEmpty().or(
-//            DiaChiXuong.textProperty().isEmpty().or(
-//            DienThoaiCongTy.textProperty().isEmpty().or(
-//            Email.textProperty().isEmpty().or(
-//            TenKhachHang.textProperty().isEmpty().or(
-//            DienThoaiKhachHang.textProperty().isEmpty().or(
-//            DiaChiKhachHang.textProperty().isEmpty().or(
-//            SanPham.textProperty().isEmpty()))))))))
-//        );
-//    }
+
+    public void saveAs() {
+        exportFile(FileType.NT);
+    }
+
+    public void save() {
+        ExportOperation exportOperation = new ExportOperation(this);
+        exportOperation.exportFile(FileType.NT, new File(currentDirectory));
+    }
 }

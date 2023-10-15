@@ -43,4 +43,6 @@ module com.huy.appnoithat {
     opens com.huy.appnoithat.Controller.NewTab to javafx.fxml;
     exports com.huy.appnoithat.Controller.LuaChonNoiThat.Common;
     opens com.huy.appnoithat.Controller.LuaChonNoiThat.Common to javafx.fxml;
+    exports com.huy.appnoithat.Controller.Register;
+    opens com.huy.appnoithat.Controller.Register to javafx.fxml;
 }

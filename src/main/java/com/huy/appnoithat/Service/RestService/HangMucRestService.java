@@ -77,4 +77,20 @@ public class HangMucRestService {
         String path = String.format(BASE_ENDPOINT + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
         this.webClientService.authorizedHttpDeleteJson(path, "", token);
     }
+    public List<HangMuc> searchBy(String phongCachName, String noiThatName) {
+        String token = this.userSessionService.getToken();
+        String path = String.format(BASE_ENDPOINT + "/searchBy" + OWNER_TEMPLATE + "&phongCachName=%s&noiThatName=%s", userSessionService.getUsername(), phongCachName, noiThatName);
+        String response2 = this.webClientService.authorizedHttpGetJson(path, token);
+        if (response2 == null) {
+            return null;
+        }
+        try {
+            // 2. convert JSON array to List of objects
+            return objectMapper.readValue(response2, objectMapper.getTypeFactory()
+                    .constructCollectionType(List.class, HangMuc.class));
+        } catch (IOException e) {
+            LOGGER.error("Error when searching hang muc");
+            throw new RuntimeException(e);
+        }
+    }
 }

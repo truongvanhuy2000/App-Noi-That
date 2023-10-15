@@ -166,6 +166,10 @@ public class ButtonHandler {
      * @param event This function will handle the event when user want to save the table
      */
     public void onSaveAction(ActionEvent event) {
-        this.luaChonNoiThatController.exportFile(FileType.NT);
+        if (this.luaChonNoiThatController.getCurrentState() == State.NEW_FILE) {
+            this.luaChonNoiThatController.saveAs();
+        } else {
+            this.luaChonNoiThatController.save();
+        }
     }
 }

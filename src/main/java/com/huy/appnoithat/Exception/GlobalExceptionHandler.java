@@ -2,6 +2,7 @@ package com.huy.appnoithat.Exception;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Scene.LoginScene;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,9 +21,7 @@ public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
         throwable.printStackTrace();
         LOGGER.error("Unhandled exception caught! Thread: " + thread.getName() + " Message: " + throwable.getMessage());
         nestedLog(throwable);
-//        LOGGER.error(throwable.fillInStackTrace().toString());
-        stage.setScene(LoginScene.getInstance().getScene());
-        stage.show();
+        Platform.exit();
     }
     private void nestedLog(Throwable throwable) {
         if (throwable.getCause() != null) {

@@ -42,10 +42,13 @@ public class NewTabController implements Initializable {
         LuaChonNoiThatScene luaChonNoiThatScene = new LuaChonNoiThatScene();
         Tab newTab = setUpTab();
         Node root = luaChonNoiThatScene.getRoot();
+        newTab.setContent(root);
         if (tabState == TabState.IMPORT_TAB) {
             luaChonNoiThatScene.getLuaChonNoiThatController().importFile(importDirectory);
         }
-        newTab.setContent(root);
+        else {
+            initSavedThongTinCongTy(newTab.getContent(), persistenceStorageService.getThongTinCongTy());
+        }
         addNewTabToPane(newTab);
         return newTab;
     }
@@ -170,7 +173,6 @@ public class NewTabController implements Initializable {
     public void init(TabState tabState, String importDirectory) {
         tabPane.getTabs().clear();
         Tab newTab = createNewTab(tabState, importDirectory);
-        initSavedThongTinCongTy(newTab.getContent(), persistenceStorageService.getThongTinCongTy());
     }
 
 }

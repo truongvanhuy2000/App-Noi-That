@@ -19,6 +19,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,56 +45,22 @@ public class LuaChonNoiThatService {
         return phongCachRestService.findAll();
     }
 
-    public PhongCachNoiThat findPhongCachById(int id) {
-        return phongCachRestService.findById(id);
-    }
-
-    public PhongCachNoiThat findPhongCachNoiThatByName(String name) {
-        return phongCachRestService.findUsingName(name);
-    }
-
     public List<NoiThat> findNoiThatListBy(String phongCach) {
-        PhongCachNoiThat foundPhongCachNoiThat = findPhongCachNoiThatByName(phongCach);
-        if (foundPhongCachNoiThat == null) {
-            return new ArrayList<>();
-        }
-        List<NoiThat> noiThatList = noiThatRestService.searchByPhongCach(foundPhongCachNoiThat.getId());
-        if (noiThatList == null) {
-            return new ArrayList<>();
-        }
-        return noiThatList;
+        phongCach = URLEncoder.encode(phongCach, StandardCharsets.UTF_8);
+        return noiThatRestService.searchBy(phongCach);
     }
 
     public List<HangMuc> findHangMucListBy(String phongCach, String noiThat) {
-        List<NoiThat> noiThatList = findNoiThatListBy(phongCach);
-        if (noiThatList == null) {
-            return new ArrayList<>();
-        }
-        NoiThat foundNoiThat = noiThatList.stream().filter(nt -> nt.getName().equals(noiThat)).findFirst().orElse(null);
-        if (foundNoiThat == null) {
-            return new ArrayList<>();
-        }
-        List<HangMuc> hangMucList = hangMucRestService.searchByNoiThat(foundNoiThat.getId());
-        if (hangMucList == null) {
-            return new ArrayList<>();
-        }
-        return hangMucList;
+        phongCach = URLEncoder.encode(phongCach, StandardCharsets.UTF_8);
+        noiThat = URLEncoder.encode(noiThat, StandardCharsets.UTF_8);
+        return hangMucRestService.searchBy(phongCach, noiThat);
     }
 
     public List<VatLieu> findVatLieuListBy(String phongCach, String noiThat, String hangMuc) {
-        List<HangMuc> hangMucList = findHangMucListBy(phongCach, noiThat);
-        if (hangMucList == null) {
-            return new ArrayList<>();
-        }
-        HangMuc foundHangMuc = hangMucList.stream().filter(hm -> hm.getName().equals(hangMuc)).findFirst().orElse(null);
-        if (foundHangMuc == null) {
-            return new ArrayList<>();
-        }
-        List<VatLieu> vatLieuList = vatLieuRestService.searchByHangMuc(foundHangMuc.getId());
-        if (vatLieuList == null) {
-            return new ArrayList<>();
-        }
-        return vatLieuList;
+        phongCach = URLEncoder.encode(phongCach, StandardCharsets.UTF_8);
+        noiThat = URLEncoder.encode(noiThat, StandardCharsets.UTF_8);
+        hangMuc = URLEncoder.encode(hangMuc, StandardCharsets.UTF_8);
+        return vatLieuRestService.searchBy(phongCach, noiThat, hangMuc);
     }
 
     public boolean exportFile(File selectedFile, FileType fileType, DataPackage dataPackage) {
