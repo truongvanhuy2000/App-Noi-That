@@ -12,15 +12,36 @@ import javafx.scene.control.*;
 public class STTCollumHandler {
     private final TreeTableView<BangNoiThat> TableNoiThat;
 
+
+    /**
+     * Handler class for managing STT (Serial Number) column in a TreeTableView of BangNoiThat items.
+     * Handles cell editing and provides custom cell factory and cell value factory for the STT column.
+     *
+     * @param tableNoiThat The TreeTableView representing the table of items.
+     */
     public STTCollumHandler(TreeTableView<BangNoiThat> tableNoiThat) {
         this.TableNoiThat = tableNoiThat;
     }
 
+
+    /**
+     * Handles the commit event when editing the STT column in the TreeTableView.
+     * Calls the 'handleInputedSTT' method to handle the inputted STT value and clears the selection.
+     *
+     * @param event The CellEditEvent containing information about the edit event.
+     */
     public void onEditCommitSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         handleInputedSTT(event);
         event.getTreeTableView().getSelectionModel().clearSelection();
     }
 
+
+    /**
+     * Handles the inputted STT value during editing. Updates the STT property of the BangNoiThat item.
+     * (Deprecated methods below handled specific scenarios related to STT input; these are commented out).
+     *
+     * @param event The CellEditEvent containing information about the edit event.
+     */
     private void handleInputedSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         String newValue = event.getNewValue();
         event.getRowValue().getValue().setSTT(newValue);
@@ -36,6 +57,8 @@ public class STTCollumHandler {
 //            handleCommitedNumericSTT(event, newValue);
 //        }
     }
+
+
     @Deprecated
     private void handleComitedAlphaSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event, String item) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
@@ -85,6 +108,15 @@ public class STTCollumHandler {
         }
         addNodeToTheYoungestLeaf(tempNoiThatList, newItem);
     }
+
+    /**
+     * Adds the provided TreeItem 'newItem' to the youngest leaf in the given 'leafList'.
+     * Finds the youngest leaf in the 'leafList' and appends the 'newItem' as its child.
+     * Ensures the youngest leaf is expanded after adding the new child TreeItem.
+     *
+     * @param leafList The list of TreeItems representing potential leaf nodes.
+     * @param newItem  The TreeItem to be added as a child to the youngest leaf in the 'leafList'.
+     */
     @Deprecated
     private ObservableList<TreeItem<BangNoiThat>> findPhongCachList(TreeItem<BangNoiThat> currentItem) {
         ObservableList<TreeItem<BangNoiThat>> tempPhongCachList;
@@ -103,6 +135,14 @@ public class STTCollumHandler {
         youngestLeaf.setExpanded(true);
     }
 
+
+    /**
+     * Provides a custom cell factory for the STT column in the TreeTableView.
+     * Customizes the appearance of STT cells based on their content.
+     *
+     * @param param The TreeTableColumn instance for which the custom cell factory is provided.
+     * @return A customized TreeTableCell for the STT column.
+     */
     public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param) {
         return new TreeTableCell<>() {
             @Override
@@ -133,6 +173,15 @@ public class STTCollumHandler {
         };
     }
 
+
+    /**
+     * Provides a custom cell value factory for the STT column in the TreeTableView.
+     * Retrieves the 'STT' property value from the BangNoiThat object associated with the current cell.
+     *
+     * @param param The CellDataFeatures instance representing the data for the current cell.
+     * @return An ObservableValue<String> representing the 'STT' property of the current cell's data.
+     *         Returns null if the current row's data is null or STT value is empty.
+     */
     public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {
         if (param.getValue() == null) {
             return null;

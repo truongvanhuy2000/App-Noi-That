@@ -17,11 +17,26 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
     private final TreeTableView<BangNoiThat> TableNoiThat;
     private HBox hBox;
 
+
+    /**
+     * Constructs a CustomVatLieuCell with the given ObservableList of items and a TreeTableView.
+     *
+     * @param items       The ObservableList of String items associated with this cell.
+     * @param TableNoiThat The TreeTableView associated with this cell.
+     */
     public CustomVatLieuCell(ObservableList<String> items, TreeTableView<BangNoiThat> TableNoiThat) {
         this.items = items;
         this.TableNoiThat = TableNoiThat;
     }
 
+
+    /**
+     * Initiates the editing process for this cell. If the ComboBox and HBox are not
+     * initialized, creates them. If the cell is not editable or empty, the editing
+     * process is not started. Otherwise, invokes the superclass's startEdit method,
+     * sets the graphic content to the HBox containing the ComboBox, and schedules the
+     * ComboBox to be shown after a delay of 100 milliseconds.
+     */
     @Override
     public void startEdit() {
         if (comboBox == null) {
@@ -38,6 +53,12 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         }
     }
 
+
+    /**
+     * Cancels the editing process for this cell. Overrides the superclass method
+     * to revert the cell's state to its original value. Invokes the superclass's
+     * cancelEdit method, sets the text to the original item value, and removes the graphic content.
+     */
     @Override
     public void cancelEdit() {
         super.cancelEdit();
@@ -45,6 +66,18 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         setGraphic(null);
     }
 
+
+
+    /**
+     * Updates the item within this cell and manages its visual representation based on
+     * the provided item and its emptiness. Overrides the superclass method to customize
+     * the cell's appearance. If the item is empty, displays no text or graphic content.
+     * If editing, shows the ComboBox with the current item value and the associated HBox.
+     * If not editing, displays the item text without any graphic content.
+     *
+     * @param item  The item to be displayed in the cell.
+     * @param empty Indicates whether the cell should be displayed as empty.
+     */
     @Override
     public void updateItem(String item, boolean empty) {
         super.updateItem(item, empty);
@@ -66,6 +99,12 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         }
     }
 
+
+    /**
+     * Creates a ComboBox for editing the cell's content. If the ComboBox is already
+     * initialized, this method does nothing. Configures the ComboBox's behavior,
+     * such as handling commit actions and mouse clicks.
+     */
     private void createComboBox() {
         if (comboBox != null) {
             return;
@@ -83,6 +122,12 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
             comboBox.hide();
         });
     }
+
+    /**
+     * Creates an HBox containing a drop-down button and the ComboBox. If the HBox is already
+     * initialized, this method does nothing. The drop-down button triggers the ComboBox
+     * to be shown after a delay of 100 milliseconds.
+     */
     private void createHBox() {
         if (hBox != null) {
             return;
@@ -95,6 +140,12 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         hBox.getChildren().add(dropDownButton);
         hBox.getChildren().add(comboBox);
     }
+
+    /**
+     * Displays the ComboBox after a specified delay in milliseconds.
+     *
+     * @param millis The delay time in milliseconds before showing the ComboBox.
+     */
     private void showComboBoxAfter(double millis) {
         PauseTransition delay = new PauseTransition(Duration.millis(millis));
         delay.setOnFinished( event -> comboBox.show());

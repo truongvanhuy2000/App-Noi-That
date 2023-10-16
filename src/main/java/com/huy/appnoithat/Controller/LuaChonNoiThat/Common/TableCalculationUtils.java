@@ -62,29 +62,51 @@ public class TableCalculationUtils {
     }
 
     /**
-     * @param item This method will calculate the tong tien of the item
+     * Recursively calculates the total cost (Tong Tien) of the given TreeItem and its children in the TreeTableView.
+     * Updates the 'ThanhTien' property of each TreeItem based on the sum of its children's 'ThanhTien' values.
+     * This method ensures that the total cost is computed for the entire hierarchical structure.
+     *
+     * @param item The TreeItem for which the total cost is calculated.
      */
     public static void calculateTongTien(TreeItem<BangNoiThat> item) {
         Long tongTien = 0L;
+
+        // Base case: If the item is null, return without any computation
         if (item == null) {
             return;
         }
+
+        // Iterate through children of the current item and sum their 'ThanhTien' values
         for (TreeItem<BangNoiThat> child : item.getChildren()) {
             tongTien += child.getValue().getThanhTien().getValue();
         }
+        // Set the calculated total cost to the 'ThanhTien' property of the current item
         item.getValue().setThanhTien(tongTien);
         calculateTongTien(item.getParent());
     }
+
+
+    /**
+     * Recalculates the total cost (Tong Tien) of all TreeItems in the hierarchical structure under the given TreeItem.
+     * This method recursively updates the 'ThanhTien' property for each item based on the sum of its children's 'ThanhTien' values.
+     * If an item has no children, its 'ThanhTien' is set to 0.
+     *
+     * @param item The TreeItem for which to recalculate the total cost and its children's total costs.
+     */
     public static void recalculateAllTongTien(TreeItem<BangNoiThat> item) {
+        // Base case: If the item is null, return without any computation
         if (item == null) {
             return;
         }
+
+        // Iterate through children of the current item
         for (TreeItem<BangNoiThat> child : item.getChildren()) {
             for(TreeItem<BangNoiThat> grandChild : child.getChildren()) {
                 calculateTongTien(grandChild);
             }
             calculateTongTien(child);
         }
+        // If the item has no children, set its 'ThanhTien' to 0
         if (item.getChildren().isEmpty()) {
             item.getValue().setThanhTien(0L);
         }

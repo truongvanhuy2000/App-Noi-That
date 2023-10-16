@@ -16,6 +16,12 @@ public class FileExportController {
     public void initialize() {
     }
 
+
+    /**
+     * Handles switching scenes in a JavaFX application.
+     *
+     * @param actionEvent The ActionEvent triggered by the user interaction.
+     */
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
         Scene scene = null;

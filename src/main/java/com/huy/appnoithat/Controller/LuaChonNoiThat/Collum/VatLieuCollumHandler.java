@@ -23,15 +23,37 @@ public class VatLieuCollumHandler {
     private final LuaChonNoiThatService luaChonNoiThatService;
     HashMap<String, ThongSo> vatLieuThongSoHashMap = new HashMap<>();
 
+    /**
+     * Handler class for managing the VatLieu (Material) column in a TreeTableView of BangNoiThat items.
+     * Handles custom cell factory for the VatLieu column based on the provided 'vatLieuList'.
+     * Provides a custom cell factory for rendering VatLieu cells in the TreeTableView.
+     *
+     * @param vatLieuList The list of VatLieu items to populate the VatLieu column options.
+     */
     public VatLieuCollumHandler(ObservableList<String> vatLieuList) {
         this.vatLieuList = vatLieuList;
         luaChonNoiThatService = new LuaChonNoiThatService();
     }
 
+    /**
+     * Provides a custom cell factory for the VatLieu column in the TreeTableView.
+     * Initializes and returns a new CustomVatLieuCell with the provided 'vatLieuList' and TreeTableView instance.
+     *
+     * @param param The TreeTableColumn instance for which the custom cell factory is provided.
+     * @return A customized TreeTableCell for the VatLieu column.
+     */
     public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param) {
         return new CustomVatLieuCell(vatLieuList, param.getTreeTableView());
     }
 
+
+    /**
+     * Custom cell value factory for the VatLieu column in the TreeTableView.
+     * Retrieves and returns the observable value representing the VatLieu property of the current BangNoiThat item.
+     *
+     * @param param The CellDataFeatures instance representing the data of the current cell.
+     * @return An observable value representing the VatLieu property of the current BangNoiThat item.
+     */
     public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {
         if (param.getValue() == null) {
             return null;
@@ -39,6 +61,13 @@ public class VatLieuCollumHandler {
         return param.getValue().getValue().getVatLieu();
     }
 
+
+    /**
+     * Handles the commit event for the VatLieu column in the TreeTableView.
+     * Updates the VatLieu property of the corresponding BangNoiThat item and recalculates related properties.
+     *
+     * @param event The CellEditEvent instance representing the edit event for the VatLieu column.
+     */
     public void onEditCommitVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         String vatLieu = event.getNewValue();
         event.getRowValue().getValue().setVatLieu(vatLieu);
@@ -66,19 +95,35 @@ public class VatLieuCollumHandler {
 //        event.getTreeTableView().getSelectionModel().clearSelection();
     }
 
+
+    /**
+     * Handles the start edit event for the VatLieu column in the TreeTableView.
+     * Populates the VatLieu dropdown menu based on the selected HangMuc, NoiThat, and PhongCach.
+     * Retrieves and displays available VatLieu items for the user to choose from.
+     *
+     * @param event The CellEditEvent instance representing the start edit event for the VatLieu column.
+     */
     public void onStartEditVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         List<String> items;
+
+        // Check if editing is allowed for the current event
         if (!TableUtils.isAllowedToEdit(event)) {
             return;
         }
+
+        // Retrieve HangMuc, NoiThat, and PhongCach values from the current TreeItem
         String hangMuc = currentItem.getValue().getHangMuc().getValue();
         String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
         String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
+
+        // Retrieve a list of VatLieu objects based on PhongCach, NoiThat, and HangMuc
         List<VatLieu> vatLieus = luaChonNoiThatService.findVatLieuListBy(phongCach, noiThat, hangMuc);
         if (vatLieus == null) {
             return;
         }
+
+        // Populate the vatLieuThongSoHashMap for corresponding VatLieu items
         vatLieus.forEach(vatLieu -> {
             vatLieuThongSoHashMap.put(vatLieu.getName(), vatLieu.getThongSo());
         });

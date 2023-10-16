@@ -51,6 +51,12 @@ public class UsersManagementController {
     @FXML
     private TableColumn<AccountTable, String> username;
 
+    @FXML
+    private TableColumn<AccountTable, String> email;
+
+    @FXML
+    private TableColumn<AccountTable, String> phone;
+
     UsersManagementService user = new UsersManagementService();
 
     @Getter
@@ -106,12 +112,14 @@ public class UsersManagementController {
 
         // Convert Account objects to AccountTable objects and add them to the list
         for (Account account : accountList) {
-            listUser.add(new AccountTable(account.getId(), account.getUsername(), account.getPassword(), account.isActive(), convertActiveIcon(account.isActive()), account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
+            listUser.add(new AccountTable(account.getId(), account.getUsername(),account.getPassword(),account.getAccountInformation().getPhone(),account.getAccountInformation().getEmail(), account.isActive(), convertActiveIcon(account.isActive()), account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
         }
 
         // Set up cell value factories for each column in the TableView
         username.setCellValueFactory(new PropertyValueFactory<>("username"));
         password.setCellValueFactory(new PropertyValueFactory<>("password"));
+        phone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
         active.setCellValueFactory(new PropertyValueFactory<>("activeImage"));
         expiredDate.setCellValueFactory(new PropertyValueFactory<>("expiredDate"));
 
@@ -268,7 +276,7 @@ public class UsersManagementController {
                 }
 
                 // Add the new account to the list and update the table
-                listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
+                listUser.add(new AccountTable(listUser.size(), txtusername.getText(),txtpassword.getText(),"","", Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
                 tableManageUser.getItems().clear();
                 tableManageUser.refresh();
 
