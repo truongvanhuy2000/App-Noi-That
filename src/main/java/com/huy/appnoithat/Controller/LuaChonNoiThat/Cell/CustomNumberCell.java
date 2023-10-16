@@ -31,6 +31,21 @@ public class CustomNumberCell<T> extends TextFieldTreeTableCell<BangNoiThat, T> 
         }
         if (item.equals(0.0) || item.equals(0) || item.equals(0F) || item.equals(0L)) {
             setText("");
+            return;
+        }
+        String text = item.toString();
+        if (text.contains(".")) {
+            text = text.split("\\.")[0];
+            setText(text);
+        }
+    }
+    @Override
+    public void cancelEdit() {
+        super.cancelEdit();
+        String text = getItem().toString();
+        if (text.contains(".")) {
+            text = text.split("\\.")[0];
+            setText(text);
         }
     }
 }

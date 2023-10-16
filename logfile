@@ -2363,3 +2363,71 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 16-10-2023 17:59:25 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
 [INFO ] 16-10-2023 17:59:27 [JavaFX Application Thread] ImportOperation:46 - Import file: TEST.nt
 [INFO ] 16-10-2023 17:59:39 [JavaFX Application Thread] ExportFile:94 - Exporting to XLSX file
+[INFO ] 16-10-2023 21:08:20 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 21:08:24 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
+[INFO ] 16-10-2023 21:08:47 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
+[ERROR] 16-10-2023 21:53:11 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.Node.lookup(String)" because "nodeFromCurrentTab" is null
+[ERROR] 16-10-2023 21:53:11 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.Node.lookup(String)" because "nodeFromCurrentTab" is null
+[INFO ] 16-10-2023 21:53:11 [JavaFX Application Thread] LuaChonNoiThatController:272 - Close window
+[INFO ] 16-10-2023 21:53:17 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 21:53:21 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
+[INFO ] 16-10-2023 21:55:37 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 17-10-2023 00:40:52 [main] HelloApplication:35 - Start application
+[INFO ] 17-10-2023 00:41:41 [main] HelloApplication:35 - Start application
+[INFO ] 17-10-2023 00:41:48 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
+[INFO ] 17-10-2023 00:42:50 [JavaFX Application Thread] LuaChonNoiThatController:242 - Save as Operation: Save file to: C:\Users\lenovo\Desktop\test
+[INFO ] 17-10-2023 00:42:50 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test
+[INFO ] 17-10-2023 00:42:53 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test
+[INFO ] 17-10-2023 00:43:00 [JavaFX Application Thread] ExportFile:94 - Exporting to XLSX file
+[INFO ] 17-10-2023 00:43:13 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test
+[INFO ] 17-10-2023 00:43:33 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test
+[INFO ] 17-10-2023 00:43:50 [JavaFX Application Thread] LuaChonNoiThatController:272 - Close window
+[INFO ] 17-10-2023 00:43:51 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 17-10-2023 00:44:11 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:44:31 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:44:49 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:44:51 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:45:04 [JavaFX Application Thread] ExportFile:94 - Exporting to XLSX file
+[ERROR] 17-10-2023 00:45:07 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[ERROR] 17-10-2023 00:45:07 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "java.awt.image.BufferedImage.getHeight()" because "buf" is null
+[ERROR] 17-10-2023 00:45:07 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[ERROR] 17-10-2023 00:45:07 [JavaFX Application Thread] GlobalExceptionHandler:30 - java.lang.reflect.InvocationTargetException
+[INFO ] 17-10-2023 00:45:07 [JavaFX Application Thread] LuaChonNoiThatController:272 - Close window
+[INFO ] 17-10-2023 00:45:44 [main] HelloApplication:35 - Start application
+[INFO ] 17-10-2023 00:45:57 [main] HelloApplication:35 - Start application
+[INFO ] 17-10-2023 00:45:59 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
+[INFO ] 17-10-2023 00:46:49 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 17-10-2023 00:47:06 [JavaFX Application Thread] ExportFile:94 - Exporting to XLSX file
+[INFO ] 17-10-2023 00:47:09 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:47:29 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:47:49 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:48:09 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:48:29 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:48:49 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:49:09 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:49:29 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:49:49 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:50:09 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:50:29 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:50:49 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:51:09 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:51:29 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:51:49 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:52:09 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:52:31 [main] HelloApplication:35 - Start application
+[INFO ] 17-10-2023 00:52:33 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
+[INFO ] 17-10-2023 00:52:37 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 17-10-2023 00:52:57 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:53:17 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:53:37 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:53:45 [main] HelloApplication:35 - Start application
+[INFO ] 17-10-2023 00:53:47 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
+[INFO ] 17-10-2023 00:53:50 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 17-10-2023 00:54:10 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:54:30 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:54:50 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:54:57 [main] HelloApplication:35 - Start application
+[INFO ] 17-10-2023 00:55:02 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
+[INFO ] 17-10-2023 00:55:06 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 17-10-2023 00:55:26 [JavaFX Application Thread] LuaChonNoiThatController:259 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 17-10-2023 00:55:39 [JavaFX Application Thread] LuaChonNoiThatController:272 - Close window

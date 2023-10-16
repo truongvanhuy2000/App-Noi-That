@@ -4,18 +4,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Common.Utils;
-import com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController;
 import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
-import com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.Metadata;
-import com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData;
+import com.huy.appnoithat.DataModel.NtFile.Metadata;
+import com.huy.appnoithat.DataModel.NtFile.ObjectData;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 
 @Getter

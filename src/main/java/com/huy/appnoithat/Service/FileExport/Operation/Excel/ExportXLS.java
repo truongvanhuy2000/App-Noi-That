@@ -283,16 +283,19 @@ public class ExportXLS implements ExportFile {
 //        mergeCells(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, 1);
 
         Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
-        stylistFactory.CellPresetFactory(cell0, thongTinThanhToan.getDatCocThietKe10(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.CellPresetFactory(cell0, thongTinThanhToan.getTongTien(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
 
         Cell cell1 = spreadsheet.getRow(mergeRowId).getCell(cellId + 2);
-        stylistFactory.CellPresetFactory(cell1, thongTinThanhToan.getDatCocThiCong30(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.CellPresetFactory(cell1, thongTinThanhToan.getDatCocThietKe10(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
 
         Cell cell2 = spreadsheet.getRow(mergeRowId).getCell(cellId + 3);
-        stylistFactory.CellPresetFactory(cell2, thongTinThanhToan.getHangDenChanCongTrinh50(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.CellPresetFactory(cell2, thongTinThanhToan.getDatCocThiCong30(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
 
-        Cell cell3 = spreadsheet.getRow(mergeRowId).getCell(cellId + 7);
-        stylistFactory.CellPresetFactory(cell3, thongTinThanhToan.getNghiemThuQuyet(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        Cell cell3 = spreadsheet.getRow(mergeRowId).getCell(cellId + 6);
+        stylistFactory.CellPresetFactory(cell3, thongTinThanhToan.getHangDenChanCongTrinh50(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+
+        Cell cell4 = spreadsheet.getRow(mergeRowId).getCell(cellId + 8);
+        stylistFactory.CellPresetFactory(cell4, thongTinThanhToan.getNghiemThuQuyet(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
     }
 
     private Row createPopulatedRow(int rowId, int num) {
@@ -307,24 +310,24 @@ public class ExportXLS implements ExportFile {
         byte[] bytes = image.readAllBytes();
 
         InputStream in = new ByteArrayInputStream(bytes);
-
-        BufferedImage buf = ImageIO.read(in);
-//        ColorModel model = buf.getColorModel();
-        int imageHeight = buf.getHeight();
-        int imageWidth = buf.getWidth();
-        double ratio = (double) imageWidth / imageHeight;
-
-        for (int i = 0; i < 5; i++) {
-            Row row = spreadsheet.getRow(i);
-            if (row != null) {
-                short heightInPoints = row.getHeight();
-                System.out.println("Height of row " + (i+1) + " in points: " + heightInPoints);
-            }
-        }
-        for (int i = 0; i < 2; i++) {
-            int width = spreadsheet.getColumnWidth(i);
-            System.out.println("Width of column " + (i+1) + " in characters: " + width);
-        }
+//
+//        BufferedImage buf = ImageIO.read(in);
+////        ColorModel model = buf.getColorModel();
+//        int imageHeight = buf.getHeight();
+//        int imageWidth = buf.getWidth();
+//        double ratio = (double) imageWidth / imageHeight;
+//
+//        for (int i = 0; i < 5; i++) {
+//            Row row = spreadsheet.getRow(i);
+//            if (row != null) {
+//                short heightInPoints = row.getHeight();
+//                System.out.println("Height of row " + (i+1) + " in points: " + heightInPoints);
+//            }
+//        }
+//        for (int i = 0; i < 2; i++) {
+//            int width = spreadsheet.getColumnWidth(i);
+//            System.out.println("Width of column " + (i+1) + " in characters: " + width);
+//        }
         int pictureIdx = workbook.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
         XSSFDrawing drawing = spreadsheet.createDrawingPatriarch();
         XSSFClientAnchor logoAnchor = new XSSFClientAnchor();

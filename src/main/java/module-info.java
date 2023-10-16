@@ -32,7 +32,7 @@ module com.huy.appnoithat {
     exports com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel;
     opens com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel to javafx.fxml;
 
-    exports com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel;
+    exports com.huy.appnoithat.DataModel.NtFile;
     exports com.huy.appnoithat.DataModel;
     exports com.huy.appnoithat.Controller.UserManagement;
     exports com.huy.appnoithat.Controller.UserManagement.DataModel;

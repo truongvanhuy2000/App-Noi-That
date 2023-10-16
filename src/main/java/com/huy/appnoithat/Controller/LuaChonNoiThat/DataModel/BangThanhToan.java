@@ -13,12 +13,12 @@ public class BangThanhToan {
     private SimpleLongProperty NghiemThuQuyet;
     private SimpleLongProperty TongTien;
 
-    public BangThanhToan(Long datCocThietKe10, Long datCocThiCong30, Long hangDenChanCongTrinh50, Long nghiemThuQuyet, Long TongTien) {
+    public BangThanhToan(Long datCocThietKe10, Long datCocThiCong30, Long hangDenChanCongTrinh50, Long nghiemThuQuyet, Long tongTien) {
         DatCocThietKe10 = new SimpleLongProperty(datCocThietKe10);
         DatCocThiCong30 = new SimpleLongProperty(datCocThiCong30);
         HangDenChanCongTrinh50 = new SimpleLongProperty(hangDenChanCongTrinh50);
         NghiemThuQuyet = new SimpleLongProperty(nghiemThuQuyet);
-        this.TongTien = new SimpleLongProperty(TongTien);
+        TongTien = new SimpleLongProperty(tongTien);
     }
 
     public BangThanhToan(ThongTinThanhToan thongTinThanhToan) {
@@ -26,7 +26,7 @@ public class BangThanhToan {
         DatCocThiCong30 = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinThanhToan.getDatCocThiCong30()));
         HangDenChanCongTrinh50 = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinThanhToan.getHangDenChanCongTrinh50()));
         NghiemThuQuyet = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinThanhToan.getNghiemThuQuyet()));
-        this.TongTien = new SimpleLongProperty(DatCocThiCong30.getValue() + DatCocThietKe10.getValue() + HangDenChanCongTrinh50.getValue() + NghiemThuQuyet.getValue());
+        TongTien = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinThanhToan.getTongTien()));
     }
 
     public void setDatCocThietKe10(long datCocThietKe10) {

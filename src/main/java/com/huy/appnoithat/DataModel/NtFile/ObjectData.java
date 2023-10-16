@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel;
+package com.huy.appnoithat.DataModel.NtFile;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.huy.appnoithat.DataModel.DataPackage;

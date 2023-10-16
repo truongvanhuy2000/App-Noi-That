@@ -19,11 +19,14 @@ public class ThongTinThanhToan {
     private String HangDenChanCongTrinh50;
     @JsonProperty("NghiemThuQuyet")
     private String NghiemThuQuyet;
+    @JsonProperty("TongTien")
+    private String TongTien;
 
     public ThongTinThanhToan(BangThanhToan bangThanhToan) {
         DatCocThietKe10 = Utils.convertLongToDecimal(bangThanhToan.getDatCocThietKe10().getValue());
         DatCocThiCong30 = Utils.convertLongToDecimal(bangThanhToan.getDatCocThiCong30().getValue());
         HangDenChanCongTrinh50 = Utils.convertLongToDecimal(bangThanhToan.getHangDenChanCongTrinh50().getValue());
         NghiemThuQuyet = Utils.convertLongToDecimal(bangThanhToan.getNghiemThuQuyet().getValue());
+        TongTien = Utils.convertLongToDecimal(bangThanhToan.getTongTien().getValue());
     }
 }
