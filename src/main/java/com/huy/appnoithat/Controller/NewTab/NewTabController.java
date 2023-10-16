@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,11 +25,15 @@ public class NewTabController implements Initializable {
     @FXML
     private TabPane tabPane;
     private PersistenceStorageService persistenceStorageService;
+    private Stage currentStage;
     public NewTabController() {
         persistenceStorageService = PersistenceStorageService.getInstance();
     }
     @FXML
     void newTabButtonHandler(ActionEvent event) {
+        createNewTab();
+    }
+    private void createNewTab() {
         if (tabPane.getSelectionModel().getSelectedItem() != null) {
             Node nodeFromCurrentTab = tabPane.getSelectionModel().getSelectedItem().getContent();
             Tab newtab = createNewTab(TabState.BLANK_TAB, null);
@@ -37,9 +42,13 @@ public class NewTabController implements Initializable {
             Tab newtab = createNewTab(TabState.BLANK_TAB, null);
         }
     }
-
-    private Tab createNewTab(TabState tabState, String importDirectory) {
+    private LuaChonNoiThatScene createNoiThatScene() {
         LuaChonNoiThatScene luaChonNoiThatScene = new LuaChonNoiThatScene();
+        luaChonNoiThatScene.getLuaChonNoiThatController().init(currentStage);
+        return luaChonNoiThatScene;
+    }
+    private Tab createNewTab(TabState tabState, String importDirectory) {
+        LuaChonNoiThatScene luaChonNoiThatScene = createNoiThatScene();
         String tabName = "";
         if (TabState.IMPORT_TAB == tabState) {
             tabName = new File(importDirectory).getAbsoluteFile().getName();
@@ -95,7 +104,8 @@ public class NewTabController implements Initializable {
     private void duplicateTab(ActionEvent action, Tab currentTab) {
         Node nodeFromCurrentTab = currentTab.getContent();
         Tab newTab = setUpTab(null);
-        Node root = new LuaChonNoiThatScene().getRoot();
+        LuaChonNoiThatScene luaChonNoiThatScene = createNoiThatScene();
+        Node root = luaChonNoiThatScene.getRoot();
         newTab.setContent(duplicateContent(nodeFromCurrentTab, root));
         addNewTabToPane(newTab);
     }
@@ -178,11 +188,20 @@ public class NewTabController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
-
-    public void init(TabState tabState, String importDirectory) {
         tabPane.getTabs().clear();
-        Tab newTab = createNewTab(tabState, importDirectory);
+        tabPane.getTabs().add(newTabButton());
     }
-
+    private Tab newTabButton() {
+        Tab addTab = new Tab();
+        Button newTabButton = new Button("+");
+        newTabButton.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+        newTabButton.setOnAction(event -> createNewTab());
+        addTab.setClosable(false);
+        addTab.setGraphic(newTabButton);
+        return addTab;
+    }
+    public void init(TabState tabState, String importDirectory, Stage currentStage) {
+        this.currentStage = currentStage;
+        createNewTab(tabState, importDirectory);
+    }
 }

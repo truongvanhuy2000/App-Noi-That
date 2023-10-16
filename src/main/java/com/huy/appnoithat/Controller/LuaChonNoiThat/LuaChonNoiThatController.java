@@ -13,7 +13,12 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupBangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupTruongThongTin;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Enums.FileType;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -23,7 +28,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
@@ -34,6 +41,9 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
+
 @Getter
 public class LuaChonNoiThatController implements Initializable {
     final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatController.class);
@@ -63,9 +73,15 @@ public class LuaChonNoiThatController implements Initializable {
     private TableColumn<BangThanhToan, Long> DatCocThiCong30, DatCocThietKe10, HangDenChanCongTrinh50, NghiemThuQuyet, TongTien;
     @FXML
     private TableView<BangThanhToan> bangThanhToan;
+    @FXML
+    private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs;
     private ByteArrayOutputStream imageStream;
     private State currentState;
+    @Setter
     private String currentDirectory;
+    @FXML
+    private CheckMenuItem AutoSave;
+    private Timeline autoSaveTimer;
     public LuaChonNoiThatController() {
         imageStream = new ByteArrayOutputStream();
     }
@@ -88,6 +104,31 @@ public class LuaChonNoiThatController implements Initializable {
         }
         if (KeyboardUtils.isRightKeyCombo(Action.CLEAR_SELECTION, event)) {
             TableNoiThat.getSelectionModel().clearSelection();
+        }
+    }
+    @FXML
+    void onClickMenuItem(ActionEvent event) {
+        Object source = event.getSource();
+        if (source == MenuItemExportPDF) {
+//            exportFile(FileType.PDF);
+        }
+        if (source == MenuItemExportXLS) {
+            exportFile(FileType.EXCEL);
+        }
+        if (source == MenuItemSave) {
+            save();
+        }
+        if (source == MenuItemSaveAs) {
+            saveAs();
+        }
+        if (source == AutoSave) {
+            if (AutoSave.isSelected()) {
+                LOGGER.info("Auto save is enabled");
+                startAutoSaveAction();
+            } else {
+                LOGGER.info("Auto save is disabled");
+                stopAutoSaveAction();
+            }
         }
     }
     private void handleDeleteAction() {
@@ -113,6 +154,14 @@ public class LuaChonNoiThatController implements Initializable {
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
         currentState = State.NEW_FILE;
+        AutoSave.setSelected(true);
+        autoSaveTimer = new Timeline(new KeyFrame(Duration.seconds(20), event -> {
+            if (currentState == State.OPEN_FROM_EXISTING_FILE && currentDirectory != null) {
+                save();
+            }
+        }));
+        startAutoSaveAction();
+
         setUpBangThanhToan();
         setUpBangNoiThat();
         setUpButton();
@@ -121,9 +170,9 @@ public class LuaChonNoiThatController implements Initializable {
     /**
      * @param fileType This function will export the table to a file
      */
-    public void exportFile(FileType fileType) {
+    public String exportFile(FileType fileType) {
         ExportOperation exportOperation = new ExportOperation(this);
-        exportOperation.exportFile(fileType);
+        return exportOperation.exportFile(fileType);
     }
     /**
      * @param directory This function will import the table from a file
@@ -185,12 +234,42 @@ public class LuaChonNoiThatController implements Initializable {
         setupTruongThongTin.setup();
     }
 
-    public void saveAs() {
-        exportFile(FileType.NT);
+    public String saveAs() {
+        String directory = exportFile(FileType.NT);
+        if (directory == null) {
+            return null;
+        }
+        LOGGER.info("Save as Operation: Save file to: " + directory);
+        return directory;
     }
 
     public void save() {
         ExportOperation exportOperation = new ExportOperation(this);
-        exportOperation.exportFile(FileType.NT, new File(currentDirectory));
+        if (currentState == State.NEW_FILE) {
+            String directory = saveAs();
+            if (directory == null) {
+                return;
+            }
+            currentState = State.OPEN_FROM_EXISTING_FILE;
+            currentDirectory = directory;
+            startAutoSaveAction();
+        } else if (currentState == State.OPEN_FROM_EXISTING_FILE) {
+            currentDirectory = exportOperation.exportFile(FileType.NT, new File(currentDirectory), false);
+        }
+        LOGGER.info("Normal save: Save file to: " + currentDirectory);
+    }
+
+    private void startAutoSaveAction() {
+        autoSaveTimer.setCycleCount(Timeline.INDEFINITE);
+        autoSaveTimer.play();
+    }
+    private void stopAutoSaveAction() {
+        autoSaveTimer.stop();
+    }
+    public void init(Stage stage) {
+        stage.setOnHidden(event -> {
+            stopAutoSaveAction();
+            LOGGER.info("Close window");
+        });
     }
 }

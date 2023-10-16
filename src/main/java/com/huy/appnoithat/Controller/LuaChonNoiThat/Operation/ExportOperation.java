@@ -54,14 +54,14 @@ public class ExportOperation {
         this.luaChonNoiThatController = luaChonNoiThatController;
     }
 
-    public void exportFile(FileType fileType) {
+    public String exportFile(FileType fileType) {
         File selectedFile = PopupUtils.fileSaver();
         if (selectedFile == null) {
-            return;
+            return null;
         }
-        exportFile(fileType, selectedFile);
+        return exportFile(fileType, selectedFile, true);
     }
-    public void exportFile(FileType fileType, File selectedFile) {
+    public String exportFile(FileType fileType, File selectedFile, boolean showPopup) {
         DataPackage dataPackage = new DataPackage(
                 getThongTinCongTy(),
                 getThongTinKhachHang(),
@@ -71,22 +71,27 @@ public class ExportOperation {
         );
         boolean result = new LuaChonNoiThatService().exportFile(selectedFile, fileType, dataPackage);
         if (!result) {
-            if (fileType == FileType.NT) {
-                PopupUtils.throwErrorSignal("Lưu thất bại");
+            if (showPopup) {
+                if (fileType == FileType.NT) {
+                    PopupUtils.throwErrorSignal("Lưu thất bại");
+                }
+                else {
+                    PopupUtils.throwErrorSignal("Xuất file thất bại");
+                }
             }
-            else {
-                PopupUtils.throwErrorSignal("Xuất file thất bại");
-            }
+            return null;
         }
         else {
-            if (fileType == FileType.NT) {
-                PopupUtils.throwSuccessSignal("Lưu thất thành công");
-            }
-            else {
-                PopupUtils.throwSuccessSignal("Xuất file thành công");
+            if (showPopup) {
+                if (fileType == FileType.NT) {
+                    PopupUtils.throwSuccessSignal("Lưu file thành công");
+                }
+                else {
+                    PopupUtils.throwSuccessSignal("Xuất file thành công");
+                }
             }
         }
-
+        return selectedFile.getAbsolutePath();
     }
     /**
      * THis function will return a list of ThongTinNoiThat from item root from the table
