@@ -47,6 +47,10 @@ public class DatabaseModifyNoiThatController implements Initializable {
     @Setter
     private Parent root;
 
+    /**
+     * Constructor for DatabaseModifyNoiThatController class.
+     * Initializes the necessary services and observable lists.
+     */
     public DatabaseModifyNoiThatController() {
         databaseModifyNoiThatService = new DatabaseModifyNoiThatService();
         databaseModifyHangMucService = new DatabaseModifyHangMucService();
@@ -54,6 +58,12 @@ public class DatabaseModifyNoiThatController implements Initializable {
         hangMucObservableList = FXCollections.observableArrayList();
     }
 
+
+    /**
+     * Handles the action event for adding a new NoiThat item.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     void addAction(ActionEvent event) {
         int currentPos = noiThatObservableList.size();
@@ -61,6 +71,12 @@ public class DatabaseModifyNoiThatController implements Initializable {
         refreshList();
     }
 
+
+    /**
+     * Handles the action event for deleting a selected NoiThat item.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     void deleteAction(ActionEvent event) {
         NoiThat noiThat = listView.getSelectionModel().getSelectedItem();
@@ -76,6 +92,13 @@ public class DatabaseModifyNoiThatController implements Initializable {
         refreshChildrenList(0);
     }
 
+
+    /**
+     * Handles the action event for navigating to the next view based on the selected item in the list.
+     * If no item is selected, the function does nothing.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     void nextAction(ActionEvent event) {
         if (listView.getSelectionModel().getSelectedItem() == null) {
@@ -91,6 +114,13 @@ public class DatabaseModifyNoiThatController implements Initializable {
         databaseModifyHangMucScene.getController().setRoot(this.root);
     }
 
+
+    /**
+     * Handles the action event for switching scenes based on the source of the event.
+     * If the source is the backButton, navigates to the DatabaseModifyPhongCachScene.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     void sceneSwitcher(ActionEvent event) {
         Object source = event.getSource();
@@ -103,17 +133,31 @@ public class DatabaseModifyNoiThatController implements Initializable {
             DatabaseModifyPhongCachScene.getController().setRoot(this.root);
         }
     }
+
+    /**
+     * Initializes the controller with the provided parent ID, refreshes the list, and clears the selection.
+     *
+     * @param parentID The ID of the parent element.
+     */
     public void init(int parentID) {
         System.out.println(parentID);
         this.parentID = parentID;
         refreshList();
         refreshChildrenList(0);
     }
+
+    /**
+     * Refreshes the list and clears the selection.
+     */
     public void refresh() {
         refreshList();
         refreshChildrenList(0);
         listView.getSelectionModel().clearSelection();
     }
+
+    /**
+     * Refreshes the list of NoiThat elements based on the current parent ID.
+     */
     private void refreshList() {
         List<NoiThat> noiThatList = databaseModifyNoiThatService.findNoiThatListByParentID(parentID);
         if (noiThatList == null) {
@@ -123,6 +167,13 @@ public class DatabaseModifyNoiThatController implements Initializable {
         noiThatObservableList.addAll(noiThatList);
     }
 
+
+    /**
+     * Refreshes the list of HangMuc elements based on the given parent ID.
+     * If the parent ID is 0, clears the list.
+     *
+     * @param parentID The ID of the parent element.
+     */
     private void refreshChildrenList(int parentID) {
         if (parentID == 0) {
             hangMucObservableList.clear();
@@ -136,6 +187,12 @@ public class DatabaseModifyNoiThatController implements Initializable {
         hangMucObservableList.addAll(hangMucList);
     }
 
+    /**
+     * Initializes the controller with the specified URL and ResourceBundle.
+     *
+     * @param url            The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Title.setText("Danh sách nội thất");
@@ -165,6 +222,12 @@ public class DatabaseModifyNoiThatController implements Initializable {
         childrenList.setCellFactory(param -> new CustomEditingListCell<>());
         childrenList.setItems(hangMucObservableList);
     }
+
+    /**
+     * Handles key events and triggers corresponding actions.
+     *
+     * @param event The KeyEvent that occurred.
+     */
     @FXML
     void onKeyPressed(KeyEvent event) {
         if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {

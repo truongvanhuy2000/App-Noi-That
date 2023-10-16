@@ -45,6 +45,11 @@ public class DatabaseModifyHangMucController implements Initializable {
     private final ObservableList<VatLieu> vatLieuObservableList;
     @Setter
     private Parent root;
+
+    /**
+     * Default constructor for DatabaseModifyHangMucController.
+     * Initializes the required services and observable lists.
+     */
     public DatabaseModifyHangMucController() {
         databaseModifyHangMucService = new com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyHangMucService();
         databaseModifyVatlieuService = new DatabaseModifyVatlieuService();
@@ -52,6 +57,11 @@ public class DatabaseModifyHangMucController implements Initializable {
         hangMucObservableList = FXCollections.observableArrayList();
     }
 
+    /**
+     * Handles the action event for adding a new HangMuc item.
+     *
+     * @param event The ActionEvent triggering the action.
+     */
     @FXML
     void addAction(ActionEvent event) {
         int currentPos = hangMucObservableList.size();
@@ -59,6 +69,12 @@ public class DatabaseModifyHangMucController implements Initializable {
         refreshList();
     }
 
+
+    /**
+     * Handles the action event for deleting a HangMuc item.
+     *
+     * @param event The ActionEvent triggering the action.
+     */
     @FXML
     void deleteAction(ActionEvent event) {
         HangMuc hangMuc = listView.getSelectionModel().getSelectedItem();
@@ -74,6 +90,12 @@ public class DatabaseModifyHangMucController implements Initializable {
         refreshChildrenList(0);
     }
 
+
+    /**
+     * Handles the action event for navigating to the next screen.
+     *
+     * @param event The ActionEvent triggering the action.
+     */
     @FXML
     void nextAction(ActionEvent event) {
         if (listView.getSelectionModel().getSelectedItem() == null) {
@@ -89,6 +111,12 @@ public class DatabaseModifyHangMucController implements Initializable {
         DatabaseModifyVatLieuScene.getController().setRoot(this.root);
     }
 
+    /**
+     * Handles the scene switching based on the ActionEvent source.
+     * If the source is the backButton, navigates to the DatabaseModifyNoiThatScene.
+     *
+     * @param event The ActionEvent triggering the action.
+     */
     @FXML
     void sceneSwitcher(ActionEvent event) {
         Object source = event.getSource();
@@ -101,18 +129,31 @@ public class DatabaseModifyHangMucController implements Initializable {
             DatabaseModifyNoiThatScene.getController().setRoot(this.root);
         }
     }
+
+    /**
+     * Initializes the controller with the specified parent ID, refreshes the list views, and logs the parent ID to the console.
+     *
+     * @param parentID The ID of the parent element.
+     */
     public void init(int parentID) {
         System.out.println(parentID);
         this.parentID = parentID;
         refreshList();
         refreshChildrenList(0);
     }
+
+    /**
+     * Refreshes both the main list view and its children list view, clearing the selection in the main list view.
+     */
     public void refresh() {
         refreshList();
         refreshChildrenList(0);
         listView.getSelectionModel().clearSelection();
     }
 
+    /**
+     * Refreshes the main list view with HangMuc items associated with the current parent ID.
+     */
     private void refreshList() {
         List<HangMuc> hangMucList = databaseModifyHangMucService.findHangMucByParentId(parentID);
         if (hangMucList == null) {
@@ -121,6 +162,12 @@ public class DatabaseModifyHangMucController implements Initializable {
         hangMucObservableList.clear();
         hangMucObservableList.addAll(hangMucList);
     }
+
+    /**
+     * Refreshes the children list view with VatLieu items associated with the provided parent ID.
+     *
+     * @param parentID The ID of the parent element.
+     */
 
     private void refreshChildrenList(int parentID) {
         if (parentID == 0) {
@@ -135,6 +182,13 @@ public class DatabaseModifyHangMucController implements Initializable {
         vatLieuObservableList.addAll(vatLieuList);
     }
 
+
+    /**
+     * Initializes the controller when the FXML file is loaded.
+     *
+     * @param url            The location used to resolve relative paths for the root object.
+     * @param resourceBundle The resources used to localize the root object.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Title.setText("Danh sách hạng mục");
@@ -164,6 +218,12 @@ public class DatabaseModifyHangMucController implements Initializable {
         childrenList.setCellFactory(param -> new CustomEditingListCell<>());
         childrenList.setItems(vatLieuObservableList);
     }
+
+    /**
+     * Handles key pressed events to perform corresponding actions based on the keyboard shortcuts.
+     *
+     * @param event The KeyEvent triggered by the user.
+     */
     @FXML
     void onKeyPressed(KeyEvent event) {
         if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {

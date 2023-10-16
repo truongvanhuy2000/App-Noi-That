@@ -29,6 +29,10 @@ public class VatLieuRestService {
         }
         return instance;
     }
+
+    /**
+     * Constructor for VatLieuRestService.
+     */
     private VatLieuRestService() {
         webClientService = new WebClientServiceImpl();
         userSessionService = new UserSessionService();
@@ -36,6 +40,14 @@ public class VatLieuRestService {
                 .addModule(new JavaTimeModule())
                 .build();
     }
+
+    /**
+     * Searches for VatLieu objects by HangMuc ID.
+     *
+     * @param id The ID of the HangMuc to search for associated VatLieu objects.
+     * @return A list of VatLieu objects associated with the given HangMuc ID, or null if not found.
+     * @throws RuntimeException if there is an error when searching for VatLieu objects.
+     */
     public List<VatLieu> searchByHangMuc(int id) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/searchByHangMuc" + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
@@ -52,7 +64,13 @@ public class VatLieuRestService {
             throw new RuntimeException(e);
         }
     }
-
+    /**
+     * Saves a new VatLieu object.
+     *
+     * @param vatLieu  The VatLieu object to be saved.
+     * @param parentID The ID of the parent entity associated with this VatLieu.
+     * @throws RuntimeException if there is an error when saving the VatLieu object.
+     */
     public void save(VatLieu vatLieu, int parentID) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE + PARENT_ID_TEMPLATE, userSessionService.getUsername(), parentID);
@@ -64,6 +82,12 @@ public class VatLieuRestService {
         }
     }
 
+    /**
+     * Updates an existing VatLieu object.
+     *
+     * @param vatLieu The VatLieu object to be updated.
+     * @throws RuntimeException if there is an error when updating the VatLieu object.
+     */
     public void update(VatLieu vatLieu) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());
@@ -75,12 +99,27 @@ public class VatLieuRestService {
         }
     }
 
+    /**
+     * Deletes a VatLieu object by its ID.
+     *
+     * @param id The ID of the VatLieu object to be deleted.
+     * @throws RuntimeException if there is an error when deleting the VatLieu object.
+     */
     public void deleteById(int id) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
         this.webClientService.authorizedHttpDeleteJson(path, "", token);
     }
 
+    /**
+     * Searches for VatLieu objects by PhongCachName, NoiThatName, and HangMucName.
+     *
+     * @param phongCachName The name of the PhongCach associated with the VatLieu.
+     * @param noiThatName   The name of the NoiThat associated with the VatLieu.
+     * @param hangMucName   The name of the HangMuc associated with the VatLieu.
+     * @return A list of VatLieu objects matching the search criteria, or null if not found.
+     * @throws RuntimeException if there is an error when searching for VatLieu objects.
+     */
     public List<VatLieu> searchBy(String phongCachName, String noiThatName, String hangMucName) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/searchBy" + OWNER_TEMPLATE + "&phongCachName=%s&noiThatName=%s&hangMucName=%s",

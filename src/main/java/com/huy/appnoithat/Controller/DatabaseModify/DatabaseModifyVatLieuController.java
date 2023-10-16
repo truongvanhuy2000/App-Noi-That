@@ -53,6 +53,10 @@ public class DatabaseModifyVatLieuController implements Initializable {
     @Setter
     private Parent root;
 
+    /**
+     * Constructs a new DatabaseModifyVatLieuController instance.
+     * Initializes the necessary services and observable lists.
+     */
     public DatabaseModifyVatLieuController() {
         databaseModifyThongSoService = new DatabaseModifyThongSoService();
         databaseModifyVatlieuService = new DatabaseModifyVatlieuService();
@@ -60,6 +64,12 @@ public class DatabaseModifyVatLieuController implements Initializable {
         thongSoObservableList = FXCollections.observableArrayList();
     }
 
+
+    /**
+     * Handles the action when the user adds a new item.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     void addAction(ActionEvent event) {
         int currentPos = vatLieuObservableList.size();
@@ -68,6 +78,12 @@ public class DatabaseModifyVatLieuController implements Initializable {
         refreshList();
     }
 
+
+    /**
+     * Handles the action when the user deletes an item.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     void deleteAction(ActionEvent event) {
         VatLieu vatLieu = listView.getSelectionModel().getSelectedItem();
@@ -82,6 +98,12 @@ public class DatabaseModifyVatLieuController implements Initializable {
         refreshList();
     }
 
+
+    /**
+     * Handles the action when the user selects the next item.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     void nextAction(ActionEvent event) {
         if (listView.getSelectionModel().getSelectedItem() == null) {
@@ -96,6 +118,12 @@ public class DatabaseModifyVatLieuController implements Initializable {
         ChangeProductSpecificationScene.getController().setRoot(this.root);
     }
 
+
+    /**
+     * Handles the action for switching scenes.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     void sceneSwitcher(ActionEvent event) {
         Scene scene = null;
@@ -117,16 +145,30 @@ public class DatabaseModifyVatLieuController implements Initializable {
 
     }
 
+
+    /**
+     * Initializes the controller with the given parent ID.
+     *
+     * @param parentID The ID of the parent element.
+     */
     public void init(int parentID) {
         this.parentID = parentID;
         refreshList();
         refreshChildrenList(0);
     }
+
+    /**
+     * Refreshes the view by updating the lists and clearing the selection.
+     */
     public void refresh() {
         refreshList();
         refreshChildrenList(0);
         listView.getSelectionModel().clearSelection();
     }
+
+    /**
+     * Refreshes the list of VatLieu items.
+     */
     private void refreshList() {
         List<VatLieu> vatLieuList = databaseModifyVatlieuService.findVatLieuByParentId(parentID);
         if (vatLieuList == null) {
@@ -136,6 +178,13 @@ public class DatabaseModifyVatLieuController implements Initializable {
         vatLieuObservableList.addAll(vatLieuList);
     }
 
+
+    /**
+     * Refreshes the list of ThongSo items for the specified parentID.
+     * If the parentID is 0, clears the ThongSo list.
+     *
+     * @param parentID the parent ID for which to refresh the ThongSo list
+     */
     private void refreshChildrenList(int parentID) {
         if (parentID == 0) {
             thongSoObservableList.clear();
@@ -149,6 +198,13 @@ public class DatabaseModifyVatLieuController implements Initializable {
         thongSoObservableList.addAll(thongSoList);
     }
 
+
+    /**
+     * Initializes the controller after FXML file loaded.
+     *
+     * @param url            The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Title.setText("Danh sách vật liệu");
@@ -156,10 +212,19 @@ public class DatabaseModifyVatLieuController implements Initializable {
         setUpThongSoTableView();
     }
 
+    /**
+     * Sets up the VatLieu list view with appropriate cell factories and event listeners.
+     * Binds VatLieuObservableList to the list view, sets up cell factories for editing, and adds selection change listeners.
+     */
     private void setUpVatLieuListView() {
+        // Binds VatLieuObservableList to the list view
         listView.setItems(vatLieuObservableList);
+
+        // Makes the list view cells editable and customizes the editing behavior
         listView.setEditable(true);
         listView.setCellFactory(param -> new CustomEditingListCell<>());
+
+        // Handles edit commit events to update or add new VatLieu items
         listView.setOnEditCommit(event -> {
             VatLieu item = event.getNewValue();
             item.setName(DBModifyUtils.getNotDuplicateName(item.getName(), vatLieuObservableList));
@@ -170,6 +235,8 @@ public class DatabaseModifyVatLieuController implements Initializable {
             }
             refreshList();
         });
+
+        // Adds a selection change listener to update child items when a VatLieu item is selected
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 VatLieu noiThat = listView.getSelectionModel().getSelectedItem();
@@ -181,8 +248,15 @@ public class DatabaseModifyVatLieuController implements Initializable {
         });
     }
 
+    /**
+     * Sets up the ThongSo table view with appropriate cell value factories.
+     * Binds ThongSoObservableList to the table view and sets up cell value factories for each column.
+     */
     private void setUpThongSoTableView() {
+        // Binds ThongSoObservableList to the table view
         tableView.setItems(thongSoObservableList);
+
+        // Set cell value factories for each column
         Dai.setCellValueFactory(param -> {
             if (param.getValue() == null) return null;
             return new SimpleObjectProperty<>(param.getValue().getDai());

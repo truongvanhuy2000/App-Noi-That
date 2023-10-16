@@ -36,24 +36,37 @@ public class RegisterController {
     public RegisterController() {
         registerService = new RegisterService();
     }
+    /**
+     * Initializes the registration process.
+     * Sets up initial values for ComboBoxes and disables the save button by default.
+     * Handles the registration of a new account when the save button is clicked.
+     * Displays a QR code for payment after successful registration.
+     */
     public void init() {
+        // Define a list of user roles
         List<String> roleList = new ArrayList<>();
         roleList.add("ROLE_USER");
 
+        // Set up options for ComboBoxes
         ObservableList<String> listTime = FXCollections.observableArrayList(TIME_OPTION1, TIME_OPTION2, TIME_OPTION3);
         ObservableList<String> listGender = FXCollections.observableArrayList(GENDER_OPTION1, GENDER_OPTION2);
 
+        // Populate ComboBoxes with options
         ComboBoxTime.setItems(listTime);
         ComboBoxGender.setItems(listGender);
 
         btnSave.setDisable(true);
         btnSave.setOnAction(actionEvent -> {
+            // Get the QR scene and elements from the QR popup
             Scene QRpopup = QRScene.getInstance().getScene();
             Label giaTienQR = (Label) QRpopup.lookup("#giaTienQR");
 
+            // Retrieve selected gender, time option, and current date
             String Gender = ComboBoxGender.getSelectionModel().getSelectedItem();
             String time = ComboBoxTime.getSelectionModel().getSelectedItem();
             LocalDate localDate = LocalDate.now();
+
+            // Set expiration date based on the selected time option
             switch (time) {
                 case TIME_OPTION1 -> {
                     localDate = LocalDate.now().plusMonths(1);
@@ -72,19 +85,21 @@ public class RegisterController {
             }
             AccountInformation accountInformation = new AccountInformation(0, txtName.getText(), Gender, txtEmail.getText(), txtAddress.getText(), txtPhone.getText());
             Account account = new Account(0, txtUsername.getText(), txtPassword.getText(), false, accountInformation, roleList, false, localDate);
-            System.out.println(account);
 
             registerService.registerNewAccount(account);
 
+            // Close the current registration window
             Stage thisStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             thisStage.close();
 
+            // Display a new window with the QR code for payment
             Stage QRstage = new Stage();
             QRstage.setScene(QRpopup);
             QRstage.setTitle("Quét QR để thanh toán");
             QRstage.show();
             // You might need additional logic to handle saving or updating data
         });
+
         btnCheckUserName.setOnAction(actionEvent -> {
             if (!isValidCharacter(txtUsername.getText())) {
                 PopupUtils.throwCriticalError("Tên đăng nhập không hợp lệ\n" +

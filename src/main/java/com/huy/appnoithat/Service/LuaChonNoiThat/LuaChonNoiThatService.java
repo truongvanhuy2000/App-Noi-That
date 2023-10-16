@@ -32,6 +32,10 @@ public class LuaChonNoiThatService {
     private final HangMucRestService hangMucRestService;
     private final VatLieuRestService vatLieuRestService;
     private final FileNoiThatExplorerService fileNoiThatExplorerService;
+
+    /**
+     * Initializes the LuaChonNoiThatService by initializing required services and components.
+     */
     public LuaChonNoiThatService() {
         fileExportService = new FileExportService();
         phongCachRestService = PhongCachRestService.getInstance();
@@ -41,28 +45,68 @@ public class LuaChonNoiThatService {
         fileNoiThatExplorerService = FileNoiThatExplorerService.getInstance();
     }
 
+    /**
+     * Retrieves a list of all PhongCachNoiThat from the service.
+     *
+     * @return List of PhongCachNoiThat objects.
+     */
+
     public List<PhongCachNoiThat> findAllPhongCachNoiThat() {
         return phongCachRestService.findAll();
     }
 
+    /**
+     * Retrieves a list of NoiThat objects based on the provided PhongCach.
+     *
+     * @param phongCach The PhongCach for which to find NoiThat objects.
+     * @return List of NoiThat objects matching the provided PhongCach.
+     */
     public List<NoiThat> findNoiThatListBy(String phongCach) {
+        // Encoding the PhongCach to ensure URL safety.
         phongCach = URLEncoder.encode(phongCach, StandardCharsets.UTF_8);
         return noiThatRestService.searchBy(phongCach);
     }
 
+
+    /**
+     * Retrieves a list of HangMuc objects based on the provided PhongCach and NoiThat.
+     *
+     * @param phongCach The PhongCach for which to find HangMuc objects.
+     * @param noiThat   The NoiThat for which to find HangMuc objects.
+     * @return List of HangMuc objects matching the provided PhongCach and NoiThat.
+     */
     public List<HangMuc> findHangMucListBy(String phongCach, String noiThat) {
+        // Encoding PhongCach and NoiThat to ensure URL safety.
         phongCach = URLEncoder.encode(phongCach, StandardCharsets.UTF_8);
         noiThat = URLEncoder.encode(noiThat, StandardCharsets.UTF_8);
         return hangMucRestService.searchBy(phongCach, noiThat);
     }
 
+    /**
+     * Retrieves a list of VatLieu objects based on the provided PhongCach, NoiThat, and HangMuc.
+     *
+     * @param phongCach The PhongCach for which to find VatLieu objects.
+     * @param noiThat   The NoiThat for which to find VatLieu objects.
+     * @param hangMuc   The HangMuc for which to find VatLieu objects.
+     * @return List of VatLieu objects matching the provided PhongCach, NoiThat, and HangMuc.
+     */
     public List<VatLieu> findVatLieuListBy(String phongCach, String noiThat, String hangMuc) {
+        // Encoding PhongCach, NoiThat, and HangMuc to ensure URL safety.
         phongCach = URLEncoder.encode(phongCach, StandardCharsets.UTF_8);
         noiThat = URLEncoder.encode(noiThat, StandardCharsets.UTF_8);
         hangMuc = URLEncoder.encode(hangMuc, StandardCharsets.UTF_8);
         return vatLieuRestService.searchBy(phongCach, noiThat, hangMuc);
     }
 
+
+    /**
+     * Exports a data package to the specified file of the given file type.
+     *
+     * @param selectedFile The file to export the data to.
+     * @param fileType     The type of the file to export (e.g., NT for NoiThat).
+     * @param dataPackage  The data package to export.
+     * @return True if the export operation is successful, false otherwise.
+     */
     public boolean exportFile(File selectedFile, FileType fileType, DataPackage dataPackage) {
         ExportFile exportFile = fileExportService.getExportService(selectedFile, fileType);
         exportFile.setUpDataForExport(dataPackage);
@@ -78,6 +122,12 @@ public class LuaChonNoiThatService {
         return true;
     }
 
+    /**
+     * Imports a data package from the specified file.
+     *
+     * @param selectedFile The file to import the data from.
+     * @return The imported data package.
+     */
     public DataPackage importFile(File selectedFile) {
         ExportFile exportFile = fileExportService.getExportService(selectedFile, FileType.NT);
         return exportFile.importData(selectedFile);

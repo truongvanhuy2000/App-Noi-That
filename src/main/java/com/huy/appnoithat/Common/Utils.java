@@ -1,5 +1,7 @@
 package com.huy.appnoithat.Common;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
@@ -146,11 +148,12 @@ public class Utils {
     public static String encodeData(String data) {
         if (data == null)
             return "";
-        return Base64.getEncoder().encodeToString(data.getBytes());
+        return URLEncoder.encode(data, StandardCharsets.UTF_8);
     }
-    public static String decodeData(String data) {
+    public static String decodeData(byte[] data) {
         if (data == null)
             return "";
-        return new String(Base64.getDecoder().decode(data));
+        String encodedData = new String(data, StandardCharsets.UTF_8);
+        return URLDecoder.decode(encodedData, StandardCharsets.UTF_8);
     }
 }

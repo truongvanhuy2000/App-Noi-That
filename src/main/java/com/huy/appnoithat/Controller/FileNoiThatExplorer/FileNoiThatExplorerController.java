@@ -35,10 +35,24 @@ public class FileNoiThatExplorerController {
     public FileNoiThatExplorerController () {
         fileNoiThatExplorerService = FileNoiThatExplorerService.getInstance();
     }
+
+    /**
+     * Handles the action when the new file button is clicked.
+     * Opens a new Lua Chon Noi That tab with a blank state.
+     * @param event The event triggered by the new file button.
+     */
     @FXML
     void newFileButton(ActionEvent event) {
         openNewLuaChonNoiThatTab(TabState.BLANK_TAB, null);
     }
+
+
+    /**
+     * Handles the action when the open file button is clicked.
+     * Opens a file dialog for the user to select a file to open.
+     * Adds the selected file to the recent files list and opens it.
+     * @param event The event triggered by the open file button.
+     */
     @FXML
     void openFileButton(ActionEvent event) {
         File selectedFile = PopupUtils.fileOpener();
@@ -49,11 +63,18 @@ public class FileNoiThatExplorerController {
         // Add to recent file
         openFile(recentFile);
     }
+
+
+    /**
+     * Initializes the Recent Files tab by setting up the table columns and populating the table with recent files.
+     */
     public void init() {
         DirectoryCollum.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDirectory()));
         TimeStampCollum.setCellValueFactory(cellData -> new SimpleObjectProperty<>(
                 Utils.convertMilisToDateTimeString(cellData.getValue().getTimeStamp())));
         RecentTableView.setItems(fileNoiThatExplorerService.getRecentFile());
+
+        // Double click to open a recent file
         RecentTableView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
                 if (RecentTableView.getSelectionModel().getSelectedItem() == null) {
@@ -63,6 +84,12 @@ public class FileNoiThatExplorerController {
             }
         });
     }
+
+    /**
+     * Opens the specified recent file in a new tab.
+     *
+     * @param recentFile The recent file to be opened.
+     */
     public void openFile(RecentFile recentFile) {
         if (!isDirectoryExist(recentFile.getDirectory())) {
             PopupUtils.throwErrorSignal("File không tồn tại");
@@ -79,11 +106,25 @@ public class FileNoiThatExplorerController {
         }
         fileNoiThatExplorerService.addRecentFile(recentFile);
     }
+
+    /**
+     * Opens a new Lua Chon Noi That tab with the specified tab state and directory.
+     *
+     * @param tabState   The state of the tab (e.g., BLANK_TAB, IMPORT_TAB).
+     * @param directory  The directory associated with the tab.
+     */
     private void openNewLuaChonNoiThatTab(TabState tabState, String directory) {
         NewTabScene newTabScene = new NewTabScene();
         newTabScene.getNewTabController().init(tabState, directory);
         StageFactory.CreateNewMaximizedStage(newTabScene.getScene());
     }
+
+    /**
+     * Checks if the specified directory exists.
+     *
+     * @param directory The directory to be checked.
+     * @return True if the directory exists, false otherwise.
+     */
     private boolean isDirectoryExist(String directory) {
         return new File(directory).exists();
     }

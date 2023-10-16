@@ -10,9 +10,9 @@ public class TableCalculationUtils {
     private static final String MET_DAI = "mét dài";
     private static final String MET_VUONG = "mét vuông";
     public static void calculateBangThanhToan(TableView<BangThanhToan> bangThanhToan, Long tongTien) {
-        Long datCocThietKe10 = CalculationUtils.round(tongTien * 0.1);
-        Long datCocThiCong30 = CalculationUtils.round(tongTien * 0.3);
-        Long hangDenChanCongTrinh50 = CalculationUtils.round(tongTien * 0.5);
+        Long datCocThietKe10 = round(tongTien * 0.1);
+        Long datCocThiCong30 = round(tongTien * 0.3);
+        Long hangDenChanCongTrinh50 = round(tongTien * 0.5);
         Long nghiemThuQuyet = tongTien - datCocThietKe10 - datCocThiCong30 - hangDenChanCongTrinh50;
 
         bangThanhToan.getItems().get(0).setDatCocThietKe10(datCocThietKe10);
@@ -89,5 +89,10 @@ public class TableCalculationUtils {
             item.getValue().setThanhTien(0L);
         }
     }
+
+    public static long round(double input) {
+        long i = (long) Math.ceil(input);
+        return Math.round(input/1000000) * 1000000;
+    };
 
 }

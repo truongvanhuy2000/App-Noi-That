@@ -32,6 +32,10 @@ public class PhongCachRestService {
         }
         return instance;
     }
+
+    /**
+     * Service class for managing PhongCachNoiThat objects via REST API.
+     */
     private PhongCachRestService() {
         webClientService = new WebClientServiceImpl();
         userSessionService = new UserSessionService();
@@ -39,6 +43,13 @@ public class PhongCachRestService {
                 .addModule(new JavaTimeModule())
                 .build();
     }
+
+    /**
+     * Retrieves a list of all PhongCachNoiThat objects associated with the current user.
+     *
+     * @return A list of PhongCachNoiThat objects.
+     * @throws RuntimeException if there is an error when retrieving PhongCachNoiThat objects.
+     */
     public List<PhongCachNoiThat> findAll() {
         String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());
         String response = webClientService.authorizedHttpGetJson(path, userSessionService.getToken());
@@ -53,6 +64,14 @@ public class PhongCachRestService {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Finds a PhongCachNoiThat object by its ID.
+     *
+     * @param id The ID of the PhongCachNoiThat to find.
+     * @return The PhongCachNoiThat object with the specified ID, or null if not found.
+     * @throws RuntimeException if there is an error when finding the PhongCachNoiThat object.
+     */
     public PhongCachNoiThat findById(int id) {
         String path = String.format(BASE_ENDPOINT + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
         String response = webClientService.authorizedHttpGetJson(path, userSessionService.getToken());
@@ -66,6 +85,14 @@ public class PhongCachRestService {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Finds a PhongCachNoiThat object by its name.
+     *
+     * @param name The name of the PhongCachNoiThat to find.
+     * @return The PhongCachNoiThat object with the specified name, or null if not found.
+     * @throws RuntimeException if there is an error when finding the PhongCachNoiThat object.
+     */
     public PhongCachNoiThat findUsingName(String name) {
         String path = String.format(BASE_ENDPOINT + "/search" + OWNER_TEMPLATE + NAME_TEMPLATE,
                 userSessionService.getUsername(), Utils.encodeValue(name));
@@ -80,6 +107,13 @@ public class PhongCachRestService {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Saves a new PhongCachNoiThat object.
+     *
+     * @param phongCachNoiThat The PhongCachNoiThat object to be saved.
+     * @throws RuntimeException if there is an error when saving the PhongCachNoiThat object.
+     */
     public void save(PhongCachNoiThat phongCachNoiThat) {
         String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());
         String token = this.userSessionService.getToken();
@@ -90,6 +124,13 @@ public class PhongCachRestService {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Updates an existing PhongCachNoiThat object.
+     *
+     * @param phongCachNoiThat The PhongCachNoiThat object to be updated.
+     * @throws RuntimeException if there is an error when updating the PhongCachNoiThat object.
+     */
     public void update(PhongCachNoiThat phongCachNoiThat) {
         String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());
         String token = this.userSessionService.getToken();
@@ -100,6 +141,10 @@ public class PhongCachRestService {
             throw new RuntimeException(e);
         }
     }
+
+/**
+ * Deletes a PhongCachNoiThat
+ * */
     public void deleteById(int id) {
         String path = String.format(BASE_ENDPOINT + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
         String token = this.userSessionService.getToken();
