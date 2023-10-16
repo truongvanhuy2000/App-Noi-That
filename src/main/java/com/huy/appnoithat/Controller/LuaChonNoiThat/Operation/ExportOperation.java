@@ -54,30 +54,14 @@ public class ExportOperation {
         this.luaChonNoiThatController = luaChonNoiThatController;
     }
 
-
-    /**
-     * Exports the data to a file of the specified type. Opens a file chooser dialog to allow the user to select the
-     * location and name of the exported file.
-     *
-     * @param fileType The type of file to export (e.g., CSV, Excel, etc.).
-     */
-    public void exportFile(FileType fileType) {
-        // Open a file save dialog to allow the user to select the location and name of the exported file
+    public String exportFile(FileType fileType) {
         File selectedFile = PopupUtils.fileSaver();
         if (selectedFile == null) {
-            return;
+            return null;
         }
-        exportFile(fileType, selectedFile);
+        return exportFile(fileType, selectedFile, true);
     }
-
-    /**
-     * Exports the data package to the specified file with the given file type. Displays success or error messages based on
-     * the export result.
-     *
-     * @param fileType      The type of file to export (e.g., CSV, Excel, etc.).
-     * @param selectedFile  The file to which the data will be exported.
-     */
-    public void exportFile(FileType fileType, File selectedFile) {
+    public String exportFile(FileType fileType, File selectedFile, boolean showPopup) {
         DataPackage dataPackage = new DataPackage(
                 getThongTinCongTy(),
                 getThongTinKhachHang(),
@@ -87,22 +71,27 @@ public class ExportOperation {
         );
         boolean result = new LuaChonNoiThatService().exportFile(selectedFile, fileType, dataPackage);
         if (!result) {
-            if (fileType == FileType.NT) {
-                PopupUtils.throwErrorSignal("Lưu thất bại");
+            if (showPopup) {
+                if (fileType == FileType.NT) {
+                    PopupUtils.throwErrorSignal("Lưu thất bại");
+                }
+                else {
+                    PopupUtils.throwErrorSignal("Xuất file thất bại");
+                }
             }
-            else {
-                PopupUtils.throwErrorSignal("Xuất file thất bại");
-            }
+            return null;
         }
         else {
-            if (fileType == FileType.NT) {
-                PopupUtils.throwSuccessSignal("Lưu thất thành công");
-            }
-            else {
-                PopupUtils.throwSuccessSignal("Xuất file thành công");
+            if (showPopup) {
+                if (fileType == FileType.NT) {
+                    PopupUtils.throwSuccessSignal("Lưu file thành công");
+                }
+                else {
+                    PopupUtils.throwSuccessSignal("Xuất file thành công");
+                }
             }
         }
-
+        return selectedFile.getAbsolutePath();
     }
     /**
      * THis function will return a list of ThongTinNoiThat from item root from the table

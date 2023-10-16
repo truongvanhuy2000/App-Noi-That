@@ -3,6 +3,7 @@ package com.huy.appnoithat.Service.FileExport.Operation.Excel;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.*;
+import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,6 +15,9 @@ import org.apache.poi.xssf.usermodel.XSSFDrawing;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -102,8 +106,18 @@ public class ExportXLS implements ExportFile {
         setThongTinCongTy(dataForExport.getThongTinCongTy());
         setThongTinKhachHang(dataForExport.getThongTinKhachHang());
         setThongTinNoiThatList(dataForExport.getThongTinNoiThatList());
+        rearrangeList(this.thongTinNoiThatList);
         this.thongTinThanhToan = dataForExport.getThongTinThanhToan();
         this.noteArea = dataForExport.getNoteArea();
+    }
+    private void rearrangeList(List<ThongTinNoiThat> list) {
+        int romanCount = 0;
+        for (ThongTinNoiThat item : list) {
+            if (Utils.RomanNumber.isRoman(item.getSTT())) {
+                romanCount++;
+                item.setSTT(Utils.RomanNumber.toRoman(romanCount));
+            }
+        }
     }
     private void setThongTinCongTy(ThongTinCongTy thongTinCongTy) {
         this.thongTinCongTy.setLogo(thongTinCongTy.getLogo());
@@ -127,7 +141,7 @@ public class ExportXLS implements ExportFile {
 
     private void exportNoteArea(int rowId, String noteArea) {
         Cell cell0 = spreadsheet.getRow(rowId).getCell(0);
-        stylistFactory.CellPresetFactory(cell0, noteArea, 13, Stylist.Preset.BoldText03_TimeNewRoman_VerticalCenter_ThinBorder);
+        stylistFactory.CellPresetFactory(cell0, noteArea, 13, Stylist.Preset.NormalText_TimeNewRoman_VerticalCenter_ThinBorder);
     }
 
     private void mergeCells(int row, int col, int rowSpan, int colSpan, int howMany) {
@@ -220,7 +234,7 @@ public class ExportXLS implements ExportFile {
         mergeCells(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, 1);
 
         Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
-        stylistFactory.CellPresetFactory(cell0, thongTinNoiThat.getSTT(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.CellPresetFactory(cell0, thongTinNoiThat.getSTT(), 12, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
 
         Cell cell1 = spreadsheet.getRow(mergeRowId).getCell(cellId + 1);
         stylistFactory.CellPresetFactory(cell1, thongTinNoiThat.getTenHangMuc(), 14, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
@@ -291,6 +305,26 @@ public class ExportXLS implements ExportFile {
 
     public void exportLogo(InputStream image) throws IOException {
         byte[] bytes = image.readAllBytes();
+
+        InputStream in = new ByteArrayInputStream(bytes);
+
+        BufferedImage buf = ImageIO.read(in);
+//        ColorModel model = buf.getColorModel();
+        int imageHeight = buf.getHeight();
+        int imageWidth = buf.getWidth();
+        double ratio = (double) imageWidth / imageHeight;
+
+        for (int i = 0; i < 5; i++) {
+            Row row = spreadsheet.getRow(i);
+            if (row != null) {
+                short heightInPoints = row.getHeight();
+                System.out.println("Height of row " + (i+1) + " in points: " + heightInPoints);
+            }
+        }
+        for (int i = 0; i < 2; i++) {
+            int width = spreadsheet.getColumnWidth(i);
+            System.out.println("Width of column " + (i+1) + " in characters: " + width);
+        }
         int pictureIdx = workbook.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
         XSSFDrawing drawing = spreadsheet.createDrawingPatriarch();
         XSSFClientAnchor logoAnchor = new XSSFClientAnchor();
