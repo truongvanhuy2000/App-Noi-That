@@ -46,13 +46,29 @@ public class DatabaseModifyPhongCachController implements Initializable {
     private final ObservableList<NoiThat> noiThatObservableList;
     @Setter
     private Parent root;
+
+    /**
+     * Constructor for the DatabaseModifyPhongCachController class.
+     * Initializes the services and observable lists used in the controller.
+     */
     public DatabaseModifyPhongCachController() {
         databaseModifyPhongCachService = new DatabaseModifyPhongCachService();
         databaseModifyNoiThatService = new DatabaseModifyNoiThatService();
+
+        // Initialize observable lists for phong cach noi that and noi that entities
         phongCachNoiThatObservableList = FXCollections.observableArrayList();
         noiThatObservableList = FXCollections.observableArrayList();
     }
 
+
+    /**
+     * Handles the action event for adding a new PhongCachNoiThat entity.
+     * Adds a new PhongCachNoiThat entity to the list and updates the database.
+     * Refreshes the list view.
+     * Called when the corresponding button is clicked.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     void addAction(ActionEvent event) {
         int currentPos = phongCachNoiThatObservableList.size();
@@ -60,6 +76,15 @@ public class DatabaseModifyPhongCachController implements Initializable {
         refreshList();
     }
 
+
+    /**
+     * Handles the action event for deleting a PhongCachNoiThat entity.
+     * Deletes the selected PhongCachNoiThat entity from the list and the database.
+     * Refreshes the list view and the children list.
+     * Called when the corresponding button is clicked.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     void deleteAction(ActionEvent event) {
         PhongCachNoiThat phongCachNoiThat = listView.getSelectionModel().getSelectedItem();
@@ -74,6 +99,16 @@ public class DatabaseModifyPhongCachController implements Initializable {
         refreshList();
         refreshChildrenList(0);
     }
+
+    /**
+     * Handles the action event for moving to the next step.
+     * Checks if an item is selected in the list view. If not, does nothing.
+     * If an item is selected, loads the next scene related to modifying NoiThat entities.
+     * Initializes the scene with the selected item's ID, sets it as the root, and clears the selection in the list view.
+     * Called when the corresponding button is clicked.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     void nextAction(ActionEvent event) {
         if (listView.getSelectionModel().getSelectedItem() == null) {
@@ -89,15 +124,31 @@ public class DatabaseModifyPhongCachController implements Initializable {
         DatabaseModifyNoiThatScene.getController().setRoot(this.root);
     }
 
+    /**
+     * Initializes the controller by refreshing the list and the children list.
+     */
     public void init() {
         refreshList();
         refreshChildrenList(0);
     }
+
+    /**
+     * Refreshes both the list view and the children list.
+     */
     public void refresh() {
         refreshList();
         refreshChildrenList(0);
         listView.getSelectionModel().clearSelection();
     }
+
+    /**
+     * Handles scene switching based on the action event.
+     * If the source of the event is the backButton, switches to the HomeScene,
+     * clears the items in the listView, and updates the stage's scene accordingly.
+     * Called when the backButton or other specific buttons are clicked.
+     *
+     * @param actionEvent The action event triggered by the user.
+     */
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
         Scene scene = null;
@@ -125,13 +176,29 @@ public class DatabaseModifyPhongCachController implements Initializable {
 //            nextButton.fire();
 //        }
     }
+
+
+    /**
+     * Initializes the controller after the FXML has been loaded.
+     * Configures the UI elements, sets up event listeners, and populates initial data.
+     *
+     * @param url The location used to resolve relative paths for root object or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Hides the backButton initially
         backButton.setVisible(false);
+
+        // Sets the title of the scene
         Title.setText("Danh sách phong cách");
+
+        // Configures the listView for displaying phongCachNoiThatObservableList
         listView.setItems(phongCachNoiThatObservableList);
         listView.setEditable(true);
         listView.setCellFactory(param -> new CustomEditingListCell<>());
+
+        // Handles editing events in the listView
         listView.setOnEditCommit(event -> {
             PhongCachNoiThat item = event.getNewValue();
             item.setName(DBModifyUtils.getNotDuplicateName(item.getName(), phongCachNoiThatObservableList));
@@ -142,6 +209,8 @@ public class DatabaseModifyPhongCachController implements Initializable {
             }
             refreshList();
         });
+
+        // Listens for changes in the selected item of the listView
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 PhongCachNoiThat phongCachNoiThat = listView.getSelectionModel().getSelectedItem();
@@ -151,12 +220,17 @@ public class DatabaseModifyPhongCachController implements Initializable {
                 refreshChildrenList(phongCachNoiThat.getId());
             }
         });
+
+        // Configures the childrenList for displaying noiThatObservableList
         childrenList.setEditable(false);
         childrenList.setCellFactory(param -> new CustomEditingListCell<>());
         childrenList.setItems(noiThatObservableList);
         init();
     }
 
+    /**
+     * Refreshes the phongCachNoiThatObservableList with the latest data from the database.
+     */
     private void refreshList() {
         List<PhongCachNoiThat> phongCachNoiThatList = databaseModifyPhongCachService.findAllPhongCach();
         if (phongCachNoiThatList == null) {
@@ -166,6 +240,11 @@ public class DatabaseModifyPhongCachController implements Initializable {
         phongCachNoiThatObservableList.addAll(phongCachNoiThatList);
     }
 
+    /**
+     * Refreshes the childrenList with the NoiThat objects associated with the given parent ID from the database.
+     *
+     * @param parentID The ID of the parent item.
+     */
     private void refreshChildrenList(int parentID) {
         List<NoiThat> noiThatList = databaseModifyNoiThatService.findNoiThatListByParentID(parentID);
         if (noiThatList == null) {

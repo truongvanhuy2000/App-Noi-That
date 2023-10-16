@@ -55,6 +55,14 @@ public class NoiThatRestService {
     @Deprecated
     public void save(NoiThat noiThat) {
     }
+
+    /**
+     * Searches for NoiThat objects based on the provided PhongCach ID.
+     *
+     * @param id The ID of the PhongCach to search for.
+     * @return A list of NoiThat objects associated with the given PhongCach ID.
+     * @throws RuntimeException if there is an error when searching for NoiThat objects.
+     */
     public List<NoiThat> searchByPhongCach(int id) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/searchByPhongCach" + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
@@ -71,6 +79,14 @@ public class NoiThatRestService {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Saves a new NoiThat object with the specified parent ID.
+     *
+     * @param noiThat The NoiThat object to be saved.
+     * @param parentID The ID of the parent object.
+     * @throws RuntimeException if there is an error when saving the NoiThat object.
+     */
     public void save(NoiThat noiThat, int parentID) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE + PARENT_ID_TEMPLATE, userSessionService.getUsername(), parentID);
@@ -81,6 +97,13 @@ public class NoiThatRestService {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Updates an existing NoiThat object.
+     *
+     * @param noiThat The NoiThat object to be updated.
+     * @throws RuntimeException if there is an error when updating the NoiThat object.
+     */
     public void update(NoiThat noiThat) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());
@@ -91,11 +114,26 @@ public class NoiThatRestService {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Deletes a NoiThat object by its ID.
+     *
+     * @param id The ID of the NoiThat object to be deleted.
+     * @throws RuntimeException if there is an error when deleting the NoiThat object.
+     */
     public void deleteById(int id) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
         this.webClientService.authorizedHttpDeleteJson(path, "", token);
     }
+
+    /**
+     * Searches for NoiThat objects based on the provided PhongCach name.
+     *
+     * @param phongCachName The name of the PhongCach to search for.
+     * @return A list of NoiThat objects matching the search criteria.
+     * @throws RuntimeException if there is an error when searching for NoiThat objects.
+     */
     public List<NoiThat> searchBy(String phongCachName) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/searchBy" + OWNER_TEMPLATE + "&phongCachName=%s", userSessionService.getUsername(), phongCachName);

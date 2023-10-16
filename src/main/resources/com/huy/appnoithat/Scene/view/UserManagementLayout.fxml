@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="638.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="638.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <children>
       <VBox alignment="CENTER" prefHeight="638.0" prefWidth="1000.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -143,7 +143,7 @@
                   <Insets left="20.0" right="20.0" />
                </padding>
             </HBox>
-              <TableView fx:id="tableManageUser" onMouseClicked="#tableClickToSelectItem" prefHeight="443.0" prefWidth="1000.0" VBox.vgrow="ALWAYS">
+              <TableView id="tableUser" fx:id="tableManageUser" onMouseClicked="#tableClickToSelectItem" prefHeight="443.0" prefWidth="1000.0" VBox.vgrow="ALWAYS">
                   <columns>
                       <TableColumn fx:id="username" prefWidth="325.0" styleClass="column-header" text="Tên đăng nhập" />
                       <TableColumn fx:id="password" prefWidth="236.0" styleClass="column-header" text="Mật khẩu" />

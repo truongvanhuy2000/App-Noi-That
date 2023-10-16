@@ -31,8 +31,14 @@ public class LoginController {
         loginService = new LoginService();
     }
 
-    // Call this method everytime you switch scene
+
+    /**
+     * Initializes the login form, enabling keyboard shortcuts for the login action.
+     * Fires the login button event when the specified key combination is pressed.
+     * Call this method everytime you switch scene
+     */
     public void init() {
+        // Enable keyboard shortcut for login when ENTER key is pressed in username or password field
         usernameTextField.setOnKeyPressed(keyEvent -> {
             if (KeyboardUtils.isRightKeyCombo(Action.LOGIN, keyEvent)) {
                 LoginButton.fire();
@@ -45,19 +51,36 @@ public class LoginController {
         });
     }
 
+    /**
+     * Handles the login action when the login button is clicked.
+     * Retrieves username and password from input fields, validates the credentials,
+     * displays an error popup if the credentials are incorrect, and switches scenes upon successful login.
+     *
+     * @param actionEvent The ActionEvent triggering the login button click.
+     */
     @FXML
     public void login(ActionEvent actionEvent) {
         String userName = usernameTextField.getText();
         String password = passwordField.getText();
+
+        // Validate the credentials using the login service
         if (!loginService.Authorization(userName, password)) {
+            // Display error popup for incorrect credentials
             PopupUtils.throwCriticalError("Sai tên đăng nhập hoặc mật khẩu");
             passwordField.setText("");
             return;
         }
+
+        // Switch to the next scene upon successful login
         sceneSwitcher(actionEvent);
     }
 
-
+    /**
+     * Handles the event when the user wants to register a new account.
+     * Initializes the registration scene, creates a new unresizable stage, and displays the registration form.
+     *
+     * @param event The MouseEvent triggering the registration action.
+     */
     @FXML
     void registerAccount(MouseEvent event) {
         Scene scene = RegisterScene.getInstance().getScene();
@@ -65,10 +88,17 @@ public class LoginController {
         StageFactory.CreateNewUnresizeableStage(RegisterScene.getInstance().getScene());
     }
 
+
+    /**
+     * Handles scene switching based on the action event source.
+     *
+     * @param actionEvent The ActionEvent triggering the scene switch.
+     */
     private void sceneSwitcher(ActionEvent actionEvent) {
         Object source = actionEvent.getSource();
         Stage stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == LoginButton) {
+            // Switch to the home scene if the Login button is clicked
             Scene scene = HomeScene.getInstance().getScene();
             HomeScene.getInstance().getHomeController().init();
             StageFactory.closeAndCreateNewMaximizedStage(stage, scene);

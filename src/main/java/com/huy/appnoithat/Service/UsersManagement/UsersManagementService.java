@@ -20,6 +20,10 @@ public class UsersManagementService {
     private final ObjectMapper objectMapper;
     private final UserSessionService sessionService;
 
+
+    /**
+     * Initializes the UsersManagementService with required dependencies.
+     */
     public UsersManagementService() {
         this.webClientService = new WebClientServiceImpl();
         this.objectMapper = JsonMapper.builder()
@@ -28,6 +32,13 @@ public class UsersManagementService {
         sessionService = new UserSessionService();
     }
 
+
+    /**
+     * Retrieves a list of all enabled accounts from the server.
+     *
+     * @return List of enabled accounts.
+     * @throws RuntimeException If there is an error while retrieving or parsing the response.
+     */
     public List<Account> findAllAccountEnable() {
         String token = this.sessionService.getToken();
         List<Account> tempAccountList = new ArrayList<>();
@@ -42,11 +53,23 @@ public class UsersManagementService {
         return tempAccountList;
     }
 
+    /**
+     * Enables an account with the specified ID on the server.
+     *
+     * @param id The ID of the account to be enabled.
+     * @throws RuntimeException If there is an error while sending the request.
+     */
     public void enableAccount(int id) {
         String token = this.sessionService.getToken();
         this.webClientService.authorizedHttpPutJson("/api/accounts/enable/" + id, "long", token);
     }
 
+    /**
+     * Retrieves a list of all accounts that are not enabled from the server.
+     *
+     * @return A list of Account objects representing the not enabled accounts.
+     * @throws RuntimeException If there is an error while retrieving the data from the server.
+     */
     public List<Account> findAllNotEnabledAccount() {
         String token = this.sessionService.getToken();
         List<Account> tempAccountList = new ArrayList<>();
@@ -61,11 +84,24 @@ public class UsersManagementService {
         return tempAccountList;
     }
 
+    /**
+     * Deletes an account with the specified ID from the server.
+     *
+     * @param id The ID of the account to be deleted.
+     * @throws RuntimeException If there is an error while deleting the account from the server.
+     */
     public void deleteAccount(int id) {
         String token = this.sessionService.getToken();
         this.webClientService.authorizedHttpDeleteJson("/api/accounts/" + id, "", token);
     }
 
+    /**
+     * Retrieves the account information for the specified account ID from the server.
+     *
+     * @param id The ID of the account to be retrieved.
+     * @return The account object corresponding to the specified ID, or null if no account is found.
+     * @throws RuntimeException If there is an error while retrieving the account information from the server.
+     */
     public Account findAccountById(int id) {
 //        return tempAccountList.stream().filter(account -> id == account.getId()).findFirst().orElse(null);
         Account account = new Account();
@@ -80,6 +116,12 @@ public class UsersManagementService {
         return account;
     }
 
+    /**
+     * Adds a new account to the server.
+     *
+     * @param account The account object to be added.
+     * @throws RuntimeException If there is an error while adding the account to the server.
+     */
     public void addNewAccount(Account account) {
         String token = this.sessionService.getToken();
         try {
@@ -90,6 +132,12 @@ public class UsersManagementService {
         }
     }
 
+    /**
+     * Updates an existing account on the server.
+     *
+     * @param account The updated account object.
+     * @throws RuntimeException If there is an error while updating the account on the server.
+     */
     public void EditAccount(Account account) {
         String token = this.sessionService.getToken();
         try {
@@ -101,16 +149,36 @@ public class UsersManagementService {
         }
     }
 
+
+    /**
+     * Activates an account by its ID on the server.
+     *
+     * @param id The ID of the account to be activated.
+     * @throws RuntimeException If there is an error while activating the account on the server.
+     */
     public void ActiveAccount(int id) {
         String token = this.sessionService.getToken();
         this.webClientService.authorizedHttpPutJson("/api/accounts/activate/" + id, " ", token);
     }
 
+    /**
+     * Deactivates an account by its ID on the server.
+     *
+     * @param id The ID of the account to be deactivated.
+     * @throws RuntimeException If there is an error while deactivating the account on the server.
+     */
     public void InActiveAccount(int id) {
         String token = this.sessionService.getToken();
         this.webClientService.authorizedHttpPutJson("/api/accounts/deactivate/" + id, " ", token);
     }
 
+    /**
+     * Finds an account by its username on the server.
+     *
+     * @param username The username of the account to be found.
+     * @return The Account object representing the found account, or null if not found.
+     * @throws RuntimeException If there is an error while retrieving the account from the server.
+     */
     public Account findAccountByUsername(String username) {
         String token = this.sessionService.getToken();
         String response = this.webClientService.authorizedHttpGetJson("/api/accounts/search?username=" + username, token);

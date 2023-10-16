@@ -18,6 +18,10 @@ public class RegisterService {
     private final ObjectMapper objectMapper;
     private final UserSessionService sessionService;
 
+    /**
+     * Initializes a new instance of the RegisterService class.
+     * Initializes the WebClientService, ObjectMapper, and UserSessionService.
+     */
     public RegisterService() {
         webClientService = new WebClientServiceImpl();
         objectMapper = JsonMapper.builder()
@@ -26,6 +30,12 @@ public class RegisterService {
         sessionService = new UserSessionService();
     }
 
+    /**
+     * Registers a new account by sending a POST request to the server.
+     * Requires an authorized session token.
+     *
+     * @param account The Account object to register.
+     */
     public void registerNewAccount(Account account) {
         String token = this.sessionService.getToken();
         try {
@@ -34,6 +44,13 @@ public class RegisterService {
             LOGGER.error("Can't parse response from server when register new account");
         }
     }
+
+    /**
+     * Checks if the given username is valid by making an HTTP GET request to the server.
+     *
+     * @param username The username to validate.
+     * @return True if the username is valid, false otherwise.
+     */
     public boolean isUsernameValid(String username) {
         String response = this.webClientService.unauthorizedHttpGetJson("/api/register/usernameValidation?username=" + username);
         return response != null;

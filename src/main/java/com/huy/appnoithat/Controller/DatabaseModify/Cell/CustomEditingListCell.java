@@ -11,6 +11,13 @@ import javafx.scene.layout.VBox;
 public class CustomEditingListCell<T extends CommonItemInterface> extends ListCell<T> {
     private TextArea textArea;
     private VBox vBox;
+
+    /**
+     * Customizes the appearance of a cell in a TableView.
+     *
+     * @param item  The item to be displayed in the cell.
+     * @param empty Indicates whether the cell is empty or not.
+     */
     @Override
     protected void updateItem(T item, boolean empty) {
         super.updateItem(item, empty);
@@ -32,6 +39,11 @@ public class CustomEditingListCell<T extends CommonItemInterface> extends ListCe
         }
     }
 
+
+    /**
+     * Called when the cell enters editing mode.
+     * Creates a TextArea and VBox to allow editing of the cell's content.
+     */
     @Override
     public void startEdit() {
         createTextArea();
@@ -44,6 +56,9 @@ public class CustomEditingListCell<T extends CommonItemInterface> extends ListCe
         }
     }
 
+    /**
+     * Cancels the editing process, displaying the original item content.
+     */
     @Override
     public void cancelEdit() {
         super.cancelEdit();
@@ -51,6 +66,10 @@ public class CustomEditingListCell<T extends CommonItemInterface> extends ListCe
         setGraphic(null);
     }
 
+
+    /**
+     * Creates a TextArea for editing the cell's content.
+     */
     private void createTextArea() {
         if (textArea != null) {
             return;
@@ -70,6 +89,10 @@ public class CustomEditingListCell<T extends CommonItemInterface> extends ListCe
         });
     }
 
+
+    /**
+     * Creates a VBox containing a label with save instructions and the TextArea for editing.
+     */
     private void createVBox() {
         if (vBox != null) {
             return;
@@ -79,6 +102,10 @@ public class CustomEditingListCell<T extends CommonItemInterface> extends ListCe
         vBox.getChildren().add(textArea);
     }
 
+    /**
+     * Retrieves the string representation of the cell's item.
+     * @return The string representation of the item's name.
+     */
     private String getString() {
         return getItem() == null ? "" : getItem().getName();
     }

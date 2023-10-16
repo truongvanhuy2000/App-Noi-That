@@ -29,6 +29,10 @@ public class ThongSoRestService {
         }
         return instance;
     }
+
+    /**
+     * Constructor for ThongSoRestService.
+     */
     private ThongSoRestService() {
         webClientService = new WebClientServiceImpl();
         userSessionService = new UserSessionService();
@@ -36,6 +40,14 @@ public class ThongSoRestService {
                 .addModule(new JavaTimeModule())
                 .build();
     }
+
+    /**
+     * Saves a new ThongSo object.
+     *
+     * @param thongSo   The ThongSo object to be saved.
+     * @param parentId  The ID of the parent entity associated with this ThongSo.
+     * @throws RuntimeException if there is an error when saving the ThongSo object.
+     */
     public void save(ThongSo thongSo, int parentId) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE + PARENT_ID_TEMPLATE, userSessionService.getUsername(), parentId);
@@ -46,6 +58,14 @@ public class ThongSoRestService {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Searches for ThongSo objects by VatLieu ID.
+     *
+     * @param id The ID of the VatLieu to search for associated ThongSo objects.
+     * @return A list of ThongSo objects associated with the given VatLieu ID, or null if not found.
+     * @throws RuntimeException if there is an error when searching for ThongSo objects.
+     */
     public List<ThongSo> searchByVatLieu(int id) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/searchByVatlieu" + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
@@ -62,7 +82,12 @@ public class ThongSoRestService {
             throw new RuntimeException(e);
         }
     }
-
+    /**
+     * Updates an existing ThongSo object.
+     *
+     * @param thongSo The ThongSo object to be updated.
+     * @throws RuntimeException if there is an error when updating the ThongSo object.
+     */
     public void update(ThongSo thongSo) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());

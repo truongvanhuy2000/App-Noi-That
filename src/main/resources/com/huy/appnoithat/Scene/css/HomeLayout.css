@@ -52,7 +52,6 @@
     -fx-background-radius: 20px;
     -fx-border-style: solid;
     -fx-border-color: #748CF1;
-
 }
 
 .side_ankerpane{
@@ -90,7 +89,8 @@
 
 .table-view .table-cell {
     -fx-text-fill: #180131;
-    -fx-alignment: center;
+    -fx-alignment: left;
+    -fx-padding: 0 0 0 100px;
 }
 
 .table-row-cell {
@@ -118,6 +118,7 @@
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
     -fx-text-fill: #ffff;
+    -fx-padding: 7px 30px;
 }
 
 #btnEditcss {
@@ -126,14 +127,15 @@
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
     -fx-text-fill: #ffff;
+    -fx-padding: 7px 30px;
 }
-
 #btnDeletecss {
     -fx-background-color: #0487D9;
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
     -fx-text-fill: #ffff;
+    -fx-padding: 7px 30px;
 }
 
 #btnActivecss {
@@ -142,6 +144,7 @@
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
     -fx-text-fill: #ffff;
+    -fx-padding: 7px 30px;
 }
 
 #btnInactivecss {
@@ -150,6 +153,7 @@
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
     -fx-text-fill: #ffff;
+    -fx-padding: 7px 30px;
 }
 
 #btnDuyetcss {
@@ -158,6 +162,7 @@
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
     -fx-text-fill: #ffff;
+    -fx-padding: 7px 30px;
 }
 
 #btnSearchcss, #btnAllAccountcss {
@@ -196,7 +201,7 @@
     -fx-opacity: 0;
 }
 
-*
+
 
 
 
@@ -229,54 +234,6 @@
 *{
     -fx-font-family: 'Roboto Condensed', sans-serif;
 }
-#RecentTableView{
-    -fx-background-color:  transparent;
-    -fx-border-color: none
-}
-#RecentTableView .column-header{
-    -fx-border-width: 0 0 1 0;
-    -fx-border-color: white white black white;
-    -fx-background-color: white;
-    -fx-padding: 15px;
-    -fx-text-alignment: center;
-    -fx-text-fill: black;
-}
-
-#RecentTableView .column-header:odd {
-    -fx-border-width: 0 0 0 0;
-    -fx-border-color: white white white white;
-}
-#RecentTableView .column-header:even {
-    -fx-border-width: 0 0 0 0;
-    -fx-border-color: white white white white;
-}
-
-#RecentTableView .column-header:even:hover {
-    -fx-background-color: #c4c2c5;
-}
-
-#RecentTableView .column-header:odd:hover {
-    -fx-background-color: #c4c2c5;
-}
 
 
-#btnNewcss{
-    -fx-background-color: #0487D9;
-    -fx-background-radius: 6, 5;
-    -fx-background-insets: 0, 1;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
-    -fx-text-fill: #ffff;
-}
 
-#btnOpencss{
-    -fx-background-color: #0487D9;
-    -fx-background-radius: 6, 5;
-    -fx-background-insets: 0, 1;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
-    -fx-text-fill: #ffff;
-}
-
-/*CSS FOR TOOL TIP*/
-.tooltip {
-    -fx-show-delay: 250ms;
-}

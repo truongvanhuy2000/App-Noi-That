@@ -29,6 +29,10 @@ public class HangMucRestService {
         }
         return instance;
     }
+
+    /**
+     * Constructs a new instance of HangMucRestService with the necessary dependencies.
+     */
     private HangMucRestService() {
         webClientService = new WebClientServiceImpl();
         userSessionService = new UserSessionService();
@@ -36,6 +40,13 @@ public class HangMucRestService {
                 .addModule(new JavaTimeModule())
                 .build();
     }
+
+    /**
+     * Searches for HangMuc items associated with a specific NoiThat ID.
+     *
+     * @param id The ID of the NoiThat to search for.
+     * @return A list of HangMuc items associated with the given NoiThat ID, or null if no items are found.
+     */
     public List<HangMuc> searchByNoiThat(int id) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/searchByNoiThat" + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
@@ -44,7 +55,7 @@ public class HangMucRestService {
             return null;
         }
         try {
-            // 2. convert JSON array to List of objects
+            // Convert JSON array to List of HangMuc objects
             return objectMapper.readValue(response2, objectMapper.getTypeFactory()
                     .constructCollectionType(List.class, HangMuc.class));
         } catch (IOException e) {
@@ -52,6 +63,13 @@ public class HangMucRestService {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Saves a HangMuc object associated with a specific parent NoiThat ID.
+     *
+     * @param hangMuc The HangMuc object to save.
+     * @param parentID The ID of the parent NoiThat.
+     */
     public void save(HangMuc hangMuc, int parentID) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE + PARENT_ID_TEMPLATE, userSessionService.getUsername(), parentID);
@@ -62,6 +80,13 @@ public class HangMucRestService {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Updates the details of an existing HangMuc object.
+     *
+     * @param hangMuc The HangMuc object with updated details.
+     * @throws RuntimeException if there is an error when editing the HangMuc.
+     */
     public void update(HangMuc hangMuc) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());
@@ -72,11 +97,26 @@ public class HangMucRestService {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Deletes a HangMuc object by its ID.
+     *
+     * @param id The ID of the HangMuc object to be deleted.
+     */
     public void deleteById(int id) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
         this.webClientService.authorizedHttpDeleteJson(path, "", token);
     }
+
+    /**
+     * Searches for HangMuc objects based on the provided PhongCach and NoiThat names.
+     *
+     * @param phongCachName The name of the PhongCach to search for.
+     * @param noiThatName The name of the NoiThat to search for.
+     * @return A list of HangMuc objects matching the search criteria.
+     * @throws RuntimeException if there is an error when searching for HangMuc objects.
+     */
     public List<HangMuc> searchBy(String phongCachName, String noiThatName) {
         String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/searchBy" + OWNER_TEMPLATE + "&phongCachName=%s&noiThatName=%s", userSessionService.getUsername(), phongCachName, noiThatName);
