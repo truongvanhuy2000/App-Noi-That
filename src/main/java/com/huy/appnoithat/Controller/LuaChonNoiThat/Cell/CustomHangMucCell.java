@@ -17,6 +17,13 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
     public CustomHangMucCell(ObservableList<String> items) {
         this.items = items;
     }
+
+    /**
+     * Initiates the editing process for this cell. If the ComboBox and VBox are not
+     * initialized, creates them. If the cell is not empty, invokes the superclass's
+     * startEdit method, sets the graphic content to the HBox containing the ComboBox and VBox,
+     * and schedules the ComboBox to be shown after a delay of 100 milliseconds.
+     */
     @Override
     public void startEdit() {
         if (comboBox == null) {
@@ -31,6 +38,12 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         }
     }
 
+
+    /**
+     * Cancels the editing process for this cell. Overrides the superclass method
+     * to revert the cell's state to its original value. Invokes the superclass's
+     * cancelEdit method, sets the text to the original item value, and removes the graphic content.
+     */
     @Override
     public void cancelEdit() {
         super.cancelEdit();
@@ -58,6 +71,17 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         }
     }
 
+
+    /**
+     * Updates the item within this cell and manages its visual representation based on
+     * the provided item and its emptiness. Overrides the superclass method to customize
+     * the cell's appearance. If the cell is empty or the item is null, displays no text
+     * or graphic content. If editing, shows the ComboBox with the current item value;
+     * otherwise, displays the item text.
+     *
+     * @param item  The item to be displayed in the cell.
+     * @param empty Indicates whether the cell should be displayed as empty.
+     */
     private void createComboBox() {
         if (comboBox != null) {
             return;
@@ -76,6 +100,12 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         });
         comboBox.getStyleClass().add("combo-border");
     }
+
+    /**
+     * Creates an HBox containing a drop-down button and a ComboBox. If the HBox is already
+     * initialized, this method does nothing. The drop-down button triggers the ComboBox
+     * to be shown after a delay of 100 milliseconds.
+     */
     private void createVBox() {
         if (hBox != null) {
             return;
@@ -88,6 +118,12 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         hBox.getChildren().add(dropDownButton);
         hBox.getChildren().add(comboBox);
     }
+
+    /**
+     * Displays the ComboBox after a specified delay in milliseconds.
+     *
+     * @param millis The delay time in milliseconds before showing the ComboBox.
+     */
     private void showComboBoxAfter(double millis) {
         PauseTransition delay = new PauseTransition(Duration.millis(millis));
         delay.setOnFinished( event -> comboBox.show());

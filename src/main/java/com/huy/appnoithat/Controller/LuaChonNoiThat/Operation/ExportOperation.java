@@ -54,13 +54,29 @@ public class ExportOperation {
         this.luaChonNoiThatController = luaChonNoiThatController;
     }
 
+
+    /**
+     * Exports the data to a file of the specified type. Opens a file chooser dialog to allow the user to select the
+     * location and name of the exported file.
+     *
+     * @param fileType The type of file to export (e.g., CSV, Excel, etc.).
+     */
     public void exportFile(FileType fileType) {
+        // Open a file save dialog to allow the user to select the location and name of the exported file
         File selectedFile = PopupUtils.fileSaver();
         if (selectedFile == null) {
             return;
         }
         exportFile(fileType, selectedFile);
     }
+
+    /**
+     * Exports the data package to the specified file with the given file type. Displays success or error messages based on
+     * the export result.
+     *
+     * @param fileType      The type of file to export (e.g., CSV, Excel, etc.).
+     * @param selectedFile  The file to which the data will be exported.
+     */
     public void exportFile(FileType fileType, File selectedFile) {
         DataPackage dataPackage = new DataPackage(
                 getThongTinCongTy(),

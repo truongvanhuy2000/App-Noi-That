@@ -172,15 +172,31 @@ public class LuaChonNoiThatController implements Initializable {
         setupBangThanhToan.setUpBangThanhToan();
     }
 
+
+    /**
+     * Sets up event handlers for buttons in the user interface.
+     * Associates specific actions with corresponding buttons when clicked.
+     */
     private void setUpButton() {
+        // Creates a ButtonHandler instance with the current object.
         ButtonHandler buttonHandler = new ButtonHandler(this);
+        // Assigns the continuousLineAdd method to the addContinuousButton's action event.
         addContinuousButton.setOnAction(buttonHandler::continuousLineAdd);
+        // Assigns the exportButtonHandler method to the ExportButton's action event.
         ExportButton.setOnAction(buttonHandler::exportButtonHandler);
         SaveButton.setOnAction(buttonHandler::onSaveAction);
     }
 
+
+    /**
+     * Sets up initial values for fields related to information fields in the user interface.
+     * Populates the NgayLapBaoGia field with the current date in the "dd/MM/yyyy" format.
+     */
     private void setUpTruongThongTin() {
+        // Formats the current date to "dd/MM/yyyy" format and sets it to NgayLapBaoGia field.
         NgayLapBaoGia.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
+
+        // Creates a SetupTruongThongTin instance with the current object and performs setup operations.
         SetupTruongThongTin setupTruongThongTin = new SetupTruongThongTin(this);
         setupTruongThongTin.setup();
     }
@@ -189,7 +205,12 @@ public class LuaChonNoiThatController implements Initializable {
         exportFile(FileType.NT);
     }
 
+
+    /**
+     * Saves the data to a file with the FileType.NT in the current directory.
+     */
     public void save() {
+        // Create an instance of ExportOperation, passing the current object (this) to it
         ExportOperation exportOperation = new ExportOperation(this);
         exportOperation.exportFile(FileType.NT, new File(currentDirectory));
     }

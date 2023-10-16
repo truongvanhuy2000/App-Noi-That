@@ -12,6 +12,18 @@ public class KichThuocHandler {
     private TreeTableColumn<BangNoiThat, Double> Cao, Dai, Rong;
     private TreeTableColumn<BangNoiThat, Long> DonGia;
 
+
+    /**
+     * Handler class for managing size-related columns in a TreeTableView.
+     * Manages the editing events for columns representing height (Cao), length (Dai),
+     * width (Rong), and unit price (DonGia) of items in the TreeTableView.
+     *
+     * @param tableNoiThat The TreeTableView representing the table of items.
+     * @param cao          The TreeTableColumn representing the height of items.
+     * @param dai          The TreeTableColumn representing the length of items.
+     * @param rong         The TreeTableColumn representing the width of items.
+     * @param donGia       The TreeTableColumn representing the unit price of items.
+     */
     public KichThuocHandler(TreeTableView<BangNoiThat> tableNoiThat,
                             TreeTableColumn<BangNoiThat, Double> cao,
                             TreeTableColumn<BangNoiThat, Double> dai,
@@ -24,6 +36,14 @@ public class KichThuocHandler {
         DonGia = donGia;
     }
 
+
+    /**
+     * Handles cell edit commit events for the height, length, width, and unit price columns.
+     * Updates the corresponding property values of the BangNoiThat item based on the edited value.
+     * Recalculates and updates the volume, total price, and triggers total calculation for the parent item.
+     *
+     * @param event The CellEditEvent containing information about the edit event.
+     */
     public void onCommitEditKichThuoc(TreeTableColumn.CellEditEvent<BangNoiThat, ?> event) {
         if (event.getSource().equals(Cao)) {
             event.getRowValue().getValue().setCao((double) event.getNewValue());

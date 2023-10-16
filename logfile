@@ -1848,3 +1848,42 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 16-10-2023 14:01:49 [main] HelloApplication:35 - Start application
 [INFO ] 16-10-2023 14:01:50 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
 [INFO ] 16-10-2023 14:02:02 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
+[INFO ] 16-10-2023 22:18:09 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:18:11 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
+[INFO ] 16-10-2023 22:18:21 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:19:42 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:19:44 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:21:59 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:22:00 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:24:08 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:24:09 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:24:22 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:24:23 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:25:09 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:25:11 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:25:23 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:25:25 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:26:03 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:26:04 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:27:35 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:27:36 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:27:55 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:27:56 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:28:55 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:28:56 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:29:26 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:29:27 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:29:48 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:29:49 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:30:26 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:30:28 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:33:39 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:33:41 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:36:27 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:36:29 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:37:25 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:38:20 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:38:21 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:39:19 [main] HelloApplication:35 - Start application
+[INFO ] 16-10-2023 22:39:21 [JavaFX Application Thread] HomeController:97 - Login as admin with role Admin
+[INFO ] 16-10-2023 22:39:41 [JavaFX Application Thread] HomeController:97 - Login as kim with role User

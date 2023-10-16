@@ -12,6 +12,8 @@ public class AccountTable {
     private int id;
     private String username;
     private String password;
+    private String phone;
+    private String email;
     private boolean active;
     private ImageView activeImage;
     private String expiredDate;

@@ -90,7 +90,11 @@
 .table-view .table-cell {
     -fx-text-fill: #180131;
     -fx-alignment: left;
-    -fx-padding: 0 0 0 100px;
+    -fx-padding: 0 0 0 20px;
+}
+
+.table-view .columnCapPhepCss{
+    -fx-width: 150px;
 }
 
 .table-row-cell {
@@ -183,6 +187,7 @@
     -fx-border-color: WHITE;
     -fx-font-family: 'Roboto Condensed', sans-serif;
 }
+
 
 /*  style classes for button */
 

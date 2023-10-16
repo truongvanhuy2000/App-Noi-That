@@ -9,11 +9,22 @@ import javafx.util.StringConverter;
 public class CustomNumberCell<T> extends TextFieldTreeTableCell<BangNoiThat, T> {
     private TreeTableView<BangNoiThat> TableNoiThat;
 
+
+    /**
+     * Constructs a CustomNumberCell with the given StringConverter and TreeTableView.
+     *
+     * @param var0        The StringConverter object for converting between strings and the generic type T.
+     * @param TableNoiThat The TreeTableView associated with this cell.
+     */
     public CustomNumberCell(StringConverter<T> var0, TreeTableView<BangNoiThat> TableNoiThat) {
         super(var0);
         this.TableNoiThat = TableNoiThat;
     }
 
+    /**
+     * Initiates the editing process for this cell if the associated TreeTableView is editable.
+     * Overrides the superclass method to ensure editing is allowed before invoking it.
+     */
     @Override
     public void startEdit() {
         if (!TableUtils.isEditable(TableNoiThat)) {
@@ -22,6 +33,16 @@ public class CustomNumberCell<T> extends TextFieldTreeTableCell<BangNoiThat, T> 
         super.startEdit();
     }
 
+
+    /**
+     * Updates the item within this cell and manages its visual representation based on
+     * the provided item and its emptiness. Overrides the superclass method to customize
+     * the cell's appearance. If the item is null or empty, displays no graphic content.
+     * If the item is numeric and equals zero, sets the text to an empty string.
+     *
+     * @param item  The item to be displayed in the cell.
+     * @param empty Indicates whether the cell should be displayed as empty.
+     */
     @Override
     public void updateItem(T item, boolean empty) {
         super.updateItem(item, empty);
