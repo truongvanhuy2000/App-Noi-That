@@ -54,19 +54,19 @@ public class CustomNumberCell<T> extends TextFieldTreeTableCell<BangNoiThat, T> 
             setText("");
             return;
         }
-        String text = item.toString();
-        if (text.contains(".")) {
-            text = text.split("\\.")[0];
-            setText(text);
-        }
+//        String text = item.toString();
+//        if (text.contains(".")) {
+//            text = text.split("\\.")[0];
+//            setText(text);
+//        }
     }
     @Override
     public void cancelEdit() {
         super.cancelEdit();
-        String text = getItem().toString();
-        if (text.contains(".")) {
-            text = text.split("\\.")[0];
-            setText(text);
-        }
+//        String text = getItem().toString();
+//        if (text.contains(".")) {
+//            text = text.split("\\.")[0];
+//            setText(text);
+//        }
     }
 }

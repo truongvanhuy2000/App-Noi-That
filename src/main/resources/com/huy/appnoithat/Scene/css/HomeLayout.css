@@ -90,7 +90,7 @@
 .table-view .table-cell {
     -fx-text-fill: #180131;
     -fx-alignment: left;
-    -fx-padding: 0 0 0 20px;
+    -fx-padding: 5 5 5 20px;
 }
 
 .table-view .columnCapPhepCss{
@@ -241,4 +241,6 @@
 }
 
 
-
+#tableManageUser .table-column {
+    -fx-alignment: CENTER-RIGHT;
+}

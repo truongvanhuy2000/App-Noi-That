@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="638.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="638.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
       <VBox alignment="CENTER" prefHeight="638.0" prefWidth="1000.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -145,12 +145,12 @@
             </HBox>
               <TableView id="tableUser" fx:id="tableManageUser" onMouseClicked="#tableClickToSelectItem" prefHeight="443.0" prefWidth="1000.0" VBox.vgrow="ALWAYS">
                   <columns>
-                      <TableColumn fx:id="username" maxWidth="300.0" minWidth="200.0" prefWidth="185.60000306367874" styleClass="column-header" text="Tên đăng nhập" />
-                      <TableColumn fx:id="password" maxWidth="300.0" minWidth="200.0" prefWidth="200.00001525878906" styleClass="column-header" text="Mật khẩu" />
-                  <TableColumn fx:id="phone" maxWidth="400.0" minWidth="250.0" prefWidth="304.79998779296875" styleClass="column-header" text="Số điện thoại" />
-                  <TableColumn fx:id="email" maxWidth="400.0" minWidth="250.0" prefWidth="304.79998779296875" styleClass="column-header" text="Email" />
-                      <TableColumn fx:id="active" maxWidth="135.0" minWidth="85.0" prefWidth="130.0" styleClass="columnCapPhepCss" text="Cấp phép" />
-                      <TableColumn fx:id="expiredDate" minWidth="0.0" prefWidth="248.800048828125" styleClass="column-header" text="Ngày hết hạn" />
+                      <TableColumn fx:id="username" maxWidth="400.0" minWidth="200.0" prefWidth="-1.0" styleClass="column-header" text="Tên đăng nhập" />
+                      <TableColumn fx:id="password" maxWidth="400.0" minWidth="200.0" prefWidth="-1.0" styleClass="column-header" text="Mật khẩu" />
+                  <TableColumn fx:id="phone" maxWidth="400.0" minWidth="150.0" prefWidth="-1.0" styleClass="column-header" text="Số điện thoại" />
+                  <TableColumn fx:id="email" maxWidth="600.0" minWidth="150.0" prefWidth="-1.0" styleClass="column-header" text="Email" />
+                      <TableColumn fx:id="active" maxWidth="200.0" minWidth="50.0" prefWidth="92.0" style="-fx-alignment: CENTER; -fx-padding: 0 0 0 0px;" styleClass="columnCapPhepCss" text="Cấp phép" />
+                      <TableColumn fx:id="expiredDate" maxWidth="200.0" minWidth="100.0" prefWidth="99.0" style="-fx-alignment: CENTER; -fx-padding: 0 0 0 0px;" styleClass="column-header" text="Ngày hết hạn" />
                   </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
