@@ -2457,3 +2457,14 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 18-10-2023 00:25:23 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
 [INFO ] 18-10-2023 00:25:45 [main] HelloApplication:35 - Start application
 [INFO ] 18-10-2023 00:25:47 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
+[INFO ] 18-10-2023 00:57:43 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 00:57:46 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
+[INFO ] 18-10-2023 01:01:39 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 01:01:41 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
+[INFO ] 18-10-2023 01:01:57 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 18-10-2023 01:02:17 [JavaFX Application Thread] LuaChonNoiThatController:280 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 18-10-2023 01:02:37 [JavaFX Application Thread] LuaChonNoiThatController:280 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 18-10-2023 01:02:57 [JavaFX Application Thread] LuaChonNoiThatController:280 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 18-10-2023 01:03:17 [JavaFX Application Thread] LuaChonNoiThatController:280 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 18-10-2023 01:03:37 [JavaFX Application Thread] LuaChonNoiThatController:280 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
+[INFO ] 18-10-2023 01:03:37 [JavaFX Application Thread] LuaChonNoiThatController:293 - Close window

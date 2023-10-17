@@ -206,16 +206,12 @@
     -fx-opacity: 0;
 }
 
-
-
-
-
 .list-view .list-cell:odd {
     -fx-background-color: white;
 }
 
 .list-view .list-cell:even {
-    -fx-background-color: #e3e3e3;
+    -fx-background-color: #f6f6f6;
 }
 
 .list-view .list-cell:selected:odd,
@@ -223,16 +219,16 @@
     -fx-background-color: -fx-background;
 }
 
-.windows7-default {
-    -fx-background-color: #3c7fb1,
-    linear-gradient(#fafdfe, #e8f5fc),
-    linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%);
-    -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 3, 2, 1;
-    -fx-padding: 3 30 3 30;
-    -fx-text-fill: black;
-    -fx-font-size: 14px;
-}
+/*.windows7-default {*/
+/*    -fx-background-color: #3c7fb1,*/
+/*    linear-gradient(#fafdfe, #e8f5fc),*/
+/*    linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%);*/
+/*    -fx-background-insets: 0, 1, 2;*/
+/*    -fx-background-radius: 3, 2, 1;*/
+/*    -fx-padding: 3 30 3 30;*/
+/*    -fx-text-fill: black;*/
+/*    -fx-font-size: 14px;*/
+/*}*/
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&family=Roboto+Condensed:wght@700&display=swap');
 

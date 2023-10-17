@@ -8,17 +8,17 @@ import javafx.util.StringConverter;
 
 public class CustomNumberCell<T> extends TextFieldTreeTableCell<BangNoiThat, T> {
     private TreeTableView<BangNoiThat> TableNoiThat;
-
-
+    private boolean isKichThuocCollum = false;
     /**
      * Constructs a CustomNumberCell with the given StringConverter and TreeTableView.
      *
      * @param var0        The StringConverter object for converting between strings and the generic type T.
      * @param TableNoiThat The TreeTableView associated with this cell.
      */
-    public CustomNumberCell(StringConverter<T> var0, TreeTableView<BangNoiThat> TableNoiThat) {
+    public CustomNumberCell(StringConverter<T> var0, TreeTableView<BangNoiThat> TableNoiThat, boolean isKichThuocCollum) {
         super(var0);
         this.TableNoiThat = TableNoiThat;
+        this.isKichThuocCollum = isKichThuocCollum;
     }
 
     /**
@@ -54,19 +54,23 @@ public class CustomNumberCell<T> extends TextFieldTreeTableCell<BangNoiThat, T> 
             setText("");
             return;
         }
-//        String text = item.toString();
-//        if (text.contains(".")) {
-//            text = text.split("\\.")[0];
-//            setText(text);
-//        }
+        if (isKichThuocCollum) {
+            String text = item.toString();
+            if (text.contains(".")) {
+                text = text.split("\\.")[0];
+                setText(text);
+            }
+        }
     }
     @Override
     public void cancelEdit() {
         super.cancelEdit();
-//        String text = getItem().toString();
-//        if (text.contains(".")) {
-//            text = text.split("\\.")[0];
-//            setText(text);
-//        }
+        if (isKichThuocCollum) {
+            String text = getItem().toString();
+            if (text.contains(".")) {
+                text = text.split("\\.")[0];
+                setText(text);
+            }
+        }
     }
 }

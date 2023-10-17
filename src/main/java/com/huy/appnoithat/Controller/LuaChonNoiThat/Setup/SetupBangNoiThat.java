@@ -111,7 +111,7 @@ public class SetupBangNoiThat {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getKhoiLuong().asObject();
         });
-        KhoiLuong.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat));
+        KhoiLuong.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat, false));
         KhoiLuong.setOnEditCommit(event -> {
             double khoiLuong = event.getNewValue();
             long donGia = event.getRowValue().getValue().getDonGia().getValue();
@@ -131,7 +131,7 @@ public class SetupBangNoiThat {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getThanhTien().asObject();
         });
-        ThanhTien.setCellFactory(param -> new CustomNumberCell<>(new CustomLongStringConverter(), TableNoiThat));
+        ThanhTien.setCellFactory(param -> new CustomNumberCell<>(new CustomLongStringConverter(), TableNoiThat, false));
         ThanhTien.setOnEditCommit(event ->
                 event.getRowValue().getValue().setThanhTien(event.getNewValue()));
     }
@@ -214,28 +214,28 @@ public class SetupBangNoiThat {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getCao().asObject();
         });
-        Cao.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat));
+        Cao.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat, true));
         Cao.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
 
         Dai.setCellValueFactory(param -> {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getDai().asObject();
         });
-        Dai.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat));
+        Dai.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat, true));
         Dai.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
 
         Rong.setCellValueFactory(param -> {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getRong().asObject();
         });
-        Rong.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat));
+        Rong.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat, true));
         Rong.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
 
         DonGia.setCellValueFactory(param -> {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getDonGia().asObject();
         });
-        DonGia.setCellFactory(param -> new CustomNumberCell<>(new CustomLongStringConverter(), TableNoiThat));
+        DonGia.setCellFactory(param -> new CustomNumberCell<>(new CustomLongStringConverter(), TableNoiThat, false));
         DonGia.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
     }
 }
