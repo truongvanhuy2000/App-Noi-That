@@ -1,23 +1,31 @@
 package com.huy.appnoithat.Controller;
 
+import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.FileNoiThatExplorerScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
+import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import javax.swing.*;
+import java.util.Optional;
 
 public class HomeController {
     final static Logger LOGGER = LogManager.getLogger(HomeController.class);
@@ -148,19 +156,32 @@ public class HomeController {
      * @param actionEvent The ActionEvent triggering the button click.
      */
     private void OnClickSuaDoiDatabase(ActionEvent actionEvent) {
-        // Clear the primary content pane
-        PCPane.getChildren().clear();
+        TextInputDialog dialog = new TextInputDialog("");
 
-        // Load the database modification scene
-        DatabaseModifyPhongCachScene databaseModifyPhongCachScene = new DatabaseModifyPhongCachScene();
+        dialog.setTitle("NHẬP MẬT KHẨU");
+        dialog.setHeaderText("Nhập mật khẩu để sửa dữ liệu gốc:");
+        dialog.setContentText("Mật khẩu :");
 
-        // Extract HBox from the scene and add it to the primary content pane
-        HBox hBox = (HBox) ((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren().get(0);
-        PCPane.getChildren().addAll(hBox);
+        Optional<String> result = dialog.showAndWait();
 
-        // Initialize the database modification scene controller
-        DatabaseModifyPhongCachScene.getController().init();
-        DatabaseModifyPhongCachScene.getController().setRoot(PCPane);
+        result.ifPresent(name -> {
+            if(name.equals("password")){
+                // Clear the primary content pane
+                PCPane.getChildren().clear();
+
+                // Load the database modification scene
+                DatabaseModifyPhongCachScene databaseModifyPhongCachScene = new DatabaseModifyPhongCachScene();
+
+                // Extract HBox from the scene and add it to the primary content pane
+                HBox hBox = (HBox) ((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren().get(0);
+                PCPane.getChildren().addAll(hBox);
+
+                // Initialize the database modification scene controller
+                DatabaseModifyPhongCachScene.getController().init();
+                DatabaseModifyPhongCachScene.getController().setRoot(PCPane);
+            }
+        });
+
     }
 
     /**

@@ -2468,3 +2468,96 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 18-10-2023 01:03:17 [JavaFX Application Thread] LuaChonNoiThatController:280 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
 [INFO ] 18-10-2023 01:03:37 [JavaFX Application Thread] LuaChonNoiThatController:280 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
 [INFO ] 18-10-2023 01:03:37 [JavaFX Application Thread] LuaChonNoiThatController:293 - Close window
+[INFO ] 18-10-2023 08:19:08 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:19:10 [JavaFX Application Thread] HomeController:102 - Login as kim with role User
+[INFO ] 18-10-2023 08:19:29 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:19:31 [JavaFX Application Thread] HomeController:102 - Login as kim with role User
+[INFO ] 18-10-2023 08:20:05 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:20:07 [JavaFX Application Thread] HomeController:102 - Login as kim with role User
+[INFO ] 18-10-2023 08:21:30 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:21:32 [JavaFX Application Thread] HomeController:102 - Login as kim with role User
+[INFO ] 18-10-2023 08:23:19 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:23:20 [JavaFX Application Thread] HomeController:103 - Login as kim with role User
+[INFO ] 18-10-2023 08:23:37 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:23:39 [JavaFX Application Thread] HomeController:103 - Login as kim with role User
+[INFO ] 18-10-2023 08:25:05 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:25:07 [JavaFX Application Thread] HomeController:103 - Login as kim with role User
+[INFO ] 18-10-2023 08:25:42 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:25:43 [JavaFX Application Thread] HomeController:103 - Login as kim with role User
+[INFO ] 18-10-2023 08:30:55 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:30:56 [JavaFX Application Thread] HomeController:103 - Login as kim with role User
+[INFO ] 18-10-2023 08:31:30 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:31:31 [JavaFX Application Thread] HomeController:103 - Login as kim with role User
+[INFO ] 18-10-2023 08:31:45 [JavaFX Application Thread] HomeController:103 - Login as kim with role User
+[INFO ] 18-10-2023 08:32:10 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:32:11 [JavaFX Application Thread] HomeController:103 - Login as kim with role User
+[INFO ] 18-10-2023 08:33:25 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:33:27 [JavaFX Application Thread] HomeController:103 - Login as kim with role User
+[INFO ] 18-10-2023 08:33:53 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:33:55 [JavaFX Application Thread] HomeController:103 - Login as kim with role User
+[INFO ] 18-10-2023 08:35:11 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:35:13 [JavaFX Application Thread] HomeController:103 - Login as kim with role User
+[INFO ] 18-10-2023 08:35:26 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:35:27 [JavaFX Application Thread] HomeController:103 - Login as kim with role User
+[INFO ] 18-10-2023 08:35:54 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:35:56 [JavaFX Application Thread] HomeController:103 - Login as kim with role User
+[INFO ] 18-10-2023 08:41:19 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:41:20 [JavaFX Application Thread] HomeController:104 - Login as kim with role User
+[ERROR] 18-10-2023 08:41:59 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: argument "content" is null
+[ERROR] 18-10-2023 08:41:59 [JavaFX Application Thread] GlobalExceptionHandler:30 - argument "content" is null
+[INFO ] 18-10-2023 08:42:21 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:42:23 [JavaFX Application Thread] HomeController:104 - Login as kim with role User
+[ERROR] 18-10-2023 08:42:26 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: argument "content" is null
+[ERROR] 18-10-2023 08:42:26 [JavaFX Application Thread] GlobalExceptionHandler:30 - argument "content" is null
+[INFO ] 18-10-2023 08:45:19 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:45:20 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[ERROR] 18-10-2023 08:45:23 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: argument "content" is null
+[ERROR] 18-10-2023 08:45:23 [JavaFX Application Thread] GlobalExceptionHandler:30 - argument "content" is null
+[INFO ] 18-10-2023 08:45:42 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:45:43 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[INFO ] 18-10-2023 08:46:47 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:46:49 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[ERROR] 18-10-2023 08:46:51 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: argument "content" is null
+[ERROR] 18-10-2023 08:46:51 [JavaFX Application Thread] GlobalExceptionHandler:30 - argument "content" is null
+[INFO ] 18-10-2023 08:47:37 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:47:38 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[INFO ] 18-10-2023 08:47:45 [JavaFX Application Thread] HomeController:105 - Login as admin with role Admin
+[INFO ] 18-10-2023 08:48:29 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[ERROR] 18-10-2023 08:48:32 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: argument "content" is null
+[ERROR] 18-10-2023 08:48:32 [JavaFX Application Thread] GlobalExceptionHandler:30 - argument "content" is null
+[INFO ] 18-10-2023 08:49:48 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:49:50 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[INFO ] 18-10-2023 08:49:59 [JavaFX Application Thread] HomeController:105 - Login as admin with role Admin
+[INFO ] 18-10-2023 08:52:34 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:52:35 [JavaFX Application Thread] HomeController:105 - Login as admin with role Admin
+[INFO ] 18-10-2023 08:52:42 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[ERROR] 18-10-2023 08:52:46 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: argument "content" is null
+[ERROR] 18-10-2023 08:52:46 [JavaFX Application Thread] GlobalExceptionHandler:30 - argument "content" is null
+[INFO ] 18-10-2023 08:53:04 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:53:06 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[INFO ] 18-10-2023 08:54:22 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:54:24 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[ERROR] 18-10-2023 08:54:27 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: argument "content" is null
+[ERROR] 18-10-2023 08:54:27 [JavaFX Application Thread] GlobalExceptionHandler:30 - argument "content" is null
+[INFO ] 18-10-2023 08:54:45 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:54:47 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[ERROR] 18-10-2023 08:55:06 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: argument "content" is null
+[ERROR] 18-10-2023 08:55:06 [JavaFX Application Thread] GlobalExceptionHandler:30 - argument "content" is null
+[INFO ] 18-10-2023 08:56:53 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:56:55 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[INFO ] 18-10-2023 08:57:13 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:57:14 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[INFO ] 18-10-2023 08:58:00 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:58:01 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[ERROR] 18-10-2023 08:58:04 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: argument "content" is null
+[ERROR] 18-10-2023 08:58:04 [JavaFX Application Thread] GlobalExceptionHandler:30 - argument "content" is null
+[INFO ] 18-10-2023 08:58:54 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 08:58:56 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[ERROR] 18-10-2023 08:58:58 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: argument "content" is null
+[ERROR] 18-10-2023 08:58:58 [JavaFX Application Thread] GlobalExceptionHandler:30 - argument "content" is null
+[INFO ] 18-10-2023 09:02:31 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 09:02:33 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[INFO ] 18-10-2023 09:05:26 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 09:05:27 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
+[INFO ] 18-10-2023 09:05:53 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 09:05:55 [JavaFX Application Thread] HomeController:105 - Login as kim with role User
