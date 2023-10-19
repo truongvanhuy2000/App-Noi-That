@@ -28,24 +28,47 @@ public class LoginService {
     }
 
     public boolean Authorization(String username, String password) {
-
-        Account account = new Account(0, username, password, true, null, null, false, null);
+        String token = login(username, password);
+        if (token != null) {
+            saveSession(username, token);
+            return true;
+        }
+        return false;
+    }
+    public void saveSession(String username, String token) {
+        this.sessionService.setSession(username, token);
         try {
-            String token = webClientService.unauthorizedHttpPostJson("/api/login", objectMapper.writeValueAsString(account));
-            if (token != null) {
-                this.sessionService.setSession(username, token);
-                this.sessionService.saveSessionToDisk();
-                return true;
-            }
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Login failed");
-            return false;
+            this.sessionService.saveSessionToDisk();
         } catch (IOException e) {
             LOGGER.error("Cant save session to disk");
             throw new RuntimeException(e);
         }
-        return false;
     }
-
-
+    public boolean reauthorize(String password) {
+        String token = login(this.sessionService.getUsername(), password);
+        return token != null && !token.isEmpty();
+    }
+    public String login(String username, String password) {
+        Account account = new Account(0, username, password, true, null, null, false, null);
+        try {
+            return webClientService.unauthorizedHttpPostJson("/api/login", objectMapper.writeValueAsString(account));
+        } catch (JsonProcessingException e) {
+            LOGGER.error("Login failed");
+            throw new RuntimeException(e);
+        }
+    }
+    public boolean authorizeWithToken(String token) {
+        try {
+            String response = webClientService.authorizedHttpGetJson("/api/info", token);
+            if (response != null) {
+                Account account = objectMapper.readValue(response, Account.class);
+                saveSession(account.getUsername(), token);
+                return true;
+            }
+            return false;
+        } catch (IOException e) {
+            LOGGER.error("Get account information failed");
+            throw new RuntimeException(e);
+        }
+    }
 }

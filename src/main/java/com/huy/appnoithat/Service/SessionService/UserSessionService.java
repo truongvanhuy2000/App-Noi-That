@@ -133,8 +133,9 @@ public class UserSessionService {
     public String getUsername() {
         return getLoginAccount().getUsername();
     }
-
-
+    public String getPassword() {
+        return getLoginAccount().getPassword();
+    }
     /**
      * Retrieves the user session of the currently logged-in user.
      *

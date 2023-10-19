@@ -19,8 +19,6 @@ public class UsersManagementService {
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
     private final UserSessionService sessionService;
-
-
     /**
      * Initializes the UsersManagementService with required dependencies.
      */
@@ -189,4 +187,5 @@ public class UsersManagementService {
             throw new RuntimeException(e);
         }
     }
+
 }
