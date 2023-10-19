@@ -2468,3 +2468,7 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 18-10-2023 01:03:17 [JavaFX Application Thread] LuaChonNoiThatController:280 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
 [INFO ] 18-10-2023 01:03:37 [JavaFX Application Thread] LuaChonNoiThatController:280 - Normal save: Save file to: C:\Users\lenovo\Desktop\test.nt
 [INFO ] 18-10-2023 01:03:37 [JavaFX Application Thread] LuaChonNoiThatController:293 - Close window
+[INFO ] 18-10-2023 01:10:28 [main] HelloApplication:35 - Start application
+[INFO ] 18-10-2023 01:10:30 [JavaFX Application Thread] HomeController:97 - Login as kim with role User
+[INFO ] 18-10-2023 01:10:45 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
+[INFO ] 18-10-2023 01:10:53 [JavaFX Application Thread] LuaChonNoiThatController:293 - Close window
