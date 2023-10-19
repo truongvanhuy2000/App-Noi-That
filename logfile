@@ -2595,3 +2595,7 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 19-10-2023 15:07:16 [main] HelloApplication:35 - Start application
 [INFO ] 19-10-2023 15:07:41 [main] HelloApplication:35 - Start application
 [INFO ] 19-10-2023 15:08:36 [main] HelloApplication:35 - Start application
+[INFO ] 19-10-2023 15:53:49 [main] HelloApplication:35 - Start application
+[INFO ] 19-10-2023 15:54:02 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[INFO ] 19-10-2023 15:55:07 [main] HelloApplication:35 - Start application
+[INFO ] 19-10-2023 15:55:10 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
