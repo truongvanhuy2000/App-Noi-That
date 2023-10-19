@@ -1,5 +1,7 @@
 package com.huy.appnoithat.Controller;
 
+import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.LoginScene;
@@ -26,6 +28,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.Optional;
 
 public class HomeController {
@@ -48,7 +51,12 @@ public class HomeController {
         this.sessionService = new UserSessionService();
         loginService = new LoginService();
     }
-
+    @FXML
+    void xuatChuKy(ActionEvent event) {
+        File savedFile = PopupUtils.fileSaver();
+        Utils.writeToFile(savedFile, sessionService.getToken());
+        PopupUtils.throwSuccessSignal("Xuất chữ ký thành công!");
+    }
     /**
      * Handles the logout action by cleaning the user session, closing the current window,
      * and switching to a different scene.

@@ -100,7 +100,7 @@ public class LoginController {
         }
         String token = Utils.readFromFile(tokenFile);
         if (token == null) {
-            PopupUtils.throwCriticalError("Token không hợp lệ");
+            PopupUtils.throwCriticalError("Chữ ký điện tử không hợp lệ");
             return;
         }
         if (!loginService.authorizeWithToken(token)) {

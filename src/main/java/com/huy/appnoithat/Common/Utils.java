@@ -160,10 +160,16 @@ public class Utils {
     }
     public static String readFromFile(File file) {
         try (InputStream inputStream = new FileInputStream(file)) {
-            String decodedString = Utils.decodeData(inputStream.readAllBytes());
-            return decodedString;
+            return Utils.decodeData(inputStream.readAllBytes());
         } catch (IOException e) {
             return null;
+        }
+    }
+    public static void writeToFile(File file, String data) {
+        try (OutputStream outputStream = new FileOutputStream(file)) {
+            outputStream.write(Utils.encodeData(data).getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
