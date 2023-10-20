@@ -54,6 +54,9 @@ public class HomeController {
     @FXML
     void xuatChuKy(ActionEvent event) {
         File savedFile = PopupUtils.fileSaver();
+        if (savedFile == null) {
+            return;
+        }
         Utils.writeToFile(savedFile, sessionService.getToken());
         PopupUtils.throwSuccessSignal("Xuất chữ ký thành công!");
     }

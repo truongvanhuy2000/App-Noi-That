@@ -2628,3 +2628,13 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [ERROR] 20-10-2023 01:25:20 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk3NzM4NjU4LCJleHAiOjQyODk3Mzg2NTh9.yU_WSWdkYr2js7ZchOSNavNZY20w8MnPhT-qe9WPpHfRoxSyt8bc3hgevCITRUz1f16QkhPwYrDtkkfLAnGxFQ null
 [INFO ] 20-10-2023 01:25:44 [main] HelloApplication:35 - Start application
 [INFO ] 20-10-2023 01:25:55 [JavaFX Application Thread] HomeController:115 - Login as kim with role User
+[INFO ] 20-10-2023 09:11:11 [main] HelloApplication:35 - Start application
+[INFO ] 20-10-2023 09:11:15 [JavaFX Application Thread] HomeController:115 - Login as kim with role User
+[INFO ] 20-10-2023 09:12:03 [JavaFX Application Thread] HomeController:115 - Login as kim with role User
+[ERROR] 20-10-2023 09:15:11 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[ERROR] 20-10-2023 09:15:11 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[ERROR] 20-10-2023 09:15:11 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[ERROR] 20-10-2023 09:15:11 [JavaFX Application Thread] GlobalExceptionHandler:30 - java.lang.reflect.InvocationTargetException
+[INFO ] 20-10-2023 17:38:31 [main] HelloApplication:35 - Start application
+[INFO ] 20-10-2023 17:38:32 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 20-10-2023 18:05:53 [JavaFX Application Thread] LuaChonNoiThatController:293 - Close window
