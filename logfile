@@ -751,7 +751,7 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 03-10-2023 22:46:37 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
 [INFO ] 03-10-2023 22:46:46 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
 [ERROR] 03-10-2023 22:46:46 [JavaFX Application Thread] FileNoiThatExplorerController:72 - com.fasterxml.jackson.databind.JsonMappingException: Invalid UTF-8 middle byte 0x64
- at [Source: (FileInputStream); line: 1, column: 49] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["tenCongTy"])
+ at [Source: (FileInputStream); line: 1, column: 49] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.NtFile.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["tenCongTy"])
 [INFO ] 03-10-2023 22:58:06 [main] HelloApplication:33 - Start application
 [INFO ] 03-10-2023 22:58:08 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
 [INFO ] 03-10-2023 22:59:16 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
@@ -1716,10 +1716,10 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 16-10-2023 00:01:16 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
 [INFO ] 16-10-2023 00:01:18 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
 [ERROR] 16-10-2023 00:01:18 [JavaFX Application Thread] FileNoiThatExplorerController:77 - com.fasterxml.jackson.databind.JsonMappingException: Invalid UTF-8 middle byte 0x3f
- at [Source: (byte[])"{"exportData":{"thongTinCongTy":{"tenCongTy":"TEST123asdasdasdasdasdsasds","diaChiVanPhong":"TEST1231asdsaasdasd","diaChiXuong":"asdasd","soDienThoai":"asdsdsad","email":"dasd"},"thongTinKhachHang":{"tenKhachHang":"sadsa","diaChi":"asdsadsad","soDienThoai":"asds","date":"15/10/2023","SanPham":"asdasdasdsas"},"noteArea":"","thongTinNoiThatList":[{"STT":"A","TenHangMuc":"N?I TH?T PHONG C??CH HI?N ???I ","ChiTiet":"","Dai":"0.0","Rong":"0.0","Cao":"0.0","DonViTinh":"","DonGia":"0","SoLuong""[truncated 3745 bytes]; line: 1, column: 395] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.DataPackage["thongTinNoiThatList"]->java.util.ArrayList[0]->com.huy.appnoithat.DataModel.ThongTinNoiThat["TenHangMuc"])
+ at [Source: (byte[])"{"exportData":{"thongTinCongTy":{"tenCongTy":"TEST123asdasdasdasdasdsasds","diaChiVanPhong":"TEST1231asdsaasdasd","diaChiXuong":"asdasd","soDienThoai":"asdsdsad","email":"dasd"},"thongTinKhachHang":{"tenKhachHang":"sadsa","diaChi":"asdsadsad","soDienThoai":"asds","date":"15/10/2023","SanPham":"asdasdasdsas"},"noteArea":"","thongTinNoiThatList":[{"STT":"A","TenHangMuc":"N?I TH?T PHONG C??CH HI?N ???I ","ChiTiet":"","Dai":"0.0","Rong":"0.0","Cao":"0.0","DonViTinh":"","DonGia":"0","SoLuong""[truncated 3745 bytes]; line: 1, column: 395] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.NtFile.DataPackage["thongTinNoiThatList"]->java.util.ArrayList[0]->com.huy.appnoithat.DataModel.ThongTinNoiThat["TenHangMuc"])
 [INFO ] 16-10-2023 00:01:57 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
 [ERROR] 16-10-2023 00:01:57 [JavaFX Application Thread] FileNoiThatExplorerController:77 - com.fasterxml.jackson.databind.JsonMappingException: Invalid UTF-8 middle byte 0x3f
- at [Source: (byte[])"{"exportData":{"thongTinCongTy":{"tenCongTy":"TEST123asdasdasdasdasdsasds","diaChiVanPhong":"TEST1231asdsaasdasd","diaChiXuong":"asdasd","soDienThoai":"asdsdsad","email":"dasd"},"thongTinKhachHang":{"tenKhachHang":"sadsa","diaChi":"asdsadsad","soDienThoai":"asds","date":"15/10/2023","SanPham":"asdasdasdsas"},"noteArea":"","thongTinNoiThatList":[{"STT":"A","TenHangMuc":"N?I TH?T PHONG C??CH HI?N ???I ","ChiTiet":"","Dai":"0.0","Rong":"0.0","Cao":"0.0","DonViTinh":"","DonGia":"0","SoLuong""[truncated 3745 bytes]; line: 1, column: 395] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.DataPackage["thongTinNoiThatList"]->java.util.ArrayList[0]->com.huy.appnoithat.DataModel.ThongTinNoiThat["TenHangMuc"])
+ at [Source: (byte[])"{"exportData":{"thongTinCongTy":{"tenCongTy":"TEST123asdasdasdasdasdsasds","diaChiVanPhong":"TEST1231asdsaasdasd","diaChiXuong":"asdasd","soDienThoai":"asdsdsad","email":"dasd"},"thongTinKhachHang":{"tenKhachHang":"sadsa","diaChi":"asdsadsad","soDienThoai":"asds","date":"15/10/2023","SanPham":"asdasdasdsas"},"noteArea":"","thongTinNoiThatList":[{"STT":"A","TenHangMuc":"N?I TH?T PHONG C??CH HI?N ???I ","ChiTiet":"","Dai":"0.0","Rong":"0.0","Cao":"0.0","DonViTinh":"","DonGia":"0","SoLuong""[truncated 3745 bytes]; line: 1, column: 395] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.NtFile.DataPackage["thongTinNoiThatList"]->java.util.ArrayList[0]->com.huy.appnoithat.DataModel.ThongTinNoiThat["TenHangMuc"])
 [INFO ] 16-10-2023 00:02:38 [main] HelloApplication:35 - Start application
 [INFO ] 16-10-2023 00:02:42 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
 [INFO ] 16-10-2023 00:02:48 [JavaFX Application Thread] ImportOperation:46 - Import file: test.nt
@@ -1739,18 +1739,18 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 16-10-2023 00:26:09 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
 [INFO ] 16-10-2023 00:27:16 [JavaFX Application Thread] ImportOperation:46 - Import file: testasasd.nt
 [ERROR] 16-10-2023 00:27:29 [JavaFX Application Thread] FileNoiThatExplorerController:77 - com.fasterxml.jackson.databind.JsonMappingException: Invalid UTF-8 middle byte 0x6e
- at [Source: (byte[])"{"exportData":{"thongTinCongTy":{"tenCongTy":"C?ng ty A","diaChiVanPhong":"Tr??ng V?n Huy","diaChiXuong":"asdasd","soDienThoai":"asdsdsad","email":"dasd"},"thongTinKhachHang":{"tenKhachHang":"","diaChi":"","soDienThoai":"","date":"16/10/2023","SanPham":""},"noteArea":"Ch? th?ch:","thongTinNoiThatList":[{"STT":"A","TenHangMuc":"N?I TH?T PHONG C?CH HI?N ??I ","ChiTiet":"","Dai":"0.0","Rong":"0.0","Cao":"0.0","DonViTinh":"","DonGia":"0","SoLuong":"0.0","ThanhTien":"0"}],"thongTinThanhToan":{"DatCoc"[truncated 152 bytes]; line: 1, column: 50] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["tenCongTy"])
+ at [Source: (byte[])"{"exportData":{"thongTinCongTy":{"tenCongTy":"C?ng ty A","diaChiVanPhong":"Tr??ng V?n Huy","diaChiXuong":"asdasd","soDienThoai":"asdsdsad","email":"dasd"},"thongTinKhachHang":{"tenKhachHang":"","diaChi":"","soDienThoai":"","date":"16/10/2023","SanPham":""},"noteArea":"Ch? th?ch:","thongTinNoiThatList":[{"STT":"A","TenHangMuc":"N?I TH?T PHONG C?CH HI?N ??I ","ChiTiet":"","Dai":"0.0","Rong":"0.0","Cao":"0.0","DonViTinh":"","DonGia":"0","SoLuong":"0.0","ThanhTien":"0"}],"thongTinThanhToan":{"DatCoc"[truncated 152 bytes]; line: 1, column: 50] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.NtFile.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["tenCongTy"])
 [INFO ] 16-10-2023 00:27:50 [JavaFX Application Thread] ImportOperation:46 - Import file: testasasd.nt
 [ERROR] 16-10-2023 00:28:19 [JavaFX Application Thread] FileNoiThatExplorerController:77 - com.fasterxml.jackson.databind.JsonMappingException: Invalid UTF-8 middle byte 0x6e
- at [Source: (byte[])"{"exportData":{"thongTinCongTy":{"tenCongTy":"C?ng ty A","diaChiVanPhong":"Tr??ng V?n Huy","diaChiXuong":"asdasd","soDienThoai":"asdsdsad","email":"dasd"},"thongTinKhachHang":{"tenKhachHang":"","diaChi":"","soDienThoai":"","date":"16/10/2023","SanPham":""},"noteArea":"Ch? th?ch:","thongTinNoiThatList":[{"STT":"A","TenHangMuc":"N?I TH?T PHONG C?CH HI?N ??I ","ChiTiet":"","Dai":"0.0","Rong":"0.0","Cao":"0.0","DonViTinh":"","DonGia":"0","SoLuong":"0.0","ThanhTien":"0"}],"thongTinThanhToan":{"DatCoc"[truncated 152 bytes]; line: 1, column: 50] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["tenCongTy"])
+ at [Source: (byte[])"{"exportData":{"thongTinCongTy":{"tenCongTy":"C?ng ty A","diaChiVanPhong":"Tr??ng V?n Huy","diaChiXuong":"asdasd","soDienThoai":"asdsdsad","email":"dasd"},"thongTinKhachHang":{"tenKhachHang":"","diaChi":"","soDienThoai":"","date":"16/10/2023","SanPham":""},"noteArea":"Ch? th?ch:","thongTinNoiThatList":[{"STT":"A","TenHangMuc":"N?I TH?T PHONG C?CH HI?N ??I ","ChiTiet":"","Dai":"0.0","Rong":"0.0","Cao":"0.0","DonViTinh":"","DonGia":"0","SoLuong":"0.0","ThanhTien":"0"}],"thongTinThanhToan":{"DatCoc"[truncated 152 bytes]; line: 1, column: 50] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.NtFile.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["tenCongTy"])
 [INFO ] 16-10-2023 00:28:43 [main] HelloApplication:35 - Start application
 [INFO ] 16-10-2023 00:28:46 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
 [INFO ] 16-10-2023 00:28:56 [JavaFX Application Thread] ImportOperation:46 - Import file: testasasd.nt
 [ERROR] 16-10-2023 00:29:15 [JavaFX Application Thread] FileNoiThatExplorerController:77 - com.fasterxml.jackson.databind.JsonMappingException: Invalid UTF-8 middle byte 0x6e
- at [Source: (byte[])"{"exportData":{"thongTinCongTy":{"tenCongTy":"C?ng ty A","diaChiVanPhong":"Tr??ng V?n Huy","diaChiXuong":"asdasd","soDienThoai":"asdsdsad","email":"dasd"},"thongTinKhachHang":{"tenKhachHang":"","diaChi":"","soDienThoai":"","date":"16/10/2023","SanPham":""},"noteArea":"Ch? th?ch:","thongTinNoiThatList":[{"STT":"A","TenHangMuc":"N?I TH?T PHONG C?CH HI?N ??I ","ChiTiet":"","Dai":"0.0","Rong":"0.0","Cao":"0.0","DonViTinh":"","DonGia":"0","SoLuong":"0.0","ThanhTien":"0"}],"thongTinThanhToan":{"DatCoc"[truncated 152 bytes]; line: 1, column: 50] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["tenCongTy"])
+ at [Source: (byte[])"{"exportData":{"thongTinCongTy":{"tenCongTy":"C?ng ty A","diaChiVanPhong":"Tr??ng V?n Huy","diaChiXuong":"asdasd","soDienThoai":"asdsdsad","email":"dasd"},"thongTinKhachHang":{"tenKhachHang":"","diaChi":"","soDienThoai":"","date":"16/10/2023","SanPham":""},"noteArea":"Ch? th?ch:","thongTinNoiThatList":[{"STT":"A","TenHangMuc":"N?I TH?T PHONG C?CH HI?N ??I ","ChiTiet":"","Dai":"0.0","Rong":"0.0","Cao":"0.0","DonViTinh":"","DonGia":"0","SoLuong":"0.0","ThanhTien":"0"}],"thongTinThanhToan":{"DatCoc"[truncated 152 bytes]; line: 1, column: 50] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.NtFile.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["tenCongTy"])
 [INFO ] 16-10-2023 00:29:26 [JavaFX Application Thread] ImportOperation:46 - Import file: testasasd.nt
 [ERROR] 16-10-2023 00:33:07 [JavaFX Application Thread] FileNoiThatExplorerController:77 - com.fasterxml.jackson.databind.JsonMappingException: Invalid UTF-8 middle byte 0x6e
- at [Source: (byte[])"{"exportData":{"thongTinCongTy":{"tenCongTy":"C?ng ty A","diaChiVanPhong":"Tr??ng V?n Huy","diaChiXuong":"asdasd","soDienThoai":"asdsdsad","email":"dasd"},"thongTinKhachHang":{"tenKhachHang":"","diaChi":"","soDienThoai":"","date":"16/10/2023","SanPham":""},"noteArea":"Ch? th?ch:","thongTinNoiThatList":[{"STT":"A","TenHangMuc":"N?I TH?T PHONG C?CH HI?N ??I ","ChiTiet":"","Dai":"0.0","Rong":"0.0","Cao":"0.0","DonViTinh":"","DonGia":"0","SoLuong":"0.0","ThanhTien":"0"}],"thongTinThanhToan":{"DatCoc"[truncated 152 bytes]; line: 1, column: 50] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["tenCongTy"])
+ at [Source: (byte[])"{"exportData":{"thongTinCongTy":{"tenCongTy":"C?ng ty A","diaChiVanPhong":"Tr??ng V?n Huy","diaChiXuong":"asdasd","soDienThoai":"asdsdsad","email":"dasd"},"thongTinKhachHang":{"tenKhachHang":"","diaChi":"","soDienThoai":"","date":"16/10/2023","SanPham":""},"noteArea":"Ch? th?ch:","thongTinNoiThatList":[{"STT":"A","TenHangMuc":"N?I TH?T PHONG C?CH HI?N ??I ","ChiTiet":"","Dai":"0.0","Rong":"0.0","Cao":"0.0","DonViTinh":"","DonGia":"0","SoLuong":"0.0","ThanhTien":"0"}],"thongTinThanhToan":{"DatCoc"[truncated 152 bytes]; line: 1, column: 50] (through reference chain: com.huy.appnoithat.Service.FileExport.Operation.NtFile.ObjectModel.ObjectData["exportData"]->com.huy.appnoithat.DataModel.NtFile.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["tenCongTy"])
 [INFO ] 16-10-2023 00:33:08 [main] HelloApplication:35 - Start application
 [INFO ] 16-10-2023 00:33:29 [main] HelloApplication:35 - Start application
 [INFO ] 16-10-2023 00:33:35 [JavaFX Application Thread] HomeController:75 - Login as kim with role User
@@ -2638,3 +2638,312 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 20-10-2023 17:38:31 [main] HelloApplication:35 - Start application
 [INFO ] 20-10-2023 17:38:32 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
 [INFO ] 20-10-2023 18:05:53 [JavaFX Application Thread] LuaChonNoiThatController:293 - Close window
+[INFO ] 21-10-2023 15:04:22 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 15:04:26 [JavaFX Application Thread] HomeController:118 - Login as  with role User
+[INFO ] 21-10-2023 15:06:28 [JavaFX Application Thread] HomeController:118 - Login as  with role User
+[INFO ] 21-10-2023 15:06:38 [JavaFX Application Thread] HomeController:118 - Login as  with role User
+[INFO ] 21-10-2023 15:07:29 [JavaFX Application Thread] HomeController:118 - Login as  with role User
+[INFO ] 21-10-2023 15:08:02 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 15:08:45 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 15:11:47 [JavaFX Application Thread] HomeController:118 - Login as  with role User
+[INFO ] 21-10-2023 15:13:26 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 15:15:27 [JavaFX Application Thread] HomeController:118 - Login as  with role User
+[INFO ] 21-10-2023 15:16:28 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 15:16:30 [JavaFX Application Thread] HomeController:118 - Login as  with role User
+[INFO ] 21-10-2023 15:17:20 [JavaFX Application Thread] HomeController:118 - Login as  with role User
+[INFO ] 21-10-2023 15:18:32 [JavaFX Application Thread] HomeController:118 - Login as  with role User
+[INFO ] 21-10-2023 15:20:30 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 15:20:33 [JavaFX Application Thread] HomeController:118 - Login as  with role User
+[INFO ] 21-10-2023 15:20:46 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 15:20:49 [JavaFX Application Thread] HomeController:118 - Login as  with role User
+[INFO ] 21-10-2023 15:21:36 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 15:50:15 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 15:55:25 [main] HelloApplication:35 - Start application
+[ERROR] 21-10-2023 15:55:25 [JavaFX Application Thread] PersistenceStorageService:115 - Failed to read user sessionFailed to call `setAccess()` on Constructor 'com.huy.appnoithat.DataModel.Session.PersistenceUserSession' (of class `com.huy.appnoithat.DataModel.Session.PersistenceUserSession`) due to `java.lang.reflect.InaccessibleObjectException`, problem: Unable to make public com.huy.appnoithat.DataModel.Session.PersistenceUserSession() accessible: module com.huy.appnoithat does not "exports com.huy.appnoithat.DataModel.Session" to module com.fasterxml.jackson.databind
+ at [Source: (File); line: 1, column: 1]
+[INFO ] 21-10-2023 15:56:31 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 15:56:34 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 15:57:33 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 15:57:47 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 21-10-2023 15:58:10 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 21-10-2023 16:02:38 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 16:02:39 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 21-10-2023 16:06:41 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 16:06:43 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 21-10-2023 16:07:11 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 16:08:08 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 16:08:26 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 16:08:33 [JavaFX Application Thread] LuaChonNoiThatController:293 - Close window
+[INFO ] 21-10-2023 16:10:54 [JavaFX Application Thread] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 16:11:01 [JavaFX Application Thread] LuaChonNoiThatController:293 - Close window
+[INFO ] 21-10-2023 16:11:11 [JavaFX Application Thread] ImportOperation:46 - Import file: adsdasdsdasasdasdsadsds.nt
+[INFO ] 21-10-2023 16:11:31 [JavaFX Application Thread] LuaChonNoiThatController:280 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/adsdasdsdasasdasdsadsds.nt
+[INFO ] 21-10-2023 16:11:51 [JavaFX Application Thread] LuaChonNoiThatController:280 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/adsdasdsdasasdasdsadsds.nt
+[INFO ] 21-10-2023 16:12:11 [JavaFX Application Thread] LuaChonNoiThatController:280 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/adsdasdsdasasdasdsadsds.nt
+[INFO ] 21-10-2023 16:12:31 [JavaFX Application Thread] LuaChonNoiThatController:280 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/adsdasdsdasasdasdsadsds.nt
+[INFO ] 21-10-2023 16:12:50 [JavaFX Application Thread] LuaChonNoiThatController:293 - Close window
+[INFO ] 21-10-2023 16:32:24 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 16:32:27 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 16:33:01 [JavaFX Application Thread] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 16:37:41 [JavaFX Application Thread] LuaChonNoiThatController:293 - Close window
+[INFO ] 21-10-2023 16:40:05 [main] HelloApplication:35 - Start application
+[ERROR] 21-10-2023 16:40:06 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk3ODc5MjMwLCJleHAiOjQyODk4NzkyMzB9.XDE3LywHWglafC2Sx2V7CMykk81atMpUmiqAAwF86OnFw-E6x9J881bMDJYK-6l3Fubqki9fNfCagyGALJ7f3A null
+[INFO ] 21-10-2023 16:43:45 [main] HelloApplication:35 - Start application
+[ERROR] 21-10-2023 16:43:46 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk3ODc5MjMwLCJleHAiOjQyODk4NzkyMzB9.XDE3LywHWglafC2Sx2V7CMykk81atMpUmiqAAwF86OnFw-E6x9J881bMDJYK-6l3Fubqki9fNfCagyGALJ7f3A null
+[INFO ] 21-10-2023 16:44:52 [main] HelloApplication:35 - Start application
+[ERROR] 21-10-2023 16:44:53 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk3ODc5MjMwLCJleHAiOjQyODk4NzkyMzB9.XDE3LywHWglafC2Sx2V7CMykk81atMpUmiqAAwF86OnFw-E6x9J881bMDJYK-6l3Fubqki9fNfCagyGALJ7f3A null
+[INFO ] 21-10-2023 16:45:40 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 16:45:45 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 16:46:11 [JavaFX Application Thread] LuaChonNoiThatController:293 - Close window
+[INFO ] 21-10-2023 16:47:23 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 16:47:26 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 16:47:38 [JavaFX Application Thread] LuaChonNoiThatController:293 - Close window
+[INFO ] 21-10-2023 16:57:08 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 16:57:10 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 16:57:57 [JavaFX Application Thread] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 16:59:04 [JavaFX Application Thread] LuaChonNoiThatController:265 - Save as Operation: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/Data/usedForTest
+[INFO ] 21-10-2023 16:59:04 [JavaFX Application Thread] LuaChonNoiThatController:287 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/Data/usedForTest
+[INFO ] 21-10-2023 16:59:06 [JavaFX Application Thread] LuaChonNoiThatController:300 - Close window
+[INFO ] 21-10-2023 16:59:33 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 16:59:37 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 16:59:43 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:02:07 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:02:10 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:02:16 [JavaFX Application Thread] LuaChonNoiThatController:300 - Close window
+[INFO ] 21-10-2023 17:02:17 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:02:26 [JavaFX Application Thread] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 17:02:39 [JavaFX Application Thread] LuaChonNoiThatController:287 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/Data/usedForTest.nt
+[INFO ] 21-10-2023 17:02:43 [JavaFX Application Thread] LuaChonNoiThatController:300 - Close window
+[INFO ] 21-10-2023 17:05:35 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:05:38 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:06:19 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:06:39 [JavaFX Application Thread] LuaChonNoiThatController:287 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/Data/usedForTest.nt
+[INFO ] 21-10-2023 17:06:42 [JavaFX Application Thread] LuaChonNoiThatController:300 - Close window
+[INFO ] 21-10-2023 17:14:55 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:14:57 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:15:00 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:15:11 [JavaFX Application Thread] LuaChonNoiThatController:308 - Close window
+[INFO ] 21-10-2023 17:15:16 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:15:19 [JavaFX Application Thread] LuaChonNoiThatController:308 - Close window
+[INFO ] 21-10-2023 17:26:21 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:26:23 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:27:05 [JavaFX Application Thread] LuaChonNoiThatController:299 - Close window
+[INFO ] 21-10-2023 17:27:06 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:27:25 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 17:27:26 [JavaFX Application Thread] LuaChonNoiThatController:286 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/Data/usedForTest.nt
+[INFO ] 21-10-2023 17:27:46 [JavaFX Application Thread] LuaChonNoiThatController:286 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/Data/usedForTest.nt
+[INFO ] 21-10-2023 17:28:06 [JavaFX Application Thread] LuaChonNoiThatController:286 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/Data/usedForTest.nt
+[INFO ] 21-10-2023 17:28:26 [JavaFX Application Thread] LuaChonNoiThatController:286 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/Data/usedForTest.nt
+[INFO ] 21-10-2023 17:28:46 [JavaFX Application Thread] LuaChonNoiThatController:286 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/Data/usedForTest.nt
+[INFO ] 21-10-2023 17:29:06 [JavaFX Application Thread] LuaChonNoiThatController:286 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/Data/usedForTest.nt
+[INFO ] 21-10-2023 17:29:24 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:29:26 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:29:28 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:29:38 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 17:30:19 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:30:22 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:30:47 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:30:50 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:30:52 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:31:00 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 17:31:25 [JavaFX Application Thread] LuaChonNoiThatController:299 - Close window
+[INFO ] 21-10-2023 17:42:44 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:42:46 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:42:52 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:43:03 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 17:43:29 [JavaFX Application Thread] LuaChonNoiThatController:299 - Close window
+[INFO ] 21-10-2023 17:45:33 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:45:36 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:45:40 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:45:56 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 17:46:28 [JavaFX Application Thread] LuaChonNoiThatController:299 - Close window
+[INFO ] 21-10-2023 17:46:52 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:46:55 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:46:57 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:47:03 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 17:47:44 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:47:46 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:47:48 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:47:54 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 17:48:46 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:48:48 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:48:54 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:49:01 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 17:51:33 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:51:35 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:51:39 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:51:57 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[ERROR] 21-10-2023 17:52:23 [Thread-3] LuaChonNoiThatService:121 - Some thing is wrong with the export operation
+java.lang.IllegalStateException: Not on FX application thread; currentThread = Thread-3
+	at com.sun.javafx.tk.Toolkit.checkFxUserThread(Toolkit.java:297) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.checkFxUserThread(QuantumToolkit.java:458) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Parent$3.onProposedChange(Parent.java:474) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.collections.VetoableListDecorator.clear(VetoableListDecorator.java:293) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.Operation.ExportOperation.hideLoading(ExportOperation.java:69) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LuaChonNoiThat.Operation.ExportOperation.lambda$exportFile$1(ExportOperation.java:114) ~[classes/:?]
+	at com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService.lambda$exportFile$0(LuaChonNoiThatService.java:119) ~[classes/:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[INFO ] 21-10-2023 17:53:05 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:53:07 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:53:11 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:53:17 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 17:54:00 [JavaFX Application Thread] LuaChonNoiThatController:299 - Close window
+[INFO ] 21-10-2023 17:56:23 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:56:26 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:56:29 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:56:38 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 17:57:25 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:57:27 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:57:30 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:57:36 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 17:58:34 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:58:36 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:58:51 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:59:02 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 17:59:26 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 17:59:28 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 17:59:30 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 17:59:37 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 18:01:59 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 18:02:01 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 18:02:04 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 18:02:11 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 18:03:45 [main] HelloApplication:35 - Start application
+[INFO ] 21-10-2023 18:03:47 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 21-10-2023 18:03:55 [JavaFX Application Thread] ImportOperation:46 - Import file: usedForTest.nt
+[INFO ] 21-10-2023 18:04:01 [Thread-3] ExportFile:94 - Exporting to XLSX file
+[INFO ] 21-10-2023 18:04:40 [JavaFX Application Thread] LuaChonNoiThatController:299 - Close window
+[INFO ] 22-10-2023 12:05:51 [main] HelloApplication:35 - Start application
+[INFO ] 22-10-2023 12:05:55 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 22-10-2023 12:06:05 [JavaFX Application Thread] ImportOperation:47 - Import file: usedForTest.nt
+[INFO ] 22-10-2023 12:06:44 [JavaFX Application Thread] LuaChonNoiThatController:286 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/Data/usedForTest.nt
+[ERROR] 22-10-2023 12:06:44 [Thread-3] LuaChonNoiThatService:117 - Some thing is wrong with the export operation
+java.lang.RuntimeException: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class java.io.ByteArrayInputStream and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.huy.appnoithat.DataModel.NtFile.ObjectData["exportData"]->com.huy.appnoithat.DataModel.NtFile.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["logo"])
+	at com.huy.appnoithat.Service.FileExport.Operation.NtFile.ExportNtFile.export(ExportNtFile.java:53) ~[classes/:?]
+	at com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService.lambda$exportFile$0(LuaChonNoiThatService.java:114) ~[classes/:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class java.io.ByteArrayInputStream and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.huy.appnoithat.DataModel.NtFile.ObjectData["exportData"]->com.huy.appnoithat.DataModel.NtFile.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["logo"])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1308) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.DatabindContext.reportBadDefinition(DatabindContext.java:414) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.impl.UnknownSerializer.failForEmpty(UnknownSerializer.java:53) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.impl.UnknownSerializer.serialize(UnknownSerializer.java:30) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:772) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:772) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:772) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:479) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:318) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ObjectMapper._writeValueAndClose(ObjectMapper.java:4719) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:3964) ~[jackson-databind-2.15.2.jar:?]
+	at com.huy.appnoithat.Service.FileExport.Operation.NtFile.ExportNtFile.export(ExportNtFile.java:49) ~[classes/:?]
+	... 2 more
+[INFO ] 22-10-2023 12:16:05 [JavaFX Application Thread] LuaChonNoiThatController:286 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/Data/usedForTest.nt
+[ERROR] 22-10-2023 12:16:05 [Thread-4] LuaChonNoiThatService:117 - Some thing is wrong with the export operation
+java.lang.RuntimeException: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class java.io.ByteArrayInputStream and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.huy.appnoithat.DataModel.NtFile.ObjectData["exportData"]->com.huy.appnoithat.DataModel.NtFile.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["logo"])
+	at com.huy.appnoithat.Service.FileExport.Operation.NtFile.ExportNtFile.export(ExportNtFile.java:53) ~[classes/:?]
+	at com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService.lambda$exportFile$0(LuaChonNoiThatService.java:114) ~[classes/:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class java.io.ByteArrayInputStream and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.huy.appnoithat.DataModel.NtFile.ObjectData["exportData"]->com.huy.appnoithat.DataModel.NtFile.DataPackage["thongTinCongTy"]->com.huy.appnoithat.DataModel.ThongTinCongTy["logo"])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1308) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.DatabindContext.reportBadDefinition(DatabindContext.java:414) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.impl.UnknownSerializer.failForEmpty(UnknownSerializer.java:53) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.impl.UnknownSerializer.serialize(UnknownSerializer.java:30) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:772) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:772) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:772) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:479) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:318) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ObjectMapper._writeValueAndClose(ObjectMapper.java:4719) ~[jackson-databind-2.15.2.jar:?]
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:3964) ~[jackson-databind-2.15.2.jar:?]
+	at com.huy.appnoithat.Service.FileExport.Operation.NtFile.ExportNtFile.export(ExportNtFile.java:49) ~[classes/:?]
+	... 2 more
+[INFO ] 22-10-2023 12:19:58 [JavaFX Application Thread] LuaChonNoiThatController:299 - Close window
+[INFO ] 22-10-2023 12:22:23 [main] HelloApplication:35 - Start application
+[INFO ] 22-10-2023 12:22:29 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 22-10-2023 12:22:33 [JavaFX Application Thread] ImportOperation:47 - Import file: usedForTest.nt
+[ERROR] 22-10-2023 12:22:33 [JavaFX Application Thread] FileNoiThatExplorerController:104 - com.fasterxml.jackson.databind.exc.MismatchedInputException: No content to map due to end-of-input
+ at [Source: (String)""; line: 1, column: 0]
+[INFO ] 22-10-2023 12:22:43 [JavaFX Application Thread] LuaChonNoiThatController:299 - Close window
+[INFO ] 22-10-2023 12:23:02 [main] HelloApplication:35 - Start application
+[INFO ] 22-10-2023 12:23:06 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 22-10-2023 12:23:28 [JavaFX Application Thread] LuaChonNoiThatController:264 - Save as Operation: Save file to: /home/huy/Desktop/test
+[INFO ] 22-10-2023 12:23:28 [JavaFX Application Thread] LuaChonNoiThatController:286 - Normal save: Save file to: /home/huy/Desktop/test
+[INFO ] 22-10-2023 12:24:48 [JavaFX Application Thread] LuaChonNoiThatController:299 - Close window
+[INFO ] 22-10-2023 12:24:51 [JavaFX Application Thread] ImportOperation:47 - Import file: test.nt
+[INFO ] 22-10-2023 12:24:55 [JavaFX Application Thread] LuaChonNoiThatController:299 - Close window
+[INFO ] 22-10-2023 12:27:49 [main] HelloApplication:35 - Start application
+[INFO ] 22-10-2023 12:27:53 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 22-10-2023 12:27:55 [JavaFX Application Thread] ImportOperation:52 - Import file: test.nt
+[INFO ] 22-10-2023 12:28:00 [JavaFX Application Thread] LuaChonNoiThatController:299 - Close window
+[INFO ] 22-10-2023 14:59:31 [main] HelloApplication:35 - Start application
+[INFO ] 22-10-2023 14:59:33 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 22-10-2023 14:59:36 [JavaFX Application Thread] ImportOperation:52 - Import file: test.nt
+[INFO ] 22-10-2023 14:59:57 [JavaFX Application Thread] LuaChonNoiThatController:317 - Close window
+[INFO ] 22-10-2023 15:00:44 [main] HelloApplication:35 - Start application
+[INFO ] 22-10-2023 15:00:47 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 22-10-2023 15:00:58 [JavaFX Application Thread] ImportOperation:52 - Import file: test.nt
+[INFO ] 22-10-2023 15:01:19 [JavaFX Application Thread] LuaChonNoiThatController:317 - Close window
+[INFO ] 22-10-2023 15:01:28 [JavaFX Application Thread] LuaChonNoiThatController:317 - Close window
+[INFO ] 22-10-2023 15:06:03 [main] HelloApplication:35 - Start application
+[INFO ] 22-10-2023 15:06:06 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 22-10-2023 15:06:25 [JavaFX Application Thread] LuaChonNoiThatController:318 - Close window
+[INFO ] 22-10-2023 15:06:29 [JavaFX Application Thread] LuaChonNoiThatController:318 - Close window
+[INFO ] 22-10-2023 15:07:19 [main] HelloApplication:35 - Start application
+[INFO ] 22-10-2023 15:07:22 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 22-10-2023 15:08:44 [JavaFX Application Thread] LuaChonNoiThatController:318 - Close window
+[INFO ] 22-10-2023 15:10:50 [main] HelloApplication:35 - Start application
+[INFO ] 22-10-2023 15:10:54 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 22-10-2023 15:11:12 [JavaFX Application Thread] LuaChonNoiThatController:318 - Close window
+[INFO ] 22-10-2023 15:11:17 [JavaFX Application Thread] LuaChonNoiThatController:318 - Close window
+[INFO ] 22-10-2023 15:11:21 [JavaFX Application Thread] LuaChonNoiThatController:318 - Close window
+[INFO ] 22-10-2023 15:11:27 [JavaFX Application Thread] ImportOperation:52 - Import file: test.nt
+[INFO ] 22-10-2023 15:11:28 [JavaFX Application Thread] LuaChonNoiThatController:318 - Close window
+[INFO ] 22-10-2023 15:11:32 [JavaFX Application Thread] LuaChonNoiThatController:318 - Close window
+[INFO ] 22-10-2023 15:11:38 [main] HelloApplication:35 - Start application
+[INFO ] 22-10-2023 15:11:40 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 22-10-2023 15:11:45 [JavaFX Application Thread] LuaChonNoiThatController:318 - Close window
+[INFO ] 22-10-2023 15:12:05 [main] HelloApplication:35 - Start application
+[INFO ] 22-10-2023 15:12:07 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 22-10-2023 15:12:33 [JavaFX Application Thread] LuaChonNoiThatController:318 - Close window
+[ERROR] 22-10-2023 15:13:03 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.Node.lookup(String)" because "nodeFromCurrentTab" is null
+[ERROR] 22-10-2023 15:13:03 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.Node.lookup(String)" because "nodeFromCurrentTab" is null
+[INFO ] 22-10-2023 15:13:03 [JavaFX Application Thread] LuaChonNoiThatController:318 - Close window
+[INFO ] 22-10-2023 15:15:15 [main] HelloApplication:35 - Start application
+[INFO ] 22-10-2023 15:15:18 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 22-10-2023 15:15:38 [JavaFX Application Thread] LuaChonNoiThatController:318 - Close window
+[INFO ] 22-10-2023 19:39:09 [main] HelloApplication:35 - Start application
+[ERROR] 22-10-2023 19:39:09 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk3ODc5MjMwLCJleHAiOjQyODk4NzkyMzB9.XDE3LywHWglafC2Sx2V7CMykk81atMpUmiqAAwF86OnFw-E6x9J881bMDJYK-6l3Fubqki9fNfCagyGALJ7f3A null
+[INFO ] 23-10-2023 00:12:21 [main] HelloApplication:35 - Start application
+[ERROR] 23-10-2023 00:12:22 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk3ODc5MjMwLCJleHAiOjQyODk4NzkyMzB9.XDE3LywHWglafC2Sx2V7CMykk81atMpUmiqAAwF86OnFw-E6x9J881bMDJYK-6l3Fubqki9fNfCagyGALJ7f3A null
+[INFO ] 23-10-2023 00:12:34 [main] HelloApplication:35 - Start application
+[ERROR] 23-10-2023 00:12:34 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk3ODc5MjMwLCJleHAiOjQyODk4NzkyMzB9.XDE3LywHWglafC2Sx2V7CMykk81atMpUmiqAAwF86OnFw-E6x9J881bMDJYK-6l3Fubqki9fNfCagyGALJ7f3A null
+[INFO ] 23-10-2023 00:12:45 [main] HelloApplication:35 - Start application
+[INFO ] 23-10-2023 00:12:49 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 23-10-2023 00:13:47 [main] HelloApplication:35 - Start application
+[INFO ] 23-10-2023 00:13:53 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 23-10-2023 00:31:46 [main] HelloApplication:35 - Start application
+[INFO ] 23-10-2023 00:31:48 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[ERROR] 23-10-2023 00:49:33 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: java.lang.reflect.InvocationTargetException
+[ERROR] 23-10-2023 00:49:33 [JavaFX Application Thread] GlobalExceptionHandler:30 - Error resolving onAction='#FetchSampleData', either the event handler is not in the Namespace or there is an error in the script.
+/home/huy/Project/Java/AppNoiThat/App-noi-that/target/classes/com/huy/appnoithat/Scene/DatabaseModify/view/DatabaseModifyHangMucLayout.fxml:39
+
+[ERROR] 23-10-2023 00:49:33 [JavaFX Application Thread] GlobalExceptionHandler:30 - javafx.fxml.LoadException: Error resolving onAction='#FetchSampleData', either the event handler is not in the Namespace or there is an error in the script.
+/home/huy/Project/Java/AppNoiThat/App-noi-that/target/classes/com/huy/appnoithat/Scene/DatabaseModify/view/DatabaseModifyHangMucLayout.fxml:39
+
+[ERROR] 23-10-2023 00:49:33 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[ERROR] 23-10-2023 00:49:33 [JavaFX Application Thread] GlobalExceptionHandler:30 - java.lang.reflect.InvocationTargetException
+[INFO ] 23-10-2023 00:50:32 [main] HelloApplication:35 - Start application
+[INFO ] 23-10-2023 00:50:34 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin

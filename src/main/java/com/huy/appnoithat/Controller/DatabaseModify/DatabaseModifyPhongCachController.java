@@ -176,6 +176,11 @@ public class DatabaseModifyPhongCachController implements Initializable {
 //            nextButton.fire();
 //        }
     }
+    @FXML
+    void FetchSampleData(ActionEvent event) {
+        databaseModifyPhongCachService.fetchSamplePhongCachData();
+        refresh();
+    }
 
 
     /**

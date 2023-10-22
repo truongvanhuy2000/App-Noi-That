@@ -14,6 +14,7 @@ module com.huy.appnoithat {
     requires org.apache.logging.log4j;
     requires java.desktop;
     requires com.fasterxml.jackson.datatype.jsr310;
+    requires spire.xls;
 
     exports com.huy.appnoithat.Controller;
     opens com.huy.appnoithat.Controller to javafx.fxml;
@@ -45,4 +46,5 @@ module com.huy.appnoithat {
     opens com.huy.appnoithat.Controller.LuaChonNoiThat.Common to javafx.fxml;
     exports com.huy.appnoithat.Controller.Register;
     opens com.huy.appnoithat.Controller.Register to javafx.fxml;
+    exports com.huy.appnoithat.DataModel.Session;
 }

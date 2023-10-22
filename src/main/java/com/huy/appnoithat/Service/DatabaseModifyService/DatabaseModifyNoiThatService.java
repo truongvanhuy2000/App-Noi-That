@@ -30,4 +30,7 @@ public class DatabaseModifyNoiThatService {
     public void deleteNoiThat(int id) {
         noiThatRestService.deleteById(id);
     }
+    public void fetchSampleNoiThatData(int parentId) {
+        noiThatRestService.copySampleDataFromAdmin(parentId);
+    }
 }

@@ -6,8 +6,10 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Configuration.Config;
+import com.huy.appnoithat.DataModel.Session.PersistenceUserSession;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
+import com.huy.appnoithat.Service.RestService.AccountRestService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
 import com.huy.appnoithat.Session.UserSession;
@@ -20,18 +22,11 @@ import java.util.ArrayList;
 public class UserSessionService {
     final static Logger LOGGER = LogManager.getLogger(UserSessionService.class);
     private static final String SESSION_DIRECTORY = Config.USER.SESSION_DIRECTORY;
-    private final WebClientService webClientService;
-    private final ObjectMapper objectMapper;
     private final PersistenceStorageService persistenceStorageService;
-
     /**
      * Constructor for UserSessionService. Initializes required services and objects.
      */
     public UserSessionService() {
-        webClientService = new WebClientServiceImpl();
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
         persistenceStorageService = PersistenceStorageService.getInstance();
     }
 
@@ -68,16 +63,11 @@ public class UserSessionService {
     public void setSession(String username, String jwtToken) {
         setToken(jwtToken);
         if (!username.isEmpty()) {
-            String info = webClientService.authorizedHttpGetJson("/api/info?username=" + username, getToken());
-            if (info == null) {
+            AccountRestService accountRestService = AccountRestService.getInstance();
+            Account account = accountRestService.getAccountInformation();
+            if (account == null) {
+                LOGGER.error("Account is null");
                 return;
-            }
-            Account account = null;
-            try {
-                account = objectMapper.readValue(info, Account.class);
-            } catch (JsonProcessingException e) {
-                LOGGER.error("Error when parsing account from response");
-                throw new RuntimeException(e);
             }
             setLoginAccount(account);
         }
@@ -166,7 +156,8 @@ public class UserSessionService {
                 throw new RuntimeException(e);
             }
         }
-        String response = webClientService.authorizedHttpGetJson("/api/index", getToken());
+        AccountRestService accountRestService = AccountRestService.getInstance();
+        String response = accountRestService.sessionCheck();
         return response != null;
     }
 
@@ -176,18 +167,12 @@ public class UserSessionService {
      * @throws IOException If an error occurs while reading the session data from the disk.
      */
     public void loadSessionFromDisk() throws IOException {
-        try (InputStream is = new FileInputStream(SESSION_DIRECTORY)) {
-            byte[] data = is.readAllBytes();
-            try {
-                parseSessionJsonObject(new String(data));
-            } catch (JsonProcessingException e) {
-                LOGGER.error("Error when parsing session json object");
-                setToken("");
-            }
-        } catch (FileNotFoundException e) {
-            LOGGER.error("Session file not found");
+        PersistenceUserSession persistenceUserSession = persistenceStorageService.getUserSession();
+        if (persistenceUserSession == null) {
             setToken("");
+            return;
         }
+        setSession(persistenceUserSession.getUsername(), persistenceUserSession.getToken());
     }
 
 
@@ -197,51 +182,6 @@ public class UserSessionService {
      * @throws IOException If an error occurs while writing the session data to the disk.
      */
     public void saveSessionToDisk() throws IOException {
-        try {
-            String sessionObject = getSessionJsonObject();
-            OutputStream os = new FileOutputStream(SESSION_DIRECTORY);
-            os.write(sessionObject.getBytes(), 0, sessionObject.length());
-            os.close();
-        } catch (IOException e) {
-            LOGGER.error("Error when saving session to disk");
-            // Handle the exception or throw a custom exception if desired.
-        }
-    }
-
-
-    /**
-     * Creates and returns a JSON representation of the user session data.
-     *
-     * @return A JSON string representing the user session data.
-     * @throws RuntimeException If an error occurs while creating the JSON object.
-     */
-    private String getSessionJsonObject() {
-        ObjectNode jsonObject = objectMapper.createObjectNode();
-        jsonObject.put("username", getLoginAccount().getUsername());
-        jsonObject.put("token", getToken());
-        try {
-            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonObject);
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Error when creating session json object");
-            throw new RuntimeException(e);
-        }
-    }
-
-
-    /**
-     * Parses the JSON representation of the user session data and sets the session.
-     *
-     * @param jsonObject The JSON string representing the user session data.
-     * @throws JsonProcessingException If an error occurs while parsing the JSON object.
-     */
-    private void parseSessionJsonObject(String jsonObject) throws JsonProcessingException {
-        if (jsonObject == null) {
-            LOGGER.error("jsonObject cannot be null");
-            throw new IllegalArgumentException("jsonObject cannot be null");
-        }
-        ObjectNode node = (ObjectNode) objectMapper.readTree(jsonObject);
-        String username = node.get("username").asText();
-        String token = node.get("token").asText();
-        setSession(username, token);
+        persistenceStorageService.setUserSession(new PersistenceUserSession(getUsername(), getToken()));
     }
 }

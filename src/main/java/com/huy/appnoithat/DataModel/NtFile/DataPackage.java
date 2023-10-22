@@ -1,6 +1,10 @@
-package com.huy.appnoithat.DataModel;
+package com.huy.appnoithat.DataModel.NtFile;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.huy.appnoithat.DataModel.ThongTinCongTy;
+import com.huy.appnoithat.DataModel.ThongTinKhachHang;
+import com.huy.appnoithat.DataModel.ThongTinNoiThat;
+import com.huy.appnoithat.DataModel.ThongTinThanhToan;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

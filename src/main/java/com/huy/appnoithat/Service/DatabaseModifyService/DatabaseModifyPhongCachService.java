@@ -30,4 +30,7 @@ public class DatabaseModifyPhongCachService {
     public void deletePhongCach(int id) {
         phongCachRestService.deleteById(id);
     }
+    public void fetchSamplePhongCachData() {
+        phongCachRestService.copySampleDataFromAdmin();
+    }
 }

@@ -3,7 +3,7 @@ package com.huy.appnoithat.Service.FileExport.Operation.Excel;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.*;
-import com.huy.appnoithat.Entity.PhongCachNoiThat;
+import com.huy.appnoithat.DataModel.NtFile.DataPackage;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,9 +15,6 @@ import org.apache.poi.xssf.usermodel.XSSFDrawing;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

@@ -7,12 +7,17 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.DataModel.*;
+import com.huy.appnoithat.DataModel.NtFile.DataPackage;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 public class ImportOperation {
     final static Logger LOGGER = LogManager.getLogger(ImportOperation.class);
@@ -23,6 +28,7 @@ public class ImportOperation {
     private TreeTableView<BangNoiThat> TableNoiThat;
     private TableView<BangThanhToan> bangThanhToan;
     private TextArea noteTextArea;
+    private ImageView ImageView;
 
     public ImportOperation(LuaChonNoiThatController luaChonNoiThatController) {
         TenCongTy = luaChonNoiThatController.getTenCongTy();
@@ -38,7 +44,7 @@ public class ImportOperation {
         TableNoiThat = luaChonNoiThatController.getTableNoiThat();
         bangThanhToan = luaChonNoiThatController.getBangThanhToan();
         noteTextArea = luaChonNoiThatController.getNoteTextArea();
-
+        ImageView = luaChonNoiThatController.getImageView();
     }
 
     public void importFile(String directory) {
@@ -72,6 +78,11 @@ public class ImportOperation {
         DiaChiXuong.setText(thongTinCongTy.getDiaChiXuong());
         DienThoaiCongTy.setText(thongTinCongTy.getSoDienThoai());
         Email.setText(thongTinCongTy.getEmail());
+        try {
+            ImageView.setImage(new Image(new ByteArrayInputStream(thongTinCongTy.getLogo().readAllBytes())));
+        } catch (IOException e) {
+            LOGGER.error("Error while importing logo", e);
+        }
     }
 
     /**

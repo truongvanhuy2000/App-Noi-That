@@ -69,6 +69,11 @@ public class DatabaseModifyHangMucController implements Initializable {
         refreshList();
     }
 
+    @FXML
+    void FetchSampleData(ActionEvent event) {
+        databaseModifyHangMucService.fetchSampleHangMucData(this.parentID);
+        refresh();
+    }
 
     /**
      * Handles the action event for deleting a HangMuc item.

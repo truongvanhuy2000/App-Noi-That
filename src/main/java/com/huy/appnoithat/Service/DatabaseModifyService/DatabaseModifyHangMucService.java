@@ -30,4 +30,7 @@ public class DatabaseModifyHangMucService {
     public void deleteHangMuc(int id) {
         hangMucRestService.deleteById(id);
     }
+    public void fetchSampleHangMucData(int parentId) {
+        hangMucRestService.copySampleDataFromAdmin(parentId);
+    }
 }

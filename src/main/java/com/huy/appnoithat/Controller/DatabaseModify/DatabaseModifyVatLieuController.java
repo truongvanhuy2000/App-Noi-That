@@ -77,8 +77,11 @@ public class DatabaseModifyVatLieuController implements Initializable {
                 new ThongSo(0, 0.0, 0.0, 0.0, " ", 0L)), this.parentID);
         refreshList();
     }
-
-
+    @FXML
+    void FetchSampleData(ActionEvent event) {
+        databaseModifyVatlieuService.fetchSampleVatLieuData(this.parentID);
+        refresh();
+    }
     /**
      * Handles the action when the user deletes an item.
      *

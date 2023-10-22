@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.LuaChonNoiThatScene;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
@@ -13,15 +14,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class NewTabController implements Initializable {
+    final static Logger LOGGER = LogManager.getLogger(NewTabController.class);
     @FXML
     private TabPane tabPane;
     private PersistenceStorageService persistenceStorageService;
@@ -118,6 +124,9 @@ public class NewTabController implements Initializable {
     }
 
     private void duplicateTruongThongTin(Node nodeFromCurrentTab, Node nodeFromNewTab) {
+        if (nodeFromNewTab == null || nodeFromCurrentTab == null) {
+            return;
+        }
         TextField TenCongTy = (TextField) nodeFromCurrentTab.lookup("#TenCongTy");
         TextField VanPhong = (TextField) nodeFromCurrentTab.lookup("#VanPhong");
         TextField DiaChiXuong = (TextField) nodeFromCurrentTab.lookup("#DiaChiXuong");
@@ -146,24 +155,39 @@ public class NewTabController implements Initializable {
     }
 
     private void initSavedThongTinCongTy(Node nodeFromCurrentTab, ThongTinCongTy thongTinCongTy) {
+        if (nodeFromCurrentTab == null) {
+            return;
+        }
         TextField TenCongTy = (TextField) nodeFromCurrentTab.lookup("#TenCongTy");
         TextField VanPhong = (TextField) nodeFromCurrentTab.lookup("#VanPhong");
         TextField DiaChiXuong = (TextField) nodeFromCurrentTab.lookup("#DiaChiXuong");
         TextField DienThoaiCongTy = (TextField) nodeFromCurrentTab.lookup("#DienThoaiCongTy");
         TextField Email = (TextField) nodeFromCurrentTab.lookup("#Email");
+        ImageView imageView = (ImageView) nodeFromCurrentTab.lookup("#ImageView");
 
         TenCongTy.setText(thongTinCongTy.getTenCongTy());
         VanPhong.setText(thongTinCongTy.getDiaChiVanPhong());
         DiaChiXuong.setText(thongTinCongTy.getDiaChiXuong());
         DienThoaiCongTy.setText(thongTinCongTy.getSoDienThoai());
         Email.setText(thongTinCongTy.getEmail());
+        try {
+            imageView.setImage(new Image(new ByteArrayInputStream(thongTinCongTy.getLogo().readAllBytes())));
+        } catch (IOException e) {
+            LOGGER.error("Error while loading saved logo", e);
+        }
     }
     private void duplicateBangNoiThat(Node nodeFromCurrentTab, Node nodeFromNewTab) {
+        if (nodeFromNewTab == null || nodeFromCurrentTab == null) {
+            return;
+        }
         TreeTableView<BangNoiThat> bangNoiThat = (TreeTableView<BangNoiThat>) nodeFromCurrentTab.lookup("#TableNoiThat");
         TreeTableView<BangNoiThat> DuplicateBangNoiThat = (TreeTableView<BangNoiThat>) nodeFromNewTab.lookup("#TableNoiThat");
         DuplicateBangNoiThat.setRoot(deepcopy(bangNoiThat.getRoot()));
     }
     private void duplicateBangThanhToan(Node nodeFromCurrentTab, Node nodeFromNewTab) {
+        if (nodeFromNewTab == null || nodeFromCurrentTab == null) {
+            return;
+        }
         TableView<BangThanhToan> bangThanhToan = (TableView<BangThanhToan>) nodeFromCurrentTab.lookup("#bangThanhToan");
         TableView<BangThanhToan> DuplicateBangThanhToan = (TableView<BangThanhToan>) nodeFromNewTab.lookup("#bangThanhToan");
         DuplicateBangThanhToan.getItems().clear();

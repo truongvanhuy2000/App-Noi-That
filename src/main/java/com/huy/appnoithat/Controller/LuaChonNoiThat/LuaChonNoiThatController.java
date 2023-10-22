@@ -11,8 +11,10 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Operation.ImportOperation;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupBangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupBangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupTruongThongTin;
+import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Enums.FileType;
+import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -26,6 +28,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -74,16 +77,21 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private TableView<BangThanhToan> bangThanhToan;
     @FXML
-    private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs;
+    private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs, MenuItemSaveCompanyInfo;
     private ByteArrayOutputStream imageStream;
     private State currentState;
     @Setter
     private String currentDirectory;
     @FXML
     private CheckMenuItem AutoSave;
+    @FXML
+    private StackPane loadingPane;
+
     private Timeline autoSaveTimer;
+    private PersistenceStorageService persistenceStorageService;
     public LuaChonNoiThatController() {
         imageStream = new ByteArrayOutputStream();
+        persistenceStorageService = PersistenceStorageService.getInstance();
     }
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {
@@ -110,18 +118,18 @@ public class LuaChonNoiThatController implements Initializable {
     void onClickMenuItem(ActionEvent event) {
         Object source = event.getSource();
         if (source == MenuItemExportPDF) {
-//            exportFile(FileType.PDF);
+            exportFile(FileType.PDF);
         }
-        if (source == MenuItemExportXLS) {
+        else if (source == MenuItemExportXLS) {
             exportFile(FileType.EXCEL);
         }
-        if (source == MenuItemSave) {
+        else if (source == MenuItemSave) {
             save();
         }
-        if (source == MenuItemSaveAs) {
+        else if (source == MenuItemSaveAs) {
             saveAs();
         }
-        if (source == AutoSave) {
+        else if (source == AutoSave) {
             if (AutoSave.isSelected()) {
                 LOGGER.info("Auto save is enabled");
                 startAutoSaveAction();
@@ -129,6 +137,9 @@ public class LuaChonNoiThatController implements Initializable {
                 LOGGER.info("Auto save is disabled");
                 stopAutoSaveAction();
             }
+        }
+        else if (source == MenuItemSaveCompanyInfo) {
+            saveThongTinCongTy();
         }
     }
     private void handleDeleteAction() {
@@ -146,6 +157,18 @@ public class LuaChonNoiThatController implements Initializable {
         TableUtils.reArrangeList(TableNoiThat);
         TableCalculationUtils.recalculateAllTongTien(TableNoiThat.getRoot());
     }
+    private void saveThongTinCongTy() {
+        ThongTinCongTy thongTinCongTy = new ThongTinCongTy(
+                new ByteArrayInputStream(imageStream.toByteArray()),
+                TenCongTy.getText(),
+                VanPhong.getText(),
+                DiaChiXuong.getText(),
+                DienThoaiCongTy.getText(),
+                Email.getText()
+        );
+        persistenceStorageService.setThongTinCongTy(thongTinCongTy);
+        PopupUtils.throwSuccessSignal("Lưu thông tin công ty thành công");
+    }
     /**
      * @param url
      * @param resourceBundle
@@ -153,9 +176,11 @@ public class LuaChonNoiThatController implements Initializable {
      */
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
+        loadingPane.setDisable(true);
+        loadingPane.setVisible(false);
         currentState = State.NEW_FILE;
         AutoSave.setSelected(true);
-        autoSaveTimer = new Timeline(new KeyFrame(Duration.seconds(20), event -> {
+        autoSaveTimer = new Timeline(new KeyFrame(Duration.minutes(10), event -> {
             if (currentState == State.OPEN_FROM_EXISTING_FILE && currentDirectory != null) {
                 save();
             }

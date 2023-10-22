@@ -71,6 +71,11 @@ public class DatabaseModifyNoiThatController implements Initializable {
         refreshList();
     }
 
+    @FXML
+    void FetchSampleData(ActionEvent event) {
+        databaseModifyNoiThatService.fetchSampleNoiThatData(this.parentID);
+        refresh();
+    }
 
     /**
      * Handles the action event for deleting a selected NoiThat item.
