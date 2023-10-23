@@ -1,13 +1,16 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
+import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
+import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Scene.DatabaseModify.ChangeProductSpecificationScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyThongSoService;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyVatlieuService;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +21,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -35,6 +39,8 @@ public class DatabaseModifyVatLieuController implements Initializable {
     private Label Title;
     @FXML
     private Button addButton, backButton, deleteButton, nextButton;
+    @FXML
+    private Button getSampleDataButton;
     @FXML
     private ListView<VatLieu> listView;
     @FXML
@@ -77,8 +83,11 @@ public class DatabaseModifyVatLieuController implements Initializable {
                 new ThongSo(0, 0.0, 0.0, 0.0, " ", 0L)), this.parentID);
         refreshList();
     }
-
-
+    @FXML
+    void FetchSampleData(ActionEvent event) {
+        databaseModifyVatlieuService.fetchSampleVatLieuData(this.parentID);
+        refresh();
+    }
     /**
      * Handles the action when the user deletes an item.
      *
@@ -207,6 +216,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        getSampleDataButton.disableProperty().bind(Bindings.size(vatLieuObservableList).greaterThan(0));
         Title.setText("Danh sách vật liệu");
         setUpVatLieuListView();
         setUpThongSoTableView();
@@ -277,5 +287,17 @@ public class DatabaseModifyVatLieuController implements Initializable {
             if (param.getValue() == null) return null;
             return new SimpleObjectProperty<>(param.getValue().getDon_vi());
         });
+    }
+    @FXML
+    void onKeyPressed(KeyEvent event) {
+        if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {
+            addButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
+            deleteButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
+            nextButton.fire();
+        }
     }
 }

@@ -2,12 +2,14 @@ package com.huy.appnoithat.Controller;
 
 import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.RegisterScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Service.Login.LoginService;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -16,6 +18,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 public class LoginController {
 
@@ -88,6 +92,30 @@ public class LoginController {
         StageFactory.CreateNewUnresizeableStage(RegisterScene.getInstance().getScene());
     }
 
+    @FXML
+    void loginWithToken(MouseEvent event) {
+        File tokenFile = PopupUtils.fileOpener();
+        if (tokenFile == null) {
+            return;
+        }
+        String token = Utils.readFromFile(tokenFile);
+        if (token == null) {
+            PopupUtils.throwCriticalError("Chữ ký điện tử không hợp lệ");
+            return;
+        }
+        if (!loginService.authorizeWithToken(token)) {
+            // Display error popup for incorrect credentials
+            PopupUtils.throwCriticalError("Chữ ký điện tử không hợp lệ");
+            return;
+        }
+        // Switch to the next scene upon successful login
+        Object source = event.getSource();
+        Stage stage = (Stage) ((Node) source).getScene().getWindow();
+
+        Scene scene = HomeScene.getInstance().getScene();
+        HomeScene.getInstance().getHomeController().init();
+        StageFactory.closeAndCreateNewMaximizedStage(stage, scene);
+    }
 
     /**
      * Handles scene switching based on the action event source.

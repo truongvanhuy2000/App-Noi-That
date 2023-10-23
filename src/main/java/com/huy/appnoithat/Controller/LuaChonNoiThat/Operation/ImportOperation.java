@@ -7,12 +7,19 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.DataModel.*;
+import com.huy.appnoithat.DataModel.NtFile.DataPackage;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 public class ImportOperation {
     final static Logger LOGGER = LogManager.getLogger(ImportOperation.class);
@@ -23,6 +30,8 @@ public class ImportOperation {
     private TreeTableView<BangNoiThat> TableNoiThat;
     private TableView<BangThanhToan> bangThanhToan;
     private TextArea noteTextArea;
+    private ImageView ImageView;
+    LuaChonNoiThatController luaChonNoiThatController;
 
     public ImportOperation(LuaChonNoiThatController luaChonNoiThatController) {
         TenCongTy = luaChonNoiThatController.getTenCongTy();
@@ -38,32 +47,15 @@ public class ImportOperation {
         TableNoiThat = luaChonNoiThatController.getTableNoiThat();
         bangThanhToan = luaChonNoiThatController.getBangThanhToan();
         noteTextArea = luaChonNoiThatController.getNoteTextArea();
-
+        ImageView = luaChonNoiThatController.getImageView();
+        this.luaChonNoiThatController = luaChonNoiThatController;
     }
 
     public void importFile(String directory) {
         File file = new File(directory);
         LOGGER.info("Import file: " + file.getName());
         DataPackage dataPackage = new LuaChonNoiThatService().importFile(file);
-        if (dataPackage == null) {
-            PopupUtils.throwErrorSignal("File không hợp lệ");
-            return;
-        }
-        // Set up thong tin cong ty
-        importThongTinCongTy(dataPackage.getThongTinCongTy());
-        // Set up thong tin khach hang
-        importThongTinKhachHang(dataPackage.getThongTinKhachHang());
-        // Set up note
-        importNoteArea(dataPackage.getNoteArea());
-        // Set up bang thanh toan
-        importBangThanhToan(dataPackage.getThongTinThanhToan());
-        // Set up bang noi that
-        TreeItem<BangNoiThat> itemRoot = importFromThongTinList(dataPackage.getThongTinNoiThatList());
-        if (itemRoot == null) {
-            PopupUtils.throwErrorSignal("Thông tin nội thất không hợp lệ");
-            return;
-        }
-        TableNoiThat.setRoot(itemRoot);
+        importData(dataPackage);
     }
     private void importThongTinCongTy(ThongTinCongTy thongTinCongTy) {
         if (thongTinCongTy == null) return;
@@ -72,6 +64,16 @@ public class ImportOperation {
         DiaChiXuong.setText(thongTinCongTy.getDiaChiXuong());
         DienThoaiCongTy.setText(thongTinCongTy.getSoDienThoai());
         Email.setText(thongTinCongTy.getEmail());
+
+        try {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            IOUtils.copy(thongTinCongTy.getLogo(), byteArrayOutputStream);
+            luaChonNoiThatController.setImageStream(byteArrayOutputStream);
+
+            ImageView.setImage(new Image(new ByteArrayInputStream(byteArrayOutputStream.toByteArray())));
+        } catch (IOException e) {
+            LOGGER.error("Error while importing logo", e);
+        }
     }
 
     /**
@@ -157,5 +159,33 @@ public class ImportOperation {
             return null;
         }
         return itemRoot;
+    }
+
+    public void importData(DataPackage dataPackage) {
+        if (dataPackage == null) {
+            PopupUtils.throwErrorSignal("File không hợp lệ");
+            return;
+        }
+        if (dataPackage.getThongTinCongTy() != null) {
+            importThongTinCongTy(dataPackage.getThongTinCongTy());
+        }
+        if (dataPackage.getThongTinKhachHang() != null) {
+            importThongTinKhachHang(dataPackage.getThongTinKhachHang());
+        }
+        if (dataPackage.getThongTinThanhToan() != null) {
+            importBangThanhToan(dataPackage.getThongTinThanhToan());
+        }
+        if (dataPackage.getNoteArea() != null) {
+            importNoteArea(dataPackage.getNoteArea());
+        }
+        if (dataPackage.getThongTinNoiThatList() != null) {
+            TreeItem<BangNoiThat> itemRoot = importFromThongTinList(dataPackage.getThongTinNoiThatList());
+            if (itemRoot == null) {
+                PopupUtils.throwErrorSignal("Thông tin nội thất không hợp lệ");
+                return;
+            }
+            TableNoiThat.setRoot(itemRoot);
+        }
+
     }
 }

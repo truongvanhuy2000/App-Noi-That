@@ -326,7 +326,6 @@ public class UsersManagementController {
 
         // Retrieve the account information from the service
         Account account = usersManagementService.findAccountById(deleteid);
-        System.out.println(account.getRoleList().get(0));
 
         // Check if the selected account is not an admin account
         if (!account.getRoleList().get(0).equals("ROLE_ADMIN")) {
@@ -494,7 +493,7 @@ public class UsersManagementController {
             Scene listAccountWaitToApprove = ListAccountWaitToApproveScene.getInstance().getScene();
             Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(listAccountWaitToApprove);
 
-//element field of userManagementEditorScene
+            //element field of userManagementEditorScene
             TableView tableView = (TableView) listAccountWaitToApprove.lookup("#tableViewListAccount");
             Button btnApprove = (Button) listAccountWaitToApprove.lookup("#btnApprove");
             Button btnReject = (Button) listAccountWaitToApprove.lookup("#btnReject");

@@ -1,6 +1,8 @@
 package com.huy.appnoithat.Common;
 
-import java.io.UnsupportedEncodingException;
+import com.huy.appnoithat.DataModel.NtFile.ObjectData;
+
+import java.io.*;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -156,4 +158,19 @@ public class Utils {
         String encodedData = new String(data, StandardCharsets.UTF_8);
         return URLDecoder.decode(encodedData, StandardCharsets.UTF_8);
     }
+    public static String readFromFile(File file) {
+        try (InputStream inputStream = new FileInputStream(file)) {
+            return Utils.decodeData(inputStream.readAllBytes());
+        } catch (IOException e) {
+            return null;
+        }
+    }
+    public static void writeToFile(File file, String data) {
+        try (OutputStream outputStream = new FileOutputStream(file)) {
+            outputStream.write(Utils.encodeData(data).getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

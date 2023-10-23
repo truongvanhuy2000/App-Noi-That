@@ -11,8 +11,13 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Operation.ImportOperation;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupBangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupBangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupTruongThongTin;
+import com.huy.appnoithat.DataModel.NtFile.DataPackage;
+import com.huy.appnoithat.DataModel.ThongTinCongTy;
+import com.huy.appnoithat.DataModel.ThongTinKhachHang;
+import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Enums.FileType;
+import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -24,8 +29,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelFormat;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -74,16 +81,22 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private TableView<BangThanhToan> bangThanhToan;
     @FXML
-    private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs;
+    private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs, MenuItemSaveCompanyInfo, MenuItemSaveNoteArea;
+    @Setter
     private ByteArrayOutputStream imageStream;
     private State currentState;
     @Setter
     private String currentDirectory;
     @FXML
     private CheckMenuItem AutoSave;
+    @FXML
+    private StackPane loadingPane;
+
     private Timeline autoSaveTimer;
+    private PersistenceStorageService persistenceStorageService;
     public LuaChonNoiThatController() {
         imageStream = new ByteArrayOutputStream();
+        persistenceStorageService = PersistenceStorageService.getInstance();
     }
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {
@@ -110,18 +123,18 @@ public class LuaChonNoiThatController implements Initializable {
     void onClickMenuItem(ActionEvent event) {
         Object source = event.getSource();
         if (source == MenuItemExportPDF) {
-//            exportFile(FileType.PDF);
+            exportFile(FileType.PDF);
         }
-        if (source == MenuItemExportXLS) {
+        else if (source == MenuItemExportXLS) {
             exportFile(FileType.EXCEL);
         }
-        if (source == MenuItemSave) {
+        else if (source == MenuItemSave) {
             save();
         }
-        if (source == MenuItemSaveAs) {
+        else if (source == MenuItemSaveAs) {
             saveAs();
         }
-        if (source == AutoSave) {
+        else if (source == AutoSave) {
             if (AutoSave.isSelected()) {
                 LOGGER.info("Auto save is enabled");
                 startAutoSaveAction();
@@ -130,7 +143,20 @@ public class LuaChonNoiThatController implements Initializable {
                 stopAutoSaveAction();
             }
         }
+        else if (source == MenuItemSaveCompanyInfo) {
+            saveThongTinCongTy();
+        }
+        else if (source == MenuItemSaveNoteArea) {
+            saveNoteArea();
+        }
     }
+
+    private void saveNoteArea() {
+        String noteArea = noteTextArea.getText();
+        persistenceStorageService.setNoteArea(noteArea);
+        PopupUtils.throwSuccessSignal("Lưu ghi chú thành công");
+    }
+
     private void handleDeleteAction() {
         if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
             return;
@@ -146,6 +172,18 @@ public class LuaChonNoiThatController implements Initializable {
         TableUtils.reArrangeList(TableNoiThat);
         TableCalculationUtils.recalculateAllTongTien(TableNoiThat.getRoot());
     }
+    private void saveThongTinCongTy() {
+        ThongTinCongTy thongTinCongTy = new ThongTinCongTy(
+                new ByteArrayInputStream(imageStream.toByteArray()),
+                TenCongTy.getText(),
+                VanPhong.getText(),
+                DiaChiXuong.getText(),
+                DienThoaiCongTy.getText(),
+                Email.getText()
+        );
+        persistenceStorageService.setThongTinCongTy(thongTinCongTy);
+        PopupUtils.throwSuccessSignal("Lưu thông tin công ty thành công");
+    }
     /**
      * @param url
      * @param resourceBundle
@@ -153,15 +191,16 @@ public class LuaChonNoiThatController implements Initializable {
      */
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
+        loadingPane.setDisable(true);
+        loadingPane.setVisible(false);
         currentState = State.NEW_FILE;
         AutoSave.setSelected(true);
-        autoSaveTimer = new Timeline(new KeyFrame(Duration.seconds(20), event -> {
+        autoSaveTimer = new Timeline(new KeyFrame(Duration.minutes(10), event -> {
             if (currentState == State.OPEN_FROM_EXISTING_FILE && currentDirectory != null) {
                 save();
             }
         }));
         startAutoSaveAction();
-
         setUpBangThanhToan();
         setUpBangNoiThat();
         setUpButton();
@@ -174,6 +213,10 @@ public class LuaChonNoiThatController implements Initializable {
         ExportOperation exportOperation = new ExportOperation(this);
         return exportOperation.exportFile(fileType);
     }
+    public DataPackage exportData() {
+        ExportOperation exportOperation = new ExportOperation(this);
+        return exportOperation.exportData();
+    }
     /**
      * @param directory This function will import the table from a file
      */
@@ -182,6 +225,11 @@ public class LuaChonNoiThatController implements Initializable {
         importOperation.importFile(directory);
         currentState = State.OPEN_FROM_EXISTING_FILE;
         currentDirectory = directory;
+    }
+    public void importData(DataPackage dataPackage) {
+        ImportOperation importOperation = new ImportOperation(this);
+        importOperation.importData(dataPackage);
+        currentState = State.NEW_FILE;
     }
     /**
      * This function will handle the event when user want to choose an image

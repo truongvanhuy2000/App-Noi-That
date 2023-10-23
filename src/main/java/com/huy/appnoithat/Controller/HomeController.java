@@ -1,23 +1,35 @@
 package com.huy.appnoithat.Controller;
 
+import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.FileNoiThatExplorerScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementScene;
+import com.huy.appnoithat.Service.Login.LoginService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
+import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import javax.swing.*;
+import java.io.File;
+import java.util.Optional;
 
 public class HomeController {
     final static Logger LOGGER = LogManager.getLogger(HomeController.class);
@@ -34,11 +46,20 @@ public class HomeController {
     @FXML
     private AnchorPane PCPane;
     private final UserSessionService sessionService;
-
+    private final LoginService loginService;
     public HomeController() {
         this.sessionService = new UserSessionService();
+        loginService = new LoginService();
     }
-
+    @FXML
+    void xuatChuKy(ActionEvent event) {
+        File savedFile = PopupUtils.fileSaver();
+        if (savedFile == null) {
+            return;
+        }
+        Utils.writeToFile(savedFile, sessionService.getToken());
+        PopupUtils.throwSuccessSignal("Xuất chữ ký thành công!");
+    }
     /**
      * Handles the logout action by cleaning the user session, closing the current window,
      * and switching to a different scene.
@@ -83,7 +104,7 @@ public class HomeController {
         switch (role) {
             // Enable Admin-related buttons and trigger the QuanLyNguoiDungButton action
             case "Admin" -> {
-                toggleButton(false, true, false);
+                toggleButton(false, true, true);
                 QuanLyNguoiDungButton.fire();
             }
             case "User" -> {
@@ -148,19 +169,32 @@ public class HomeController {
      * @param actionEvent The ActionEvent triggering the button click.
      */
     private void OnClickSuaDoiDatabase(ActionEvent actionEvent) {
-        // Clear the primary content pane
-        PCPane.getChildren().clear();
+        TextInputDialog dialog = new TextInputDialog("");
 
-        // Load the database modification scene
-        DatabaseModifyPhongCachScene databaseModifyPhongCachScene = new DatabaseModifyPhongCachScene();
+        dialog.setTitle("NHẬP MẬT KHẨU");
+        dialog.setHeaderText("Nhập mật khẩu để sửa dữ liệu gốc:");
+        dialog.setContentText("Mật khẩu :");
 
-        // Extract HBox from the scene and add it to the primary content pane
-        HBox hBox = (HBox) ((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren().get(0);
-        PCPane.getChildren().addAll(hBox);
+        Optional<String> result = dialog.showAndWait();
 
-        // Initialize the database modification scene controller
-        DatabaseModifyPhongCachScene.getController().init();
-        DatabaseModifyPhongCachScene.getController().setRoot(PCPane);
+        result.ifPresent(password -> {
+            if(loginService.reauthorize(password)) {
+                // Clear the primary content pane
+                PCPane.getChildren().clear();
+
+                // Load the database modification scene
+                DatabaseModifyPhongCachScene databaseModifyPhongCachScene = new DatabaseModifyPhongCachScene();
+
+                // Extract HBox from the scene and add it to the primary content pane
+                HBox hBox = (HBox) ((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren().get(0);
+                PCPane.getChildren().addAll(hBox);
+
+                // Initialize the database modification scene controller
+                DatabaseModifyPhongCachScene.getController().init();
+                DatabaseModifyPhongCachScene.getController().setRoot(PCPane);
+            }
+        });
+
     }
 
     /**

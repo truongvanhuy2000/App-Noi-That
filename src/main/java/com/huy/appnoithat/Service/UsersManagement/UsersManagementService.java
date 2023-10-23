@@ -1,35 +1,17 @@
 package com.huy.appnoithat.Service.UsersManagement;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Entity.Account;
-import com.huy.appnoithat.Service.SessionService.UserSessionService;
-import com.huy.appnoithat.Service.WebClient.WebClientService;
-import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.huy.appnoithat.Service.RestService.AccountRestService;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UsersManagementService {
-    final static Logger LOGGER = LogManager.getLogger(UsersManagementService.class);
-    private final WebClientService webClientService;
-    private final ObjectMapper objectMapper;
-    private final UserSessionService sessionService;
-
-
+    private final AccountRestService accountRestService;
     /**
      * Initializes the UsersManagementService with required dependencies.
      */
     public UsersManagementService() {
-        this.webClientService = new WebClientServiceImpl();
-        this.objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
-        sessionService = new UserSessionService();
+        accountRestService = AccountRestService.getInstance();
     }
 
 
@@ -40,17 +22,7 @@ public class UsersManagementService {
      * @throws RuntimeException If there is an error while retrieving or parsing the response.
      */
     public List<Account> findAllAccountEnable() {
-        String token = this.sessionService.getToken();
-        List<Account> tempAccountList = new ArrayList<>();
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/accounts/enabled", token);
-        try {
-            tempAccountList = this.objectMapper.readValue(response2, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, Account.class));
-        } catch (IOException e) {
-            LOGGER.error("Can't parse response from server when get all account");
-            throw new RuntimeException(e);
-        }
-        return tempAccountList;
+        return accountRestService.findAllEnabledAccount();
     }
 
     /**
@@ -60,8 +32,7 @@ public class UsersManagementService {
      * @throws RuntimeException If there is an error while sending the request.
      */
     public void enableAccount(int id) {
-        String token = this.sessionService.getToken();
-        this.webClientService.authorizedHttpPutJson("/api/accounts/enable/" + id, "long", token);
+        accountRestService.enableAccount(id);
     }
 
     /**
@@ -71,17 +42,7 @@ public class UsersManagementService {
      * @throws RuntimeException If there is an error while retrieving the data from the server.
      */
     public List<Account> findAllNotEnabledAccount() {
-        String token = this.sessionService.getToken();
-        List<Account> tempAccountList = new ArrayList<>();
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/accounts/notEnabled", token);
-        try {
-            tempAccountList = this.objectMapper.readValue(response2, this.objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, Account.class));
-        } catch (IOException e) {
-            LOGGER.error("Can't parse response from server when get all account");
-            throw new RuntimeException(e);
-        }
-        return tempAccountList;
+        return accountRestService.findAllNotEnabledAccount();
     }
 
     /**
@@ -91,8 +52,7 @@ public class UsersManagementService {
      * @throws RuntimeException If there is an error while deleting the account from the server.
      */
     public void deleteAccount(int id) {
-        String token = this.sessionService.getToken();
-        this.webClientService.authorizedHttpDeleteJson("/api/accounts/" + id, "", token);
+        accountRestService.deleteById(id);
     }
 
     /**
@@ -104,16 +64,7 @@ public class UsersManagementService {
      */
     public Account findAccountById(int id) {
 //        return tempAccountList.stream().filter(account -> id == account.getId()).findFirst().orElse(null);
-        Account account = new Account();
-        String token = this.sessionService.getToken();
-        String response2 = this.webClientService.authorizedHttpGetJson("/api/accounts/" + id, token);
-        try {
-            account = this.objectMapper.readValue(response2, Account.class);
-        } catch (IOException e) {
-            LOGGER.error("Can't parse response from server when find account by id");
-            throw new RuntimeException(e);
-        }
-        return account;
+        return accountRestService.findById(id);
     }
 
     /**
@@ -123,13 +74,7 @@ public class UsersManagementService {
      * @throws RuntimeException If there is an error while adding the account to the server.
      */
     public void addNewAccount(Account account) {
-        String token = this.sessionService.getToken();
-        try {
-            this.webClientService.authorizedHttpPostJson("/api/accounts", this.objectMapper.writeValueAsString(account), token);
-        } catch (IOException e) {
-            LOGGER.error("Can't parse response from server when add new account: " + account.toString());
-            throw new RuntimeException(e);
-        }
+        accountRestService.save(account);
     }
 
     /**
@@ -139,14 +84,7 @@ public class UsersManagementService {
      * @throws RuntimeException If there is an error while updating the account on the server.
      */
     public void EditAccount(Account account) {
-        String token = this.sessionService.getToken();
-        try {
-            this.webClientService.authorizedHttpPutJson("/api/accounts", this.objectMapper.writeValueAsString(account), token);
-        } catch (IOException e) {
-            LOGGER.error("Can't parse response from server when edit account");
-            LOGGER.info(account.toString());
-            throw new RuntimeException(e);
-        }
+        accountRestService.update(account);
     }
 
 
@@ -157,8 +95,7 @@ public class UsersManagementService {
      * @throws RuntimeException If there is an error while activating the account on the server.
      */
     public void ActiveAccount(int id) {
-        String token = this.sessionService.getToken();
-        this.webClientService.authorizedHttpPutJson("/api/accounts/activate/" + id, " ", token);
+        accountRestService.activateAccount(id);
     }
 
     /**
@@ -168,8 +105,7 @@ public class UsersManagementService {
      * @throws RuntimeException If there is an error while deactivating the account on the server.
      */
     public void InActiveAccount(int id) {
-        String token = this.sessionService.getToken();
-        this.webClientService.authorizedHttpPutJson("/api/accounts/deactivate/" + id, " ", token);
+        accountRestService.deactivateAccount(id);
     }
 
     /**
@@ -180,13 +116,7 @@ public class UsersManagementService {
      * @throws RuntimeException If there is an error while retrieving the account from the server.
      */
     public Account findAccountByUsername(String username) {
-        String token = this.sessionService.getToken();
-        String response = this.webClientService.authorizedHttpGetJson("/api/accounts/search?username=" + username, token);
-        try {
-            return this.objectMapper.readValue(response, Account.class);
-        } catch (IOException e) {
-            LOGGER.error("Error when find account by username: " + username);
-            throw new RuntimeException(e);
-        }
+        return accountRestService.findByUsername(username);
     }
+
 }

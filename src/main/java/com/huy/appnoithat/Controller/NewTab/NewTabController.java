@@ -1,10 +1,10 @@
 package com.huy.appnoithat.Controller.NewTab;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
+import com.huy.appnoithat.DataModel.NtFile.DataPackage;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
+import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.LuaChonNoiThatScene;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import javafx.event.ActionEvent;
@@ -13,21 +13,30 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class NewTabController implements Initializable {
+    final static Logger LOGGER = LogManager.getLogger(NewTabController.class);
     @FXML
     private TabPane tabPane;
-    private PersistenceStorageService persistenceStorageService;
+    private final PersistenceStorageService persistenceStorageService;
     private Stage currentStage;
+    private List<TabContent> currentlyOpenTab;
     public NewTabController() {
         persistenceStorageService = PersistenceStorageService.getInstance();
+        currentlyOpenTab = new ArrayList<>();
     }
     @FXML
     void newTabButtonHandler(ActionEvent event) {
@@ -35,11 +44,7 @@ public class NewTabController implements Initializable {
     }
     private void createNewTab() {
         if (tabPane.getSelectionModel().getSelectedItem() != null) {
-            Node nodeFromCurrentTab = tabPane.getSelectionModel().getSelectedItem().getContent();
-            Tab newtab = createNewTab(TabState.BLANK_TAB, null);
-            duplicateTruongThongTin(nodeFromCurrentTab, newtab.getContent());
-        } else {
-            Tab newtab = createNewTab(TabState.BLANK_TAB, null);
+            createNewTab(TabState.BLANK_TAB, null);
         }
     }
     private LuaChonNoiThatScene createNoiThatScene() {
@@ -47,9 +52,9 @@ public class NewTabController implements Initializable {
         luaChonNoiThatScene.getLuaChonNoiThatController().init(currentStage);
         return luaChonNoiThatScene;
     }
-    private Tab createNewTab(TabState tabState, String importDirectory) {
+    private TabContent createNewTab(TabState tabState, String importDirectory) {
         LuaChonNoiThatScene luaChonNoiThatScene = createNoiThatScene();
-        String tabName = "";
+        String tabName;
         if (TabState.IMPORT_TAB == tabState) {
             tabName = new File(importDirectory).getAbsoluteFile().getName();
         }
@@ -57,16 +62,21 @@ public class NewTabController implements Initializable {
             tabName = "Tab mới";
         }
         Tab newTab = setUpTab(tabName);
-        Node root = luaChonNoiThatScene.getRoot();
-        newTab.setContent(root);
+        newTab.setContent(luaChonNoiThatScene.getRoot());
         if (tabState == TabState.IMPORT_TAB) {
             luaChonNoiThatScene.getLuaChonNoiThatController().importFile(importDirectory);
         }
-        else {
-            initSavedThongTinCongTy(newTab.getContent(), persistenceStorageService.getThongTinCongTy());
+        else if (tabState == TabState.BLANK_TAB) {
+            luaChonNoiThatScene.getLuaChonNoiThatController().importData(
+                    new DataPackage(persistenceStorageService.getThongTinCongTy(), null,
+                            persistenceStorageService.getNoteArea(), null, null
+                    )
+            );
         }
         addNewTabToPane(newTab);
-        return newTab;
+        TabContent tabContent = new TabContent(newTab, luaChonNoiThatScene, luaChonNoiThatScene.getLuaChonNoiThatController());
+        currentlyOpenTab.add(tabContent);
+        return tabContent;
     }
 
     private void addNewTabToPane(Tab newTab) {
@@ -90,10 +100,12 @@ public class NewTabController implements Initializable {
             dialog.setContentText("Nhập tên mới:");
             dialog.showAndWait().ifPresent(newTab::setText);
         });
-
         contextMenu.getItems().add(nhanBanMenuItem);
         contextMenu.getItems().add(renameTab);
         newTab.contextMenuProperty().set(contextMenu);
+        newTab.setOnClosed(event -> {
+            currentlyOpenTab.removeIf(tabContent -> tabContent.getTab().equals(newTab));
+        });
         return newTab;
     }
 
@@ -102,90 +114,18 @@ public class NewTabController implements Initializable {
     }
 
     private void duplicateTab(ActionEvent action, Tab currentTab) {
-        Node nodeFromCurrentTab = currentTab.getContent();
-        Tab newTab = setUpTab(null);
-        LuaChonNoiThatScene luaChonNoiThatScene = createNoiThatScene();
-        Node root = luaChonNoiThatScene.getRoot();
-        newTab.setContent(duplicateContent(nodeFromCurrentTab, root));
-        addNewTabToPane(newTab);
-    }
-
-    private Node duplicateContent(Node nodeFromCurrentTab, Node nodeFromNewTab) {
-        duplicateTruongThongTin(nodeFromCurrentTab, nodeFromNewTab);
-        duplicateBangNoiThat(nodeFromCurrentTab, nodeFromNewTab);
-        duplicateBangThanhToan(nodeFromCurrentTab, nodeFromNewTab);
-        return nodeFromNewTab;
-    }
-
-    private void duplicateTruongThongTin(Node nodeFromCurrentTab, Node nodeFromNewTab) {
-        TextField TenCongTy = (TextField) nodeFromCurrentTab.lookup("#TenCongTy");
-        TextField VanPhong = (TextField) nodeFromCurrentTab.lookup("#VanPhong");
-        TextField DiaChiXuong = (TextField) nodeFromCurrentTab.lookup("#DiaChiXuong");
-        TextField DienThoaiCongTy = (TextField) nodeFromCurrentTab.lookup("#DienThoaiCongTy");
-        TextField Email = (TextField) nodeFromCurrentTab.lookup("#Email");
-
-        ImageView imageView = (ImageView) nodeFromCurrentTab.lookup("#ImageView");
-
-        TextArea noteTextArea = (TextArea) nodeFromCurrentTab.lookup("#noteTextArea");
-
-        TextField DuplicateTenCongTy = (TextField) nodeFromNewTab.lookup("#TenCongTy");
-        DuplicateTenCongTy.setText(TenCongTy.getText());
-        TextField DuplicateVanPhong = (TextField) nodeFromNewTab.lookup("#VanPhong");
-        DuplicateVanPhong.setText(VanPhong.getText());
-        TextField DuplicateDiaChiXuong = (TextField) nodeFromNewTab.lookup("#DiaChiXuong");
-        DuplicateDiaChiXuong.setText(DiaChiXuong.getText());
-        TextField DuplicateDienThoaiCongTy = (TextField) nodeFromNewTab.lookup("#DienThoaiCongTy");
-        DuplicateDienThoaiCongTy.setText(DienThoaiCongTy.getText());
-        TextField DuplicateEmail = (TextField) nodeFromNewTab.lookup("#Email");
-        DuplicateEmail.setText(Email.getText());
-        ImageView DuplicateImageView = (ImageView) nodeFromNewTab.lookup("#ImageView");
-        DuplicateImageView.setImage(imageView.getImage());
-
-        TextArea DuplicateNoteTextArea = (TextArea) nodeFromNewTab.lookup("#noteTextArea");
-        DuplicateNoteTextArea.setText(noteTextArea.getText());
-    }
-
-    private void initSavedThongTinCongTy(Node nodeFromCurrentTab, ThongTinCongTy thongTinCongTy) {
-        TextField TenCongTy = (TextField) nodeFromCurrentTab.lookup("#TenCongTy");
-        TextField VanPhong = (TextField) nodeFromCurrentTab.lookup("#VanPhong");
-        TextField DiaChiXuong = (TextField) nodeFromCurrentTab.lookup("#DiaChiXuong");
-        TextField DienThoaiCongTy = (TextField) nodeFromCurrentTab.lookup("#DienThoaiCongTy");
-        TextField Email = (TextField) nodeFromCurrentTab.lookup("#Email");
-
-        TenCongTy.setText(thongTinCongTy.getTenCongTy());
-        VanPhong.setText(thongTinCongTy.getDiaChiVanPhong());
-        DiaChiXuong.setText(thongTinCongTy.getDiaChiXuong());
-        DienThoaiCongTy.setText(thongTinCongTy.getSoDienThoai());
-        Email.setText(thongTinCongTy.getEmail());
-    }
-    private void duplicateBangNoiThat(Node nodeFromCurrentTab, Node nodeFromNewTab) {
-        TreeTableView<BangNoiThat> bangNoiThat = (TreeTableView<BangNoiThat>) nodeFromCurrentTab.lookup("#TableNoiThat");
-        TreeTableView<BangNoiThat> DuplicateBangNoiThat = (TreeTableView<BangNoiThat>) nodeFromNewTab.lookup("#TableNoiThat");
-        DuplicateBangNoiThat.setRoot(deepcopy(bangNoiThat.getRoot()));
-    }
-    private void duplicateBangThanhToan(Node nodeFromCurrentTab, Node nodeFromNewTab) {
-        TableView<BangThanhToan> bangThanhToan = (TableView<BangThanhToan>) nodeFromCurrentTab.lookup("#bangThanhToan");
-        TableView<BangThanhToan> DuplicateBangThanhToan = (TableView<BangThanhToan>) nodeFromNewTab.lookup("#bangThanhToan");
-        DuplicateBangThanhToan.getItems().clear();
-        DuplicateBangThanhToan.getItems().addAll(bangThanhToan.getItems());
-    }
-
-    private TreeItem<BangNoiThat> deepcopy(TreeItem<BangNoiThat> item) {
-        TreeItem<BangNoiThat> copy = createNewItem(item.getValue());
-        for (TreeItem<BangNoiThat> child : item.getChildren()) {
-            copy.getChildren().add(deepcopy(child));
+        TabContent currentTabContent = currentlyOpenTab.stream().filter(tabContent -> tabContent.getTab().equals(currentTab)).findFirst().orElse(null);
+        if (currentTabContent == null) {
+            throw new RuntimeException("Tab not found");
         }
-        return copy;
+        TabContent newTab = createNewTab(TabState.DUPLICATE_TAB, null);
+        duplicateContent(currentTabContent, newTab);
     }
 
-    private TreeItem<BangNoiThat> createNewItem(BangNoiThat item) {
-        TreeItem<BangNoiThat> newItem = new TreeItem<>(item);
-        newItem.setExpanded(true);
-        newItem.addEventHandler(TreeItem.branchCollapsedEvent(),
-                (EventHandler<TreeItem.TreeModificationEvent<String>>) event -> event.getTreeItem().setExpanded(true));
-        return newItem;
+    private void duplicateContent(TabContent CurrentTab, TabContent dupTab) {
+        DataPackage sourceDataPackage = CurrentTab.getLuaChonNoiThatController().exportData();
+        dupTab.getLuaChonNoiThatController().importData(sourceDataPackage);
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tabPane.getTabs().clear();

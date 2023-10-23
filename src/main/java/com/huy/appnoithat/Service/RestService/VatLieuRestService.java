@@ -137,4 +137,9 @@ public class VatLieuRestService {
             throw new RuntimeException(e);
         }
     }
+    public void copySampleDataFromAdmin(int parentId) {
+        String token = this.userSessionService.getToken();
+        String path = String.format(BASE_ENDPOINT + "/copySampleData" + "?parentId=%d", parentId);
+        this.webClientService.authorizedHttpGetJson(path, token);
+    }
 }

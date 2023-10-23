@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Service.LuaChonNoiThat;
 
 import com.huy.appnoithat.Controller.FileNoiThatExplorer.RecentFile;
-import com.huy.appnoithat.DataModel.DataPackage;
+import com.huy.appnoithat.DataModel.NtFile.DataPackage;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
@@ -18,11 +18,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class LuaChonNoiThatService {
     final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatService.class);
@@ -107,18 +106,21 @@ public class LuaChonNoiThatService {
      * @param dataPackage  The data package to export.
      * @return True if the export operation is successful, false otherwise.
      */
-    public boolean exportFile(File selectedFile, FileType fileType, DataPackage dataPackage) {
+    public boolean exportFile(File selectedFile, FileType fileType, DataPackage dataPackage, Consumer<Boolean> target) {
         ExportFile exportFile = fileExportService.getExportService(selectedFile, fileType);
         exportFile.setUpDataForExport(dataPackage);
-        try {
-            exportFile.export(selectedFile);
-        } catch (IOException e) {
-            LOGGER.error("Some thing is wrong with the export operation", e);
-            return false;
-        }
-        if (fileType == FileType.NT) {
-            fileNoiThatExplorerService.addRecentFile(new RecentFile(selectedFile.getAbsolutePath(), System.currentTimeMillis()));
-        }
+        new Thread(() -> {
+            try {
+                exportFile.export(selectedFile);
+                target.accept(true);
+            } catch (Exception e) {
+                LOGGER.error("Some thing is wrong with the export operation", e);
+                target.accept(false);
+            }
+            if (fileType == FileType.NT) {
+                fileNoiThatExplorerService.addRecentFile(new RecentFile(selectedFile.getAbsolutePath(), System.currentTimeMillis()));
+            }
+        }).start();
         return true;
     }
 
@@ -132,5 +134,4 @@ public class LuaChonNoiThatService {
         ExportFile exportFile = fileExportService.getExportService(selectedFile, FileType.NT);
         return exportFile.importData(selectedFile);
     }
-
 }

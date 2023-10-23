@@ -1,14 +1,17 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
 
+import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
+import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyNoiThatService;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyPhongCachService;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -40,6 +43,9 @@ public class DatabaseModifyPhongCachController implements Initializable {
     private ListView<NoiThat> childrenList;
     @FXML
     private ListView<PhongCachNoiThat> listView;
+    @FXML
+    private Button getSampleDataButton;
+
     private final DatabaseModifyPhongCachService databaseModifyPhongCachService;
     private final DatabaseModifyNoiThatService databaseModifyNoiThatService;
     private final ObservableList<PhongCachNoiThat> phongCachNoiThatObservableList;
@@ -166,15 +172,20 @@ public class DatabaseModifyPhongCachController implements Initializable {
     }
     @FXML
     void onKeyPressed(KeyEvent event) {
-//        if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {
-//            addButton.fire();
-//        }
-//        else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
-//            deleteButton.fire();
-//        }
-//        else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
-//            nextButton.fire();
-//        }
+        if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {
+            addButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
+            deleteButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
+            nextButton.fire();
+        }
+    }
+    @FXML
+    void FetchSampleData(ActionEvent event) {
+        databaseModifyPhongCachService.fetchSamplePhongCachData();
+        refresh();
     }
 
 
@@ -187,6 +198,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        getSampleDataButton.disableProperty().bind(Bindings.size(phongCachNoiThatObservableList).greaterThan(0));
         // Hides the backButton initially
         backButton.setVisible(false);
 

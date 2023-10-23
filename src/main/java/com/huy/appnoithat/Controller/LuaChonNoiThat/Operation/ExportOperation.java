@@ -6,13 +6,13 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.DataModel.*;
+import com.huy.appnoithat.DataModel.NtFile.DataPackage;
 import com.huy.appnoithat.Enums.FileType;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeTableView;
+import javafx.application.Platform;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
@@ -34,6 +34,7 @@ public class ExportOperation {
     private TableView<BangThanhToan> bangThanhToan;
     @NonNull
     private TextArea noteTextArea;
+    private StackPane loadingPane;
     LuaChonNoiThatController luaChonNoiThatController;
     public ExportOperation(LuaChonNoiThatController luaChonNoiThatController) {
         TenCongTy = luaChonNoiThatController.getTenCongTy();
@@ -50,26 +51,30 @@ public class ExportOperation {
         TableNoiThat = luaChonNoiThatController.getTableNoiThat();
         bangThanhToan = luaChonNoiThatController.getBangThanhToan();
         noteTextArea = luaChonNoiThatController.getNoteTextArea();
-
+        loadingPane = luaChonNoiThatController.getLoadingPane();
         this.luaChonNoiThatController = luaChonNoiThatController;
     }
-
-    public String exportFile(FileType fileType) {
-        File selectedFile = PopupUtils.fileSaver();
-        if (selectedFile == null) {
-            return null;
-        }
-        return exportFile(fileType, selectedFile, true);
+    private void showLoading() {
+        loadingPane.setVisible(true);
+        loadingPane.setDisable(false);
+        ProgressIndicator progressIndicator = new ProgressIndicator();
+        progressIndicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+        progressIndicator.setMinHeight(200);
+        progressIndicator.setMinWidth(200);
+        Label textField = new Label("Đang xuất tệp...");
+        textField.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI';");
+        loadingPane.getChildren().addAll(progressIndicator, textField);
+        loadingPane.toFront();
     }
-    public String exportFile(FileType fileType, File selectedFile, boolean showPopup) {
-        DataPackage dataPackage = new DataPackage(
-                getThongTinCongTy(),
-                getThongTinKhachHang(),
-                noteTextArea.getText(),
-                getThongTinNoiThatList(),
-                getThongTinThanhToan()
-        );
-        boolean result = new LuaChonNoiThatService().exportFile(selectedFile, fileType, dataPackage);
+    private void hideLoading(Boolean result, boolean showPopup, FileType fileType) {
+        Platform.runLater(() -> {
+            loadingPane.setVisible(false);
+            loadingPane.setDisable(true);
+            loadingPane.getChildren().clear();
+            showResult(result, showPopup, fileType);
+        });
+    }
+    private void showResult(Boolean result, boolean showPopup, FileType fileType) {
         if (!result) {
             if (showPopup) {
                 if (fileType == FileType.NT) {
@@ -79,7 +84,6 @@ public class ExportOperation {
                     PopupUtils.throwErrorSignal("Xuất file thất bại");
                 }
             }
-            return null;
         }
         else {
             if (showPopup) {
@@ -91,8 +95,23 @@ public class ExportOperation {
                 }
             }
         }
+    }
+    public String exportFile(FileType fileType) {
+        File selectedFile = PopupUtils.fileSaver();
+        if (selectedFile == null) {
+            return null;
+        }
+        return exportFile(fileType, selectedFile, true);
+    }
+    public String exportFile(FileType fileType, File selectedFile, boolean showPopup) {
+        DataPackage dataPackage = exportData();
+        showLoading();
+        new LuaChonNoiThatService().exportFile(selectedFile, fileType, dataPackage, (exportResult) -> {
+            hideLoading(exportResult, showPopup, fileType);
+        });
         return selectedFile.getAbsolutePath();
     }
+
     /**
      * THis function will return a list of ThongTinNoiThat from item root from the table
      *
@@ -158,6 +177,16 @@ public class ExportOperation {
                 DienThoaiKhachHang.getText(),
                 NgayLapBaoGia.getText(),
                 SanPham.getText()
+        );
+    }
+
+    public DataPackage exportData() {
+        return new DataPackage(
+                getThongTinCongTy(),
+                getThongTinKhachHang(),
+                noteTextArea.getText(),
+                getThongTinNoiThatList(),
+                getThongTinThanhToan()
         );
     }
 }

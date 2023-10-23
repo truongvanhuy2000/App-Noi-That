@@ -1,7 +1,6 @@
 package com.huy.appnoithat.DataModel.NtFile;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.huy.appnoithat.DataModel.DataPackage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

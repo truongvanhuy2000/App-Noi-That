@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Service.FileExport;
 
-import com.huy.appnoithat.DataModel.DataPackage;
+import com.huy.appnoithat.DataModel.NtFile.DataPackage;
 
 import java.io.File;
 import java.io.IOException;

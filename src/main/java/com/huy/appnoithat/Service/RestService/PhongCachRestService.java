@@ -151,4 +151,10 @@ public class PhongCachRestService {
         this.webClientService.authorizedHttpDeleteJson(path, "", token);
     }
 
+    public void copySampleDataFromAdmin() {
+        String path = String.format(BASE_ENDPOINT + "/copySampleData");
+        String token = this.userSessionService.getToken();
+        this.webClientService.authorizedHttpGetJson(path, token);
+    }
+
 }
