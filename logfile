@@ -2947,3 +2947,18 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No ser
 [ERROR] 23-10-2023 00:49:33 [JavaFX Application Thread] GlobalExceptionHandler:30 - java.lang.reflect.InvocationTargetException
 [INFO ] 23-10-2023 00:50:32 [main] HelloApplication:35 - Start application
 [INFO ] 23-10-2023 00:50:34 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 23-10-2023 16:46:48 [main] HelloApplication:35 - Start application
+[INFO ] 23-10-2023 16:47:20 [main] HelloApplication:35 - Start application
+[INFO ] 23-10-2023 16:47:21 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 23-10-2023 17:02:14 [main] HelloApplication:35 - Start application
+[INFO ] 23-10-2023 17:02:15 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 23-10-2023 17:20:53 [main] HelloApplication:35 - Start application
+[INFO ] 23-10-2023 17:21:07 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 23-10-2023 17:21:22 [JavaFX Application Thread] LuaChonNoiThatController:328 - Close window
+[INFO ] 23-10-2023 17:22:21 [main] HelloApplication:35 - Start application
+[INFO ] 23-10-2023 17:22:22 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 23-10-2023 17:41:43 [main] HelloApplication:35 - Start application
+[INFO ] 23-10-2023 17:41:46 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 23-10-2023 17:42:22 [JavaFX Application Thread] LuaChonNoiThatController:328 - Close window
+[INFO ] 23-10-2023 17:47:32 [main] HelloApplication:35 - Start application
+[INFO ] 23-10-2023 17:47:34 [JavaFX Application Thread] HomeController:118 - Login as kim with role User

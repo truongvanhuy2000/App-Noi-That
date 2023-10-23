@@ -88,7 +88,7 @@ public class HomeController {
         PCPane.getChildren().clear();
 
         // Disable all buttons by default
-//        toggleButton(false, false, false);
+        toggleButton(false, false, false);
 
         // Set actions for different buttons
         QuanLyNguoiDungButton.setOnAction(this::OnClickQuanLyNguoiDung);
@@ -101,20 +101,20 @@ public class HomeController {
 
         // Determine user role and show appropriate buttons and actions
         String role = sessionService.getLoginAccount().getRoleList().contains("ROLE_ADMIN") ? "Admin" : "User";
-//        switch (role) {
-//            // Enable Admin-related buttons and trigger the QuanLyNguoiDungButton action
-//            case "Admin" -> {
-//                toggleButton(false, true, false);
-//                QuanLyNguoiDungButton.fire();
-//            }
-//            case "User" -> {
-//                // Enable User-related buttons and trigger the LuaChonNoiThatButton action
-//                toggleButton(true, false, true);
-//                LuaChonNoiThatButton.fire();
-//            }
-//            default -> {
-//            }
-//        }
+        switch (role) {
+            // Enable Admin-related buttons and trigger the QuanLyNguoiDungButton action
+            case "Admin" -> {
+                toggleButton(false, true, true);
+                QuanLyNguoiDungButton.fire();
+            }
+            case "User" -> {
+                // Enable User-related buttons and trigger the LuaChonNoiThatButton action
+                toggleButton(true, false, true);
+                LuaChonNoiThatButton.fire();
+            }
+            default -> {
+            }
+        }
         LOGGER.info("Login as " + username + " with role " + role);
     }
 

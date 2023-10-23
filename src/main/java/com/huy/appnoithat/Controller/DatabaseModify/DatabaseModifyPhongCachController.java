@@ -1,10 +1,12 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
 
+import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
+import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyNoiThatService;
@@ -166,15 +168,15 @@ public class DatabaseModifyPhongCachController implements Initializable {
     }
     @FXML
     void onKeyPressed(KeyEvent event) {
-//        if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {
-//            addButton.fire();
-//        }
-//        else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
-//            deleteButton.fire();
-//        }
-//        else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
-//            nextButton.fire();
-//        }
+        if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {
+            addButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
+            deleteButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
+            nextButton.fire();
+        }
     }
     @FXML
     void FetchSampleData(ActionEvent event) {

@@ -1,10 +1,7 @@
 package com.huy.appnoithat.Controller.NewTab;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.LuaChonNoiThatScene;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
@@ -69,7 +66,7 @@ public class NewTabController implements Initializable {
             luaChonNoiThatScene.getLuaChonNoiThatController().importFile(importDirectory);
         }
         else {
-            initSavedThongTinCongTy(newTab.getContent(), persistenceStorageService.getThongTinCongTy());
+            initSavedThongTin(newTab.getContent());
         }
         addNewTabToPane(newTab);
         return newTab;
@@ -154,22 +151,27 @@ public class NewTabController implements Initializable {
         DuplicateNoteTextArea.setText(noteTextArea.getText());
     }
 
-    private void initSavedThongTinCongTy(Node nodeFromCurrentTab, ThongTinCongTy thongTinCongTy) {
+    private void initSavedThongTin(Node nodeFromCurrentTab) {
         if (nodeFromCurrentTab == null) {
             return;
         }
+        ThongTinCongTy thongTinCongTy = persistenceStorageService.getThongTinCongTy();
+        String noteArea = persistenceStorageService.getNoteArea();
+
         TextField TenCongTy = (TextField) nodeFromCurrentTab.lookup("#TenCongTy");
         TextField VanPhong = (TextField) nodeFromCurrentTab.lookup("#VanPhong");
         TextField DiaChiXuong = (TextField) nodeFromCurrentTab.lookup("#DiaChiXuong");
         TextField DienThoaiCongTy = (TextField) nodeFromCurrentTab.lookup("#DienThoaiCongTy");
         TextField Email = (TextField) nodeFromCurrentTab.lookup("#Email");
         ImageView imageView = (ImageView) nodeFromCurrentTab.lookup("#ImageView");
+        TextArea noteTextArea = (TextArea) nodeFromCurrentTab.lookup("#noteTextArea");
 
         TenCongTy.setText(thongTinCongTy.getTenCongTy());
         VanPhong.setText(thongTinCongTy.getDiaChiVanPhong());
         DiaChiXuong.setText(thongTinCongTy.getDiaChiXuong());
         DienThoaiCongTy.setText(thongTinCongTy.getSoDienThoai());
         Email.setText(thongTinCongTy.getEmail());
+        noteTextArea.setText(noteArea);
         try {
             imageView.setImage(new Image(new ByteArrayInputStream(thongTinCongTy.getLogo().readAllBytes())));
         } catch (IOException e) {

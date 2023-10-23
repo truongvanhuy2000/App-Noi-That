@@ -9,7 +9,9 @@ public class Config {
         public static final String SESSION_DIRECTORY =
                 Paths.get(CURRENT_DIRECTORY, "Data", "UserSession", "session").toString();
         public static final String COMPANY_INFO_DIRECTORY =
-                Paths.get(CURRENT_DIRECTORY, "Data", "CompanyInfo", "info.json").toString();
+                Paths.get(CURRENT_DIRECTORY, "Data", "PersistenceData", "info.json").toString();
+        public static final String NOTE_AREA_DIRECTORY =
+                Paths.get(CURRENT_DIRECTORY, "Data", "PersistenceData", "note.json").toString();;
     }
 
     public static class FILE_EXPORT {

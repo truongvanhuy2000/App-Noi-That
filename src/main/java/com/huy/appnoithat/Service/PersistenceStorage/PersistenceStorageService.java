@@ -125,4 +125,21 @@ public class PersistenceStorageService {
             throw new RuntimeException(e);
         }
     }
+
+    public void setNoteArea(String noteArea) {
+        try {
+            objectMapper.writeValue(new File(Config.USER.NOTE_AREA_DIRECTORY), noteArea);
+        } catch (IOException e) {
+            LOGGER.error("Failed to write note area" + e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+    public String getNoteArea() {
+        try {
+            return objectMapper.readValue(new File(Config.USER.NOTE_AREA_DIRECTORY), String.class);
+        } catch (IOException e) {
+            LOGGER.error("Failed to read note area" + e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
 }

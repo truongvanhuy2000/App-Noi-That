@@ -77,7 +77,7 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private TableView<BangThanhToan> bangThanhToan;
     @FXML
-    private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs, MenuItemSaveCompanyInfo;
+    private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs, MenuItemSaveCompanyInfo, MenuItemSaveNoteArea;
     private ByteArrayOutputStream imageStream;
     private State currentState;
     @Setter
@@ -141,7 +141,17 @@ public class LuaChonNoiThatController implements Initializable {
         else if (source == MenuItemSaveCompanyInfo) {
             saveThongTinCongTy();
         }
+        else if (source == MenuItemSaveNoteArea) {
+            saveNoteArea();
+        }
     }
+
+    private void saveNoteArea() {
+        String noteArea = noteTextArea.getText();
+        persistenceStorageService.setNoteArea(noteArea);
+        PopupUtils.throwSuccessSignal("Lưu ghi chú thành công");
+    }
+
     private void handleDeleteAction() {
         if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
             return;

@@ -1,9 +1,11 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
+import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
+import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Scene.DatabaseModify.ChangeProductSpecificationScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyThongSoService;
@@ -18,6 +20,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -280,5 +283,17 @@ public class DatabaseModifyVatLieuController implements Initializable {
             if (param.getValue() == null) return null;
             return new SimpleObjectProperty<>(param.getValue().getDon_vi());
         });
+    }
+    @FXML
+    void onKeyPressed(KeyEvent event) {
+        if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {
+            addButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
+            deleteButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
+            nextButton.fire();
+        }
     }
 }
