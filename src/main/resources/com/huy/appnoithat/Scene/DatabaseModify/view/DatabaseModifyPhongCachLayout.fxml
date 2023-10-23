@@ -37,7 +37,7 @@
                      </children>
                   </HBox>
                     <ListView fx:id="listView" editable="true" onKeyPressed="#onKeyPressed" prefHeight="574.0" prefWidth="687.0" VBox.vgrow="ALWAYS" />
-                  <Button minWidth="125.0" mnemonicParsing="false" onAction="#FetchSampleData" prefHeight="24.0" text="Lấy dữ liệu mẫu" VBox.vgrow="ALWAYS" />
+                  <Button fx:id="getSampleDataButton" minWidth="125.0" mnemonicParsing="false" onAction="#FetchSampleData" prefHeight="24.0" text="Lấy dữ liệu mẫu" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
             <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">

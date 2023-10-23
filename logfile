@@ -2962,3 +2962,12 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No ser
 [INFO ] 23-10-2023 17:42:22 [JavaFX Application Thread] LuaChonNoiThatController:328 - Close window
 [INFO ] 23-10-2023 17:47:32 [main] HelloApplication:35 - Start application
 [INFO ] 23-10-2023 17:47:34 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 23-10-2023 18:58:54 [main] HelloApplication:35 - Start application
+[ERROR] 23-10-2023 18:58:55 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk4MDU2NDY3LCJleHAiOjQyOTAwNTY0Njd9.8M-6eyHGZUcDp4sLKIN3cBK1oEjGPlglJzKSW1oKiFNkuIhwfpxf1liK5KAsjSpGyTHzPqNjkJBi-7Q3D-XH9g null
+[INFO ] 23-10-2023 19:05:19 [main] HelloApplication:35 - Start application
+[INFO ] 23-10-2023 19:05:23 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 23-10-2023 19:05:42 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 23-10-2023 19:10:58 [main] HelloApplication:35 - Start application
+[INFO ] 23-10-2023 19:11:18 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 23-10-2023 19:14:30 [main] HelloApplication:35 - Start application
+[INFO ] 23-10-2023 19:14:33 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin

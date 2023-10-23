@@ -11,6 +11,7 @@ import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyNoiThatService;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyPhongCachService;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -42,6 +43,9 @@ public class DatabaseModifyPhongCachController implements Initializable {
     private ListView<NoiThat> childrenList;
     @FXML
     private ListView<PhongCachNoiThat> listView;
+    @FXML
+    private Button getSampleDataButton;
+
     private final DatabaseModifyPhongCachService databaseModifyPhongCachService;
     private final DatabaseModifyNoiThatService databaseModifyNoiThatService;
     private final ObservableList<PhongCachNoiThat> phongCachNoiThatObservableList;
@@ -194,6 +198,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        getSampleDataButton.disableProperty().bind(Bindings.size(phongCachNoiThatObservableList).greaterThan(0));
         // Hides the backButton initially
         backButton.setVisible(false);
 

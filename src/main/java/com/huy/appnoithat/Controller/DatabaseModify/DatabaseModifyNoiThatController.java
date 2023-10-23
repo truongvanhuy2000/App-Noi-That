@@ -11,6 +11,7 @@ import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyHangMucService;
 import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyNoiThatService;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,7 +35,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
     @FXML
     private Label Title;
     @FXML
-    private Button addButton, backButton, deleteButton, nextButton;
+    private Button addButton, backButton, deleteButton, nextButton, getSampleDataButton;
     @FXML
     private ListView<HangMuc> childrenList;
     @FXML
@@ -200,6 +201,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        getSampleDataButton.disableProperty().bind(Bindings.size(noiThatObservableList).greaterThan(0));
         Title.setText("Danh sách nội thất");
         listView.setItems(noiThatObservableList);
         listView.setEditable(true);
