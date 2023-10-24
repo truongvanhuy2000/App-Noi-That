@@ -2690,3 +2690,28 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 24-10-2023 01:11:06 [JavaFX Application Thread] LuaChonNoiThatController:341 - Close window
 [INFO ] 24-10-2023 01:11:18 [Thread-4] ExportFile:91 - Exporting to XLSX file
 [INFO ] 24-10-2023 01:11:20 [JavaFX Application Thread] LuaChonNoiThatController:341 - Close window
+[INFO ] 24-10-2023 10:34:10 [main] HelloApplication:35 - Start application
+[ERROR] 24-10-2023 10:34:10 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk4MDgzOTg0LCJleHAiOjQyOTAwODM5ODR9.1Pw_mXJ_L5cp5V_hTKvVNN2uBwsEScTRNpHTjZ-zFkboh4lfzpe9USGtOFUlM1likXYdMCFg0qJFcPUuFy-1MQ null
+[INFO ] 24-10-2023 10:38:18 [main] HelloApplication:35 - Start application
+[INFO ] 24-10-2023 10:38:21 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 24-10-2023 11:20:43 [main] HelloApplication:35 - Start application
+[INFO ] 24-10-2023 11:20:45 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 24-10-2023 11:26:15 [main] HelloApplication:35 - Start application
+[INFO ] 24-10-2023 11:26:16 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 24-10-2023 11:28:07 [main] HelloApplication:35 - Start application
+[INFO ] 24-10-2023 11:28:08 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 24-10-2023 11:28:40 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 24-10-2023 11:29:05 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 24-10-2023 11:29:58 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 24-10-2023 11:31:07 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 24-10-2023 11:32:49 [main] HelloApplication:35 - Start application
+[INFO ] 24-10-2023 11:32:50 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 24-10-2023 11:32:58 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 24-10-2023 11:35:51 [JavaFX Application Thread] LuaChonNoiThatController:341 - Close window
+[INFO ] 24-10-2023 11:41:19 [main] HelloApplication:35 - Start application
+[INFO ] 24-10-2023 11:41:21 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 24-10-2023 11:43:20 [main] HelloApplication:35 - Start application
+[INFO ] 24-10-2023 11:43:22 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 24-10-2023 13:36:51 [main] HelloApplication:35 - Start application
+[INFO ] 24-10-2023 13:36:52 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 24-10-2023 13:37:17 [JavaFX Application Thread] LuaChonNoiThatController:341 - Close window
