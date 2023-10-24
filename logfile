@@ -2690,3 +2690,70 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 24-10-2023 01:11:06 [JavaFX Application Thread] LuaChonNoiThatController:341 - Close window
 [INFO ] 24-10-2023 01:11:18 [Thread-4] ExportFile:91 - Exporting to XLSX file
 [INFO ] 24-10-2023 01:11:20 [JavaFX Application Thread] LuaChonNoiThatController:341 - Close window
+[INFO ] 25-10-2023 00:19:05 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:19:10 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:19:14 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:19:28 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:21:38 [JavaFX Application Thread] LuaChonNoiThatController:341 - Close window
+[INFO ] 25-10-2023 00:22:21 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:22:24 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:22:28 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:22:43 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:23:03 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:23:06 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:23:12 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:23:47 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:25:28 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:25:30 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:25:33 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:25:44 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:28:11 [JavaFX Application Thread] LuaChonNoiThatController:341 - Close window
+[INFO ] 25-10-2023 00:33:05 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:33:08 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:33:13 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:33:23 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:33:43 [JavaFX Application Thread] LuaChonNoiThatController:341 - Close window
+[INFO ] 25-10-2023 00:34:15 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:34:18 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:34:20 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:34:29 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:35:48 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:35:50 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:36:07 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:36:15 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:36:39 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:36:41 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:36:44 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:36:51 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:37:06 [Thread-5] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:38:05 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:38:07 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:38:14 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:38:21 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:39:31 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:39:33 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:40:02 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:40:12 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:41:42 [Thread-5] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:42:06 [JavaFX Application Thread] LuaChonNoiThatController:341 - Close window
+[INFO ] 25-10-2023 00:42:40 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:42:42 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:43:14 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:43:27 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:43:56 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:43:58 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:44:02 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:44:13 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:44:27 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:44:29 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:44:35 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:44:42 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:47:36 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:47:38 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:47:40 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:47:51 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:59:16 [main] HelloApplication:35 - Start application
+[INFO ] 25-10-2023 00:59:19 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 25-10-2023 00:59:37 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 25-10-2023 00:59:46 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 25-10-2023 00:59:54 [JavaFX Application Thread] LuaChonNoiThatController:341 - Close window

@@ -14,7 +14,7 @@ module com.huy.appnoithat {
     requires org.apache.logging.log4j;
     requires java.desktop;
     requires com.fasterxml.jackson.datatype.jsr310;
-    requires spire.xls;
+    requires spire.xls.free;
 
     exports com.huy.appnoithat.Controller;
     opens com.huy.appnoithat.Controller to javafx.fxml;

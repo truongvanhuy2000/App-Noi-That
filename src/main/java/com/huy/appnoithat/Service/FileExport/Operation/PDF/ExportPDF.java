@@ -3,8 +3,8 @@ package com.huy.appnoithat.Service.FileExport.Operation.PDF;
 import com.huy.appnoithat.DataModel.NtFile.DataPackage;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
 import com.huy.appnoithat.Service.FileExport.Operation.Excel.ExportXLS;
+import com.spire.xls.FileFormat;
 import com.spire.xls.Workbook;
-import com.spire.xls.Worksheet;
 
 import java.io.*;
 
@@ -42,16 +42,18 @@ public class ExportPDF implements ExportFile {
         return null;
     }
     private void convertXLStoPDF(String directory){
-        Workbook workbook = new Workbook();
-        workbook.loadFromFile(directory);
-
-        //Set worksheets to fit to width when converting
-        workbook.getConverterSetting().setSheetFitToWidth(true);
-
-        //Get the first worksheet
-        Worksheet worksheet = workbook.getWorksheets().get(0);
-
-        //Convert to PDF and save the resulting document to a specified path
-        worksheet.saveToPdf(outputFile.getAbsolutePath());
+        try {
+            Workbook workbook = new Workbook();
+            workbook.loadFromFile(directory);
+            workbook.getConverterSetting().setSheetFitToWidth(true);
+            workbook.getConverterSetting().setYDpi(500);
+            //Get the first worksheet
+            //Convert to PDF and save the resulting document to a specified path
+            workbook.saveToFile("output/test.pdf", FileFormat.PDF);
+            workbook.dispose();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

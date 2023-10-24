@@ -41,8 +41,8 @@
         </dependency>
         <dependency>
             <groupId>e-iceblue</groupId>
-            <artifactId>spire.xls</artifactId>
-            <version>13.10.0</version>
+            <artifactId>spire.xls.free</artifactId>
+            <version>5.1.0</version>
         </dependency>
         <!-- Thanks for using https://jar-download.com -->
 
