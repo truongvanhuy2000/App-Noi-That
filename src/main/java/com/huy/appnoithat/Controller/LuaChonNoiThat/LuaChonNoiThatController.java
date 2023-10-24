@@ -119,6 +119,11 @@ public class LuaChonNoiThatController implements Initializable {
             TableNoiThat.getSelectionModel().clearSelection();
         }
     }
+
+    /**
+     * @param event
+     * @see javafx.event.ActionEvent
+     */
     @FXML
     void onClickMenuItem(ActionEvent event) {
         Object source = event.getSource();
