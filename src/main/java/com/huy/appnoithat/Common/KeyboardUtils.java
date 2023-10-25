@@ -14,7 +14,7 @@ public class KeyboardUtils {
             case DELETE -> {
                 return keyEvent.getCode().equals(KeyCode.DELETE);
             }
-            case LOGIN -> {
+            case LOGIN, COMMIT -> {
                 return keyEvent.getCode().equals(KeyCode.ENTER);
             }
             case EXIT, CLEAR_SELECTION -> {

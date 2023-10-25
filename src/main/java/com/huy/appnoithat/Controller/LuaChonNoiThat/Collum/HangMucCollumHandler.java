@@ -4,12 +4,15 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +20,7 @@ import java.util.List;
 public class HangMucCollumHandler {
     private final ObservableList<String> hangMucList;
     private final LuaChonNoiThatService luaChonNoiThatService;
-
+    final static Logger LOGGER = LogManager.getLogger(HangMucCollumHandler.class);
 
     /**
      * Constructs a HangMucCollumHandler with the given ObservableList of hangMucList.
@@ -37,11 +40,30 @@ public class HangMucCollumHandler {
      */
     public void onEditCommitHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
 //        System.out.println("Hang muc: " + event.getNewValue());
+        String stt = event.getRowValue().getValue().getSTT().getValue();
         String newValue = event.getNewValue();
         event.getRowValue().getValue().setHangMuc(newValue);
 //        event.getTreeTableView().getSelectionModel().clearSelection();
+//        if (Utils.isNumeric(stt)) {
+//            String firstVatLieu = getTheFirstVatLieu(event.getRowValue());
+//            if (firstVatLieu != null) {
+//                event.getRowValue().getValue().setVatLieu(firstVatLieu);
+//            }
+//        }
     }
-
+    private String getTheFirstVatLieu(TreeItem<BangNoiThat> currentItem) {
+        try {
+            String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
+            String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
+            String hangMuc = currentItem.getValue().getHangMuc().getValue();
+            List<String> items = Utils.getObjectNameList(luaChonNoiThatService.findVatLieuListBy(phongCach, noiThat, hangMuc));
+            return items.get(0);
+        } catch (NullPointerException e) {
+            PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
+            LOGGER.error("Error when get the first vat lieu item");
+            return null;
+        }
+    }
     /**
      * Handles the event when a cell in the 'HangMuc' TreeTableColumn is being edited.
      * Dynamically populates 'hangMucList' based on the type of the edited item (noi that, phong cach, or hang muc).

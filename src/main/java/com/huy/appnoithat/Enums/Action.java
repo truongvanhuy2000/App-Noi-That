@@ -8,4 +8,5 @@ public enum Action {
     CLEAR_SELECTION,
     ADD_NEW_ROW,
     NEXT_SCREEN,
+    COMMIT
 }

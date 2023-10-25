@@ -1,6 +1,8 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
+import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Enums.Action;
 import javafx.animation.PauseTransition;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
@@ -104,6 +106,14 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         comboBox.setOnMouseClicked((e) -> {
             comboBox.hide();
             showComboBoxAfter(200);
+        });
+        comboBox.setMaxHeight(Double.MAX_VALUE);
+        comboBox.setOnKeyPressed((key) -> {
+            if (KeyboardUtils.isRightKeyCombo(Action.COMMIT, key)) {
+                commitEdit(comboBox.getSelectionModel().getSelectedItem());
+                updateItem(comboBox.getSelectionModel().getSelectedItem(), false);
+                cancelEdit();
+            }
         });
         comboBox.getStyleClass().add("combo-border");
     }

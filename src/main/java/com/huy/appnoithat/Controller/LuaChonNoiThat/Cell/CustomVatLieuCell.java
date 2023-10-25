@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -54,7 +55,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         if (!isEmpty()) {
             super.startEdit();
             setGraphic(hBox);
-            showComboBoxAfter(100);
+            showComboBoxAfter(200);
         }
     }
 
@@ -85,13 +86,16 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
      */
     @Override
     public void updateItem(String item, boolean empty) {
+
         super.updateItem(item, empty);
         if (empty) {
+            System.out.println("Update item 1: ");
             super.setText(null);
             setGraphic(null);
             return;
         }
         if (isEditing()) {
+            System.out.println("Update item 2: ");
             if (comboBox != null) {
                 comboBox.setValue(super.getItem());
             }
@@ -99,6 +103,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
             setGraphic(hBox);
             comboBox.show();
         } else {
+            System.out.println("Update item 3: ");
             super.setText(super.getItem());
             setGraphic(null);
         }
@@ -124,7 +129,15 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
             }
         });
         comboBox.setOnMouseClicked((e) -> {
-            comboBox.hide();
+            showComboBoxAfter(200);
+        });
+        comboBox.setMaxHeight(Double.MAX_VALUE);
+        comboBox.setOnKeyPressed((key) -> {
+            if (KeyboardUtils.isRightKeyCombo(Action.COMMIT, key)) {
+                commitEdit(comboBox.getSelectionModel().getSelectedItem());
+                updateItem(comboBox.getSelectionModel().getSelectedItem(), false);
+                cancelEdit();
+            }
         });
     }
 
@@ -152,7 +165,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         view.setFitWidth(20);
         view.preserveRatioProperty().set(true);
         editButton.setGraphic(view);
-        editButton.setMaxSize(20, 20);
+//        editButton.setMaxSize(20, 20);
         editButton.setOnAction((e) -> {
             super.setText(null);
             textArea.setText(super.getItem());
@@ -164,7 +177,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         hBox.getChildren().add(comboBox);
 //        hBox.getChildren().add(editButton);
         hBox.setMaxWidth(Double.MAX_VALUE);
-        hBox.setMaxWidth(this.getWidth());
+        hBox.setMaxHeight(Double.MAX_VALUE);
     }
 
     /**
