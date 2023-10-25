@@ -1,12 +1,13 @@
 package com.huy.appnoithat.Service.FileExport.Operation.PDF;
-
+//import com.groupdocs.conversion.Converter;
+//import com.groupdocs.conversion.options.convert.PdfConvertOptions;
+import com.fasterxml.jackson.databind.util.Converter;
 import com.huy.appnoithat.DataModel.NtFile.DataPackage;
 import com.huy.appnoithat.Service.FileExport.ExportFile;
 import com.huy.appnoithat.Service.FileExport.Operation.Excel.ExportXLS;
-import com.spire.xls.FileFormat;
-import com.spire.xls.Workbook;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 public class ExportPDF implements ExportFile {
     ExportXLS exportXLS = new ExportXLS();
@@ -42,18 +43,14 @@ public class ExportPDF implements ExportFile {
         return null;
     }
     private void convertXLStoPDF(String directory){
-        try {
-            Workbook workbook = new Workbook();
-            workbook.loadFromFile(directory);
-            workbook.getConverterSetting().setSheetFitToWidth(true);
-            workbook.getConverterSetting().setYDpi(500);
-            //Get the first worksheet
-            //Convert to PDF and save the resulting document to a specified path
-            workbook.saveToFile("output/test.pdf", FileFormat.PDF);
-            workbook.dispose();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Converter converter = new Converter(directory);
+//            PdfConvertOptions options = new PdfConvertOptions();
+//
+//            converter.convert("converted.pdf", options);
+//        }
+//        catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 }

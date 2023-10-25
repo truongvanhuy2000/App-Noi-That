@@ -5,9 +5,14 @@ import javafx.animation.PauseTransition;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
+
+import java.util.Objects;
 
 public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;
@@ -34,7 +39,7 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         if (!isEmpty()) {
             super.startEdit();
             setGraphic(hBox);
-            showComboBoxAfter(100);
+            showComboBoxAfter(200);
         }
     }
 
@@ -88,7 +93,8 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         }
         comboBox = new ComboBox<>(items);
         comboBox.valueProperty().set(super.getItem());
-        comboBox.setMinWidth(this.getWidth() - 30);
+        comboBox.setMinWidth(this.getWidth() - 20);
+        comboBox.setMaxWidth(Double.MAX_VALUE);
         comboBox.setOnAction((e) -> {
             if (comboBox.getSelectionModel().getSelectedItem() != null) {
                 super.commitEdit(comboBox.getSelectionModel().getSelectedItem());
@@ -97,6 +103,7 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         });
         comboBox.setOnMouseClicked((e) -> {
             comboBox.hide();
+            showComboBoxAfter(200);
         });
         comboBox.getStyleClass().add("combo-border");
     }
@@ -110,13 +117,36 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         if (hBox != null) {
             return;
         }
-        Button dropDownButton = new Button("V");
-        dropDownButton.setOnAction((e) -> {
-            showComboBoxAfter(100);
+//        Button dropDownButton = new Button("V");
+//        dropDownButton.setOnAction((e) -> {
+//            showComboBoxAfter(100);
+//        });
+        Button editButton = new Button();
+        Image img = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/edit.png")));
+        ImageView view = new ImageView(img);
+        view.setFitHeight(20);
+        view.setFitWidth(20);
+        view.preserveRatioProperty().set(true);
+        editButton.setGraphic(view);
+        editButton.setMaxSize(20, 20);
+        TextField textField = new TextField();
+        textField.setOnAction((e) -> {
+            super.commitEdit(textField.getText());
+            updateItem(textField.getText(), false);
         });
+        textField.setMaxWidth(Double.MAX_VALUE);
+        editButton.setOnAction((e) -> {
+            super.setText(null);
+            textField.setText(super.getItem());
+            setGraphic(textField);
+        });
+
         hBox = new HBox();
-        hBox.getChildren().add(dropDownButton);
+        hBox.getChildren().add(editButton);
         hBox.getChildren().add(comboBox);
+//        hBox.getChildren().add(editButton);
+        hBox.setMaxWidth(Double.MAX_VALUE);
+        hBox.setMaxWidth(this.getWidth());
     }
 
     /**

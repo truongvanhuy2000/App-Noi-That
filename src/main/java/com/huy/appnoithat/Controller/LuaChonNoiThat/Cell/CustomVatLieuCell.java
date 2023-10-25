@@ -1,22 +1,26 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
+import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Enums.Action;
 import javafx.animation.PauseTransition;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TreeTableCell;
-import javafx.scene.control.TreeTableView;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+
+import java.util.Objects;
 
 public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;
     private final ObservableList<String> items;
     private final TreeTableView<BangNoiThat> TableNoiThat;
     private HBox hBox;
-
+    private TextArea textArea;
 
     /**
      * Constructs a CustomVatLieuCell with the given ObservableList of items and a TreeTableView.
@@ -41,6 +45,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
     public void startEdit() {
         if (comboBox == null) {
             createComboBox();
+            createTextArea();
             createHBox();
         }
         if (!TableUtils.isEditable(TableNoiThat)) {
@@ -132,13 +137,34 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         if (hBox != null) {
             return;
         }
-        Button dropDownButton = new Button("V");
-        dropDownButton.setOnAction((e) -> {
-            showComboBoxAfter(100);
+//        Button dropDownButton = new Button("V");
+//        dropDownButton.setOnAction((e) -> {
+//            showComboBoxAfter(100);
+//        });
+        VBox vBox = new VBox();
+        vBox.getChildren().add(new Label("Nhấn Ctrl + S để lưu"));
+        vBox.getChildren().add(textArea);
+
+        Button editButton = new Button();
+        Image img = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/edit.png")));
+        ImageView view = new ImageView(img);
+        view.setFitHeight(20);
+        view.setFitWidth(20);
+        view.preserveRatioProperty().set(true);
+        editButton.setGraphic(view);
+        editButton.setMaxSize(20, 20);
+        editButton.setOnAction((e) -> {
+            super.setText(null);
+            textArea.setText(super.getItem());
+            setGraphic(vBox);
         });
+
         hBox = new HBox();
-        hBox.getChildren().add(dropDownButton);
+        hBox.getChildren().add(editButton);
         hBox.getChildren().add(comboBox);
+//        hBox.getChildren().add(editButton);
+        hBox.setMaxWidth(Double.MAX_VALUE);
+        hBox.setMaxWidth(this.getWidth());
     }
 
     /**
@@ -150,5 +176,18 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         PauseTransition delay = new PauseTransition(Duration.millis(millis));
         delay.setOnFinished( event -> comboBox.show());
         delay.play();
+    }
+    private void createTextArea() {
+        if (textArea != null) {
+            return;
+        }
+        textArea = new TextArea();
+        textArea.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
+        textArea.setOnKeyPressed((key) -> {
+            if (KeyboardUtils.isRightKeyCombo(Action.SAVE, key)) {
+                commitEdit(textArea.getText());
+                updateItem(textArea.getText(), false);
+            }
+        });
     }
 }
