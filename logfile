@@ -2938,3 +2938,29 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 26-10-2023 01:02:24 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
 [INFO ] 26-10-2023 01:02:25 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
 [INFO ] 26-10-2023 01:02:42 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 01:07:49 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 01:07:52 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 01:08:03 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Index 2 out of bounds for length 0
+[ERROR] 26-10-2023 01:08:03 [JavaFX Application Thread] GlobalExceptionHandler:30 - Index 2 out of bounds for length 0
+[INFO ] 26-10-2023 01:08:03 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 01:08:23 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 01:08:26 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 01:08:41 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Index 2 out of bounds for length 0
+[ERROR] 26-10-2023 01:08:41 [JavaFX Application Thread] GlobalExceptionHandler:30 - Index 2 out of bounds for length 0
+[INFO ] 26-10-2023 01:08:41 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 01:09:57 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 01:10:00 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 01:10:01 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 26-10-2023 01:10:13 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 01:10:23 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 01:10:25 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 01:10:27 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[ERROR] 26-10-2023 01:10:34 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Index 2 out of bounds for length 1
+[ERROR] 26-10-2023 01:10:34 [JavaFX Application Thread] GlobalExceptionHandler:30 - Index 2 out of bounds for length 1
+[INFO ] 26-10-2023 01:10:34 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 01:11:00 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 01:11:03 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 01:11:05 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 26-10-2023 01:11:37 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 01:11:39 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 01:11:43 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt

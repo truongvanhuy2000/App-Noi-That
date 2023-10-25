@@ -104,6 +104,7 @@ public class VatLieuCollumHandler {
      * @param event The CellEditEvent instance representing the start edit event for the VatLieu column.
      */
     public void onStartEditVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
+        System.out.println("Start edit vat lieu");
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         List<String> items;
 

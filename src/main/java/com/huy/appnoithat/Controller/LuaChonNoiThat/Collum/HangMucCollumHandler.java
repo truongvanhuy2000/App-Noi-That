@@ -44,12 +44,14 @@ public class HangMucCollumHandler {
         String newValue = event.getNewValue();
         event.getRowValue().getValue().setHangMuc(newValue);
 //        event.getTreeTableView().getSelectionModel().clearSelection();
-//        if (Utils.isNumeric(stt)) {
+        if (Utils.isNumeric(stt)) {
 //            String firstVatLieu = getTheFirstVatLieu(event.getRowValue());
 //            if (firstVatLieu != null) {
 //                event.getRowValue().getValue().setVatLieu(firstVatLieu);
 //            }
-//        }
+            event.getTreeTableView().edit(event.getTreeTablePosition().getRow(), event.getTreeTableView().getVisibleLeafColumn(2));
+
+        }
     }
     private String getTheFirstVatLieu(TreeItem<BangNoiThat> currentItem) {
         try {
