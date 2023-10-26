@@ -144,20 +144,20 @@ public class SetupBangNoiThat {
         ObservableList<String> vatLieuList = FXCollections.observableArrayList();
         VatLieuCollumHandler vatLieuCollumHandler = new VatLieuCollumHandler(vatLieuList);
         VatLieu.setCellValueFactory(vatLieuCollumHandler::getCustomCellValueFactory);
-        CheckBox checkBox = new CheckBox();
-        checkBox.setOnAction(actionEvent -> {
-            if (checkBox.isSelected()) {
-                VatLieu.setCellFactory(param -> new CustomTextAreaCell());
-                VatLieu.setOnEditCommit(event -> {
-                    event.getRowValue().getValue().setVatLieu(event.getNewValue());
-                });
-            } else {
-                VatLieu.setCellFactory(vatLieuCollumHandler::getCustomCellFactory);
-                VatLieu.setOnEditStart(vatLieuCollumHandler::onStartEditVatLieu);
-                VatLieu.setOnEditCommit(vatLieuCollumHandler::onEditCommitVatLieu);
-            }
-        });
-        VatLieu.setGraphic(checkBox);
+//        CheckBox checkBox = new CheckBox();
+//        checkBox.setOnAction(actionEvent -> {
+//            if (checkBox.isSelected()) {
+//                VatLieu.setCellFactory(param -> new CustomTextAreaCell());
+//                VatLieu.setOnEditCommit(event -> {
+//                    event.getRowValue().getValue().setVatLieu(event.getNewValue());
+//                });
+//            } else {
+//                VatLieu.setCellFactory(vatLieuCollumHandler::getCustomCellFactory);
+//                VatLieu.setOnEditStart(vatLieuCollumHandler::onStartEditVatLieu);
+//                VatLieu.setOnEditCommit(vatLieuCollumHandler::onEditCommitVatLieu);
+//            }
+//        });
+//        VatLieu.setGraphic(checkBox);
 
         VatLieu.setCellFactory(vatLieuCollumHandler::getCustomCellFactory);
         VatLieu.setOnEditStart(vatLieuCollumHandler::onStartEditVatLieu);
@@ -171,22 +171,22 @@ public class SetupBangNoiThat {
 
         ObservableList<String> hangMucList = FXCollections.observableArrayList();
         HangMucCollumHandler hangMucCollumHandler = new HangMucCollumHandler(hangMucList);
-        CheckBox checkBox = new CheckBox();
-        checkBox.setOnAction(actionEvent -> {
-            if (checkBox.isSelected()) {
-                HangMuc.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
-                HangMuc.setOnEditCommit(event -> {
-                    event.getRowValue().getValue().setHangMuc(event.getNewValue());
-                });
-            } else {
-                HangMuc.setCellFactory(hangMucCollumHandler::getCustomCellFactory);
-                HangMuc.setOnEditCommit(hangMucCollumHandler::onEditCommitHangMuc);
-                HangMuc.setOnEditStart(hangMucCollumHandler::onStartEditHangMuc);
-            }
-        });
+//        CheckBox checkBox = new CheckBox();
+//        checkBox.setOnAction(actionEvent -> {
+//            if (checkBox.isSelected()) {
+//                HangMuc.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+//                HangMuc.setOnEditCommit(event -> {
+//                    event.getRowValue().getValue().setHangMuc(event.getNewValue());
+//                });
+//            } else {
+//                HangMuc.setCellFactory(hangMucCollumHandler::getCustomCellFactory);
+//                HangMuc.setOnEditCommit(hangMucCollumHandler::onEditCommitHangMuc);
+//                HangMuc.setOnEditStart(hangMucCollumHandler::onStartEditHangMuc);
+//            }
+//        });
         // Set up collum for HangMuc
         HangMuc.setCellValueFactory(hangMucCollumHandler::getCustomCellValueFactory);
-        HangMuc.setGraphic(checkBox);
+//        HangMuc.setGraphic(checkBox);
 
         HangMuc.setCellFactory(hangMucCollumHandler::getCustomCellFactory);
         HangMuc.setOnEditCommit(hangMucCollumHandler::onEditCommitHangMuc);

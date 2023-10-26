@@ -69,6 +69,7 @@ public class VatLieuCollumHandler {
      * @param event The CellEditEvent instance representing the edit event for the VatLieu column.
      */
     public void onEditCommitVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
+//        System.out.println("Commit edit 1");
         String vatLieu = event.getNewValue();
         event.getRowValue().getValue().setVatLieu(vatLieu);
         ThongSo coresspondingThongSo = vatLieuThongSoHashMap.get(vatLieu);
@@ -93,6 +94,7 @@ public class VatLieuCollumHandler {
 
         TableCalculationUtils.calculateTongTien(event.getRowValue().getParent());
 //        event.getTreeTableView().getSelectionModel().clearSelection();
+//        event.consume();
     }
 
 
@@ -132,5 +134,4 @@ public class VatLieuCollumHandler {
         this.vatLieuList.clear();
         this.vatLieuList.addAll(items);
     }
-
 }

@@ -2964,3 +2964,347 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 26-10-2023 01:11:37 [main] HelloApplication:35 - Start application
 [INFO ] 26-10-2023 01:11:39 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
 [INFO ] 26-10-2023 01:11:43 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 26-10-2023 09:14:01 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 09:14:04 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 09:55:21 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 09:55:24 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 09:55:38 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 10:20:43 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 10:20:50 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 10:21:11 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 10:21:44 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 10:21:52 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 10:22:05 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 10:22:34 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 10:22:40 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 10:22:55 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 13:15:41 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 13:15:44 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 13:16:24 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 13:17:18 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 13:22:51 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 13:23:45 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 13:23:47 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 13:23:50 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: showAndWait is not allowed during animation or layout processing
+[ERROR] 26-10-2023 13:23:50 [JavaFX Application Thread] GlobalExceptionHandler:30 - showAndWait is not allowed during animation or layout processing
+[ERROR] 26-10-2023 13:23:50 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.ComboBox.setValue(Object)" because "this.comboBox" is null
+[ERROR] 26-10-2023 13:23:50 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.ComboBox.setValue(Object)" because "this.comboBox" is null
+[ERROR] 26-10-2023 13:23:50 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: showAndWait is not allowed during animation or layout processing
+[ERROR] 26-10-2023 13:23:50 [JavaFX Application Thread] GlobalExceptionHandler:30 - showAndWait is not allowed during animation or layout processing
+[INFO ] 26-10-2023 13:23:50 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[ERROR] 26-10-2023 13:23:52 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@48830995
+[ERROR] 26-10-2023 13:23:52 [JavaFX Application Thread] GlobalExceptionHandler:30 - Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@48830995
+[ERROR] 26-10-2023 13:23:53 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@19c54fb4
+[ERROR] 26-10-2023 13:23:53 [JavaFX Application Thread] GlobalExceptionHandler:30 - Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@19c54fb4
+[INFO ] 26-10-2023 13:24:24 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 13:24:29 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 13:24:38 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 13:25:42 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 13:25:48 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 13:25:52 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: showAndWait is not allowed during animation or layout processing
+[ERROR] 26-10-2023 13:25:52 [JavaFX Application Thread] GlobalExceptionHandler:30 - showAndWait is not allowed during animation or layout processing
+[ERROR] 26-10-2023 13:25:52 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.ComboBox.setValue(Object)" because "this.comboBox" is null
+[ERROR] 26-10-2023 13:25:52 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.ComboBox.setValue(Object)" because "this.comboBox" is null
+[ERROR] 26-10-2023 13:25:52 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: showAndWait is not allowed during animation or layout processing
+[ERROR] 26-10-2023 13:25:52 [JavaFX Application Thread] GlobalExceptionHandler:30 - showAndWait is not allowed during animation or layout processing
+[INFO ] 26-10-2023 13:25:52 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[ERROR] 26-10-2023 13:25:54 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@11563582
+[ERROR] 26-10-2023 13:25:54 [JavaFX Application Thread] GlobalExceptionHandler:30 - Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@11563582
+[ERROR] 26-10-2023 13:25:55 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@64bc4f2
+[ERROR] 26-10-2023 13:25:55 [JavaFX Application Thread] GlobalExceptionHandler:30 - Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@64bc4f2
+[INFO ] 26-10-2023 13:26:35 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 13:26:37 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 13:26:48 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 13:27:11 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 13:27:12 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 13:27:43 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 13:27:46 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 13:28:57 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 13:29:01 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 13:29:50 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 13:29:52 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 13:31:25 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:11:50 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:11:52 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:12:12 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 14:12:35 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:12:36 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:13:03 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 14:31:21 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:31:23 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:32:01 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 14:32:12 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:32:15 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:33:15 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:33:17 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:34:03 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 14:34:23 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:34:26 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:41:50 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:41:51 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:42:15 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 14:43:37 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:43:38 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:44:11 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 14:44:41 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:44:45 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:45:10 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:45:14 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:45:57 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:45:58 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:46:09 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:46:11 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:46:50 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:46:52 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:47:11 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 14:47:36 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:47:39 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:47:44 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 14:48:50 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 14:52:17 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:52:18 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:53:20 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:53:21 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:54:10 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:54:13 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:55:15 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:55:16 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 14:55:51 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 14:58:22 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:58:24 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 14:58:29 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: showAndWait is not allowed during animation or layout processing
+[ERROR] 26-10-2023 14:58:29 [JavaFX Application Thread] GlobalExceptionHandler:30 - showAndWait is not allowed during animation or layout processing
+[INFO ] 26-10-2023 14:58:29 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 14:59:12 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 14:59:13 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 14:59:16 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 26-10-2023 14:59:16 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[ERROR] 26-10-2023 14:59:16 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 26-10-2023 14:59:16 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[ERROR] 26-10-2023 14:59:16 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 26-10-2023 14:59:16 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[INFO ] 26-10-2023 14:59:16 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[ERROR] 26-10-2023 14:59:18 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@6e533166
+[ERROR] 26-10-2023 14:59:18 [JavaFX Application Thread] GlobalExceptionHandler:30 - Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@6e533166
+[ERROR] 26-10-2023 14:59:19 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@3af2d0ff
+[ERROR] 26-10-2023 14:59:19 [JavaFX Application Thread] GlobalExceptionHandler:30 - Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@3af2d0ff
+[INFO ] 26-10-2023 15:00:07 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:00:08 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:00:11 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 26-10-2023 15:00:11 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[ERROR] 26-10-2023 15:00:11 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 26-10-2023 15:00:11 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[ERROR] 26-10-2023 15:00:11 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 26-10-2023 15:00:11 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[INFO ] 26-10-2023 15:00:11 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[ERROR] 26-10-2023 15:00:15 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@1bce94eb
+[ERROR] 26-10-2023 15:00:15 [JavaFX Application Thread] GlobalExceptionHandler:30 - Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@1bce94eb
+[ERROR] 26-10-2023 15:00:16 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@6a1ca0aa
+[ERROR] 26-10-2023 15:00:16 [JavaFX Application Thread] GlobalExceptionHandler:30 - Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@6a1ca0aa
+[INFO ] 26-10-2023 15:01:00 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:01:02 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 15:01:40 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:01:42 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:01:55 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: showAndWait is not allowed during animation or layout processing
+[ERROR] 26-10-2023 15:01:55 [JavaFX Application Thread] GlobalExceptionHandler:30 - showAndWait is not allowed during animation or layout processing
+[INFO ] 26-10-2023 15:01:55 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:02:53 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:02:55 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:03:01 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: showAndWait is not allowed during animation or layout processing
+[ERROR] 26-10-2023 15:03:01 [JavaFX Application Thread] GlobalExceptionHandler:30 - showAndWait is not allowed during animation or layout processing
+[INFO ] 26-10-2023 15:03:01 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:06:22 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:06:25 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:06:32 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: showAndWait is not allowed during animation or layout processing
+[ERROR] 26-10-2023 15:06:32 [JavaFX Application Thread] GlobalExceptionHandler:30 - showAndWait is not allowed during animation or layout processing
+[INFO ] 26-10-2023 15:06:32 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:07:32 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:07:33 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 15:07:49 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:08:19 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:08:21 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:08:27 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: showAndWait is not allowed during animation or layout processing
+[ERROR] 26-10-2023 15:08:27 [JavaFX Application Thread] GlobalExceptionHandler:30 - showAndWait is not allowed during animation or layout processing
+[INFO ] 26-10-2023 15:08:27 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:24:21 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:24:23 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 15:25:07 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:25:09 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:25:42 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: showAndWait is not allowed during animation or layout processing
+[ERROR] 26-10-2023 15:25:42 [JavaFX Application Thread] GlobalExceptionHandler:30 - showAndWait is not allowed during animation or layout processing
+[INFO ] 26-10-2023 15:25:42 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:26:05 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:26:17 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:26:45 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: showAndWait is not allowed during animation or layout processing
+[ERROR] 26-10-2023 15:26:45 [JavaFX Application Thread] GlobalExceptionHandler:30 - showAndWait is not allowed during animation or layout processing
+[INFO ] 26-10-2023 15:26:45 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:26:51 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:26:55 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:27:29 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: showAndWait is not allowed during animation or layout processing
+[ERROR] 26-10-2023 15:27:29 [JavaFX Application Thread] GlobalExceptionHandler:30 - showAndWait is not allowed during animation or layout processing
+[INFO ] 26-10-2023 15:27:29 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:28:20 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:28:23 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:28:53 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:28:53 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:28:53 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:28:53 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[INFO ] 26-10-2023 15:28:53 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:30:13 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:30:14 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:30:23 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:30:23 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:30:57 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:30:57 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[INFO ] 26-10-2023 15:31:00 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:31:02 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:31:09 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:31:09 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:31:15 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:31:15 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[INFO ] 26-10-2023 15:31:15 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:33:54 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:33:55 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 15:34:42 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:34:43 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:34:47 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 26-10-2023 15:34:47 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[INFO ] 26-10-2023 15:34:47 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:36:04 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:36:06 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:36:14 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:36:14 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[INFO ] 26-10-2023 15:36:14 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:36:44 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:36:45 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:38:04 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:38:04 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[INFO ] 26-10-2023 15:38:04 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:38:23 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:38:27 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:39:11 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:39:11 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[INFO ] 26-10-2023 15:39:11 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:39:19 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:39:21 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 15:40:04 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:40:05 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:41:43 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:41:43 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[INFO ] 26-10-2023 15:41:43 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:42:01 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:42:07 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:43:07 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:43:07 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[INFO ] 26-10-2023 15:43:07 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:43:28 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:43:30 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:43:56 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:43:56 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[INFO ] 26-10-2023 15:43:57 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:44:32 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:44:34 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:45:42 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:45:42 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[INFO ] 26-10-2023 15:45:42 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:48:21 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:48:26 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 15:48:39 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:48:41 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 15:49:25 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:49:27 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 15:50:26 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:50:27 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:50:35 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 26-10-2023 15:50:35 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[INFO ] 26-10-2023 15:50:35 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 15:51:20 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 15:51:23 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 26-10-2023 15:51:34 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[ERROR] 26-10-2023 15:51:34 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeTablePosition.getTreeTableView()" because "this.pos" is null
+[INFO ] 26-10-2023 15:51:34 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:09:57 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 16:09:59 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 16:10:14 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:19:57 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 16:19:59 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 16:20:24 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:21:06 [JavaFX Application Thread] LuaChonNoiThatController:311 - Save as Operation: Save file to: /home/huy/Project/Java/App-noi-that/test
+[INFO ] 26-10-2023 16:21:06 [JavaFX Application Thread] LuaChonNoiThatController:333 - Normal save: Save file to: /home/huy/Project/Java/App-noi-that/test
+[INFO ] 26-10-2023 16:21:09 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:21:11 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 26-10-2023 16:21:34 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:22:05 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 16:22:07 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 16:22:26 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:22:27 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 26-10-2023 16:23:17 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 16:23:20 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 16:23:22 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 26-10-2023 16:23:45 [JavaFX Application Thread] LuaChonNoiThatController:333 - Normal save: Save file to: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 26-10-2023 16:23:46 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:23:47 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 26-10-2023 16:23:49 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:24:22 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 16:24:23 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 16:24:28 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 26-10-2023 16:24:30 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:24:44 [JavaFX Application Thread] LuaChonNoiThatController:311 - Save as Operation: Save file to: /home/huy/Project/Java/App-noi-that/test2
+[INFO ] 26-10-2023 16:24:44 [JavaFX Application Thread] LuaChonNoiThatController:333 - Normal save: Save file to: /home/huy/Project/Java/App-noi-that/test2
+[INFO ] 26-10-2023 16:24:53 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:24:54 [JavaFX Application Thread] ImportOperation:56 - Import file: test2.nt
+[INFO ] 26-10-2023 16:24:55 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:25:07 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 16:25:08 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 16:25:10 [JavaFX Application Thread] ImportOperation:56 - Import file: test2.nt
+[INFO ] 26-10-2023 16:25:13 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:25:26 [JavaFX Application Thread] LuaChonNoiThatController:311 - Save as Operation: Save file to: /home/huy/Project/Java/App-noi-that/test3
+[INFO ] 26-10-2023 16:25:26 [JavaFX Application Thread] LuaChonNoiThatController:333 - Normal save: Save file to: /home/huy/Project/Java/App-noi-that/test3
+[INFO ] 26-10-2023 16:25:29 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:25:30 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
+[INFO ] 26-10-2023 16:25:32 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:27:17 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 16:27:20 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 16:27:21 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
+[INFO ] 26-10-2023 16:27:24 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:28:01 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 16:28:03 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 16:28:05 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
+[INFO ] 26-10-2023 16:28:23 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:28:40 [JavaFX Application Thread] LuaChonNoiThatController:311 - Save as Operation: Save file to: /home/huy/Project/Java/App-noi-that/test3.nt
+[INFO ] 26-10-2023 16:28:40 [JavaFX Application Thread] LuaChonNoiThatController:333 - Normal save: Save file to: /home/huy/Project/Java/App-noi-that/test3.nt
+[INFO ] 26-10-2023 16:28:43 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:28:44 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
+[INFO ] 26-10-2023 16:28:50 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:32:56 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 16:33:23 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 16:33:26 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 16:33:29 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[ERROR] 26-10-2023 16:33:29 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "javafx.scene.control.TreeItem.getValue()" because "item" is null
+[INFO ] 26-10-2023 16:33:29 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:37:44 [main] HelloApplication:35 - Start application
+[INFO ] 26-10-2023 16:37:45 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 26-10-2023 16:38:18 [JavaFX Application Thread] LuaChonNoiThatController:311 - Save as Operation: Save file to: /home/huy/Project/Java/App-noi-that/test3.nt
+[INFO ] 26-10-2023 16:38:18 [JavaFX Application Thread] LuaChonNoiThatController:333 - Normal save: Save file to: /home/huy/Project/Java/App-noi-that/test3.nt
+[INFO ] 26-10-2023 16:38:21 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 26-10-2023 16:38:23 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
+[INFO ] 26-10-2023 16:38:27 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window

@@ -19,7 +19,7 @@ public class PopupUtils {
 
     public static void throwCriticalError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
-        alert.showAndWait();
+        alert.show();
     }
 
     public static File fileSaver() {

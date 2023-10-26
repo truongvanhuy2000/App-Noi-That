@@ -6,11 +6,11 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Enums.Action;
 import javafx.animation.PauseTransition;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -72,8 +72,6 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         setGraphic(null);
     }
 
-
-
     /**
      * Updates the item within this cell and manages its visual representation based on
      * the provided item and its emptiness. Overrides the superclass method to customize
@@ -86,16 +84,13 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
      */
     @Override
     public void updateItem(String item, boolean empty) {
-
         super.updateItem(item, empty);
         if (empty) {
-            System.out.println("Update item 1: ");
             super.setText(null);
             setGraphic(null);
             return;
         }
         if (isEditing()) {
-            System.out.println("Update item 2: ");
             if (comboBox != null) {
                 comboBox.setValue(super.getItem());
             }
@@ -103,13 +98,21 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
             setGraphic(hBox);
             comboBox.show();
         } else {
-            System.out.println("Update item 3: ");
             super.setText(super.getItem());
+//            if (super.getItem() != null && !super.getItem().isEmpty()) {
+//                customEdit(super.getItem());
+//            }
             setGraphic(null);
         }
     }
-
-
+//    private void customEdit(String value) {
+//        TreeTableView<BangNoiThat> var2 = this.getTreeTableView();
+//        TreeTablePosition<BangNoiThat, ?> pos = var2.getFocusModel().getFocusedCell();
+//        if (var2 != null) {
+//            TreeTableColumn.CellEditEvent var4 = new TreeTableColumn.CellEditEvent(var2, pos, TreeTableColumn.editCommitEvent(), value);
+//            Event.fireEvent(this.getTableColumn(), var4);
+//        }
+//    }
     /**
      * Creates a ComboBox for editing the cell's content. If the ComboBox is already
      * initialized, this method does nothing. Configures the ComboBox's behavior,

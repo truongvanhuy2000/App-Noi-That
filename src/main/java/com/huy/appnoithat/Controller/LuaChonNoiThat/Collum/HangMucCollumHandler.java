@@ -3,19 +3,25 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
+import com.huy.appnoithat.Entity.ThongSo;
+import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTablePosition;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class HangMucCollumHandler {
     private final ObservableList<String> hangMucList;
@@ -45,20 +51,43 @@ public class HangMucCollumHandler {
         event.getRowValue().getValue().setHangMuc(newValue);
 //        event.getTreeTableView().getSelectionModel().clearSelection();
         if (Utils.isNumeric(stt)) {
-//            String firstVatLieu = getTheFirstVatLieu(event.getRowValue());
-//            if (firstVatLieu != null) {
-//                event.getRowValue().getValue().setVatLieu(firstVatLieu);
-//            }
-            event.getTreeTableView().edit(event.getTreeTablePosition().getRow(), event.getTreeTableView().getVisibleLeafColumn(2));
-
+            automaticallyInsertVatLieuAndThongSo(event);
         }
     }
-    private String getTheFirstVatLieu(TreeItem<BangNoiThat> currentItem) {
+    private void automaticallyInsertVatLieuAndThongSo(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
+        VatLieu vatLieu = getTheFirstVatLieu(event.getRowValue());
+        if (vatLieu == null) {
+            return;
+        }
+        String firstVatLieu = vatLieu.getName();
+        ThongSo thongSo = vatLieu.getThongSo();
+        if (thongSo != null) {
+            Double dai = Objects.requireNonNullElse(thongSo.getDai(), 0.0);
+            Double rong = Objects.requireNonNullElse(thongSo.getRong(), 0.0);
+            Double cao = Objects.requireNonNullElse(thongSo.getCao(), 0.0);
+            Long donGia = thongSo.getDon_gia();
+            String donVi = thongSo.getDon_vi();
+            Double khoiLuong = TableCalculationUtils.calculateKhoiLuong(dai, cao, rong, donVi);
+            Long thanhTien = TableCalculationUtils.calculateThanhTien(khoiLuong, donGia);
+
+            event.getRowValue().getValue().setThanhTien(thanhTien);
+            event.getRowValue().getValue().setKhoiLuong(khoiLuong);
+            event.getRowValue().getValue().setDai(dai);
+            event.getRowValue().getValue().setRong(rong);
+            event.getRowValue().getValue().setCao(cao);
+            event.getRowValue().getValue().setDonGia(donGia);
+            event.getRowValue().getValue().setDonVi(donVi);
+        }
+
+        event.getRowValue().getValue().setVatLieu(firstVatLieu);
+        event.getTreeTableView().edit(event.getTreeTablePosition().getRow(), event.getTreeTableView().getVisibleLeafColumn(2));
+    }
+    private VatLieu getTheFirstVatLieu(TreeItem<BangNoiThat> currentItem) {
         try {
             String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
             String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
             String hangMuc = currentItem.getValue().getHangMuc().getValue();
-            List<String> items = Utils.getObjectNameList(luaChonNoiThatService.findVatLieuListBy(phongCach, noiThat, hangMuc));
+            List<VatLieu> items = luaChonNoiThatService.findVatLieuListBy(phongCach, noiThat, hangMuc);
             return items.get(0);
         } catch (NullPointerException e) {
             PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");

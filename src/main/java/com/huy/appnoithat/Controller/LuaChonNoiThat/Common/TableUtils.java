@@ -55,7 +55,10 @@ public class TableUtils {
         String stt = TableNoiThat.getSelectionModel().getSelectedItem().getValue().getSTT().getValue();
         return Utils.isNumeric(stt);
     }
-
+    public static boolean isEditable(TreeItem<BangNoiThat> item) {
+        String stt = item.getValue().getSTT().getValue();
+        return Utils.isNumeric(stt);
+    }
     /**
      * @param id This method will create a new item with the given id
      * @return
