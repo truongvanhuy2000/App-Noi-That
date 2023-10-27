@@ -3332,3 +3332,145 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 27-10-2023 11:36:10 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
 [INFO ] 27-10-2023 11:44:35 [main] HelloApplication:35 - Start application
 [INFO ] 27-10-2023 11:44:41 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 15:47:01 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 15:47:02 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 15:48:32 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 15:48:35 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 15:49:31 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 15:49:32 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 15:50:09 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 15:54:01 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 15:54:03 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 15:54:38 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 15:59:16 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 15:59:19 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 15:59:45 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:01:00 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:01:01 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:01:33 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:03:04 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:03:05 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:04:14 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:04:15 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:04:32 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:05:06 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:05:08 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:05:11 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:05:30 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:05:32 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:06:19 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:06:41 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:06:42 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:06:46 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:07:03 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:07:04 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:07:29 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:08:05 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:08:06 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:08:55 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:11:56 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:11:57 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:12:27 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:14:07 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:14:09 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:17:45 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:17:48 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:17:53 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:18:29 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:18:31 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:19:03 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:21:47 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:21:53 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:22:14 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:23:46 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:23:48 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:23:56 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:24:13 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:24:14 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:24:38 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:24:52 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:24:53 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:25:13 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:25:35 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:25:36 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:27:09 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:27:59 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:28:01 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:29:08 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:31:41 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:31:42 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:32:04 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:32:58 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:32:59 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:34:02 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:36:46 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:36:50 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:37:31 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:37:41 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:37:42 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:38:17 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:39:48 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:39:49 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:39:51 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
+[INFO ] 27-10-2023 16:39:59 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:50:20 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:50:22 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:53:26 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:54:04 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:54:06 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:54:25 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:55:09 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 16:56:07 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 16:56:09 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 16:56:29 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:13:20 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:13:57 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:14:04 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:15:20 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:15:35 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:15:37 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:16:35 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:16:58 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:17:01 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:17:13 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:22:18 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:22:21 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:22:28 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:22:57 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:22:58 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:23:19 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:25:14 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:25:18 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:25:22 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:39:29 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:39:30 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:39:43 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:39:59 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:40:00 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:40:14 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:47:01 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:47:05 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:47:19 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:48:33 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:48:35 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:48:49 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:49:13 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:49:16 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:49:28 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:50:01 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:50:02 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:50:13 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:50:14 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:50:28 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:52:29 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:52:30 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:52:46 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:53:18 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:53:20 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:53:32 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:53:39 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:53:40 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:53:51 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 17:54:01 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 17:54:02 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 17:54:15 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window

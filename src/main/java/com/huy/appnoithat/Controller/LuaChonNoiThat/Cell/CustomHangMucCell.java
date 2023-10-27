@@ -20,6 +20,7 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;
     private HBox hBox;
     private final ObservableList<String> items;
+    private Button editButton;
 
     public CustomHangMucCell(ObservableList<String> items) {
         this.items = items;
@@ -33,18 +34,25 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
      */
     @Override
     public void startEdit() {
-        if (comboBox == null) {
-            createComboBox();
-            createVBox();
-        }
+        createComboBox();
+        createVBox();
+        createEditButton();
 
         if (!isEmpty()) {
             super.startEdit();
-            setGraphic(hBox);
-            showComboBoxAfter(200);
+            setGraphic(editButton);
         }
     }
-
+    private void createEditButton() {
+        if (editButton != null) {
+            return;
+        }
+        editButton = new Button();
+        editButton.setOnAction((e) -> {
+            setGraphic(hBox);
+            showComboBoxAfter(200);
+        });
+    }
 
     /**
      * Cancels the editing process for this cell. Overrides the superclass method
@@ -95,12 +103,12 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         }
         comboBox = new ComboBox<>(items);
         comboBox.valueProperty().set(super.getItem());
-        comboBox.setMinWidth(this.getWidth() - 20);
         comboBox.setMaxWidth(Double.MAX_VALUE);
         comboBox.setOnAction((e) -> {
             if (comboBox.getSelectionModel().getSelectedItem() != null) {
                 super.commitEdit(comboBox.getSelectionModel().getSelectedItem());
                 updateItem(comboBox.getSelectionModel().getSelectedItem(), false);
+                cancelEdit();
             }
         });
         comboBox.setOnMouseClicked((e) -> {
@@ -139,6 +147,8 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         view.preserveRatioProperty().set(true);
         editButton.setGraphic(view);
         editButton.setMaxSize(20, 20);
+        comboBox.prefWidthProperty().bind(getTableColumn().widthProperty().subtract(editButton.getWidth() - 10));
+
         TextField textField = new TextField();
         textField.setOnAction((e) -> {
             super.commitEdit(textField.getText());
@@ -152,8 +162,9 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         });
 
         hBox = new HBox();
-        hBox.getChildren().add(editButton);
         hBox.getChildren().add(comboBox);
+        hBox.getChildren().add(editButton);
+
 //        hBox.getChildren().add(editButton);
         hBox.setMaxWidth(Double.MAX_VALUE);
         hBox.setMaxWidth(this.getWidth());

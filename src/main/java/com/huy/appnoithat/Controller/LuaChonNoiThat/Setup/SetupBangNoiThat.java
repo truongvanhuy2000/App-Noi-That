@@ -13,6 +13,8 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.CustomConverter.CustomLongSt
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -20,6 +22,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTreeTableCell;
+import javafx.util.Duration;
 import javafx.util.converter.DoubleStringConverter;
 
 public class SetupBangNoiThat {
@@ -56,6 +59,18 @@ public class SetupBangNoiThat {
         TableNoiThat.setShowRoot(false);
         TableNoiThat.setEditable(true);
         itemRoot.getChildren().add(TableUtils.createNewItem("A"));
+
+        TableNoiThat.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (oldSelection != null) {
+                oldSelection.setGraphic(null);
+            }
+            if (newSelection != null) {
+                int row = TableNoiThat.getSelectionModel().getSelectedCells().get(0).getRow();
+                Platform.runLater(() -> {
+                    TableNoiThat.edit(row, TableNoiThat.getVisibleLeafColumn(1));
+                });
+            }
+        });
     }
     /**
      * This function will resize the table to fit the current screen

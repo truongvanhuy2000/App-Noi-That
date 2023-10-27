@@ -5,6 +5,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Enums.Action;
 import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.scene.control.*;
@@ -22,6 +23,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
     private final TreeTableView<BangNoiThat> TableNoiThat;
     private HBox hBox;
     private TextArea textArea;
+    private Button editButton;
 
     /**
      * Constructs a CustomVatLieuCell with the given ObservableList of items and a TreeTableView.
@@ -44,19 +46,19 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
      */
     @Override
     public void startEdit() {
-        if (comboBox == null) {
-            createComboBox();
-            createTextArea();
-            createHBox();
-        }
+        createEditButton();
+        createComboBox();
+        createTextArea();
+        createHBox();
+
         if (!TableUtils.isEditable(TableNoiThat)) {
             return;
         }
         if (!isEmpty()) {
             super.startEdit();
-            setGraphic(hBox);
-            showComboBoxAfter(200);
+            setGraphic(editButton);
         }
+
     }
 
 
@@ -99,9 +101,6 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
             comboBox.show();
         } else {
             super.setText(super.getItem());
-//            if (super.getItem() != null && !super.getItem().isEmpty()) {
-//                customEdit(super.getItem());
-//            }
             setGraphic(null);
         }
     }
@@ -118,17 +117,28 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
      * initialized, this method does nothing. Configures the ComboBox's behavior,
      * such as handling commit actions and mouse clicks.
      */
+    private void createEditButton() {
+        if (editButton != null) {
+            return;
+        }
+        editButton = new Button();
+        editButton.setOnAction((e) -> {
+            setGraphic(hBox);
+            showComboBoxAfter(200);
+        });
+    }
     private void createComboBox() {
         if (comboBox != null) {
             return;
         }
         comboBox = new ComboBox<>(items);
         comboBox.valueProperty().set(super.getItem());
-        comboBox.setMinWidth(this.getWidth() - 30);
+//        comboBox.setMinWidth(this.getWidth() - 30);
         comboBox.setOnAction((e) -> {
             if (comboBox.getSelectionModel().getSelectedItem() != null) {
                 super.commitEdit(comboBox.getSelectionModel().getSelectedItem());
                 updateItem(comboBox.getSelectionModel().getSelectedItem(), false);
+                cancelEdit();
             }
         });
         comboBox.setOnMouseClicked((e) -> {
@@ -174,10 +184,15 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
             textArea.setText(super.getItem());
             setGraphic(vBox);
         });
-
+//        getTableColumn().setResizable(false);
+        Platform.runLater(() -> {
+            comboBox.setMaxWidth(getTableColumn().getWidth() - editButton.getWidth());
+//            getTableColumn().setResizable(true);
+        });
         hBox = new HBox();
-        hBox.getChildren().add(editButton);
         hBox.getChildren().add(comboBox);
+        hBox.getChildren().add(editButton);
+
 //        hBox.getChildren().add(editButton);
         hBox.setMaxWidth(Double.MAX_VALUE);
         hBox.setMaxHeight(Double.MAX_VALUE);
