@@ -3321,3 +3321,14 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [ERROR] 27-10-2023 11:13:40 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"kim","password":"kim","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
 [ERROR] 27-10-2023 11:13:47 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"kim","password":"kim","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
 [INFO ] 27-10-2023 11:14:58 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 11:22:46 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 11:22:52 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 11:23:17 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 11:23:21 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 11:24:39 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 11:27:48 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 11:28:04 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 11:36:06 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 11:36:10 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 11:44:35 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 11:44:41 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
