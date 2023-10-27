@@ -47,7 +47,7 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         if (editButton != null) {
             return;
         }
-        editButton = new Button();
+        editButton = new Button("V");
         editButton.setOnAction((e) -> {
             setGraphic(hBox);
             showComboBoxAfter(200);

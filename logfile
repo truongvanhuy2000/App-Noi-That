@@ -3474,3 +3474,14 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 27-10-2023 17:54:01 [main] HelloApplication:35 - Start application
 [INFO ] 27-10-2023 17:54:02 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
 [INFO ] 27-10-2023 17:54:15 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 28-10-2023 00:13:05 [main] HelloApplication:35 - Start application
+[INFO ] 28-10-2023 00:13:08 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 28-10-2023 00:13:28 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 28-10-2023 00:14:31 [main] HelloApplication:35 - Start application
+[INFO ] 28-10-2023 00:14:34 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 28-10-2023 00:15:17 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 28-10-2023 00:15:25 [main] HelloApplication:35 - Start application
+[INFO ] 28-10-2023 00:15:28 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 28-10-2023 00:15:35 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
+[INFO ] 28-10-2023 00:15:50 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 28-10-2023 00:15:54 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
