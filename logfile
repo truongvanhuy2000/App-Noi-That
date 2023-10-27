@@ -3308,3 +3308,16 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 26-10-2023 16:38:21 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
 [INFO ] 26-10-2023 16:38:23 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
 [INFO ] 26-10-2023 16:38:27 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 27-10-2023 10:17:12 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 10:17:14 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 10:19:35 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 10:20:34 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 10:20:36 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 10:27:46 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 10:28:01 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 10:28:03 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 27-10-2023 10:54:57 [main] HelloApplication:35 - Start application
+[INFO ] 27-10-2023 10:54:59 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 27-10-2023 11:13:40 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"kim","password":"kim","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[ERROR] 27-10-2023 11:13:47 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"kim","password":"kim","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[INFO ] 27-10-2023 11:14:58 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window

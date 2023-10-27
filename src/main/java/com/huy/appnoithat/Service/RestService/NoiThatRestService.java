@@ -155,4 +155,10 @@ public class NoiThatRestService {
         String path = String.format(BASE_ENDPOINT + "/copySampleData" + "?parentId=%d", parentId);
         this.webClientService.authorizedHttpGetJson(path, token);
     }
+
+    public void swap(int id1, int id2) {
+        String token = this.userSessionService.getToken();
+        String path = String.format(BASE_ENDPOINT + "/swap?id1=%d&id2=%d", id1, id2);
+        this.webClientService.authorizedHttpGetJson(path, token);
+    }
 }

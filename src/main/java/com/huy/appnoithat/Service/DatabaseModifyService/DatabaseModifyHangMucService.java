@@ -33,4 +33,7 @@ public class DatabaseModifyHangMucService {
     public void fetchSampleHangMucData(int parentId) {
         hangMucRestService.copySampleDataFromAdmin(parentId);
     }
+    public void swap(int id1, int id2) {
+        hangMucRestService.swap(id1, id2);
+    }
 }

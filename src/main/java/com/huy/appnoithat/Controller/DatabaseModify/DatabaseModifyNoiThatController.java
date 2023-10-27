@@ -2,10 +2,12 @@ package com.huy.appnoithat.Controller.DatabaseModify;
 
 
 import com.huy.appnoithat.Common.KeyboardUtils;
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
+import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
@@ -40,6 +42,8 @@ public class DatabaseModifyNoiThatController implements Initializable {
     private ListView<HangMuc> childrenList;
     @FXML
     private ListView<NoiThat> listView;
+    @FXML
+    private Button swapButton;
     int parentID;
     private final DatabaseModifyHangMucService databaseModifyHangMucService;
     private final DatabaseModifyNoiThatService databaseModifyNoiThatService;
@@ -59,6 +63,28 @@ public class DatabaseModifyNoiThatController implements Initializable {
         hangMucObservableList = FXCollections.observableArrayList();
     }
 
+    @FXML
+    void swap(ActionEvent event) {
+        NoiThat noiThat = listView.getSelectionModel().getSelectedItem();
+        if (noiThat == null) {
+            return;
+        }
+        String swapIndex = PopupUtils.openDialog("Đổi vị trí", "Đổi vị trí", "Vị trí");
+        if (swapIndex == null || swapIndex.isEmpty()) {
+            return;
+        }
+        int index;
+        try {
+            index = Integer.parseInt(swapIndex);
+            if (index == 0 || index > noiThatObservableList.size()) {
+                return;
+            }
+        } catch (NumberFormatException e) {
+            return;
+        }
+        databaseModifyNoiThatService.swap(noiThat.getId(), noiThatObservableList.get(index - 1).getId());
+        refreshList();
+    }
 
     /**
      * Handles the action event for adding a new NoiThat item.

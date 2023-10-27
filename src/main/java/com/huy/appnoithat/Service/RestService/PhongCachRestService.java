@@ -157,4 +157,9 @@ public class PhongCachRestService {
         this.webClientService.authorizedHttpGetJson(path, token);
     }
 
+    public void swap(int id1, int id2) {
+        String path = String.format(BASE_ENDPOINT + "/swap?id1=%d&id2=%d", id1, id2);
+        String token = this.userSessionService.getToken();
+        this.webClientService.authorizedHttpGetJson(path, token);
+    }
 }

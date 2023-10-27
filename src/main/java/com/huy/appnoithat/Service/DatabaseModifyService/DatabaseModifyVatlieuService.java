@@ -33,4 +33,7 @@ public class DatabaseModifyVatlieuService {
     public void fetchSampleVatLieuData(int parentId) {
         vatLieuRestService.copySampleDataFromAdmin(parentId);
     }
+    public void swap(int id1, int id2) {
+        vatLieuRestService.swap(id1, id2);
+    }
 }

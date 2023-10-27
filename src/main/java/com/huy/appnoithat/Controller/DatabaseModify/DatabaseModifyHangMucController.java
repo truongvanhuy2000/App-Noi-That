@@ -1,9 +1,11 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
 import com.huy.appnoithat.Common.KeyboardUtils;
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.HangMuc;
+import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
@@ -41,6 +43,8 @@ public class DatabaseModifyHangMucController implements Initializable {
     private ListView<VatLieu> childrenList;
     @FXML
     private ListView<HangMuc> listView;
+    @FXML
+    private Button swapButton;
     private int parentID;
     private final DatabaseModifyHangMucService databaseModifyHangMucService;
     private final DatabaseModifyVatlieuService databaseModifyVatlieuService;
@@ -59,7 +63,28 @@ public class DatabaseModifyHangMucController implements Initializable {
         vatLieuObservableList = FXCollections.observableArrayList();
         hangMucObservableList = FXCollections.observableArrayList();
     }
-
+    @FXML
+    void swap(ActionEvent event) {
+        HangMuc hangMuc = listView.getSelectionModel().getSelectedItem();
+        if (hangMuc == null) {
+            return;
+        }
+        String swapIndex = PopupUtils.openDialog("Đổi vị trí", "Đổi vị trí", "Vị trí");
+        if (swapIndex == null || swapIndex.isEmpty()) {
+            return;
+        }
+        int index;
+        try {
+            index = Integer.parseInt(swapIndex);
+            if (index == 0 || index > hangMucObservableList.size()) {
+                return;
+            }
+        } catch (NumberFormatException e) {
+            return;
+        }
+        databaseModifyHangMucService.swap(hangMuc.getId(), hangMucObservableList.get(index - 1).getId());
+        refreshList();
+    }
     /**
      * Handles the action event for adding a new HangMuc item.
      *

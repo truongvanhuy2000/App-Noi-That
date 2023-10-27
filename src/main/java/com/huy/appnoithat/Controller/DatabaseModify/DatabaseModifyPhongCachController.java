@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller.DatabaseModify;
 
 
 import com.huy.appnoithat.Common.KeyboardUtils;
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.NoiThat;
@@ -45,6 +46,8 @@ public class DatabaseModifyPhongCachController implements Initializable {
     private ListView<PhongCachNoiThat> listView;
     @FXML
     private Button getSampleDataButton;
+    @FXML
+    private Button swapButton;
 
     private final DatabaseModifyPhongCachService databaseModifyPhongCachService;
     private final DatabaseModifyNoiThatService databaseModifyNoiThatService;
@@ -82,6 +85,29 @@ public class DatabaseModifyPhongCachController implements Initializable {
         refreshList();
     }
 
+    @FXML
+    void swap(ActionEvent event) {
+        PhongCachNoiThat phongCachNoiThat = listView.getSelectionModel().getSelectedItem();
+        if (phongCachNoiThat == null) {
+            return;
+        }
+        String swapIndex = PopupUtils.openDialog("Đổi vị trí", "Đổi vị trí", "Vị trí");
+        if (swapIndex == null || swapIndex.isEmpty()) {
+            return;
+        }
+        int index;
+        try {
+            index = Integer.parseInt(swapIndex);
+            if (index == 0 || index > phongCachNoiThatObservableList.size()) {
+                return;
+            }
+        } catch (NumberFormatException e) {
+            return;
+        }
+        databaseModifyPhongCachService.swap(phongCachNoiThat.getId(), phongCachNoiThatObservableList.get(index - 1).getId());
+        refreshList();
+//        listView.getSelectionModel().select(index - 1);
+    }
 
     /**
      * Handles the action event for deleting a PhongCachNoiThat entity.

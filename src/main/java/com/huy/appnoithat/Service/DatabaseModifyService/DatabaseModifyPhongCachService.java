@@ -33,4 +33,7 @@ public class DatabaseModifyPhongCachService {
     public void fetchSamplePhongCachData() {
         phongCachRestService.copySampleDataFromAdmin();
     }
+    public void swap(int id1, int id2) {
+        phongCachRestService.swap(id1, id2);
+    }
 }

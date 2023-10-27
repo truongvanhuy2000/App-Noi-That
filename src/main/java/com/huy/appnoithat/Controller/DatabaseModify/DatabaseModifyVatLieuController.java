@@ -1,8 +1,10 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
 import com.huy.appnoithat.Common.KeyboardUtils;
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
+import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Enums.Action;
@@ -51,6 +53,8 @@ public class DatabaseModifyVatLieuController implements Initializable {
     private TableColumn<ThongSo, Long> DonGia;
     @FXML
     private TableColumn<ThongSo, String> DonVi;
+    @FXML
+    private Button swapButton;
     private int parentID;
     private final DatabaseModifyVatlieuService databaseModifyVatlieuService;
     private final DatabaseModifyThongSoService databaseModifyThongSoService;
@@ -70,6 +74,28 @@ public class DatabaseModifyVatLieuController implements Initializable {
         thongSoObservableList = FXCollections.observableArrayList();
     }
 
+    @FXML
+    void swap(ActionEvent event) {
+        VatLieu vatLieu = listView.getSelectionModel().getSelectedItem();
+        if (vatLieu == null) {
+            return;
+        }
+        String swapIndex = PopupUtils.openDialog("Đổi vị trí", "Đổi vị trí", "Vị trí");
+        if (swapIndex == null || swapIndex.isEmpty()) {
+            return;
+        }
+        int index;
+        try {
+            index = Integer.parseInt(swapIndex);
+            if (index == 0 || index > vatLieuObservableList.size()) {
+                return;
+            }
+        } catch (NumberFormatException e) {
+            return;
+        }
+        databaseModifyVatlieuService.swap(vatLieu.getId(), vatLieuObservableList.get(index - 1).getId());
+        refreshList();
+    }
 
     /**
      * Handles the action when the user adds a new item.

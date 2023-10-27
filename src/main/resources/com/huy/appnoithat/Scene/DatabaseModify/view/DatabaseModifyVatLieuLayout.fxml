@@ -60,6 +60,18 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                           </columnResizePolicy>
                       </TableView>
+                   <Button fx:id="swapButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#swap" prefHeight="29.0" prefWidth="357.0" text="Đổi vị trí">
+                       <graphic>
+                           <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
+                               <image>
+                                   <Image url="@../../icons/addPC.png" />
+                               </image>
+                           </ImageView>
+                       </graphic>
+                       <tooltip>
+                           <Tooltip style="-fx-show-delay: 50ms;" text="Thêm trường mới vào bảng" />
+                       </tooltip>
+                   </Button>
                   <Button fx:id="addButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#addAction" prefHeight="29.0" prefWidth="357.0" styleClass="windows7-default" text="Thêm">
                      <graphic>
                         <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
