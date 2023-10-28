@@ -77,6 +77,8 @@ public class HangMucCollumHandler {
             event.getRowValue().getValue().setCao(cao);
             event.getRowValue().getValue().setDonGia(donGia);
             event.getRowValue().getValue().setDonVi(donVi);
+
+            TableCalculationUtils.calculateTongTien(event.getRowValue().getParent());
         }
 
         event.getRowValue().getValue().setVatLieu(firstVatLieu);

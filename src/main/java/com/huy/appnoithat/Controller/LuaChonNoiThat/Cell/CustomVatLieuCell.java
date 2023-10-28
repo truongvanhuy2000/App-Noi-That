@@ -7,7 +7,6 @@ import com.huy.appnoithat.Enums.Action;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,7 +22,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
     private final TreeTableView<BangNoiThat> TableNoiThat;
     private HBox hBox;
     private TextArea textArea;
-    private Button editButton;
+    private Button startEditButton;
 
     /**
      * Constructs a CustomVatLieuCell with the given ObservableList of items and a TreeTableView.
@@ -56,7 +55,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         }
         if (!isEmpty()) {
             super.startEdit();
-            setGraphic(editButton);
+            setGraphic(startEditButton);
         }
 
     }
@@ -118,14 +117,15 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
      * such as handling commit actions and mouse clicks.
      */
     private void createEditButton() {
-        if (editButton != null) {
+        if (this.startEditButton != null) {
             return;
         }
-        editButton = new Button("V");
-        editButton.setOnAction((e) -> {
+        this.startEditButton = new Button("V");
+        this.startEditButton.setOnAction((e) -> {
             setGraphic(hBox);
             showComboBoxAfter(200);
         });
+//        this.startEditButton.setStyle("-fx-background-color: transparent");
     }
     private void createComboBox() {
         if (comboBox != null) {
@@ -178,16 +178,19 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         view.setFitWidth(20);
         view.preserveRatioProperty().set(true);
         editButton.setGraphic(view);
-//        editButton.setMaxSize(20, 20);
+        editButton.setMaxSize(20, 20);
+        editButton.setPrefSize(20, 20);
         editButton.setOnAction((e) -> {
             super.setText(null);
             textArea.setText(super.getItem());
             setGraphic(vBox);
         });
-//        getTableColumn().setResizable(false);
         Platform.runLater(() -> {
-            comboBox.setMaxWidth(getTableColumn().getWidth() - editButton.getWidth());
-//            getTableColumn().setResizable(true);
+            comboBox.setPrefWidth(getTableColumn().getWidth() - editButton.getWidth() - 40);
+        });
+        getTableColumn().prefWidthProperty().addListener((observable, oldValue, newValue) -> {
+//            System.out.println("New value: " + newValue);
+            comboBox.setPrefWidth(newValue.doubleValue() - editButton.getWidth() - 10);
         });
         hBox = new HBox();
         hBox.getChildren().add(comboBox);
