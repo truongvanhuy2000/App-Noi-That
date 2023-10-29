@@ -137,7 +137,7 @@
                                           <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                       </columnResizePolicy>
                                   </TreeTableView>
-                                  <TableView fx:id="bangThanhToan" maxHeight="50.0" minHeight="50.0" prefHeight="63.0" prefWidth="1254.0" VBox.vgrow="ALWAYS">
+                                  <TableView fx:id="bangThanhToan" maxHeight="50.0" minHeight="63.0" prefHeight="63.0" prefWidth="1254.0" VBox.vgrow="ALWAYS">
                                       <columns>
                                     <TableColumn fx:id="TongTien" prefWidth="339.0" style="-fx-alignment: CENTER;" text="Tổng tiền" />
                                           <TableColumn fx:id="DatCocThietKe10" prefWidth="339.0" style="-fx-alignment: CENTER;" text="Đặt cọc thiết kế 10%" />

@@ -32,7 +32,7 @@ public class SetupBangNoiThat {
     private TreeTableView<BangNoiThat> TableNoiThat;
     private TableView<BangThanhToan> bangThanhToan;
     private int itemCount = 0;
-
+    private LuaChonNoiThatController luaChonNoiThatController;
     public SetupBangNoiThat(LuaChonNoiThatController luaChonNoiThatController) {
         Cao = luaChonNoiThatController.getCao();
         Dai = luaChonNoiThatController.getDai();
@@ -46,7 +46,7 @@ public class SetupBangNoiThat {
         STT = luaChonNoiThatController.getSTT();
         TableNoiThat = luaChonNoiThatController.getTableNoiThat();
         bangThanhToan = luaChonNoiThatController.getBangThanhToan();
-
+        this.luaChonNoiThatController = luaChonNoiThatController;
     }
 
     public void setUpBangNoiThat() {
@@ -58,16 +58,27 @@ public class SetupBangNoiThat {
         TableNoiThat.setRoot(itemRoot);
         TableNoiThat.setShowRoot(false);
         TableNoiThat.setEditable(true);
-        itemRoot.getChildren().add(TableUtils.createNewItem("A"));
+
+        TreeItem<BangNoiThat> childItem = TableUtils.createNewItem("A");
+        itemRoot.getChildren().add(childItem);
+        TableNoiThat.getSelectionModel().select(childItem);
+        Platform.runLater(() -> {
+            luaChonNoiThatController.getAddContinuousButton().fire();
+        });
 
         TableNoiThat.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (oldSelection != null) {
                 oldSelection.setGraphic(null);
             }
             if (newSelection != null) {
+                ObservableList<TreeTablePosition<BangNoiThat, ?>> selectedCells = TableNoiThat.getSelectionModel().getSelectedCells();
+                if (selectedCells.isEmpty()) {
+                    return;
+                }
                 int row = TableNoiThat.getSelectionModel().getSelectedCells().get(0).getRow();
                 Platform.runLater(() -> {
                     TableNoiThat.edit(row, TableNoiThat.getVisibleLeafColumn(1));
+                    TableNoiThat.scrollTo(row);
                 });
             }
         });
@@ -159,21 +170,6 @@ public class SetupBangNoiThat {
         ObservableList<String> vatLieuList = FXCollections.observableArrayList();
         VatLieuCollumHandler vatLieuCollumHandler = new VatLieuCollumHandler(vatLieuList);
         VatLieu.setCellValueFactory(vatLieuCollumHandler::getCustomCellValueFactory);
-//        CheckBox checkBox = new CheckBox();
-//        checkBox.setOnAction(actionEvent -> {
-//            if (checkBox.isSelected()) {
-//                VatLieu.setCellFactory(param -> new CustomTextAreaCell());
-//                VatLieu.setOnEditCommit(event -> {
-//                    event.getRowValue().getValue().setVatLieu(event.getNewValue());
-//                });
-//            } else {
-//                VatLieu.setCellFactory(vatLieuCollumHandler::getCustomCellFactory);
-//                VatLieu.setOnEditStart(vatLieuCollumHandler::onStartEditVatLieu);
-//                VatLieu.setOnEditCommit(vatLieuCollumHandler::onEditCommitVatLieu);
-//            }
-//        });
-//        VatLieu.setGraphic(checkBox);
-
         VatLieu.setCellFactory(vatLieuCollumHandler::getCustomCellFactory);
         VatLieu.setOnEditStart(vatLieuCollumHandler::onStartEditVatLieu);
         VatLieu.setOnEditCommit(vatLieuCollumHandler::onEditCommitVatLieu);
@@ -186,19 +182,6 @@ public class SetupBangNoiThat {
 
         ObservableList<String> hangMucList = FXCollections.observableArrayList();
         HangMucCollumHandler hangMucCollumHandler = new HangMucCollumHandler(hangMucList);
-//        CheckBox checkBox = new CheckBox();
-//        checkBox.setOnAction(actionEvent -> {
-//            if (checkBox.isSelected()) {
-//                HangMuc.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
-//                HangMuc.setOnEditCommit(event -> {
-//                    event.getRowValue().getValue().setHangMuc(event.getNewValue());
-//                });
-//            } else {
-//                HangMuc.setCellFactory(hangMucCollumHandler::getCustomCellFactory);
-//                HangMuc.setOnEditCommit(hangMucCollumHandler::onEditCommitHangMuc);
-//                HangMuc.setOnEditStart(hangMucCollumHandler::onStartEditHangMuc);
-//            }
-//        });
         // Set up collum for HangMuc
         HangMuc.setCellValueFactory(hangMucCollumHandler::getCustomCellValueFactory);
 //        HangMuc.setGraphic(checkBox);

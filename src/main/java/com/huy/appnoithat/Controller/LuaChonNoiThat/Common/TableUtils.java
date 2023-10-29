@@ -76,10 +76,10 @@ public class TableUtils {
         newItem.getValue().getThanhTien().addListener((observableValue, aLong, t1) -> {
             TableCalculationUtils.calculateBangThanhToan(bangThanhToan, t1.longValue());
         });
-        newItem.addEventHandler(TreeItem.childrenModificationEvent(), event -> {
-//            System.out.println("new item added");
-            bangNoiThat.scrollTo(9999);
-        });
+//        newItem.addEventHandler(TreeItem.childrenModificationEvent(), event -> {
+////            System.out.println("new item added");
+//            bangNoiThat.scrollTo(9999);
+//        });
         return newItem;
     }
     /**

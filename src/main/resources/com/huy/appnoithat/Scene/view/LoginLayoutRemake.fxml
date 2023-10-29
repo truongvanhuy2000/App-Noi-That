@@ -20,7 +20,7 @@
          <children>
              <AnchorPane fx:id="imageAnchor" maxWidth="582.0" prefHeight="615.0" prefWidth="408.0" style="-fx-background-color: black;" HBox.hgrow="NEVER">
                <children>
-                      <ImageView fitHeight="615.0" fitWidth="433.0" opacity="0.37" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <ImageView fitHeight="615.0" fitWidth="433.0" opacity="0.86" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <image>
                               <Image url="@../icons/z4771514826114_c0e39f833f9af9221ece0961989a8b3b.jpg" />
                           </image>

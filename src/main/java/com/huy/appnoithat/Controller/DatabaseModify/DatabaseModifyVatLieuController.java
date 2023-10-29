@@ -113,6 +113,9 @@ public class DatabaseModifyVatLieuController implements Initializable {
     void FetchSampleData(ActionEvent event) {
         databaseModifyVatlieuService.fetchSampleVatLieuData(this.parentID);
         refresh();
+        for (VatLieu item : vatLieuObservableList) {
+            databaseModifyThongSoService.fetchSampleThongSoData(item.getId());
+        }
     }
     /**
      * Handles the action when the user deletes an item.

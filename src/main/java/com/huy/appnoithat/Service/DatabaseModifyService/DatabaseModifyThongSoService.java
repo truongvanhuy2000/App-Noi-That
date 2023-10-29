@@ -25,5 +25,8 @@ public class DatabaseModifyThongSoService {
     public void addNewThongSo(ThongSo thongSo, int parentId) {
         thongSoRestService.save(thongSo, parentId);
     }
+    public void fetchSampleThongSoData(int parentId) {
+        thongSoRestService.copySampleDataFromAdmin(parentId);
+    }
 
 }

@@ -59,7 +59,7 @@ public class KichThuocHandler {
         Double rong = event.getRowValue().getValue().getRong().getValue();
         Double cao = event.getRowValue().getValue().getCao().getValue();
         String donvi = event.getRowValue().getValue().getDonVi().getValue();
-        Double khoiluong = TableCalculationUtils.calculateKhoiLuong(dai, rong, cao, donvi);
+        Double khoiluong = TableCalculationUtils.calculateKhoiLuong(dai, cao, rong, donvi);
         Long dongia = event.getRowValue().getValue().getDonGia().getValue();
         Long thanhTien = TableCalculationUtils.calculateThanhTien(khoiluong, dongia);
         event.getRowValue().getValue().setKhoiLuong(khoiluong);

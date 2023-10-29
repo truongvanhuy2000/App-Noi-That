@@ -9,9 +9,11 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
 
+import java.util.Objects;
+
 public class ButtonHandler {
-    private TreeTableView<BangNoiThat> TableNoiThat;
-    private LuaChonNoiThatController luaChonNoiThatController;
+    private final TreeTableView<BangNoiThat> TableNoiThat;
+    private final LuaChonNoiThatController luaChonNoiThatController;
 
 
     /**
@@ -36,10 +38,7 @@ public class ButtonHandler {
         // Check if any items are selected in the TreeTableView
         if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
             // If no items are selected and the TreeTableView is empty, add a new item with STT "A"
-            if (TableNoiThat.getRoot().getChildren().isEmpty()) {
-                TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem("A");
-                TableNoiThat.getRoot().getChildren().add(tempNewItem);
-            }
+            addNewItemIfEmpty();
             return;
         }
 
@@ -50,25 +49,38 @@ public class ButtonHandler {
         }
         String currentItemStt = currentSelectedItem.getValue().getSTT().getValue();
 
-        // Determine the format of the STT and add new items accordingly
-        if (Utils.RomanNumber.isRoman(currentItemStt)) {
-            handleContinuousAddForRomanStt(currentSelectedItem);
-            TableUtils.reArrangeList(TableNoiThat);
-            return;
-        }
         // If the STT is in alphabetical format, add items following the alphabetical sequence
-        if (Utils.isAlpha(currentItemStt)) {
+        if (Utils.isAlpha(currentItemStt) &&
+                Objects.equals(currentSelectedItem.getParent().getValue().getSTT().getValue(), "0")) {
             handleContinuousAddForAlphaStt(currentSelectedItem);
             TableUtils.reArrangeList(TableNoiThat);
             return;
         }
+
+        // Determine the format of the STT and add new items accordingly
+        if (Utils.RomanNumber.isRoman(currentItemStt) &&
+                Utils.isAlpha(currentSelectedItem.getParent().getValue().getSTT().getValue())) {
+            handleContinuousAddForRomanStt(currentSelectedItem);
+            TableUtils.reArrangeList(TableNoiThat);
+            return;
+        }
         // If the STT is in numeric format, add items following the numeric sequence
-        if (Utils.isNumeric(currentItemStt)) {
+        if (Utils.isNumeric(currentItemStt) &&
+                Utils.RomanNumber.isRoman(currentSelectedItem.getParent().getValue().getSTT().getValue())) {
             handleContinuousAddForNumericStt();
             TableUtils.reArrangeList(TableNoiThat);
         }
     }
-
+    private void addNewItemIfEmpty() {
+        // If no items are selected and the TreeTableView is empty, add a new item with STT "A"
+        if (TableNoiThat.getRoot().getChildren().isEmpty()) {
+            TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem("A");
+            TableNoiThat.getRoot().getChildren().add(tempNewItem);
+            TreeItem<BangNoiThat> newRomanStt = TableUtils.createNewItem("I");
+            automaticallyAddNewStt(newRomanStt, 5);
+            tempNewItem.getChildren().add(newRomanStt);
+        }
+    }
 
     /**
      * Handles the continuous addition of items in the Roman numeral sequence format.
@@ -77,14 +89,15 @@ public class ButtonHandler {
      * @param currentSelectedItem The currently selected item in the TreeTableView.
      */
     private void handleContinuousAddForRomanStt(TreeItem<BangNoiThat> currentSelectedItem) {
-        if (isReachedLimit(currentSelectedItem)) {
+        if (isReachedLimit(currentSelectedItem, 50)) {
             return;
         }
         if (currentSelectedItem.getChildren().isEmpty()) {
             continuousLineAddForRomanStt(currentSelectedItem);
-        } else {
-            createNewSibling(currentSelectedItem);
+            return;
         }
+        TreeItem<BangNoiThat> newSibling = createNewSibling(currentSelectedItem);
+        automaticallyAddNewStt(newSibling, 5);
     }
 
 
@@ -95,22 +108,31 @@ public class ButtonHandler {
      * @param currentSelectedItem The currently selected item in the TreeTableView.
      */
     private void handleContinuousAddForAlphaStt(TreeItem<BangNoiThat> currentSelectedItem) {
-        if (isReachedLimit(currentSelectedItem)) {
+        if (isReachedLimit(currentSelectedItem, 26)) {
             return;
         }
         if (currentSelectedItem.getChildren().isEmpty()) {
-            continuousLineAddForAlphaStt(currentSelectedItem);
+            TreeItem<BangNoiThat> newItem = continuousLineAddForAlphaStt(currentSelectedItem);
+            automaticallyAddNewStt(newItem, 5);
         } else {
-            createNewSibling(currentSelectedItem);
+            TreeItem<BangNoiThat> newItem = createNewSibling(currentSelectedItem);
+            TreeItem<BangNoiThat> newRomanStt = TableUtils.createNewItem("I");
+            automaticallyAddNewStt(newRomanStt, 5);
+            newItem.getChildren().add(newRomanStt);
         }
     }
-
     /**
      * Handles the continuous addition of items in the numeric sequence format. Adds five new items to the TreeTableView.
      */
     private void handleContinuousAddForNumericStt() {
-        for (int i = 0; i < 5; i++) {
+        addNewNumericStt(5);
+    }
+    private void addNewNumericStt(int num) {
+        for (int i = 0; i < num; i++) {
             TreeItem<BangNoiThat> item = TableNoiThat.getSelectionModel().getSelectedItem();
+            if (item == null) {
+                throw new NullPointerException("No item is selected");
+            }
             continuousLineAddForNumericStt(item);
         }
     }
@@ -143,13 +165,14 @@ public class ButtonHandler {
      *
      * @param currentSelectedItem The parent item to which a new child item is added.
      */
-    private void continuousLineAddForAlphaStt(TreeItem<BangNoiThat> currentSelectedItem) {
+    private TreeItem<BangNoiThat> continuousLineAddForAlphaStt(TreeItem<BangNoiThat> currentSelectedItem) {
         if (currentSelectedItem == null) {
-            return;
+            return null;
         }
         TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem("I");
         currentSelectedItem.getChildren().add(tempNewItem);
-        selectNewItem(tempNewItem);
+//        selectNewItem(tempNewItem);
+        return tempNewItem;
     }
 
 
@@ -159,13 +182,14 @@ public class ButtonHandler {
      *
      * @param currentSelectedItem The parent item to which a new child item is added.
      */
-    private void continuousLineAddForRomanStt(TreeItem<BangNoiThat> currentSelectedItem) {
+    private TreeItem<BangNoiThat> continuousLineAddForRomanStt(TreeItem<BangNoiThat> currentSelectedItem) {
         if (currentSelectedItem == null) {
-            return;
+            return null;
         }
         TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem("1");
         currentSelectedItem.getChildren().add(tempNewItem);
         selectNewItem(tempNewItem);
+        return tempNewItem;
     }
 
 
@@ -209,12 +233,12 @@ public class ButtonHandler {
         return "";
     }
 
-    public boolean isReachedLimit(TreeItem<BangNoiThat> root) {
+    public boolean isReachedLimit(TreeItem<BangNoiThat> root, int limit) {
         if (root == null) {
             return false;
         }
-        if (root.getChildren().size() >= 30) {
-            PopupUtils.throwErrorSignal("Đã đạt giới hạn số lượng 30");
+        if (root.getParent().getChildren().size() >= limit) {
+            PopupUtils.throwErrorSignal("Đã đạt giới hạn số lượng " + limit + " mục");
             return true;
         }
         return false;
@@ -228,19 +252,20 @@ public class ButtonHandler {
      * @param root The parent TreeItem to which a new child item is to be added.
      * @return True if the limit is reached, false otherwise.
      */
-    private void createNewSibling(TreeItem<BangNoiThat> currentItem) {
+    private TreeItem<BangNoiThat> createNewSibling(TreeItem<BangNoiThat> currentItem) {
         if (currentItem == null) {
-            return;
+            return null;
         }
         TreeItem<BangNoiThat> newItem = TableUtils.createNewItem(findTheNextStt(currentItem.getValue().getSTT().getValue()));
         if (currentItem.getParent() == null) {
-            return;
+            return null;
         }
         int currentPos = currentItem.getParent().getChildren().indexOf(currentItem);
         if (currentPos != -1) {
             currentItem.getParent().getChildren().add(currentPos + 1, newItem);
         }
         TableUtils.selectSingleItem(TableNoiThat, newItem);
+        return newItem;
     }
 
 
@@ -263,5 +288,20 @@ public class ButtonHandler {
         } else {
             this.luaChonNoiThatController.save();
         }
+    }
+    public void automaticallyAddNewStt(TreeItem<BangNoiThat> parent, int count) {
+        if (parent == null) {
+            return;
+        }
+        for (int i = 0; i < count; i++) {
+            AddNewSttToParent(parent, i + 1);
+        }
+    }
+    public void AddNewSttToParent(TreeItem<BangNoiThat> parent, int stt) {
+        if (parent == null) {
+            return;
+        }
+        TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem(String.valueOf(stt));
+        parent.getChildren().add(tempNewItem);
     }
 }

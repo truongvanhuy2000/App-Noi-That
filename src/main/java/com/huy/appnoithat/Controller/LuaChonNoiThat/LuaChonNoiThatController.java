@@ -46,10 +46,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 @Getter
 public class LuaChonNoiThatController implements Initializable {
@@ -167,11 +164,17 @@ public class LuaChonNoiThatController implements Initializable {
             return;
         }
         ObservableList<TreeItem<BangNoiThat>> listItem = TableNoiThat.getSelectionModel().getSelectedItems();
+//        listItem.stream().sorted(new Comparator<TreeItem<BangNoiThat>>() {
+//            @Override
+//            public int compare(TreeItem<BangNoiThat> o1, TreeItem<BangNoiThat> o2) {
+//                if (o1.getValue().getSTT())
+//            }
+//        });
         for (int i = listItem.size() - 1; i >= 0; i--) {
-            if (listItem.get(i) == null) continue;
-            if (listItem.get(i).getParent() == null) continue;
-
-            listItem.get(i).getParent().getChildren().remove(listItem.get(i));
+            TreeItem<BangNoiThat> item = listItem.get(i);
+            if (item == null) continue;
+            if (item.getParent() == null) continue;
+            item.getParent().getChildren().remove(item);
         }
         TableNoiThat.getSelectionModel().clearSelection();
         TableUtils.reArrangeList(TableNoiThat);

@@ -3553,3 +3553,137 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 28-10-2023 11:49:02 [main] HelloApplication:35 - Start application
 [INFO ] 28-10-2023 11:49:05 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
 [INFO ] 28-10-2023 11:50:09 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 29-10-2023 20:36:02 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 20:36:08 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 20:36:18 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 29-10-2023 20:36:19 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[ERROR] 29-10-2023 20:37:12 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 29-10-2023 20:37:12 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[INFO ] 29-10-2023 20:37:13 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 29-10-2023 20:37:48 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 20:37:53 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 20:37:56 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 29-10-2023 20:38:20 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 29-10-2023 20:39:35 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 20:39:40 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 20:39:44 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 29-10-2023 20:39:53 [JavaFX Application Thread] LuaChonNoiThatController:346 - Close window
+[INFO ] 29-10-2023 20:41:03 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 20:41:08 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 20:42:07 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[ERROR] 29-10-2023 20:42:45 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 29-10-2023 20:42:45 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[INFO ] 29-10-2023 20:48:59 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 20:49:05 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 20:49:17 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 20:49:22 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 20:49:33 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[ERROR] 29-10-2023 20:50:15 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 29-10-2023 20:50:15 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[INFO ] 29-10-2023 20:55:14 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 20:55:18 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 20:55:23 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[ERROR] 29-10-2023 20:55:29 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 29-10-2023 20:55:29 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[INFO ] 29-10-2023 20:55:29 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 21:01:14 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 21:01:27 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 21:01:32 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 21:02:49 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[ERROR] 29-10-2023 21:05:49 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 29-10-2023 21:05:49 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[INFO ] 29-10-2023 21:07:19 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 21:07:25 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 21:07:29 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[ERROR] 29-10-2023 21:08:10 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: null
+[ERROR] 29-10-2023 21:08:10 [JavaFX Application Thread] GlobalExceptionHandler:30 - null
+[INFO ] 29-10-2023 21:10:05 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 21:10:10 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 21:10:18 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 29-10-2023 21:11:31 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 22:17:37 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 22:17:39 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 22:18:08 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:09:13 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:09:16 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:09:22 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 29-10-2023 23:09:29 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:09:44 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:14:06 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:14:08 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:14:23 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:14:50 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:16:21 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:16:25 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:16:49 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:17:56 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:18:52 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:27:36 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:27:39 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:28:34 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:28:35 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 29-10-2023 23:29:00 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:29:55 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:29:58 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:30:09 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:34:16 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:34:20 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:35:22 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:35:26 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:35:36 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:36:25 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:36:28 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:36:40 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:36:47 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:36:50 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:37:28 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:40:07 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:40:10 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:40:29 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:42:34 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:42:37 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:43:03 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:43:23 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:43:26 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:43:48 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:45:33 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:45:36 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:46:39 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:47:44 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:47:48 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:48:09 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:48:34 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:48:37 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:48:49 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:49:01 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:49:04 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:49:21 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:49:35 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:49:37 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:50:39 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:55:44 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:55:47 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:55:51 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:56:06 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:56:09 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 29-10-2023 23:56:18 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "String.isEmpty()" because the return value of "javafx.beans.property.SimpleStringProperty.getValue()" is null
+[ERROR] 29-10-2023 23:56:18 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "String.isEmpty()" because the return value of "javafx.beans.property.SimpleStringProperty.getValue()" is null
+[ERROR] 29-10-2023 23:56:18 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "String.isEmpty()" because the return value of "javafx.beans.property.SimpleStringProperty.getValue()" is null
+[ERROR] 29-10-2023 23:56:18 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "String.isEmpty()" because the return value of "javafx.beans.property.SimpleStringProperty.getValue()" is null
+[INFO ] 29-10-2023 23:56:18 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:56:33 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:56:35 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 29-10-2023 23:56:50 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "String.isEmpty()" because the return value of "javafx.beans.property.SimpleStringProperty.getValue()" is null
+[ERROR] 29-10-2023 23:56:50 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "String.isEmpty()" because the return value of "javafx.beans.property.SimpleStringProperty.getValue()" is null
+[ERROR] 29-10-2023 23:56:50 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "String.isEmpty()" because the return value of "javafx.beans.property.SimpleStringProperty.getValue()" is null
+[ERROR] 29-10-2023 23:56:50 [JavaFX Application Thread] GlobalExceptionHandler:30 - Cannot invoke "String.isEmpty()" because the return value of "javafx.beans.property.SimpleStringProperty.getValue()" is null
+[INFO ] 29-10-2023 23:56:50 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:57:53 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:57:55 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:58:10 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:58:23 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:58:25 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:58:55 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 29-10-2023 23:59:07 [main] HelloApplication:35 - Start application
+[INFO ] 29-10-2023 23:59:10 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 29-10-2023 23:59:28 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
