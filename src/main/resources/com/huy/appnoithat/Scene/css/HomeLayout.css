@@ -28,20 +28,20 @@
 
 *{
     -fx-font-family: 'Roboto Condensed', sans-serif;
-    -fx-font-size: 20px;
+    -fx-font-size: 16px;
 }
 .menuItem{
-    -fx-background-color:  #152259;
+    -fx-background-color: #2942ab;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
     -fx-border-style: solid;
-    -fx-border-color: rgba(20, 19, 19, 0.41);
+    -fx-border-color: rgba(53, 73, 168, 0);
 }
 .menuItem:hover{
     -fx-background-color: #509cda;
-    -fx-border-width: 0px 0px 0px 10px;
-    -fx-border-color: WHITE;
+    /*-fx-border-width: 0px 0px 0px 10px;*/
+    /*-fx-border-color: WHITE;*/
     -fx-font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .side_ankerpane{
-    -fx-background-color: #152259;
+    -fx-background-color: #1c2c75;
     -fx-border-width: 2px 2px 2px 2px;
     /*-fx-border-radius: 20px;*/
     /*-fx-background-radius: 20px;*/
@@ -178,10 +178,20 @@
 }
 
 #btnLogoutcss{
-    -fx-background-color: #651f6a
+    -fx-background-color: #972f9f
 }
 
 #btnLogoutcss:hover{
+    -fx-background-color: #cb1de3;
+    -fx-border-width: 0px 0px 0px 10px;
+    -fx-border-color: WHITE;
+    -fx-font-family: 'Roboto Condensed', sans-serif;
+}
+#xuatchukycss{
+    -fx-background-color: #651f6a
+}
+
+#xuatchukycss:hover{
     -fx-background-color: #B800D2;
     -fx-border-width: 0px 0px 0px 10px;
     -fx-border-color: WHITE;

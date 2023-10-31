@@ -197,6 +197,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
         }
         noiThatObservableList.clear();
         noiThatObservableList.addAll(noiThatList);
+//        listView.getSelectionModel().select(0);
     }
 
 
@@ -271,6 +272,9 @@ public class DatabaseModifyNoiThatController implements Initializable {
         }
         else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
             nextButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.EXIT, event)) {
+            backButton.fire();
         }
     }
 }

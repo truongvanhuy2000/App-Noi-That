@@ -214,6 +214,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
         }
         vatLieuObservableList.clear();
         vatLieuObservableList.addAll(vatLieuList);
+//        listView.getSelectionModel().select(0);
     }
 
 
@@ -327,6 +328,9 @@ public class DatabaseModifyVatLieuController implements Initializable {
         }
         else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
             nextButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.EXIT, event)) {
+            backButton.fire();
         }
     }
 }

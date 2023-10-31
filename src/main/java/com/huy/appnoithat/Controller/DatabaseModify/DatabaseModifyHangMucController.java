@@ -194,6 +194,7 @@ public class DatabaseModifyHangMucController implements Initializable {
         }
         hangMucObservableList.clear();
         hangMucObservableList.addAll(hangMucList);
+//        listView.getSelectionModel().select(0);
     }
 
     /**
@@ -268,6 +269,9 @@ public class DatabaseModifyHangMucController implements Initializable {
         }
         else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
             nextButton.fire();
+        }
+        else if (KeyboardUtils.isRightKeyCombo(Action.EXIT, event)) {
+            backButton.fire();
         }
     }
 }

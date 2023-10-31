@@ -5,6 +5,7 @@ import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
 import com.huy.appnoithat.Scene.QRScene;
 import com.huy.appnoithat.Service.Register.RegisterService;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -111,10 +112,11 @@ public class RegisterController {
             if (!registerService.isUsernameValid(txtUsername.getText())) {
                 btnSave.setDisable(true);
                 PopupUtils.throwCriticalError("Tên đăng nhập đã tồn tại");
-            } else {
-                btnSave.setDisable(false);
-                PopupUtils.throwSuccessSignal("Tên đăng nhập có thể sử dụng");
             }
+//            else {
+//                btnSave.setDisable(false);
+//                PopupUtils.throwSuccessSignal("Tên đăng nhập có thể sử dụng");
+//            }
         });
         txtUsername.setOnKeyPressed(keyEvent -> {
             btnSave.setDisable(true);
@@ -123,6 +125,15 @@ public class RegisterController {
             Stage thisStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             thisStage.close();
         });
+        txtUsername.focusedProperty().addListener(((observableValue, aBoolean, t1) -> {
+            if (t1) {
+                txtUsername.selectAll();
+            } else {
+                Platform.runLater(() -> {
+                    btnCheckUserName.fire();
+                });
+            }
+        }));
     }
 
     private boolean isValidCharacter(String username) {

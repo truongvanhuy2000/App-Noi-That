@@ -10,12 +10,23 @@
     -fx-padding: 5;
 }
 
-#LoginButton {
-    -fx-alignment: center;
-    -fx-text-fill: white;
-    -fx-background-color: blue;
 
+#LoginButton{
+    -fx-background-color: #9140dc
+}
 
+#LoginButton:hover{
+    -fx-background-color: #BC7FF7FF;
+    /*-fx-border-width: 0px 5px 0px 5px;*/
+    /*-fx-border-color: rgba(255, 255, 255, 0);*/
+    /*-fx-font-family: 'Roboto Condensed', sans-serif;*/
+}
+
+#loginWithToken:hover {
+    -fx-background-color: #b4cce5;
+}
+#registerAccount:hover {
+    -fx-background-color: #b4cce5;
 }
 
 /*#gridPane{*/

@@ -24,7 +24,7 @@ public class KeyboardUtils {
                 return keyEvent.getCode().equals(KeyCode.ADD);
             }
             case NEXT_SCREEN -> {
-                return keyEvent.getCode().equals(KeyCode.RIGHT);
+                return keyEvent.getCode().equals(KeyCode.N);
             }
         }
         return false;

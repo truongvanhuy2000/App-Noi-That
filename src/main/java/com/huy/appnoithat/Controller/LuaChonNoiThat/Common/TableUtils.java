@@ -4,6 +4,7 @@ import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.control.TableView;
@@ -76,10 +77,15 @@ public class TableUtils {
         newItem.getValue().getThanhTien().addListener((observableValue, aLong, t1) -> {
             TableCalculationUtils.calculateBangThanhToan(bangThanhToan, t1.longValue());
         });
-//        newItem.addEventHandler(TreeItem.childrenModificationEvent(), event -> {
-////            System.out.println("new item added");
-//            bangNoiThat.scrollTo(9999);
-//        });
+        newItem.addEventHandler(TreeItem.childrenModificationEvent(), event -> {
+            if (bangNoiThat.getSelectionModel().getSelectedCells().isEmpty()) {
+                return;
+            }
+            int row = bangNoiThat.getSelectionModel().getSelectedCells().get(0).getRow();
+            Platform.runLater(() -> {
+                bangNoiThat.scrollTo(row);
+            });
+        });
         return newItem;
     }
     /**

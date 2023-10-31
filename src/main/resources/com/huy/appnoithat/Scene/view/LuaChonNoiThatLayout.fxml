@@ -61,26 +61,30 @@
                         </Menu>
                     </menus>
                   </MenuBar>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                      <children>
-                              <ImageView fx:id="ImageView" fitHeight="142.0" fitWidth="162.0" onMouseClicked="#OnMouseClickedHandler" pickOnBounds="true" preserveRatio="true">
-                                  <image>
-                                      <Image url="@../icons/man.png" />
-                                  </image>
-                              </ImageView>
-                        <VBox spacing="5.0">
+                        <HBox prefHeight="142.0" prefWidth="502.0" spacing="10.0">
                            <children>
-                                  <TextField fx:id="TenCongTy" prefHeight="24.0" prefWidth="350.0" promptText="Tên công ty" />
-                                  <TextField fx:id="VanPhong" prefHeight="24.0" prefWidth="350.0" promptText="Văn phòng" />
-                                  <TextField fx:id="DiaChiXuong" prefHeight="24.0" prefWidth="350.0" promptText="Địa chỉ xưởng" />
-                                  <TextField fx:id="DienThoaiCongTy" prefHeight="24.0" prefWidth="350.0" promptText="Điện thoại" />
-                                  <TextField fx:id="Email" prefHeight="24.0" prefWidth="350.0" promptText="Email" />
+                                    <ImageView fx:id="ImageView" fitHeight="142.0" fitWidth="162.0" onMouseClicked="#OnMouseClickedHandler" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@../icons/man.png" />
+                                        </image>
+                                    </ImageView>
+                              <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                        <TextField fx:id="TenCongTy" prefHeight="24.0" prefWidth="350.0" promptText="Tên công ty" />
+                                        <TextField fx:id="VanPhong" prefHeight="24.0" prefWidth="350.0" promptText="Văn phòng" />
+                                        <TextField fx:id="DiaChiXuong" prefHeight="24.0" prefWidth="350.0" promptText="Địa chỉ xưởng" />
+                                        <TextField fx:id="DienThoaiCongTy" prefHeight="24.0" prefWidth="350.0" promptText="Điện thoại" />
+                                        <TextField fx:id="Email" prefHeight="24.0" prefWidth="350.0" promptText="Email" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
                            </children>
-                           <HBox.margin>
-                              <Insets right="40.0" />
-                           </HBox.margin>
-                        </VBox>
-                        <HBox prefHeight="142.0" prefWidth="463.0" spacing="10.0">
+                        </HBox>
+                        <HBox prefHeight="142.0" prefWidth="452.0" spacing="10.0">
                            <children>
                               <VBox alignment="CENTER_LEFT" spacing="14.0">
                                  <children>
@@ -152,7 +156,7 @@
                                     <Insets />
                                  </VBox.margin>
                                   </TableView>
-                                  <TextArea fx:id="noteTextArea" maxHeight="100.0" minHeight="80.0" prefHeight="121.0" prefWidth="1254.0" text="Chú thích:" VBox.vgrow="ALWAYS">
+                                  <TextArea fx:id="noteTextArea" maxHeight="100.0" minHeight="0.0" prefHeight="0.0" prefWidth="1344.0" text="Chú thích:" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>

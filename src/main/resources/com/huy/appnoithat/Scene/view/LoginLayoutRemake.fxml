@@ -70,19 +70,19 @@
                                  <children>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                                        <children>
-                                              <Button fx:id="LoginButton" maxWidth="200.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #BC7FF7;" text="ĐĂNG NHẬP" textFill="WHITE">
+                                              <Button id="LoginButton" fx:id="LoginButton" maxWidth="200.0" mnemonicParsing="false" onAction="#login" text="ĐĂNG NHẬP" textFill="WHITE">
                                                   <font>
                                                       <Font name="Abyssinica SIL" size="20.0" />
                                                   </font>
                                               </Button>
-                                          <Label lineSpacing="1.0" onMouseClicked="#loginWithToken" text="Đăng nhập bằng chữ ký điện tử" textFill="#1736bcdb" underline="true">
+                                          <Label id="loginWithToken" lineSpacing="1.0" onMouseClicked="#loginWithToken" text="Đăng nhập bằng chữ ký điện tử" textFill="#1736bcdb" underline="true">
                                              <font>
                                                 <Font name="System Italic" size="13.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </VBox>
-                                        <Label lineSpacing="1.0" onMouseClicked="#registerAccount" text="TẠO TÀI KHOẢN MỚI" textFill="#1736bcdb" underline="true">
+                                        <Label id="registerAccount" lineSpacing="1.0" onMouseClicked="#registerAccount" text="TẠO TÀI KHOẢN MỚI" textFill="#1736bcdb" underline="true">
                                             <font>
                                                 <Font name="System Bold Italic" size="17.0" />
                                             </font>

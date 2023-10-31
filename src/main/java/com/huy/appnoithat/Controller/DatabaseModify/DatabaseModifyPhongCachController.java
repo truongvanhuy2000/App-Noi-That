@@ -276,6 +276,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
         }
         phongCachNoiThatObservableList.clear();
         phongCachNoiThatObservableList.addAll(phongCachNoiThatList);
+//        listView.getSelectionModel().select(0);
     }
 
     /**

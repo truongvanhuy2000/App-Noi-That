@@ -78,7 +78,7 @@ public class SetupBangNoiThat {
                 int row = TableNoiThat.getSelectionModel().getSelectedCells().get(0).getRow();
                 Platform.runLater(() -> {
                     TableNoiThat.edit(row, TableNoiThat.getVisibleLeafColumn(1));
-                    TableNoiThat.scrollTo(row);
+//                    TableNoiThat.scrollTo(row);
                 });
             }
         });
