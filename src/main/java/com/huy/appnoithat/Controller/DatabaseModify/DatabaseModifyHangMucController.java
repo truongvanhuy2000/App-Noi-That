@@ -5,13 +5,12 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.Entity.HangMuc;
-import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyVatLieuScene;
-import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyHangMucService;
-import com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyVatlieuService;
+import com.huy.appnoithat.Service.DatabaseModify.DatabaseModifyHangMucService;
+import com.huy.appnoithat.Service.DatabaseModify.DatabaseModifyVatlieuService;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -58,7 +57,7 @@ public class DatabaseModifyHangMucController implements Initializable {
      * Initializes the required services and observable lists.
      */
     public DatabaseModifyHangMucController() {
-        databaseModifyHangMucService = new com.huy.appnoithat.Service.DatabaseModifyService.DatabaseModifyHangMucService();
+        databaseModifyHangMucService = new com.huy.appnoithat.Service.DatabaseModify.DatabaseModifyHangMucService();
         databaseModifyVatlieuService = new DatabaseModifyVatlieuService();
         vatLieuObservableList = FXCollections.observableArrayList();
         hangMucObservableList = FXCollections.observableArrayList();

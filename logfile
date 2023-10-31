@@ -3858,3 +3858,38 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 31-10-2023 13:48:22 [main] HelloApplication:35 - Start application
 [INFO ] 31-10-2023 13:49:21 [main] HelloApplication:35 - Start application
 [INFO ] 31-10-2023 13:51:04 [main] HelloApplication:35 - Start application
+[ERROR] 31-10-2023 23:11:30 [main] DatabaseModifyVatlieuService:22 - Failed to call `setAccess()` on Constructor 'com.huy.appnoithat.DataModel.Yaml.Configuration' (of class `com.huy.appnoithat.DataModel.Yaml.Configuration`) due to `java.lang.reflect.InaccessibleObjectException`, problem: Unable to make public com.huy.appnoithat.DataModel.Yaml.Configuration() accessible: module com.huy.appnoithat does not "exports com.huy.appnoithat.DataModel.Yaml" to module com.fasterxml.jackson.databind
+ at [Source: (StringReader); line: 1, column: 1]
+[ERROR] 31-10-2023 23:12:59 [main] DatabaseModifyVatlieuService:22 - Cannot construct instance of `com.huy.appnoithat.DataModel.Yaml.Configuration` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('D:\Project\Java\App-noi-that\Data\Configuration\config.yaml')
+ at [Source: (StringReader); line: 1, column: 1]
+[ERROR] 31-10-2023 23:14:05 [main] DatabaseModifyVatlieuService:22 - Cannot construct instance of `com.huy.appnoithat.DataModel.Yaml.Configuration` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('D:\Project\Java\App-noi-that\Data\Configuration\config.yaml')
+ at [Source: (StringReader); line: 1, column: 1]
+[ERROR] 31-10-2023 23:14:40 [main] DatabaseModifyVatlieuService:22 - Cannot construct instance of `com.huy.appnoithat.DataModel.Yaml.Configuration` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('D:\Project\Java\App-noi-that\Data\Configuration\config.yaml')
+ at [Source: (StringReader); line: 1, column: 1]
+[ERROR] 31-10-2023 23:17:57 [main] DatabaseModifyVatlieuService:22 - Cannot construct instance of `com.huy.appnoithat.DataModel.Yaml.Configuration` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('D:\Project\Java\App-noi-that\Data\Configuration\config.yaml')
+ at [Source: (StringReader); line: 1, column: 1]
+[ERROR] 31-10-2023 23:23:28 [main] DatabaseModifyVatlieuService:23 - Cannot construct instance of `com.huy.appnoithat.DataModel.Yaml.Configuration` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('D:\Project\Java\App-noi-that\Data\Configuration\config.yaml')
+ at [Source: (StringReader); line: 1, column: 1]
+[ERROR] 31-10-2023 23:24:23 [main] DatabaseModifyVatlieuService:23 - Invalid type definition for type `com.huy.appnoithat.DataModel.Yaml.Configuration`: Failed to call `setAccess()` on Field 'Webserver' (of class `com.huy.appnoithat.DataModel.Yaml.Configuration`) due to `java.lang.reflect.InaccessibleObjectException`, problem: Unable to make field private com.huy.appnoithat.DataModel.Yaml.Webserver com.huy.appnoithat.DataModel.Yaml.Configuration.Webserver accessible: module com.huy.appnoithat does not "opens com.huy.appnoithat.DataModel.Yaml" to module com.fasterxml.jackson.databind
+ at [Source: (StringReader); line: 1, column: 1]
+[ERROR] 31-10-2023 23:25:42 [main] DatabaseModifyVatlieuService:23 - Cannot construct instance of `com.huy.appnoithat.DataModel.Yaml.Configuration` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('D:\Project\Java\App-noi-that\Data\Configuration\config.yaml')
+ at [Source: (StringReader); line: 1, column: 1]
+[ERROR] 31-10-2023 23:27:40 [main] DatabaseModifyVatlieuService:23 - Cannot construct instance of `com.huy.appnoithat.DataModel.Yaml.Configuration` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('D:\Project\Java\App-noi-that\Data\Configuration\config.yaml')
+ at [Source: (StringReader); line: 1, column: 1]
+[ERROR] 31-10-2023 23:28:08 [main] DatabaseModifyVatlieuService:23 - Cannot construct instance of `com.huy.appnoithat.DataModel.Yaml.Configuration` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('D:\Project\Java\App-noi-that\Data\Configuration\config.yaml')
+ at [Source: (StringReader); line: 1, column: 1]
+[ERROR] 31-10-2023 23:30:06 [main] DatabaseModifyVatlieuService:26 - Cannot construct instance of `com.huy.appnoithat.DataModel.Yaml.Configuration` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('D:\Project\Java\App-noi-that\Data\Configuration\config.yaml')
+ at [Source: (StringReader); line: 1, column: 1]
+[ERROR] 31-10-2023 23:31:23 [main] DatabaseModifyVatlieuService:26 - Cannot construct instance of `com.huy.appnoithat.DataModel.Yaml.Configuration` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('D:\Project\Java\App-noi-that\Data\Configuration\config.yaml')
+ at [Source: (StringReader); line: 1, column: 1]
+[ERROR] 31-10-2023 23:33:28 [main] DatabaseModifyVatlieuService:26 - Cannot construct instance of `com.huy.appnoithat.DataModel.Yaml.Configuration` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('D:\Project\Java\App-noi-that\Data\Configuration\config.yaml')
+ at [Source: (StringReader); line: 1, column: 1]
+[ERROR] 31-10-2023 23:37:11 [main] DatabaseModifyVatlieuService:29 - Cannot construct instance of `java.util.LinkedHashMap` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('D:\Project\Java\App-noi-that\Data\Configuration\config.yaml')
+ at [Source: (StringReader); line: 1, column: 1]
+[ERROR] 31-10-2023 23:39:56 [main] DatabaseModifyVatlieuService:26 - Cannot construct instance of `com.huy.appnoithat.DataModel.Yaml.Configuration` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('D:\Project\Java\App-noi-that\Data\Configuration\config.yaml')
+ at [Source: (StringReader); line: 1, column: 1]
+[INFO ] 31-10-2023 23:41:19 [main] HelloApplication:38 - Start application
+[INFO ] 31-10-2023 23:41:32 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 31-10-2023 23:43:15 [main] HelloApplication:38 - Start application
+[INFO ] 31-10-2023 23:43:19 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 31-10-2023 23:43:32 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window

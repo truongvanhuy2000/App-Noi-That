@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Service.DatabaseModifyService;
+package com.huy.appnoithat.Service.DatabaseModify;
 
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Service.RestService.HangMucRestService;

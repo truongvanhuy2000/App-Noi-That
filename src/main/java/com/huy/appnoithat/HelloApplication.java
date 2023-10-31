@@ -1,9 +1,11 @@
 package com.huy.appnoithat;
 
+import com.huy.appnoithat.DataModel.Yaml.Configuration;
 import com.huy.appnoithat.Exception.GlobalExceptionHandler;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Scene.StageFactory;
+import com.huy.appnoithat.Service.Configuration.configurationService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Session.UserSession;
 import javafx.application.Application;
@@ -32,6 +34,7 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+        configurationService.readConfiguration();
         LOGGER.info("Start application");
         launch();
     }

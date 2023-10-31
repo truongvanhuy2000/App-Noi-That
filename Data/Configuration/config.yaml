@@ -1,3 +1,3 @@
 Webserver:
-  host: "http://103.238.234.22:8080"
+  host: "http://103.178.234.145:8080"
   timeout: 10

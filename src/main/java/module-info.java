@@ -15,6 +15,7 @@ module com.huy.appnoithat {
     requires org.apache.logging.log4j;
     requires java.desktop;
     requires com.fasterxml.jackson.datatype.jsr310;
+    requires com.fasterxml.jackson.dataformat.yaml;
 
     exports com.huy.appnoithat.Controller;
     opens com.huy.appnoithat.Controller to javafx.fxml;
@@ -30,8 +31,12 @@ module com.huy.appnoithat {
 
     exports com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
     opens com.huy.appnoithat.Controller.LuaChonNoiThat.Cell to javafx.fxml;
+
     exports com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel;
     opens com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel to javafx.fxml;
+
+    exports com.huy.appnoithat.DataModel.Yaml;
+    opens com.huy.appnoithat.DataModel.Yaml to javafx.fxml;
 
     exports com.huy.appnoithat.DataModel.NtFile;
     exports com.huy.appnoithat.DataModel;

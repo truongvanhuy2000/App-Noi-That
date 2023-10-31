@@ -74,7 +74,7 @@
                <children>
                   <VBox layoutY="269.0" prefHeight="300.0" prefWidth="955.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TableView id="RecentTableView" fx:id="RecentTableView" prefHeight="572.0" prefWidth="955.0">
+                        <TableView id="RecentTableView" fx:id="RecentTableView" prefHeight="572.0" prefWidth="955.0" VBox.vgrow="ALWAYS">
                           <columns>
                             <TableColumn fx:id="DirectoryCollum" prefWidth="679.1999939084053" styleClass="column-header" text="Đường dẫn" />
                             <TableColumn fx:id="TimeStampCollum" minWidth="0.0" prefWidth="273.5999755859375" style="-fx-alignment: CENTER;" styleClass="column-header" text="Thời gian" />

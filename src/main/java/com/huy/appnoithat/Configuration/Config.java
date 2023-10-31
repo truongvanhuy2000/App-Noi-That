@@ -1,5 +1,7 @@
 package com.huy.appnoithat.Configuration;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.nio.file.Paths;
 
 public class Config {
@@ -12,6 +14,8 @@ public class Config {
                 Paths.get(CURRENT_DIRECTORY, "Data", "PersistenceData", "info.json").toString();
         public static final String NOTE_AREA_DIRECTORY =
                 Paths.get(CURRENT_DIRECTORY, "Data", "PersistenceData", "note.json").toString();;
+        public static final String CONFIG_DIRECTORY =
+                Paths.get(CURRENT_DIRECTORY, "Data", "Configuration", "config.yaml").toString();
     }
 
     public static class FILE_EXPORT {
@@ -23,8 +27,8 @@ public class Config {
                 Paths.get(CURRENT_DIRECTORY, "Data", "RecentFile", "recentFile.json").toString();
     }
     public static class WEB_CLIENT {
-        public static final String BASE_URL = "http://103.238.234.22:8080";
+        public static String BASE_URL = "http://localhost:8080";
 //        public static final String BASE_URL = "http://localhost:8085";
-        public static final int TIME_OUT = 10;
+        public static int TIME_OUT = 10;
     }
 }
