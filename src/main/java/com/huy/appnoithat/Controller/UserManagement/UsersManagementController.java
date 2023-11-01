@@ -38,26 +38,15 @@ public class UsersManagementController {
     @FXML
     private Button btnActiveAccount, btnAddacount, btnAllAccount, btnInactiveAccount, btnDeleteAccount, btnEditAccount, btnSearch, backButton;
     @FXML
-    private TableColumn<AccountTable, String> password;
-    @FXML
     private TableColumn<AccountTable, LocalDate> expiredDate;
     @FXML
     private TableView<AccountTable> tableManageUser;
     @FXML
     private TextField txtSearchUser;
     @FXML
-    private TableColumn<AccountTable, String> username;
-    @FXML
-    private TableColumn<AccountTable, String> email;
-    @FXML
-    private TableColumn<AccountTable, String> phone;
-
+    private TableColumn<AccountTable, String> username, password, email, phone;
     UsersManagementService userManagementService;
-    //
-//    @Getter
-//    List<Account> list = userManagementService.findAllAccountEnable();
     ObservableList<AccountTable> listUser = FXCollections.observableArrayList();
-    UsersManagementService usersManagementService = new UsersManagementService();
     UserSessionService userSessionService;
 
     public UsersManagementController() {
@@ -76,7 +65,6 @@ public class UsersManagementController {
     public ImageView convertActiveIcon(boolean checked) {
         ImageView activeIcon;
         if (checked) {
-
             // Load a check mark icon if checked is true
             activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/check-mark.png")));
         } else {
@@ -111,7 +99,7 @@ public class UsersManagementController {
     public void refreshList() {
         Platform.runLater(() -> {
             // Retrieve a list of enabled accounts from the service
-            List<Account> accountList = usersManagementService.findAllAccountEnable();
+            List<Account> accountList = userManagementService.findAllAccountEnable();
             // Clear the existing data in the list
             listUser.clear();
             // Convert Account objects to AccountTable objects and add them to the list
@@ -192,7 +180,7 @@ public class UsersManagementController {
 
         // Activate the selected user account using the service
 
-        usersManagementService.ActiveAccount(activeID);
+        userManagementService.ActiveAccount(activeID);
 
         // Refresh the table view to update the changes
         tableManageUser.refresh();
@@ -220,7 +208,7 @@ public class UsersManagementController {
         int inactiveID = tableManageUser.getItems().get(indexSelector).getId();
 
         // Deactivate the selected user account using the service
-        usersManagementService.InActiveAccount(inactiveID);
+        userManagementService.InActiveAccount(inactiveID);
 
         // Set the inactive status in the selected user's row in the table
         tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(false));
@@ -275,7 +263,7 @@ public class UsersManagementController {
                 List<String> roleList = new ArrayList<>();
                 roleList.add("ROLE_USER");
                 // --- REMEMBER TO SUA DATE
-                usersManagementService.addNewAccount(
+                userManagementService.addNewAccount(
                         new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
 
                 // Clear data, reinitialize the table, and close the form
@@ -317,12 +305,12 @@ public class UsersManagementController {
         int deleteid = tableManageUser.getItems().get(indexSelector).getId();
 
         // Retrieve the account information from the service
-        Account account = usersManagementService.findAccountById(deleteid);
+        Account account = userManagementService.findAccountById(deleteid);
 
         // Check if the selected account is not an admin account
         if (!account.getRoleList().get(0).equals("ROLE_ADMIN")) {
             // Delete the user account from the service
-            usersManagementService.deleteAccount(deleteid);
+            userManagementService.deleteAccount(deleteid);
 
             // Remove the user account from the table
             tableManageUser.getItems().remove(indexSelector);
@@ -399,7 +387,7 @@ public class UsersManagementController {
 
                 // Get the selected account's ID and details from the table
                 int id = tableManageUser.getItems().get(selectIndex).getId();
-                Account account = usersManagementService.findAccountById(id);
+                Account account = userManagementService.findAccountById(id);
 
                 // Extend the account's expiration date by the specified number of months
                 LocalDate soThangGiaHanThem = account.getExpiredDate().plusMonths(parseStringToINT(txtGiaHan.getText(), 0));
@@ -410,7 +398,7 @@ public class UsersManagementController {
                 account.setExpiredDate(soThangGiaHanThem);
 
                 // Update the account in the service
-                usersManagementService.EditAccount(account);
+                userManagementService.EditAccount(account);
 
                 // Refresh the table view to update the changes
                 tableManageUser.refresh();
@@ -451,7 +439,7 @@ public class UsersManagementController {
                 int deleteid = tableManageUser.getItems().get(indexSelector).getId();
 
                 // Retrieve the account information from the service
-                Account account = usersManagementService.findAccountById(deleteid);
+                Account account = userManagementService.findAccountById(deleteid);
 
                 // Check if the selected account is an admin
                 if (account.getRoleList().get(0).equals("ROLE_ADMIN")) {
@@ -515,7 +503,7 @@ public class UsersManagementController {
             }
 
             // Retrieve accounts awaiting approval from the service
-            List<Account> accountList = usersManagementService.findAllNotEnabledAccount();
+            List<Account> accountList = userManagementService.findAllNotEnabledAccount();
             listUserNotEnable.addAll(accountList);
 
             // Set cell value factories for the columns
@@ -535,7 +523,7 @@ public class UsersManagementController {
                         enableid = acc.getId();
 
                         // Update the table view
-                        usersManagementService.enableAccount(enableid);
+                        userManagementService.enableAccount(enableid);
                         listUser.clear();
                         refreshList();
 
@@ -556,7 +544,7 @@ public class UsersManagementController {
                         Account acc = (Account) tableView.getSelectionModel().getSelectedItem();
                         rejectid = acc.getId();
                         // Delete the selected account
-                        usersManagementService.deleteAccount(rejectid);
+                        userManagementService.deleteAccount(rejectid);
                         // Close the form
                         userManageMentStage.close();
                     }
