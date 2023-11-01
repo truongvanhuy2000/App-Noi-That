@@ -26,13 +26,16 @@ public class HelloApplication extends Application {
             Scene scene = HomeScene.getInstance().getScene();
             HomeScene.getInstance().getHomeController().init();
             StageFactory.closeAndCreateNewMaximizedStage(stage, scene);
-        } else {
-            Scene scene = LoginScene.getInstance().getScene();
-            LoginScene.getInstance().getLoginController().init();
-            StageFactory.closeAndCreateNewUnresizeableStage(stage, scene);
+        }
+        else {
+            goToLogin(stage);
         }
     }
-
+    private void goToLogin(Stage stage) {
+        Scene scene = LoginScene.getInstance().getScene();
+        LoginScene.getInstance().getLoginController().init();
+        StageFactory.closeAndCreateNewUnresizeableStage(stage, scene);
+    }
     public static void main(String[] args) {
         configurationService.readConfiguration();
         LOGGER.info("Start application");

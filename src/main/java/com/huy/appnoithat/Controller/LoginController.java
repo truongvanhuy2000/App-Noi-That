@@ -87,9 +87,10 @@ public class LoginController {
      */
     @FXML
     void registerAccount(MouseEvent event) {
-        Scene scene = RegisterScene.getInstance().getScene();
+        RegisterScene registerScene = new RegisterScene();
+        Scene scene = registerScene.getScene();
         RegisterScene.getRegisterController().init();
-        StageFactory.CreateNewUnresizeableStage(RegisterScene.getInstance().getScene());
+        StageFactory.CreateNewUnresizeableStage(registerScene.getScene());
     }
 
     @FXML

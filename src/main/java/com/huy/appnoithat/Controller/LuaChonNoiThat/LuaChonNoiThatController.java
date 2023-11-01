@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
@@ -45,6 +46,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -207,6 +209,9 @@ public class LuaChonNoiThatController implements Initializable {
             if (currentState == State.OPEN_FROM_EXISTING_FILE && currentDirectory != null) {
                 save();
             }
+            else if (currentState == State.NEW_FILE) {
+                backup();
+            }
         }));
         startAutoSaveAction();
         setUpBangThanhToan();
@@ -325,6 +330,7 @@ public class LuaChonNoiThatController implements Initializable {
         if (currentState == State.NEW_FILE) {
             String directory = saveAs();
             if (directory == null) {
+                backup();
                 return;
             }
             currentState = State.OPEN_FROM_EXISTING_FILE;
@@ -335,7 +341,12 @@ public class LuaChonNoiThatController implements Initializable {
         }
         LOGGER.info("Normal save: Save file to: " + currentDirectory);
     }
-
+    public void backup() {
+        String filename = "backup-" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS").format(new Date()) + ".nt";
+        String tempDirectory = Paths.get(Config.FILE_EXPORT.TEMP_NT_FILE_DIRECTORY, filename).toString();
+        ExportOperation exportOperation = new ExportOperation(this);
+        exportOperation.exportFile(FileType.NT, new File(tempDirectory), false);
+    }
     private void startAutoSaveAction() {
         autoSaveTimer.setCycleCount(Timeline.INDEFINITE);
         autoSaveTimer.play();

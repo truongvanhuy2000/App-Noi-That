@@ -32,7 +32,7 @@
                         <Insets />
                      </HBox.margin>
                   </TextField>
-                      <Button id="btnSearchcss" fx:id="btnSearch" mnemonicParsing="false" onAction="#SearchByUserName" prefHeight="30.0" prefWidth="109.0" text="Tìm" HBox.hgrow="ALWAYS">
+                      <Button id="btnUserManagementcss" fx:id="btnSearch" mnemonicParsing="false" onAction="#SearchByUserName" prefHeight="30.0" prefWidth="109.0" text="Tìm" HBox.hgrow="ALWAYS">
                           <graphic>
                               <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
@@ -44,7 +44,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                       </Button>
-                      <Button id="btnAllAccountcss" fx:id="btnAllAccount" mnemonicParsing="false" onAction="#getAllAcount" prefHeight="30.0" prefWidth="199.0" text="Toàn bộ Account" HBox.hgrow="ALWAYS">
+                      <Button id="btnUserManagementcss" fx:id="btnAllAccount" mnemonicParsing="false" onAction="#getAllAcount" prefHeight="30.0" prefWidth="199.0" text="Toàn bộ Account" HBox.hgrow="ALWAYS">
                           <graphic>
                               <ImageView fitHeight="22.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
@@ -60,7 +60,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="62.0" prefWidth="1000.0" spacing="40.0" VBox.vgrow="NEVER">
                <children>
-                    <Button id="btnAddcss" fx:id="btnAddacount" minWidth="80.0" mnemonicParsing="false" onAction="#AddAccount" prefHeight="30.0" text="Thêm" HBox.hgrow="ALWAYS">
+                    <Button id="btnUserManagementcss" fx:id="btnAddacount" minWidth="80.0" mnemonicParsing="false" onAction="#AddAccount" prefHeight="30.0" text="Thêm" HBox.hgrow="ALWAYS">
                         <graphic>
                             <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
                                 <image>
@@ -75,7 +75,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                     </Button>
-                    <Button id="btnEditcss" fx:id="btnEditAccount" minWidth="80.0" mnemonicParsing="false" onAction="#EditAccount" prefHeight="30.0" styleClass="green" text="Sửa" HBox.hgrow="ALWAYS">
+                    <Button id="btnUserManagementcss" fx:id="btnEditAccount" minWidth="80.0" mnemonicParsing="false" onAction="#EditAccount" prefHeight="30.0" styleClass="green" text="Sửa" HBox.hgrow="ALWAYS">
                         <graphic>
                             <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -87,7 +87,7 @@
                             <Font name="FreeMono Bold" size="13.0" />
                         </font>
                     </Button>
-                    <Button id="btnDeletecss" fx:id="btnDeleteAccount" minWidth="80.0" mnemonicParsing="false" onAction="#DeleteAccount" prefHeight="30.0" text="Xoá" HBox.hgrow="ALWAYS">
+                    <Button id="btnUserManagementcss" fx:id="btnDeleteAccount" minWidth="80.0" mnemonicParsing="false" onAction="#DeleteAccount" prefHeight="30.0" text="Xoá" HBox.hgrow="ALWAYS">
                         <graphic>
                             <ImageView fitHeight="21.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -99,7 +99,7 @@
                             <Font name="FreeMono Bold" size="13.0" />
                         </font>
                     </Button>
-                    <Button id="btnActivecss" fx:id="btnActiveAccount" minWidth="80.0" mnemonicParsing="false" onAction="#ActiveAccount" prefHeight="30.0" text="Cho phép" HBox.hgrow="ALWAYS">
+                    <Button id="btnUserManagementcss" fx:id="btnActiveAccount" minWidth="80.0" mnemonicParsing="false" onAction="#ActiveAccount" prefHeight="30.0" text="Cho phép" HBox.hgrow="ALWAYS">
                         <graphic>
                             <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -111,7 +111,7 @@
                             <Font name="System Bold" size="13.0" />
                         </font>
                     </Button>
-                    <Button id="btnInactivecss" fx:id="btnInactiveAccount" minWidth="80.0" mnemonicParsing="false" onAction="#InActiveAccount" prefHeight="30.0" text="Xoá phép" HBox.hgrow="ALWAYS">
+                    <Button id="btnUserManagementcss" fx:id="btnInactiveAccount" minWidth="80.0" mnemonicParsing="false" onAction="#InActiveAccount" prefHeight="30.0" text="Xoá phép" HBox.hgrow="ALWAYS">
                         <graphic>
                             <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -123,7 +123,7 @@
                             <Font name="FreeMono Bold" size="13.0" />
                         </font>
                     </Button>
-                    <Button id="btnDuyetcss" fx:id="btnDuyet" minWidth="80.0" mnemonicParsing="false" onAction="#DuyetAccount" prefHeight="30.0" text="DUYỆT" HBox.hgrow="ALWAYS">
+                    <Button id="btnUserManagementcss" fx:id="btnDuyet" minWidth="80.0" mnemonicParsing="false" onAction="#DuyetAccount" prefHeight="30.0" text="DUYỆT" HBox.hgrow="ALWAYS">
                         <graphic>
                             <ImageView fitHeight="20.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                 <image>

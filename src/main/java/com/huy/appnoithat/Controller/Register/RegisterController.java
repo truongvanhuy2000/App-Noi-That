@@ -113,10 +113,9 @@ public class RegisterController {
                 btnSave.setDisable(true);
                 PopupUtils.throwCriticalError("Tên đăng nhập đã tồn tại");
             }
-//            else {
-//                btnSave.setDisable(false);
-//                PopupUtils.throwSuccessSignal("Tên đăng nhập có thể sử dụng");
-//            }
+            else {
+                btnSave.setDisable(false);
+            }
         });
         txtUsername.setOnKeyPressed(keyEvent -> {
             btnSave.setDisable(true);

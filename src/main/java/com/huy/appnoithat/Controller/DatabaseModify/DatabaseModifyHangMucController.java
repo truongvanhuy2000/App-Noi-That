@@ -109,6 +109,9 @@ public class DatabaseModifyHangMucController implements Initializable {
      */
     @FXML
     void deleteAction(ActionEvent event) {
+        if (!PopupUtils.confirmationDialog("Xóa", "Xóa", "Bạn có chắc chắn muốn xóa mục này?")) {
+            return;
+        }
         HangMuc hangMuc = listView.getSelectionModel().getSelectedItem();
         if (hangMuc == null) {
             return;

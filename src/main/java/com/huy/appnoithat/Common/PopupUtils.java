@@ -43,4 +43,15 @@ public class PopupUtils {
         Optional<String> result = dialog.showAndWait();
         return result.orElse(null);
     }
+    public static boolean confirmationDialog(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent()) {
+            return result.get() == ButtonType.OK;
+        }
+        return false;
+    }
 }

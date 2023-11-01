@@ -21,12 +21,20 @@
     /*-fx-border-color: rgba(255, 255, 255, 0);*/
     /*-fx-font-family: 'Roboto Condensed', sans-serif;*/
 }
-
+#LoginButton:pressed{
+    -fx-background-color: #5e258d
+}
 #loginWithToken:hover {
     -fx-background-color: #b4cce5;
 }
+#loginWithToken:pressed {
+    -fx-background-color: #607b98;
+}
 #registerAccount:hover {
     -fx-background-color: #b4cce5;
+}
+#registerAccount:pressed {
+    -fx-background-color: #607b98;
 }
 
 /*#gridPane{*/

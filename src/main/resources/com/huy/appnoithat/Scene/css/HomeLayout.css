@@ -44,6 +44,12 @@
     /*-fx-border-color: WHITE;*/
     -fx-font-family: 'Roboto Condensed', sans-serif;
 }
+.menuItem:pressed{
+    -fx-background-color: #509cda;
+    /*-fx-border-width: 0px 0px 0px 10px;*/
+    /*-fx-border-color: WHITE;*/
+    /*-fx-font-family: 'Roboto Condensed', sans-serif;*/
+}
 
 #inner_pane{
     -fx-background-color:#748CF1;
@@ -89,7 +95,7 @@
 
 .table-view .table-cell {
     -fx-text-fill: #180131;
-    -fx-alignment: left;
+    /*-fx-alignment: LEFT;*/
     -fx-padding: 5 5 5 20px;
 }
 
@@ -115,8 +121,7 @@
     -fx-background-radius: 1;
 }
 
-/*  style classes for button */
-#btnAddcss {
+#btnUserManagementcss{
     -fx-background-color: #0487D9;
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
@@ -125,56 +130,21 @@
     -fx-padding: 7px 30px;
 }
 
-#btnEditcss {
-    -fx-background-color: #0487D9;
+#btnUserManagementcss:hover {
+    -fx-background-color: #47b4ff;
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
     -fx-text-fill: #ffff;
     -fx-padding: 7px 30px;
 }
-#btnDeletecss {
-    -fx-background-color: #0487D9;
+#btnUserManagementcss:pressed {
+    -fx-background-color: #0a6096;
     -fx-background-radius: 6, 5;
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
     -fx-text-fill: #ffff;
     -fx-padding: 7px 30px;
-}
-
-#btnActivecss {
-    -fx-background-color: #0487D9;
-    -fx-background-radius: 6, 5;
-    -fx-background-insets: 0, 1;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
-    -fx-text-fill: #ffff;
-    -fx-padding: 7px 30px;
-}
-
-#btnInactivecss {
-    -fx-background-color: #0487D9;
-    -fx-background-radius: 6, 5;
-    -fx-background-insets: 0, 1;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
-    -fx-text-fill: #ffff;
-    -fx-padding: 7px 30px;
-}
-
-#btnDuyetcss {
-    -fx-background-color: #0487D9;
-    -fx-background-radius: 6, 5;
-    -fx-background-insets: 0, 1;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
-    -fx-text-fill: #ffff;
-    -fx-padding: 7px 30px;
-}
-
-#btnSearchcss, #btnAllAccountcss {
-    -fx-background-color: #0487D9;
-    -fx-background-radius: 6, 5;
-    -fx-background-insets: 0, 1;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
-    -fx-text-fill: #ffff;
 }
 
 #btnLogoutcss{
@@ -187,6 +157,10 @@
     -fx-border-color: WHITE;
     -fx-font-family: 'Roboto Condensed', sans-serif;
 }
+#btnLogoutcss:pressed{
+    -fx-background-color: #82198f;
+}
+
 #xuatchukycss{
     -fx-background-color: #651f6a
 }
@@ -196,6 +170,9 @@
     -fx-border-width: 0px 0px 0px 10px;
     -fx-border-color: WHITE;
     -fx-font-family: 'Roboto Condensed', sans-serif;
+}
+#xuatchukycss:pressed{
+    -fx-background-color: #82198f;
 }
 
 

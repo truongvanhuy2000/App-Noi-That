@@ -1,3 +1,4 @@
 Webserver:
-  host: "http://103.178.234.145:8080"
+  host: "http://noithatthuongaone.online:8080"
+#  host : "localhost:8080"
   timeout: 10

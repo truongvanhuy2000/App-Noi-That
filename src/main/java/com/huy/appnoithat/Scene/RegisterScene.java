@@ -15,7 +15,6 @@ public class RegisterScene {
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/UserManagementLayout.css";
     private Scene scene;
     private Parent root;
-    private static RegisterScene single_instance = null;
     private final FXMLLoader fxmlLoader;
     @Getter
     private static RegisterController registerController;
@@ -47,11 +46,6 @@ public class RegisterScene {
     }
 
     // Create an object of this class, call this function
-    public static synchronized RegisterScene getInstance() {
-        if (single_instance == null)
-            single_instance = new RegisterScene();
-        return single_instance;
-    }
 
     private void addCssToScence() {
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(CSS_PATH)).toExternalForm());

@@ -110,6 +110,9 @@ public class DatabaseModifyNoiThatController implements Initializable {
      */
     @FXML
     void deleteAction(ActionEvent event) {
+        if (!PopupUtils.confirmationDialog("Xóa", "Xóa", "Bạn có chắc chắn muốn xóa mục này?")) {
+            return;
+        }
         NoiThat noiThat = listView.getSelectionModel().getSelectedItem();
         if (noiThat == null) {
             return;

@@ -25,6 +25,8 @@ public class Config {
                 Paths.get(CURRENT_DIRECTORY, "Data", "FileExport", "Output").toString();
         public static final String RECENT_NT_FILE_DIRECTORY =
                 Paths.get(CURRENT_DIRECTORY, "Data", "RecentFile", "recentFile.json").toString();
+        public static final String TEMP_NT_FILE_DIRECTORY =
+                Paths.get(CURRENT_DIRECTORY, "Data", "Temp").toString();
     }
     public static class WEB_CLIENT {
         public static String BASE_URL = "http://localhost:8080";

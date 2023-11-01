@@ -3893,3 +3893,302 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 31-10-2023 23:43:15 [main] HelloApplication:38 - Start application
 [INFO ] 31-10-2023 23:43:19 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
 [INFO ] 31-10-2023 23:43:32 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 01-11-2023 10:01:59 [main] HelloApplication:38 - Start application
+[INFO ] 01-11-2023 10:02:06 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 10:02:55 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 01-11-2023 10:03:56 [main] HelloApplication:38 - Start application
+[INFO ] 01-11-2023 10:04:03 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 10:04:19 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 01-11-2023 10:04:21 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 01-11-2023 10:04:25 [JavaFX Application Thread] ImportOperation:56 - Import file: test.nt
+[INFO ] 01-11-2023 10:04:26 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 01-11-2023 10:04:29 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
+[INFO ] 01-11-2023 10:04:32 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 01-11-2023 10:04:33 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
+[INFO ] 01-11-2023 10:11:56 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 01-11-2023 10:36:03 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 01-11-2023 10:37:39 [main] HelloApplication:38 - Start application
+[INFO ] 01-11-2023 10:38:22 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 10:39:00 [JavaFX Application Thread] HomeController:118 - Login as huy123456 with role User
+[INFO ] 01-11-2023 10:40:29 [JavaFX Application Thread] HomeController:118 - Login as huy123456 with role User
+[INFO ] 01-11-2023 10:40:38 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 10:44:53 [main] HelloApplication:38 - Start application
+[INFO ] 01-11-2023 10:44:54 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 10:48:39 [main] HelloApplication:38 - Start application
+[INFO ] 01-11-2023 10:48:40 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 10:49:14 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 10:54:46 [main] HelloApplication:38 - Start application
+[ERROR] 01-11-2023 10:54:46 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTg4MTA1NTMsImV4cCI6NDI5MDgxMDU1M30.NegJxcr5lhCsdaZ5GIB5-x-lNsaEMuL9FUyTTRTuhj7fo-u7dYYqHOzMeDxcaG6V27J2q3RxixhleLVwdSfvxA null
+[INFO ] 01-11-2023 10:56:13 [main] HelloApplication:38 - Start application
+[INFO ] 01-11-2023 10:56:14 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 11:00:58 [main] HelloApplication:38 - Start application
+[ERROR] 01-11-2023 11:00:58 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTg4MTA1NTMsImV4cCI6NDI5MDgxMDU1M30.NegJxcr5lhCsdaZ5GIB5-x-lNsaEMuL9FUyTTRTuhj7fo-u7dYYqHOzMeDxcaG6V27J2q3RxixhleLVwdSfvxA null
+[INFO ] 01-11-2023 11:32:58 [main] HelloApplication:38 - Start application
+[INFO ] 01-11-2023 11:34:13 [main] HelloApplication:38 - Start application
+[ERROR] 01-11-2023 11:34:13 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTg4MTA1NTMsImV4cCI6NDI5MDgxMDU1M30.NegJxcr5lhCsdaZ5GIB5-x-lNsaEMuL9FUyTTRTuhj7fo-u7dYYqHOzMeDxcaG6V27J2q3RxixhleLVwdSfvxA null
+[INFO ] 01-11-2023 11:35:49 [main] HelloApplication:38 - Start application
+[INFO ] 01-11-2023 11:35:50 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 11:40:43 [main] HelloApplication:46 - Start application
+[INFO ] 01-11-2023 11:40:49 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 11:42:41 [main] HelloApplication:46 - Start application
+[ERROR] 01-11-2023 11:42:42 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTg4MTA1NTMsImV4cCI6NDI5MDgxMDU1M30.NegJxcr5lhCsdaZ5GIB5-x-lNsaEMuL9FUyTTRTuhj7fo-u7dYYqHOzMeDxcaG6V27J2q3RxixhleLVwdSfvxA null
+[ERROR] 01-11-2023 11:42:48 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"kim","password":"kim","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[INFO ] 01-11-2023 11:43:20 [main] HelloApplication:46 - Start application
+[INFO ] 01-11-2023 11:43:21 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 11:58:27 [main] HelloApplication:46 - Start application
+[INFO ] 01-11-2023 11:58:28 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[ERROR] 01-11-2023 11:59:21 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPUT /api/accounts/deactivate/42 eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTg4MTA1NTMsImV4cCI6NDI5MDgxMDU1M30.NegJxcr5lhCsdaZ5GIB5-x-lNsaEMuL9FUyTTRTuhj7fo-u7dYYqHOzMeDxcaG6V27J2q3RxixhleLVwdSfvxA 
+[ERROR] 01-11-2023 11:59:23 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPUT /api/accounts/deactivate/43 eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTg4MTA1NTMsImV4cCI6NDI5MDgxMDU1M30.NegJxcr5lhCsdaZ5GIB5-x-lNsaEMuL9FUyTTRTuhj7fo-u7dYYqHOzMeDxcaG6V27J2q3RxixhleLVwdSfvxA 
+[INFO ] 01-11-2023 12:02:24 [main] HelloApplication:46 - Start application
+[INFO ] 01-11-2023 12:02:25 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[ERROR] 01-11-2023 13:12:37 [JavaFX Application Thread] UsersManagementController:345 - Error when parse string to int
+java.lang.NumberFormatException: For input string: ""
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:678) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:786) ~[?:?]
+	at com.huy.appnoithat.Controller.UserManagement.UsersManagementController.parseStringToINT(UsersManagementController.java:343) ~[classes/:?]
+	at com.huy.appnoithat.Controller.UserManagement.UsersManagementController.lambda$EditAccount$3(UsersManagementController.java:403) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8792) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3897) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[ERROR] 01-11-2023 13:12:52 [JavaFX Application Thread] UsersManagementController:345 - Error when parse string to int
+java.lang.NumberFormatException: For input string: ""
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:678) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:786) ~[?:?]
+	at com.huy.appnoithat.Controller.UserManagement.UsersManagementController.parseStringToINT(UsersManagementController.java:343) ~[classes/:?]
+	at com.huy.appnoithat.Controller.UserManagement.UsersManagementController.lambda$EditAccount$3(UsersManagementController.java:403) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8792) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3897) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[INFO ] 01-11-2023 13:13:13 [JavaFX Application Thread] HomeController:118 - Login as huy123456789 with role User
+[INFO ] 01-11-2023 13:14:11 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:14:12 [JavaFX Application Thread] HomeController:118 - Login as huy123456789 with role User
+[INFO ] 01-11-2023 13:14:23 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 13:16:41 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:16:42 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[ERROR] 01-11-2023 13:16:58 [JavaFX Application Thread] UsersManagementController:348 - Error when parse string to int
+java.lang.NumberFormatException: For input string: ""
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:678) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:786) ~[?:?]
+	at com.huy.appnoithat.Controller.UserManagement.UsersManagementController.parseStringToINT(UsersManagementController.java:346) ~[classes/:?]
+	at com.huy.appnoithat.Controller.UserManagement.UsersManagementController.lambda$EditAccount$4(UsersManagementController.java:406) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8792) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3897) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[INFO ] 01-11-2023 13:17:58 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:17:59 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 13:18:30 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[ERROR] 01-11-2023 13:18:51 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPUT /api/accounts/deactivate/43 eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTg4MTk1MTAsImV4cCI6NDI5MDgxOTUxMH0.BJIYGHiqX1Wm50RM3HMZsj5a_hZeGxxQ6kVR39B-jdJl42kZ7rZV_7RHOVtuEtwwM5jJwi0C_CB9QHyVDUxFsw 
+[INFO ] 01-11-2023 13:22:59 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:23:00 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 13:23:34 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:23:35 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 13:25:08 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:25:09 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 13:25:51 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:25:52 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 13:26:12 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:26:13 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 13:27:47 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:27:48 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 13:28:41 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:28:42 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 13:30:56 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:30:57 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 13:35:16 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:35:17 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 13:35:27 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 13:35:39 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 01-11-2023 13:37:28 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:37:31 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 01-11-2023 13:37:51 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 13:38:40 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:38:41 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[ERROR] 01-11-2023 13:39:32 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPUT /api/accounts/deactivate/34 eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE2OTg4MjA2NzEsImV4cCI6NDI5MDgyMDY3MX0.yFbvYA67qZx5cJYaou2z6BqRTZi8FvpiGP0VAp8Np3cp5rPelwEbKng0MEXWH1eNNmnEbkq-KKJwVEkxOS52GA 
+[INFO ] 01-11-2023 13:41:28 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:41:35 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 13:41:36 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 15:37:08 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 15:39:08 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 15:39:29 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 15:40:21 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 01-11-2023 15:41:39 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 15:41:41 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 15:41:45 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 15:41:47 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 16:16:15 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 01-11-2023 16:16:45 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 16:16:46 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 16:16:59 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 01-11-2023 16:17:25 [JavaFX Application Thread] LuaChonNoiThatController:349 - Close window
+[INFO ] 01-11-2023 16:25:20 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 16:25:24 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 16:28:21 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 16:28:26 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 16:28:37 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 16:28:43 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 16:28:58 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 16:28:59 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 16:29:14 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 16:30:05 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 16:30:06 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 16:30:13 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 16:30:32 [JavaFX Application Thread] LuaChonNoiThatController:357 - Close window
+[INFO ] 01-11-2023 16:35:24 [Thread-3] ExportFile:91 - Exporting to XLSX file
+[INFO ] 01-11-2023 16:37:09 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 16:37:11 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 16:37:36 [Thread-3] ExportFile:91 - Exporting to XLSX file
+[INFO ] 01-11-2023 16:38:02 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 16:38:03 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 16:38:14 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
+[INFO ] 01-11-2023 16:38:46 [Thread-3] ExportFile:91 - Exporting to XLSX file
+[INFO ] 01-11-2023 16:39:40 [Thread-4] ExportFile:91 - Exporting to XLSX file
+[INFO ] 01-11-2023 16:40:33 [JavaFX Application Thread] LuaChonNoiThatController:357 - Close window
+[INFO ] 01-11-2023 16:45:59 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 16:46:01 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 16:46:04 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
+[INFO ] 01-11-2023 16:46:13 [Thread-3] ExportFile:91 - Exporting to XLSX file
+[INFO ] 01-11-2023 16:47:02 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 16:47:06 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 16:47:09 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
+[INFO ] 01-11-2023 16:47:23 [Thread-3] ExportFile:91 - Exporting to XLSX file
+[INFO ] 01-11-2023 16:48:46 [JavaFX Application Thread] LuaChonNoiThatController:357 - Close window
+[INFO ] 01-11-2023 16:50:24 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 16:50:25 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 16:50:42 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 16:50:44 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 16:50:46 [JavaFX Application Thread] ImportOperation:56 - Import file: test3.nt
+[INFO ] 01-11-2023 16:51:46 [JavaFX Application Thread] LuaChonNoiThatController:339 - Normal save: Save file to: /home/huy/Project/Java/App-noi-that/test3.nt
+[INFO ] 01-11-2023 16:51:55 [JavaFX Application Thread] LuaChonNoiThatController:357 - Close window
+[INFO ] 01-11-2023 16:54:20 [JavaFX Application Thread] LuaChonNoiThatController:357 - Close window
+[INFO ] 01-11-2023 16:55:22 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 16:55:27 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 16:57:08 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window

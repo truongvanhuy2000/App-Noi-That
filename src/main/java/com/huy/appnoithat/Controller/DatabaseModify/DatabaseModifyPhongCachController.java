@@ -119,6 +119,9 @@ public class DatabaseModifyPhongCachController implements Initializable {
      */
     @FXML
     void deleteAction(ActionEvent event) {
+        if (!PopupUtils.confirmationDialog("Xóa", "Xóa", "Bạn có chắc chắn muốn xóa mục này?")) {
+            return;
+        }
         PhongCachNoiThat phongCachNoiThat = listView.getSelectionModel().getSelectedItem();
         if (phongCachNoiThat == null) {
             return;

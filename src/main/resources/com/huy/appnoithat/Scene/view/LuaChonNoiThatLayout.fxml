@@ -90,8 +90,8 @@
                                  <children>
                                         <Label text="Khách hàng" />
                                         <Label text="Điện thoại" />
-                                        <Label text="Địa chỉ" />
                                         <Label text="Ngày lập" />
+                                        <Label text="Địa chỉ" />
                                         <Label text="Sản phẩm" />
                                  </children>
                               </VBox>

@@ -4,19 +4,17 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.UserManagement.DataModel.AccountTable;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
-import com.huy.appnoithat.HelloApplication;
-import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.ListAccountWaitToApproveScene;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementAddAccountScene;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementEditorScene;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,7 +22,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -50,17 +47,23 @@ public class UsersManagementController {
     private TextField txtSearchUser;
     @FXML
     private TableColumn<AccountTable, String> username;
-
     @FXML
     private TableColumn<AccountTable, String> email;
-
     @FXML
     private TableColumn<AccountTable, String> phone;
 
-    UsersManagementService user = new UsersManagementService();
+    UsersManagementService userManagementService;
+    //
+//    @Getter
+//    List<Account> list = userManagementService.findAllAccountEnable();
+    ObservableList<AccountTable> listUser = FXCollections.observableArrayList();
+    UsersManagementService usersManagementService = new UsersManagementService();
+    UserSessionService userSessionService;
 
-    @Getter
-    List<Account> list = user.findAllAccountEnable();
+    public UsersManagementController() {
+        userSessionService = new UserSessionService();
+        userManagementService = new UsersManagementService();
+    }
 
     /**
      * Converts a boolean value into an active icon.
@@ -86,35 +89,13 @@ public class UsersManagementController {
         return activeIcon;
     }
 
-    ObservableList<AccountTable> listUser = FXCollections.observableArrayList(
-    );
-
-    UsersManagementService usersManagementService = new UsersManagementService();
-
-    UserSessionService userSessionService;
-
-    public UsersManagementController() {
-        userSessionService = new UserSessionService();
-    }
-
 
     /**
      * Initializes the user management table with data from the JSON array.
      * Retrieves a list of enabled accounts, converts them into a list of AccountTable objects,
      * and populates the TableView with the formatted data.
      */
-    public void init(){
-        // Retrieve a list of enabled accounts from the service
-        List<Account> accountList = usersManagementService.findAllAccountEnable();
-
-        // Clear the existing data in the list
-        listUser.clear();
-
-        // Convert Account objects to AccountTable objects and add them to the list
-        for (Account account : accountList) {
-            listUser.add(new AccountTable(account.getId(), account.getUsername(),account.getPassword(),account.getAccountInformation().getPhone(),account.getAccountInformation().getEmail(), account.isActive(), convertActiveIcon(account.isActive()), account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
-        }
-
+    public void init() {
         // Set up cell value factories for each column in the TableView
         username.setCellValueFactory(new PropertyValueFactory<>("username"));
         password.setCellValueFactory(new PropertyValueFactory<>("password"));
@@ -122,20 +103,34 @@ public class UsersManagementController {
         email.setCellValueFactory(new PropertyValueFactory<>("email"));
         active.setCellValueFactory(new PropertyValueFactory<>("activeImage"));
         expiredDate.setCellValueFactory(new PropertyValueFactory<>("expiredDate"));
-
         // Populate the TableView with the list of AccountTable objects
         tableManageUser.setItems(listUser);
+        refreshList();
     }
 
+    public void refreshList() {
+        Platform.runLater(() -> {
+            // Retrieve a list of enabled accounts from the service
+            List<Account> accountList = usersManagementService.findAllAccountEnable();
+            // Clear the existing data in the list
+            listUser.clear();
+            // Convert Account objects to AccountTable objects and add them to the list
+            listUser.addAll(accountList.stream().map(account ->
+                    new AccountTable(account.getId(),
+                            account.getUsername(),
+                            account.getPassword(),
+                            account.getAccountInformation().getPhone(),
+                            account.getAccountInformation().getEmail(),
+                            account.isActive(), convertActiveIcon(account.isActive()),
+                            account.getExpiredDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")))).toList());
+        });
+    }
 
     /**
      * Clears the data in the list and the items in the TableView.
      * This method is used to clear the existing data in both the data list and the displayed table.
      */
     void clearData() {
-        // Clear the data list
-        list.clear();
-
         // Clear the items in the TableView
         tableManageUser.getItems().clear();
     }
@@ -148,9 +143,8 @@ public class UsersManagementController {
      * @param event The ActionEvent triggering the action to retrieve all accounts.
      */
     @FXML
-    void getAllAcount(ActionEvent event){
-        listUser.clear();
-        init();
+    void getAllAcount(ActionEvent event) {
+        refreshList();
     }
 
     /**
@@ -167,12 +161,10 @@ public class UsersManagementController {
         String username = txtSearchUser.getText();
 
         // Perform the search and get the filtered list of AccountTable objects
-        List<AccountTable> listFilter = seach(username);
-
+        List<AccountTable> listFilter = search(username);
         // Convert the filtered list to an ObservableList
-        ObservableList<AccountTable> listUser = FXCollections.observableArrayList(listFilter);
-        tableManageUser.setItems(listUser);
-
+        listUser.clear();
+        listUser.addAll(listFilter);
     }
 
     /**
@@ -203,7 +195,6 @@ public class UsersManagementController {
         usersManagementService.ActiveAccount(activeID);
 
         // Refresh the table view to update the changes
-
         tableManageUser.refresh();
 
     }
@@ -271,12 +262,12 @@ public class UsersManagementController {
             btnadd.setOnAction(actionEvent -> {
                 String active = "false";
                 LocalDate localDate = LocalDate.now().plusDays(30);
-                if(comboBoxActive.getSelectionModel().getSelectedItem()!=null){
+                if (comboBoxActive.getSelectionModel().getSelectedItem() != null) {
                     active = comboBoxActive.getSelectionModel().getSelectedItem().toString().equals("Có") ? "true" : "false";
                 }
 
                 // Add the new account to the list and update the table
-                listUser.add(new AccountTable(listUser.size(), txtusername.getText(),txtpassword.getText(),"","", Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
+                listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), "", "", Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
                 tableManageUser.getItems().clear();
                 tableManageUser.refresh();
 
@@ -288,8 +279,7 @@ public class UsersManagementController {
                         new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
 
                 // Clear data, reinitialize the table, and close the form
-                clearData();
-                init();
+                refreshList();
                 userManageMentStage.close();
                 txtusername.clear();
                 txtpassword.clear();
@@ -315,11 +305,13 @@ public class UsersManagementController {
      */
     @FXML
     void DeleteAccount(ActionEvent event) {
+        if (!PopupUtils.confirmationDialog("Xóa", "Xóa", "Bạn có chắc chắn muốn người dùng này?")) {
+            return;
+        }
         // Check if a user is selected in the table
         if (tableManageUser.getSelectionModel().getSelectedItem() == null) {
             return;
         }
-
         // Get the index and ID of the selected user
         int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
         int deleteid = tableManageUser.getItems().get(indexSelector).getId();
@@ -345,15 +337,16 @@ public class UsersManagementController {
      * Parses a string to an integer.
      *
      * @param data The string to be parsed.
-     * @param def The default integer value to be returned if parsing fails.
+     * @param def  The default integer value to be returned if parsing fails.
      * @return The parsed integer value if parsing is successful, or the default value if parsing fails.
      */
-    public Integer parseStringToINT(String data,int def) {
-        Integer val = def;
+    public Integer parseStringToINT(String data, int def) {
         try {
-            val = Integer.parseInt(data);
-        } catch (NumberFormatException nfe) { }
-        return val;
+            return Integer.parseInt(data);
+        } catch (NumberFormatException nfe) {
+            LOGGER.error("Error when parse string to int", nfe);
+            return def;
+        }
     }
 
 
@@ -409,7 +402,7 @@ public class UsersManagementController {
                 Account account = usersManagementService.findAccountById(id);
 
                 // Extend the account's expiration date by the specified number of months
-                LocalDate soThangGiaHanThem = account.getExpiredDate().plusMonths(parseStringToINT(txtGiaHan.getText(),0));
+                LocalDate soThangGiaHanThem = account.getExpiredDate().plusMonths(parseStringToINT(txtGiaHan.getText(), 0));
 
                 // Update the account details
                 account.setUsername(txtusername.getText());
@@ -429,7 +422,7 @@ public class UsersManagementController {
                 txtusername.setText("");
                 txtpassword.clear();
                 // You might need additional logic to handle saving or updating data
-                init();
+                refreshList();
             });
 
             btncancel.setOnAction(actionEvent -> {
@@ -486,8 +479,7 @@ public class UsersManagementController {
      */
     @FXML
     void DuyetAccount(ActionEvent event) {
-        ObservableList<Account> listUserNotEnable = FXCollections.observableArrayList(
-        );
+        ObservableList<Account> listUserNotEnable = FXCollections.observableArrayList();
         try {
             // Create a new stage for the list of accounts awaiting approval form
             Scene listAccountWaitToApprove = ListAccountWaitToApproveScene.getInstance().getScene();
@@ -500,7 +492,6 @@ public class UsersManagementController {
             Button btnCancel = (Button) listAccountWaitToApprove.lookup("#btnCancel");
 
             ObservableList<TableColumn<Account, ?>> columns = tableView.getColumns();
-
 
             TableColumn<Account, String> usernameColumn = null;
             TableColumn<Account, String> passwordColumn = null;
@@ -525,16 +516,12 @@ public class UsersManagementController {
 
             // Retrieve accounts awaiting approval from the service
             List<Account> accountList = usersManagementService.findAllNotEnabledAccount();
-
-            for (Account account : accountList
-            ) {
-                listUserNotEnable.add(account);
-            }
+            listUserNotEnable.addAll(accountList);
 
             // Set cell value factories for the columns
-            usernameColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("username"));
-            passwordColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("password"));
-            sttColumn.setCellValueFactory(new PropertyValueFactory<Account, String>("id"));
+            usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+            passwordColumn.setCellValueFactory(new PropertyValueFactory<>("password"));
+            sttColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
             tableView.setItems(listUserNotEnable);
 
 
@@ -550,7 +537,7 @@ public class UsersManagementController {
                         // Update the table view
                         usersManagementService.enableAccount(enableid);
                         listUser.clear();
-                        init();
+                        refreshList();
 
                         // Close the form
                         userManageMentStage.close();
@@ -568,10 +555,8 @@ public class UsersManagementController {
                         int rejectid = 0;
                         Account acc = (Account) tableView.getSelectionModel().getSelectedItem();
                         rejectid = acc.getId();
-
                         // Delete the selected account
                         usersManagementService.deleteAccount(rejectid);
-
                         // Close the form
                         userManageMentStage.close();
                     }
@@ -596,14 +581,13 @@ public class UsersManagementController {
      * @param searchUsername The username to search for.
      * @return A list of matched AccountTable objects.
      */
-    public List<AccountTable> seach(String searchUsername) {
+    public List<AccountTable> search(String searchUsername) {
         // Filter the listUser based on the searchUsername
-        List<AccountTable> listFilter = listUser.stream()
-                .filter(account -> account.getUsername().equals(searchUsername))
-                .collect(Collectors.toList());
 
         // Return the filtered list of AccountTable objects
-        return listFilter;
+        return listUser.stream()
+                .filter(account -> account.getUsername().contains(searchUsername))
+                .collect(Collectors.toList());
     }
 
     // Used to switch between scence
