@@ -4192,3 +4192,6 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 01-11-2023 16:55:22 [main] HelloApplication:41 - Start application
 [INFO ] 01-11-2023 16:55:27 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
 [INFO ] 01-11-2023 16:57:08 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 01-11-2023 17:55:36 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 17:55:40 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 17:55:55 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
