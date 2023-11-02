@@ -165,6 +165,13 @@ public class DatabaseModifyPhongCachController implements Initializable {
     public void init() {
         refreshList();
         refreshChildrenList(0);
+        if (phongCachNoiThatObservableList.isEmpty()) {
+            boolean isGetSampleData = PopupUtils
+                    .confirmationDialog("Thông báo", "Thông báo", "Dữ liệu trống, bạn có muốn lấy dữ liệu mẫu không?");
+            if (isGetSampleData) {
+                getSampleDataButton.fire();
+            }
+        }
     }
 
     /**
@@ -213,7 +220,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
     }
     @FXML
     void FetchSampleData(ActionEvent event) {
-        databaseModifyPhongCachService.fetchSamplePhongCachData();
+        databaseModifyPhongCachService.sampleAll();
         refresh();
     }
 
