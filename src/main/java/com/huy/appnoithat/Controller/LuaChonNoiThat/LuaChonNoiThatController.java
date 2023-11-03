@@ -14,23 +14,18 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupBangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupTruongThongTin;
 import com.huy.appnoithat.DataModel.NtFile.DataPackage;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
-import com.huy.appnoithat.DataModel.ThongTinKhachHang;
-import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Enums.FileType;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.PixelFormat;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -48,7 +43,8 @@ import java.io.*;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.ResourceBundle;
 
 @Getter
 public class LuaChonNoiThatController implements Initializable {

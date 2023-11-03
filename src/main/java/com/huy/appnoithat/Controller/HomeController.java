@@ -2,7 +2,6 @@ package com.huy.appnoithat.Controller;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
-import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.FileNoiThatExplorerScene;
@@ -10,24 +9,19 @@ import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementScene;
 import com.huy.appnoithat.Service.Login.LoginService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
-import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.swing.*;
 import java.io.File;
 import java.util.Optional;
 

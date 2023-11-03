@@ -1,7 +1,5 @@
 package com.huy.appnoithat.Common;
 
-import com.huy.appnoithat.DataModel.NtFile.ObjectData;
-
 import java.io.*;
 import java.net.URLDecoder;
 import java.net.URLEncoder;

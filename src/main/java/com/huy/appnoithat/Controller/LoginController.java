@@ -9,7 +9,6 @@ import com.huy.appnoithat.Scene.RegisterScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Service.Login.LoginService;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;

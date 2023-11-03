@@ -1,8 +1,6 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Setup;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
-import com.huy.appnoithat.DataModel.ThongTinCongTy;
-import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;

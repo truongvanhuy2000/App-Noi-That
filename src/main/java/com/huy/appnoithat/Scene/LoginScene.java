@@ -1,6 +1,5 @@
 package com.huy.appnoithat.Scene;
 
-import com.huy.appnoithat.Controller.HomeController;
 import com.huy.appnoithat.Controller.LoginController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -1,27 +1,17 @@
 package com.huy.appnoithat.Controller.NewTab;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.DataModel.NtFile.DataPackage;
-import com.huy.appnoithat.DataModel.ThongTinCongTy;
-import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.LuaChonNoiThatScene;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;

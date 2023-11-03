@@ -1,27 +1,19 @@
 package com.huy.appnoithat.Service.SessionService;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.Session.PersistenceUserSession;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import com.huy.appnoithat.Service.RestService.AccountRestService;
-import com.huy.appnoithat.Service.WebClient.WebClientService;
-import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
 import com.huy.appnoithat.Session.UserSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class UserSessionService {
     final static Logger LOGGER = LogManager.getLogger(UserSessionService.class);
-    private static final String SESSION_DIRECTORY = Config.USER.SESSION_DIRECTORY;
     private final PersistenceStorageService persistenceStorageService;
     /**
      * Constructor for UserSessionService. Initializes required services and objects.
@@ -44,14 +36,10 @@ public class UserSessionService {
      */
     public void cleanUserSession() {
         UserSession session = UserSession.getInstance();
-        session.setAccount(new Account(0, "", "", false, null, new ArrayList<>(), false, null));
+        session.setAccount(new Account(0, "", "", false,
+                null, new ArrayList<>(), false, null));
         session.setJwtToken("");
-        try {
-            saveSessionToDisk();
-        } catch (IOException e) {
-            LOGGER.error("Error when saving session to disk");
-            throw new RuntimeException(e);
-        }
+        saveSessionToDisk();
     }
 
     /**
@@ -149,12 +137,7 @@ public class UserSessionService {
      */
     public boolean isSessionValid() {
         if (getToken().isEmpty()) {
-            try {
-                loadSessionFromDisk();
-            } catch (IOException e) {
-                LOGGER.error("Error when loading session from disk");
-                throw new RuntimeException(e);
-            }
+            loadSessionFromDisk();
         }
         AccountRestService accountRestService = AccountRestService.getInstance();
         String response = accountRestService.sessionCheck();
@@ -166,7 +149,7 @@ public class UserSessionService {
      *
      * @throws IOException If an error occurs while reading the session data from the disk.
      */
-    public void loadSessionFromDisk() throws IOException {
+    public void loadSessionFromDisk() {
         PersistenceUserSession persistenceUserSession = persistenceStorageService.getUserSession();
         if (persistenceUserSession == null) {
             setToken("");
@@ -181,7 +164,7 @@ public class UserSessionService {
      *
      * @throws IOException If an error occurs while writing the session data to the disk.
      */
-    public void saveSessionToDisk() throws IOException {
+    public void saveSessionToDisk() {
         persistenceStorageService.setUserSession(new PersistenceUserSession(getUsername(), getToken()));
     }
 }

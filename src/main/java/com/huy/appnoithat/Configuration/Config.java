@@ -1,7 +1,5 @@
 package com.huy.appnoithat.Configuration;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.nio.file.Paths;
 
 public class Config {

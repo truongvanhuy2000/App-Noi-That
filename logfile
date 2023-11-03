@@ -4290,3 +4290,6 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 03-11-2023 13:52:07 [main] HelloApplication:41 - Start application
 [ERROR] 03-11-2023 13:52:07 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index  null
 [ERROR] 03-11-2023 13:52:18 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"huy123456","password":"123456","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[INFO ] 03-11-2023 14:36:00 [main] HelloApplication:37 - Start application
+[ERROR] 03-11-2023 14:36:00 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index  null
+[ERROR] 03-11-2023 14:36:05 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"kim","password":"kim","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}

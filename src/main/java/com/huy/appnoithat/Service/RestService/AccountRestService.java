@@ -12,7 +12,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AccountRestService {
@@ -129,5 +128,28 @@ public class AccountRestService {
     public String sessionCheck() {
         String token = this.sessionService.getToken();
         return webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/index", token);
+    }
+    public String login(String username, String password) {
+        Account account = new Account(0, username, password,
+                true, null, null, false, null);
+        try {
+            return webClientService.unauthorizedHttpPostJson(BASE_ENDPOINT + "/login", objectMapper.writeValueAsString(account));
+        } catch (JsonProcessingException e) {
+            LOGGER.error("Login failed");
+            throw new RuntimeException(e);
+        }
+    }
+    public void register(Account account) {
+        String token = this.sessionService.getToken();
+        try {
+            this.webClientService.authorizedHttpPostJson(BASE_ENDPOINT + "/register",
+                    objectMapper.writeValueAsString(account), token);
+        } catch (IOException e) {
+            LOGGER.error("Can't parse response from server when register new account");
+        }
+    }
+    public boolean isUsernameValid(String username) {
+        String response = this.webClientService.unauthorizedHttpGetJson("/api/register/usernameValidation?username=" + username);
+        return response != null;
     }
 }

@@ -2,7 +2,6 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Setup;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomEditingCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomNumberCell;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomTextAreaCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.HangMucCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.KichThuocHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.STTCollumHandler;
@@ -13,7 +12,6 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.CustomConverter.CustomLongSt
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
-import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.DoubleProperty;
@@ -21,8 +19,6 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTreeTableCell;
-import javafx.util.Duration;
 import javafx.util.converter.DoubleStringConverter;
 
 public class SetupBangNoiThat {

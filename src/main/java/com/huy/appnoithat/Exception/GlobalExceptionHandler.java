@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Exception;
 
 import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Scene.LoginScene;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
@@ -14,7 +13,6 @@ public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
     public GlobalExceptionHandler(Stage stage) {
         this.stage = stage;
     }
-
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
         PopupUtils.throwCriticalError("Critical Error! Please report back to the developer!");
