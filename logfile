@@ -4287,3 +4287,6 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 03-11-2023 00:31:23 [JavaFX Application Thread] HomeController:118 - Login as user with role User
 [INFO ] 03-11-2023 00:31:44 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
 [INFO ] 03-11-2023 00:33:13 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 03-11-2023 13:52:07 [main] HelloApplication:41 - Start application
+[ERROR] 03-11-2023 13:52:07 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index  null
+[ERROR] 03-11-2023 13:52:18 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"huy123456","password":"123456","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
