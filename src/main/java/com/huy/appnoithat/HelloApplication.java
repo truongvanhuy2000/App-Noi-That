@@ -28,13 +28,10 @@ public class HelloApplication extends Application {
             StageFactory.closeAndCreateNewMaximizedStage(stage, scene);
         }
         else {
-            goToLogin(stage);
+            Scene scene = LoginScene.getInstance().getScene();
+            LoginScene.getInstance().getLoginController().init();
+            StageFactory.closeAndCreateNewUnresizeableStage(stage, scene);
         }
-    }
-    private void goToLogin(Stage stage) {
-        Scene scene = LoginScene.getInstance().getScene();
-        LoginScene.getInstance().getLoginController().init();
-        StageFactory.closeAndCreateNewUnresizeableStage(stage, scene);
     }
     public static void main(String[] args) {
         configurationService.readConfiguration();
