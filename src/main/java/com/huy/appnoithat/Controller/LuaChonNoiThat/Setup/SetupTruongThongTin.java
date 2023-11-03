@@ -29,6 +29,7 @@ public class SetupTruongThongTin {
     public void setup() {
         noteArea.setPrefHeight(30);
         noteArea.setMaxHeight(30);
+        noteArea.setMinHeight(30);
         noteArea.setOnMouseClicked(mouseEvent -> {
             noteArea.setMaxHeight(400);
             Platform.runLater(() -> noteArea.setPrefHeight(400));

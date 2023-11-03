@@ -186,8 +186,8 @@ public class HomeController {
                 DatabaseModifyPhongCachScene databaseModifyPhongCachScene = new DatabaseModifyPhongCachScene();
 
                 // Extract HBox from the scene and add it to the primary content pane
-                HBox hBox = (HBox) ((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren().get(0);
-                PCPane.getChildren().addAll(hBox);
+//                HBox hBox = (HBox) .get(0);
+                PCPane.getChildren().addAll(((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren());
 
                 // Initialize the database modification scene controller
                 DatabaseModifyPhongCachScene.getController().init();

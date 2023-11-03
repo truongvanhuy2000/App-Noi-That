@@ -4192,6 +4192,101 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 01-11-2023 16:55:22 [main] HelloApplication:41 - Start application
 [INFO ] 01-11-2023 16:55:27 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
 [INFO ] 01-11-2023 16:57:08 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
-[INFO ] 01-11-2023 17:55:36 [main] HelloApplication:41 - Start application
-[INFO ] 01-11-2023 17:55:40 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
-[INFO ] 01-11-2023 17:55:55 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 01-11-2023 23:21:20 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 23:21:26 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 23:21:37 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 23:21:53 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 01-11-2023 23:26:06 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 23:26:10 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 01-11-2023 23:26:31 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Index 0 out of bounds for length 0
+[ERROR] 01-11-2023 23:26:31 [JavaFX Application Thread] GlobalExceptionHandler:30 - Index 0 out of bounds for length 0
+[ERROR] 01-11-2023 23:26:31 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Index 0 out of bounds for length 0
+[ERROR] 01-11-2023 23:26:31 [JavaFX Application Thread] GlobalExceptionHandler:30 - Index 0 out of bounds for length 0
+[INFO ] 01-11-2023 23:26:31 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 01-11-2023 23:28:02 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 23:28:07 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 01-11-2023 23:28:53 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Index 0 out of bounds for length 0
+[ERROR] 01-11-2023 23:28:53 [JavaFX Application Thread] GlobalExceptionHandler:30 - Index 0 out of bounds for length 0
+[ERROR] 01-11-2023 23:28:53 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Index 0 out of bounds for length 0
+[ERROR] 01-11-2023 23:28:53 [JavaFX Application Thread] GlobalExceptionHandler:30 - Index 0 out of bounds for length 0
+[INFO ] 01-11-2023 23:28:53 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 01-11-2023 23:29:38 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 23:29:43 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[ERROR] 01-11-2023 23:30:01 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Index 0 out of bounds for length 0
+[ERROR] 01-11-2023 23:30:01 [JavaFX Application Thread] GlobalExceptionHandler:30 - Index 0 out of bounds for length 0
+[ERROR] 01-11-2023 23:30:01 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Index 0 out of bounds for length 0
+[ERROR] 01-11-2023 23:30:01 [JavaFX Application Thread] GlobalExceptionHandler:30 - Index 0 out of bounds for length 0
+[INFO ] 01-11-2023 23:30:01 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 01-11-2023 23:30:20 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 23:30:21 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 01-11-2023 23:31:41 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 01-11-2023 23:54:47 [main] HelloApplication:41 - Start application
+[INFO ] 01-11-2023 23:54:49 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 02-11-2023 00:30:01 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 02-11-2023 22:44:31 [main] HelloApplication:41 - Start application
+[INFO ] 02-11-2023 22:44:34 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 02-11-2023 22:44:57 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 02-11-2023 22:48:33 [main] HelloApplication:41 - Start application
+[INFO ] 02-11-2023 22:48:37 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 02-11-2023 22:48:53 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 02-11-2023 22:49:41 [main] HelloApplication:41 - Start application
+[INFO ] 02-11-2023 22:49:45 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 02-11-2023 22:50:05 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 02-11-2023 22:51:30 [main] HelloApplication:41 - Start application
+[INFO ] 02-11-2023 22:51:33 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 02-11-2023 22:51:48 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 02-11-2023 22:52:23 [main] HelloApplication:41 - Start application
+[INFO ] 02-11-2023 22:52:27 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 02-11-2023 22:54:03 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 02-11-2023 22:55:14 [main] HelloApplication:41 - Start application
+[INFO ] 02-11-2023 22:55:18 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 02-11-2023 22:55:24 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 02-11-2023 23:00:53 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 02-11-2023 23:02:11 [main] HelloApplication:41 - Start application
+[INFO ] 02-11-2023 23:02:15 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 02-11-2023 23:02:43 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 02-11-2023 23:05:32 [main] HelloApplication:41 - Start application
+[INFO ] 02-11-2023 23:05:37 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 02-11-2023 23:05:54 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 02-11-2023 23:05:55 [JavaFX Application Thread] ImportOperation:56 - Import file: backup-2023-11-02-00-25-12-784.nt
+[INFO ] 02-11-2023 23:06:07 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 02-11-2023 23:07:42 [main] HelloApplication:41 - Start application
+[INFO ] 02-11-2023 23:07:46 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 02-11-2023 23:08:43 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 02-11-2023 23:21:12 [main] HelloApplication:41 - Start application
+[INFO ] 02-11-2023 23:21:16 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 03-11-2023 00:00:48 [main] HelloApplication:41 - Start application
+[INFO ] 03-11-2023 00:00:57 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 03-11-2023 00:01:09 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 03-11-2023 00:01:19 [main] HelloApplication:41 - Start application
+[ERROR] 03-11-2023 00:01:20 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk4ODU1NjA4LCJleHAiOjQyOTA4NTU2MDh9.bbfCq62U3akBTbdz071-HabNqeK9yHW4iRYWr8RGspFib-LFULJBT5As0dKMVTuNepeHBAV5ZfbbStNK7Lb3Rw null
+[INFO ] 03-11-2023 00:01:42 [main] HelloApplication:41 - Start application
+[ERROR] 03-11-2023 00:01:42 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk4ODU1NjA4LCJleHAiOjQyOTA4NTU2MDh9.bbfCq62U3akBTbdz071-HabNqeK9yHW4iRYWr8RGspFib-LFULJBT5As0dKMVTuNepeHBAV5ZfbbStNK7Lb3Rw null
+[INFO ] 03-11-2023 00:01:54 [main] HelloApplication:41 - Start application
+[INFO ] 03-11-2023 00:01:58 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 03-11-2023 00:03:44 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 03-11-2023 00:14:35 [main] HelloApplication:41 - Start application
+[INFO ] 03-11-2023 00:14:47 [main] HelloApplication:41 - Start application
+[INFO ] 03-11-2023 00:15:32 [main] HelloApplication:41 - Start application
+[INFO ] 03-11-2023 00:15:38 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[ERROR] 03-11-2023 00:15:45 [JavaFX Application Thread] GlobalExceptionHandler:22 - Unhandled exception caught! Thread: JavaFX Application Thread Message: class javafx.scene.layout.StackPane cannot be cast to class javafx.scene.layout.HBox (javafx.scene.layout.StackPane and javafx.scene.layout.HBox are in module javafx.graphics of loader 'app')
+[ERROR] 03-11-2023 00:15:45 [JavaFX Application Thread] GlobalExceptionHandler:30 - class javafx.scene.layout.StackPane cannot be cast to class javafx.scene.layout.HBox (javafx.scene.layout.StackPane and javafx.scene.layout.HBox are in module javafx.graphics of loader 'app')
+[INFO ] 03-11-2023 00:16:31 [main] HelloApplication:41 - Start application
+[INFO ] 03-11-2023 00:16:34 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[ERROR] 03-11-2023 00:17:19 [Thread-4] WebClientServiceImpl:98 - Error when sending request to serverGET /api/bangnoithat/sampleAll eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5ODk0NTMzNywiZXhwIjo0MjkwOTQ1MzM3fQ.c4O92SW-hY693yAXFGIaiB223_uzPwV_5wQvWHClx3K5AgaxG8_etPZsLwvpPgGx6BCK6bNpHH7bkjM1Wu7Y9A null
+[INFO ] 03-11-2023 00:18:03 [main] HelloApplication:41 - Start application
+[INFO ] 03-11-2023 00:18:05 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 03-11-2023 00:21:58 [main] HelloApplication:41 - Start application
+[INFO ] 03-11-2023 00:21:59 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 03-11-2023 00:23:26 [main] HelloApplication:41 - Start application
+[INFO ] 03-11-2023 00:23:29 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 03-11-2023 00:24:20 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 03-11-2023 00:29:27 [main] HelloApplication:41 - Start application
+[INFO ] 03-11-2023 00:29:30 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 03-11-2023 00:31:11 [main] HelloApplication:41 - Start application
+[INFO ] 03-11-2023 00:31:23 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 03-11-2023 00:31:44 [JavaFX Application Thread] HomeController:118 - Login as admin with role Admin
+[INFO ] 03-11-2023 00:33:13 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 03-11-2023 13:52:07 [main] HelloApplication:41 - Start application
+[ERROR] 03-11-2023 13:52:07 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index  null
+[ERROR] 03-11-2023 13:52:18 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"huy123456","password":"123456","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}

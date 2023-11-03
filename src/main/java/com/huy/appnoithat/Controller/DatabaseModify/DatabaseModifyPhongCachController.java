@@ -5,13 +5,17 @@ import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
+import com.huy.appnoithat.Controller.FileNoiThatExplorer.RecentFile;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Enums.Action;
+import com.huy.appnoithat.Enums.FileType;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Service.DatabaseModify.DatabaseModifyNoiThatService;
 import com.huy.appnoithat.Service.DatabaseModify.DatabaseModifyPhongCachService;
+import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,11 +28,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import lombok.Setter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -36,6 +44,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class DatabaseModifyPhongCachController implements Initializable {
+    final static Logger LOGGER = LogManager.getLogger(DatabaseModifyPhongCachController.class);
     @FXML
     private Label Title;
     @FXML
@@ -48,6 +57,8 @@ public class DatabaseModifyPhongCachController implements Initializable {
     private Button getSampleDataButton;
     @FXML
     private Button swapButton;
+    @FXML
+    private StackPane loadingPane;
 
     private final DatabaseModifyPhongCachService databaseModifyPhongCachService;
     private final DatabaseModifyNoiThatService databaseModifyNoiThatService;
@@ -165,6 +176,13 @@ public class DatabaseModifyPhongCachController implements Initializable {
     public void init() {
         refreshList();
         refreshChildrenList(0);
+        if (phongCachNoiThatObservableList.isEmpty()) {
+            boolean isGetSampleData = PopupUtils
+                    .confirmationDialog("Thông báo", "Thông báo", "Dữ liệu trống, bạn có muốn lấy dữ liệu mẫu không?");
+            if (isGetSampleData) {
+                getSampleDataButton.fire();
+            }
+        }
     }
 
     /**
@@ -213,8 +231,18 @@ public class DatabaseModifyPhongCachController implements Initializable {
     }
     @FXML
     void FetchSampleData(ActionEvent event) {
-        databaseModifyPhongCachService.fetchSamplePhongCachData();
-        refresh();
+        showLoading();
+        new Thread(() -> {
+            try {
+                databaseModifyPhongCachService.sampleAll();
+                Platform.runLater(() -> {
+                    hideLoading();
+                    refresh();
+                });
+            } catch (Exception e) {
+                LOGGER.error("Some thing is wrong with the export operation", e);
+            }
+        }).start();
     }
 
 
@@ -227,6 +255,9 @@ public class DatabaseModifyPhongCachController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadingPane.setDisable(true);
+        loadingPane.setVisible(false);
+
         getSampleDataButton.disableProperty().bind(Bindings.size(phongCachNoiThatObservableList).greaterThan(0));
         // Hides the backButton initially
         backButton.setVisible(false);
@@ -266,7 +297,6 @@ public class DatabaseModifyPhongCachController implements Initializable {
         childrenList.setEditable(false);
         childrenList.setCellFactory(param -> new CustomEditingListCell<>());
         childrenList.setItems(noiThatObservableList);
-        init();
     }
 
     /**
@@ -294,5 +324,22 @@ public class DatabaseModifyPhongCachController implements Initializable {
         }
         noiThatObservableList.clear();
         noiThatObservableList.addAll(noiThatList);
+    }
+    private void showLoading() {
+        loadingPane.setVisible(true);
+        loadingPane.setDisable(false);
+        ProgressIndicator progressIndicator = new ProgressIndicator();
+        progressIndicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+        progressIndicator.setMinHeight(200);
+        progressIndicator.setMinWidth(200);
+        Label textField = new Label("Đang lấy dữ liệu mẫu...");
+        textField.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI';");
+        loadingPane.getChildren().addAll(progressIndicator, textField);
+        loadingPane.toFront();
+    }
+    private void hideLoading() {
+        loadingPane.setVisible(false);
+        loadingPane.setDisable(true);
+        loadingPane.getChildren().clear();
     }
 }

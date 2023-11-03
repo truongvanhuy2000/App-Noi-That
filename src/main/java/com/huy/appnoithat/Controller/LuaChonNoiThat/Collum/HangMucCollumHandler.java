@@ -90,6 +90,9 @@ public class HangMucCollumHandler {
             String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
             String hangMuc = currentItem.getValue().getHangMuc().getValue();
             List<VatLieu> items = luaChonNoiThatService.findVatLieuListBy(phongCach, noiThat, hangMuc);
+            if (items.isEmpty()) {
+                return null;
+            }
             return items.get(0);
         } catch (NullPointerException e) {
             PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
