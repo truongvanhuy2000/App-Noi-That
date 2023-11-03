@@ -88,6 +88,9 @@ public class WebClientServiceImpl implements WebClientService {
     }
     private String doSendRequest(String method, String path, String authenticationToken, String data) {
         try {
+            if ((method.equals("PUT") || method.equals("POST")) && data.isEmpty()) {
+                data = " ";
+            }
             HttpRequest httpRequest = buildJsonHttpRequest(method, path, authenticationToken, data);
             HttpResponse<String> response = client.send(httpRequest, BodyHandlers.ofString());
             if (response.statusCode() != 200) {

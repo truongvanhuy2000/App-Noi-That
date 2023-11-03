@@ -89,7 +89,7 @@ public class AccountRestService {
     }
     public void deleteById(int id) {
         String token = this.sessionService.getToken();
-        this.webClientService.authorizedHttpDeleteJson(BASE_ENDPOINT + "/accounts/" + id, "", token);
+        this.webClientService.authorizedHttpDeleteJson(BASE_ENDPOINT + "/accounts/" + id, " ", token);
     }
     public void activateAccount(int id) {
         String token = this.sessionService.getToken();
@@ -97,7 +97,7 @@ public class AccountRestService {
     }
     public void deactivateAccount(int id) {
         String token = this.sessionService.getToken();
-        this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/deactivate/" + id, "", token);
+        this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/deactivate/" + id, " ", token);
     }
     public List<Account> findAllEnabledAccount() {
         String token = this.sessionService.getToken();
