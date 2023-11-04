@@ -11,8 +11,8 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 
 public class SetupBangThanhToan {
-    private TableView<BangThanhToan> bangThanhToan;
-    private TableColumn<BangThanhToan, Long> DatCocThiCong30, DatCocThietKe10, HangDenChanCongTrinh50, NghiemThuQuyet, TongTien;
+    private final TableView<BangThanhToan> bangThanhToan;
+    private final TableColumn<BangThanhToan, Long> DatCocThiCong30, DatCocThietKe10, HangDenChanCongTrinh50, NghiemThuQuyet, TongTien;
 
     public SetupBangThanhToan(LuaChonNoiThatController luaChonNoiThatController) {
         bangThanhToan = luaChonNoiThatController.getBangThanhToan();

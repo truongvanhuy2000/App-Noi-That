@@ -146,14 +146,16 @@ public class ImportOperation {
                     isNewLv1 = false;
                 }
                 if (isNewLv2) {
-                    assert lv1Item != null;
-                    lv1Item.getChildren().add(lv2Item);
-                    isNewLv2 = false;
+                    if (lv1Item != null) {
+                        lv1Item.getChildren().add(lv2Item);
+                        isNewLv2 = false;
+                    }
                 }
                 if (isNewLv3) {
-                    assert lv2Item != null;
-                    lv2Item.getChildren().add(lv3Item);
-                    isNewLv3 = false;
+                    if (lv2Item != null) {
+                        lv2Item.getChildren().add(lv3Item);
+                        isNewLv3 = false;
+                    }
                 }
             }
         } catch (Exception e) {

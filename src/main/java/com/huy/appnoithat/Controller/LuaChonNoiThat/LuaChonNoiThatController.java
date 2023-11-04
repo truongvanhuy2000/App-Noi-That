@@ -5,6 +5,7 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Operation.ExportOperation;
@@ -14,27 +15,21 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupBangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupTruongThongTin;
 import com.huy.appnoithat.DataModel.NtFile.DataPackage;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
-import com.huy.appnoithat.DataModel.ThongTinKhachHang;
-import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Enums.FileType;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.PixelFormat;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lombok.Getter;
@@ -70,7 +65,7 @@ public class LuaChonNoiThatController implements Initializable {
     private TreeTableColumn<BangNoiThat, String> DonVi, HangMuc, VatLieu, STT;
     // Button
     @FXML
-    private Button addContinuousButton, addNewButton, ExportButton, SaveButton;
+    private Button addContinuousButton, addNewButton, ExportButton, SaveButton, duplicateButton;
     @FXML
     private ImageView ImageView;
     @FXML
@@ -90,9 +85,8 @@ public class LuaChonNoiThatController implements Initializable {
     private CheckMenuItem AutoSave;
     @FXML
     private StackPane loadingPane;
-
     private Timeline autoSaveTimer;
-    private PersistenceStorageService persistenceStorageService;
+    private final PersistenceStorageService persistenceStorageService;
     public LuaChonNoiThatController() {
         imageStream = new ByteArrayOutputStream();
         persistenceStorageService = PersistenceStorageService.getInstance();
@@ -248,8 +242,7 @@ public class LuaChonNoiThatController implements Initializable {
      * This function will handle the event when user want to choose an image
      */
     private void imageViewHandler() {
-        FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showOpenDialog(new Stage());
+        File file = PopupUtils.fileOpener();
         if (file == null) return;
         String fileExtension = FilenameUtils.getExtension(file.getName());
         if (!(fileExtension.equals("jpg") || fileExtension.equals("jpeg") || fileExtension.equals("png"))) {
@@ -295,6 +288,8 @@ public class LuaChonNoiThatController implements Initializable {
         // Assigns the exportButtonHandler method to the ExportButton's action event.
         ExportButton.setOnAction(buttonHandler::exportButtonHandler);
         SaveButton.setOnAction(buttonHandler::onSaveAction);
+        duplicateButton.setOnAction(buttonHandler::duplicateButtonHandler);
+        duplicateButton.disableProperty().bind(TableNoiThat.getSelectionModel().selectedItemProperty().isNull());
     }
 
 

@@ -4290,3 +4290,49 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 03-11-2023 13:52:07 [main] HelloApplication:41 - Start application
 [ERROR] 03-11-2023 13:52:07 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index  null
 [ERROR] 03-11-2023 13:52:18 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"huy123456","password":"123456","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[INFO ] 04-11-2023 16:11:40 [main] HelloApplication:41 - Start application
+[ERROR] 04-11-2023 16:11:40 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverGET /api/index  null
+[ERROR] 04-11-2023 16:12:25 [JavaFX Application Thread] WebClientServiceImpl:98 - Error when sending request to serverPOST /api/login null {"id":0,"username":"kim","password":"kim","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[INFO ] 04-11-2023 16:12:39 [main] HelloApplication:41 - Start application
+[INFO ] 04-11-2023 16:13:00 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 04-11-2023 16:14:42 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 04-11-2023 16:53:58 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 04-11-2023 23:15:50 [main] HelloApplication:41 - Start application
+[INFO ] 04-11-2023 23:15:54 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 04-11-2023 23:19:39 [main] HelloApplication:41 - Start application
+[INFO ] 04-11-2023 23:19:43 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 04-11-2023 23:20:07 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 04-11-2023 23:20:18 [main] HelloApplication:41 - Start application
+[INFO ] 04-11-2023 23:20:21 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 04-11-2023 23:20:41 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 04-11-2023 23:23:57 [main] HelloApplication:41 - Start application
+[INFO ] 04-11-2023 23:24:00 [JavaFX Application Thread] HomeController:118 - Login as kim with role User
+[INFO ] 04-11-2023 23:24:09 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 04-11-2023 23:25:43 [main] HelloApplication:41 - Start application
+[INFO ] 04-11-2023 23:25:46 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 04-11-2023 23:27:29 [JavaFX Application Thread] LuaChonNoiThatController:360 - Close window
+[INFO ] 04-11-2023 23:44:21 [main] HelloApplication:41 - Start application
+[INFO ] 04-11-2023 23:44:24 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 04-11-2023 23:45:14 [JavaFX Application Thread] LuaChonNoiThatController:355 - Close window
+[INFO ] 04-11-2023 23:46:03 [main] HelloApplication:41 - Start application
+[INFO ] 04-11-2023 23:46:05 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 04-11-2023 23:48:00 [main] HelloApplication:41 - Start application
+[INFO ] 04-11-2023 23:48:03 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 04-11-2023 23:48:32 [JavaFX Application Thread] LuaChonNoiThatController:355 - Close window
+[INFO ] 04-11-2023 23:50:28 [main] HelloApplication:41 - Start application
+[INFO ] 04-11-2023 23:50:32 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 04-11-2023 23:50:46 [JavaFX Application Thread] ImportOperation:56 - Import file: backup-2023-11-04-16-25-53-616.nt
+[INFO ] 04-11-2023 23:55:14 [main] HelloApplication:41 - Start application
+[INFO ] 04-11-2023 23:55:17 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 04-11-2023 23:55:23 [JavaFX Application Thread] LuaChonNoiThatController:355 - Close window
+[INFO ] 04-11-2023 23:55:24 [JavaFX Application Thread] ImportOperation:56 - Import file: backup-2023-11-04-16-55-53-604.nt
+[INFO ] 04-11-2023 23:59:06 [JavaFX Application Thread] LuaChonNoiThatController:355 - Close window
+[INFO ] 04-11-2023 23:59:07 [JavaFX Application Thread] ImportOperation:56 - Import file: backup-2023-11-04-16-55-53-604.nt
+[ERROR] 04-11-2023 23:59:10 [JavaFX Application Thread] GlobalExceptionHandler:27 - For input string: "q"
+[INFO ] 05-11-2023 00:00:24 [JavaFX Application Thread] LuaChonNoiThatController:355 - Close window
+[INFO ] 05-11-2023 00:12:44 [main] HelloApplication:41 - Start application
+[INFO ] 05-11-2023 00:12:46 [JavaFX Application Thread] HomeController:118 - Login as user with role User
+[INFO ] 05-11-2023 00:12:59 [JavaFX Application Thread] LuaChonNoiThatController:355 - Close window
+[INFO ] 05-11-2023 00:13:01 [JavaFX Application Thread] ImportOperation:56 - Import file: backup-2023-11-04-16-55-53-604.nt
+[INFO ] 05-11-2023 00:14:28 [JavaFX Application Thread] LuaChonNoiThatController:337 - Normal save: Save file to: /home/huy/Project/Java/AppNoiThat/App-noi-that/Data/Temp/backup-2023-11-04-16-55-53-604.nt
+[INFO ] 05-11-2023 00:14:30 [JavaFX Application Thread] LuaChonNoiThatController:355 - Close window

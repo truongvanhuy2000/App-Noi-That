@@ -12,6 +12,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.Image?>
@@ -121,7 +122,34 @@
                   </TitledPane>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="2.0" VBox.vgrow="ALWAYS">
                      <children>
-                            <Button fx:id="addContinuousButton" minWidth="32.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="44.0" rotate="90.0" text="&gt;&gt;" />
+                        <VBox alignment="CENTER" prefHeight="771.0" prefWidth="45.0" spacing="20.0">
+                           <children>
+                                  <Button fx:id="addContinuousButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/228122.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip style="-fx-show-delay: 20ms;" text="Tạo thêm mục" />
+                                 </tooltip>
+                              </Button>
+                              <Button fx:id="duplicateButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/1387596.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip style="-fx-show-delay: 20ms;" text="Nhân bản mục trong bảng" />
+                                 </tooltip>
+                              </Button>
+                           </children>
+                        </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
                                   <TreeTableView fx:id="TableNoiThat" onKeyPressed="#onKeyPressed" prefHeight="624.0" prefWidth="1254.0" VBox.vgrow="ALWAYS">

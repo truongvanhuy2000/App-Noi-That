@@ -30,23 +30,26 @@ public class TableCalculationUtils {
      */
     public static Double calculateKhoiLuong(Double chieuDai, Double chieuCao, Double rong, String donVi) {
         double khoiLuong = 0.0;
-        if (donVi.trim().equalsIgnoreCase(MET_DAI)) {
-            if (chieuDai == 0.0) {
-                return 0.0;
+        if (donVi != null) {
+            if (donVi.trim().equalsIgnoreCase(MET_DAI)) {
+                if (chieuDai == 0.0) {
+                    return 0.0;
+                }
+                khoiLuong = chieuDai / 1000;
+                return khoiLuong;
             }
-            khoiLuong = chieuDai / 1000;
+
+            if (donVi.trim().equalsIgnoreCase(MET_VUONG)) {
+                if (chieuDai == 0.0 || chieuCao == 0.0) {
+                    return 0.0;
+                }
+                khoiLuong = chieuDai * chieuCao / 1000000;
+            } else {
+                khoiLuong = 1.0;
+            }
             return khoiLuong;
         }
-
-        if (donVi.trim().equalsIgnoreCase(MET_VUONG)) {
-            if (chieuDai == 0.0 || chieuCao == 0.0) {
-                return 0.0;
-            }
-            khoiLuong = chieuDai * chieuCao / 1000000;
-        } else {
-            khoiLuong = 1.0;
-        }
-        return khoiLuong;
+        return 0.0;
     }
 
     /**
@@ -70,12 +73,10 @@ public class TableCalculationUtils {
      */
     public static void calculateTongTien(TreeItem<BangNoiThat> item) {
         Long tongTien = 0L;
-
         // Base case: If the item is null, return without any computation
         if (item == null) {
             return;
         }
-
         // Iterate through children of the current item and sum their 'ThanhTien' values
         for (TreeItem<BangNoiThat> child : item.getChildren()) {
             tongTien += child.getValue().getThanhTien().getValue();
@@ -98,7 +99,6 @@ public class TableCalculationUtils {
         if (item == null) {
             return;
         }
-
         // Iterate through children of the current item
         for (TreeItem<BangNoiThat> child : item.getChildren()) {
             for(TreeItem<BangNoiThat> grandChild : child.getChildren()) {
@@ -113,7 +113,6 @@ public class TableCalculationUtils {
     }
 
     public static long round(double input) {
-        long i = (long) Math.ceil(input);
         return Math.round(input/1000000) * 1000000;
     };
 

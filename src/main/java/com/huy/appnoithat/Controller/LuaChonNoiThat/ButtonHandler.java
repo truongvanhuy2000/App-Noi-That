@@ -2,7 +2,9 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Enums.FileType;
 import javafx.event.ActionEvent;
@@ -257,6 +259,13 @@ public class ButtonHandler {
             return null;
         }
         TreeItem<BangNoiThat> newItem = TableUtils.createNewItem(findTheNextStt(currentItem.getValue().getSTT().getValue()));
+        return createNewSibling(currentItem, newItem);
+    }
+
+    private TreeItem<BangNoiThat> createNewSibling(TreeItem<BangNoiThat> currentItem, TreeItem<BangNoiThat> newItem) {
+        if (currentItem == null || newItem == null) {
+            return null;
+        }
         if (currentItem.getParent() == null) {
             return null;
         }
@@ -267,8 +276,6 @@ public class ButtonHandler {
         TableUtils.selectSingleItem(TableNoiThat, newItem);
         return newItem;
     }
-
-
 
     /**
      * Creates a new TreeItem sibling with the next sequential STT and adds it after the given TreeItem in the parent.
@@ -303,5 +310,30 @@ public class ButtonHandler {
         }
         TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem(String.valueOf(stt));
         parent.getChildren().add(tempNewItem);
+    }
+
+    public void duplicateButtonHandler(ActionEvent actionEvent) {
+        TreeItem<BangNoiThat> currentSelectedItem = TableNoiThat.getSelectionModel().getSelectedItem();
+        if (currentSelectedItem == null) {
+            return;
+        }
+        TreeItem<BangNoiThat> newItem = deepCopy(currentSelectedItem);
+        if (newItem == null) {
+            return;
+        }
+        createNewSibling(currentSelectedItem, newItem);
+        TableUtils.reArrangeList(TableNoiThat);
+        TableCalculationUtils.recalculateAllTongTien(TableNoiThat.getRoot());
+
+    }
+    private TreeItem<BangNoiThat> deepCopy(TreeItem<BangNoiThat> item) {
+        if (item == null) {
+            return null;
+        }
+        TreeItem<BangNoiThat> newItem = TableUtils.createNewItem(item.getValue());
+        for (TreeItem<BangNoiThat> child : item.getChildren()) {
+            newItem.getChildren().add(deepCopy(child));
+        }
+        return newItem;
     }
 }

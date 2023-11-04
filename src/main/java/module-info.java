@@ -16,6 +16,7 @@ module com.huy.appnoithat {
     requires java.desktop;
     requires com.fasterxml.jackson.datatype.jsr310;
     requires com.fasterxml.jackson.dataformat.yaml;
+    requires org.jetbrains.annotations;
 
     exports com.huy.appnoithat.Controller;
     opens com.huy.appnoithat.Controller to javafx.fxml;
@@ -52,4 +53,7 @@ module com.huy.appnoithat {
     exports com.huy.appnoithat.Controller.Register;
     opens com.huy.appnoithat.Controller.Register to javafx.fxml;
     exports com.huy.appnoithat.DataModel.Session;
+
+    exports com.huy.appnoithat.Controller.LuaChonNoiThat.Constant;
+    opens com.huy.appnoithat.Controller.LuaChonNoiThat.Constant to javafx.fxml;
 }

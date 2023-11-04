@@ -252,6 +252,12 @@ public class DatabaseModifyVatLieuController implements Initializable {
         Title.setText("Danh sách vật liệu");
         setUpVatLieuListView();
         setUpThongSoTableView();
+        setupButton();
+    }
+    private void setupButton() {
+        deleteButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
+        nextButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
+        swapButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
     }
 
     /**
