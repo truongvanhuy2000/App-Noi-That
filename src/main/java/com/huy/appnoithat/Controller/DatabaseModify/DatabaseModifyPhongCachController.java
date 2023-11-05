@@ -45,15 +45,13 @@ public class DatabaseModifyPhongCachController implements Initializable {
     @FXML
     private Label Title;
     @FXML
-    private Button addButton, deleteButton, backButton, nextButton;
+    private Button addButton, deleteButton, backButton, nextButton, swapButton;
     @FXML
     private ListView<NoiThat> childrenList;
     @FXML
     private ListView<PhongCachNoiThat> listView;
     @FXML
     private Button getSampleDataButton;
-    @FXML
-    private Button swapButton;
     @FXML
     private StackPane loadingPane;
 
@@ -294,6 +292,13 @@ public class DatabaseModifyPhongCachController implements Initializable {
         childrenList.setEditable(false);
         childrenList.setCellFactory(param -> new CustomEditingListCell<>());
         childrenList.setItems(noiThatObservableList);
+        setupButton();
+    }
+
+    private void setupButton() {
+        deleteButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
+        nextButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
+        swapButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
     }
 
     /**

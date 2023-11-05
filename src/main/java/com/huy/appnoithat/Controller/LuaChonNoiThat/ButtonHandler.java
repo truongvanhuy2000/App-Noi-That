@@ -2,14 +2,18 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Enums.FileType;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
 
-import java.util.Objects;
+import java.util.Optional;
 
 public class ButtonHandler {
     private final TreeTableView<BangNoiThat> TableNoiThat;
@@ -47,37 +51,26 @@ public class ButtonHandler {
         if (currentSelectedItem == null) {
             return;
         }
-        String currentItemStt = currentSelectedItem.getValue().getSTT().getValue();
-
-        // If the STT is in alphabetical format, add items following the alphabetical sequence
-        if (Utils.isAlpha(currentItemStt) &&
-                Objects.equals(currentSelectedItem.getParent().getValue().getSTT().getValue(), "0")) {
-            handleContinuousAddForAlphaStt(currentSelectedItem);
-            TableUtils.reArrangeList(TableNoiThat);
-            return;
+        switch (ItemTypeUtils.determineItemType(currentSelectedItem)) {
+            case ROMAN -> {
+                handleContinuousAddForRomanStt(currentSelectedItem);
+            }
+            case AlPHA -> {
+                handleContinuousAddForAlphaStt(currentSelectedItem);
+            }
+            case NUMERIC -> {
+                handleContinuousAddForNumericStt();
+            }
         }
-
-        // Determine the format of the STT and add new items accordingly
-        if (Utils.RomanNumber.isRoman(currentItemStt) &&
-                Utils.isAlpha(currentSelectedItem.getParent().getValue().getSTT().getValue())) {
-            handleContinuousAddForRomanStt(currentSelectedItem);
-            TableUtils.reArrangeList(TableNoiThat);
-            return;
-        }
-        // If the STT is in numeric format, add items following the numeric sequence
-        if (Utils.isNumeric(currentItemStt) &&
-                Utils.RomanNumber.isRoman(currentSelectedItem.getParent().getValue().getSTT().getValue())) {
-            handleContinuousAddForNumericStt();
-            TableUtils.reArrangeList(TableNoiThat);
-        }
+        TableUtils.reArrangeList(TableNoiThat);
     }
     private void addNewItemIfEmpty() {
         // If no items are selected and the TreeTableView is empty, add a new item with STT "A"
         if (TableNoiThat.getRoot().getChildren().isEmpty()) {
-            TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem("A");
+            TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem(ItemType.AlPHA, "A");
             TableNoiThat.getRoot().getChildren().add(tempNewItem);
-            TreeItem<BangNoiThat> newRomanStt = TableUtils.createNewItem("I");
-            automaticallyAddNewStt(newRomanStt, 5);
+            TreeItem<BangNoiThat> newRomanStt = TableUtils.createNewItem(ItemType.ROMAN, "I");
+            automaticallyAddNewNumericStt(newRomanStt, 5);
             tempNewItem.getChildren().add(newRomanStt);
         }
     }
@@ -97,7 +90,9 @@ public class ButtonHandler {
             return;
         }
         TreeItem<BangNoiThat> newSibling = createNewSibling(currentSelectedItem);
-        automaticallyAddNewStt(newSibling, 5);
+        if (newSibling != null) {
+            automaticallyAddNewNumericStt(newSibling, 5);
+        }
     }
 
 
@@ -113,11 +108,14 @@ public class ButtonHandler {
         }
         if (currentSelectedItem.getChildren().isEmpty()) {
             TreeItem<BangNoiThat> newItem = continuousLineAddForAlphaStt(currentSelectedItem);
-            automaticallyAddNewStt(newItem, 5);
+            automaticallyAddNewNumericStt(newItem, 5);
         } else {
             TreeItem<BangNoiThat> newItem = createNewSibling(currentSelectedItem);
-            TreeItem<BangNoiThat> newRomanStt = TableUtils.createNewItem("I");
-            automaticallyAddNewStt(newRomanStt, 5);
+            if (newItem == null) {
+                return;
+            }
+            TreeItem<BangNoiThat> newRomanStt = TableUtils.createNewItem(ItemType.ROMAN, "I");
+            automaticallyAddNewNumericStt(newRomanStt, 5);
             newItem.getChildren().add(newRomanStt);
         }
     }
@@ -148,14 +146,16 @@ public class ButtonHandler {
             return;
         }
         TreeItem<BangNoiThat> parent = currentSelectedItem.getParent();
-        TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem("1");
+
         if (currentSelectedItem.getValue() == null) {
             return;
         }
-        String nextStt = findTheNextStt(currentSelectedItem.getValue().getSTT().getValue());
-        tempNewItem.getValue().getSTT().setValue(nextStt);
-        parent.getChildren().add(tempNewItem);
-        selectNewItem(tempNewItem);
+        Optional<String> nextStt = ItemTypeUtils.findTheNextStt(currentSelectedItem.getValue().getSTT().getValue());
+        if (nextStt.isPresent()) {
+            TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem(ItemType.NUMERIC, nextStt.get());
+            parent.getChildren().add(tempNewItem);
+            selectNewItem(tempNewItem);
+        }
     }
 
 
@@ -169,7 +169,7 @@ public class ButtonHandler {
         if (currentSelectedItem == null) {
             return null;
         }
-        TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem("I");
+        TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem(ItemType.ROMAN, "I");
         currentSelectedItem.getChildren().add(tempNewItem);
 //        selectNewItem(tempNewItem);
         return tempNewItem;
@@ -186,7 +186,7 @@ public class ButtonHandler {
         if (currentSelectedItem == null) {
             return null;
         }
-        TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem("1");
+        TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem(ItemType.NUMERIC, "1");
         currentSelectedItem.getChildren().add(tempNewItem);
         selectNewItem(tempNewItem);
         return tempNewItem;
@@ -215,23 +215,7 @@ public class ButtonHandler {
      * @param stt The input STT (Serial Number).
      * @return The next sequential STT.
      */
-    public static String findTheNextStt(String stt) {
-        if (stt == null || stt.isEmpty()) {
-            return "";
-        }
-        if (Utils.RomanNumber.isRoman(stt)) {
-            int nextStt = Utils.RomanNumber.romanToInt(stt) + 1;
-            return Utils.RomanNumber.toRoman(nextStt);
-        }
-        if (Utils.isAlpha(stt)) {
-            char nextLetter = (char) (stt.charAt(0) + 1);
-            return String.valueOf(nextLetter);
-        }
-        if (Utils.isNumeric(stt)) {
-            return String.valueOf(Integer.parseInt(stt) + 1);
-        }
-        return "";
-    }
+
 
     public boolean isReachedLimit(TreeItem<BangNoiThat> root, int limit) {
         if (root == null) {
@@ -256,7 +240,20 @@ public class ButtonHandler {
         if (currentItem == null) {
             return null;
         }
-        TreeItem<BangNoiThat> newItem = TableUtils.createNewItem(findTheNextStt(currentItem.getValue().getSTT().getValue()));
+        String stt = currentItem.getValue().getSTT().getValue();
+        Optional<String> nextStt = ItemTypeUtils.findTheNextStt(stt);
+        if (nextStt.isPresent()) {
+            TreeItem<BangNoiThat> newItem = TableUtils.createNewItem(
+                    ItemTypeUtils.determineItemType(stt), nextStt.get());
+            return createNewSibling(currentItem, newItem);
+        }
+        return null;
+    }
+
+    private TreeItem<BangNoiThat> createNewSibling(TreeItem<BangNoiThat> currentItem, TreeItem<BangNoiThat> newItem) {
+        if (currentItem == null || newItem == null) {
+            return null;
+        }
         if (currentItem.getParent() == null) {
             return null;
         }
@@ -267,8 +264,6 @@ public class ButtonHandler {
         TableUtils.selectSingleItem(TableNoiThat, newItem);
         return newItem;
     }
-
-
 
     /**
      * Creates a new TreeItem sibling with the next sequential STT and adds it after the given TreeItem in the parent.
@@ -289,19 +284,37 @@ public class ButtonHandler {
             this.luaChonNoiThatController.save();
         }
     }
-    public void automaticallyAddNewStt(TreeItem<BangNoiThat> parent, int count) {
+    public void automaticallyAddNewNumericStt(TreeItem<BangNoiThat> parent, int count) {
         if (parent == null) {
             return;
         }
         for (int i = 0; i < count; i++) {
-            AddNewSttToParent(parent, i + 1);
+            TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem(ItemType.NUMERIC, String.valueOf(i));
+            parent.getChildren().add(tempNewItem);
         }
     }
-    public void AddNewSttToParent(TreeItem<BangNoiThat> parent, int stt) {
-        if (parent == null) {
+    public void duplicateButtonHandler(ActionEvent actionEvent) {
+        TreeItem<BangNoiThat> currentSelectedItem = TableNoiThat.getSelectionModel().getSelectedItem();
+        if (currentSelectedItem == null) {
             return;
         }
-        TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem(String.valueOf(stt));
-        parent.getChildren().add(tempNewItem);
+        TreeItem<BangNoiThat> newItem = deepCopy(currentSelectedItem);
+        if (newItem == null) {
+            return;
+        }
+        createNewSibling(currentSelectedItem, newItem);
+        TableUtils.reArrangeList(TableNoiThat);
+        TableCalculationUtils.recalculateAllTongTien(TableNoiThat.getRoot());
+
+    }
+    private TreeItem<BangNoiThat> deepCopy(TreeItem<BangNoiThat> item) {
+        if (item == null) {
+            return null;
+        }
+        TreeItem<BangNoiThat> newItem = TableUtils.createNewItem(item.getValue());
+        for (TreeItem<BangNoiThat> child : item.getChildren()) {
+            newItem.getChildren().add(deepCopy(child));
+        }
+        return newItem;
     }
 }

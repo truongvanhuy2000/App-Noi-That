@@ -15,11 +15,9 @@ public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
     }
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
-        PopupUtils.throwCriticalError("Critical Error! Please report back to the developer!");
+        PopupUtils.throwCriticalError("Critical Error! Please report back to the developer! \n" + throwable.getMessage());
         throwable.printStackTrace();
-        LOGGER.error("Unhandled exception caught! Thread: " + thread.getName() + " Message: " + throwable.getMessage());
         nestedLog(throwable);
-        Platform.exit();
     }
     private void nestedLog(Throwable throwable) {
         if (throwable.getCause() != null) {

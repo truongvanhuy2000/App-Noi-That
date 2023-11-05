@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Common;
 
 import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
@@ -13,6 +14,9 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelFormat;
+import lombok.NonNull;
+
+import java.util.Objects;
 
 public class TableUtils {
     /**
@@ -34,31 +38,20 @@ public class TableUtils {
      * @param event This method will check if the current cell is allowed to edit
      * @return
      */
-    public static boolean isAllowedToEdit(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
-        TreeItem<BangNoiThat> currentItem = event.getRowValue();
-        if (!Utils.isNumeric(currentItem.getValue().getSTT().getValue())) {
-            event.consume();
-            return false;
-        }
-        return true;
+    public static boolean isAllowedToEdit(TreeItem<BangNoiThat> item) {
+        return ItemTypeUtils.determineItemType(item.getValue().getSTT().getValue()) == ItemType.NUMERIC;
     }
-
-
 
     /**
      * @param TableNoiThat This method will check if the current cell is editable
      * @return
      */
     public static boolean isEditable(TreeTableView<BangNoiThat> TableNoiThat) {
-        if (TableNoiThat.getSelectionModel().getSelectedItem() == null) {
+        TreeItem<BangNoiThat> selectedItem = TableNoiThat.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) {
             return false;
         }
-        String stt = TableNoiThat.getSelectionModel().getSelectedItem().getValue().getSTT().getValue();
-        return Utils.isNumeric(stt);
-    }
-    public static boolean isEditable(TreeItem<BangNoiThat> item) {
-        String stt = item.getValue().getSTT().getValue();
-        return Utils.isNumeric(stt);
+        return isAllowedToEdit(selectedItem);
     }
     /**
      * @param id This method will create a new item with the given id
@@ -72,7 +65,13 @@ public class TableUtils {
         newItem.setExpanded(true);
         return newItem;
     }
-    public static TreeItem<BangNoiThat> createRootItem(String id, TreeTableView<BangNoiThat> bangNoiThat, TableView<BangThanhToan> bangThanhToan) {
+    public static TreeItem<BangNoiThat> createNewItem(ItemType type, String id) {
+        String fullId = ItemTypeUtils.createFullId(type, id);
+        return createNewItem(fullId);
+    }
+
+    public static TreeItem<BangNoiThat> createRootItem(String id, TreeTableView<BangNoiThat> bangNoiThat,
+                                                       TableView<BangThanhToan> bangThanhToan) {
         TreeItem<BangNoiThat> newItem = createNewItem(id);
         newItem.getValue().getThanhTien().addListener((observableValue, aLong, t1) -> {
             TableCalculationUtils.calculateBangThanhToan(bangThanhToan, t1.longValue());
@@ -93,7 +92,8 @@ public class TableUtils {
      * @return
      */
     public static TreeItem<BangNoiThat> createNewItem(BangNoiThat bangNoiThat) {
-        TreeItem<BangNoiThat> newItem = new TreeItem<>(bangNoiThat);
+        BangNoiThat newBangNoiThat = new BangNoiThat(bangNoiThat);
+        TreeItem<BangNoiThat> newItem = new TreeItem<>(newBangNoiThat);
         newItem.addEventHandler(TreeItem.branchCollapsedEvent(),
                 (EventHandler<TreeItem.TreeModificationEvent<String>>) event -> event.getTreeItem().setExpanded(true));
         newItem.setExpanded(true);
@@ -124,13 +124,6 @@ public class TableUtils {
     public static TreeItem<BangNoiThat> convertToTreeItem(ThongTinNoiThat thongTinNoiThat) {
         return TableUtils.createNewItem(new BangNoiThat(thongTinNoiThat));
     }
-    public static byte[] readFromImage(Image img) {
-        int w = (int)img.getWidth();
-        int h = (int)img.getHeight();
-        byte[] buf = new byte[w * h * 4];
-        img.getPixelReader().getPixels(0, 0, w, h, PixelFormat.getByteBgraInstance(), buf, 0, w * 4);
-        return buf;
-    }
     public static void reArrangeList(TreeTableView<BangNoiThat> TableNoiThat) {
         ObservableList<TreeItem<BangNoiThat>> listItem = TableNoiThat.getRoot().getChildren();
         for (int i = 0; i < listItem.size(); i++) {
@@ -139,11 +132,14 @@ public class TableUtils {
                 TreeItem<BangNoiThat> item2 = item1.getChildren().get(j);
                 for (int z = 0; z < item2.getChildren().size(); z++) {
                     TreeItem<BangNoiThat> item3 = item2.getChildren().get(z);
-                    item3.getValue().setSTT(String.valueOf(z + 1));
+                    item3.getValue().setSTT(
+                            ItemTypeUtils.createFullId(ItemType.NUMERIC, String.valueOf(z + 1)));
                 }
-                item2.getValue().setSTT(Utils.RomanNumber.toRoman(j + 1));
+                item2.getValue().setSTT(
+                        ItemTypeUtils.createFullId(ItemType.ROMAN, Utils.RomanNumber.toRoman(j + 1)));
             }
-            item1.getValue().setSTT(Utils.toAlpha(i + 1));
+            item1.getValue().setSTT(
+                    ItemTypeUtils.createFullId(ItemType.AlPHA, Utils.toAlpha(i + 1)));
         }
     }
 }

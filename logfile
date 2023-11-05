@@ -4331,3 +4331,65 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 03-11-2023 15:03:02 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
 [INFO ] 03-11-2023 15:04:33 [main] HelloApplication:37 - Start application
 [INFO ] 03-11-2023 15:04:50 [main] HelloApplication:37 - Start application
+[INFO ] 05-11-2023 15:48:51 [main] HelloApplication:37 - Start application
+[INFO ] 05-11-2023 15:48:54 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 05-11-2023 15:49:23 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 05-11-2023 16:09:22 [main] HelloApplication:37 - Start application
+[INFO ] 05-11-2023 16:09:25 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 05-11-2023 16:09:58 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 05-11-2023 17:18:59 [main] HelloApplication:37 - Start application
+[INFO ] 05-11-2023 17:19:02 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 05-11-2023 17:20:01 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 05-11-2023 17:29:38 [main] HelloApplication:37 - Start application
+[INFO ] 05-11-2023 17:29:41 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 05-11-2023 17:30:04 [main] HelloApplication:37 - Start application
+[INFO ] 05-11-2023 17:30:07 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 05-11-2023 17:31:26 [main] HelloApplication:37 - Start application
+[INFO ] 05-11-2023 17:31:29 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 05-11-2023 17:33:42 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 00:16:00 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 00:16:05 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 00:16:19 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 00:16:48 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 00:16:50 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 00:16:54 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 00:17:02 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 00:17:06 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 00:17:31 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 00:18:27 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 00:18:31 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 00:18:43 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 00:19:02 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 00:19:06 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[ERROR] 06-11-2023 00:19:21 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+[INFO ] 06-11-2023 00:20:25 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 00:20:28 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[ERROR] 06-11-2023 00:20:37 [JavaFX Application Thread] GlobalExceptionHandler:26 - Cannot invoke "java.lang.Integer.intValue()" because the return value of "java.util.HashMap.get(Object)" is null
+[INFO ] 06-11-2023 00:20:40 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 00:23:01 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 00:23:04 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[ERROR] 06-11-2023 00:23:12 [JavaFX Application Thread] GlobalExceptionHandler:26 - Index 1 out of bounds for length 1
+[ERROR] 06-11-2023 00:23:36 [JavaFX Application Thread] GlobalExceptionHandler:26 - Index 1 out of bounds for length 1
+[INFO ] 06-11-2023 00:25:39 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 00:25:42 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 00:29:20 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 00:29:23 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 00:29:50 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 00:34:42 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 00:34:46 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 00:34:56 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 00:39:52 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 00:39:55 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 00:40:11 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 00:43:28 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 00:43:31 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 00:43:34 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 00:43:39 [JavaFX Application Thread] ImportOperation:59 - Import file: backup-2023-11-04-16-37-41-194.nt
+[ERROR] 06-11-2023 00:43:39 [JavaFX Application Thread] GlobalExceptionHandler:26 - Index 1 out of bounds for length 1
+[ERROR] 06-11-2023 00:43:40 [JavaFX Application Thread] GlobalExceptionHandler:26 - Index 1 out of bounds for length 1
+[ERROR] 06-11-2023 00:43:41 [JavaFX Application Thread] GlobalExceptionHandler:26 - Index 1 out of bounds for length 1
+[ERROR] 06-11-2023 00:43:46 [JavaFX Application Thread] GlobalExceptionHandler:26 - Index 1 out of bounds for length 1
+[ERROR] 06-11-2023 00:43:49 [JavaFX Application Thread] GlobalExceptionHandler:26 - Index 1 out of bounds for length 1
+[ERROR] 06-11-2023 00:43:50 [JavaFX Application Thread] GlobalExceptionHandler:26 - Index 1 out of bounds for length 1
+[INFO ] 06-11-2023 00:55:43 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 00:55:47 [JavaFX Application Thread] HomeController:112 - Login as user with role User

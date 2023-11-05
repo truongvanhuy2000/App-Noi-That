@@ -3,13 +3,17 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
@@ -19,6 +23,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class HangMucCollumHandler {
     private final ObservableList<String> hangMucList;
@@ -42,59 +47,65 @@ public class HangMucCollumHandler {
      * @param event The CellEditEvent containing information about the edit event.
      */
     public void onEditCommitHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
-//        System.out.println("Hang muc: " + event.getNewValue());
-        String stt = event.getRowValue().getValue().getSTT().getValue();
-        String newValue = event.getNewValue();
-        event.getRowValue().getValue().setHangMuc(newValue);
-//        event.getTreeTableView().getSelectionModel().clearSelection();
-        if (Utils.isNumeric(stt)) {
-            automaticallyInsertVatLieuAndThongSo(event);
+        TreeItem<BangNoiThat> rowValue = event.getRowValue();
+        if (rowValue != null) {
+            String stt = rowValue.getValue().getSTT().getValue();
+            String newValue = event.getNewValue();
+            rowValue.getValue().setHangMuc(newValue);
+            if (ItemTypeUtils.determineItemType(stt) == ItemType.NUMERIC) {
+                automaticallyInsertVatLieuAndThongSo(event);
+            };
         }
     }
     private void automaticallyInsertVatLieuAndThongSo(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
-        VatLieu vatLieu = getTheFirstVatLieu(event.getRowValue());
-        if (vatLieu == null) {
+        TreeItem<BangNoiThat> rowValue = event.getRowValue();
+        if (rowValue == null) {
+            LOGGER.error("Null row value when automatically insert vat lieu and thong so");
             return;
         }
-        String firstVatLieu = vatLieu.getName();
-        ThongSo thongSo = vatLieu.getThongSo();
-        if (thongSo != null) {
-            Double dai = Objects.requireNonNullElse(thongSo.getDai(), 0.0);
-            Double rong = Objects.requireNonNullElse(thongSo.getRong(), 0.0);
-            Double cao = Objects.requireNonNullElse(thongSo.getCao(), 0.0);
-            Long donGia = thongSo.getDon_gia();
-            String donVi = thongSo.getDon_vi();
-            Double khoiLuong = TableCalculationUtils.calculateKhoiLuong(dai, cao, rong, donVi);
-            Long thanhTien = TableCalculationUtils.calculateThanhTien(khoiLuong, donGia);
+        Optional<VatLieu> vatLieu = getTheFirstVatLieu(event.getRowValue());
+        if (vatLieu.isPresent()) {
+            String firstVatLieu = vatLieu.get().getName();
+            ThongSo thongSo = vatLieu.get().getThongSo();
+            if (thongSo != null) {
+                Double dai = Objects.requireNonNullElse(thongSo.getDai(), 0.0);
+                Double rong = Objects.requireNonNullElse(thongSo.getRong(), 0.0);
+                Double cao = Objects.requireNonNullElse(thongSo.getCao(), 0.0);
+                Long donGia = thongSo.getDon_gia();
+                String donVi = thongSo.getDon_vi();
+                Double khoiLuong = TableCalculationUtils.calculateKhoiLuong(dai, cao, rong, donVi);
+                Long thanhTien = TableCalculationUtils.calculateThanhTien(khoiLuong, donGia);
 
-            event.getRowValue().getValue().setThanhTien(thanhTien);
-            event.getRowValue().getValue().setKhoiLuong(khoiLuong);
-            event.getRowValue().getValue().setDai(dai);
-            event.getRowValue().getValue().setRong(rong);
-            event.getRowValue().getValue().setCao(cao);
-            event.getRowValue().getValue().setDonGia(donGia);
-            event.getRowValue().getValue().setDonVi(donVi);
+                rowValue.getValue().setThanhTien(thanhTien);
+                rowValue.getValue().setKhoiLuong(khoiLuong);
+                rowValue.getValue().setDai(dai);
+                rowValue.getValue().setRong(rong);
+                rowValue.getValue().setCao(cao);
+                rowValue.getValue().setDonGia(donGia);
+                rowValue.getValue().setDonVi(donVi);
 
-            TableCalculationUtils.calculateTongTien(event.getRowValue().getParent());
+                TableCalculationUtils.calculateTongTien(event.getRowValue().getParent());
+            }
+
+            event.getRowValue().getValue().setVatLieu(firstVatLieu);
+            event.getTreeTableView().edit(event.getTreeTablePosition().getRow(), event.getTreeTableView().getVisibleLeafColumn(2));;
         }
 
-        event.getRowValue().getValue().setVatLieu(firstVatLieu);
-        event.getTreeTableView().edit(event.getTreeTablePosition().getRow(), event.getTreeTableView().getVisibleLeafColumn(2));
     }
-    private VatLieu getTheFirstVatLieu(TreeItem<BangNoiThat> currentItem) {
+    private Optional<VatLieu> getTheFirstVatLieu(TreeItem<BangNoiThat> currentItem) {
         try {
             String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
             String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
             String hangMuc = currentItem.getValue().getHangMuc().getValue();
             List<VatLieu> items = luaChonNoiThatService.findVatLieuListBy(phongCach, noiThat, hangMuc);
             if (items.isEmpty()) {
-                return null;
+                return Optional.empty();
             }
-            return items.get(0);
+            return Optional.of(items.get(0));
         } catch (NullPointerException e) {
             PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
             LOGGER.error("Error when get the first vat lieu item");
-            return null;
+            return Optional.empty();
         }
     }
     /**
@@ -106,46 +117,45 @@ public class HangMucCollumHandler {
     public void onStartEditHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         String stt = currentItem.getValue().getSTT().getValue();
-        List<String> items = new ArrayList<>();
+        List<String> items;
         hangMucList.clear();
         // Roman mean it's a noi that, mean that its parent is phong cach
-        if (Utils.RomanNumber.isRoman(stt)) {
-            String phongCach = currentItem.getParent().getValue().getHangMuc().getValue();
-            try {
-                items = Utils.getObjectNameList(luaChonNoiThatService.findNoiThatListBy(phongCach));
-            } catch (NullPointerException e) {
-                PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
-                return;
+        switch (ItemTypeUtils.determineItemType(currentItem)) {
+            case ROMAN -> {
+                String phongCach = currentItem.getParent().getValue().getHangMuc().getValue();
+                try {
+                    items = Utils.getObjectNameList(luaChonNoiThatService.findNoiThatListBy(phongCach));
+                } catch (NullPointerException e) {
+                    PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
+                    return;
+                }
+                hangMucList.addAll(items);
             }
-            hangMucList.addAll(items);
-            return;
-        }
-        // Alpha mean it's a phong cach
-        if (Utils.isAlpha(stt)) {
-            try {
-                items = Utils.getObjectNameList(luaChonNoiThatService.findAllPhongCachNoiThat());
-            } catch (NullPointerException e) {
-                PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
-                return;
+            case AlPHA -> {
+                try {
+                    items = Utils.getObjectNameList(luaChonNoiThatService.findAllPhongCachNoiThat());
+                } catch (NullPointerException e) {
+                    PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
+                    return;
+                }
+                hangMucList.clear();
+                hangMucList.addAll(items);
             }
-            hangMucList.clear();
-            hangMucList.addAll(items);
-            return;
-        }
-        // Numeric mean it's a hang muc
-        if (Utils.isNumeric(stt)) {
-            String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
-            String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
-            try {
-                items = Utils.getObjectNameList(luaChonNoiThatService.findHangMucListBy(phongCach, noiThat));
-            } catch (NullPointerException e) {
-                PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
-                return;
+            case NUMERIC -> {
+                String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
+                String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
+                try {
+                    items = Utils.getObjectNameList(luaChonNoiThatService.findHangMucListBy(phongCach, noiThat));
+                } catch (NullPointerException e) {
+                    PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
+                    return;
+                }
+                hangMucList.clear();
+                hangMucList.addAll(items);
             }
-            hangMucList.clear();
-            hangMucList.addAll(items);
+            default -> {
+            }
         }
-
     }
 
     /**

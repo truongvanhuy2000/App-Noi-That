@@ -8,6 +8,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.STTCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.VatLieuCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.CustomConverter.CustomLongStringConverter;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
@@ -55,7 +56,7 @@ public class SetupBangNoiThat {
         TableNoiThat.setShowRoot(false);
         TableNoiThat.setEditable(true);
 
-        TreeItem<BangNoiThat> childItem = TableUtils.createNewItem("A");
+        TreeItem<BangNoiThat> childItem = TableUtils.createNewItem(ItemType.AlPHA,"A");
         itemRoot.getChildren().add(childItem);
         TableNoiThat.getSelectionModel().select(childItem);
         Platform.runLater(() -> {

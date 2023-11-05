@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
 import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -56,83 +57,83 @@ public class STTCollumHandler {
 //            handleCommitedNumericSTT(event, newValue);
 //        }
     }
-
-
-    @Deprecated
-    private void handleComitedAlphaSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event, String item) {
-        TreeItem<BangNoiThat> currentItem = event.getRowValue();
-        TreeItem<BangNoiThat> newItem = new TreeItem<>(currentItem.getValue());
-        currentItem.getParent().getChildren().remove(currentItem);
-        TableNoiThat.getRoot().getChildren().add(newItem);
-    }
-
-    // This mean we are choosing noi that
-    @Deprecated
-    public void handleCommitedRomanSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event, String item) {
-        TreeItem<BangNoiThat> currentItem = event.getRowValue();
-        TreeItem<BangNoiThat> newItem = new TreeItem<>(currentItem.getValue());
-        ObservableList<TreeItem<BangNoiThat>> tempPhongCachList = findPhongCachList(currentItem);
-        if (tempPhongCachList == null) {
-            return;
-        }
-        if (tempPhongCachList.isEmpty()) {
-//            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
-//            event.consume();
-            return;
-        }
-        removeFromParent(currentItem);
-        addNodeToTheYoungestLeaf(tempPhongCachList, newItem);
-    }
-
-    // This mean we are choosing hang muc
-    @Deprecated
-    public void handleCommitedNumericSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event, String item) {
-        TreeItem<BangNoiThat> currentItem = event.getRowValue();
-        TreeItem<BangNoiThat> newItem = new TreeItem<>(currentItem.getValue());
-        ObservableList<TreeItem<BangNoiThat>> tempPhongCachList = findPhongCachList(currentItem);
-        if (tempPhongCachList == null) {
-            return;
-        }
-        if (tempPhongCachList.isEmpty()) {
-//            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
-//            event.consume();
-            return;
-        }
-        removeFromParent(currentItem);
-        ObservableList<TreeItem<BangNoiThat>> tempNoiThatList = tempPhongCachList.get(tempPhongCachList.size() - 1).getChildren();
-        if (tempNoiThatList.isEmpty()) {
-//            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
-//            event.consume();
-            return;
-        }
-        addNodeToTheYoungestLeaf(tempNoiThatList, newItem);
-    }
-
-    /**
-     * Adds the provided TreeItem 'newItem' to the youngest leaf in the given 'leafList'.
-     * Finds the youngest leaf in the 'leafList' and appends the 'newItem' as its child.
-     * Ensures the youngest leaf is expanded after adding the new child TreeItem.
-     *
-     * @param leafList The list of TreeItems representing potential leaf nodes.
-     * @param newItem  The TreeItem to be added as a child to the youngest leaf in the 'leafList'.
-     */
-    @Deprecated
-    private ObservableList<TreeItem<BangNoiThat>> findPhongCachList(TreeItem<BangNoiThat> currentItem) {
-        ObservableList<TreeItem<BangNoiThat>> tempPhongCachList;
-        TreeItem<BangNoiThat> root = TableNoiThat.getRoot();
-        tempPhongCachList = root.getChildren();
-        return tempPhongCachList;
-    }
-    @Deprecated
-    private void removeFromParent(TreeItem<BangNoiThat> node) {
-        node.getParent().getChildren().remove(node);
-    }
-    @Deprecated
-    private void addNodeToTheYoungestLeaf(ObservableList<TreeItem<BangNoiThat>> leafList, TreeItem<BangNoiThat> newItem) {
-        TreeItem<BangNoiThat> youngestLeaf = leafList.get(leafList.size() - 1);
-        youngestLeaf.getChildren().add(newItem);
-        youngestLeaf.setExpanded(true);
-    }
+//
+//
+//    @Deprecated
+//    private void handleComitedAlphaSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event, String item) {
+//        TreeItem<BangNoiThat> currentItem = event.getRowValue();
+//        TreeItem<BangNoiThat> newItem = new TreeItem<>(currentItem.getValue());
+//        currentItem.getParent().getChildren().remove(currentItem);
+//        TableNoiThat.getRoot().getChildren().add(newItem);
+//    }
+//
+//    // This mean we are choosing noi that
+//    @Deprecated
+//    public void handleCommitedRomanSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event, String item) {
+//        TreeItem<BangNoiThat> currentItem = event.getRowValue();
+//        TreeItem<BangNoiThat> newItem = new TreeItem<>(currentItem.getValue());
+//        ObservableList<TreeItem<BangNoiThat>> tempPhongCachList = findPhongCachList(currentItem);
+//        if (tempPhongCachList == null) {
+//            return;
+//        }
+//        if (tempPhongCachList.isEmpty()) {
+////            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
+////            event.consume();
+//            return;
+//        }
+//        removeFromParent(currentItem);
+//        addNodeToTheYoungestLeaf(tempPhongCachList, newItem);
+//    }
+//
+//    // This mean we are choosing hang muc
+//    @Deprecated
+//    public void handleCommitedNumericSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event, String item) {
+//        TreeItem<BangNoiThat> currentItem = event.getRowValue();
+//        TreeItem<BangNoiThat> newItem = new TreeItem<>(currentItem.getValue());
+//        ObservableList<TreeItem<BangNoiThat>> tempPhongCachList = findPhongCachList(currentItem);
+//        if (tempPhongCachList == null) {
+//            return;
+//        }
+//        if (tempPhongCachList.isEmpty()) {
+////            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
+////            event.consume();
+//            return;
+//        }
+//        removeFromParent(currentItem);
+//        ObservableList<TreeItem<BangNoiThat>> tempNoiThatList = tempPhongCachList.get(tempPhongCachList.size() - 1).getChildren();
+//        if (tempNoiThatList.isEmpty()) {
+////            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
+////            event.consume();
+//            return;
+//        }
+//        addNodeToTheYoungestLeaf(tempNoiThatList, newItem);
+//    }
+//
+//    /**
+//     * Adds the provided TreeItem 'newItem' to the youngest leaf in the given 'leafList'.
+//     * Finds the youngest leaf in the 'leafList' and appends the 'newItem' as its child.
+//     * Ensures the youngest leaf is expanded after adding the new child TreeItem.
+//     *
+//     * @param leafList The list of TreeItems representing potential leaf nodes.
+//     * @param newItem  The TreeItem to be added as a child to the youngest leaf in the 'leafList'.
+//     */
+//    @Deprecated
+//    private ObservableList<TreeItem<BangNoiThat>> findPhongCachList(TreeItem<BangNoiThat> currentItem) {
+//        ObservableList<TreeItem<BangNoiThat>> tempPhongCachList;
+//        TreeItem<BangNoiThat> root = TableNoiThat.getRoot();
+//        tempPhongCachList = root.getChildren();
+//        return tempPhongCachList;
+//    }
+//    @Deprecated
+//    private void removeFromParent(TreeItem<BangNoiThat> node) {
+//        node.getParent().getChildren().remove(node);
+//    }
+//    @Deprecated
+//    private void addNodeToTheYoungestLeaf(ObservableList<TreeItem<BangNoiThat>> leafList, TreeItem<BangNoiThat> newItem) {
+//        TreeItem<BangNoiThat> youngestLeaf = leafList.get(leafList.size() - 1);
+//        youngestLeaf.getChildren().add(newItem);
+//        youngestLeaf.setExpanded(true);
+//    }
 
 
     /**
@@ -152,20 +153,14 @@ public class STTCollumHandler {
                     setGraphic(null);
                     return;
                 }
-                setText(item);
+                setText(ItemTypeUtils.getIdFromFullId(item));
                 TreeTableRow<BangNoiThat> currentRow = getTableRow();
                 if (!isEmpty()) {
-                    if (Utils.isNumeric(getItem())) {
-                        currentRow.setStyle("-fx-font-weight: normal");
-                        return;
-                    }
-                    if (Utils.RomanNumber.isRoman(getItem())) {
-                        currentRow.setStyle("-fx-font-weight: bold");
-                        return;
-                    }
-                    if (Utils.isAlpha(getItem())) {
-                        currentRow.setStyle("-fx-font-weight: bold; -fx-font-size: 14px");
-                        return;
+                    switch (ItemTypeUtils.determineItemType(getItem())) {
+                        case ROMAN -> currentRow.setStyle("-fx-font-weight: bold");
+                        case AlPHA -> currentRow.setStyle("-fx-font-weight: bold; -fx-font-size: 14px");
+                        case NUMERIC -> currentRow.setStyle("-fx-font-weight: normal");
+                        default -> {}
                     }
                 }
             }

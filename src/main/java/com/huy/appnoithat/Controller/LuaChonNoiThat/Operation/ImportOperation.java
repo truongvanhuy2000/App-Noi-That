@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Operation;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
@@ -125,23 +126,24 @@ public class ImportOperation {
             for (ThongTinNoiThat item : thongTinNoiThatList) {
                 String stt = item.getSTT();
                 TreeItem<BangNoiThat> tempItem = TableUtils.convertToTreeItem(item);
-                if (!Utils.RomanNumber.isRoman(stt) && Utils.isAlpha(stt)) {
-                    // Must be alpha numeric
-                    if (tempItem != lv1Item) {
-                        lv1Item = tempItem;
-                        isNewLv1 = true;
+                switch (ItemTypeUtils.determineItemType(stt)) {
+                    case AlPHA -> {
+                        if (tempItem != lv1Item) {
+                            lv1Item = tempItem;
+                            isNewLv1 = true;
+                        }
                     }
-                }
-                if (Utils.RomanNumber.isRoman(stt)) {
-                    if (tempItem != lv2Item) {
-                        lv2Item = tempItem;
-                        isNewLv2 = true;
+                    case ROMAN -> {
+                        if (tempItem != lv2Item) {
+                            lv2Item = tempItem;
+                            isNewLv2 = true;
+                        }
                     }
-                }
-                if (Utils.isNumeric(stt)) {
-                    if (tempItem != lv3Item) {
-                        lv3Item = tempItem;
-                        isNewLv3 = true;
+                    case NUMERIC -> {
+                        if (tempItem != lv3Item) {
+                            lv3Item = tempItem;
+                            isNewLv3 = true;
+                        }
                     }
                 }
                 if (isNewLv1) {
@@ -149,14 +151,16 @@ public class ImportOperation {
                     isNewLv1 = false;
                 }
                 if (isNewLv2) {
-                    assert lv1Item != null;
-                    lv1Item.getChildren().add(lv2Item);
-                    isNewLv2 = false;
+                    if (lv1Item != null) {
+                        lv1Item.getChildren().add(lv2Item);
+                        isNewLv2 = false;
+                    }
                 }
                 if (isNewLv3) {
-                    assert lv2Item != null;
-                    lv2Item.getChildren().add(lv3Item);
-                    isNewLv3 = false;
+                    if (lv2Item != null) {
+                        lv2Item.getChildren().add(lv3Item);
+                        isNewLv3 = false;
+                    }
                 }
             }
         } catch (Exception e) {

@@ -48,6 +48,19 @@ public class BangNoiThat {
         this.KhoiLuong = new SimpleDoubleProperty(Double.parseDouble(thongTinNoiThat.getSoLuong()));
     }
 
+    public BangNoiThat(BangNoiThat bangNoiThat) {
+        this.STT = new SimpleStringProperty(bangNoiThat.getSTT().getValue());
+        this.Cao = new SimpleDoubleProperty(bangNoiThat.getCao().getValue());
+        this.Dai = new SimpleDoubleProperty(bangNoiThat.getDai().getValue());
+        this.Rong = new SimpleDoubleProperty(bangNoiThat.getRong().getValue());
+        this.DonGia = new SimpleLongProperty(bangNoiThat.getDonGia().getValue());
+        this.DonVi = new SimpleStringProperty(bangNoiThat.getDonVi().getValue());
+        this.HangMuc = new SimpleStringProperty(bangNoiThat.getHangMuc().getValue());
+        this.VatLieu = new SimpleStringProperty(bangNoiThat.getVatLieu().getValue());
+        this.ThanhTien = new SimpleLongProperty(bangNoiThat.getThanhTien().getValue());
+        this.KhoiLuong = new SimpleDoubleProperty(bangNoiThat.getKhoiLuong().getValue());
+    }
+
     public void setSTT(String STT) {
         this.STT.setValue(STT);
     }

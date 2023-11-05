@@ -257,8 +257,13 @@ public class DatabaseModifyNoiThatController implements Initializable {
         childrenList.setEditable(false);
         childrenList.setCellFactory(param -> new CustomEditingListCell<>());
         childrenList.setItems(hangMucObservableList);
+        setupButton();
     }
-
+    private void setupButton() {
+        deleteButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
+        nextButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
+        swapButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
+    }
     /**
      * Handles key events and triggers corresponding actions.
      *

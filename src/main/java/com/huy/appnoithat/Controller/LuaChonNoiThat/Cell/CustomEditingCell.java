@@ -76,24 +76,6 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
                 setGraphic(null);
             }
         }
-        TreeTableRow<BangNoiThat> currentRow = getTableRow();
-        if (!isEmpty()) {
-            if (!isSttCell) {
-                return;
-            }
-            if (Utils.isNumeric(getItem())) {
-                currentRow.setStyle("-fx-font-weight: normal");
-                return;
-            }
-            if (Utils.RomanNumber.isRoman(getItem())) {
-                currentRow.setStyle("-fx-font-weight: bold");
-                return;
-            }
-            if (Utils.isAlpha(getItem())) {
-                currentRow.setStyle("-fx-font-weight: bold; -fx-font-size: 14px");
-                return;
-            }
-        }
     }
 
     /**

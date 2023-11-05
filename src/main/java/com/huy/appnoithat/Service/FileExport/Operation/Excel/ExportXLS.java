@@ -2,6 +2,8 @@ package com.huy.appnoithat.Service.FileExport.Operation.Excel;
 
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Configuration.Config;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.DataModel.NtFile.DataPackage;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
@@ -75,10 +77,12 @@ public class ExportXLS implements ExportFile {
         this.thongTinNoiThatList = new ArrayList<>();
         thongTinNoiThatList.forEach(item -> {
             String stt = item.getSTT();
-            if (Utils.RomanNumber.isRoman(stt) || Utils.isNumeric(stt)) {
+            if (ItemTypeUtils.determineItemType(stt) == ItemType.NUMERIC
+                    || ItemTypeUtils.determineItemType(stt) == ItemType.ROMAN) {
                 this.thongTinNoiThatList.add(item);
             }
         });
+        rearrangeList(this.thongTinNoiThatList);
     }
 
     private void initWorkbook() throws IOException {
@@ -106,16 +110,18 @@ public class ExportXLS implements ExportFile {
         setThongTinCongTy(dataForExport.getThongTinCongTy());
         setThongTinKhachHang(dataForExport.getThongTinKhachHang());
         setThongTinNoiThatList(dataForExport.getThongTinNoiThatList());
-        rearrangeList(this.thongTinNoiThatList);
         this.thongTinThanhToan = dataForExport.getThongTinThanhToan();
         this.noteArea = dataForExport.getNoteArea();
     }
     private void rearrangeList(List<ThongTinNoiThat> list) {
         int romanCount = 0;
         for (ThongTinNoiThat item : list) {
-            if (Utils.RomanNumber.isRoman(item.getSTT())) {
-                romanCount++;
-                item.setSTT(Utils.RomanNumber.toRoman(romanCount));
+            switch (ItemTypeUtils.determineItemType(item.getSTT())) {
+                case NUMERIC -> item.setSTT(ItemTypeUtils.getIdFromFullId(item.getSTT()));
+                case ROMAN -> {
+                    romanCount++;
+                    item.setSTT(Utils.RomanNumber.toRoman(romanCount));
+                }
             }
         }
     }
