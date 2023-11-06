@@ -16,7 +16,6 @@ module com.huy.appnoithat {
     requires java.desktop;
     requires com.fasterxml.jackson.datatype.jsr310;
     requires com.fasterxml.jackson.dataformat.yaml;
-    requires org.jetbrains.annotations;
 
     exports com.huy.appnoithat.Controller;
     opens com.huy.appnoithat.Controller to javafx.fxml;

@@ -65,6 +65,7 @@ public class KichThuocHandler {
         event.getRowValue().getValue().setKhoiLuong(khoiluong);
         event.getRowValue().getValue().setThanhTien(thanhTien);
 
-        TableCalculationUtils.calculateTongTien(event.getRowValue().getParent());
+        TableCalculationUtils.recalculateAllTongTien(TableNoiThat);
+//        TableCalculationUtils.calculateTongTien(event.getRowValue().getParent());
     }
 }

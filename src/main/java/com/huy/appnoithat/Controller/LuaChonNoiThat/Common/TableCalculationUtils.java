@@ -2,8 +2,10 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Common;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
+import javafx.application.Platform;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableView;
 
 public class TableCalculationUtils {
     private static final String MET_DAI = "mét dài";
@@ -93,22 +95,25 @@ public class TableCalculationUtils {
      *
      * @param item The TreeItem for which to recalculate the total cost and its children's total costs.
      */
-    public static void recalculateAllTongTien(TreeItem<BangNoiThat> item) {
+    public static void recalculateAllTongTien(TreeTableView<BangNoiThat> bangNoiThat) {
+        TreeItem<BangNoiThat> root = bangNoiThat.getRoot();
         // Base case: If the item is null, return without any computation
-        if (item == null) {
+        if (root == null) {
             return;
         }
-        // Iterate through children of the current item
-        for (TreeItem<BangNoiThat> child : item.getChildren()) {
-            for(TreeItem<BangNoiThat> grandChild : child.getChildren()) {
-                calculateTongTien(grandChild);
+        Platform.runLater(() -> {
+            // Iterate through children of the current item
+            for (TreeItem<BangNoiThat> child : root.getChildren()) {
+                for(TreeItem<BangNoiThat> grandChild : child.getChildren()) {
+                    calculateTongTien(grandChild);
+                }
+                calculateTongTien(child);
             }
-            calculateTongTien(child);
-        }
-        // If the item has no children, set its 'ThanhTien' to 0
-        if (item.getChildren().isEmpty()) {
-            item.getValue().setThanhTien(0L);
-        }
+            // If the item has no children, set its 'ThanhTien' to 0
+            if (root.getChildren().isEmpty()) {
+                root.getValue().setThanhTien(0L);
+            }
+        });
     }
 
     public static long round(double input) {

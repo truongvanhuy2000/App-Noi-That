@@ -175,7 +175,7 @@ public class LuaChonNoiThatController implements Initializable {
         }
         TableNoiThat.getSelectionModel().clearSelection();
         TableUtils.reArrangeList(TableNoiThat);
-        TableCalculationUtils.recalculateAllTongTien(TableNoiThat.getRoot());
+        TableCalculationUtils.recalculateAllTongTien(TableNoiThat);
     }
     private void saveThongTinCongTy() {
         ThongTinCongTy thongTinCongTy = new ThongTinCongTy(

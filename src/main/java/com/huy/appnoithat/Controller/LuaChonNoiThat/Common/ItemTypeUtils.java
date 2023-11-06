@@ -37,8 +37,8 @@ public class ItemTypeUtils {
         String id = getIdFromFullId(stt);
         switch (ItemTypeUtils.determineItemType(stt)) {
             case ROMAN -> {
-                int nextStt = Utils.RomanNumber.romanToInt(id) + 1;
-                return Optional.of(Utils.RomanNumber.toRoman(nextStt));
+                int nextStt = Utils.romanToInt(id) + 1;
+                return Optional.of(Utils.toRoman(nextStt));
             }
             case AlPHA -> {
                 char nextLetter = (char) (id.charAt(0) + 1);

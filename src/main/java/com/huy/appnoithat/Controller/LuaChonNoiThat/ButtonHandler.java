@@ -304,7 +304,7 @@ public class ButtonHandler {
         }
         createNewSibling(currentSelectedItem, newItem);
         TableUtils.reArrangeList(TableNoiThat);
-        TableCalculationUtils.recalculateAllTongTien(TableNoiThat.getRoot());
+        TableCalculationUtils.recalculateAllTongTien(TableNoiThat);
 
     }
     private TreeItem<BangNoiThat> deepCopy(TreeItem<BangNoiThat> item) {

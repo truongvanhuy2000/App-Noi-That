@@ -23,6 +23,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ExportXLS implements ExportFile {
     final static Logger LOGGER = LogManager.getLogger(ExportFile.class);
@@ -116,12 +117,9 @@ public class ExportXLS implements ExportFile {
     private void rearrangeList(List<ThongTinNoiThat> list) {
         int romanCount = 0;
         for (ThongTinNoiThat item : list) {
-            switch (ItemTypeUtils.determineItemType(item.getSTT())) {
-                case NUMERIC -> item.setSTT(ItemTypeUtils.getIdFromFullId(item.getSTT()));
-                case ROMAN -> {
-                    romanCount++;
-                    item.setSTT(Utils.RomanNumber.toRoman(romanCount));
-                }
+            if (Objects.requireNonNull(ItemTypeUtils.determineItemType(item.getSTT())) == ItemType.ROMAN) {
+                romanCount++;
+                item.setSTT(ItemTypeUtils.createFullId(ItemType.ROMAN, Utils.toRoman(romanCount)));
             }
         }
     }
@@ -220,10 +218,14 @@ public class ExportXLS implements ExportFile {
         int rowId = 13;
 
         for (ThongTinNoiThat thongTinNoiThat : thongTinNoiThats) {
+            if (thongTinNoiThat.getSTT().isEmpty() ||
+                    thongTinNoiThat.getTenHangMuc().isEmpty()) {
+                continue;
+            }
             spreadsheet.shiftRows(rowId, spreadsheet.getLastRowNum(), 1, true, true);
             Row newRow = createPopulatedRow(rowId, 10);
             // If STT is roman, that mean it's the merge Row, we can call it title row
-            if (Utils.RomanNumber.isRoman(thongTinNoiThat.getSTT())) {
+            if (ItemTypeUtils.determineItemType(thongTinNoiThat.getSTT()) == ItemType.ROMAN) {
                 exportNoiThatTitle(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, cellId, thongTinNoiThat);
             }
             // If it's not roman, that mean it's the non merge row, we can call it content row
@@ -240,18 +242,21 @@ public class ExportXLS implements ExportFile {
         mergeCells(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, 1);
 
         Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
-        stylistFactory.CellPresetFactory(cell0, thongTinNoiThat.getSTT(), 12, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.CellPresetFactory(cell0, ItemTypeUtils.getIdFromFullId(thongTinNoiThat.getSTT()),
+                12, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
 
         Cell cell1 = spreadsheet.getRow(mergeRowId).getCell(cellId + 1);
-        stylistFactory.CellPresetFactory(cell1, thongTinNoiThat.getTenHangMuc(), 14, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.CellPresetFactory(cell1, thongTinNoiThat.getTenHangMuc(),
+                14, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
 
         Cell cell2 = spreadsheet.getRow(mergeRowId).getCell(cellId + 9);
-        stylistFactory.CellPresetFactory(cell2, thongTinNoiThat.getThanhTien(), 18, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.CellPresetFactory(cell2, thongTinNoiThat.getThanhTien(),
+                18, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
     }
 
     private void exportNoiThatContent(int mergeRowId, int mergeColumnId, int mergeRowRange, int mergeColumnRange, int cellId, ThongTinNoiThat thongTinNoiThat) {
         Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
-        stylistFactory.CellPresetFactory(cell0, thongTinNoiThat.getSTT(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.CellPresetFactory(cell0, ItemTypeUtils.getIdFromFullId(thongTinNoiThat.getSTT()), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
 
         Cell cell1 = spreadsheet.getRow(mergeRowId).getCell(cellId + 1);
         stylistFactory.CellPresetFactory(cell1, thongTinNoiThat.getTenHangMuc(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);

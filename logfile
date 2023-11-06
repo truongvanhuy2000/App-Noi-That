@@ -4393,3 +4393,63 @@ java.lang.NumberFormatException: For input string: ""
 [ERROR] 06-11-2023 00:43:50 [JavaFX Application Thread] GlobalExceptionHandler:26 - Index 1 out of bounds for length 1
 [INFO ] 06-11-2023 00:55:43 [main] HelloApplication:37 - Start application
 [INFO ] 06-11-2023 00:55:47 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 09:28:30 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 09:28:34 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 09:28:44 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 09:35:54 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 09:35:58 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 09:38:09 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 09:38:11 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 09:42:26 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 09:42:29 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 09:44:13 [Thread-3] ExportFile:99 - Exporting to XLSX file
+[INFO ] 06-11-2023 09:46:50 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 09:46:51 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[ERROR] 06-11-2023 09:48:14 [JavaFX Application Thread] GlobalExceptionHandler:26 - For input string: "5676'"
+[ERROR] 06-11-2023 09:48:27 [JavaFX Application Thread] GlobalExceptionHandler:26 - For input string: "768-"
+[INFO ] 06-11-2023 09:48:56 [JavaFX Application Thread] LuaChonNoiThatController:315 - Save as Operation: Save file to: /home/huy/Project/Java/App-noi-that/test
+[INFO ] 06-11-2023 09:48:56 [JavaFX Application Thread] LuaChonNoiThatController:338 - Normal save: Save file to: /home/huy/Project/Java/App-noi-that/test
+[INFO ] 06-11-2023 09:49:02 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 09:49:16 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 09:49:25 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 06-11-2023 09:49:52 [Thread-5] ExportFile:99 - Exporting to XLSX file
+[INFO ] 06-11-2023 09:50:44 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 09:50:46 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 09:50:50 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 09:50:54 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 09:51:07 [Thread-3] ExportFile:99 - Exporting to XLSX file
+[INFO ] 06-11-2023 09:56:38 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 09:56:39 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 09:56:46 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 09:56:48 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 09:57:00 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 09:57:02 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 09:57:25 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 09:57:56 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 09:57:59 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 09:58:02 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 09:58:09 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 09:59:39 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 09:59:40 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 09:59:49 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 09:59:51 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 10:00:03 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 10:02:06 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 10:02:08 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 10:02:12 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 10:02:29 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 10:09:57 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 10:09:59 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 10:10:10 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 10:11:47 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 10:33:57 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 10:33:58 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 10:34:02 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 10:34:36 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 10:37:39 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 10:37:41 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 10:40:33 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 10:41:04 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 10:44:55 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 10:44:57 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 10:45:48 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window

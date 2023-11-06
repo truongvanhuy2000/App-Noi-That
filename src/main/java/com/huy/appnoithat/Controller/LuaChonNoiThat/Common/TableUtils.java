@@ -60,9 +60,7 @@ public class TableUtils {
     public static TreeItem<BangNoiThat> createNewItem(String id) {
         TreeItem<BangNoiThat> newItem = new TreeItem<>(new BangNoiThat(id, 0.0, 0.0, 0.0, 0L,
                 "", "", "", 0L, 0.0));
-        newItem.addEventHandler(TreeItem.branchCollapsedEvent(),
-                (EventHandler<TreeItem.TreeModificationEvent<String>>) event -> event.getTreeItem().setExpanded(true));
-        newItem.setExpanded(true);
+        setupNewItem(newItem);
         return newItem;
     }
     public static TreeItem<BangNoiThat> createNewItem(ItemType type, String id) {
@@ -94,10 +92,15 @@ public class TableUtils {
     public static TreeItem<BangNoiThat> createNewItem(BangNoiThat bangNoiThat) {
         BangNoiThat newBangNoiThat = new BangNoiThat(bangNoiThat);
         TreeItem<BangNoiThat> newItem = new TreeItem<>(newBangNoiThat);
+        setupNewItem(newItem);
+        return newItem;
+    }
+
+    private static void setupNewItem(TreeItem<BangNoiThat> newItem) {
         newItem.addEventHandler(TreeItem.branchCollapsedEvent(),
                 (EventHandler<TreeItem.TreeModificationEvent<String>>) event -> event.getTreeItem().setExpanded(true));
         newItem.setExpanded(true);
-        return newItem;
+
     }
 
     /**
@@ -136,7 +139,7 @@ public class TableUtils {
                             ItemTypeUtils.createFullId(ItemType.NUMERIC, String.valueOf(z + 1)));
                 }
                 item2.getValue().setSTT(
-                        ItemTypeUtils.createFullId(ItemType.ROMAN, Utils.RomanNumber.toRoman(j + 1)));
+                        ItemTypeUtils.createFullId(ItemType.ROMAN, Utils.toRoman(j + 1)));
             }
             item1.getValue().setSTT(
                     ItemTypeUtils.createFullId(ItemType.AlPHA, Utils.toAlpha(i + 1)));

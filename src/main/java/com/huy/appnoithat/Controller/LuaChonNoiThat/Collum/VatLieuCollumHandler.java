@@ -92,9 +92,7 @@ public class VatLieuCollumHandler {
         event.getRowValue().getValue().setDonGia(donGia);
         event.getRowValue().getValue().setDonVi(donVi);
 
-        TableCalculationUtils.calculateTongTien(event.getRowValue().getParent());
-//        event.getTreeTableView().getSelectionModel().clearSelection();
-//        event.consume();
+        TableCalculationUtils.recalculateAllTongTien(event.getTreeTableView());
     }
 
 

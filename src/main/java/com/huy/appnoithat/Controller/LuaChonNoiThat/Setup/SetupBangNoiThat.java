@@ -141,7 +141,7 @@ public class SetupBangNoiThat {
             long thanhTien = TableCalculationUtils.calculateThanhTien(khoiLuong, donGia);
             event.getRowValue().getValue().setThanhTien(thanhTien);
             event.getRowValue().getValue().setKhoiLuong(khoiLuong);
-            TableCalculationUtils.calculateTongTien(event.getRowValue().getParent());
+            TableCalculationUtils.recalculateAllTongTien(TableNoiThat);
         });
     }
 
@@ -155,8 +155,10 @@ public class SetupBangNoiThat {
             return param.getValue().getValue().getThanhTien().asObject();
         });
         ThanhTien.setCellFactory(param -> new CustomNumberCell<>(new CustomLongStringConverter(), TableNoiThat, false));
-        ThanhTien.setOnEditCommit(event ->
-                event.getRowValue().getValue().setThanhTien(event.getNewValue()));
+        ThanhTien.setOnEditCommit(event -> {
+                    event.getRowValue().getValue().setThanhTien(event.getNewValue());
+                    TableCalculationUtils.recalculateAllTongTien(TableNoiThat);
+        });
     }
 
     /**

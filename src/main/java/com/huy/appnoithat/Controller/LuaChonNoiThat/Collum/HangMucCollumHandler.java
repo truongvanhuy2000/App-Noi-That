@@ -84,7 +84,7 @@ public class HangMucCollumHandler {
                 rowValue.getValue().setDonGia(donGia);
                 rowValue.getValue().setDonVi(donVi);
 
-                TableCalculationUtils.calculateTongTien(event.getRowValue().getParent());
+                TableCalculationUtils.recalculateAllTongTien(event.getTreeTableView());
             }
 
             event.getRowValue().getValue().setVatLieu(firstVatLieu);
