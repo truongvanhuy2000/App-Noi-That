@@ -4547,3 +4547,12 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 06-11-2023 17:02:51 [JavaFX Application Thread] HomeController:112 - Login as user with role User
 [INFO ] 06-11-2023 17:02:57 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
 [INFO ] 06-11-2023 17:03:04 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 18:00:46 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 18:00:47 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 18:00:58 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[ERROR] 06-11-2023 18:01:18 [JavaFX Application Thread] GlobalExceptionHandler:26 - UUID string too large
+[INFO ] 06-11-2023 18:05:14 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 18:05:19 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 18:08:49 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 18:08:51 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 18:09:29 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
