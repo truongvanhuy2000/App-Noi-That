@@ -156,8 +156,8 @@ public class SetupBangNoiThat {
         });
         ThanhTien.setCellFactory(param -> new CustomNumberCell<>(new CustomLongStringConverter(), TableNoiThat, false));
         ThanhTien.setOnEditCommit(event -> {
-                    event.getRowValue().getValue().setThanhTien(event.getNewValue());
-                    TableCalculationUtils.recalculateAllTongTien(TableNoiThat);
+            event.getRowValue().getValue().setThanhTien(event.getNewValue());
+            TableCalculationUtils.recalculateAllTongTien(TableNoiThat);
         });
     }
 

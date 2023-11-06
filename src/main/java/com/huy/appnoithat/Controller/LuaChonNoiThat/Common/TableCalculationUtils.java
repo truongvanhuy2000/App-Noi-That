@@ -31,7 +31,7 @@ public class TableCalculationUtils {
      */
     public static Double calculateKhoiLuong(Double chieuDai, Double chieuCao, Double rong, String donVi) {
         double khoiLuong = 0.0;
-        if (donVi != null) {
+        if (donVi != null && !donVi.isEmpty()) {
             if (donVi.trim().equalsIgnoreCase(MET_DAI)) {
                 if (chieuDai == 0.0) {
                     return 0.0;
@@ -81,10 +81,9 @@ public class TableCalculationUtils {
         // Iterate through children of the current item and sum their 'ThanhTien' values
         for (TreeItem<BangNoiThat> child : item.getChildren()) {
             tongTien += child.getValue().getThanhTien().getValue();
+            item.getValue().setThanhTien(tongTien);
         }
         // Set the calculated total cost to the 'ThanhTien' property of the current item
-        item.getValue().setThanhTien(tongTien);
-        calculateTongTien(item.getParent());
     }
 
 
@@ -102,6 +101,9 @@ public class TableCalculationUtils {
             return;
         }
         Platform.runLater(() -> {
+            if (root.getChildren().isEmpty()) {
+                root.getValue().setThanhTien(0L);
+            }
             // Iterate through children of the current item
             for (TreeItem<BangNoiThat> child : root.getChildren()) {
                 for(TreeItem<BangNoiThat> grandChild : child.getChildren()) {
@@ -110,11 +112,10 @@ public class TableCalculationUtils {
                 calculateTongTien(child);
             }
             // If the item has no children, set its 'ThanhTien' to 0
-            if (root.getChildren().isEmpty()) {
-                root.getValue().setThanhTien(0L);
-            }
+            calculateTongTien(root);
         });
     }
+
 
     public static long round(double input) {
         return Math.round(input/1000000) * 1000000;

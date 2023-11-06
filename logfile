@@ -4453,3 +4453,93 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 06-11-2023 10:44:55 [main] HelloApplication:37 - Start application
 [INFO ] 06-11-2023 10:44:57 [JavaFX Application Thread] HomeController:112 - Login as user with role User
 [INFO ] 06-11-2023 10:45:48 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 11:33:47 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 11:33:51 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 11:33:55 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 11:34:10 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 11:39:06 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 11:39:07 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 11:39:17 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 11:39:59 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 11:40:44 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 11:40:51 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 11:40:53 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[ERROR] 06-11-2023 11:41:00 [JavaFX Application Thread] GlobalExceptionHandler:26 - null
+[INFO ] 06-11-2023 11:45:42 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 11:45:44 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 11:45:53 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 11:45:54 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 11:45:57 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[ERROR] 06-11-2023 11:46:03 [JavaFX Application Thread] GlobalExceptionHandler:26 - null
+[INFO ] 06-11-2023 11:47:06 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 11:47:10 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 11:47:12 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 11:47:32 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 13:17:21 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 13:17:23 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 13:17:49 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 15:03:31 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 15:03:34 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[ERROR] 06-11-2023 15:05:00 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/register/usernameValidation?username=asdasdas null null
+[ERROR] 06-11-2023 15:06:23 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/register/usernameValidation?username=asdasdasqwdadsada null null
+[INFO ] 06-11-2023 15:41:32 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 15:49:49 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 15:49:58 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 15:51:38 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 15:52:12 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 15:55:33 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 15:55:35 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 15:56:16 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 15:57:09 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 15:57:11 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 16:12:19 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 16:12:21 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[ERROR] 06-11-2023 16:12:23 [JavaFX Application Thread] GlobalExceptionHandler:26 - null
+[ERROR] 06-11-2023 16:12:23 [JavaFX Application Thread] GlobalExceptionHandler:26 - null
+[ERROR] 06-11-2023 16:12:23 [JavaFX Application Thread] GlobalExceptionHandler:26 - java.lang.reflect.InvocationTargetException
+[INFO ] 06-11-2023 16:14:03 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 16:14:04 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[ERROR] 06-11-2023 16:14:11 [JavaFX Application Thread] GlobalExceptionHandler:26 - A bound value cannot be set.
+[INFO ] 06-11-2023 16:19:49 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 16:19:51 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 16:22:48 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 16:22:49 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[ERROR] 06-11-2023 16:23:25 [JavaFX Application Thread] GlobalExceptionHandler:26 - A bound value cannot be set.
+[ERROR] 06-11-2023 16:24:09 [JavaFX Application Thread] GlobalExceptionHandler:26 - A bound value cannot be set.
+[INFO ] 06-11-2023 16:25:25 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 16:28:39 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 16:28:40 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 16:28:59 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 16:31:24 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 16:31:25 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 16:32:05 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 16:42:04 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 16:42:06 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 16:42:34 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 16:42:57 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 16:42:58 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 16:45:24 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 16:48:50 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 16:48:52 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 16:51:05 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 16:51:06 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 16:51:14 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 16:51:15 [JavaFX Application Thread] ImportOperation:60 - Import file: backup-2023-11-01-16-57-02-088.nt
+[INFO ] 06-11-2023 16:51:18 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 16:51:19 [JavaFX Application Thread] ImportOperation:60 - Import file: test3.nt
+[INFO ] 06-11-2023 16:51:20 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 16:51:21 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 16:51:50 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 16:51:51 [JavaFX Application Thread] ImportOperation:60 - Import file: test2.nt
+[INFO ] 06-11-2023 16:51:53 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 16:51:54 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 16:53:54 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 16:53:55 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 16:53:57 [JavaFX Application Thread] ImportOperation:60 - Import file: test.nt
+[INFO ] 06-11-2023 16:54:58 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 16:55:17 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 16:55:18 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 16:55:55 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 16:56:03 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 16:56:05 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 16:56:28 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
