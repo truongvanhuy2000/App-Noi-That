@@ -76,6 +76,8 @@ public class LoginController {
 
         // Switch to the next scene upon successful login
         sceneSwitcher(actionEvent);
+        usernameTextField.setText("");
+        passwordField.setText("");
     }
 
     /**
