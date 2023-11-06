@@ -2,6 +2,7 @@ package com.huy.appnoithat.Service.LuaChonNoiThat;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.huy.appnoithat.Service.RestService.AccountRestService;
 import org.apache.poi.ss.formula.functions.T;
 
 import java.util.HashMap;
@@ -9,8 +10,19 @@ import java.util.List;
 import java.util.UUID;
 
 public class CacheNoiThatRequestService {
-    HashMap<String, String> cache = new HashMap<>();
-    ObjectMapper objectMapper = new ObjectMapper();
+    private final HashMap<String, String> cache;
+    private final ObjectMapper objectMapper;
+    private static CacheNoiThatRequestService instance;
+    public static synchronized CacheNoiThatRequestService getInstance() {
+        if (instance == null) {
+            instance = new CacheNoiThatRequestService();
+        }
+        return instance;
+    }
+    private CacheNoiThatRequestService() {
+        cache = new HashMap<>();
+        objectMapper = new ObjectMapper();
+    }
     public String createUniqueId(String... param) {
         String seed = "";
         for (String s : param) {
@@ -41,5 +53,8 @@ public class CacheNoiThatRequestService {
     }
     public boolean isContain(String uniqueId) {
         return cache.containsKey(uniqueId);
+    }
+    public void clearCache() {
+        cache.clear();
     }
 }

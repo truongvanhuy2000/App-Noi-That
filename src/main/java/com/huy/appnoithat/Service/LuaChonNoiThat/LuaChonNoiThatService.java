@@ -43,7 +43,7 @@ public class LuaChonNoiThatService {
         hangMucRestService = HangMucRestService.getInstance();
         vatLieuRestService = VatLieuRestService.getInstance();
         fileNoiThatExplorerService = FileNoiThatExplorerService.getInstance();
-        cacheNoiThatRequestService = new CacheNoiThatRequestService();
+        cacheNoiThatRequestService = CacheNoiThatRequestService.getInstance();
     }
 
     /**
