@@ -4453,3 +4453,97 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 06-11-2023 10:44:55 [main] HelloApplication:37 - Start application
 [INFO ] 06-11-2023 10:44:57 [JavaFX Application Thread] HomeController:112 - Login as user with role User
 [INFO ] 06-11-2023 10:45:48 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 06-11-2023 05:35:31 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 05:35:33 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 06-11-2023 05:35:41 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 05:35:56 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 05:40:21 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 05:40:25 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 05:40:43 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 05:41:17 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 05:45:03 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 05:45:04 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 05:47:59 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 05:48:00 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 05:49:14 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 05:49:59 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 05:50:00 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 05:51:00 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 05:51:54 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 05:51:55 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[ERROR] 06-11-2023 05:52:18 [JavaFX Application Thread] GlobalExceptionHandler:26 - Cannot invoke "String.hashCode()" because "<local8>" is null
+[INFO ] 06-11-2023 05:52:40 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 06:09:35 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 06:09:36 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 06:10:16 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 06:14:16 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 06:14:17 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 06:15:28 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 06:15:47 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 06:16:57 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 06-11-2023 06:17:19 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 07:42:57 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 07:42:58 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 07:44:36 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 07:44:37 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 07:45:41 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 07:45:42 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[ERROR] 06-11-2023 07:45:49 [JavaFX Application Thread] UsersManagementController:339 - Error when parse string to int
+java.lang.NumberFormatException: For input string: ""
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:678) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:786) ~[?:?]
+	at com.huy.appnoithat.Controller.UserManagement.UsersManagementController.parseStringToINT(UsersManagementController.java:337) ~[classes/:?]
+	at com.huy.appnoithat.Controller.UserManagement.UsersManagementController.lambda$EditAccount$5(UsersManagementController.java:396) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-17.0.6-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-win.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8792) ~[javafx-graphics-17.0.6-win.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-17.0.6-win.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208) ~[javafx-controls-17.0.6-win.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-17.0.6-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-win.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3897) ~[javafx-graphics-17.0.6-win.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-win.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-win.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184) ~[javafx-graphics-17.0.6-win.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[INFO ] 06-11-2023 07:45:56 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 07:53:29 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 07:53:30 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 07:56:11 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 07:56:11 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 06-11-2023 07:59:22 [main] HelloApplication:37 - Start application
+[INFO ] 06-11-2023 07:59:23 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin

@@ -171,20 +171,20 @@ public class UsersManagementController {
         }
 
         // Get the index and ID of the selected user
-        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
-        int activeID = tableManageUser.getItems().get(indexSelector).getId();
-
-        // Set the active status in the selected user's row in the table
-
-        tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(true));
+        int activeID = getSelectObjectIDFromTable();
 
         // Activate the selected user account using the service
 
         userManagementService.ActiveAccount(activeID);
 
-        // Refresh the table view to update the changes
+        init();
         tableManageUser.refresh();
 
+    }
+
+    public int getSelectObjectIDFromTable(){
+        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
+        return tableManageUser.getItems().get(indexSelector).getId();
     }
 
 
@@ -204,14 +204,12 @@ public class UsersManagementController {
         }
 
         // Get the index and ID of the selected user
-        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
-        int inactiveID = tableManageUser.getItems().get(indexSelector).getId();
+        int inactiveID = getSelectObjectIDFromTable();
 
         // Deactivate the selected user account using the service
         userManagementService.InActiveAccount(inactiveID);
 
-        // Set the inactive status in the selected user's row in the table
-        tableManageUser.getSelectionModel().getSelectedItem().setActiveImage(convertActiveIcon(false));
+        init();
 
         // Refresh the table view to update the changes
         tableManageUser.refresh();
@@ -267,7 +265,7 @@ public class UsersManagementController {
                         new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
 
                 // Clear data, reinitialize the table, and close the form
-                refreshList();
+                init();
                 userManageMentStage.close();
                 txtusername.clear();
                 txtpassword.clear();
@@ -275,6 +273,13 @@ public class UsersManagementController {
 
             btncancel.setOnAction(actionEvent -> {
                 userManageMentStage.close();
+                txtusername.clear();
+                txtpassword.clear();
+            });
+
+            userManageMentStage.setOnCloseRequest(windowEvent -> {
+                txtusername.clear();
+                txtpassword.clear();
             });
         } catch (Exception e) {
             LOGGER.error("Error when add new account", e);
@@ -301,8 +306,8 @@ public class UsersManagementController {
             return;
         }
         // Get the index and ID of the selected user
-        int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
-        int deleteid = tableManageUser.getItems().get(indexSelector).getId();
+
+        int deleteid = getSelectObjectIDFromTable();
 
         // Retrieve the account information from the service
         Account account = userManagementService.findAccountById(deleteid);
@@ -312,8 +317,7 @@ public class UsersManagementController {
             // Delete the user account from the service
             userManagementService.deleteAccount(deleteid);
 
-            // Remove the user account from the table
-            tableManageUser.getItems().remove(indexSelector);
+            init();
         } else {
             // Display an error message if trying to delete an admin account
             PopupUtils.throwErrorSignal("Không thể xóa tài khoản admin");
@@ -353,7 +357,6 @@ public class UsersManagementController {
                 return;
             }
             // Get the selected user's index in the table
-            int selectIndex = tableManageUser.getSelectionModel().getSelectedIndex();
             Stage userManageMentStage;
             Scene userManagementEditorScene = UserManagementEditorScene.getInstance().getScene();
 
@@ -386,7 +389,7 @@ public class UsersManagementController {
                 tableManageUser.getSelectionModel().getSelectedItem().setPassword(txtpassword.getText());
 
                 // Get the selected account's ID and details from the table
-                int id = tableManageUser.getItems().get(selectIndex).getId();
+                int id = getSelectObjectIDFromTable();
                 Account account = userManagementService.findAccountById(id);
 
                 // Extend the account's expiration date by the specified number of months
@@ -410,7 +413,7 @@ public class UsersManagementController {
                 txtusername.setText("");
                 txtpassword.clear();
                 // You might need additional logic to handle saving or updating data
-                refreshList();
+                init();
             });
 
             btncancel.setOnAction(actionEvent -> {
@@ -435,9 +438,7 @@ public class UsersManagementController {
             // Check if a user is selected in the table
             if (tableManageUser.getSelectionModel().getSelectedItem() != null) {
                 // Get the index and ID of the selected user
-                int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
-                int deleteid = tableManageUser.getItems().get(indexSelector).getId();
-
+                int deleteid = getSelectObjectIDFromTable();
                 // Retrieve the account information from the service
                 Account account = userManagementService.findAccountById(deleteid);
 
