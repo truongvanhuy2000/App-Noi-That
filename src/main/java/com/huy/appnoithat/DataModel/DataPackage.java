@@ -1,4 +1,4 @@
-package com.huy.appnoithat.DataModel.NtFile;
+package com.huy.appnoithat.DataModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;

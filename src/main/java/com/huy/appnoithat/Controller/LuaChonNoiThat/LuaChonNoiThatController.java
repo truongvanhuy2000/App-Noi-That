@@ -2,7 +2,6 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
@@ -13,7 +12,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Operation.ImportOperation;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupBangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupBangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupTruongThongTin;
-import com.huy.appnoithat.DataModel.NtFile.DataPackage;
+import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Enums.FileType;
@@ -21,7 +20,6 @@ import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -41,7 +39,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -77,10 +74,6 @@ public class LuaChonNoiThatController implements Initializable {
     private TableView<BangThanhToan> bangThanhToan;
     @Setter
     private ByteArrayOutputStream imageStream;
-    private State currentState;
-    @Setter
-    private String currentDirectory;
-
     @FXML
     private StackPane loadingPane;
     private Timeline autoSaveTimer;
@@ -115,7 +108,6 @@ public class LuaChonNoiThatController implements Initializable {
      * @param event
      * @see javafx.event.ActionEvent
      */
-
 
     public void saveNoteArea() {
         String noteArea = noteTextArea.getText();
@@ -165,16 +157,6 @@ public class LuaChonNoiThatController implements Initializable {
     public final void initialize(URL url, ResourceBundle resourceBundle) {
         loadingPane.setDisable(true);
         loadingPane.setVisible(false);
-        currentState = State.NEW_FILE;
-        autoSaveTimer = new Timeline(new KeyFrame(Duration.minutes(10), event -> {
-            if (currentState == State.OPEN_FROM_EXISTING_FILE && currentDirectory != null) {
-                save();
-            }
-            else if (currentState == State.NEW_FILE) {
-                backup();
-            }
-        }));
-        startAutoSaveAction();
         setUpBangThanhToan();
         setUpBangNoiThat();
         setUpButton();
@@ -191,19 +173,9 @@ public class LuaChonNoiThatController implements Initializable {
         ExportOperation exportOperation = new ExportOperation(this);
         return exportOperation.exportData();
     }
-    /**
-     * @param directory This function will import the table from a file
-     */
-    public void importFile(String directory) {
-        ImportOperation importOperation = new ImportOperation(this);
-        importOperation.importFile(directory);
-        currentState = State.OPEN_FROM_EXISTING_FILE;
-        currentDirectory = directory;
-    }
     public void importData(DataPackage dataPackage) {
         ImportOperation importOperation = new ImportOperation(this);
         importOperation.importData(dataPackage);
-        currentState = State.NEW_FILE;
     }
     /**
      * This function will handle the event when user want to choose an image
@@ -242,7 +214,6 @@ public class LuaChonNoiThatController implements Initializable {
         setupBangThanhToan.setUpBangThanhToan();
     }
 
-
     /**
      * Sets up event handlers for buttons in the user interface.
      * Associates specific actions with corresponding buttons when clicked.
@@ -259,7 +230,6 @@ public class LuaChonNoiThatController implements Initializable {
         duplicateButton.disableProperty().bind(TableNoiThat.getSelectionModel().selectedItemProperty().isNull());
     }
 
-
     /**
      * Sets up initial values for fields related to information fields in the user interface.
      * Populates the NgayLapBaoGia field with the current date in the "dd/MM/yyyy" format.
@@ -273,53 +243,8 @@ public class LuaChonNoiThatController implements Initializable {
         setupTruongThongTin.setup();
     }
 
-//    public String saveAs() {
-//        String directory = exportFile(FileType.NT);
-//        if (directory == null) {
-//            return null;
-//        }
-//        LOGGER.info("Save as Operation: Save file to: " + directory);
-//        return directory;
-//    }
 
-
-    /**
-     * Saves the data to a file with the FileType.NT in the current directory.
-     */
-//    public void save() {
-//        // Create an instance of ExportOperation, passing the current object (this) to it
-//        ExportOperation exportOperation = new ExportOperation(this);
-//        if (currentState == State.NEW_FILE) {
-//            String directory = saveAs();
-//            if (directory == null) {
-//                backup();
-//                return;
-//            }
-//            currentState = State.OPEN_FROM_EXISTING_FILE;
-//            currentDirectory = directory;
-//            startAutoSaveAction();
-//        } else if (currentState == State.OPEN_FROM_EXISTING_FILE) {
-//            currentDirectory = exportOperation.exportFile(FileType.NT, new File(currentDirectory), false);
-//        }
-//        LOGGER.info("Normal save: Save file to: " + currentDirectory);
-//    }
-//    public void backup() {
-//        String filename = "backup-" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS").format(new Date()) + ".nt";
-//        String tempDirectory = Paths.get(Config.FILE_EXPORT.TEMP_NT_FILE_DIRECTORY, filename).toString();
-//        ExportOperation exportOperation = new ExportOperation(this);
-//        exportOperation.exportFile(FileType.NT, new File(tempDirectory), false);
-//    }
-//    public void startAutoSaveAction() {
-//        autoSaveTimer.setCycleCount(Timeline.INDEFINITE);
-//        autoSaveTimer.play();
-//    }
-//    public void stopAutoSaveAction() {
-//        autoSaveTimer.stop();
-//    }
     public void init(Stage stage) {
-        stage.setOnHidden(event -> {
-            stopAutoSaveAction();
-            LOGGER.info("Close window");
-        });
+
     }
 }

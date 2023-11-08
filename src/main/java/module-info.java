@@ -39,7 +39,7 @@ module com.huy.appnoithat {
     exports com.huy.appnoithat.DataModel.Yaml;
     opens com.huy.appnoithat.DataModel.Yaml to javafx.fxml;
 
-    exports com.huy.appnoithat.DataModel.NtFile;
+    exports com.huy.appnoithat.DataModel.SaveFile;
     exports com.huy.appnoithat.DataModel;
     exports com.huy.appnoithat.Controller.UserManagement;
     exports com.huy.appnoithat.Controller.UserManagement.DataModel;
@@ -56,4 +56,6 @@ module com.huy.appnoithat {
 
     exports com.huy.appnoithat.Controller.LuaChonNoiThat.Constant;
     opens com.huy.appnoithat.Controller.LuaChonNoiThat.Constant to javafx.fxml;
+    opens com.huy.appnoithat.DataModel.SaveFile to javafx.fxml;
+    opens com.huy.appnoithat.DataModel to javafx.fxml;
 }

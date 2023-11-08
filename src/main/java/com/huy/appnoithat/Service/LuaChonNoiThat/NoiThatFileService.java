@@ -4,30 +4,31 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Common.Utils;
-import com.huy.appnoithat.DataModel.NtFile.DataPackage;
-import com.huy.appnoithat.DataModel.NtFile.Metadata;
-import com.huy.appnoithat.DataModel.NtFile.ObjectData;
-import com.huy.appnoithat.Service.FileExport.Operation.NtFile.ExportNtFile;
+import com.huy.appnoithat.Controller.FileNoiThatExplorer.RecentFile;
+import com.huy.appnoithat.DataModel.DataPackage;
+import com.huy.appnoithat.DataModel.SaveFile.Metadata;
+import com.huy.appnoithat.DataModel.SaveFile.ObjectData;
+import com.huy.appnoithat.DataModel.SaveFile.TabData;
+import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.util.List;
 
-public class SaveNoiThatFileService {
-    final static Logger LOGGER = LogManager.getLogger(SaveNoiThatFileService.class);
-
-    private DataPackage dataForExport;
+public class NoiThatFileService {
+    final static Logger LOGGER = LogManager.getLogger(NoiThatFileService.class);
     private ObjectData objectData;
     private ObjectMapper mapper;
-
+    FileNoiThatExplorerService fileNoiThatExplorerService;
     private OutputStream outputFile;
-    private InputStream inputStream;
 
-    public SaveNoiThatFileService() {
+    public NoiThatFileService() {
         this.mapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
+        fileNoiThatExplorerService = FileNoiThatExplorerService.getInstance();
     }
 
     private void setOutputFile(File outputFile) throws FileNotFoundException {
@@ -38,24 +39,25 @@ public class SaveNoiThatFileService {
         }
     }
 
-    public void export(File exportDirectory) throws IOException {
-        setOutputFile(exportDirectory);
+    public void export(List<TabData> dataForExport, File exportDirectory) {
         try {
+            setUpDataForExport(dataForExport);
+            setOutputFile(exportDirectory);
             String outPutJson = mapper.writeValueAsString(objectData);
             String encodedString = Utils.encodeData(outPutJson);
-            this.outputFile.write(encodedString.getBytes());
+            outputFile.write(encodedString.getBytes());
+            outputFile.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        outputFile.close();
+        fileNoiThatExplorerService.addRecentFile(new RecentFile(exportDirectory.getAbsolutePath(), System.currentTimeMillis()));
     }
 
-    public void setUpDataForExport(DataPackage dataForExport) {
-        this.dataForExport = dataForExport;
+    public void setUpDataForExport(List<TabData> dataForExport) {
         this.objectData = new ObjectData(dataForExport, new Metadata("test file", LocalDate.now()));
     }
 
-    public DataPackage importData(File importDirectory) {
+    public List<TabData> importData(String importDirectory) {
         ObjectData objectData1;
         try (InputStream inputStream = new FileInputStream(importDirectory)) {
             String decodedString = Utils.decodeData(inputStream.readAllBytes());
@@ -64,6 +66,6 @@ public class SaveNoiThatFileService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return objectData1.getDataPackage();
+        return objectData1.getExportData();
     }
 }

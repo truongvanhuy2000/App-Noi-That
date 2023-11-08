@@ -4,7 +4,7 @@ import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
-import com.huy.appnoithat.DataModel.NtFile.DataPackage;
+import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;

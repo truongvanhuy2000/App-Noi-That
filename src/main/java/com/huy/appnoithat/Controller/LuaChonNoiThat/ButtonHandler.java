@@ -278,11 +278,11 @@ public class ButtonHandler {
      * @param event This function will handle the event when user want to save the table
      */
     public void onSaveAction(ActionEvent event) {
-        if (this.luaChonNoiThatController.getCurrentState() == State.NEW_FILE) {
-            this.luaChonNoiThatController.saveAs();
-        } else {
-            this.luaChonNoiThatController.save();
-        }
+//        if (this.luaChonNoiThatController.getCurrentState() == State.NEW_FILE) {
+//            this.luaChonNoiThatController.saveAs();
+//        } else {
+//            this.luaChonNoiThatController.save();
+//        }
     }
     public void automaticallyAddNewNumericStt(TreeItem<BangNoiThat> parent, int count) {
         if (parent == null) {

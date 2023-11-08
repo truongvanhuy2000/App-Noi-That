@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Service.LuaChonNoiThat;
 
 import com.huy.appnoithat.Controller.FileNoiThatExplorer.RecentFile;
-import com.huy.appnoithat.DataModel.NtFile.DataPackage;
+import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.PhongCachNoiThat;
@@ -31,7 +31,6 @@ public class LuaChonNoiThatService {
     private final NoiThatRestService noiThatRestService;
     private final HangMucRestService hangMucRestService;
     private final VatLieuRestService vatLieuRestService;
-    private final FileNoiThatExplorerService fileNoiThatExplorerService;
     private final CacheNoiThatRequestService cacheNoiThatRequestService;
     private final DBUpdateEventService dbUpdateEventService;
 
@@ -44,7 +43,6 @@ public class LuaChonNoiThatService {
         noiThatRestService = NoiThatRestService.getInstance();
         hangMucRestService = HangMucRestService.getInstance();
         vatLieuRestService = VatLieuRestService.getInstance();
-        fileNoiThatExplorerService = FileNoiThatExplorerService.getInstance();
         cacheNoiThatRequestService = CacheNoiThatRequestService.getInstance();
         dbUpdateEventService = DBUpdateEventService.getInstance();
         dbUpdateEventService.start();
@@ -153,21 +151,7 @@ public class LuaChonNoiThatService {
                 LOGGER.error("Some thing is wrong with the export operation", e);
                 target.accept(false);
             }
-            if (fileType == FileType.NT) {
-                fileNoiThatExplorerService.addRecentFile(new RecentFile(selectedFile.getAbsolutePath(), System.currentTimeMillis()));
-            }
         }).start();
         return true;
-    }
-
-    /**
-     * Imports a data package from the specified file.
-     *
-     * @param selectedFile The file to import the data from.
-     * @return The imported data package.
-     */
-    public DataPackage importFile(File selectedFile) {
-        ExportFile exportFile = fileExportService.getExportService(selectedFile, FileType.NT);
-        return exportFile.importData(selectedFile);
     }
 }

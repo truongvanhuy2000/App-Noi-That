@@ -4757,3 +4757,24 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 08-11-2023 17:54:50 [Thread-3] ExportFile:99 - Exporting to XLSX file
 [INFO ] 08-11-2023 17:55:17 [Thread-4] ExportFile:99 - Exporting to XLSX file
 [INFO ] 08-11-2023 17:55:59 [JavaFX Application Thread] LuaChonNoiThatController:322 - Close window
+[INFO ] 09-11-2023 00:27:48 [main] HelloApplication:41 - Start application
+[ERROR] 09-11-2023 00:27:48 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NDQwODAxLCJleHAiOjQyOTE0NDA4MDF9.UDbxHSJPWqQPrziwDvrcL2YD6B0KKe0UvVgjeqh--A--xoOjMz0OydsfrepVRllpr4QyOc5wbD2-lZWSWXEQ8A null
+[ERROR] 09-11-2023 00:27:49 [JavaFX Application Thread] GlobalExceptionHandler:26 - argument "content" is null
+[INFO ] 09-11-2023 00:32:54 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 00:32:57 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[ERROR] 09-11-2023 00:32:59 [JavaFX Application Thread] GlobalExceptionHandler:26 - Error resolving onAction='#newTabButtonHandler', either the event handler is not in the Namespace or there is an error in the script.
+/home/huy/Project/Java/AppNoiThat/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/TabLayout.fxml:15
+
+[ERROR] 09-11-2023 00:32:59 [JavaFX Application Thread] GlobalExceptionHandler:26 - javafx.fxml.LoadException: Error resolving onAction='#newTabButtonHandler', either the event handler is not in the Namespace or there is an error in the script.
+/home/huy/Project/Java/AppNoiThat/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/TabLayout.fxml:15
+
+[ERROR] 09-11-2023 00:32:59 [JavaFX Application Thread] GlobalExceptionHandler:26 - null
+[ERROR] 09-11-2023 00:32:59 [JavaFX Application Thread] GlobalExceptionHandler:26 - java.lang.reflect.InvocationTargetException
+[INFO ] 09-11-2023 00:33:37 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 00:33:40 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 00:51:29 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 00:51:31 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 00:52:30 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 00:52:31 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 00:54:44 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 00:54:46 [JavaFX Application Thread] HomeController:112 - Login as kim with role User

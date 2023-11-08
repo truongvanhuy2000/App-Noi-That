@@ -5,7 +5,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
-import com.huy.appnoithat.DataModel.NtFile.DataPackage;
+import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;

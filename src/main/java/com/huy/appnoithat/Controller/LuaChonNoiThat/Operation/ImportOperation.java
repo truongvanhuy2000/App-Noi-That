@@ -1,13 +1,12 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Operation;
 
 import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
-import com.huy.appnoithat.DataModel.NtFile.DataPackage;
+import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
@@ -53,13 +52,6 @@ public class ImportOperation {
         noteTextArea = luaChonNoiThatController.getNoteTextArea();
         ImageView = luaChonNoiThatController.getImageView();
         this.luaChonNoiThatController = luaChonNoiThatController;
-    }
-
-    public void importFile(String directory) {
-        File file = new File(directory);
-        LOGGER.info("Import file: " + file.getName());
-        DataPackage dataPackage = new LuaChonNoiThatService().importFile(file);
-        importData(dataPackage);
     }
     private void importThongTinCongTy(ThongTinCongTy thongTinCongTy) {
         if (thongTinCongTy == null) return;
