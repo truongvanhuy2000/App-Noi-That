@@ -75,15 +75,12 @@ public class LuaChonNoiThatController implements Initializable {
     private TableColumn<BangThanhToan, Long> DatCocThiCong30, DatCocThietKe10, HangDenChanCongTrinh50, NghiemThuQuyet, TongTien;
     @FXML
     private TableView<BangThanhToan> bangThanhToan;
-    @FXML
-    private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs, MenuItemSaveCompanyInfo, MenuItemSaveNoteArea;
     @Setter
     private ByteArrayOutputStream imageStream;
     private State currentState;
     @Setter
     private String currentDirectory;
-    @FXML
-    private CheckMenuItem AutoSave;
+
     @FXML
     private StackPane loadingPane;
     private Timeline autoSaveTimer;
@@ -118,39 +115,9 @@ public class LuaChonNoiThatController implements Initializable {
      * @param event
      * @see javafx.event.ActionEvent
      */
-    @FXML
-    void onClickMenuItem(ActionEvent event) {
-        Object source = event.getSource();
-        if (source == MenuItemExportPDF) {
-            exportFile(FileType.PDF);
-        }
-        else if (source == MenuItemExportXLS) {
-            exportFile(FileType.EXCEL);
-        }
-        else if (source == MenuItemSave) {
-            save();
-        }
-        else if (source == MenuItemSaveAs) {
-            saveAs();
-        }
-        else if (source == AutoSave) {
-            if (AutoSave.isSelected()) {
-                LOGGER.info("Auto save is enabled");
-                startAutoSaveAction();
-            } else {
-                LOGGER.info("Auto save is disabled");
-                stopAutoSaveAction();
-            }
-        }
-        else if (source == MenuItemSaveCompanyInfo) {
-            saveThongTinCongTy();
-        }
-        else if (source == MenuItemSaveNoteArea) {
-            saveNoteArea();
-        }
-    }
 
-    private void saveNoteArea() {
+
+    public void saveNoteArea() {
         String noteArea = noteTextArea.getText();
         persistenceStorageService.setNoteArea(noteArea);
         PopupUtils.throwSuccessSignal("Lưu ghi chú thành công");
@@ -177,7 +144,7 @@ public class LuaChonNoiThatController implements Initializable {
         TableUtils.reArrangeList(TableNoiThat);
         TableCalculationUtils.recalculateAllTongTien(TableNoiThat);
     }
-    private void saveThongTinCongTy() {
+    public void saveThongTinCongTy() {
         ThongTinCongTy thongTinCongTy = new ThongTinCongTy(
                 new ByteArrayInputStream(imageStream.toByteArray()),
                 TenCongTy.getText(),
@@ -199,7 +166,6 @@ public class LuaChonNoiThatController implements Initializable {
         loadingPane.setDisable(true);
         loadingPane.setVisible(false);
         currentState = State.NEW_FILE;
-        AutoSave.setSelected(true);
         autoSaveTimer = new Timeline(new KeyFrame(Duration.minutes(10), event -> {
             if (currentState == State.OPEN_FROM_EXISTING_FILE && currentDirectory != null) {
                 save();
@@ -307,49 +273,49 @@ public class LuaChonNoiThatController implements Initializable {
         setupTruongThongTin.setup();
     }
 
-    public String saveAs() {
-        String directory = exportFile(FileType.NT);
-        if (directory == null) {
-            return null;
-        }
-        LOGGER.info("Save as Operation: Save file to: " + directory);
-        return directory;
-    }
+//    public String saveAs() {
+//        String directory = exportFile(FileType.NT);
+//        if (directory == null) {
+//            return null;
+//        }
+//        LOGGER.info("Save as Operation: Save file to: " + directory);
+//        return directory;
+//    }
 
 
     /**
      * Saves the data to a file with the FileType.NT in the current directory.
      */
-    public void save() {
-        // Create an instance of ExportOperation, passing the current object (this) to it
-        ExportOperation exportOperation = new ExportOperation(this);
-        if (currentState == State.NEW_FILE) {
-            String directory = saveAs();
-            if (directory == null) {
-                backup();
-                return;
-            }
-            currentState = State.OPEN_FROM_EXISTING_FILE;
-            currentDirectory = directory;
-            startAutoSaveAction();
-        } else if (currentState == State.OPEN_FROM_EXISTING_FILE) {
-            currentDirectory = exportOperation.exportFile(FileType.NT, new File(currentDirectory), false);
-        }
-        LOGGER.info("Normal save: Save file to: " + currentDirectory);
-    }
-    public void backup() {
-        String filename = "backup-" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS").format(new Date()) + ".nt";
-        String tempDirectory = Paths.get(Config.FILE_EXPORT.TEMP_NT_FILE_DIRECTORY, filename).toString();
-        ExportOperation exportOperation = new ExportOperation(this);
-        exportOperation.exportFile(FileType.NT, new File(tempDirectory), false);
-    }
-    private void startAutoSaveAction() {
-        autoSaveTimer.setCycleCount(Timeline.INDEFINITE);
-        autoSaveTimer.play();
-    }
-    private void stopAutoSaveAction() {
-        autoSaveTimer.stop();
-    }
+//    public void save() {
+//        // Create an instance of ExportOperation, passing the current object (this) to it
+//        ExportOperation exportOperation = new ExportOperation(this);
+//        if (currentState == State.NEW_FILE) {
+//            String directory = saveAs();
+//            if (directory == null) {
+//                backup();
+//                return;
+//            }
+//            currentState = State.OPEN_FROM_EXISTING_FILE;
+//            currentDirectory = directory;
+//            startAutoSaveAction();
+//        } else if (currentState == State.OPEN_FROM_EXISTING_FILE) {
+//            currentDirectory = exportOperation.exportFile(FileType.NT, new File(currentDirectory), false);
+//        }
+//        LOGGER.info("Normal save: Save file to: " + currentDirectory);
+//    }
+//    public void backup() {
+//        String filename = "backup-" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS").format(new Date()) + ".nt";
+//        String tempDirectory = Paths.get(Config.FILE_EXPORT.TEMP_NT_FILE_DIRECTORY, filename).toString();
+//        ExportOperation exportOperation = new ExportOperation(this);
+//        exportOperation.exportFile(FileType.NT, new File(tempDirectory), false);
+//    }
+//    public void startAutoSaveAction() {
+//        autoSaveTimer.setCycleCount(Timeline.INDEFINITE);
+//        autoSaveTimer.play();
+//    }
+//    public void stopAutoSaveAction() {
+//        autoSaveTimer.stop();
+//    }
     public void init(Stage stage) {
         stage.setOnHidden(event -> {
             stopAutoSaveAction();

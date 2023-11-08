@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Controller.NewTab;
 
 import com.huy.appnoithat.DataModel.NtFile.DataPackage;
+import com.huy.appnoithat.Enums.FileType;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.LuaChonNoiThatScene;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import javafx.event.ActionEvent;
@@ -23,11 +24,92 @@ public class NewTabController implements Initializable {
     private TabPane tabPane;
     private final PersistenceStorageService persistenceStorageService;
     private Stage currentStage;
-    private List<TabContent> currentlyOpenTab;
+    private final List<TabContent> currentlyOpenTab;
+    @FXML
+    private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs, MenuItemSaveCompanyInfo, MenuItemSaveNoteArea;
+    @FXML
+    private CheckMenuItem AutoSave;
     public NewTabController() {
         persistenceStorageService = PersistenceStorageService.getInstance();
         currentlyOpenTab = new ArrayList<>();
     }
+    @FXML
+    void onClickMenuItem(ActionEvent event) {
+        Object source = event.getSource();
+        if (source == MenuItemExportPDF) {
+            exportFile(FileType.PDF);
+        }
+        else if (source == MenuItemExportXLS) {
+            exportFile(FileType.EXCEL);
+        }
+        else if (source == MenuItemSave) {
+            save();
+        }
+        else if (source == AutoSave) {
+            if (AutoSave.isSelected()) {
+                LOGGER.info("Auto save is enabled");
+                startAutoSaveAction();
+            } else {
+                LOGGER.info("Auto save is disabled");
+                stopAutoSaveAction();
+            }
+        }
+        else if (source == MenuItemSaveCompanyInfo) {
+            saveThongTinCongTy();
+        }
+        else if (source == MenuItemSaveNoteArea) {
+            saveNoteArea();
+        }
+    }
+
+    private void saveNoteArea() {
+        TabContent selectedTabContent = getSelectedTabContent();
+        if (selectedTabContent == null) {
+            return;
+        }
+        selectedTabContent.getLuaChonNoiThatController().saveNoteArea();
+    }
+
+    private void saveThongTinCongTy() {
+        TabContent selectedTabContent = getSelectedTabContent();
+        if (selectedTabContent == null) {
+            return;
+        }
+        selectedTabContent.getLuaChonNoiThatController().saveThongTinCongTy();
+    }
+
+    private void stopAutoSaveAction() {
+        TabContent selectedTabContent = getSelectedTabContent();
+        if (selectedTabContent == null) {
+            return;
+        }
+        selectedTabContent.getLuaChonNoiThatController().stopAutoSaveAction();
+    }
+
+    private void startAutoSaveAction() {
+        TabContent selectedTabContent = getSelectedTabContent();
+        if (selectedTabContent == null) {
+            return;
+        }
+        selectedTabContent.getLuaChonNoiThatController().startAutoSaveAction();
+    }
+
+    private void save() {
+        TabContent selectedTabContent = getSelectedTabContent();
+        if (selectedTabContent == null) {
+            return;
+        }
+        selectedTabContent.getLuaChonNoiThatController().save();
+    }
+
+    private void exportFile(FileType fileType) {
+        TabContent selectedTabContent = getSelectedTabContent();
+        if (selectedTabContent == null) {
+            return;
+        }
+        selectedTabContent.getLuaChonNoiThatController().exportFile(fileType);
+    }
+
     @FXML
     void newTabButtonHandler(ActionEvent event) {
         createNewTab();
@@ -132,6 +214,14 @@ public class NewTabController implements Initializable {
     }
     public void init(TabState tabState, String importDirectory, Stage currentStage) {
         this.currentStage = currentStage;
+        AutoSave.setSelected(true);
         createNewTab(tabState, importDirectory);
+    }
+    private TabContent getSelectedTabContent() {
+        Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
+        if (selectedTab == null) {
+            return null;
+        }
+        return currentlyOpenTab.stream().filter(tabContent -> tabContent.getTab().equals(selectedTab)).findFirst().orElse(null);
     }
 }

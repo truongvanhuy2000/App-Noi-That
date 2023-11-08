@@ -4749,3 +4749,11 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 08-11-2023 17:02:33 [main] HelloApplication:41 - Start application
 [INFO ] 08-11-2023 17:02:34 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
 [ERROR] 08-11-2023 17:25:41 [main] WebClientServiceImpl:101 - Error when sending request to serverGET /api/bangnoithat/event/DBModification eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NDA5ODEzLCJleHAiOjQyOTE0MDk4MTN9.i2dSJibM-j7SgW15S5kJSiCMIsKgR9ou_HBMvnG_ZKSZS-qZJOKpfq3jAgQmph3CXn44M2yJ29WzFPqwvG8xfQ null
+[INFO ] 08-11-2023 17:53:12 [main] HelloApplication:41 - Start application
+[INFO ] 08-11-2023 17:53:13 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 08-11-2023 17:53:21 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 17:53:39 [JavaFX Application Thread] LuaChonNoiThatController:322 - Close window
+[INFO ] 08-11-2023 17:54:11 [JavaFX Application Thread] LuaChonNoiThatController:322 - Close window
+[INFO ] 08-11-2023 17:54:50 [Thread-3] ExportFile:99 - Exporting to XLSX file
+[INFO ] 08-11-2023 17:55:17 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 08-11-2023 17:55:59 [JavaFX Application Thread] LuaChonNoiThatController:322 - Close window

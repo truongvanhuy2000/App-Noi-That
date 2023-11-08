@@ -2,11 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -35,34 +31,6 @@
             <children>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <MenuBar>
-                    <menus>
-                      <Menu mnemonicParsing="false" text="Tệp">
-                        <items>
-                              <MenuItem fx:id="MenuItemOpenFile" mnemonicParsing="false" text="Mở" visible="false" />
-                          <MenuItem fx:id="MenuItemSave" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu" />
-                              <MenuItem fx:id="MenuItemSaveAs" disable="true" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu mới" visible="false" />
-                        </items>
-                      </Menu>
-                        <Menu mnemonicParsing="false" text="Xuất tệp">
-                          <items>
-                            <MenuItem fx:id="MenuItemExportXLS" mnemonicParsing="false" onAction="#onClickMenuItem" text="Excel" />
-                              <MenuItem fx:id="MenuItemExportPDF" mnemonicParsing="false" onAction="#onClickMenuItem" text="PDF" />
-                          </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="Lưu">
-                          <items>
-                              <MenuItem fx:id="MenuItemSaveCompanyInfo" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu thông tin công ty" />
-                            <MenuItem fx:id="MenuItemSaveNoteArea" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu chú thích" />
-                          </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="Tùy chỉnh">
-                          <items>
-                              <CheckMenuItem fx:id="AutoSave" mnemonicParsing="false" onAction="#onClickMenuItem" text="Tự động lưu sau mỗi 10 phút" />
-                          </items>
-                        </Menu>
-                    </menus>
-                  </MenuBar>
                   <TitledPane minHeight="0.0" prefWidth="1390.0" text="Trường thông tin" VBox.vgrow="ALWAYS">
                      <content>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
@@ -208,6 +176,9 @@
             </VBox>
             <StackPane fx:id="loadingPane" disable="true" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             </children>
+         <padding>
+            <Insets top="5.0" />
+         </padding>
         </AnchorPane>
     </children>
 </AnchorPane>

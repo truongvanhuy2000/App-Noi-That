@@ -1,13 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
 <AnchorPane prefHeight="1000.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Button fx:id="BackButton" mnemonicParsing="false" onAction="#newTabButtonHandler" text="+" visible="false" />
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <MenuBar>
+               <menus>
+                  <Menu mnemonicParsing="false" text="Tệp">
+                     <items>
+                        <MenuItem fx:id="MenuItemOpenFile" mnemonicParsing="false" text="Mở" visible="false" />
+                        <MenuItem fx:id="MenuItemSave" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu" />
+                        <MenuItem fx:id="MenuItemSaveAs" disable="true" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu mới" visible="false" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Xuất tệp">
+                     <items>
+                        <MenuItem fx:id="MenuItemExportXLS" mnemonicParsing="false" onAction="#onClickMenuItem" text="Excel" />
+                        <MenuItem fx:id="MenuItemExportPDF" mnemonicParsing="false" onAction="#onClickMenuItem" text="PDF" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Lưu">
+                     <items>
+                        <MenuItem fx:id="MenuItemSaveCompanyInfo" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu thông tin công ty" />
+                        <MenuItem fx:id="MenuItemSaveNoteArea" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu chú thích" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Tùy chỉnh">
+                     <items>
+                        <CheckMenuItem fx:id="AutoSave" mnemonicParsing="false" onAction="#onClickMenuItem" text="Tự động lưu sau mỗi 10 phút" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
             <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
                     <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" side="BOTTOM" HBox.hgrow="ALWAYS" />

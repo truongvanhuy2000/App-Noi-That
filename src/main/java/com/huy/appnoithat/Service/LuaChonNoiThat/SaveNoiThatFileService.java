@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Service.FileExport.Operation.NtFile;
+package com.huy.appnoithat.Service.LuaChonNoiThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
@@ -7,19 +7,15 @@ import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.DataModel.NtFile.DataPackage;
 import com.huy.appnoithat.DataModel.NtFile.Metadata;
 import com.huy.appnoithat.DataModel.NtFile.ObjectData;
-import com.huy.appnoithat.Service.FileExport.ExportFile;
-import lombok.Getter;
-import lombok.Setter;
+import com.huy.appnoithat.Service.FileExport.Operation.NtFile.ExportNtFile;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.time.LocalDate;
 
-@Getter
-@Setter
-public class ExportNtFile implements ExportFile {
-    final static Logger LOGGER = LogManager.getLogger(ExportNtFile.class);
+public class SaveNoiThatFileService {
+    final static Logger LOGGER = LogManager.getLogger(SaveNoiThatFileService.class);
 
     private DataPackage dataForExport;
     private ObjectData objectData;
@@ -28,7 +24,7 @@ public class ExportNtFile implements ExportFile {
     private OutputStream outputFile;
     private InputStream inputStream;
 
-    public ExportNtFile() {
+    public SaveNoiThatFileService() {
         this.mapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
@@ -42,7 +38,6 @@ public class ExportNtFile implements ExportFile {
         }
     }
 
-    @Override
     public void export(File exportDirectory) throws IOException {
         setOutputFile(exportDirectory);
         try {
@@ -55,13 +50,11 @@ public class ExportNtFile implements ExportFile {
         outputFile.close();
     }
 
-    @Override
     public void setUpDataForExport(DataPackage dataForExport) {
         this.dataForExport = dataForExport;
         this.objectData = new ObjectData(dataForExport, new Metadata("test file", LocalDate.now()));
     }
 
-    @Override
     public DataPackage importData(File importDirectory) {
         ObjectData objectData1;
         try (InputStream inputStream = new FileInputStream(importDirectory)) {

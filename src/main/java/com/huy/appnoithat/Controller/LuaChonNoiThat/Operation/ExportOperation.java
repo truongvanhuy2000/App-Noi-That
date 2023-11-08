@@ -79,24 +79,10 @@ public class ExportOperation {
     }
     private void showResult(Boolean result, boolean showPopup, FileType fileType) {
         if (!result) {
-            if (showPopup) {
-                if (fileType == FileType.NT) {
-                    PopupUtils.throwErrorSignal("Lưu thất bại");
-                }
-                else {
-                    PopupUtils.throwErrorSignal("Xuất file thất bại");
-                }
-            }
+            PopupUtils.throwErrorSignal("Xuất file thất bại");
         }
         else {
-            if (showPopup) {
-                if (fileType == FileType.NT) {
-                    PopupUtils.throwSuccessSignal("Lưu file thành công");
-                }
-                else {
-                    PopupUtils.throwSuccessSignal("Xuất file thành công");
-                }
-            }
+            PopupUtils.throwSuccessSignal("Xuất file thành công");
         }
     }
     public String exportFile(FileType fileType) {
