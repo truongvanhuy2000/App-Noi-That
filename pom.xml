@@ -21,6 +21,9 @@
     </properties>
     <!--1 -->
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-rs-client -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-webflux -->
+
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>

@@ -1,9 +1,12 @@
 package com.huy.appnoithat.Common;
 
+import com.huy.appnoithat.Scene.LoadingScene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.util.Optional;
@@ -53,5 +56,13 @@ public class PopupUtils {
             return result.get() == ButtonType.OK;
         }
         return false;
+    }
+    public static void showLoading(Stage stage) {
+        LoadingScene loadingScene = LoadingScene.getInstance();
+        stage.setScene(loadingScene.getScene());
+        stage.setResizable(false);
+        stage.setAlwaysOnTop(true);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.show();
     }
 }

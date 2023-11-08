@@ -17,6 +17,7 @@ module com.huy.appnoithat {
     requires com.fasterxml.jackson.datatype.jsr310;
     requires com.fasterxml.jackson.dataformat.yaml;
 
+
     exports com.huy.appnoithat.Controller;
     opens com.huy.appnoithat.Controller to javafx.fxml;
     exports com.huy.appnoithat.Entity;

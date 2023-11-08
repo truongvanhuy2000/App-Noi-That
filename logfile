@@ -4614,3 +4614,138 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 07-11-2023 16:30:20 [main] HelloApplication:37 - Start application
 [INFO ] 07-11-2023 16:30:24 [JavaFX Application Thread] HomeController:112 - Login as user with role User
 [INFO ] 07-11-2023 16:31:03 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 08-11-2023 15:15:48 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:16:14 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:16:41 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:16:48 [JavaFX Application Thread] HomeController:112 - Login as user with role User
+[INFO ] 08-11-2023 15:17:31 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 15:18:18 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:18:32 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 15:20:14 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:20:20 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 15:22:52 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:23:05 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[ERROR] 08-11-2023 15:24:03 [Thread-3] LuaChonNoiThatService:48 - jakarta.ws.rs.ForbiddenException: HTTP 403 Forbidden
+[INFO ] 08-11-2023 15:24:34 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[ERROR] 08-11-2023 15:24:34 [Thread-4] LuaChonNoiThatService:48 - jakarta.ws.rs.ForbiddenException: HTTP 403 Forbidden
+[INFO ] 08-11-2023 15:24:43 [main] HelloApplication:37 - Start application
+[ERROR] 08-11-2023 15:24:43 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NDMxNDQ4LCJleHAiOjQyOTE0MzE0NDh9.Qtx0mLKNpypzqzUtGHKmnX6NU35NKlPukhCTC1WDO-foisRx2woKrzCV4yza00-YPVSuovDnQ_62gdbuMAbgTA null
+[INFO ] 08-11-2023 15:25:16 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:25:22 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[ERROR] 08-11-2023 15:26:34 [Thread-4] LuaChonNoiThatService:48 - jakarta.ws.rs.ProcessingException: java.net.http.HttpTimeoutException: HttpTimeoutException invoking http://localhost:8080/api/bangnoithat/event/DBModification: Timeout
+[ERROR] 08-11-2023 15:26:37 [Thread-3] LuaChonNoiThatService:48 - jakarta.ws.rs.ProcessingException: java.net.http.HttpTimeoutException: HttpTimeoutException invoking http://localhost:8080/api/bangnoithat/event/DBModification: Timeout
+[INFO ] 08-11-2023 15:28:11 [main] HelloApplication:37 - Start application
+[ERROR] 08-11-2023 15:28:11 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NDMxNDQ4LCJleHAiOjQyOTE0MzE0NDh9.Qtx0mLKNpypzqzUtGHKmnX6NU35NKlPukhCTC1WDO-foisRx2woKrzCV4yza00-YPVSuovDnQ_62gdbuMAbgTA null
+[INFO ] 08-11-2023 15:28:25 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:28:27 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 15:35:45 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:35:56 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[ERROR] 08-11-2023 15:36:19 [Thread-3] LuaChonNoiThatService:49 - jakarta.ws.rs.ProcessingException: java.net.ConnectException: ConnectException invoking http://localhost:8080/api/bangnoithat/event/DBModification: Connection refused
+[INFO ] 08-11-2023 15:36:22 [main] HelloApplication:37 - Start application
+[ERROR] 08-11-2023 15:36:22 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NDMxNDQ4LCJleHAiOjQyOTE0MzE0NDh9.Qtx0mLKNpypzqzUtGHKmnX6NU35NKlPukhCTC1WDO-foisRx2woKrzCV4yza00-YPVSuovDnQ_62gdbuMAbgTA null
+[INFO ] 08-11-2023 15:36:29 [main] HelloApplication:37 - Start application
+[ERROR] 08-11-2023 15:36:29 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NDMxNDQ4LCJleHAiOjQyOTE0MzE0NDh9.Qtx0mLKNpypzqzUtGHKmnX6NU35NKlPukhCTC1WDO-foisRx2woKrzCV4yza00-YPVSuovDnQ_62gdbuMAbgTA null
+[INFO ] 08-11-2023 15:36:32 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:36:37 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 15:37:55 [main] HelloApplication:37 - Start application
+[ERROR] 08-11-2023 15:37:55 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NDMxNDQ4LCJleHAiOjQyOTE0MzE0NDh9.Qtx0mLKNpypzqzUtGHKmnX6NU35NKlPukhCTC1WDO-foisRx2woKrzCV4yza00-YPVSuovDnQ_62gdbuMAbgTA null
+[INFO ] 08-11-2023 15:38:09 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:38:13 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[ERROR] 08-11-2023 15:38:28 [Thread-3] LuaChonNoiThatService:48 - jakarta.ws.rs.ForbiddenException: HTTP 403 Forbidden
+[ERROR] 08-11-2023 15:38:28 [Thread-4] LuaChonNoiThatService:48 - jakarta.ws.rs.ForbiddenException: HTTP 403 Forbidden
+[INFO ] 08-11-2023 15:39:10 [main] HelloApplication:37 - Start application
+[ERROR] 08-11-2023 15:39:10 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NDMxNDQ4LCJleHAiOjQyOTE0MzE0NDh9.Qtx0mLKNpypzqzUtGHKmnX6NU35NKlPukhCTC1WDO-foisRx2woKrzCV4yza00-YPVSuovDnQ_62gdbuMAbgTA null
+[INFO ] 08-11-2023 15:40:20 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:40:24 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[ERROR] 08-11-2023 15:40:38 [Thread-3] LuaChonNoiThatService:49 - jakarta.ws.rs.ForbiddenException: HTTP 403 Forbidden
+[ERROR] 08-11-2023 15:40:38 [Thread-4] LuaChonNoiThatService:49 - jakarta.ws.rs.ForbiddenException: HTTP 403 Forbidden
+[INFO ] 08-11-2023 15:41:18 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 08-11-2023 15:50:23 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:50:31 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[ERROR] 08-11-2023 15:50:35 [Thread-3] LuaChonNoiThatService:48 - jakarta.ws.rs.ForbiddenException: HTTP 403 Forbidden
+[ERROR] 08-11-2023 15:50:35 [Thread-4] LuaChonNoiThatService:48 - jakarta.ws.rs.ForbiddenException: HTTP 403 Forbidden
+[INFO ] 08-11-2023 15:54:01 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:54:03 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[ERROR] 08-11-2023 15:54:04 [Thread-4] LuaChonNoiThatService:50 - jakarta.ws.rs.ForbiddenException: HTTP 403 Forbidden
+[ERROR] 08-11-2023 15:54:04 [Thread-3] LuaChonNoiThatService:50 - jakarta.ws.rs.ForbiddenException: HTTP 403 Forbidden
+[INFO ] 08-11-2023 15:54:07 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 08-11-2023 15:58:11 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:58:13 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 15:58:46 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 15:58:51 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 15:59:04 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 08-11-2023 16:01:12 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 16:01:17 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:03:39 [main] HelloApplication:37 - Start application
+[ERROR] 08-11-2023 16:03:40 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NDMxNDQ4LCJleHAiOjQyOTE0MzE0NDh9.Qtx0mLKNpypzqzUtGHKmnX6NU35NKlPukhCTC1WDO-foisRx2woKrzCV4yza00-YPVSuovDnQ_62gdbuMAbgTA null
+[INFO ] 08-11-2023 16:03:49 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 16:03:55 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[ERROR] 08-11-2023 16:05:11 [Thread-3] LuaChonNoiThatService:46 - jakarta.ws.rs.ProcessingException: java.net.http.HttpTimeoutException: HttpTimeoutException invoking http://localhost:8080/api/bangnoithat/event/DBModification: Timeout
+[INFO ] 08-11-2023 16:05:52 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 08-11-2023 16:07:30 [main] HelloApplication:37 - Start application
+[INFO ] 08-11-2023 16:07:32 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:07:35 [JavaFX Application Thread] LuaChonNoiThatController:356 - Close window
+[INFO ] 08-11-2023 16:42:49 [main] HelloApplication:44 - Start application
+[INFO ] 08-11-2023 16:42:50 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:43:59 [main] HelloApplication:44 - Start application
+[INFO ] 08-11-2023 16:44:02 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[ERROR] 08-11-2023 16:44:02 [JavaFX Application Thread] GlobalExceptionHandler:26 - com.huy.appnoithat.Scene.view.Loading
+[ERROR] 08-11-2023 16:44:02 [JavaFX Application Thread] GlobalExceptionHandler:26 - 
+/home/huy/Project/Java/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/Loading.fxml:9
+
+[ERROR] 08-11-2023 16:44:02 [JavaFX Application Thread] GlobalExceptionHandler:26 - javafx.fxml.LoadException: 
+/home/huy/Project/Java/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/Loading.fxml:9
+
+[INFO ] 08-11-2023 16:45:23 [main] HelloApplication:44 - Start application
+[INFO ] 08-11-2023 16:45:28 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[ERROR] 08-11-2023 16:45:28 [JavaFX Application Thread] GlobalExceptionHandler:26 - com.huy.appnoithat.Scene.view.Loading
+[ERROR] 08-11-2023 16:45:28 [JavaFX Application Thread] GlobalExceptionHandler:26 - 
+/home/huy/Project/Java/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/Loading.fxml:9
+
+[ERROR] 08-11-2023 16:45:28 [JavaFX Application Thread] GlobalExceptionHandler:26 - javafx.fxml.LoadException: 
+/home/huy/Project/Java/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/Loading.fxml:9
+
+[INFO ] 08-11-2023 16:46:03 [main] HelloApplication:44 - Start application
+[INFO ] 08-11-2023 16:46:07 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:47:14 [main] HelloApplication:46 - Start application
+[INFO ] 08-11-2023 16:47:15 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:48:00 [main] HelloApplication:46 - Start application
+[INFO ] 08-11-2023 16:48:01 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:49:35 [main] HelloApplication:46 - Start application
+[INFO ] 08-11-2023 16:49:36 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:49:47 [main] HelloApplication:46 - Start application
+[INFO ] 08-11-2023 16:49:48 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:50:00 [main] HelloApplication:46 - Start application
+[INFO ] 08-11-2023 16:50:01 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:50:55 [main] HelloApplication:44 - Start application
+[INFO ] 08-11-2023 16:50:56 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:51:18 [main] HelloApplication:45 - Start application
+[INFO ] 08-11-2023 16:51:19 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:51:42 [main] HelloApplication:45 - Start application
+[INFO ] 08-11-2023 16:51:45 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:51:51 [main] HelloApplication:45 - Start application
+[INFO ] 08-11-2023 16:52:41 [main] HelloApplication:42 - Start application
+[INFO ] 08-11-2023 16:52:44 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:54:31 [main] HelloApplication:41 - Start application
+[INFO ] 08-11-2023 16:54:34 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:54:57 [main] HelloApplication:41 - Start application
+[INFO ] 08-11-2023 16:56:20 [main] HelloApplication:41 - Start application
+[INFO ] 08-11-2023 16:56:57 [main] HelloApplication:41 - Start application
+[INFO ] 08-11-2023 16:57:16 [main] HelloApplication:41 - Start application
+[INFO ] 08-11-2023 16:57:26 [main] HelloApplication:41 - Start application
+[INFO ] 08-11-2023 16:57:28 [main] HelloApplication:41 - Start application
+[INFO ] 08-11-2023 16:57:34 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:57:45 [main] HelloApplication:41 - Start application
+[INFO ] 08-11-2023 16:57:51 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:59:00 [main] HelloApplication:42 - Start application
+[INFO ] 08-11-2023 16:59:02 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 16:59:09 [main] HelloApplication:42 - Start application
+[INFO ] 08-11-2023 16:59:10 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 17:02:08 [main] HelloApplication:41 - Start application
+[INFO ] 08-11-2023 17:02:09 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 17:02:16 [main] HelloApplication:41 - Start application
+[INFO ] 08-11-2023 17:02:19 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 08-11-2023 17:02:27 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 08-11-2023 17:02:33 [main] HelloApplication:41 - Start application
+[INFO ] 08-11-2023 17:02:34 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[ERROR] 08-11-2023 17:25:41 [main] WebClientServiceImpl:101 - Error when sending request to serverGET /api/bangnoithat/event/DBModification eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NDA5ODEzLCJleHAiOjQyOTE0MDk4MTN9.i2dSJibM-j7SgW15S5kJSiCMIsKgR9ou_HBMvnG_ZKSZS-qZJOKpfq3jAgQmph3CXn44M2yJ29WzFPqwvG8xfQ null
