@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
 <AnchorPane prefHeight="638.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
       <VBox alignment="CENTER" prefHeight="638.0" prefWidth="1000.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -138,7 +146,7 @@
               <TableView id="tableUser" fx:id="tableManageUser" onMouseClicked="#tableClickToSelectItem" prefHeight="443.0" prefWidth="1000.0" VBox.vgrow="ALWAYS">
                   <columns>
                       <TableColumn fx:id="username" maxWidth="400.0" minWidth="200.0" prefWidth="-1.0" styleClass="column-header" text="Tên đăng nhập" />
-                      <TableColumn fx:id="password" maxWidth="400.0" minWidth="200.0" prefWidth="-1.0" styleClass="column-header" text="Mật khẩu" />
+                      <TableColumn fx:id="password" maxWidth="400.0" minWidth="200.0" prefWidth="-1.0" styleClass="column-header" text="Mật khẩu" visible="false" />
                   <TableColumn fx:id="phone" maxWidth="400.0" minWidth="150.0" prefWidth="-1.0" styleClass="column-header" text="Số điện thoại" />
                   <TableColumn fx:id="email" maxWidth="600.0" minWidth="150.0" prefWidth="-1.0" styleClass="column-header" text="Email" />
                       <TableColumn fx:id="active" maxWidth="200.0" minWidth="50.0" prefWidth="92.0" style="-fx-alignment: CENTER; -fx-padding: 0 0 0 0px;" styleClass="columnCapPhepCss" text="Cấp phép" />
