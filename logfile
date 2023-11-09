@@ -4812,3 +4812,5 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 09-11-2023 10:52:03 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
 [INFO ] 09-11-2023 10:57:38 [main] HelloApplication:41 - Start application
 [INFO ] 09-11-2023 10:57:39 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 10:58:58 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 10:58:59 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
