@@ -183,7 +183,7 @@ public class UsersManagementController {
 
     }
 
-    public int getSelectObjectIDFromTable(){
+    public int getSelectObjectIDFromTable() {
         int indexSelector = tableManageUser.getSelectionModel().getSelectedIndex();
         return tableManageUser.getItems().get(indexSelector).getId();
     }
@@ -264,11 +264,11 @@ public class UsersManagementController {
                 tableManageUser.refresh();
 
                 //check username exist
-                if(txtusername.getText().isEmpty()|| txtpassword.getText().isEmpty()){
+                if (txtusername.getText().isEmpty() || txtpassword.getText().isEmpty()) {
                     PopupUtils.throwErrorSignal("tài khoản và mật khẩu không được trống");
-                }else if(!registerService.isUsernameValid(txtusername.getText())){
+                } else if (!registerService.isUsernameValid(txtusername.getText())) {
                     PopupUtils.throwErrorSignal("tài khoản đã tồn tài");
-                }else{
+                } else {
                     userManagementService.addNewAccount(
                             new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
                     // Clear data, reinitialize the table, and close the form
@@ -341,6 +341,9 @@ public class UsersManagementController {
      * @return The parsed integer value if parsing is successful, or the default value if parsing fails.
      */
     public Integer parseStringToINT(String data, int def) {
+        if (data.isEmpty()) {
+            return def;
+        }
         try {
             return Integer.parseInt(data);
         } catch (NumberFormatException nfe) {
@@ -380,14 +383,14 @@ public class UsersManagementController {
             Button btnedit = (Button) userManagementEditorScene.lookup("#btnedit");
             Button btncancel = (Button) userManagementEditorScene.lookup("#btncancel");
 
-            // Create an AccountTable object
+//            // Create an AccountTable object
             AccountTable exampleAccount = new AccountTable();
             exampleAccount.setUsername(username);
             exampleAccount.setPassword(password);
-
-            // Set the object's attributes to the text fields
-            txtusername.setText(exampleAccount.getUsername());
-            txtpassword.setText(exampleAccount.getPassword());
+//
+//            // Set the object's attributes to the text fields
+//            txtusername.setText(exampleAccount.getUsername());
+//            txtpassword.setText(exampleAccount.getPassword());
 
             userManageMentStage = StageFactory.CreateNewUnresizeableStage(userManagementEditorScene);
             RegisterService registerService = new RegisterService();
@@ -404,22 +407,24 @@ public class UsersManagementController {
                 LocalDate soThangGiaHanThem = account.getExpiredDate().plusMonths(parseStringToINT(txtGiaHan.getText(), 0));
 
                 //check username exist
-                if(txtusername.getText().isEmpty()|| txtpassword.getText().isEmpty()){
-                    PopupUtils.throwErrorSignal("tài khoản và mật khẩu không được trống");
-                }else if(!registerService.isUsernameValid(txtusername.getText())){
+                if (!txtusername.getText().isEmpty() && !registerService.isUsernameValid(txtusername.getText())) {
                     PopupUtils.throwErrorSignal("tài khoản đã tồn tài");
-                }else{
-                    // Update the account details
-                    account.setUsername(txtusername.getText());
-                    account.setPassword(txtpassword.getText());
-                    account.setExpiredDate(soThangGiaHanThem);
-
-                    // Update the account in the service
-                    userManagementService.EditAccount(account);
-
-                    // Refresh the table view to update the changes
-                    tableManageUser.refresh();
+                    return;
                 }
+                // Update the account details
+                if (!txtusername.getText().isEmpty()) {
+                    account.setUsername(txtusername.getText());
+                }
+                if (!txtpassword.getText().isEmpty()) {
+                    account.setPassword(txtpassword.getText());
+                }
+                account.setExpiredDate(soThangGiaHanThem);
+
+                // Update the account in the service
+                userManagementService.EditAccount(account);
+
+                // Refresh the table view to update the changes
+                tableManageUser.refresh();
                 // Close the edit account form
                 userManageMentStage.close();
 
