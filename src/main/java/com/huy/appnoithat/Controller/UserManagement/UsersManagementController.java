@@ -8,6 +8,7 @@ import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.ListAccountWaitToApproveScene;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementAddAccountScene;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementEditorScene;
+import com.huy.appnoithat.Service.Register.RegisterService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
 import javafx.application.Platform;
@@ -242,11 +243,16 @@ public class UsersManagementController {
             Button btnadd = (Button) userManagementAddAccountScene.lookup("#btnadd");
             Button btncancel = (Button) userManagementAddAccountScene.lookup("#btncancel");
             comboBoxActive.setItems(listActive);
-
+            RegisterService registerService = new RegisterService();
 
             // Handle the add button click event
             btnadd.setOnAction(actionEvent -> {
+                // default when add new user active must be false
                 String active = "false";
+
+                // Add the new account to the service with role user
+                List<String> roleList = new ArrayList<>();
+                roleList.add("ROLE_USER");
                 LocalDate localDate = LocalDate.now().plusDays(30);
                 if (comboBoxActive.getSelectionModel().getSelectedItem() != null) {
                     active = comboBoxActive.getSelectionModel().getSelectedItem().toString().equals("Có") ? "true" : "false";
@@ -257,14 +263,16 @@ public class UsersManagementController {
                 tableManageUser.getItems().clear();
                 tableManageUser.refresh();
 
-                // Add the new account to the service
-                List<String> roleList = new ArrayList<>();
-                roleList.add("ROLE_USER");
-                // --- REMEMBER TO SUA DATE
-                userManagementService.addNewAccount(
-                        new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
-
-                // Clear data, reinitialize the table, and close the form
+                //check username exist
+                if(txtusername.getText().isEmpty()|| txtpassword.getText().isEmpty()){
+                    PopupUtils.throwErrorSignal("tài khoản và mật khẩu không được trống");
+                }else if(!registerService.isUsernameValid(txtusername.getText())){
+                    PopupUtils.throwErrorSignal("tài khoản đã tồn tài");
+                }else{
+                    userManagementService.addNewAccount(
+                            new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
+                    // Clear data, reinitialize the table, and close the form
+                }
                 init();
                 userManageMentStage.close();
                 txtusername.clear();
@@ -382,7 +390,7 @@ public class UsersManagementController {
             txtpassword.setText(exampleAccount.getPassword());
 
             userManageMentStage = StageFactory.CreateNewUnresizeableStage(userManagementEditorScene);
-
+            RegisterService registerService = new RegisterService();
             // Handle the edit button click event
             btnedit.setOnAction(actionEvent -> {
                 tableManageUser.getSelectionModel().getSelectedItem().setUsername(txtusername.getText());
@@ -395,17 +403,23 @@ public class UsersManagementController {
                 // Extend the account's expiration date by the specified number of months
                 LocalDate soThangGiaHanThem = account.getExpiredDate().plusMonths(parseStringToINT(txtGiaHan.getText(), 0));
 
-                // Update the account details
-                account.setUsername(txtusername.getText());
-                account.setPassword(txtpassword.getText());
-                account.setExpiredDate(soThangGiaHanThem);
+                //check username exist
+                if(txtusername.getText().isEmpty()|| txtpassword.getText().isEmpty()){
+                    PopupUtils.throwErrorSignal("tài khoản và mật khẩu không được trống");
+                }else if(!registerService.isUsernameValid(txtusername.getText())){
+                    PopupUtils.throwErrorSignal("tài khoản đã tồn tài");
+                }else{
+                    // Update the account details
+                    account.setUsername(txtusername.getText());
+                    account.setPassword(txtpassword.getText());
+                    account.setExpiredDate(soThangGiaHanThem);
 
-                // Update the account in the service
-                userManagementService.EditAccount(account);
+                    // Update the account in the service
+                    userManagementService.EditAccount(account);
 
-                // Refresh the table view to update the changes
-                tableManageUser.refresh();
-
+                    // Refresh the table view to update the changes
+                    tableManageUser.refresh();
+                }
                 // Close the edit account form
                 userManageMentStage.close();
 
