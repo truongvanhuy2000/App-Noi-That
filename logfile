@@ -5311,3 +5311,8 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 09-11-2023 15:51:36 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
 [INFO ] 09-11-2023 15:52:09 [JavaFX Application Thread] HomeController:112 - Login as user with role User
 [INFO ] 09-11-2023 15:52:56 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 09-11-2023 15:54:07 [JavaFX Application Thread] HomeController:112 - Login as huy with role User
+[INFO ] 09-11-2023 16:06:16 [main] HelloApplication:41 - Start application
+[ERROR] 09-11-2023 16:06:17 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/index  null
+[INFO ] 09-11-2023 16:06:28 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 16:06:36 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
