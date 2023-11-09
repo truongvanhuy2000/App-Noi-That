@@ -20,7 +20,6 @@ public class PersistenceStorageService {
     final static Logger LOGGER = LogManager.getLogger(PersistenceStorageService.class);
     private static PersistenceStorageService instance;
     private ThongTinCongTy thongTinCongTy;
-    private List<RecentFile> recentFileList;
     private PersistenceUserSession persistenceUserSession;
     private final ObjectMapper objectMapper;
     PersistenceStorageService() {
@@ -70,9 +69,8 @@ public class PersistenceStorageService {
     }
     public List<RecentFile> getRecentFileList() {
         try {
-            this.recentFileList = objectMapper.readValue(new File(Config.FILE_EXPORT.RECENT_NT_FILE_DIRECTORY),
+            return objectMapper.readValue(new File(Config.FILE_EXPORT.RECENT_NT_FILE_DIRECTORY),
                     objectMapper.getTypeFactory().constructCollectionType(List.class, RecentFile.class));
-            return recentFileList;
         } catch (IOException e) {
             LOGGER.error("Failed to read recent file" + e.getMessage());
             throw new RuntimeException(e);
@@ -85,10 +83,9 @@ public class PersistenceStorageService {
      * @return List of RecentFile objects representing the recent files.
      * @throws RuntimeException if there is an IOException while reading the file.
      */
-    public void addRecentFile(RecentFile recentFile) {
+    public void saveRecentFile(List<RecentFile> recentFileList) {
         try {
             // Read recent files from the specified file path
-            this.recentFileList.add(recentFile);
             objectMapper.writeValue(new File(Config.FILE_EXPORT.RECENT_NT_FILE_DIRECTORY), recentFileList);
         } catch (IOException e) {
             LOGGER.error("Failed to write recent file" + e.getMessage());

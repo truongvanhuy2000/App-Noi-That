@@ -20,7 +20,7 @@ import java.util.List;
 public class NoiThatFileService {
     final static Logger LOGGER = LogManager.getLogger(NoiThatFileService.class);
     private ObjectData objectData;
-    private ObjectMapper mapper;
+    private final ObjectMapper mapper;
     FileNoiThatExplorerService fileNoiThatExplorerService;
     private OutputStream outputFile;
 
@@ -39,7 +39,7 @@ public class NoiThatFileService {
         }
     }
 
-    public void export(List<TabData> dataForExport, File exportDirectory) {
+    public void export(List<TabData> dataForExport, File exportDirectory, boolean saveToRecentFile) {
         try {
             setUpDataForExport(dataForExport);
             setOutputFile(exportDirectory);
@@ -48,9 +48,12 @@ public class NoiThatFileService {
             outputFile.write(encodedString.getBytes());
             outputFile.close();
         } catch (Exception e) {
+            LOGGER.error("Failed to export file" + e.getMessage());
             throw new RuntimeException(e);
         }
-        fileNoiThatExplorerService.addRecentFile(new RecentFile(exportDirectory.getAbsolutePath(), System.currentTimeMillis()));
+        if (saveToRecentFile) {
+            fileNoiThatExplorerService.addRecentFile(new RecentFile(exportDirectory.getAbsolutePath(), System.currentTimeMillis()));
+        }
     }
 
     public void setUpDataForExport(List<TabData> dataForExport) {
@@ -58,14 +61,13 @@ public class NoiThatFileService {
     }
 
     public List<TabData> importData(String importDirectory) {
-        ObjectData objectData1;
         try (InputStream inputStream = new FileInputStream(importDirectory)) {
             String decodedString = Utils.decodeData(inputStream.readAllBytes());
-//            LOGGER.debug(decodedString);
-            objectData1 = mapper.readValue(decodedString, ObjectData.class);
+            ObjectData objectData = mapper.readValue(decodedString, ObjectData.class);
+            return objectData.getExportData();
         } catch (IOException e) {
+            LOGGER.error("Failed to import file" + e.getMessage());
             throw new RuntimeException(e);
         }
-        return objectData1.getExportData();
     }
 }

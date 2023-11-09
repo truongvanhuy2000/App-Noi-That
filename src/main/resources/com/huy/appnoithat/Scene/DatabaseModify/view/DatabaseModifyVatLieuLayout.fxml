@@ -55,7 +55,7 @@
                        <graphic>
                            <ImageView fitHeight="21.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="Button">
                                <image>
-                                   <Image url="@../../icons/addPC.png" />
+                                   <Image url="@../../icons/icons8-swap-64.png" />
                                </image>
                            </ImageView>
                        </graphic>
@@ -76,7 +76,7 @@
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="20.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" styleClass="Button" x="5.0" y="3.0">
                            <image>
-                              <Image url="@../../icons/deletePC.png" />
+                               <Image url="@../../icons/icons8-delete-48.png" />
                            </image>
                            <rotationAxis>
                               <Point3D y="1.0" z="1.0" />

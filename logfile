@@ -4778,3 +4778,37 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 09-11-2023 00:52:31 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
 [INFO ] 09-11-2023 00:54:44 [main] HelloApplication:41 - Start application
 [INFO ] 09-11-2023 00:54:46 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 09:27:41 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 09:27:42 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[ERROR] 09-11-2023 09:27:48 [JavaFX Application Thread] GlobalExceptionHandler:26 - Cannot invoke "javafx.scene.control.TabPane.getTabs()" because "this.tabPane" is null
+[ERROR] 09-11-2023 09:27:48 [JavaFX Application Thread] GlobalExceptionHandler:26 - null
+[ERROR] 09-11-2023 09:27:48 [JavaFX Application Thread] GlobalExceptionHandler:26 - java.lang.reflect.InvocationTargetException
+[INFO ] 09-11-2023 09:28:30 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 09:28:31 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 09:30:42 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 09:30:44 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 09:36:33 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 09:36:35 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 09:49:19 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 09:49:20 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 09:53:44 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 09:53:46 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 10:02:04 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 10:02:05 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 10:02:38 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 10:02:39 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 10:04:26 [Thread-3] ExportFile:99 - Exporting to XLSX file
+[INFO ] 09-11-2023 10:04:32 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 09-11-2023 10:05:38 [Thread-5] ExportFile:99 - Exporting to XLSX file
+[INFO ] 09-11-2023 10:25:32 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 10:25:34 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 10:30:05 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 10:30:06 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 10:30:57 [JavaFX Application Thread] NewTabController:76 - Auto save is disabled
+[INFO ] 09-11-2023 10:30:59 [JavaFX Application Thread] NewTabController:73 - Auto save is enabled
+[INFO ] 09-11-2023 10:42:46 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 10:42:47 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 10:52:02 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 10:52:03 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 10:57:38 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 10:57:39 [JavaFX Application Thread] HomeController:112 - Login as kim with role User

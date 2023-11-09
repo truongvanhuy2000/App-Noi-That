@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.FileNoiThatExplorer.RecentFile;
+import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +20,8 @@ public class FileNoiThatExplorerService {
     private static final String RECENT_FILE_DIRECTORY = Config.FILE_EXPORT.RECENT_NT_FILE_DIRECTORY;
     private final ObjectMapper objectMapper;
     private static FileNoiThatExplorerService instance;
-    private ObservableList<RecentFile> recentFileObservableList;
+    private ObservableList<RecentFile> recentFileObservableList = FXCollections.observableArrayList();
+    PersistenceStorageService persistenceStorageService;
     public static synchronized FileNoiThatExplorerService getInstance() {
         if (instance == null) {
             instance = new FileNoiThatExplorerService();
@@ -30,6 +32,7 @@ public class FileNoiThatExplorerService {
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
+        persistenceStorageService = PersistenceStorageService.getInstance();
     }
 
     /**
@@ -39,22 +42,10 @@ public class FileNoiThatExplorerService {
      * @throws RuntimeException if there is an IOException while reading the file.
      */
     public ObservableList<RecentFile> getRecentFile() {
-        if (recentFileObservableList == null) {
-            try {
-                // Read recent files from the specified file path and create an observable list
-                List<RecentFile> recentFileList = objectMapper.readValue(new File(RECENT_FILE_DIRECTORY),
-                        objectMapper.getTypeFactory().constructCollectionType(List.class, RecentFile.class));
-                recentFileObservableList = FXCollections.observableArrayList(recentFileList);
-                return recentFileObservableList;
-            } catch (IOException e) {
-                LOGGER.error("Failed to read recent file" + e.getMessage());
-                throw new RuntimeException(e);
-            }
-        }
-        else {
-            // Return the initialized observable list if it exists
-            return this.recentFileObservableList;
-        }
+        recentFileObservableList.clear();
+        List<RecentFile> recentFileList = persistenceStorageService.getRecentFileList();
+        recentFileObservableList.addAll(recentFileList);
+        return recentFileObservableList;
     }
 
     /**
@@ -63,14 +54,9 @@ public class FileNoiThatExplorerService {
      * @throws RuntimeException if there is an IOException while writing the file.
      */
     public void saveRecentFile() {
-        try {
-            // Convert the observable list to a regular list and write it to the file
-            List<RecentFile> recentFileList = this.recentFileObservableList.stream().toList();
-            objectMapper.writeValue(new File(RECENT_FILE_DIRECTORY), recentFileList);
-        } catch (IOException e) {
-            LOGGER.error("Failed to write recent file" + e.getMessage());
-            throw new RuntimeException(e);
-        }
+        // Convert the observable list to a regular list and write it to the file
+        List<RecentFile> recentFileList = this.recentFileObservableList.stream().toList();
+        persistenceStorageService.saveRecentFile(recentFileList);
     }
 
     /**
@@ -84,8 +70,9 @@ public class FileNoiThatExplorerService {
             // Retrieve the recent file list if it's not already loaded
             recentFileObservableList = getRecentFile();
         }
-        // Check if the file already exists in the list, if so, return
-        if (isFileExist(recentFile)) {
+
+        // Check if the file already exists in the list
+        if (isFileExist(recentFile) != null) {
             return;
         }
         // Add the recent file to the list and save the updated list to the file system
@@ -114,7 +101,11 @@ public class FileNoiThatExplorerService {
      * @param recentFile The recent file to be checked.
      * @return True if the recent file already exists in the list, false otherwise.
      */
-    private boolean isFileExist(RecentFile recentFile) {
-        return recentFileObservableList.stream().anyMatch(recentFile1 -> recentFile1.getDirectory().equals(recentFile.getDirectory()));
+    private RecentFile isFileExist(RecentFile recentFile) {
+        return recentFileObservableList.stream().filter(
+                recentFile1 -> recentFile1.getDirectory().equals(recentFile.getDirectory())).map(file -> {
+                    file.setTimeStamp(recentFile.getTimeStamp());
+                    return file;
+                }).findFirst().orElse(null);
     }
 }

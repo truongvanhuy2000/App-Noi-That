@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.control.TreeTableView?>
@@ -20,7 +21,7 @@
 
 <AnchorPane prefHeight="1000.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-      <VBox disable="true" prefHeight="159.0" prefWidth="73.0" spacing="20.0" visible="false">
+      <VBox cacheShape="false" centerShape="false" disable="true" pickOnBounds="false" prefHeight="159.0" prefWidth="73.0" scaleShape="false" spacing="20.0" visible="false">
          <children>
                 <Button fx:id="ExportButton" mnemonicParsing="false" text="Xuất file" />
                 <Button fx:id="SaveButton" mnemonicParsing="false" text="Lưu" />
@@ -85,18 +86,18 @@
                         </HBox>
                      </content>
                      <VBox.margin>
-                        <Insets left="45.0" />
+                        <Insets />
                      </VBox.margin>
                   </TitledPane>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="2.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="771.0" prefWidth="45.0" spacing="20.0">
-                           <children>
+                        <ToolBar orientation="VERTICAL" prefHeight="644.0" prefWidth="49.0" HBox.hgrow="NEVER">
+                           <items>
                                   <Button fx:id="addContinuousButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
                                  <graphic>
-                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../icons/228122.png" />
+                                          <Image url="@../icons/icons8-add-48.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -106,9 +107,9 @@
                               </Button>
                               <Button fx:id="duplicateButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
                                  <graphic>
-                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../icons/1387596.png" />
+                                          <Image url="@../icons/icons8-copy-48.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -116,8 +117,8 @@
                                     <Tooltip style="-fx-show-delay: 20ms;" text="Nhân bản mục trong bảng" />
                                  </tooltip>
                               </Button>
-                           </children>
-                        </VBox>
+                           </items>
+                        </ToolBar>
                         <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
                                   <TreeTableView fx:id="TableNoiThat" onKeyPressed="#onKeyPressed" prefHeight="624.0" prefWidth="1254.0" VBox.vgrow="ALWAYS">
