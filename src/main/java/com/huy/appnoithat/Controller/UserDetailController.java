@@ -58,7 +58,7 @@ public class UserDetailController implements Initializable {
         accountInformation.setAddress(Address.getText());
         accountInformation.setPhone(PhoneNumber.getText());
         accountInformation.setEmail(Email.getText());
-        accountInformation.setGender(Gender.getValue());
+        accountInformation.setGender(Gender.getValue().equals(GENDER_OPTION1) ? "Male" : "Female");
         if (userDetailService.updateAccountInformation(accountInformation)) {
             PopupUtils.throwSuccessSignal("Cập nhật thông tin thành công");
             refreshInfo();
@@ -80,11 +80,16 @@ public class UserDetailController implements Initializable {
     }
     public void refreshInfo() {
         Account account = userDetailService.getAccountInformation();
+        if(account.getAccountInformation().getGender()==null){
+            Gender.setValue("");
+        }else{
+            Gender.setValue(account.getAccountInformation().getGender().equals("Male") ? GENDER_OPTION1 : GENDER_OPTION2);
+        }
         FullName.setText(account.getAccountInformation().getName());
         Address.setText(account.getAccountInformation().getAddress());
         PhoneNumber.setText(account.getAccountInformation().getPhone());
         Email.setText(account.getAccountInformation().getEmail());
-        Gender.setValue(account.getAccountInformation().getGender());
+
     }
 
     @Override
