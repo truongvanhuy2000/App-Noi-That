@@ -16,6 +16,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -26,13 +27,15 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class UsersManagementController {
+public class UsersManagementController implements Initializable {
     final static Logger LOGGER = LogManager.getLogger(UsersManagementController.class);
     @FXML
     private TableColumn<AccountTable, ImageView> active;
@@ -104,8 +107,8 @@ public class UsersManagementController {
             // Clear the existing data in the list
             listUser.clear();
             // Convert Account objects to AccountTable objects and add them to the list
-            listUser.addAll(accountList.stream().map(account ->
-                    new AccountTable(account.getId(),
+            listUser.addAll(accountList.stream().filter(account -> !account.getRoleList().get(0).equals("ROLE_ADMIN"))
+                    .map(account -> new AccountTable(account.getId(),
                             account.getUsername(),
                             account.getPassword(),
                             account.getAccountInformation().getPhone(),
@@ -424,7 +427,11 @@ public class UsersManagementController {
                 }
                 account.setExpiredDate(soThangGiaHanThem);
                 // Update the account in the service
-                userManagementService.EditAccount(account);
+                if (userManagementService.EditAccount(account)) {
+                    PopupUtils.throwSuccessSignal("Cập nhật thành công");
+                } else {
+                    PopupUtils.throwErrorSignal("Cập nhật thất bại");
+                }
 
                 // Refresh the table view to update the changes
                 tableManageUser.refresh();
@@ -460,29 +467,29 @@ public class UsersManagementController {
      */
     @FXML
     void tableClickToSelectItem(MouseEvent event) {
-        try {
-            // Check if a user is selected in the table
-            if (tableManageUser.getSelectionModel().getSelectedItem() != null) {
-                // Get the index and ID of the selected user
-                int deleteid = getSelectObjectIDFromTable();
-                // Retrieve the account information from the service
-                Account account = userManagementService.findAccountById(deleteid);
-
-                // Check if the selected account is an admin
-                if (account.getRoleList().get(0).equals("ROLE_ADMIN")) {
-                    // Disable delete and inactive buttons for admin accounts
-                    btnDeleteAccount.setDisable(true);
-                    btnInactiveAccount.setDisable(true);
-                } else {
-                    // Enable delete and inactive buttons for regular user accounts
-                    btnDeleteAccount.setDisable(false);
-                    btnInactiveAccount.setDisable(false);
-                }
-            }
-        } catch (Exception e) {
-            LOGGER.error("Error when click selected item", e);
-            throw new RuntimeException(e);
-        }
+//        try {
+//            // Check if a user is selected in the table
+//            if (tableManageUser.getSelectionModel().getSelectedItem() != null) {
+//                // Get the index and ID of the selected user
+//                int deleteid = getSelectObjectIDFromTable();
+//                // Retrieve the account information from the service
+//                Account account = userManagementService.findAccountById(deleteid);
+//
+//                // Check if the selected account is an admin
+//                if (account.getRoleList().get(0).equals("ROLE_ADMIN")) {
+//                    // Disable delete and inactive buttons for admin accounts
+//                    btnDeleteAccount.setDisable(true);
+//                    btnInactiveAccount.setDisable(true);
+//                } else {
+//                    // Enable delete and inactive buttons for regular user accounts
+//                    btnDeleteAccount.setDisable(false);
+//                    btnInactiveAccount.setDisable(false);
+//                }
+//            }
+//        } catch (Exception e) {
+//            LOGGER.error("Error when click selected item", e);
+//            throw new RuntimeException(e);
+//        }
     }
 
     /**
@@ -608,5 +615,13 @@ public class UsersManagementController {
     // Used to switch between scence
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        btnEditAccount.disableProperty().bind(tableManageUser.getSelectionModel().selectedItemProperty().isNull());
+        btnDeleteAccount.disableProperty().bind(tableManageUser.getSelectionModel().selectedItemProperty().isNull());
+        btnActiveAccount.disableProperty().bind(tableManageUser.getSelectionModel().selectedItemProperty().isNull());
+        btnInactiveAccount.disableProperty().bind(tableManageUser.getSelectionModel().selectedItemProperty().isNull());
     }
 }

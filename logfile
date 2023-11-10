@@ -5384,3 +5384,78 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 10-11-2023 17:48:13 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
 [INFO ] 10-11-2023 17:48:37 [main] HelloApplication:40 - Start application
 [INFO ] 10-11-2023 17:48:40 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 23:25:22 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 23:25:26 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 23:25:48 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 10-11-2023 23:29:07 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 23:29:10 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 10-11-2023 23:39:34 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 23:39:42 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 10-11-2023 23:49:52 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 23:50:05 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[ERROR] 10-11-2023 23:50:07 [JavaFX Application Thread] UsersManagementController:486 - Error when click selected item
+java.lang.RuntimeException: Button.disable : A bound value cannot be set.
+	at javafx.beans.property.BooleanPropertyBase.set(BooleanPropertyBase.java:141) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Node.setDisable(Node.java:1786) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.huy.appnoithat.Controller.UserManagement.UsersManagementController.tableClickToSelectItem(UsersManagementController.java:481) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:77) ~[javafx-base-17.0.6-linux.jar:?]
+	at jdk.internal.reflect.GeneratedMethodAccessor2.invoke(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:275) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84) ~[javafx-fxml-17.0.6-linux.jar:?]
+	at javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1852) ~[javafx-fxml-17.0.6-linux.jar:?]
+	at javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1724) ~[javafx-fxml-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3602) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3906) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[ERROR] 10-11-2023 23:50:07 [JavaFX Application Thread] GlobalExceptionHandler:25 - Button.disable : A bound value cannot be set.
+[ERROR] 10-11-2023 23:50:07 [JavaFX Application Thread] GlobalExceptionHandler:25 - java.lang.RuntimeException: Button.disable : A bound value cannot be set.
+[ERROR] 10-11-2023 23:50:07 [JavaFX Application Thread] GlobalExceptionHandler:25 - null
+[ERROR] 10-11-2023 23:50:07 [JavaFX Application Thread] GlobalExceptionHandler:25 - java.lang.reflect.InvocationTargetException
+[INFO ] 10-11-2023 23:51:07 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 23:51:09 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 10-11-2023 23:53:15 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 23:53:17 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 10-11-2023 23:53:45 [JavaFX Application Thread] HomeController:119 - Login as huy2000 with role User
+[INFO ] 10-11-2023 23:53:56 [JavaFX Application Thread] HomeController:119 - Login as huy2000 with role User
+[INFO ] 10-11-2023 23:54:12 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[ERROR] 10-11-2023 23:54:42 [JavaFX Application Thread] GlobalExceptionHandler:25 - argument "content" is null
+[ERROR] 10-11-2023 23:54:42 [JavaFX Application Thread] GlobalExceptionHandler:25 - null
+[ERROR] 10-11-2023 23:54:42 [JavaFX Application Thread] GlobalExceptionHandler:25 - java.lang.reflect.InvocationTargetException
+[INFO ] 10-11-2023 23:56:11 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 00:01:36 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 00:01:49 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:03:09 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:05:35 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 00:05:39 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:06:01 [JavaFX Application Thread] HomeController:119 - Login as van with role User
