@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Exception;
 
 import com.huy.appnoithat.Common.PopupUtils;
-import javafx.application.Platform;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

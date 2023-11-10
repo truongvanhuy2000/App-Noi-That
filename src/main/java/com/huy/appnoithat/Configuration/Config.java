@@ -11,7 +11,7 @@ public class Config {
         public static final String COMPANY_INFO_DIRECTORY =
                 Paths.get(CURRENT_DIRECTORY, "Data", "PersistenceData", "info.json").toString();
         public static final String NOTE_AREA_DIRECTORY =
-                Paths.get(CURRENT_DIRECTORY, "Data", "PersistenceData", "note.json").toString();;
+                Paths.get(CURRENT_DIRECTORY, "Data", "PersistenceData", "note.json").toString();
         public static final String CONFIG_DIRECTORY =
                 Paths.get(CURRENT_DIRECTORY, "Data", "Configuration", "config.yaml").toString();
     }

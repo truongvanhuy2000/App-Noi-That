@@ -1,12 +1,10 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Enums.FileType;
 import javafx.event.ActionEvent;
@@ -52,15 +50,9 @@ public class ButtonHandler {
             return;
         }
         switch (ItemTypeUtils.determineItemType(currentSelectedItem)) {
-            case ROMAN -> {
-                handleContinuousAddForRomanStt(currentSelectedItem);
-            }
-            case AlPHA -> {
-                handleContinuousAddForAlphaStt(currentSelectedItem);
-            }
-            case NUMERIC -> {
-                handleContinuousAddForNumericStt();
-            }
+            case ROMAN -> handleContinuousAddForRomanStt(currentSelectedItem);
+            case AlPHA -> handleContinuousAddForAlphaStt(currentSelectedItem);
+            case NUMERIC -> handleContinuousAddForNumericStt();
         }
         TableUtils.reArrangeList(TableNoiThat);
     }

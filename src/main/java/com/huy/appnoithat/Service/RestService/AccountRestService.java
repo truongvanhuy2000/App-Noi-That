@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Entity.Account;
+import com.huy.appnoithat.Entity.AccountInformation;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
@@ -12,7 +13,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AccountRestService {
     final static Logger LOGGER = LogManager.getLogger(AccountRestService.class);
@@ -29,7 +32,7 @@ public class AccountRestService {
     }
 
     private AccountRestService() {
-        this.sessionService = new UserSessionService();;
+        this.sessionService = new UserSessionService();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
@@ -160,5 +163,34 @@ public class AccountRestService {
     public boolean isUsernameValid(String username) {
         String response = this.webClientService.unauthorizedHttpGetJson("/api/register/usernameValidation?username=" + username);
         return response != null;
+    }
+    public boolean changePassword(String oldPassword, String newPassword) {
+        String token = this.sessionService.getToken();
+        Map<String, String> requestBody = new HashMap<>();
+        requestBody.put("oldPassword", oldPassword);
+        requestBody.put("newPassword", newPassword);
+        try {
+            String response = this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/changePassword",
+                    objectMapper.writeValueAsString(requestBody), token);
+            if (response != null) {
+                return true;
+            }
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
+    public boolean updateInformation(AccountInformation accountInformation) {
+        String token = this.sessionService.getToken();
+        try {
+            String response = this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/updateInfo",
+                    objectMapper.writeValueAsString(accountInformation), token);
+            if (response != null) {
+                return true;
+            }
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
     }
 }

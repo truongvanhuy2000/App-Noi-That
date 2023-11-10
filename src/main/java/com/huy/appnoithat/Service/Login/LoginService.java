@@ -6,8 +6,6 @@ import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-
 public class LoginService {
     final static Logger LOGGER = LogManager.getLogger(LoginService.class);
     private final UserSessionService sessionService;

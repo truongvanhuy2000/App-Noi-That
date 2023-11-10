@@ -21,7 +21,7 @@ public class StageFactory {
         Stage stage = new Stage();
         stage.setScene(nextScene);
         stage.setResizable(false);
-        setUpStage(stage);;
+        setUpStage(stage);
         return stage;
     }
     public static Stage CreateNewUnresizeableStage(Scene nextScene) {

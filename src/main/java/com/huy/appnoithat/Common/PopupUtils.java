@@ -52,10 +52,7 @@ public class PopupUtils {
         alert.setHeaderText(header);
         alert.setContentText(content);
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent()) {
-            return result.get() == ButtonType.OK;
-        }
-        return false;
+        return result.filter(buttonType -> buttonType == ButtonType.OK).isPresent();
     }
     public static void showLoading(Stage stage) {
         LoadingScene loadingScene = LoadingScene.getInstance();

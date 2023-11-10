@@ -7,11 +7,11 @@ import lombok.Getter;
 
 @Getter
 public class BangThanhToan {
-    private SimpleLongProperty DatCocThietKe10;
-    private SimpleLongProperty DatCocThiCong30;
-    private SimpleLongProperty HangDenChanCongTrinh50;
-    private SimpleLongProperty NghiemThuQuyet;
-    private SimpleLongProperty TongTien;
+    private final SimpleLongProperty DatCocThietKe10;
+    private final SimpleLongProperty DatCocThiCong30;
+    private final SimpleLongProperty HangDenChanCongTrinh50;
+    private final SimpleLongProperty NghiemThuQuyet;
+    private final SimpleLongProperty TongTien;
 
     public BangThanhToan(Long datCocThietKe10, Long datCocThiCong30, Long hangDenChanCongTrinh50, Long nghiemThuQuyet, Long tongTien) {
         DatCocThietKe10 = new SimpleLongProperty(datCocThietKe10);

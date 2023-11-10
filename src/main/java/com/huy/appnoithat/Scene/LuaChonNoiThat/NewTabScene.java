@@ -12,8 +12,8 @@ import java.util.Objects;
 @Getter
 public class NewTabScene {
     private static final String viewPath = "/com/huy/appnoithat/Scene/view/TabLayout.fxml";
-    private Scene scene;
-    private Parent root;
+    private final Scene scene;
+    private final Parent root;
     private final NewTabController newTabController;
 
     public NewTabScene() {

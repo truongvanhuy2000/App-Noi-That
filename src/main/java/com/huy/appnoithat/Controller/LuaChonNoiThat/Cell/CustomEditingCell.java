@@ -1,12 +1,10 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
 import com.huy.appnoithat.Common.KeyboardUtils;
-import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Enums.Action;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeTableCell;
-import javafx.scene.control.TreeTableRow;
 
 public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, String> {
     private TextField textField;

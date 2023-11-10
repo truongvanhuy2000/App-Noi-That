@@ -7,7 +7,6 @@ import javafx.scene.control.TreeItem;
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;
 
-import java.util.Objects;
 import java.util.Optional;
 
 @UtilityClass

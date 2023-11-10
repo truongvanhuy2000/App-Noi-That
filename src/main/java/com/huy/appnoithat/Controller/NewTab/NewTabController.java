@@ -1,20 +1,13 @@
 package com.huy.appnoithat.Controller.NewTab;
 
-import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Operation.ExportOperation;
 import com.huy.appnoithat.Controller.NewTab.Operation.ContentOperation;
 import com.huy.appnoithat.Controller.NewTab.Operation.TabOperation;
-import com.huy.appnoithat.DataModel.DataPackage;
-import com.huy.appnoithat.DataModel.SaveFile.TabData;
 import com.huy.appnoithat.Enums.FileType;
-import com.huy.appnoithat.Scene.LuaChonNoiThat.LuaChonNoiThatScene;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,12 +18,8 @@ import lombok.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
 import java.net.URL;
-import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 @Data

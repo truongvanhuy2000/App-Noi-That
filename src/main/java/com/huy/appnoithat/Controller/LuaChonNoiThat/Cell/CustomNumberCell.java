@@ -7,7 +7,7 @@ import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.util.StringConverter;
 
 public class CustomNumberCell<T> extends TextFieldTreeTableCell<BangNoiThat, T> {
-    private TreeTableView<BangNoiThat> TableNoiThat;
+    private final TreeTableView<BangNoiThat> TableNoiThat;
     private boolean isKichThuocCollum = false;
     /**
      * Constructs a CustomNumberCell with the given StringConverter and TreeTableView.

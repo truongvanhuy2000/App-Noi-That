@@ -23,13 +23,20 @@ import javafx.scene.control.*;
 import javafx.util.converter.DoubleStringConverter;
 
 public class SetupBangNoiThat {
-    private TreeTableColumn<BangNoiThat, Double> Cao, Dai, Rong, KhoiLuong;
-    private TreeTableColumn<BangNoiThat, Long> DonGia, ThanhTien;
-    private TreeTableColumn<BangNoiThat, String> DonVi, HangMuc, VatLieu, STT;
-    private TreeTableView<BangNoiThat> TableNoiThat;
-    private TableView<BangThanhToan> bangThanhToan;
-    private int itemCount = 0;
-    private LuaChonNoiThatController luaChonNoiThatController;
+    private final TreeTableColumn<BangNoiThat, Double> Cao;
+    private final TreeTableColumn<BangNoiThat, Double> Dai;
+    private final TreeTableColumn<BangNoiThat, Double> Rong;
+    private final TreeTableColumn<BangNoiThat, Double> KhoiLuong;
+    private final TreeTableColumn<BangNoiThat, Long> DonGia;
+    private final TreeTableColumn<BangNoiThat, Long> ThanhTien;
+    private final TreeTableColumn<BangNoiThat, String> DonVi;
+    private final TreeTableColumn<BangNoiThat, String> HangMuc;
+    private final TreeTableColumn<BangNoiThat, String> VatLieu;
+    private final TreeTableColumn<BangNoiThat, String> STT;
+    private final TreeTableView<BangNoiThat> TableNoiThat;
+    private final TableView<BangThanhToan> bangThanhToan;
+    private final int itemCount = 0;
+    private final LuaChonNoiThatController luaChonNoiThatController;
     public SetupBangNoiThat(LuaChonNoiThatController luaChonNoiThatController) {
         Cao = luaChonNoiThatController.getCao();
         Dai = luaChonNoiThatController.getDai();

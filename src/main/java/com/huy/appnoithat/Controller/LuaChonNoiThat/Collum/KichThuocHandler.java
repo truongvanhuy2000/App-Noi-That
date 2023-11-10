@@ -8,9 +8,11 @@ import javafx.scene.control.TreeTableView;
 
 public class KichThuocHandler {
     //    final static Logger LOGGER = LogManager.getLogger(KichThuocHandler.class);
-    private TreeTableView<BangNoiThat> TableNoiThat;
-    private TreeTableColumn<BangNoiThat, Double> Cao, Dai, Rong;
-    private TreeTableColumn<BangNoiThat, Long> DonGia;
+    private final TreeTableView<BangNoiThat> TableNoiThat;
+    private final TreeTableColumn<BangNoiThat, Double> Cao;
+    private final TreeTableColumn<BangNoiThat, Double> Dai;
+    private final TreeTableColumn<BangNoiThat, Double> Rong;
+    private final TreeTableColumn<BangNoiThat, Long> DonGia;
     /**
      * Handler class for managing size-related columns in a TreeTableView.
      * Manages the editing events for columns representing height (Cao), length (Dai),
