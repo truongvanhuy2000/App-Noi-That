@@ -5311,3 +5311,78 @@ java.lang.NumberFormatException: For input string: ""
 	at java.lang.Thread.run(Thread.java:833) [?:?]
 [INFO ] 09-11-2023 13:52:59 [JavaFX Application Thread] HomeController:112 - Login as vanhuy with role User
 [INFO ] 09-11-2023 13:53:08 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 09-11-2023 14:00:25 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 14:00:32 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[ERROR] 09-11-2023 14:17:59 [JavaFX Application Thread] NoiThatFileService:51 - Failed to export fileC:\Users\Admin\IdeaProjects\App-noi-that\Data\Temp\backup-2023-11-09-14-17-59-034.nt (The system cannot find the path specified)
+[ERROR] 09-11-2023 14:17:59 [JavaFX Application Thread] GlobalExceptionHandler:26 - C:\Users\Admin\IdeaProjects\App-noi-that\Data\Temp\backup-2023-11-09-14-17-59-034.nt (The system cannot find the path specified)
+[ERROR] 09-11-2023 14:17:59 [JavaFX Application Thread] GlobalExceptionHandler:26 - java.io.FileNotFoundException: C:\Users\Admin\IdeaProjects\App-noi-that\Data\Temp\backup-2023-11-09-14-17-59-034.nt (The system cannot find the path specified)
+[ERROR] 09-11-2023 14:20:40 [JavaFX Application Thread] NoiThatFileService:51 - Failed to export fileC:\Users\Admin\IdeaProjects\App-noi-that\Data\Temp\backup-2023-11-09-14-20-40-802.nt (The system cannot find the path specified)
+[ERROR] 09-11-2023 14:20:40 [JavaFX Application Thread] GlobalExceptionHandler:26 - C:\Users\Admin\IdeaProjects\App-noi-that\Data\Temp\backup-2023-11-09-14-20-40-802.nt (The system cannot find the path specified)
+[ERROR] 09-11-2023 14:20:40 [JavaFX Application Thread] GlobalExceptionHandler:26 - java.io.FileNotFoundException: C:\Users\Admin\IdeaProjects\App-noi-that\Data\Temp\backup-2023-11-09-14-20-40-802.nt (The system cannot find the path specified)
+[ERROR] 09-11-2023 14:30:40 [JavaFX Application Thread] NoiThatFileService:51 - Failed to export fileC:\Users\Admin\IdeaProjects\App-noi-that\Data\Temp\backup-2023-11-09-14-30-40-807.nt (The system cannot find the path specified)
+[ERROR] 09-11-2023 14:30:40 [JavaFX Application Thread] GlobalExceptionHandler:26 - C:\Users\Admin\IdeaProjects\App-noi-that\Data\Temp\backup-2023-11-09-14-30-40-807.nt (The system cannot find the path specified)
+[ERROR] 09-11-2023 14:30:40 [JavaFX Application Thread] GlobalExceptionHandler:26 - java.io.FileNotFoundException: C:\Users\Admin\IdeaProjects\App-noi-that\Data\Temp\backup-2023-11-09-14-30-40-807.nt (The system cannot find the path specified)
+[INFO ] 09-11-2023 14:39:25 [JavaFX Application Thread] NewTabController:76 - Auto save is disabled
+[INFO ] 09-11-2023 14:39:39 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 14:39:41 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[ERROR] 09-11-2023 14:40:20 [JavaFX Application Thread] GlobalExceptionHandler:26 - Index -5 out of bounds for length 9
+[ERROR] 09-11-2023 14:40:20 [JavaFX Application Thread] GlobalExceptionHandler:26 - null
+[ERROR] 09-11-2023 14:40:20 [JavaFX Application Thread] GlobalExceptionHandler:26 - java.lang.reflect.InvocationTargetException
+[INFO ] 09-11-2023 14:59:22 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 14:59:24 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 09-11-2023 14:59:57 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 09-11-2023 15:01:19 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 09-11-2023 15:44:06 [main] HelloApplication:41 - Start application
+[INFO ] 09-11-2023 15:44:10 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[ERROR] 09-11-2023 15:44:18 [JavaFX Application Thread] UsersManagementController:347 - Error when parse string to int
+java.lang.NumberFormatException: For input string: ""
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:678) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:786) ~[?:?]
+	at com.huy.appnoithat.Controller.UserManagement.UsersManagementController.parseStringToINT(UsersManagementController.java:345) ~[classes/:?]
+	at com.huy.appnoithat.Controller.UserManagement.UsersManagementController.lambda$EditAccount$5(UsersManagementController.java:404) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-17.0.6-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-win.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8792) ~[javafx-graphics-17.0.6-win.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-17.0.6-win.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208) ~[javafx-controls-17.0.6-win.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-17.0.6-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-win.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3897) ~[javafx-graphics-17.0.6-win.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-win.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-win.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184) ~[javafx-graphics-17.0.6-win.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
