@@ -6,9 +6,17 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class SetupTruongThongTin {
-    private TextField TenCongTy, VanPhong, DiaChiXuong, DienThoaiCongTy, Email;
-    private TextField TenKhachHang, DienThoaiKhachHang, DiaChiKhachHang, NgayLapBaoGia, SanPham;
-    private TextArea noteArea;
+    private final TextField TenCongTy;
+    private final TextField VanPhong;
+    private final TextField DiaChiXuong;
+    private final TextField DienThoaiCongTy;
+    private final TextField Email;
+    private final TextField TenKhachHang;
+    private final TextField DienThoaiKhachHang;
+    private final TextField DiaChiKhachHang;
+    private final TextField NgayLapBaoGia;
+    private final TextField SanPham;
+    private final TextArea noteArea;
 
     public SetupTruongThongTin(LuaChonNoiThatController luaChonNoiThatController) {
         TenCongTy = luaChonNoiThatController.getTenCongTy();

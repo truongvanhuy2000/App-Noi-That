@@ -5316,3 +5316,71 @@ java.lang.NumberFormatException: For input string: ""
 [ERROR] 09-11-2023 16:06:17 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/index  null
 [INFO ] 09-11-2023 16:06:28 [main] HelloApplication:41 - Start application
 [INFO ] 09-11-2023 16:06:36 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 10-11-2023 13:57:15 [main] HelloApplication:41 - Start application
+[INFO ] 10-11-2023 13:57:23 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 10-11-2023 13:57:35 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 10-11-2023 14:04:09 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 14:04:15 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 10-11-2023 14:11:46 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 14:11:51 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 10-11-2023 14:12:02 [JavaFX Application Thread] HomeController:112 - Login as admin with role Admin
+[INFO ] 10-11-2023 14:12:46 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 10-11-2023 16:08:02 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 16:08:05 [JavaFX Application Thread] HomeController:112 - Login as kim with role User
+[INFO ] 10-11-2023 16:12:24 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 16:12:29 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 16:12:48 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 16:12:50 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 16:12:54 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 16:12:56 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 16:14:18 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 16:14:20 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 16:14:59 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 16:15:02 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 16:44:01 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 16:44:03 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 16:44:47 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 16:44:48 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 16:46:30 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 16:46:34 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[ERROR] 10-11-2023 16:47:52 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPUT /api/changePassword eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NjAwMzY0LCJleHAiOjQyOTE2MDAzNjR9.bMMgayVDeK9YalGCAfeEKpRLPM2yVMQwxHsLTSuiK9YgzMbVS2XbmIfKwweWWKG6LwgunhEqpjJIz9AOmWMgtQ {"oldPassword":"kim","newPassword":"123456789"}
+[ERROR] 10-11-2023 16:50:30 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPUT /api/changePassword eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NjAwMzY0LCJleHAiOjQyOTE2MDAzNjR9.bMMgayVDeK9YalGCAfeEKpRLPM2yVMQwxHsLTSuiK9YgzMbVS2XbmIfKwweWWKG6LwgunhEqpjJIz9AOmWMgtQ {"oldPassword":"kim","newPassword":"123456"}
+[INFO ] 10-11-2023 16:52:48 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 16:52:50 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 16:53:53 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 16:53:55 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 16:57:08 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 16:57:09 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 17:05:15 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 17:05:18 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 17:06:52 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 10-11-2023 17:07:21 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 17:08:31 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[ERROR] 10-11-2023 17:08:55 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPUT /api/changePassword eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NjEwOTEwLCJleHAiOjQyOTE2MTA5MTB9.-YEOzXdq0wwd3EsrnwOsmCh1w20t7wcy5CBKVv3pCMl7tQIk2Jqu_Sp6LGySTZJwdDqbCYUV3ypvItNvppiCHw {"oldPassword":"123456","newPassword":"kim"}
+[INFO ] 10-11-2023 17:09:47 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 17:11:19 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 17:12:35 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[ERROR] 10-11-2023 17:13:15 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPUT /api/changePassword eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NjExMTU0LCJleHAiOjQyOTE2MTExNTR9.X39zaz8SwnbXQ-zq10KvlbbNIqwHUEVlKSGN1SIZv_th1_wP4k6mdt260qIEHb4uY-aBfsSoBVrDp2WbqqpeXw {"oldPassword":"123456","newPassword":"1"}
+[ERROR] 10-11-2023 17:14:54 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPUT /api/changePassword eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NjExMTU0LCJleHAiOjQyOTE2MTExNTR9.X39zaz8SwnbXQ-zq10KvlbbNIqwHUEVlKSGN1SIZv_th1_wP4k6mdt260qIEHb4uY-aBfsSoBVrDp2WbqqpeXw {"oldPassword":"kim","newPassword":"1"}
+[ERROR] 10-11-2023 17:17:12 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPUT /api/changePassword eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NjExMTU0LCJleHAiOjQyOTE2MTExNTR9.X39zaz8SwnbXQ-zq10KvlbbNIqwHUEVlKSGN1SIZv_th1_wP4k6mdt260qIEHb4uY-aBfsSoBVrDp2WbqqpeXw {"oldPassword":"12","newPassword":"123"}
+[ERROR] 10-11-2023 17:30:55 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPUT /api/changePassword eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NjExMTU0LCJleHAiOjQyOTE2MTExNTR9.X39zaz8SwnbXQ-zq10KvlbbNIqwHUEVlKSGN1SIZv_th1_wP4k6mdt260qIEHb4uY-aBfsSoBVrDp2WbqqpeXw {"oldPassword":"123456","newPassword":"kim"}
+[INFO ] 10-11-2023 17:42:22 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 17:42:28 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 10-11-2023 17:43:16 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 17:43:20 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 10-11-2023 17:43:29 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 17:44:07 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 17:45:50 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 17:45:55 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 17:46:22 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 17:46:27 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 17:47:00 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 17:47:02 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 17:47:22 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 17:47:25 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 17:47:48 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 17:47:53 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 17:48:08 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 17:48:13 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 17:48:37 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 17:48:40 [JavaFX Application Thread] HomeController:119 - Login as kim with role User

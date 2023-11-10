@@ -1,23 +1,16 @@
 package com.huy.appnoithat.Service.Event;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huy.appnoithat.Configuration.Config;
-import com.huy.appnoithat.DataModel.Event.NoiThatUpdate;
 import com.huy.appnoithat.Service.LuaChonNoiThat.CacheNoiThatRequestService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-import java.nio.file.LinkOption;
-import java.util.function.Consumer;
-
 public class DBUpdateEventService {
     final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatService.class);
     private static final String PATH = "/api/bangnoithat/event/DBModification";
     private static DBUpdateEventService instance;
-    private CacheNoiThatRequestService cacheNoiThatRequestService;
+    private final CacheNoiThatRequestService cacheNoiThatRequestService;
 
     ObjectMapper objectMapper = new ObjectMapper();
     public static synchronized DBUpdateEventService getInstance() {

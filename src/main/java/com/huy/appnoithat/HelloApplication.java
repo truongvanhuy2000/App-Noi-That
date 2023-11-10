@@ -1,6 +1,5 @@
 package com.huy.appnoithat;
 
-import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Exception.GlobalExceptionHandler;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.LoginScene;

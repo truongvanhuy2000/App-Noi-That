@@ -7,6 +7,7 @@ import com.huy.appnoithat.Scene.LoginScene;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.FileNoiThatExplorerScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementScene;
+import com.huy.appnoithat.Scene.UserDetailScene;
 import com.huy.appnoithat.Service.Login.LoginService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import javafx.event.ActionEvent;
@@ -44,6 +45,12 @@ public class HomeController {
     public HomeController() {
         this.sessionService = new UserSessionService();
         loginService = new LoginService();
+    }
+    @FXML
+    void ChangeUserDetail(ActionEvent event) {
+        UserDetailScene scene = new UserDetailScene();
+        StageFactory.CreateNewUnresizeableStage(scene.getScene());
+        scene.getController().init();
     }
     @FXML
     void xuatChuKy(ActionEvent event) {

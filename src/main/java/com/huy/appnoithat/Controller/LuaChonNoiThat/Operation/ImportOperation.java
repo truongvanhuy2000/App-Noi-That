@@ -11,7 +11,6 @@ import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.DataModel.ThongTinKhachHang;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import com.huy.appnoithat.DataModel.ThongTinThanhToan;
-import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,19 +20,26 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 public class ImportOperation {
     final static Logger LOGGER = LogManager.getLogger(ImportOperation.class);
-    private TextField TenCongTy, VanPhong, DiaChiXuong, DienThoaiCongTy, Email;
+    private final TextField TenCongTy;
+    private final TextField VanPhong;
+    private final TextField DiaChiXuong;
+    private final TextField DienThoaiCongTy;
+    private final TextField Email;
     // Thong tin ve khach hang
-    private TextField TenKhachHang, DienThoaiKhachHang, DiaChiKhachHang, NgayLapBaoGia, SanPham;
+    private final TextField TenKhachHang;
+    private final TextField DienThoaiKhachHang;
+    private final TextField DiaChiKhachHang;
+    private final TextField NgayLapBaoGia;
+    private final TextField SanPham;
     // Bang noi that
-    private TreeTableView<BangNoiThat> TableNoiThat;
-    private TableView<BangThanhToan> bangThanhToan;
-    private TextArea noteTextArea;
-    private ImageView ImageView;
+    private final TreeTableView<BangNoiThat> TableNoiThat;
+    private final TableView<BangThanhToan> bangThanhToan;
+    private final TextArea noteTextArea;
+    private final ImageView ImageView;
     LuaChonNoiThatController luaChonNoiThatController;
 
     public ImportOperation(LuaChonNoiThatController luaChonNoiThatController) {

@@ -119,6 +119,6 @@ public class TableCalculationUtils {
 
     public static long round(double input) {
         return Math.round(input/1000000) * 1000000;
-    };
+    }
 
 }

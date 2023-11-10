@@ -31,14 +31,14 @@ public class ExportXLS implements ExportFile {
     private static final String DEFAULT_TEMPLATE_PATH = Config.FILE_EXPORT.XLSX_TEMPLATE_DIRECTORY;
     private static final String DEFAULT_OUTPUT_PATH = Config.FILE_EXPORT.XLSX_DEFAULT_OUTPUT_DIRECTORY;
 
-    private ThongTinCongTy thongTinCongTy;
-    private ThongTinKhachHang thongTinKhachHang;
+    private final ThongTinCongTy thongTinCongTy;
+    private final ThongTinKhachHang thongTinKhachHang;
     private String noteArea;
     private List<ThongTinNoiThat> thongTinNoiThatList;
     private ThongTinThanhToan thongTinThanhToan;
     private OutputStream outputFile;
 
-    private InputStream inputTemplate;
+    private final InputStream inputTemplate;
 
     private XSSFWorkbook workbook;
     private XSSFSheet spreadsheet;

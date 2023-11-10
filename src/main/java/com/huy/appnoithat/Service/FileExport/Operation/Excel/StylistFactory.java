@@ -29,15 +29,9 @@ public class StylistFactory {
         if (style.containsKey(Stylist.Element.BORDER)) {
             BorderStyle borderStyle = BorderStyle.NONE;
             switch (style.get(Stylist.Element.BORDER)) {
-                case Stylist.Style.BorderStyle_THIN -> {
-                    borderStyle = BorderStyle.THIN;
-                }
-                case Stylist.Style.BorderStyle_MEDIUM -> {
-                    borderStyle = BorderStyle.MEDIUM;
-                }
-                case Stylist.Style.BorderStyle_NO -> {
-                    borderStyle = BorderStyle.NONE;
-                }
+                case Stylist.Style.BorderStyle_THIN -> borderStyle = BorderStyle.THIN;
+                case Stylist.Style.BorderStyle_MEDIUM -> borderStyle = BorderStyle.MEDIUM;
+                case Stylist.Style.BorderStyle_NO -> borderStyle = BorderStyle.NONE;
             }
             cellStyle.setBorderTop(borderStyle);
             cellStyle.setBorderBottom(borderStyle);
@@ -94,12 +88,8 @@ public class StylistFactory {
                 textString.applyFont(0, data.length(), fontStyleFactory(Stylist.Style.Font_TimeNewRoman_NORMAL, size));
                 textString.applyFont(0, endPos, fontStyleFactory(Stylist.Style.Font_TimeNewRoman_BOLDTALIC, size));
             }
-            case Stylist.Style.Text_BOLDALL -> {
-                textString.applyFont(0, data.length(), fontStyleFactory(Stylist.Style.Font_TimeNewRoman_BOLD, size));
-            }
-            case Stylist.Style.Text_NORMAL -> {
-                textString.applyFont(0, data.length(), fontStyleFactory(Stylist.Style.Font_TimeNewRoman_NORMAL, size));
-            }
+            case Stylist.Style.Text_BOLDALL -> textString.applyFont(0, data.length(), fontStyleFactory(Stylist.Style.Font_TimeNewRoman_BOLD, size));
+            case Stylist.Style.Text_NORMAL -> textString.applyFont(0, data.length(), fontStyleFactory(Stylist.Style.Font_TimeNewRoman_NORMAL, size));
             case Stylist.Style.Text_CUSTOMBOLD3 -> {
                 // Define a regular expression pattern to match the desired text
                 Pattern pattern = Pattern.compile("-\\s(.*?):");

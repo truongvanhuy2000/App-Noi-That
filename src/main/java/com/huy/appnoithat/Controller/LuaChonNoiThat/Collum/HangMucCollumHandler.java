@@ -5,7 +5,6 @@ import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Entity.ThongSo;
@@ -13,14 +12,12 @@ import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -54,7 +51,7 @@ public class HangMucCollumHandler {
             rowValue.getValue().setHangMuc(newValue);
             if (ItemTypeUtils.determineItemType(stt) == ItemType.NUMERIC) {
                 automaticallyInsertVatLieuAndThongSo(event);
-            };
+            }
         }
     }
     private void automaticallyInsertVatLieuAndThongSo(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
@@ -88,7 +85,7 @@ public class HangMucCollumHandler {
             }
 
             event.getRowValue().getValue().setVatLieu(firstVatLieu);
-            event.getTreeTableView().edit(event.getTreeTablePosition().getRow(), event.getTreeTableView().getVisibleLeafColumn(2));;
+            event.getTreeTableView().edit(event.getTreeTablePosition().getRow(), event.getTreeTableView().getVisibleLeafColumn(2));
         }
 
     }
