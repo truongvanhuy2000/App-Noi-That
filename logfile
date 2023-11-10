@@ -5384,109 +5384,105 @@ java.lang.NumberFormatException: For input string: ""
 [INFO ] 10-11-2023 17:48:13 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
 [INFO ] 10-11-2023 17:48:37 [main] HelloApplication:40 - Start application
 [INFO ] 10-11-2023 17:48:40 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
-[INFO ] 10-11-2023 18:56:28 [main] HelloApplication:40 - Start application
-[ERROR] 10-11-2023 18:56:29 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NjEzMDQxLCJleHAiOjQyOTE2MTMwNDF9.GPDpLkZ5kK3nadZwRtoFalAF2rGh7qKV9Swyd_liraARrfoNGuttEZdKbNvyVN5De1Wm3JYWOv51Brp26eAIdw null
-[ERROR] 10-11-2023 18:56:29 [JavaFX Application Thread] GlobalExceptionHandler:25 - argument "content" is null
-[INFO ] 10-11-2023 18:56:44 [main] HelloApplication:40 - Start application
-[ERROR] 10-11-2023 18:56:44 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NjEzMDQxLCJleHAiOjQyOTE2MTMwNDF9.GPDpLkZ5kK3nadZwRtoFalAF2rGh7qKV9Swyd_liraARrfoNGuttEZdKbNvyVN5De1Wm3JYWOv51Brp26eAIdw null
-[ERROR] 10-11-2023 18:56:45 [JavaFX Application Thread] GlobalExceptionHandler:25 - argument "content" is null
-[INFO ] 10-11-2023 18:57:36 [main] HelloApplication:40 - Start application
-[ERROR] 10-11-2023 18:57:37 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NjEzMDQxLCJleHAiOjQyOTE2MTMwNDF9.GPDpLkZ5kK3nadZwRtoFalAF2rGh7qKV9Swyd_liraARrfoNGuttEZdKbNvyVN5De1Wm3JYWOv51Brp26eAIdw null
-[ERROR] 10-11-2023 18:57:37 [JavaFX Application Thread] GlobalExceptionHandler:25 - argument "content" is null
-[INFO ] 10-11-2023 18:58:16 [main] HelloApplication:40 - Start application
-[ERROR] 10-11-2023 18:58:17 [JavaFX Application Thread] PersistenceStorageService:104 - Failed to read user sessionNo content to map due to end-of-input
- at [Source: (File); line: 1, column: 0]
-[ERROR] 10-11-2023 18:58:17 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/index  null
-[ERROR] 10-11-2023 18:58:22 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
-[ERROR] 10-11-2023 18:58:29 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPOST /api/login null {"id":0,"username":"kim","password":"KIM","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
-[ERROR] 10-11-2023 18:58:42 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
-[ERROR] 10-11-2023 18:59:09 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
-[ERROR] 10-11-2023 18:59:17 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
-[INFO ] 10-11-2023 19:00:01 [main] HelloApplication:40 - Start application
-[ERROR] 10-11-2023 19:00:01 [JavaFX Application Thread] PersistenceStorageService:104 - Failed to read user sessionNo content to map due to end-of-input
- at [Source: (File); line: 1, column: 0]
-[INFO ] 10-11-2023 19:00:12 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 10-11-2023 19:01:08 [JavaFX Application Thread] HomeController:119 - Login as quan with role User
-[INFO ] 10-11-2023 23:14:11 [main] HelloApplication:40 - Start application
-[INFO ] 10-11-2023 23:14:17 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 10-11-2023 23:15:30 [JavaFX Application Thread] HomeController:119 - Login as van with role User
-[ERROR] 10-11-2023 23:17:45 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
-[ERROR] 10-11-2023 23:17:56 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
-[INFO ] 10-11-2023 23:18:19 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 10-11-2023 23:18:55 [JavaFX Application Thread] HomeController:119 - Login as van with role User
-[INFO ] 10-11-2023 23:20:25 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
-[INFO ] 10-11-2023 23:20:43 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[ERROR] 10-11-2023 23:20:44 [JavaFX Application Thread] GlobalExceptionHandler:25 - argument "content" is null
-[INFO ] 10-11-2023 23:21:59 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 10-11-2023 23:23:14 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 10-11-2023 23:25:44 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 10-11-2023 23:26:42 [JavaFX Application Thread] HomeController:119 - Login as ngoclong1 with role User
-[INFO ] 10-11-2023 23:28:16 [JavaFX Application Thread] HomeController:119 - Login as ngoclong1 with role User
-[INFO ] 10-11-2023 23:29:18 [JavaFX Application Thread] HomeController:119 - Login as ngoclong1 with role User
-[INFO ] 10-11-2023 23:29:42 [JavaFX Application Thread] HomeController:119 - Login as ngoclong1 with role User
-[INFO ] 10-11-2023 23:30:15 [JavaFX Application Thread] HomeController:119 - Login as ngoclong1 with role User
-[INFO ] 10-11-2023 23:30:49 [JavaFX Application Thread] HomeController:119 - Login as ngoclong1 with role User
-[INFO ] 10-11-2023 23:32:20 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[ERROR] 10-11-2023 23:32:54 [JavaFX Application Thread] GlobalExceptionHandler:25 - argument "content" is null
-[ERROR] 10-11-2023 23:32:54 [JavaFX Application Thread] GlobalExceptionHandler:25 - null
-[ERROR] 10-11-2023 23:32:54 [JavaFX Application Thread] GlobalExceptionHandler:25 - java.lang.reflect.InvocationTargetException
-[INFO ] 10-11-2023 23:33:26 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 10-11-2023 23:34:22 [main] HelloApplication:40 - Start application
-[INFO ] 10-11-2023 23:34:24 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 10-11-2023 23:34:59 [JavaFX Application Thread] HomeController:119 - Login as ngoclong with role User
-[INFO ] 10-11-2023 23:35:07 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 10-11-2023 23:42:10 [main] HelloApplication:40 - Start application
-[INFO ] 10-11-2023 23:42:12 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 10-11-2023 23:44:34 [main] HelloApplication:40 - Start application
-[INFO ] 10-11-2023 23:44:36 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 10-11-2023 23:45:54 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 10-11-2023 23:46:43 [JavaFX Application Thread] HomeController:119 - Login as thuylinh1 with role User
-[INFO ] 10-11-2023 23:47:12 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 10-11-2023 23:47:28 [JavaFX Application Thread] HomeController:119 - Login as thuylinh1 with role User
-[INFO ] 10-11-2023 23:50:12 [main] HelloApplication:40 - Start application
-[INFO ] 10-11-2023 23:50:14 [JavaFX Application Thread] HomeController:119 - Login as thuylinh1 with role User
-[INFO ] 10-11-2023 23:50:50 [JavaFX Application Thread] HomeController:119 - Login as thuylinh1 with role User
-[INFO ] 10-11-2023 23:52:07 [main] HelloApplication:40 - Start application
-[INFO ] 10-11-2023 23:52:09 [JavaFX Application Thread] HomeController:119 - Login as thuylinh1 with role User
-[INFO ] 10-11-2023 23:52:43 [JavaFX Application Thread] HomeController:119 - Login as thuylinh1 with role User
-[INFO ] 10-11-2023 23:53:05 [JavaFX Application Thread] HomeController:119 - Login as thuylinh1 with role User
-[INFO ] 10-11-2023 23:54:08 [main] HelloApplication:40 - Start application
-[INFO ] 10-11-2023 23:54:10 [JavaFX Application Thread] HomeController:119 - Login as thuylinh1 with role User
-[INFO ] 10-11-2023 23:55:31 [main] HelloApplication:40 - Start application
-[INFO ] 10-11-2023 23:55:33 [JavaFX Application Thread] HomeController:119 - Login as thuylinh1 with role User
-[INFO ] 10-11-2023 23:55:52 [JavaFX Application Thread] HomeController:119 - Login as thuylinh1 with role User
-[ERROR] 10-11-2023 23:58:34 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
-[ERROR] 10-11-2023 23:58:43 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
-[ERROR] 10-11-2023 23:59:05 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverPOST /api/login null {"id":0,"username":"admin","password":"admin","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
-[INFO ] 11-11-2023 00:01:54 [main] HelloApplication:40 - Start application
-[INFO ] 11-11-2023 00:02:11 [JavaFX Application Thread] HomeController:119 - Login as van with role User
-[ERROR] 11-11-2023 00:02:40 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.equals(Object)" because the return value of "com.huy.appnoithat.Entity.AccountInformation.getGender()" is null
-[ERROR] 11-11-2023 00:02:40 [JavaFX Application Thread] GlobalExceptionHandler:25 - null
-[ERROR] 11-11-2023 00:02:40 [JavaFX Application Thread] GlobalExceptionHandler:25 - java.lang.reflect.InvocationTargetException
-[INFO ] 11-11-2023 00:02:58 [JavaFX Application Thread] HomeController:119 - Login as van with role User
-[ERROR] 11-11-2023 00:03:00 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.equals(Object)" because the return value of "com.huy.appnoithat.Entity.AccountInformation.getGender()" is null
-[ERROR] 11-11-2023 00:03:00 [JavaFX Application Thread] GlobalExceptionHandler:25 - null
-[ERROR] 11-11-2023 00:03:00 [JavaFX Application Thread] GlobalExceptionHandler:25 - java.lang.reflect.InvocationTargetException
-[INFO ] 11-11-2023 00:06:33 [main] HelloApplication:40 - Start application
-[INFO ] 11-11-2023 00:06:35 [JavaFX Application Thread] HomeController:119 - Login as van with role User
-[ERROR] 11-11-2023 00:06:38 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.isEmpty()" because the return value of "com.huy.appnoithat.Entity.AccountInformation.getGender()" is null
-[ERROR] 11-11-2023 00:06:38 [JavaFX Application Thread] GlobalExceptionHandler:25 - null
-[ERROR] 11-11-2023 00:06:38 [JavaFX Application Thread] GlobalExceptionHandler:25 - java.lang.reflect.InvocationTargetException
-[INFO ] 11-11-2023 00:08:10 [main] HelloApplication:40 - Start application
-[INFO ] 11-11-2023 00:08:12 [JavaFX Application Thread] HomeController:119 - Login as van with role User
-[INFO ] 11-11-2023 00:09:10 [main] HelloApplication:40 - Start application
-[INFO ] 11-11-2023 00:09:12 [JavaFX Application Thread] HomeController:119 - Login as van with role User
-[INFO ] 11-11-2023 00:09:48 [main] HelloApplication:40 - Start application
-[INFO ] 11-11-2023 00:09:50 [JavaFX Application Thread] HomeController:119 - Login as van with role User
-[INFO ] 11-11-2023 00:10:11 [main] HelloApplication:40 - Start application
-[INFO ] 11-11-2023 00:10:13 [JavaFX Application Thread] HomeController:119 - Login as van with role User
-[INFO ] 11-11-2023 00:10:33 [main] HelloApplication:40 - Start application
-[INFO ] 11-11-2023 00:10:35 [JavaFX Application Thread] HomeController:119 - Login as van with role User
-[INFO ] 11-11-2023 00:11:15 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 11-11-2023 00:11:49 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 11-11-2023 00:12:03 [JavaFX Application Thread] HomeController:119 - Login as van with role User
-[INFO ] 11-11-2023 00:12:22 [JavaFX Application Thread] HomeController:119 - Login as van with role User
-[INFO ] 11-11-2023 00:12:31 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
-[INFO ] 11-11-2023 00:12:56 [JavaFX Application Thread] HomeController:119 - Login as banguyen with role User
-[INFO ] 11-11-2023 00:13:19 [JavaFX Application Thread] HomeController:119 - Login as banguyen with role User
-[INFO ] 11-11-2023 00:13:28 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 10-11-2023 23:25:22 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 23:25:26 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 10-11-2023 23:25:48 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 10-11-2023 23:29:07 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 23:29:10 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 10-11-2023 23:39:34 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 23:39:42 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 10-11-2023 23:49:52 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 23:50:05 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[ERROR] 10-11-2023 23:50:07 [JavaFX Application Thread] UsersManagementController:486 - Error when click selected item
+java.lang.RuntimeException: Button.disable : A bound value cannot be set.
+	at javafx.beans.property.BooleanPropertyBase.set(BooleanPropertyBase.java:141) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Node.setDisable(Node.java:1786) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.huy.appnoithat.Controller.UserManagement.UsersManagementController.tableClickToSelectItem(UsersManagementController.java:481) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:77) ~[javafx-base-17.0.6-linux.jar:?]
+	at jdk.internal.reflect.GeneratedMethodAccessor2.invoke(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:275) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84) ~[javafx-fxml-17.0.6-linux.jar:?]
+	at javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1852) ~[javafx-fxml-17.0.6-linux.jar:?]
+	at javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1724) ~[javafx-fxml-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3602) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3906) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[ERROR] 10-11-2023 23:50:07 [JavaFX Application Thread] GlobalExceptionHandler:25 - Button.disable : A bound value cannot be set.
+[ERROR] 10-11-2023 23:50:07 [JavaFX Application Thread] GlobalExceptionHandler:25 - java.lang.RuntimeException: Button.disable : A bound value cannot be set.
+[ERROR] 10-11-2023 23:50:07 [JavaFX Application Thread] GlobalExceptionHandler:25 - null
+[ERROR] 10-11-2023 23:50:07 [JavaFX Application Thread] GlobalExceptionHandler:25 - java.lang.reflect.InvocationTargetException
+[INFO ] 10-11-2023 23:51:07 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 23:51:09 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 10-11-2023 23:53:15 [main] HelloApplication:40 - Start application
+[INFO ] 10-11-2023 23:53:17 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 10-11-2023 23:53:45 [JavaFX Application Thread] HomeController:119 - Login as huy2000 with role User
+[INFO ] 10-11-2023 23:53:56 [JavaFX Application Thread] HomeController:119 - Login as huy2000 with role User
+[INFO ] 10-11-2023 23:54:12 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[ERROR] 10-11-2023 23:54:42 [JavaFX Application Thread] GlobalExceptionHandler:25 - argument "content" is null
+[ERROR] 10-11-2023 23:54:42 [JavaFX Application Thread] GlobalExceptionHandler:25 - null
+[ERROR] 10-11-2023 23:54:42 [JavaFX Application Thread] GlobalExceptionHandler:25 - java.lang.reflect.InvocationTargetException
+[INFO ] 10-11-2023 23:56:11 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 00:01:36 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 00:01:49 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:03:09 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:05:35 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 00:05:39 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:06:01 [JavaFX Application Thread] HomeController:119 - Login as van with role User
+[INFO ] 11-11-2023 00:14:32 [main] HelloApplication:40 - Start application
+[ERROR] 11-11-2023 00:14:33 [JavaFX Application Thread] UserSessionService:56 - Account is null
+[INFO ] 11-11-2023 00:14:37 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:15:39 [JavaFX Application Thread] HomeController:119 - Login as khanhvan with role User
+[INFO ] 11-11-2023 00:15:46 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:16:04 [JavaFX Application Thread] HomeController:119 - Login as khanhvan with role User
+[INFO ] 11-11-2023 00:16:18 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:16:47 [JavaFX Application Thread] HomeController:119 - Login as khanhvan with role User
+[INFO ] 11-11-2023 00:16:54 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:17:32 [JavaFX Application Thread] HomeController:119 - Login as khanhvan1 with role User
+[INFO ] 11-11-2023 00:17:52 [JavaFX Application Thread] HomeController:119 - Login as khanhvan1 with role User
+[INFO ] 11-11-2023 00:18:02 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:18:30 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:18:45 [JavaFX Application Thread] HomeController:119 - Login as khanhvan1 with role User
+[INFO ] 11-11-2023 00:18:51 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:19:11 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:20:10 [JavaFX Application Thread] HomeController:119 - Login as khanhvan with role User
+[INFO ] 11-11-2023 00:20:51 [JavaFX Application Thread] HomeController:119 - Login as khanhvan with role User
+[INFO ] 11-11-2023 00:21:05 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:21:23 [JavaFX Application Thread] HomeController:119 - Login as khanhvan with role User
+[INFO ] 11-11-2023 00:21:54 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 00:22:01 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:22:45 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 00:22:53 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:26:40 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 00:29:51 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 00:29:53 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin

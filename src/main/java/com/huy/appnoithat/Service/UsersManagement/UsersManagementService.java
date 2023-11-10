@@ -83,8 +83,8 @@ public class UsersManagementService {
      * @param account The updated account object.
      * @throws RuntimeException If there is an error while updating the account on the server.
      */
-    public void EditAccount(Account account) {
-        accountRestService.update(account);
+    public boolean EditAccount(Account account) {
+        return accountRestService.update(account) != null;
     }
 
 

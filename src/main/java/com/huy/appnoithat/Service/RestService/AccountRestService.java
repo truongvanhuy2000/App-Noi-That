@@ -42,6 +42,9 @@ public class AccountRestService {
     public Account getAccountInformation() {
         String token = this.sessionService.getToken();
         String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/info?username=" + this.sessionService.getUsername(), token);
+        if (response == null) {
+            return null;
+        }
         try {
             return this.objectMapper.readValue(response, Account.class);
         } catch (IOException e) {
@@ -51,6 +54,9 @@ public class AccountRestService {
     }
     public Account getAccountInformation(String token) {
         String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/info", token);
+        if (response == null) {
+            return null;
+        }
         try {
             return this.objectMapper.readValue(response, Account.class);
         } catch (IOException e) {
@@ -62,6 +68,9 @@ public class AccountRestService {
     public Account findByUsername(String username) {
         String token = this.sessionService.getToken();
         String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/search?username=" + username, token);
+        if (response == null) {
+            return null;
+        }
         try {
             return this.objectMapper.readValue(response, Account.class);
         } catch (IOException e) {
@@ -73,6 +82,9 @@ public class AccountRestService {
     public Account findById(int id) {
         String token = this.sessionService.getToken();
         String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/" + id, token);
+        if (response == null) {
+            return null;
+        }
         try {
             return this.objectMapper.readValue(response, Account.class);
         } catch (IOException e) {
@@ -89,10 +101,10 @@ public class AccountRestService {
             throw new RuntimeException(e);
         }
     }
-    public void update(Account account) {
+    public String update(Account account) {
         String token = this.sessionService.getToken();
         try {
-            this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/" + account.getId(),
+            return this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/" + account.getId(),
                     this.objectMapper.writeValueAsString(account), token);
         } catch (JsonProcessingException e) {
             LOGGER.error("Error when update account: " + account.getUsername());
@@ -114,6 +126,9 @@ public class AccountRestService {
     public List<Account> findAllEnabledAccount() {
         String token = this.sessionService.getToken();
         String response2 = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/enabled", token);
+        if (response2 == null) {
+            return null;
+        }
         try {
             return this.objectMapper.readValue(response2, objectMapper.getTypeFactory()
                     .constructCollectionType(List.class, Account.class));
@@ -125,6 +140,9 @@ public class AccountRestService {
     public List<Account> findAllNotEnabledAccount() {
         String token = this.sessionService.getToken();
         String response2 = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/notEnabled", token);
+        if (response2 == null) {
+            return null;
+        }
         try {
             return this.objectMapper.readValue(response2, this.objectMapper.getTypeFactory()
                     .constructCollectionType(List.class, Account.class));
