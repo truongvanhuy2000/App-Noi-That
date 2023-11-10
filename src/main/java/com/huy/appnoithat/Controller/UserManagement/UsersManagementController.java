@@ -260,23 +260,26 @@ public class UsersManagementController {
 
                 // Add the new account to the list and update the table
                 listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), "", "", Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
-                tableManageUser.getItems().clear();
-                tableManageUser.refresh();
+
 
                 //check username exist
-                if (txtusername.getText().isEmpty() || txtpassword.getText().isEmpty()) {
+                if (txtusername.getText().trim().isEmpty() || txtpassword.getText().trim().isEmpty()) {
                     PopupUtils.throwErrorSignal("tài khoản và mật khẩu không được trống");
+                    return;
                 } else if (!registerService.isUsernameValid(txtusername.getText())) {
                     PopupUtils.throwErrorSignal("tài khoản đã tồn tài");
+                    return;
                 } else {
                     userManagementService.addNewAccount(
                             new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
                     // Clear data, reinitialize the table, and close the form
                 }
+
                 init();
                 userManageMentStage.close();
                 txtusername.clear();
                 txtpassword.clear();
+                comboBoxActive.getItems().clear();
             });
 
             btncancel.setOnAction(actionEvent -> {
@@ -343,9 +346,10 @@ public class UsersManagementController {
      * @return The parsed integer value if parsing is successful, or the default value if parsing fails.
      */
     public Integer parseStringToINT(String data, int def) {
-        if (data.isEmpty()) {
+        if (data.isEmpty() || !data.matches("[0-9]+")) {
             return def;
         }
+
         try {
             return Integer.parseInt(data);
         } catch (NumberFormatException nfe) {
@@ -386,9 +390,9 @@ public class UsersManagementController {
             Button btncancel = (Button) userManagementEditorScene.lookup("#btncancel");
 
 //            // Create an AccountTable object
-            AccountTable exampleAccount = new AccountTable();
-            exampleAccount.setUsername(username);
-            exampleAccount.setPassword(password);
+//            AccountTable exampleAccount = new AccountTable();
+//            exampleAccount.setUsername(username);
+//            exampleAccount.setPassword(password);
 //
 //            // Set the object's attributes to the text fields
 //            txtusername.setText(exampleAccount.getUsername());
@@ -398,13 +402,10 @@ public class UsersManagementController {
             RegisterService registerService = new RegisterService();
             // Handle the edit button click event
             btnedit.setOnAction(actionEvent -> {
-                tableManageUser.getSelectionModel().getSelectedItem().setUsername(txtusername.getText());
-                tableManageUser.getSelectionModel().getSelectedItem().setPassword(txtpassword.getText());
-
+//
                 // Get the selected account's ID and details from the table
                 int id = getSelectObjectIDFromTable();
                 Account account = userManagementService.findAccountById(id);
-
                 // Extend the account's expiration date by the specified number of months
                 LocalDate soThangGiaHanThem = account.getExpiredDate().plusMonths(parseStringToINT(txtGiaHan.getText(), 0));
 
@@ -413,6 +414,7 @@ public class UsersManagementController {
                     PopupUtils.throwErrorSignal("tài khoản đã tồn tài");
                     return;
                 }
+
                 // Update the account details
                 if (!txtusername.getText().isEmpty()) {
                     account.setUsername(txtusername.getText());
@@ -421,7 +423,6 @@ public class UsersManagementController {
                     account.setPassword(txtpassword.getText());
                 }
                 account.setExpiredDate(soThangGiaHanThem);
-
                 // Update the account in the service
                 userManagementService.EditAccount(account);
 
@@ -431,8 +432,9 @@ public class UsersManagementController {
                 userManageMentStage.close();
 
                 // Clear the form fields
-                txtusername.setText("");
+                txtusername.clear();
                 txtpassword.clear();
+                txtGiaHan.clear();
                 // You might need additional logic to handle saving or updating data
                 init();
             });
