@@ -38,7 +38,7 @@ public class LoginService {
         return accountRestService.login(username, password);
     }
     public boolean authorizeWithToken(String token) {
-        Account account = accountRestService.getAccountInformation();
+        Account account = accountRestService.getAccountInformation(token);
         if (account == null) {
             return false;
         }

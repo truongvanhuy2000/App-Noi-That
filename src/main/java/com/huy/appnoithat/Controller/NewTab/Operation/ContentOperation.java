@@ -83,6 +83,9 @@ public class ContentOperation {
         return selectedFile.getAbsolutePath();
     }
     private void saveToExistingFile(String fileDirectory, boolean saveToRecentFile) {
+        if (fileDirectory == null) {
+            return;
+        }
         noiThatFileService.export(exportData(), new File(fileDirectory), saveToRecentFile);
     }
     private List<TabData> exportData() {

@@ -16,6 +16,7 @@ import javafx.application.Platform;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
@@ -60,13 +61,16 @@ public class ExportOperation {
     private void showLoading() {
         loadingPane.setVisible(true);
         loadingPane.setDisable(false);
+        VBox vbox = new VBox();
         ProgressIndicator progressIndicator = new ProgressIndicator();
         progressIndicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
-        progressIndicator.setMinHeight(200);
-        progressIndicator.setMinWidth(200);
-        Label textField = new Label("Đang xuất tệp...");
+        progressIndicator.setMinHeight(100);
+        progressIndicator.setMinWidth(100);
+        Label textField = new Label("Đang xuất file...");
         textField.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI';");
-        loadingPane.getChildren().addAll(progressIndicator, textField);
+        vbox.getChildren().addAll(progressIndicator, textField);
+        vbox.setAlignment(javafx.geometry.Pos.CENTER);
+        loadingPane.getChildren().addAll(vbox);
         loadingPane.toFront();
     }
     private void hideLoading(Boolean result, boolean showPopup, FileType fileType) {
@@ -74,6 +78,7 @@ public class ExportOperation {
             loadingPane.setVisible(false);
             loadingPane.setDisable(true);
             loadingPane.getChildren().clear();
+            loadingPane.toBack();
             showResult(result, showPopup, fileType);
         });
     }

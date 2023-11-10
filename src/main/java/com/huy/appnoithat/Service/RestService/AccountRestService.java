@@ -46,6 +46,15 @@ public class AccountRestService {
             throw new RuntimeException(e);
         }
     }
+    public Account getAccountInformation(String token) {
+        String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/info", token);
+        try {
+            return this.objectMapper.readValue(response, Account.class);
+        } catch (IOException e) {
+            LOGGER.error("Error when find account by username: " + this.sessionService.getUsername());
+            throw new RuntimeException(e);
+        }
+    }
 
     public Account findByUsername(String username) {
         String token = this.sessionService.getToken();

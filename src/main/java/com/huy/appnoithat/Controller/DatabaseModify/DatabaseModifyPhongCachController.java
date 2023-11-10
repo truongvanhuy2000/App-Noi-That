@@ -30,6 +30,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
@@ -330,18 +331,22 @@ public class DatabaseModifyPhongCachController implements Initializable {
     private void showLoading() {
         loadingPane.setVisible(true);
         loadingPane.setDisable(false);
+        VBox vbox = new VBox();
         ProgressIndicator progressIndicator = new ProgressIndicator();
         progressIndicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
-        progressIndicator.setMinHeight(200);
-        progressIndicator.setMinWidth(200);
+        progressIndicator.setMinHeight(100);
+        progressIndicator.setMinWidth(100);
         Label textField = new Label("Đang lấy dữ liệu mẫu...");
         textField.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI';");
-        loadingPane.getChildren().addAll(progressIndicator, textField);
+        vbox.getChildren().addAll(progressIndicator, textField);
+        vbox.setAlignment(javafx.geometry.Pos.CENTER);
+        loadingPane.getChildren().addAll(vbox);
         loadingPane.toFront();
     }
     private void hideLoading() {
         loadingPane.setVisible(false);
         loadingPane.setDisable(true);
         loadingPane.getChildren().clear();
+        loadingPane.toBack();
     }
 }
