@@ -5459,3 +5459,29 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [INFO ] 11-11-2023 00:05:35 [main] HelloApplication:40 - Start application
 [INFO ] 11-11-2023 00:05:39 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
 [INFO ] 11-11-2023 00:06:01 [JavaFX Application Thread] HomeController:119 - Login as van with role User
+[INFO ] 11-11-2023 15:42:21 [main] HelloApplication:40 - Start application
+[ERROR] 11-11-2023 15:42:22 [JavaFX Application Thread] UserSessionService:56 - Account is null
+[INFO ] 11-11-2023 15:42:42 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 15:45:40 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 15:45:50 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 15:46:48 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 15:47:59 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 15:48:38 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 15:48:50 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 15:48:54 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 16:28:36 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 16:28:38 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 16:29:59 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 16:30:01 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 16:30:44 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 16:30:46 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 16:32:09 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 16:32:11 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 16:39:11 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 16:39:14 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 16:40:12 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 16:40:15 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 16:40:38 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 16:40:41 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 16:41:41 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 16:41:44 [JavaFX Application Thread] HomeController:119 - Login as kim with role User

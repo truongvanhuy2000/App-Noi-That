@@ -90,11 +90,16 @@ public class CustomTextAreaCell extends TreeTableCell<BangNoiThat, String> {
         textArea = new TextArea(getString());
         textArea.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
         textArea.setOnKeyPressed((key) -> {
-            if (KeyboardUtils.isRightKeyCombo(Action.SAVE, key)) {
+            if (KeyboardUtils.isRightKeyCombo(Action.NEXT_LINE, key)) {
+                textArea.appendText(System.getProperty("line.separator"));
+            }
+            if (KeyboardUtils.isRightKeyCombo(Action.COMMIT, key)) {
                 commitEdit(textArea.getText());
                 updateItem(textArea.getText(), false);
+                key.consume();
             }
         });
+
     }
 
 
@@ -107,7 +112,7 @@ public class CustomTextAreaCell extends TreeTableCell<BangNoiThat, String> {
             return;
         }
         vBox = new VBox();
-        vBox.getChildren().add(new Label("Nhấn Ctrl + S để lưu"));
+        vBox.getChildren().add(new Label("Nhấn Alt + Enter để xuống dòng"));
         vBox.getChildren().add(textArea);
     }
 

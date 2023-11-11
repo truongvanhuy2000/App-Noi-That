@@ -7,6 +7,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
@@ -49,11 +50,28 @@ public class HangMucCollumHandler {
             String stt = rowValue.getValue().getSTT().getValue();
             String newValue = event.getNewValue();
             rowValue.getValue().setHangMuc(newValue);
+//            if (ItemTypeUtils.determineItemType(stt) == ItemType.AlPHA) {
+//                automaticallyInsertNoiThat(event);
+//            }
             if (ItemTypeUtils.determineItemType(stt) == ItemType.NUMERIC) {
                 automaticallyInsertVatLieuAndThongSo(event);
             }
         }
     }
+
+    private void automaticallyInsertNoiThat(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
+        TreeItem<BangNoiThat> rowValue = event.getRowValue();
+        if (rowValue == null) {
+            LOGGER.error("Null row value when automatically insert vat lieu and thong so");
+            return;
+        }
+        List<NoiThat> items = luaChonNoiThatService.findNoiThatListBy(event.getNewValue());
+        if (items == null || items.isEmpty()) {
+            return;
+        }
+
+    }
+
     private void automaticallyInsertVatLieuAndThongSo(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         TreeItem<BangNoiThat> rowValue = event.getRowValue();
         if (rowValue == null) {

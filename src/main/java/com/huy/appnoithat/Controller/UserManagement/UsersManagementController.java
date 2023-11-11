@@ -70,11 +70,13 @@ public class UsersManagementController implements Initializable {
         ImageView activeIcon;
         if (checked) {
             // Load a check mark icon if checked is true
-            activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/check-mark.png")));
+            activeIcon = new ImageView(new Image(
+                    this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/check-mark.png")));
         } else {
 
             // Load a cancel icon if checked is false
-            activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/cancel.png")));
+            activeIcon = new ImageView(new Image(
+                    this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/cancel.png")));
         }
         activeIcon.setFitHeight(20);
         activeIcon.setFitWidth(20);
