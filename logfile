@@ -5587,3 +5587,48 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [INFO ] 11-11-2023 18:18:00 [main] HelloApplication:40 - Start application
 [INFO ] 11-11-2023 18:18:03 [JavaFX Application Thread] HomeController:119 - Login as user with role User
 [INFO ] 11-11-2023 18:18:17 [Thread-3] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:18:13 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:18:18 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:18:40 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:20:14 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:20:16 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:20:29 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:22:16 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:22:18 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:22:27 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:23:28 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:23:30 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:23:41 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:24:44 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:24:46 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:24:59 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:26:56 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:26:58 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:27:11 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:27:55 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:27:58 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:28:09 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:40:04 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:40:06 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:40:16 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:41:06 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:41:08 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:41:24 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:41:46 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:41:49 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:42:00 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:43:54 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:43:57 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:44:10 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:44:38 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:44:40 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:44:50 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:46:53 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:46:55 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:47:03 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:48:17 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:48:20 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:48:32 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 19:49:52 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 19:49:55 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 19:50:03 [Thread-4] ExportFile:99 - Exporting to XLSX file
