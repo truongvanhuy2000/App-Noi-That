@@ -5485,3 +5485,105 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [INFO ] 11-11-2023 16:40:41 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
 [INFO ] 11-11-2023 16:41:41 [main] HelloApplication:40 - Start application
 [INFO ] 11-11-2023 16:41:44 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 17:05:04 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:05:06 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 17:05:36 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:05:40 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[ERROR] 11-11-2023 17:05:48 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "javafx.beans.property.SimpleStringProperty.setValue(String)" because "this.HangMuc" is null
+[INFO ] 11-11-2023 17:14:11 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:14:14 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 17:14:58 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:15:02 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 17:17:34 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:17:37 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 17:18:33 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:18:36 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[ERROR] 11-11-2023 17:18:55 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:18:55 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:18:55 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:18:56 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:18:56 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:18:56 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[INFO ] 11-11-2023 17:19:45 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:19:47 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[ERROR] 11-11-2023 17:20:11 [JavaFX Application Thread] HangMucCollumHandler:71 - cant found nothing
+[ERROR] 11-11-2023 17:20:23 [JavaFX Application Thread] HangMucCollumHandler:71 - cant found nothing
+[INFO ] 11-11-2023 17:21:12 [main] HelloApplication:40 - Start application
+[ERROR] 11-11-2023 17:21:22 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NjkyNDIzLCJleHAiOjQyOTE2OTI0MjN9.iCZNtnFeC3IwJOq-jvxCr8w7Pic0890iaA7fNEVRvaMZBXpqFaImSrZDQxsA-I0MEZhCOVKfaVg3TWz8bNOUIQ null
+[ERROR] 11-11-2023 17:21:22 [JavaFX Application Thread] UserSessionService:56 - Account is null
+[INFO ] 11-11-2023 17:21:24 [JavaFX Application Thread] HomeController:119 - Login as  with role User
+[ERROR] 11-11-2023 17:21:49 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/phongcach?owner= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW0iLCJpc3MiOiJhcHBub2l0aGF0IiwiaWF0IjoxNjk5NjkyNDIzLCJleHAiOjQyOTE2OTI0MjN9.iCZNtnFeC3IwJOq-jvxCr8w7Pic0890iaA7fNEVRvaMZBXpqFaImSrZDQxsA-I0MEZhCOVKfaVg3TWz8bNOUIQ null
+[INFO ] 11-11-2023 17:37:41 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:37:44 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[ERROR] 11-11-2023 17:37:52 [JavaFX Application Thread] HangMucCollumHandler:71 - cant found nothing
+[ERROR] 11-11-2023 17:38:14 [JavaFX Application Thread] HangMucCollumHandler:71 - cant found nothing
+[INFO ] 11-11-2023 17:39:55 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:39:58 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[ERROR] 11-11-2023 17:40:46 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.split(String)" because "fullId" is null
+[INFO ] 11-11-2023 17:41:17 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:41:20 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 17:41:53 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:41:55 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 17:43:49 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:44:01 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:44:04 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 17:44:30 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:44:33 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 17:45:45 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:45:47 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 11-11-2023 17:48:00 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 17:48:17 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:48:19 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 11-11-2023 17:48:28 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 17:49:23 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:49:25 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 17:51:45 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:51:47 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 17:52:39 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:52:41 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 17:53:22 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:53:24 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 17:54:35 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:54:38 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 17:55:38 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:55:41 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 17:56:18 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 17:56:22 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 18:00:22 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 18:00:25 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 18:01:16 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 18:01:19 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 18:04:41 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 18:04:43 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 18:05:27 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 18:05:30 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 18:12:34 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 18:12:36 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 18:12:51 [JavaFX Application Thread] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 18:13:15 [JavaFX Application Thread] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 18:14:57 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 18:14:59 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 18:15:12 [JavaFX Application Thread] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 18:15:56 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 18:15:59 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 18:16:17 [JavaFX Application Thread] ExportFile:99 - Exporting to XLSX file
+[INFO ] 11-11-2023 18:18:00 [main] HelloApplication:40 - Start application
+[INFO ] 11-11-2023 18:18:03 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 11-11-2023 18:18:17 [Thread-3] ExportFile:99 - Exporting to XLSX file

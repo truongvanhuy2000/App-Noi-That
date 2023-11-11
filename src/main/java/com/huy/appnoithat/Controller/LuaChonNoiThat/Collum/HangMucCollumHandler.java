@@ -5,12 +5,16 @@ import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
+import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
@@ -50,9 +54,9 @@ public class HangMucCollumHandler {
             String stt = rowValue.getValue().getSTT().getValue();
             String newValue = event.getNewValue();
             rowValue.getValue().setHangMuc(newValue);
-//            if (ItemTypeUtils.determineItemType(stt) == ItemType.AlPHA) {
-//                automaticallyInsertNoiThat(event);
-//            }
+            if (ItemTypeUtils.determineItemType(stt) == ItemType.ROMAN) {
+                automaticallyInsertNoiThat(event);
+            }
             if (ItemTypeUtils.determineItemType(stt) == ItemType.NUMERIC) {
                 automaticallyInsertVatLieuAndThongSo(event);
             }
@@ -65,11 +69,23 @@ public class HangMucCollumHandler {
             LOGGER.error("Null row value when automatically insert vat lieu and thong so");
             return;
         }
-        List<NoiThat> items = luaChonNoiThatService.findNoiThatListBy(event.getNewValue());
+        String noiThat = rowValue.getValue().getHangMuc().getValue();
+        String phongCach = rowValue.getParent().getValue().getHangMuc().getValue();
+
+        List<HangMuc> items = luaChonNoiThatService.findHangMucListBy(phongCach, noiThat);
         if (items == null || items.isEmpty()) {
+            LOGGER.error("cant found nothing");
             return;
         }
-
+        rowValue.getChildren().clear();
+        int index = 1;
+        for (HangMuc item : items) {
+            TreeItem<BangNoiThat> newItem = TableUtils.createNewItem(ItemType.NUMERIC, String.valueOf(index++));
+            rowValue.getChildren().add(newItem);
+            newItem.getValue().setHangMuc(item.getName());
+            automaticallyInsertVatLieuAndThongSo(newItem);
+        }
+        TableCalculationUtils.recalculateAllTongTien(event.getTreeTableView());
     }
 
     private void automaticallyInsertVatLieuAndThongSo(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
@@ -78,7 +94,13 @@ public class HangMucCollumHandler {
             LOGGER.error("Null row value when automatically insert vat lieu and thong so");
             return;
         }
-        Optional<VatLieu> vatLieu = getTheFirstVatLieu(event.getRowValue());
+        automaticallyInsertVatLieuAndThongSo(rowValue);
+        TableCalculationUtils.recalculateAllTongTien(event.getTreeTableView());
+        event.getTreeTableView().edit(event.getTreeTablePosition().getRow(), event.getTreeTableView().getVisibleLeafColumn(2));
+
+    }
+    private void automaticallyInsertVatLieuAndThongSo(TreeItem<BangNoiThat> rowValue) {
+        Optional<VatLieu> vatLieu = getTheFirstVatLieu(rowValue);
         if (vatLieu.isPresent()) {
             String firstVatLieu = vatLieu.get().getName();
             ThongSo thongSo = vatLieu.get().getThongSo();
@@ -98,14 +120,9 @@ public class HangMucCollumHandler {
                 rowValue.getValue().setCao(cao);
                 rowValue.getValue().setDonGia(donGia);
                 rowValue.getValue().setDonVi(donVi);
-
-                TableCalculationUtils.recalculateAllTongTien(event.getTreeTableView());
             }
-
-            event.getRowValue().getValue().setVatLieu(firstVatLieu);
-            event.getTreeTableView().edit(event.getTreeTablePosition().getRow(), event.getTreeTableView().getVisibleLeafColumn(2));
+            rowValue.getValue().setVatLieu(firstVatLieu);
         }
-
     }
     private Optional<VatLieu> getTheFirstVatLieu(TreeItem<BangNoiThat> currentItem) {
         try {

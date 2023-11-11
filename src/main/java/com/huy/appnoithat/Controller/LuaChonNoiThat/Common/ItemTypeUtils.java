@@ -15,9 +15,15 @@ public class ItemTypeUtils {
         return type.toString() + ":" + id;
     }
     public static String getIdFromFullId(String fullId) {
+        if (fullId == null || fullId.isEmpty()) {
+            return "";
+        }
         return fullId.split(":")[1];
     }
     public static ItemType determineItemType(String fullId) {
+        if (fullId == null || fullId.isEmpty()) {
+            return ItemType.NONE;
+        }
         String type = fullId.split(":")[0];
         return switch (type) {
             case "NUMERIC" -> ItemType.NUMERIC;
