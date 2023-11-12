@@ -5632,3 +5632,53 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [INFO ] 11-11-2023 19:49:52 [main] HelloApplication:40 - Start application
 [INFO ] 11-11-2023 19:49:55 [JavaFX Application Thread] HomeController:119 - Login as user with role User
 [INFO ] 11-11-2023 19:50:03 [Thread-4] ExportFile:99 - Exporting to XLSX file
+[INFO ] 12-11-2023 18:49:00 [main] HelloApplication:40 - Start application
+[ERROR] 12-11-2023 18:49:01 [JavaFX Application Thread] WebClientServiceImpl:102 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5OTY5OTYxMywiZXhwIjo0MjkxNjk5NjEzfQ.lTOOASsQNB0hLqsJmv1HwOWG6Y3CoZ3-NPJBwIARitjJsjkb6d0N3tx_ZAH470yy1StDVh_igJUi0eHU4EF-6Q null
+[ERROR] 12-11-2023 18:49:02 [JavaFX Application Thread] GlobalExceptionHandler:28 - null
+[ERROR] 12-11-2023 18:49:02 [JavaFX Application Thread] GlobalExceptionHandler:28 - null
+[ERROR] 12-11-2023 18:49:02 [JavaFX Application Thread] GlobalExceptionHandler:28 - null
+[ERROR] 12-11-2023 18:49:02 [JavaFX Application Thread] GlobalExceptionHandler:28 - java.net.ConnectException
+[INFO ] 12-11-2023 18:50:29 [main] HelloApplication:40 - Start application
+[ERROR] 12-11-2023 18:50:29 [JavaFX Application Thread] WebClientServiceImpl:102 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5OTY5OTYxMywiZXhwIjo0MjkxNjk5NjEzfQ.lTOOASsQNB0hLqsJmv1HwOWG6Y3CoZ3-NPJBwIARitjJsjkb6d0N3tx_ZAH470yy1StDVh_igJUi0eHU4EF-6Q null
+[ERROR] 12-11-2023 18:50:30 [JavaFX Application Thread] GlobalExceptionHandler:31 - null
+[ERROR] 12-11-2023 18:50:30 [JavaFX Application Thread] GlobalExceptionHandler:31 - null
+[ERROR] 12-11-2023 18:50:30 [JavaFX Application Thread] GlobalExceptionHandler:31 - null
+[ERROR] 12-11-2023 18:50:30 [JavaFX Application Thread] GlobalExceptionHandler:31 - java.net.ConnectException
+[INFO ] 12-11-2023 18:54:43 [main] HelloApplication:40 - Start application
+[ERROR] 12-11-2023 18:54:43 [JavaFX Application Thread] WebClientServiceImpl:111 - Error when sending request to serverGET /api/info?username= eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTY5OTY5OTYxMywiZXhwIjo0MjkxNjk5NjEzfQ.lTOOASsQNB0hLqsJmv1HwOWG6Y3CoZ3-NPJBwIARitjJsjkb6d0N3tx_ZAH470yy1StDVh_igJUi0eHU4EF-6Q null
+[ERROR] 12-11-2023 18:54:43 [JavaFX Application Thread] GlobalExceptionHandler:31 - null
+[ERROR] 12-11-2023 18:54:43 [JavaFX Application Thread] GlobalExceptionHandler:31 - null
+[ERROR] 12-11-2023 18:54:43 [JavaFX Application Thread] GlobalExceptionHandler:31 - null
+[ERROR] 12-11-2023 18:54:43 [JavaFX Application Thread] GlobalExceptionHandler:31 - java.net.ConnectException
+[INFO ] 12-11-2023 18:54:56 [main] HelloApplication:40 - Start application
+[INFO ] 12-11-2023 18:55:00 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 12-11-2023 18:56:18 [main] HelloApplication:40 - Start application
+[ERROR] 12-11-2023 18:56:24 [JavaFX Application Thread] WebClientServiceImpl:99 - Error when sending request to serverGET /api/index  null
+[ERROR] 12-11-2023 18:56:24 [JavaFX Application Thread] WebClientServiceImpl:111 - Error when sending request to serverGET /api/index  null
+[ERROR] 12-11-2023 18:56:25 [JavaFX Application Thread] GlobalExceptionHandler:31 - Access denied
+[ERROR] 12-11-2023 18:56:25 [JavaFX Application Thread] GlobalExceptionHandler:31 - com.huy.appnoithat.Exception.ServerConnectionException: Access denied
+[INFO ] 12-11-2023 18:56:38 [main] HelloApplication:40 - Start application
+[ERROR] 12-11-2023 18:56:39 [JavaFX Application Thread] WebClientServiceImpl:99 - Error when sending request to serverGET /api/index  null
+[ERROR] 12-11-2023 18:56:39 [JavaFX Application Thread] WebClientServiceImpl:111 - Error when sending request to serverGET /api/index  null
+[ERROR] 12-11-2023 18:56:40 [JavaFX Application Thread] GlobalExceptionHandler:31 - Access denied
+[ERROR] 12-11-2023 18:56:40 [JavaFX Application Thread] GlobalExceptionHandler:31 - com.huy.appnoithat.Exception.ServerConnectionException: Access denied
+[INFO ] 12-11-2023 18:58:56 [main] HelloApplication:40 - Start application
+[ERROR] 12-11-2023 18:58:56 [JavaFX Application Thread] WebClientServiceImpl:104 - Error when sending request to serverGET /api/index  null
+[ERROR] 12-11-2023 18:58:57 [JavaFX Application Thread] GlobalExceptionHandler:37 - Access denied
+[INFO ] 12-11-2023 18:59:24 [main] HelloApplication:40 - Start application
+[ERROR] 12-11-2023 18:59:24 [JavaFX Application Thread] WebClientServiceImpl:105 - Error when sending request to serverGET /api/index  null
+[ERROR] 12-11-2023 18:59:25 [JavaFX Application Thread] GlobalExceptionHandler:37 - Access denied
+[INFO ] 12-11-2023 19:02:27 [main] HelloApplication:40 - Start application
+[ERROR] 12-11-2023 19:02:28 [JavaFX Application Thread] WebClientServiceImpl:99 - Error when sending request to serverGET /api/index  null
+[ERROR] 12-11-2023 19:02:28 [JavaFX Application Thread] WebClientServiceImpl:111 - Error when sending request to serverGET /api/index  null
+[ERROR] 12-11-2023 19:02:29 [JavaFX Application Thread] GlobalExceptionHandler:37 - Access denied
+[ERROR] 12-11-2023 19:02:29 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.huy.appnoithat.Exception.ServerConnectionException: Access denied
+[INFO ] 12-11-2023 19:02:43 [main] HelloApplication:40 - Start application
+[ERROR] 12-11-2023 19:02:44 [JavaFX Application Thread] WebClientServiceImpl:99 - Error when sending request to serverGET /api/index  null
+[ERROR] 12-11-2023 19:02:44 [JavaFX Application Thread] WebClientServiceImpl:111 - Error when sending request to serverGET /api/index  null
+[ERROR] 12-11-2023 19:02:44 [JavaFX Application Thread] GlobalExceptionHandler:37 - Access denied
+[ERROR] 12-11-2023 19:02:44 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.huy.appnoithat.Exception.ServerConnectionException: Access denied
+[INFO ] 12-11-2023 19:03:04 [main] HelloApplication:40 - Start application
+[ERROR] 12-11-2023 19:03:05 [JavaFX Application Thread] WebClientServiceImpl:99 - Error when sending request to serverGET /api/index  null
+[INFO ] 12-11-2023 19:04:21 [main] HelloApplication:40 - Start application
+[INFO ] 12-11-2023 19:04:42 [main] HelloApplication:40 - Start application

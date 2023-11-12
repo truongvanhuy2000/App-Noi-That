@@ -14,7 +14,19 @@ public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
     }
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
-        PopupUtils.throwCriticalError("Critical Error! Please report back to the developer! \n" + throwable.getMessage());
+//        PopupUtils.throwCriticalError("Critical Error! Please report back to the developer! \n" + throwable.getMessage());
+        if (throwable instanceof ServerConnectionException) {
+            PopupUtils.throwCriticalError("Cannot connect to server! Please check your internet connection and try again!");
+        }
+        else if (throwable instanceof AccountExpiredException) {
+            PopupUtils.throwErrorSignal("Critical Error! Please report back to the developer! \n" + throwable.getMessage());
+        }
+        else if (throwable instanceof NotAuthorizedException) {
+            PopupUtils.throwErrorSignal(throwable.getMessage());
+        }
+        else {
+            PopupUtils.throwCriticalError("Critical Error! Please report back to the developer! \n" + throwable.getMessage());
+        }
         throwable.printStackTrace();
         nestedLog(throwable);
     }

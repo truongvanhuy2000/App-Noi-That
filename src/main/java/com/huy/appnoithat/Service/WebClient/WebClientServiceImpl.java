@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Service.WebClient;
 
 import com.huy.appnoithat.Configuration.Config;
+import com.huy.appnoithat.Exception.ServerConnectionException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -93,13 +94,13 @@ public class WebClientServiceImpl implements WebClientService {
             }
             HttpRequest httpRequest = buildJsonHttpRequest(method, path, authenticationToken, data);
             HttpResponse<String> response = client.send(httpRequest, BodyHandlers.ofString());
-            if (response.statusCode() != 200) {
-                return null;
+            if (response.statusCode() == 200) {
+                return response.body();
             }
-            return response.body();
+            return null;
         } catch (Exception e) {
             LOGGER.error("Error when sending request to server" + method + " " + path + " " + authenticationToken + " " + data);
-            return null;
+            throw new ServerConnectionException(e);
         }
     }
 
