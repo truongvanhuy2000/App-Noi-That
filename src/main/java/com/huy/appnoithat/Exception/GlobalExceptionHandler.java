@@ -16,24 +16,18 @@ public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
     public void uncaughtException(Thread thread, Throwable throwable) {
 //        PopupUtils.throwCriticalError("Critical Error! Please report back to the developer! \n" + throwable.getMessage());
         if (throwable instanceof ServerConnectionException) {
-            PopupUtils.throwCriticalError("Cannot connect to server! Please check your internet connection and try again!");
+            PopupUtils.throwCriticalError(throwable.getLocalizedMessage());
         }
         else if (throwable instanceof AccountExpiredException) {
-            PopupUtils.throwErrorSignal("Critical Error! Please report back to the developer! \n" + throwable.getMessage());
+            PopupUtils.throwErrorSignal(throwable.getLocalizedMessage());
         }
         else if (throwable instanceof NotAuthorizedException) {
-            PopupUtils.throwErrorSignal(throwable.getMessage());
+            PopupUtils.throwErrorSignal("Không được ủy quyền đăng nhập, kiểm tra lại tài khoản");
         }
         else {
             PopupUtils.throwCriticalError("Critical Error! Please report back to the developer! \n" + throwable.getMessage());
         }
         throwable.printStackTrace();
-        nestedLog(throwable);
-    }
-    private void nestedLog(Throwable throwable) {
-        if (throwable.getCause() != null) {
-            nestedLog(throwable.getCause());
-        }
         LOGGER.error(throwable.getMessage());
     }
 }

@@ -15,11 +15,11 @@
     <children>
       <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-              <AnchorPane prefHeight="837.0" prefWidth="274.0" styleClass="side_ankerpane">
+              <AnchorPane prefHeight="837.0" prefWidth="258.0" styleClass="side_ankerpane">
                   <children>
-                      <VBox layoutX="-2.0" layoutY="-84.0" prefHeight="805.0" prefWidth="313.0" spacing="25.0" style="-fx-border-radius: 50%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <VBox layoutX="-2.0" layoutY="-84.0" prefHeight="837.0" prefWidth="330.0" spacing="25.0" style="-fx-border-radius: 50%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <children>
-                        <AnchorPane id="inner_pane">
+                        <AnchorPane id="inner_pane" prefHeight="100.0" prefWidth="268.0">
                            <children>
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -28,7 +28,7 @@
                                           <Image url="@../icons/man.png" />
                                        </image>
                                     </ImageView>
-                                        <Text fx:id="UserName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" wrappingWidth="179.0" x="80.0" y="47.0">
+                                        <Text fx:id="UserName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" wrappingWidth="115.0" x="80.0" y="47.0">
                     
                 </Text>
                                     <Button id="btnChangeUserDetail" mnemonicParsing="false" onAction="#ChangeUserDetail">

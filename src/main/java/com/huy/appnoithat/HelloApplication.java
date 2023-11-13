@@ -16,22 +16,21 @@ import org.apache.logging.log4j.Logger;
 
 public class HelloApplication extends Application {
     final static Logger LOGGER = LogManager.getLogger(HelloApplication.class);
-
+    UserSessionService sessionService = new UserSessionService();
     @Override
     public void start(Stage stage) {
         Platform.runLater(() -> {
             Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler(stage));
             UserSession.getInstance();
-            UserSessionService sessionService = new UserSessionService();
+
+            Scene scene = LoginScene.getInstance().getScene();
+            Platform.runLater(() -> LoginScene.getInstance().getLoginController().init());
+            StageFactory.closeAndCreateNewUnresizeableStage(stage, scene);
+
             if (sessionService.isLogin()) {
-                Scene scene = HomeScene.getInstance().getScene();
+                scene = HomeScene.getInstance().getScene();
                 Platform.runLater(() -> HomeScene.getInstance().getHomeController().init());
                 StageFactory.closeAndCreateNewMaximizedStage(stage, scene);
-            }
-            else {
-                Scene scene = LoginScene.getInstance().getScene();
-                Platform.runLater(() -> LoginScene.getInstance().getLoginController().init());
-                StageFactory.closeAndCreateNewUnresizeableStage(stage, scene);
             }
         });
     }

@@ -5682,3 +5682,70 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [ERROR] 12-11-2023 19:03:05 [JavaFX Application Thread] WebClientServiceImpl:99 - Error when sending request to serverGET /api/index  null
 [INFO ] 12-11-2023 19:04:21 [main] HelloApplication:40 - Start application
 [INFO ] 12-11-2023 19:04:42 [main] HelloApplication:40 - Start application
+[INFO ] 13-11-2023 00:09:52 [main] HelloApplication:40 - Start application
+[INFO ] 13-11-2023 00:10:05 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 13-11-2023 00:12:45 [main] HelloApplication:40 - Start application
+[INFO ] 13-11-2023 00:12:49 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 13-11-2023 00:13:24 [main] HelloApplication:40 - Start application
+[INFO ] 13-11-2023 00:13:27 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 13-11-2023 00:15:57 [main] HelloApplication:40 - Start application
+[INFO ] 13-11-2023 00:16:00 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 13-11-2023 00:16:33 [main] HelloApplication:40 - Start application
+[INFO ] 13-11-2023 00:16:36 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 14-11-2023 00:44:20 [main] HelloApplication:39 - Start application
+[ERROR] 14-11-2023 00:44:22 [JavaFX Application Thread] WebClientServiceImpl:99 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:44:22 [JavaFX Application Thread] WebClientServiceImpl:114 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:44:22 [JavaFX Application Thread] GlobalExceptionHandler:37 - Access denied
+[ERROR] 14-11-2023 00:44:22 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.huy.appnoithat.Exception.ServerConnectionException: Access denied
+[ERROR] 14-11-2023 00:44:43 [JavaFX Application Thread] WebClientServiceImpl:114 - Error when sending request to serverPOST /api/login null {"id":0,"username":"huy pro ","password":"1234","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[ERROR] 14-11-2023 00:44:43 [JavaFX Application Thread] GlobalExceptionHandler:37 - Server error
+[ERROR] 14-11-2023 00:44:43 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.huy.appnoithat.Exception.ServerConnectionException: Server error
+[ERROR] 14-11-2023 00:44:43 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 14-11-2023 00:44:43 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 14-11-2023 00:46:25 [main] HelloApplication:40 - Start application
+[ERROR] 14-11-2023 00:46:27 [JavaFX Application Thread] WebClientServiceImpl:99 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:46:27 [JavaFX Application Thread] WebClientServiceImpl:114 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:46:27 [JavaFX Application Thread] GlobalExceptionHandler:31 - com.huy.appnoithat.Exception.ServerConnectionException: Access denied
+[INFO ] 14-11-2023 00:48:27 [main] HelloApplication:40 - Start application
+[ERROR] 14-11-2023 00:48:29 [JavaFX Application Thread] WebClientServiceImpl:100 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:48:29 [JavaFX Application Thread] WebClientServiceImpl:115 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:48:29 [JavaFX Application Thread] GlobalExceptionHandler:31 - com.huy.appnoithat.Exception.NotAuthorizedException: Access denied
+[INFO ] 14-11-2023 00:49:59 [main] HelloApplication:40 - Start application
+[ERROR] 14-11-2023 00:50:02 [JavaFX Application Thread] WebClientServiceImpl:100 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:50:02 [JavaFX Application Thread] WebClientServiceImpl:115 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:50:02 [JavaFX Application Thread] GlobalExceptionHandler:31 - com.huy.appnoithat.Exception.NotAuthorizedException: 
+[INFO ] 14-11-2023 00:52:00 [main] HelloApplication:37 - Start application
+[ERROR] 14-11-2023 00:52:02 [JavaFX Application Thread] WebClientServiceImpl:100 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:52:02 [JavaFX Application Thread] WebClientServiceImpl:115 - Error when sending request to serverGET /api/index  null
+[INFO ] 14-11-2023 00:52:19 [main] HelloApplication:39 - Start application
+[ERROR] 14-11-2023 00:52:21 [JavaFX Application Thread] WebClientServiceImpl:100 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:52:21 [JavaFX Application Thread] WebClientServiceImpl:115 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:52:21 [JavaFX Application Thread] GlobalExceptionHandler:31 - com.huy.appnoithat.Exception.NotAuthorizedException: Access denied
+[INFO ] 14-11-2023 00:53:31 [main] HelloApplication:39 - Start application
+[ERROR] 14-11-2023 00:53:33 [JavaFX Application Thread] WebClientServiceImpl:100 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:53:33 [JavaFX Application Thread] WebClientServiceImpl:115 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:53:33 [JavaFX Application Thread] GlobalExceptionHandler:31 - com.huy.appnoithat.Exception.NotAuthorizedException: Access denied
+[ERROR] 14-11-2023 00:53:43 [JavaFX Application Thread] WebClientServiceImpl:115 - Error when sending request to serverPOST /api/login null {"id":0,"username":"kim","password":"kim","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[ERROR] 14-11-2023 00:53:44 [JavaFX Application Thread] GlobalExceptionHandler:31 - java.lang.reflect.InvocationTargetException
+[INFO ] 14-11-2023 00:54:42 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[INFO ] 14-11-2023 00:57:10 [main] HelloApplication:39 - Start application
+[INFO ] 14-11-2023 00:57:13 [JavaFX Application Thread] HomeController:119 - Login as kim with role User
+[ERROR] 14-11-2023 00:57:21 [JavaFX Application Thread] WebClientServiceImpl:115 - Error when sending request to serverPOST /api/login null {"id":0,"username":"kim","password":"binhmai","active":true,"accountInformation":null,"roles":null,"enabled":false,"expiredDate":null}
+[ERROR] 14-11-2023 00:57:21 [JavaFX Application Thread] GlobalExceptionHandler:31 - java.lang.reflect.InvocationTargetException
+[INFO ] 14-11-2023 00:58:22 [main] HelloApplication:39 - Start application
+[ERROR] 14-11-2023 00:58:23 [JavaFX Application Thread] WebClientServiceImpl:100 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:58:23 [JavaFX Application Thread] WebClientServiceImpl:115 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:58:23 [JavaFX Application Thread] GlobalExceptionHandler:31 - com.huy.appnoithat.Exception.NotAuthorizedException: Access denied
+[INFO ] 14-11-2023 00:59:36 [main] HelloApplication:39 - Start application
+[ERROR] 14-11-2023 00:59:37 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 00:59:37 [JavaFX Application Thread] GlobalExceptionHandler:31 - Access denied
+[ERROR] 14-11-2023 00:59:45 [JavaFX Application Thread] GlobalExceptionHandler:31 - java.lang.reflect.InvocationTargetException
+[INFO ] 14-11-2023 01:00:40 [main] HelloApplication:39 - Start application
+[ERROR] 14-11-2023 01:00:41 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 01:00:41 [JavaFX Application Thread] GlobalExceptionHandler:31 - Access denied
+[ERROR] 14-11-2023 01:00:48 [JavaFX Application Thread] GlobalExceptionHandler:31 - java.lang.reflect.InvocationTargetException
+[ERROR] 14-11-2023 01:01:03 [JavaFX Application Thread] GlobalExceptionHandler:31 - java.lang.reflect.InvocationTargetException
+[INFO ] 14-11-2023 01:01:07 [main] HelloApplication:39 - Start application
+[ERROR] 14-11-2023 01:01:12 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/index  null
+[ERROR] 14-11-2023 01:01:12 [JavaFX Application Thread] GlobalExceptionHandler:31 - Access denied
+[ERROR] 14-11-2023 01:02:31 [JavaFX Application Thread] GlobalExceptionHandler:31 - java.lang.reflect.InvocationTargetException

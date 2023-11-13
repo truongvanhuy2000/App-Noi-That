@@ -1,10 +1,12 @@
 package com.huy.appnoithat.Service.WebClient;
 
 import com.huy.appnoithat.Configuration.Config;
+import com.huy.appnoithat.Exception.NotAuthorizedException;
 import com.huy.appnoithat.Exception.ServerConnectionException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -94,13 +96,28 @@ public class WebClientServiceImpl implements WebClientService {
             }
             HttpRequest httpRequest = buildJsonHttpRequest(method, path, authenticationToken, data);
             HttpResponse<String> response = client.send(httpRequest, BodyHandlers.ofString());
-            if (response.statusCode() == 200) {
-                return response.body();
+            switch (response.statusCode()) {
+                case 403 -> {
+                    LOGGER.error("Error when sending request to server" + method + " " + path + " " + authenticationToken + " " + data);
+                    throw new NotAuthorizedException("Access denied");
+                }
+                case 404 -> {
+                    LOGGER.error("Error when sending request to server" + method + " " + path + " " + authenticationToken + " " + data);
+                    throw new ServerConnectionException("Resource not found");
+                }
+                case 200 -> {
+                    return response.body();
+                }
+                default -> {
+                    throw new ServerConnectionException("Server error");
+                }
             }
-            return null;
-        } catch (Exception e) {
+        } catch (IOException e) {
             LOGGER.error("Error when sending request to server" + method + " " + path + " " + authenticationToken + " " + data);
-            throw new ServerConnectionException(e);
+            throw new RuntimeException(e);
+
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 

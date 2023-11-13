@@ -155,6 +155,32 @@
     -fx-padding: 7px 30px;
 }
 
+#btnFileExplorer{
+    -fx-background-color: #0487D9;
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+    -fx-text-fill: #ffff;
+    /*-fx-padding: 7px 30px;*/
+}
+
+#btnFileExplorer:hover {
+    -fx-background-color: #47b4ff;
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+    -fx-text-fill: #ffff;
+    /*-fx-padding: 7px 30px;*/
+}
+#btnFileExplorer:pressed {
+    -fx-background-color: #0a6096;
+    -fx-background-radius: 6, 5;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+    -fx-text-fill: #ffff;
+    /*-fx-padding: 7px 30px;*/
+}
+
 #btnLogoutcss{
     -fx-background-color: #972f9f
 }
