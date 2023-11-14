@@ -5654,3 +5654,24 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [INFO ] 14-11-2023 10:31:11 [main] HelloApplication:40 - Start application
 [INFO ] 14-11-2023 10:31:19 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
 [INFO ] 14-11-2023 10:31:55 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 14-11-2023 10:33:57 [main] HelloApplication:40 - Start application
+[INFO ] 14-11-2023 10:33:59 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 14-11-2023 10:34:57 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 14-11-2023 10:40:15 [main] HelloApplication:40 - Start application
+[INFO ] 14-11-2023 10:40:17 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[ERROR] 14-11-2023 10:40:41 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.hashCode()" because "<local8>" is null
+[ERROR] 14-11-2023 10:40:50 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.hashCode()" because "<local8>" is null
+[ERROR] 14-11-2023 10:42:03 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.hashCode()" because "<local8>" is null
+[INFO ] 14-11-2023 10:44:24 [main] HelloApplication:40 - Start application
+[INFO ] 14-11-2023 10:44:55 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 14-11-2023 10:45:22 [JavaFX Application Thread] HomeController:119 - Login as conlon123 with role User
+[INFO ] 14-11-2023 10:45:47 [main] HelloApplication:40 - Start application
+[INFO ] 14-11-2023 10:46:11 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 14-11-2023 10:46:46 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 14-11-2023 10:47:19 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 14-11-2023 10:47:41 [JavaFX Application Thread] HomeController:119 - Login as concho123 with role User
+[INFO ] 14-11-2023 10:48:07 [main] HelloApplication:40 - Start application
+[ERROR] 14-11-2023 10:48:22 [JavaFX Application Thread] GlobalExceptionHandler:25 - Cannot invoke "String.hashCode()" because "<local8>" is null
+[INFO ] 14-11-2023 10:49:14 [main] HelloApplication:40 - Start application
+[INFO ] 14-11-2023 10:49:45 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 14-11-2023 10:50:14 [JavaFX Application Thread] HomeController:119 - Login as condog1223 with role User

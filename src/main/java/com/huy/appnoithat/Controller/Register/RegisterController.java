@@ -61,10 +61,15 @@ public class RegisterController {
             // Get the QR scene and elements from the QR popup
             Scene QRpopup = QRScene.getInstance().getScene();
             Label giaTienQR = (Label) QRpopup.lookup("#giaTienQR");
-
+            String Gender = "Male";
+            if(ComboBoxGender.getSelectionModel().getSelectedItem()!=null){
+                 Gender = ComboBoxGender.getSelectionModel().getSelectedItem();
+            }
             // Retrieve selected gender, time option, and current date
-            String Gender = ComboBoxGender.getSelectionModel().getSelectedItem();
-            String time = ComboBoxTime.getSelectionModel().getSelectedItem();
+            String time = TIME_OPTION1;
+            if(ComboBoxTime.getSelectionModel().getSelectedItem()!=null){
+                time = ComboBoxTime.getSelectionModel().getSelectedItem();
+            }
             LocalDate localDate = LocalDate.now();
 
             // Set expiration date based on the selected time option

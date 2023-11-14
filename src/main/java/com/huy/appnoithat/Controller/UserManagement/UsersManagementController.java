@@ -262,10 +262,6 @@ public class UsersManagementController implements Initializable {
                 if (comboBoxActive.getSelectionModel().getSelectedItem() != null) {
                     active = comboBoxActive.getSelectionModel().getSelectedItem().toString().equals("Có") ? "true" : "false";
                 }
-
-
-
-
                 //check username exist
                 if (txtusername.getText().trim().isEmpty() || txtpassword.getText().trim().isEmpty()) {
                     PopupUtils.throwErrorSignal("tài khoản và mật khẩu không được trống");
@@ -279,13 +275,13 @@ public class UsersManagementController implements Initializable {
                     userManagementService.addNewAccount(
                             new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
                     // Clear data, reinitialize the table, and close the form
-                    init();
-                    userManageMentStage.close();
-                    txtusername.clear();
-                    txtpassword.clear();
-                    comboBoxActive.getItems().clear();
-                }
 
+                }
+                init();
+                userManageMentStage.close();
+                txtusername.clear();
+                txtpassword.clear();
+                comboBoxActive.getItems().clear();
             });
 
             btncancel.setOnAction(actionEvent -> {
