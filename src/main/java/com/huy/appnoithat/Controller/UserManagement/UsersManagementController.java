@@ -262,11 +262,6 @@ public class UsersManagementController implements Initializable {
                 if (comboBoxActive.getSelectionModel().getSelectedItem() != null) {
                     active = comboBoxActive.getSelectionModel().getSelectedItem().toString().equals("Có") ? "true" : "false";
                 }
-
-                // Add the new account to the list and update the table
-                listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), "", "", Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
-
-
                 //check username exist
                 if (txtusername.getText().trim().isEmpty() || txtpassword.getText().trim().isEmpty()) {
                     PopupUtils.throwErrorSignal("tài khoản và mật khẩu không được trống");
@@ -275,11 +270,13 @@ public class UsersManagementController implements Initializable {
                     PopupUtils.throwErrorSignal("tài khoản đã tồn tài");
                     return;
                 } else {
+                    // Add the new account to the list and update the table
+                    listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), "", "", Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
                     userManagementService.addNewAccount(
                             new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
                     // Clear data, reinitialize the table, and close the form
-                }
 
+                }
                 init();
                 userManageMentStage.close();
                 txtusername.clear();
