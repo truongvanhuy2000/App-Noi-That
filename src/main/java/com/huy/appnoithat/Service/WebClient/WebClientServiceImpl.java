@@ -96,21 +96,8 @@ public class WebClientServiceImpl implements WebClientService {
             }
             HttpRequest httpRequest = buildJsonHttpRequest(method, path, authenticationToken, data);
             HttpResponse<String> response = client.send(httpRequest, BodyHandlers.ofString());
-            switch (response.statusCode()) {
-                case 403 -> {
-                    LOGGER.error("Error when sending request to server" + method + " " + path + " " + authenticationToken + " " + data);
-                    throw new NotAuthorizedException("Access denied");
-                }
-                case 404 -> {
-                    LOGGER.error("Error when sending request to server" + method + " " + path + " " + authenticationToken + " " + data);
-                    throw new ServerConnectionException("Resource not found");
-                }
-                case 200 -> {
-                    return response.body();
-                }
-                default -> {
-                    throw new ServerConnectionException("Server error");
-                }
+            if (response.statusCode() == 200) {
+                return response.body();
             }
         } catch (IOException e) {
             LOGGER.error("Error when sending request to server" + method + " " + path + " " + authenticationToken + " " + data);
@@ -119,6 +106,7 @@ public class WebClientServiceImpl implements WebClientService {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        return null;
     }
 
     private HttpRequest buildJsonHttpRequest(String method, String path, String authenticationToken, String data) {

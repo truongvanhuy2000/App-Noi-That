@@ -5749,3 +5749,6 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [ERROR] 14-11-2023 01:01:12 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/index  null
 [ERROR] 14-11-2023 01:01:12 [JavaFX Application Thread] GlobalExceptionHandler:31 - Access denied
 [ERROR] 14-11-2023 01:02:31 [JavaFX Application Thread] GlobalExceptionHandler:31 - java.lang.reflect.InvocationTargetException
+[INFO ] 15-11-2023 00:50:24 [main] HelloApplication:39 - Start application
+[ERROR] 15-11-2023 00:50:26 [JavaFX Application Thread] WebClientServiceImpl:101 - Error when sending request to serverGET /api/index  null
+[ERROR] 15-11-2023 00:50:26 [JavaFX Application Thread] GlobalExceptionHandler:31 - Access denied
