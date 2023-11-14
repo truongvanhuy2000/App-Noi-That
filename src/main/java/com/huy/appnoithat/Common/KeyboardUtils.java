@@ -26,6 +26,9 @@ public class KeyboardUtils {
             case NEXT_SCREEN -> {
                 return keyEvent.getCode().equals(KeyCode.N);
             }
+            case NEXT_LINE -> {
+                return keyEvent.isAltDown() && keyEvent.getCode().equals(KeyCode.ENTER);
+            }
         }
         return false;
     }

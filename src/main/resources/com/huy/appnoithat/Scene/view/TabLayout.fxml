@@ -18,7 +18,7 @@
                   <Menu mnemonicParsing="false" text="Tệp">
                      <items>
                         <MenuItem fx:id="MenuItemOpenFile" mnemonicParsing="false" text="Mở" visible="false" />
-                        <MenuItem fx:id="MenuItemSave" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu" />
+                        <MenuItem fx:id="MenuItemSave" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu tệp" />
                         <MenuItem fx:id="MenuItemSaveAs" disable="true" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu mới" visible="false" />
                      </items>
                   </Menu>
@@ -28,14 +28,10 @@
                         <MenuItem fx:id="MenuItemExportPDF" mnemonicParsing="false" onAction="#onClickMenuItem" text="PDF" />
                      </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="Lưu">
-                     <items>
-                        <MenuItem fx:id="MenuItemSaveCompanyInfo" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu thông tin công ty" />
-                        <MenuItem fx:id="MenuItemSaveNoteArea" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu chú thích" />
-                     </items>
-                  </Menu>
                   <Menu mnemonicParsing="false" text="Tùy chỉnh">
                      <items>
+                        <MenuItem fx:id="MenuItemSaveNoteArea" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu chú thích" />
+                        <MenuItem fx:id="MenuItemSaveCompanyInfo" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu thông tin công ty" />
                         <CheckMenuItem fx:id="AutoSave" mnemonicParsing="false" onAction="#onClickMenuItem" text="Tự động lưu sau mỗi 10 phút" />
                      </items>
                   </Menu>

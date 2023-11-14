@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Scene;
 
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.HelloApplication;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -45,5 +46,11 @@ public class StageFactory {
         stage.requestFocus();
         stage.toFront();
         stage.show();
+        stage.setOnCloseRequest(windowEvent -> {
+            windowEvent.consume();
+            if (PopupUtils.showExitConfirmation()) {
+                stage.close();
+            }
+        });
     }
 }

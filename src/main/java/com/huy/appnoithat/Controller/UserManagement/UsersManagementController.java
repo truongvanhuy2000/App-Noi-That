@@ -70,11 +70,13 @@ public class UsersManagementController implements Initializable {
         ImageView activeIcon;
         if (checked) {
             // Load a check mark icon if checked is true
-            activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/check-mark.png")));
+            activeIcon = new ImageView(new Image(
+                    this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/check-mark.png")));
         } else {
 
             // Load a cancel icon if checked is false
-            activeIcon = new ImageView(new Image(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/cancel.png")));
+            activeIcon = new ImageView(new Image(
+                    this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/cancel.png")));
         }
         activeIcon.setFitHeight(20);
         activeIcon.setFitWidth(20);
@@ -261,8 +263,7 @@ public class UsersManagementController implements Initializable {
                     active = comboBoxActive.getSelectionModel().getSelectedItem().toString().equals("Có") ? "true" : "false";
                 }
 
-                // Add the new account to the list and update the table
-                listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), "", "", Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
+
 
 
                 //check username exist
@@ -273,16 +274,18 @@ public class UsersManagementController implements Initializable {
                     PopupUtils.throwErrorSignal("tài khoản đã tồn tài");
                     return;
                 } else {
+                    // Add the new account to the list and update the table
+                    listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), "", "", Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
                     userManagementService.addNewAccount(
                             new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
                     // Clear data, reinitialize the table, and close the form
+                    init();
+                    userManageMentStage.close();
+                    txtusername.clear();
+                    txtpassword.clear();
+                    comboBoxActive.getItems().clear();
                 }
 
-                init();
-                userManageMentStage.close();
-                txtusername.clear();
-                txtpassword.clear();
-                comboBoxActive.getItems().clear();
             });
 
             btncancel.setOnAction(actionEvent -> {

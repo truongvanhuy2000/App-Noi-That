@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
 public class BangNoiThat {
     private SimpleStringProperty STT;
     private SimpleDoubleProperty Cao;
@@ -34,7 +33,18 @@ public class BangNoiThat {
         ThanhTien = new SimpleLongProperty(thanhTien);
         KhoiLuong = new SimpleDoubleProperty(khoiLuong);
     }
-
+    public BangNoiThat() {
+        STT = new SimpleStringProperty("");
+        Cao = new SimpleDoubleProperty(0);
+        Dai = new SimpleDoubleProperty(0);
+        Rong = new SimpleDoubleProperty(0);
+        DonGia = new SimpleLongProperty(0);
+        DonVi = new SimpleStringProperty("");
+        HangMuc = new SimpleStringProperty("");
+        VatLieu = new SimpleStringProperty("");
+        ThanhTien = new SimpleLongProperty(0);
+        KhoiLuong = new SimpleDoubleProperty(0);
+    }
     public BangNoiThat(ThongTinNoiThat thongTinNoiThat) {
         this.STT = new SimpleStringProperty(thongTinNoiThat.getSTT());
         this.Cao = new SimpleDoubleProperty(Double.parseDouble(thongTinNoiThat.getCao()));
