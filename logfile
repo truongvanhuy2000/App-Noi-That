@@ -5682,3 +5682,88 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [ERROR] 12-11-2023 19:03:05 [JavaFX Application Thread] WebClientServiceImpl:99 - Error when sending request to serverGET /api/index  null
 [INFO ] 12-11-2023 19:04:21 [main] HelloApplication:40 - Start application
 [INFO ] 12-11-2023 19:04:42 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 16:10:03 [main] HelloApplication:40 - Start application
+[ERROR] 19-11-2023 16:10:13 [JavaFX Application Thread] AccountRestService:157 - Login failed
+[ERROR] 19-11-2023 16:10:13 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzODQ5MTAsImV4cCI6NDI5MjM4NDkxMH0.Fve5y1aO7rr3TF0ow5z5uIX0zrLvnvkFfIZahyYxMOBQhbsQFPXKvCTGzRsVLa6eef9-YevhjeQUtQ2qv63vXA"; line: 1, column: 21]
+[ERROR] 19-11-2023 16:10:13 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzODQ5MTAsImV4cCI6NDI5MjM4NDkxMH0.Fve5y1aO7rr3TF0ow5z5uIX0zrLvnvkFfIZahyYxMOBQhbsQFPXKvCTGzRsVLa6eef9-YevhjeQUtQ2qv63vXA"; line: 1, column: 21]
+[ERROR] 19-11-2023 16:10:13 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 16:10:13 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 19-11-2023 19:48:24 [main] HelloApplication:40 - Start application
+[ERROR] 19-11-2023 19:48:35 [JavaFX Application Thread] AccountRestService:157 - Login failed
+[ERROR] 19-11-2023 19:48:36 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTgwMTIsImV4cCI6NDI5MjM5ODAxMn0.Ntd5w7_N9UPxwqsuKDU1_3iSXA62iBdvNi8vN8uIRREUcHXelXuR_ctHpqVakwJRBd9iKwu90NdTq-GZFn_CGg"; line: 1, column: 21]
+[ERROR] 19-11-2023 19:48:36 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTgwMTIsImV4cCI6NDI5MjM5ODAxMn0.Ntd5w7_N9UPxwqsuKDU1_3iSXA62iBdvNi8vN8uIRREUcHXelXuR_ctHpqVakwJRBd9iKwu90NdTq-GZFn_CGg"; line: 1, column: 21]
+[ERROR] 19-11-2023 19:48:36 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 19:48:36 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[ERROR] 19-11-2023 19:50:46 [JavaFX Application Thread] AccountRestService:157 - Login failed
+[ERROR] 19-11-2023 19:50:46 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTgxNDMsImV4cCI6NDI5MjM5ODE0M30.T03NtZ8xNiLTdQ8immAK2KEzgEPZ1L5oqGC8KE9clQmfnMsVTrXLoOcbVFIkwTENMGWljkKbK_jcYpo5pCSKnQ"; line: 1, column: 21]
+[ERROR] 19-11-2023 19:50:46 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTgxNDMsImV4cCI6NDI5MjM5ODE0M30.T03NtZ8xNiLTdQ8immAK2KEzgEPZ1L5oqGC8KE9clQmfnMsVTrXLoOcbVFIkwTENMGWljkKbK_jcYpo5pCSKnQ"; line: 1, column: 21]
+[ERROR] 19-11-2023 19:50:46 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 19:50:46 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 19-11-2023 20:10:23 [main] HelloApplication:40 - Start application
+[ERROR] 19-11-2023 20:10:36 [JavaFX Application Thread] AccountRestService:157 - Login failed
+[ERROR] 19-11-2023 20:10:37 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTkzMzMsImV4cCI6NDI5MjM5OTMzM30.xekP5FP6Ol_elKZk0ez9iz2N5nZ9g86OjJKg8VWgh-QhCDun6Xw9GxSnA_GUnd6sN9M8xHBIrygE2vifjhGB_g"; line: 1, column: 21]
+[ERROR] 19-11-2023 20:10:37 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTkzMzMsImV4cCI6NDI5MjM5OTMzM30.xekP5FP6Ol_elKZk0ez9iz2N5nZ9g86OjJKg8VWgh-QhCDun6Xw9GxSnA_GUnd6sN9M8xHBIrygE2vifjhGB_g"; line: 1, column: 21]
+[ERROR] 19-11-2023 20:10:37 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:10:37 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 19-11-2023 20:12:44 [main] HelloApplication:40 - Start application
+[ERROR] 19-11-2023 20:12:55 [JavaFX Application Thread] AccountRestService:158 - Login failed
+[ERROR] 19-11-2023 20:12:56 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTk0NzIsImV4cCI6NDI5MjM5OTQ3Mn0.H6G32Qjmmtamd8fO-C3u-moCsr_P3DiXyhI_bKzMwEwKsG81-uKctG1Q-3Gc8pe2sDdI_wEHRjxhoJbb2yP7Aw"; line: 1, column: 21]
+[ERROR] 19-11-2023 20:12:56 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTk0NzIsImV4cCI6NDI5MjM5OTQ3Mn0.H6G32Qjmmtamd8fO-C3u-moCsr_P3DiXyhI_bKzMwEwKsG81-uKctG1Q-3Gc8pe2sDdI_wEHRjxhoJbb2yP7Aw"; line: 1, column: 21]
+[ERROR] 19-11-2023 20:12:56 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:12:56 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 19-11-2023 20:17:36 [main] HelloApplication:40 - Start application
+[ERROR] 19-11-2023 20:17:57 [JavaFX Application Thread] AccountRestService:157 - Login failed
+[INFO ] 19-11-2023 20:18:22 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 20:19:28 [main] HelloApplication:40 - Start application
+[ERROR] 19-11-2023 20:19:44 [JavaFX Application Thread] WebClientServiceImpl:168 - Error when sending request to serverGET /api eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTk5ODQsImV4cCI6MTcwMDQwMDA0NH0.f3BYA3qTbRlCdbTKUfbLZqOZCGDdq0FYi8riIZPjOsnvLhEVTEt3qWJ5Dq_I5WLQ6oo7D3RMVXG5U2V-MaXqdA null
+[ERROR] 19-11-2023 20:19:47 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:19:47 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:19:47 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:19:47 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.net.ConnectException
+[ERROR] 19-11-2023 20:19:47 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:19:47 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 19-11-2023 20:20:50 [main] HelloApplication:40 - Start application
+[ERROR] 19-11-2023 20:20:51 [JavaFX Application Thread] WebClientServiceImpl:168 - Error when sending request to serverGET /api/index eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTk5ODQsImV4cCI6MTcwMDQwMDA0NH0.f3BYA3qTbRlCdbTKUfbLZqOZCGDdq0FYi8riIZPjOsnvLhEVTEt3qWJ5Dq_I5WLQ6oo7D3RMVXG5U2V-MaXqdA null
+[ERROR] 19-11-2023 20:20:54 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:20:54 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:20:54 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:20:54 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.net.ConnectException
+[INFO ] 19-11-2023 20:21:08 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 20:21:12 [JavaFX Application Thread] HomeController:119 - Login as  with role User
+[INFO ] 19-11-2023 20:21:30 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 20:21:33 [JavaFX Application Thread] HomeController:119 - Login as  with role User
+[INFO ] 19-11-2023 20:24:45 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 20:24:48 [JavaFX Application Thread] HomeController:119 - Login as  with role User
+[INFO ] 19-11-2023 20:24:55 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 19-11-2023 23:42:38 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 23:42:46 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 19-11-2023 23:43:29 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 23:43:31 [JavaFX Application Thread] HomeController:119 - Login as  with role User
+[INFO ] 19-11-2023 23:43:40 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 19-11-2023 23:48:23 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 23:48:23 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 19-11-2023 23:48:26 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 19-11-2023 23:49:32 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 19-11-2023 23:56:07 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 00:14:10 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 00:48:20 [main] HelloApplication:40 - Start application
+[INFO ] 20-11-2023 00:48:20 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 00:48:22 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 00:48:39 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 00:52:45 [main] HelloApplication:40 - Start application
+[INFO ] 20-11-2023 00:52:45 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 00:52:47 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 00:54:33 [main] HelloApplication:40 - Start application
+[INFO ] 20-11-2023 00:54:33 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 00:54:38 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 00:54:38 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin

@@ -14,17 +14,17 @@ import java.util.Optional;
 public class PopupUtils {
     public static void throwErrorSignal(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
-        alert.show();
+        alert.showAndWait();
     }
 
     public static void throwSuccessSignal(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK);
-        alert.show();
+        alert.showAndWait();
     }
 
     public static void throwCriticalError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
-        alert.show();
+        alert.showAndWait();
     }
 
     public static File fileSaver() {

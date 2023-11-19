@@ -1,5 +1,7 @@
 package com.huy.appnoithat.Common;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.*;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -142,12 +144,22 @@ public class Utils {
     public static String convertMilisToDateTimeString(long milis) {
         return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(milis));
     }
-    public static String encodeData(String data) {
+    public static String urlEncode(String data) {
         if (data == null)
             return "";
         return URLEncoder.encode(data, StandardCharsets.UTF_8);
     }
-    public static String decodeData(byte[] data) {
+    public static String base64EncodeData(String data) {
+        if (data == null)
+            return "";
+        return Base64.getEncoder().encodeToString(data.getBytes());
+    }
+    public static String base64DecodeData(byte[] data) {
+        if (data == null)
+            return "";
+        return new String(Base64.getDecoder().decode(data));
+    }
+    public static String urlDecode(byte[] data) {
         if (data == null)
             return "";
         String encodedData = new String(data, StandardCharsets.UTF_8);
@@ -155,14 +167,30 @@ public class Utils {
     }
     public static String readFromFile(File file) {
         try (InputStream inputStream = new FileInputStream(file)) {
-            return Utils.decodeData(inputStream.readAllBytes());
+            return Utils.urlDecode(inputStream.readAllBytes());
         } catch (IOException e) {
             return null;
         }
     }
     public static void writeToFile(File file, String data) {
         try (OutputStream outputStream = new FileOutputStream(file)) {
-            outputStream.write(Utils.encodeData(data).getBytes());
+            outputStream.write(Utils.urlEncode(data).getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static <T> T readObjectFromFile(File file, Class<T> clazz) {
+        try (InputStream inputStream = new FileInputStream(file)) {
+            return new ObjectMapper().readValue(Utils.urlDecode(
+                    base64DecodeData(inputStream.readAllBytes()).getBytes()), clazz);
+        } catch (IOException e) {
+            return null;
+        }
+    }
+    public static <T> void writeObjectToFile(File file, T object) {
+        try (OutputStream outputStream = new FileOutputStream(file)) {
+            outputStream.write(Utils.base64EncodeData(
+                    urlEncode(new ObjectMapper().writeValueAsString(object))).getBytes());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

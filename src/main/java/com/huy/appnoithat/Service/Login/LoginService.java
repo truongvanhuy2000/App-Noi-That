@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Service.Login;
 
+import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Service.RestService.AccountRestService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
@@ -17,30 +18,29 @@ public class LoginService {
     }
 
     public boolean Authorization(String username, String password) {
-        String token = login(username, password);
+        Token token = login(username, password);
         if (token != null) {
-            saveSession(username, token);
+            this.sessionService.setSession(username, token);
+            this.sessionService.saveSessionToDisk();
             return true;
         }
         return false;
     }
-    public void saveSession(String username, String token) {
-        this.sessionService.setSession(username, token);
-        this.sessionService.saveSessionToDisk();
-    }
     public boolean reauthorize(String password) {
-        String token = login(this.sessionService.getUsername(), password);
-        return token != null && !token.isEmpty();
+        Token token = login(this.sessionService.getUsername(), password);
+        return token != null;
     }
-    public String login(String username, String password) {
+    public Token login(String username, String password) {
         return accountRestService.login(username, password);
     }
-    public boolean authorizeWithToken(String token) {
-        Account account = accountRestService.getAccountInformation(token);
+    public boolean authorizeWithToken(Token token) {
+        sessionService.setToken(token);
+        Account account = accountRestService.getAccountInformation();
         if (account == null) {
             return false;
         }
-        saveSession(account.getUsername(), token);
+        sessionService.setLoginAccount(account);
+        this.sessionService.saveSessionToDisk();
         return true;
     }
 }

@@ -43,7 +43,7 @@ public class NoiThatFileService {
             setUpDataForExport(dataForExport);
             setOutputFile(exportDirectory);
             String outPutJson = mapper.writeValueAsString(objectData);
-            String encodedString = Utils.encodeData(outPutJson);
+            String encodedString = Utils.urlEncode(outPutJson);
             outputFile.write(encodedString.getBytes());
             outputFile.close();
         } catch (Exception e) {
@@ -61,7 +61,7 @@ public class NoiThatFileService {
 
     public List<TabData> importData(String importDirectory) {
         try (InputStream inputStream = new FileInputStream(importDirectory)) {
-            String decodedString = Utils.decodeData(inputStream.readAllBytes());
+            String decodedString = Utils.urlDecode(inputStream.readAllBytes());
             ObjectData objectData = mapper.readValue(decodedString, ObjectData.class);
             return objectData.getExportData();
         } catch (IOException e) {
