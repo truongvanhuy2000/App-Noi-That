@@ -20,8 +20,8 @@ public class ErrorHandler {
         LOGGER.error("Token expired");
         aditionalAction.run();
         PopupUtils.throwErrorSignal("Tài khoản đã hết hạn, vui lòng đăng nhập lại!");
-        closeAll();
         Platform.runLater(() -> {
+            closeAll();
             LoginScene loginScene = new LoginScene();
             loginScene.getLoginController().init();
             StageFactory.CreateNewUnresizeableStage(loginScene.getScene());

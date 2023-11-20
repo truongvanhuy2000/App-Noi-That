@@ -5848,3 +5848,37 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [INFO ] 20-11-2023 18:00:22 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
 [INFO ] 20-11-2023 18:00:22 [JavaFX Application Thread] WebClientServiceImpl:208 - Refresh token expired, need to login again
 [ERROR] 20-11-2023 18:00:22 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[INFO ] 21-11-2023 00:08:52 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 00:08:53 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 21-11-2023 00:08:53 [JavaFX Application Thread] WebClientServiceImpl:208 - Refresh token expired, need to login again
+[ERROR] 21-11-2023 00:08:53 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[ERROR] 21-11-2023 00:09:14 [JavaFX Application Thread] GlobalExceptionHandler:37 - argument "content" is null
+[ERROR] 21-11-2023 00:09:14 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 21-11-2023 00:09:14 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 21-11-2023 00:10:03 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 00:10:03 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 21-11-2023 00:10:03 [JavaFX Application Thread] WebClientServiceImpl:208 - Refresh token expired, need to login again
+[ERROR] 21-11-2023 00:10:03 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[INFO ] 21-11-2023 00:11:34 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 00:11:34 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 21-11-2023 00:11:34 [JavaFX Application Thread] WebClientServiceImpl:208 - Refresh token expired, need to login again
+[ERROR] 21-11-2023 00:11:34 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[INFO ] 21-11-2023 00:12:01 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 21-11-2023 00:12:15 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[WARN ] 21-11-2023 00:12:25 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:12:25 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:12:25 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:12:25 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 00:12:25 [Thread-3] ExportFile:103 - Exporting to XLSX file
+[WARN ] 21-11-2023 00:13:16 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:13:16 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:13:16 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:13:16 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 00:13:16 [Thread-4] ExportFile:103 - Exporting to XLSX file
+[INFO ] 21-11-2023 00:14:05 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 00:14:09 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[WARN ] 21-11-2023 00:14:17 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:14:17 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:14:17 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:14:17 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 00:14:17 [Thread-3] ExportFile:103 - Exporting to XLSX file

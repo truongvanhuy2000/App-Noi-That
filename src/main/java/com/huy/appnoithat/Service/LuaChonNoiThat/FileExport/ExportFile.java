@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Service.FileExport;
+package com.huy.appnoithat.Service.LuaChonNoiThat.FileExport;
 
 import com.huy.appnoithat.DataModel.DataPackage;
 
@@ -9,6 +9,4 @@ public interface ExportFile {
     void export(File exportDirectory) throws IOException;
 
     void setUpDataForExport(DataPackage dataForExport);
-
-    DataPackage importData(File importDirectory);
 }

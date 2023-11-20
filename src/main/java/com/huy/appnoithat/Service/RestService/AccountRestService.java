@@ -140,6 +140,9 @@ public class AccountRestService {
         try {
             String response = webClientService.unauthorizedHttpPostJson(
                     BASE_ENDPOINT + "/login", objectMapper.writeValueAsString(account));
+            if (response == null) {
+                return null;
+            }
             return objectMapper.readValue(response, Token.class);
         } catch (JsonProcessingException e) {
             LOGGER.error("Login failed");
