@@ -7,7 +7,6 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
-import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -78,7 +77,8 @@ public class AccountRestService {
     }
     public void save(Account account) {
         try {
-            this.webClientService.authorizedHttpPostJson(BASE_ENDPOINT + "/accounts", this.objectMapper.writeValueAsString(account));
+            this.webClientService.authorizedHttpPostJson(BASE_ENDPOINT + "/accounts",
+                    this.objectMapper.writeValueAsString(account));
         } catch (JsonProcessingException e) {
             LOGGER.error("Error when save account: " + account.getUsername());
             throw new RuntimeException(e);

@@ -5767,3 +5767,84 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [INFO ] 20-11-2023 00:54:33 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
 [INFO ] 20-11-2023 00:54:38 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
 [INFO ] 20-11-2023 00:54:38 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:13:28 [main] HelloApplication:40 - Start application
+[INFO ] 20-11-2023 17:13:28 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:13:30 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:13:38 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:14:09 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:14:50 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:14:50 [JavaFX Application Thread] WebClientServiceImpl:215 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:14:50 [JavaFX Application Thread] ErrorHandler:18 - Token expired
+[ERROR] 20-11-2023 17:14:59 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized field "status" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (2 known properties: "token", "refreshToken"])
+ at [Source: (String)"{"status":400,"message":"Invalid refresh token","timeStamp":1700475290085}"; line: 1, column: 14] (through reference chain: com.huy.appnoithat.DataModel.Token["status"])
+[ERROR] 20-11-2023 17:14:59 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "status" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (2 known properties: "token", "refreshToken"])
+ at [Source: (String)"{"status":400,"message":"Invalid refresh token","timeStamp":1700475290085}"; line: 1, column: 14] (through reference chain: com.huy.appnoithat.DataModel.Token["status"])
+[ERROR] 20-11-2023 17:15:08 [JavaFX Application Thread] GlobalExceptionHandler:37 - Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@4b1b7762
+[INFO ] 20-11-2023 17:19:35 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 17:19:36 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:19:41 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:19:47 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:23:17 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:23:17 [JavaFX Application Thread] WebClientServiceImpl:215 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:23:17 [JavaFX Application Thread] ErrorHandler:18 - Token expired
+[ERROR] 20-11-2023 17:23:20 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized field "status" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (2 known properties: "token", "refreshToken"])
+ at [Source: (String)"{"status":400,"message":"Invalid refresh token","timeStamp":1700475797614}"; line: 1, column: 14] (through reference chain: com.huy.appnoithat.DataModel.Token["status"])
+[ERROR] 20-11-2023 17:23:20 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "status" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (2 known properties: "token", "refreshToken"])
+ at [Source: (String)"{"status":400,"message":"Invalid refresh token","timeStamp":1700475797614}"; line: 1, column: 14] (through reference chain: com.huy.appnoithat.DataModel.Token["status"])
+[ERROR] 20-11-2023 17:23:24 [JavaFX Application Thread] GlobalExceptionHandler:37 - Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@4f772413
+[INFO ] 20-11-2023 17:31:14 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 17:31:14 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:31:19 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:33:22 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:33:22 [JavaFX Application Thread] WebClientServiceImpl:215 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:33:22 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[ERROR] 20-11-2023 17:33:30 [JavaFX Application Thread] GlobalExceptionHandler:37 - Index 1 out of bounds for length 0
+[ERROR] 20-11-2023 17:33:30 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 0
+[INFO ] 20-11-2023 17:35:08 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 17:35:08 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:35:13 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:37:01 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:37:01 [JavaFX Application Thread] WebClientServiceImpl:215 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:37:01 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[ERROR] 20-11-2023 17:37:05 [JavaFX Application Thread] GlobalExceptionHandler:37 - Index 1 out of bounds for length 0
+[ERROR] 20-11-2023 17:37:05 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 0
+[INFO ] 20-11-2023 17:38:33 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 17:38:33 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:38:38 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:39:54 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:39:54 [JavaFX Application Thread] WebClientServiceImpl:215 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:39:54 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[ERROR] 20-11-2023 17:40:14 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized field "status" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (2 known properties: "token", "refreshToken"])
+ at [Source: (String)"{"status":400,"message":"Invalid refresh token","timeStamp":1700476794374}"; line: 1, column: 14] (through reference chain: com.huy.appnoithat.DataModel.Token["status"])
+[ERROR] 20-11-2023 17:40:14 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "status" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (2 known properties: "token", "refreshToken"])
+ at [Source: (String)"{"status":400,"message":"Invalid refresh token","timeStamp":1700476794374}"; line: 1, column: 14] (through reference chain: com.huy.appnoithat.DataModel.Token["status"])
+[INFO ] 20-11-2023 17:42:15 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 17:42:15 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:42:31 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:43:36 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:43:36 [JavaFX Application Thread] WebClientServiceImpl:215 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:43:36 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[ERROR] 20-11-2023 17:43:42 [JavaFX Application Thread] GlobalExceptionHandler:37 - Cannot invoke "java.util.List.stream()" because "accountList" is null
+[INFO ] 20-11-2023 17:44:43 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 17:44:43 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:44:48 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:45:41 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:48:22 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:48:22 [JavaFX Application Thread] WebClientServiceImpl:215 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:48:22 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[INFO ] 20-11-2023 17:48:25 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:48:30 [Thread-3] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:59:16 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 17:59:17 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:59:17 [JavaFX Application Thread] WebClientServiceImpl:208 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:59:17 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[ERROR] 20-11-2023 17:59:37 [JavaFX Application Thread] GlobalExceptionHandler:37 - argument "content" is null
+[ERROR] 20-11-2023 17:59:37 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 20-11-2023 17:59:37 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[ERROR] 20-11-2023 17:59:57 [JavaFX Application Thread] GlobalExceptionHandler:37 - argument "content" is null
+[ERROR] 20-11-2023 17:59:57 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 20-11-2023 17:59:57 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 20-11-2023 18:00:22 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 18:00:22 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 18:00:22 [JavaFX Application Thread] WebClientServiceImpl:208 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 18:00:22 [JavaFX Application Thread] ErrorHandler:20 - Token expired

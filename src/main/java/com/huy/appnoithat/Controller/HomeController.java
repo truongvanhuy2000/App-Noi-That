@@ -158,7 +158,8 @@ public class HomeController {
         Stage stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == LogoutButton) {
             // Switch to the login scene if the Logout button is clicked
-            Scene scene = LoginScene.getInstance().getScene();
+            LoginScene loginScene = new LoginScene();
+            Scene scene = loginScene.getScene();
             StageFactory.closeAndCreateNewUnresizeableStage(stage, scene);
         }
     }

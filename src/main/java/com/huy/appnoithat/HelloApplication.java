@@ -29,8 +29,9 @@ public class HelloApplication extends Application {
                 StageFactory.closeAndCreateNewMaximizedStage(stage, scene);
             }
             else {
-                Scene scene = LoginScene.getInstance().getScene();
-                Platform.runLater(() -> LoginScene.getInstance().getLoginController().init());
+                LoginScene loginScene = new LoginScene();
+                Scene scene = loginScene.getScene();
+                Platform.runLater(() -> loginScene.getLoginController().init());
                 StageFactory.closeAndCreateNewUnresizeableStage(stage, scene);
             }
         });

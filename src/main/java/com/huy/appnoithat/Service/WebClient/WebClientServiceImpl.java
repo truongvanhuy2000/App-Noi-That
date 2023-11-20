@@ -205,6 +205,8 @@ public class WebClientServiceImpl implements WebClientService {
         String refreshToken = userSessionService.getRefreshToken();
         ObjectMapper objectMapper = new ObjectMapper();
         if (refreshToken == null || refreshToken.isEmpty()) {
+            LOGGER.info("Refresh token expired, need to login again");
+            ErrorHandler.handleTokenExpired(userSessionService::cleanUserSession);
             return null;
         }
         Map<String, String> data = Map.of("refreshToken", refreshToken);
@@ -214,6 +216,7 @@ public class WebClientServiceImpl implements WebClientService {
             if (response.statusCode() != 200) {
                 LOGGER.info("Refresh token expired, need to login again");
                 ErrorHandler.handleTokenExpired(userSessionService::cleanUserSession);
+                return null;
             }
             Token token = objectMapper.readValue(response.body(), Token.class);
             userSessionService.setToken(token);
