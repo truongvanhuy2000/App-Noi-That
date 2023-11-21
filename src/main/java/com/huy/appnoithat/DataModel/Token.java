@@ -1,16 +1,14 @@
-package com.huy.appnoithat.DataModel.Session;
+package com.huy.appnoithat.DataModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class PersistenceUserSession {
-    @JsonProperty("username")
-    private String username;
+@NoArgsConstructor
+@Data
+public class Token {
     @JsonProperty("token")
     private String token;
     @JsonProperty("refreshToken")

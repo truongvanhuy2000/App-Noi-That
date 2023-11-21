@@ -16,7 +16,6 @@ public class LoginScene {
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
-    private static LoginScene single_instance = null;
 
     public LoginScene() {
         try {
@@ -28,14 +27,6 @@ public class LoginScene {
         scene = new Scene(root);
         addCssToScence();
     }
-
-    // Create an object of this class, call this function
-    public static synchronized LoginScene getInstance() {
-        if (single_instance == null)
-            single_instance = new LoginScene();
-        return single_instance;
-    }
-
     public void setRoot(Parent root) {
         this.root = root;
         scene.setRoot(this.root);

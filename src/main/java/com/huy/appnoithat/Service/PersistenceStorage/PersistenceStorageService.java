@@ -114,8 +114,12 @@ public class PersistenceStorageService {
      */
     public void setUserSession(PersistenceUserSession persistenceUserSession) {
         this.persistenceUserSession = persistenceUserSession;
+        exportUserSession(persistenceUserSession, Config.USER.SESSION_DIRECTORY);
+    }
+
+    public void exportUserSession(PersistenceUserSession persistenceUserSession, String directory) {
         try {
-            objectMapper.writeValue(new File(Config.USER.SESSION_DIRECTORY), persistenceUserSession);
+            objectMapper.writeValue(new File(directory), persistenceUserSession);
         } catch (IOException e) {
             LOGGER.error("Failed to write user session" + e.getMessage());
             throw new RuntimeException(e);

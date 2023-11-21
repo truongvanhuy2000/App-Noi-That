@@ -1,15 +1,22 @@
 package com.huy.appnoithat.Service.WebClient;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Configuration.Config;
+import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Exception.ServerConnectionException;
+import com.huy.appnoithat.Handler.ErrorHandler;
+import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.Map;
 
 public class WebClientServiceImpl implements WebClientService {
     final static Logger LOGGER = LogManager.getLogger(WebClientServiceImpl.class);
@@ -25,10 +32,11 @@ public class WebClientServiceImpl implements WebClientService {
     private final String host;
     private final long timeOut;
     private final HttpClient client;
-
+    private final UserSessionService userSessionService;
     public WebClientServiceImpl() {
         this.host = SERVER_ADDRESS;
         this.timeOut = TIME_OUT;
+        userSessionService = new UserSessionService();
         client = HttpClient.newHttpClient();
     }
     //    Use this api to do an unauthorized Http Post request.
@@ -38,7 +46,14 @@ public class WebClientServiceImpl implements WebClientService {
         if (path == null || jsonData == null) {
             throw new IllegalArgumentException();
         }
-        return doSendRequest(POST, path, null, jsonData);
+        HttpResponse<String> response = doSendRequest(POST, path, null, jsonData);
+        if (response.statusCode() == 403) {
+            return null;
+        } else if (response.statusCode() == 200) {
+            return response.body();
+        } else {
+            return null;
+        }
     }
 
     //    Use this api to do an unauthorized Http GET request.
@@ -47,57 +62,108 @@ public class WebClientServiceImpl implements WebClientService {
         if (path == null) {
             throw new IllegalArgumentException();
         }
-        return doSendRequest(GET, path, null, null);
+        HttpResponse<String> response = doSendRequest(GET, path, null, null);
+        if (response.statusCode() == 403) {
+            return null;
+        } else if (response.statusCode() == 200) {
+            return response.body();
+        } else {
+            return null;
+        }
     }
 
     //    Use this api to do an authorized Http Post request.
     //    Path is the path to the api, token is the bearer token provided after login
     //    jsonData is the data to be sent to the server. Must be in json format
-    public String authorizedHttpPostJson(String path, String jsonData, String token) {
+    public String authorizedHttpPostJson(String path, String jsonData) {
+        String token = userSessionService.getJwtToken();
         if (path == null || jsonData == null || token == null) {
             throw new IllegalArgumentException();
         }
-        return doSendRequest(POST, path, token, jsonData);
+        HttpResponse<String> response =  doSendRequest(POST, path, token, jsonData);
+        if (response.statusCode() == 403) {
+            Token newToken = tryRefreshToken();
+            if (newToken == null) {
+                return null;
+            }
+            return authorizedHttpPostJson(path, jsonData);
+        } else if (response.statusCode() == 200) {
+            return response.body();
+        } else {
+            return null;
+        }
     }
 
     //    Use this api to do an authorized Http Get request.
     //    Path is the path to the api, token is the bearer token provided after login
-    public String authorizedHttpGetJson(String path, String token) {
+    public String authorizedHttpGetJson(String path) {
+        String token = userSessionService.getJwtToken();
         if (path == null || token == null) {
             throw new IllegalArgumentException();
         }
-        return doSendRequest(GET, path, token, null);
+        HttpResponse<String> response =  doSendRequest(GET, path, token, null);
+        if (response.statusCode() == 403) {
+            Token newToken = tryRefreshToken();
+            if (newToken == null) {
+                return null;
+            }
+            return authorizedHttpGetJson(path);
+        } else if (response.statusCode() == 200) {
+            return response.body();
+        } else {
+            return null;
+        }
     }
 
     //    Use this api to do an authorized Http Put request.
     //    Path is the path to the api, token is the bearer token provided after login
     //    jsonData is the data to be sent to the server. Must be in json format
-    public String authorizedHttpPutJson(String path, String jsonData, String token) {
+    public String authorizedHttpPutJson(String path, String jsonData) {
+        String token = userSessionService.getJwtToken();
         if (path == null || jsonData == null || token == null) {
             throw new IllegalArgumentException();
         }
-        return doSendRequest(PUT, path, token, jsonData);
+        HttpResponse<String> response =  doSendRequest(PUT, path, token, jsonData);
+        if (response.statusCode() == 403) {
+            Token newToken = tryRefreshToken();
+            if (newToken == null) {
+                return null;
+            }
+            return authorizedHttpPutJson(path, jsonData);
+        } else if (response.statusCode() == 200) {
+            return response.body();
+        } else {
+            return null;
+        }
     }
 
     //    Use this api to do an authorized Http Delete request.
     //    Path is the path to the api, token is the bearer token provided after login
-    public String authorizedHttpDeleteJson(String path, String jsonData, String token) {
+    public String authorizedHttpDeleteJson(String path, String jsonData) {
+        String token = userSessionService.getJwtToken();
         if (path == null || jsonData == null || token == null) {
             throw new IllegalArgumentException();
         }
-        return doSendRequest(DELETE, path, token, jsonData);
+        HttpResponse<String> response =  doSendRequest(DELETE, path, token, jsonData);
+        if (response.statusCode() == 403) {
+            Token newToken = tryRefreshToken();
+            if (newToken == null) {
+                return null;
+            }
+            return authorizedHttpDeleteJson(path, jsonData);
+        } else if (response.statusCode() == 200) {
+            return response.body();
+        } else {
+            return null;
+        }
     }
-    private String doSendRequest(String method, String path, String authenticationToken, String data) {
+    private HttpResponse<String> doSendRequest(String method, String path, String authenticationToken, String data) {
         try {
             if ((method.equals("PUT") || method.equals("POST")) && data.isEmpty()) {
                 data = " ";
             }
             HttpRequest httpRequest = buildJsonHttpRequest(method, path, authenticationToken, data);
-            HttpResponse<String> response = client.send(httpRequest, BodyHandlers.ofString());
-            if (response.statusCode() == 200) {
-                return response.body();
-            }
-            return null;
+            return client.send(httpRequest, BodyHandlers.ofString());
         } catch (Exception e) {
             LOGGER.error("Error when sending request to server" + method + " " + path + " " + authenticationToken + " " + data);
             throw new ServerConnectionException(e);
@@ -133,5 +199,31 @@ public class WebClientServiceImpl implements WebClientService {
             builder.header(AUTHORIZATION, "Bearer " + authenticationToken);
         }
         return builder.build();
+    }
+    private Token tryRefreshToken() {
+        LOGGER.info("Trying to refresh jwt token");
+        String refreshToken = userSessionService.getRefreshToken();
+        ObjectMapper objectMapper = new ObjectMapper();
+        if (refreshToken == null || refreshToken.isEmpty()) {
+            LOGGER.info("Refresh token expired, need to login again");
+            ErrorHandler.handleTokenExpired(userSessionService::cleanUserSession);
+            return null;
+        }
+        Map<String, String> data = Map.of("refreshToken", refreshToken);
+        try {
+            HttpResponse<String> response = doSendRequest(POST, "/api/refreshToken", null,
+                    objectMapper.writeValueAsString(data));
+            if (response.statusCode() != 200) {
+                LOGGER.info("Refresh token expired, need to login again");
+                ErrorHandler.handleTokenExpired(userSessionService::cleanUserSession);
+                return null;
+            }
+            Token token = objectMapper.readValue(response.body(), Token.class);
+            userSessionService.setToken(token);
+            userSessionService.saveSessionToDisk();
+            return token;
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

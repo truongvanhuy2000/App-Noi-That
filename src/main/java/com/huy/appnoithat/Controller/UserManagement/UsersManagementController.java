@@ -105,9 +105,12 @@ public class UsersManagementController implements Initializable {
     public void refreshList() {
         Platform.runLater(() -> {
             // Retrieve a list of enabled accounts from the service
+            listUser.clear();
             List<Account> accountList = userManagementService.findAllAccountEnable();
             // Clear the existing data in the list
-            listUser.clear();
+            if (accountList == null || accountList.isEmpty()) {
+                return;
+            }
             // Convert Account objects to AccountTable objects and add them to the list
             listUser.addAll(accountList.stream().filter(account -> !account.getRoleList().get(0).equals("ROLE_ADMIN"))
                     .map(account -> new AccountTable(account.getId(),

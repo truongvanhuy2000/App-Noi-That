@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lombok.Data;
@@ -30,11 +31,15 @@ public class NewTabController implements Initializable {
     private Stage currentStage;
     private final List<TabContent> currentlyOpenTab;
     @FXML
-    private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs, MenuItemSaveCompanyInfo, MenuItemSaveNoteArea;
+    private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs,
+            MenuItemSaveCompanyInfo, MenuItemSaveNoteArea, MenuItemExportMultipleXLS;
     @FXML
     private CheckMenuItem AutoSave;
     @FXML
     private TabPane tabPane;
+    @FXML
+    private StackPane loadingPane;
+
     private Timeline autoSaveTimer;
     private State currentState;
     private String currentDirectory;
@@ -53,6 +58,9 @@ public class NewTabController implements Initializable {
         }
         else if (source == MenuItemExportXLS) {
             contentOperation.exportFile(FileType.EXCEL);
+        }
+        else if (source == MenuItemExportMultipleXLS) {
+            contentOperation.exportMultipleExcel();
         }
         else if (source == MenuItemSave) {
             contentOperation.save();
@@ -80,6 +88,9 @@ public class NewTabController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadingPane.setDisable(true);
+        loadingPane.setVisible(false);
+
         tabOperation = new TabOperation(this);
         contentOperation = new ContentOperation(this);
         tabPane.getTabs().clear();

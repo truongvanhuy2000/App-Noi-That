@@ -18,10 +18,8 @@ public class ThongSoRestService {
     final static Logger LOGGER = LogManager.getLogger(VatLieuRestService.class);
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
-    private final UserSessionService userSessionService;
     private static final String BASE_ENDPOINT = "/api/thongso";
     private static final String ID_TEMPLATE = "/%d";
-    private static final String OWNER_TEMPLATE = "?owner=%s";
     private static final String PARENT_ID_TEMPLATE = "&parentId=%d";
     public static synchronized ThongSoRestService getInstance() {
         if (instance == null) {
@@ -35,7 +33,6 @@ public class ThongSoRestService {
      */
     private ThongSoRestService() {
         webClientService = new WebClientServiceImpl();
-        userSessionService = new UserSessionService();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
@@ -49,10 +46,9 @@ public class ThongSoRestService {
      * @throws RuntimeException if there is an error when saving the ThongSo object.
      */
     public void save(ThongSo thongSo, int parentId) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE + PARENT_ID_TEMPLATE, userSessionService.getUsername(), parentId);
+        String path = String.format(BASE_ENDPOINT + PARENT_ID_TEMPLATE, parentId);
         try {
-            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(thongSo), token);
+            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(thongSo));
         } catch (IOException e) {
             LOGGER.error("Error when saving ThongSo");
             throw new RuntimeException(e);
@@ -67,9 +63,8 @@ public class ThongSoRestService {
      * @throws RuntimeException if there is an error when searching for ThongSo objects.
      */
     public List<ThongSo> searchByVatLieu(int id) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + "/searchByVatlieu" + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
-        String response2 = this.webClientService.authorizedHttpGetJson(path, token);
+        String path = String.format(BASE_ENDPOINT + "/searchByVatlieu" + ID_TEMPLATE, id);
+        String response2 = this.webClientService.authorizedHttpGetJson(path);
         if (response2 == null) {
             return null;
         }
@@ -89,18 +84,16 @@ public class ThongSoRestService {
      * @throws RuntimeException if there is an error when updating the ThongSo object.
      */
     public void update(ThongSo thongSo) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());
+        String path = String.format(BASE_ENDPOINT);
         try {
-            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(thongSo), token);
+            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(thongSo));
         } catch (IOException e) {
             LOGGER.error("Error when editing ThongSo");
             throw new RuntimeException(e);
         }
     }
     public void copySampleDataFromAdmin(int parentId) {
-        String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/copySampleData" + "?parentId=%d", parentId);
-        this.webClientService.authorizedHttpGetJson(path, token);
+        this.webClientService.authorizedHttpGetJson(path);
     }
 }

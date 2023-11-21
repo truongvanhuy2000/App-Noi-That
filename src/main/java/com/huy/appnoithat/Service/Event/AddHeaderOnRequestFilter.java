@@ -8,7 +8,7 @@
 //    @Override
 //    public void filter(ClientRequestContext requestContext) {
 //        UserSessionService userSessionService = new UserSessionService();
-//        requestContext.getHeaders().add("Authorization", "Bearer " + userSessionService.getToken());
+//        requestContext.getHeaders().add("Authorization", "Bearer " + userSessionService.getJwtToken());
 //        // Add more headers as needed
 //    }
 //}

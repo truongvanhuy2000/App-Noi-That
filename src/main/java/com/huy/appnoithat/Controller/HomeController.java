@@ -9,6 +9,7 @@ import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementScene;
 import com.huy.appnoithat.Scene.UserDetailScene;
 import com.huy.appnoithat.Service.Login.LoginService;
+import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -58,7 +59,7 @@ public class HomeController {
         if (savedFile == null) {
             return;
         }
-        Utils.writeToFile(savedFile, sessionService.getToken());
+        Utils.writeObjectToFile(savedFile, sessionService.getToken());
         PopupUtils.throwSuccessSignal("Xuất chữ ký thành công!");
     }
     /**
@@ -157,7 +158,8 @@ public class HomeController {
         Stage stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == LogoutButton) {
             // Switch to the login scene if the Logout button is clicked
-            Scene scene = LoginScene.getInstance().getScene();
+            LoginScene loginScene = new LoginScene();
+            Scene scene = loginScene.getScene();
             StageFactory.closeAndCreateNewUnresizeableStage(stage, scene);
         }
     }
@@ -187,7 +189,6 @@ public class HomeController {
                 DatabaseModifyPhongCachScene databaseModifyPhongCachScene = new DatabaseModifyPhongCachScene();
 
                 // Extract HBox from the scene and add it to the primary content pane
-//                HBox hBox = (HBox) .get(0);
                 PCPane.getChildren().addAll(((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren());
 
                 // Initialize the database modification scene controller
