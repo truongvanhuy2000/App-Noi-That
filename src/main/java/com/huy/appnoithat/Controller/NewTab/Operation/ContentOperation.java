@@ -8,10 +8,12 @@ import com.huy.appnoithat.Controller.NewTab.TabContent;
 import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.DataModel.SaveFile.TabData;
 import com.huy.appnoithat.Enums.FileType;
+import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.Operation.Excel.ExportMultipleXLS;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
 import javafx.animation.Timeline;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -107,5 +109,19 @@ public class ContentOperation {
             return;
         }
         selectedTabContent.getLuaChonNoiThatController().exportFile(fileType);
+    }
+    public void exportMultipleExcel() {
+        List<TabData> exportDataList = exportData();
+        File selectedFile = PopupUtils.fileSaver();
+        if (selectedFile == null) {
+            return;
+        }
+        ExportMultipleXLS exportMultipleXLS = new ExportMultipleXLS();
+        exportMultipleXLS.setUpDataForExport(exportDataList);
+        try {
+            exportMultipleXLS.export(selectedFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

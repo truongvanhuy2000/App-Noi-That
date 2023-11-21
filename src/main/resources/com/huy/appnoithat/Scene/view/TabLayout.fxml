@@ -24,7 +24,12 @@
                   </Menu>
                   <Menu mnemonicParsing="false" text="Xuất tệp">
                      <items>
-                        <MenuItem fx:id="MenuItemExportXLS" mnemonicParsing="false" onAction="#onClickMenuItem" text="Excel" />
+                        <Menu mnemonicParsing="false" text="Excel">
+                          <items>
+                              <MenuItem fx:id="MenuItemExportXLS" mnemonicParsing="false" onAction="#onClickMenuItem" text="Xuất đơn tệp" />
+                            <MenuItem fx:id="MenuItemExportMultipleXLS" mnemonicParsing="false" onAction="#onClickMenuItem" text="Xuất toàn bộ" />
+                          </items>
+                        </Menu>
                         <MenuItem fx:id="MenuItemExportPDF" mnemonicParsing="false" onAction="#onClickMenuItem" text="PDF" />
                      </items>
                   </Menu>

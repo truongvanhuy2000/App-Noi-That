@@ -30,7 +30,8 @@ public class NewTabController implements Initializable {
     private Stage currentStage;
     private final List<TabContent> currentlyOpenTab;
     @FXML
-    private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs, MenuItemSaveCompanyInfo, MenuItemSaveNoteArea;
+    private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs,
+            MenuItemSaveCompanyInfo, MenuItemSaveNoteArea, MenuItemExportMultipleXLS;
     @FXML
     private CheckMenuItem AutoSave;
     @FXML
@@ -53,6 +54,9 @@ public class NewTabController implements Initializable {
         }
         else if (source == MenuItemExportXLS) {
             contentOperation.exportFile(FileType.EXCEL);
+        }
+        else if (source == MenuItemExportMultipleXLS) {
+            contentOperation.exportMultipleExcel();
         }
         else if (source == MenuItemSave) {
             contentOperation.save();

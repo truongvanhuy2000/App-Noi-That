@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.Operation.Excel;
 
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
@@ -10,13 +11,16 @@ import com.huy.appnoithat.DataModel.ThongTinThanhToan;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
 import org.apache.poi.xssf.usermodel.XSSFDrawing;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class ExportXLS {
     protected static final String DEFAULT_TEMPLATE_PATH = Config.FILE_EXPORT.XLSX_TEMPLATE_DIRECTORY;
@@ -29,10 +33,9 @@ public abstract class ExportXLS {
         Cell cell0 = spreadsheet.getRow(rowId).getCell(0);
         stylistFactory.CellPresetFactory(cell0, noteArea, 13, Stylist.Preset.NormalText_TimeNewRoman_VerticalCenter_ThinBorder);
     }
-
     protected void mergeCells(XSSFSheet spreadsheet, int row, int col, int rowSpan, int colSpan, int howMany) {
         for (int i = 0; i < howMany; i++) {
-            spreadsheet.addMergedRegion(new org.apache.poi.ss.util.CellRangeAddress(row + i, row + rowSpan + i, col, col + colSpan));
+            spreadsheet.addMergedRegion(new CellRangeAddress(row + i, row + rowSpan + i, col, col + colSpan));
         }
     }
     protected void setOutputFile(File outputFile) throws FileNotFoundException {
@@ -42,7 +45,46 @@ public abstract class ExportXLS {
             this.outputFile = new FileOutputStream(outputFile.getAbsolutePath());
         }
     }
-
+    protected List<ThongTinNoiThat> setThongTinNoiThatList(List<ThongTinNoiThat> thongTinNoiThatList) {
+        List<ThongTinNoiThat> thongTinForExport = new ArrayList<>();
+        thongTinNoiThatList.forEach(item -> {
+            String stt = item.getSTT();
+            if (ItemTypeUtils.determineItemType(stt) == ItemType.NUMERIC ||
+                    ItemTypeUtils.determineItemType(stt) == ItemType.ROMAN) {
+                thongTinForExport.add(item);
+            }
+        });
+        rearrangeList(thongTinForExport);
+        return thongTinForExport;
+    }
+    protected void rearrangeList(List<ThongTinNoiThat> list) {
+        int romanCount = 0;
+        for (ThongTinNoiThat item : list) {
+            if (Objects.requireNonNull(ItemTypeUtils.determineItemType(item.getSTT())) == ItemType.ROMAN) {
+                romanCount++;
+                item.setSTT(ItemTypeUtils.createFullId(ItemType.ROMAN, Utils.toRoman(romanCount)));
+            }
+        }
+    }
+    protected ThongTinCongTy setThongTinCongTy(ThongTinCongTy thongTinCongTy) {
+        ThongTinCongTy thongTinForExport = new ThongTinCongTy();
+        thongTinForExport.setLogo(thongTinCongTy.getLogo());
+        thongTinForExport.setTenCongTy(thongTinCongTy.getTenCongTy());
+        thongTinForExport.setDiaChiVanPhong("Địa chỉ văn phòng: " + thongTinCongTy.getDiaChiVanPhong());
+        thongTinForExport.setDiaChiXuong("Địa chỉ nhà xưởng: " + thongTinCongTy.getDiaChiXuong());
+        thongTinForExport.setSoDienThoai("Hotline: " + thongTinCongTy.getSoDienThoai());
+        thongTinForExport.setEmail("Email: " + thongTinCongTy.getEmail());
+        return thongTinForExport;
+    }
+    protected ThongTinKhachHang setThongTinKhachHang(ThongTinKhachHang thongTinKhachHang) {
+        ThongTinKhachHang thongTinForExport = new ThongTinKhachHang();
+        thongTinForExport.setTenKhachHang("Khách hàng : " + thongTinKhachHang.getTenKhachHang());
+        thongTinForExport.setDiaChi("Địa chỉ: " + thongTinKhachHang.getDiaChi());
+        thongTinForExport.setSoDienThoai("Điện thoại: " + thongTinKhachHang.getSoDienThoai());
+        thongTinForExport.setDate("Ngày: " + thongTinKhachHang.getDate());
+        thongTinForExport.setSanPham("Sản phẩm: " + thongTinKhachHang.getSanPham());
+        return thongTinForExport;
+    }
     protected void exportThongTinCongTy(XSSFSheet spreadsheet, ThongTinCongTy thongTinCongTy) {
         int mergeColumnRange = 7;
         int mergeColumnId = 2;
