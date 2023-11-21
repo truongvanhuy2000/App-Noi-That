@@ -138,18 +138,15 @@ public class LuaChonNoiThatService {
      * @param dataPackage  The data package to export.
      * @return True if the export operation is successful, false otherwise.
      */
-    public boolean exportFile(File selectedFile, FileType fileType, DataPackage dataPackage, Consumer<Boolean> target) {
+    public boolean exportFile(File selectedFile, FileType fileType, DataPackage dataPackage) {
         ExportFile exportFile = fileExportService.getExportService(selectedFile, fileType);
         exportFile.setUpDataForExport(dataPackage);
-        new Thread(() -> {
-            try {
-                exportFile.export(selectedFile);
-                target.accept(true);
-            } catch (Exception e) {
-                LOGGER.error("Some thing is wrong with the export operation", e);
-                target.accept(false);
-            }
-        }).start();
-        return true;
+        try {
+            exportFile.export(selectedFile);
+            return true;
+        } catch (Exception e) {
+            LOGGER.error("Some thing is wrong with the export operation", e);
+        }
+        return false;
     }
 }

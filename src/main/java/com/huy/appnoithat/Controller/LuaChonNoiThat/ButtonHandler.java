@@ -264,7 +264,6 @@ public class ButtonHandler {
      * @param currentItem The TreeItem after which the new sibling is added.
      */
     public void exportButtonHandler(ActionEvent event) {
-        this.luaChonNoiThatController.exportFile(FileType.EXCEL);
     }
     /**
      * @param event This function will handle the event when user want to save the table

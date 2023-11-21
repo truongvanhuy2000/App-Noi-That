@@ -9,8 +9,14 @@ import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.DataModel.SaveFile.TabData;
 import com.huy.appnoithat.Enums.FileType;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.Operation.Excel.ExportMultipleXLS;
+import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,10 +29,12 @@ import java.util.List;
 public class ContentOperation {
     private final NewTabController newTabController;
     private final NoiThatFileService noiThatFileService;
+    private final StackPane loadingPane;
 
     public ContentOperation(NewTabController newTabController) {
         this.newTabController = newTabController;
         this.noiThatFileService = newTabController.getNoiThatFileService();
+        this.loadingPane = newTabController.getLoadingPane();
     }
 
     public void saveNoteArea() {
@@ -108,7 +116,16 @@ public class ContentOperation {
         if (selectedTabContent == null) {
             return;
         }
-        selectedTabContent.getLuaChonNoiThatController().exportFile(fileType);
+        File selectedFile = PopupUtils.fileSaver();
+        if (selectedFile == null) {
+            return;
+        }
+        DataPackage dataPackage = selectedTabContent.getLuaChonNoiThatController().exportData();
+        showLoading();
+        new Thread(() -> {
+            boolean result = new LuaChonNoiThatService().exportFile(selectedFile, fileType, dataPackage);
+            hideLoading(result);
+        }).start();
     }
     public void exportMultipleExcel() {
         List<TabData> exportDataList = exportData();
@@ -116,12 +133,45 @@ public class ContentOperation {
         if (selectedFile == null) {
             return;
         }
-        ExportMultipleXLS exportMultipleXLS = new ExportMultipleXLS();
-        exportMultipleXLS.setUpDataForExport(exportDataList);
-        try {
-            exportMultipleXLS.export(selectedFile);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        showLoading();
+        new Thread(() -> {
+            ExportMultipleXLS exportMultipleXLS = new ExportMultipleXLS();
+            exportMultipleXLS.setUpDataForExport(exportDataList);
+            boolean result = exportMultipleXLS.export(selectedFile);
+            hideLoading(result);
+        }).start();
+
+    }
+    private void showLoading() {
+        loadingPane.setVisible(true);
+        loadingPane.setDisable(false);
+        VBox vbox = new VBox();
+        ProgressIndicator progressIndicator = new ProgressIndicator();
+        progressIndicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+        progressIndicator.setMinHeight(100);
+        progressIndicator.setMinWidth(100);
+        Label textField = new Label("Đang xuất file...");
+        textField.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI';");
+        vbox.getChildren().addAll(progressIndicator, textField);
+        vbox.setAlignment(javafx.geometry.Pos.CENTER);
+        loadingPane.getChildren().addAll(vbox);
+        loadingPane.toFront();
+    }
+    private void hideLoading(Boolean result) {
+        Platform.runLater(() -> {
+            loadingPane.setVisible(false);
+            loadingPane.setDisable(true);
+            loadingPane.getChildren().clear();
+            loadingPane.toBack();
+            showResult(result);
+        });
+    }
+    private void showResult(Boolean result) {
+        if (!result) {
+            PopupUtils.throwErrorSignal("Xuất file thất bại");
+        }
+        else {
+            PopupUtils.throwSuccessSignal("Xuất file thành công");
         }
     }
 }

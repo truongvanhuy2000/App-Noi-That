@@ -5955,3 +5955,30 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [WARN ] 21-11-2023 14:16:09 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
 [WARN ] 21-11-2023 14:16:09 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
 [WARN ] 21-11-2023 14:16:09 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 23:13:20 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 23:13:23 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 23:13:52 [Thread-3] ExportSingleXLS:55 - Exporting to XLSX file
+[INFO ] 21-11-2023 23:22:46 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 23:23:08 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 23:24:18 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 23:24:21 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 23:26:11 [Thread-3] ExportMultipleXLS:36 - Exporting to XLSX file
+[WARN ] 21-11-2023 23:26:11 [Thread-3] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 23:26:11 [Thread-3] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 23:26:11 [Thread-3] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 23:27:15 [Thread-4] ExportMultipleXLS:36 - Exporting to XLSX file
+[WARN ] 21-11-2023 23:27:15 [Thread-4] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 23:27:15 [Thread-4] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 23:27:15 [Thread-4] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 23:28:22 [Thread-5] ExportMultipleXLS:36 - Exporting to XLSX file
+[WARN ] 21-11-2023 23:28:22 [Thread-5] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 23:28:22 [Thread-5] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 23:28:22 [Thread-5] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[ERROR] 21-11-2023 23:30:10 [JavaFX Application Thread] GlobalExceptionHandler:37 - For input string: "asds"
+[INFO ] 21-11-2023 23:33:13 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 23:33:16 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 23:35:13 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 23:35:17 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[ERROR] 21-11-2023 23:35:27 [JavaFX Application Thread] GlobalExceptionHandler:37 - For input string: "gjjhgjh"
+[INFO ] 21-11-2023 23:36:28 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 23:36:31 [JavaFX Application Thread] HomeController:120 - Login as user with role User

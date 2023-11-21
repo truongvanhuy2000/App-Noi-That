@@ -1,22 +1,16 @@
 package com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.Operation.Excel;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.DataModel.*;
 import com.huy.appnoithat.DataModel.SaveFile.TabData;
-import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.ExportFile;
-import lombok.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
-import org.apache.poi.xssf.usermodel.XSSFDrawing;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 public class ExportMultipleXLS extends ExportXLS {
@@ -38,18 +32,23 @@ public class ExportMultipleXLS extends ExportXLS {
     public void setUpDataForExport(List<TabData> exportData) {
         this.exportData = exportData;
     }
-    public void export(File exportDirectory) throws IOException {
+    public boolean export(File exportDirectory){
         LOGGER.info("Exporting to XLSX file");
-        setOutputFile(exportDirectory);
-        cloneSheet();
-        for (int index = 0; index < exportData.size(); index++) {
-            TabData tabData = exportData.get(index);
-            XSSFSheet spreadsheet = workbook.getSheetAt(index + 1);
-            DataPackage dataPackage = tabData.getDataPackage();
-            exportSingleSheet(spreadsheet, dataPackage);
+        try {
+            setOutputFile(exportDirectory);
+            cloneSheet();
+            for (int index = 0; index < exportData.size(); index++) {
+                TabData tabData = exportData.get(index);
+                XSSFSheet spreadsheet = workbook.getSheetAt(index + 1);
+                DataPackage dataPackage = tabData.getDataPackage();
+                exportSingleSheet(spreadsheet, dataPackage);
+            }
+            workbook.removeSheetAt(0);
+            save();
+        } catch (Exception e){
+            return false;
         }
-        workbook.removeSheetAt(0);
-        save();
+        return true;
     }
     private void exportSingleSheet(XSSFSheet spreadSheet, DataPackage dataPackage) throws IOException {
         ThongTinCongTy thongTinCongTy = setThongTinCongTy(dataPackage.getThongTinCongTy());
