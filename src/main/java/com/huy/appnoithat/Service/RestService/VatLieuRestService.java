@@ -18,10 +18,8 @@ public class VatLieuRestService {
     final static Logger LOGGER = LogManager.getLogger(VatLieuRestService.class);
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
-    private final UserSessionService userSessionService;
     private static final String BASE_ENDPOINT = "/api/vatlieu";
     private static final String ID_TEMPLATE = "/%d";
-    private static final String OWNER_TEMPLATE = "?owner=%s";
     private static final String PARENT_ID_TEMPLATE = "&parentId=%d";
     public static synchronized VatLieuRestService getInstance() {
         if (instance == null) {
@@ -35,7 +33,6 @@ public class VatLieuRestService {
      */
     private VatLieuRestService() {
         webClientService = new WebClientServiceImpl();
-        userSessionService = new UserSessionService();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
@@ -49,9 +46,8 @@ public class VatLieuRestService {
      * @throws RuntimeException if there is an error when searching for VatLieu objects.
      */
     public List<VatLieu> searchByHangMuc(int id) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + "/searchByHangMuc" + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
-        String response = this.webClientService.authorizedHttpGetJson(path, token);
+        String path = String.format(BASE_ENDPOINT + "/searchByHangMuc" + ID_TEMPLATE, id);
+        String response = this.webClientService.authorizedHttpGetJson(path);
         if (response == null) {
             return null;
         }
@@ -72,10 +68,9 @@ public class VatLieuRestService {
      * @throws RuntimeException if there is an error when saving the VatLieu object.
      */
     public void save(VatLieu vatLieu, int parentID) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE + PARENT_ID_TEMPLATE, userSessionService.getUsername(), parentID);
+        String path = String.format(BASE_ENDPOINT + PARENT_ID_TEMPLATE, parentID);
         try {
-            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(vatLieu), token);
+            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(vatLieu));
         } catch (IOException e) {
             LOGGER.error("Error when adding new VatLieu");
             throw new RuntimeException(e);
@@ -89,10 +84,9 @@ public class VatLieuRestService {
      * @throws RuntimeException if there is an error when updating the VatLieu object.
      */
     public void update(VatLieu vatLieu) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());
+        String path = String.format(BASE_ENDPOINT);
         try {
-            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(vatLieu), token);
+            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(vatLieu));
         } catch (IOException e) {
             LOGGER.error("Error when editing VatLieu");
             throw new RuntimeException(e);
@@ -106,9 +100,8 @@ public class VatLieuRestService {
      * @throws RuntimeException if there is an error when deleting the VatLieu object.
      */
     public void deleteById(int id) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
-        this.webClientService.authorizedHttpDeleteJson(path, "", token);
+        String path = String.format(BASE_ENDPOINT + ID_TEMPLATE, id);
+        this.webClientService.authorizedHttpDeleteJson(path, "");
     }
 
     /**
@@ -121,10 +114,9 @@ public class VatLieuRestService {
      * @throws RuntimeException if there is an error when searching for VatLieu objects.
      */
     public List<VatLieu> searchBy(String phongCachName, String noiThatName, String hangMucName) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + "/searchBy" + OWNER_TEMPLATE + "&phongCachName=%s&noiThatName=%s&hangMucName=%s",
-                userSessionService.getUsername(), phongCachName, noiThatName, hangMucName);
-        String response = this.webClientService.authorizedHttpGetJson(path, token);
+        String path = String.format(BASE_ENDPOINT + "/searchBy" + "?phongCachName=%s&noiThatName=%s&hangMucName=%s",
+                phongCachName, noiThatName, hangMucName);
+        String response = this.webClientService.authorizedHttpGetJson(path);
         if (response == null) {
             return null;
         }
@@ -138,14 +130,12 @@ public class VatLieuRestService {
         }
     }
     public void copySampleDataFromAdmin(int parentId) {
-        String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/copySampleData" + "?parentId=%d", parentId);
-        this.webClientService.authorizedHttpGetJson(path, token);
+        this.webClientService.authorizedHttpGetJson(path);
     }
 
     public void swap(int id1, int id2) {
-        String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/swap?id1=%d&id2=%d", id1, id2);
-        this.webClientService.authorizedHttpGetJson(path, token);
+        this.webClientService.authorizedHttpGetJson(path);
     }
 }

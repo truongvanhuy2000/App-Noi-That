@@ -7,8 +7,8 @@ import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Enums.FileType;
 import com.huy.appnoithat.Service.Event.DBUpdateEventService;
-import com.huy.appnoithat.Service.FileExport.ExportFile;
-import com.huy.appnoithat.Service.FileExport.FileExportService;
+import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.ExportFile;
+import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.FileExportService;
 import com.huy.appnoithat.Service.RestService.HangMucRestService;
 import com.huy.appnoithat.Service.RestService.NoiThatRestService;
 import com.huy.appnoithat.Service.RestService.PhongCachRestService;
@@ -138,18 +138,15 @@ public class LuaChonNoiThatService {
      * @param dataPackage  The data package to export.
      * @return True if the export operation is successful, false otherwise.
      */
-    public boolean exportFile(File selectedFile, FileType fileType, DataPackage dataPackage, Consumer<Boolean> target) {
+    public boolean exportFile(File selectedFile, FileType fileType, DataPackage dataPackage) {
         ExportFile exportFile = fileExportService.getExportService(selectedFile, fileType);
         exportFile.setUpDataForExport(dataPackage);
-        new Thread(() -> {
-            try {
-                exportFile.export(selectedFile);
-                target.accept(true);
-            } catch (Exception e) {
-                LOGGER.error("Some thing is wrong with the export operation", e);
-                target.accept(false);
-            }
-        }).start();
-        return true;
+        try {
+            exportFile.export(selectedFile);
+            return true;
+        } catch (Exception e) {
+            LOGGER.error("Some thing is wrong with the export operation", e);
+        }
+        return false;
     }
 }

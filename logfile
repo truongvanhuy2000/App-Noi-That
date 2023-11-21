@@ -5682,3 +5682,303 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [ERROR] 12-11-2023 19:03:05 [JavaFX Application Thread] WebClientServiceImpl:99 - Error when sending request to serverGET /api/index  null
 [INFO ] 12-11-2023 19:04:21 [main] HelloApplication:40 - Start application
 [INFO ] 12-11-2023 19:04:42 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 16:10:03 [main] HelloApplication:40 - Start application
+[ERROR] 19-11-2023 16:10:13 [JavaFX Application Thread] AccountRestService:157 - Login failed
+[ERROR] 19-11-2023 16:10:13 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzODQ5MTAsImV4cCI6NDI5MjM4NDkxMH0.Fve5y1aO7rr3TF0ow5z5uIX0zrLvnvkFfIZahyYxMOBQhbsQFPXKvCTGzRsVLa6eef9-YevhjeQUtQ2qv63vXA"; line: 1, column: 21]
+[ERROR] 19-11-2023 16:10:13 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzODQ5MTAsImV4cCI6NDI5MjM4NDkxMH0.Fve5y1aO7rr3TF0ow5z5uIX0zrLvnvkFfIZahyYxMOBQhbsQFPXKvCTGzRsVLa6eef9-YevhjeQUtQ2qv63vXA"; line: 1, column: 21]
+[ERROR] 19-11-2023 16:10:13 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 16:10:13 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 19-11-2023 19:48:24 [main] HelloApplication:40 - Start application
+[ERROR] 19-11-2023 19:48:35 [JavaFX Application Thread] AccountRestService:157 - Login failed
+[ERROR] 19-11-2023 19:48:36 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTgwMTIsImV4cCI6NDI5MjM5ODAxMn0.Ntd5w7_N9UPxwqsuKDU1_3iSXA62iBdvNi8vN8uIRREUcHXelXuR_ctHpqVakwJRBd9iKwu90NdTq-GZFn_CGg"; line: 1, column: 21]
+[ERROR] 19-11-2023 19:48:36 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTgwMTIsImV4cCI6NDI5MjM5ODAxMn0.Ntd5w7_N9UPxwqsuKDU1_3iSXA62iBdvNi8vN8uIRREUcHXelXuR_ctHpqVakwJRBd9iKwu90NdTq-GZFn_CGg"; line: 1, column: 21]
+[ERROR] 19-11-2023 19:48:36 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 19:48:36 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[ERROR] 19-11-2023 19:50:46 [JavaFX Application Thread] AccountRestService:157 - Login failed
+[ERROR] 19-11-2023 19:50:46 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTgxNDMsImV4cCI6NDI5MjM5ODE0M30.T03NtZ8xNiLTdQ8immAK2KEzgEPZ1L5oqGC8KE9clQmfnMsVTrXLoOcbVFIkwTENMGWljkKbK_jcYpo5pCSKnQ"; line: 1, column: 21]
+[ERROR] 19-11-2023 19:50:46 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTgxNDMsImV4cCI6NDI5MjM5ODE0M30.T03NtZ8xNiLTdQ8immAK2KEzgEPZ1L5oqGC8KE9clQmfnMsVTrXLoOcbVFIkwTENMGWljkKbK_jcYpo5pCSKnQ"; line: 1, column: 21]
+[ERROR] 19-11-2023 19:50:46 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 19:50:46 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 19-11-2023 20:10:23 [main] HelloApplication:40 - Start application
+[ERROR] 19-11-2023 20:10:36 [JavaFX Application Thread] AccountRestService:157 - Login failed
+[ERROR] 19-11-2023 20:10:37 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTkzMzMsImV4cCI6NDI5MjM5OTMzM30.xekP5FP6Ol_elKZk0ez9iz2N5nZ9g86OjJKg8VWgh-QhCDun6Xw9GxSnA_GUnd6sN9M8xHBIrygE2vifjhGB_g"; line: 1, column: 21]
+[ERROR] 19-11-2023 20:10:37 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTkzMzMsImV4cCI6NDI5MjM5OTMzM30.xekP5FP6Ol_elKZk0ez9iz2N5nZ9g86OjJKg8VWgh-QhCDun6Xw9GxSnA_GUnd6sN9M8xHBIrygE2vifjhGB_g"; line: 1, column: 21]
+[ERROR] 19-11-2023 20:10:37 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:10:37 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 19-11-2023 20:12:44 [main] HelloApplication:40 - Start application
+[ERROR] 19-11-2023 20:12:55 [JavaFX Application Thread] AccountRestService:158 - Login failed
+[ERROR] 19-11-2023 20:12:56 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTk0NzIsImV4cCI6NDI5MjM5OTQ3Mn0.H6G32Qjmmtamd8fO-C3u-moCsr_P3DiXyhI_bKzMwEwKsG81-uKctG1Q-3Gc8pe2sDdI_wEHRjxhoJbb2yP7Aw"; line: 1, column: 21]
+[ERROR] 19-11-2023 20:12:56 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'eyJhbGciOiJIUzUxMiJ9': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (String)"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTk0NzIsImV4cCI6NDI5MjM5OTQ3Mn0.H6G32Qjmmtamd8fO-C3u-moCsr_P3DiXyhI_bKzMwEwKsG81-uKctG1Q-3Gc8pe2sDdI_wEHRjxhoJbb2yP7Aw"; line: 1, column: 21]
+[ERROR] 19-11-2023 20:12:56 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:12:56 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 19-11-2023 20:17:36 [main] HelloApplication:40 - Start application
+[ERROR] 19-11-2023 20:17:57 [JavaFX Application Thread] AccountRestService:157 - Login failed
+[INFO ] 19-11-2023 20:18:22 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 20:19:28 [main] HelloApplication:40 - Start application
+[ERROR] 19-11-2023 20:19:44 [JavaFX Application Thread] WebClientServiceImpl:168 - Error when sending request to serverGET /api eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTk5ODQsImV4cCI6MTcwMDQwMDA0NH0.f3BYA3qTbRlCdbTKUfbLZqOZCGDdq0FYi8riIZPjOsnvLhEVTEt3qWJ5Dq_I5WLQ6oo7D3RMVXG5U2V-MaXqdA null
+[ERROR] 19-11-2023 20:19:47 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:19:47 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:19:47 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:19:47 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.net.ConnectException
+[ERROR] 19-11-2023 20:19:47 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:19:47 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 19-11-2023 20:20:50 [main] HelloApplication:40 - Start application
+[ERROR] 19-11-2023 20:20:51 [JavaFX Application Thread] WebClientServiceImpl:168 - Error when sending request to serverGET /api/index eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImFwcG5vaXRoYXQiLCJpYXQiOjE3MDAzOTk5ODQsImV4cCI6MTcwMDQwMDA0NH0.f3BYA3qTbRlCdbTKUfbLZqOZCGDdq0FYi8riIZPjOsnvLhEVTEt3qWJ5Dq_I5WLQ6oo7D3RMVXG5U2V-MaXqdA null
+[ERROR] 19-11-2023 20:20:54 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:20:54 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:20:54 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 19-11-2023 20:20:54 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.net.ConnectException
+[INFO ] 19-11-2023 20:21:08 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 20:21:12 [JavaFX Application Thread] HomeController:119 - Login as  with role User
+[INFO ] 19-11-2023 20:21:30 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 20:21:33 [JavaFX Application Thread] HomeController:119 - Login as  with role User
+[INFO ] 19-11-2023 20:24:45 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 20:24:48 [JavaFX Application Thread] HomeController:119 - Login as  with role User
+[INFO ] 19-11-2023 20:24:55 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 19-11-2023 23:42:38 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 23:42:46 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 19-11-2023 23:43:29 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 23:43:31 [JavaFX Application Thread] HomeController:119 - Login as  with role User
+[INFO ] 19-11-2023 23:43:40 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 19-11-2023 23:48:23 [main] HelloApplication:40 - Start application
+[INFO ] 19-11-2023 23:48:23 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 19-11-2023 23:48:26 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 19-11-2023 23:49:32 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 19-11-2023 23:56:07 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 00:14:10 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 00:48:20 [main] HelloApplication:40 - Start application
+[INFO ] 20-11-2023 00:48:20 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 00:48:22 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 00:48:39 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 00:52:45 [main] HelloApplication:40 - Start application
+[INFO ] 20-11-2023 00:52:45 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 00:52:47 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 00:54:33 [main] HelloApplication:40 - Start application
+[INFO ] 20-11-2023 00:54:33 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 00:54:38 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 00:54:38 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:13:28 [main] HelloApplication:40 - Start application
+[INFO ] 20-11-2023 17:13:28 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:13:30 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:13:38 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:14:09 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:14:50 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:14:50 [JavaFX Application Thread] WebClientServiceImpl:215 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:14:50 [JavaFX Application Thread] ErrorHandler:18 - Token expired
+[ERROR] 20-11-2023 17:14:59 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized field "status" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (2 known properties: "token", "refreshToken"])
+ at [Source: (String)"{"status":400,"message":"Invalid refresh token","timeStamp":1700475290085}"; line: 1, column: 14] (through reference chain: com.huy.appnoithat.DataModel.Token["status"])
+[ERROR] 20-11-2023 17:14:59 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "status" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (2 known properties: "token", "refreshToken"])
+ at [Source: (String)"{"status":400,"message":"Invalid refresh token","timeStamp":1700475290085}"; line: 1, column: 14] (through reference chain: com.huy.appnoithat.DataModel.Token["status"])
+[ERROR] 20-11-2023 17:15:08 [JavaFX Application Thread] GlobalExceptionHandler:37 - Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@4b1b7762
+[INFO ] 20-11-2023 17:19:35 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 17:19:36 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:19:41 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:19:47 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:23:17 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:23:17 [JavaFX Application Thread] WebClientServiceImpl:215 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:23:17 [JavaFX Application Thread] ErrorHandler:18 - Token expired
+[ERROR] 20-11-2023 17:23:20 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized field "status" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (2 known properties: "token", "refreshToken"])
+ at [Source: (String)"{"status":400,"message":"Invalid refresh token","timeStamp":1700475797614}"; line: 1, column: 14] (through reference chain: com.huy.appnoithat.DataModel.Token["status"])
+[ERROR] 20-11-2023 17:23:20 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "status" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (2 known properties: "token", "refreshToken"])
+ at [Source: (String)"{"status":400,"message":"Invalid refresh token","timeStamp":1700475797614}"; line: 1, column: 14] (through reference chain: com.huy.appnoithat.DataModel.Token["status"])
+[ERROR] 20-11-2023 17:23:24 [JavaFX Application Thread] GlobalExceptionHandler:37 - Key not associated with a running event loop: javafx.scene.control.HeavyweightDialog$1@4f772413
+[INFO ] 20-11-2023 17:31:14 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 17:31:14 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:31:19 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:33:22 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:33:22 [JavaFX Application Thread] WebClientServiceImpl:215 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:33:22 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[ERROR] 20-11-2023 17:33:30 [JavaFX Application Thread] GlobalExceptionHandler:37 - Index 1 out of bounds for length 0
+[ERROR] 20-11-2023 17:33:30 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 0
+[INFO ] 20-11-2023 17:35:08 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 17:35:08 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:35:13 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:37:01 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:37:01 [JavaFX Application Thread] WebClientServiceImpl:215 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:37:01 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[ERROR] 20-11-2023 17:37:05 [JavaFX Application Thread] GlobalExceptionHandler:37 - Index 1 out of bounds for length 0
+[ERROR] 20-11-2023 17:37:05 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 0
+[INFO ] 20-11-2023 17:38:33 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 17:38:33 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:38:38 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:39:54 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:39:54 [JavaFX Application Thread] WebClientServiceImpl:215 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:39:54 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[ERROR] 20-11-2023 17:40:14 [JavaFX Application Thread] GlobalExceptionHandler:37 - Unrecognized field "status" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (2 known properties: "token", "refreshToken"])
+ at [Source: (String)"{"status":400,"message":"Invalid refresh token","timeStamp":1700476794374}"; line: 1, column: 14] (through reference chain: com.huy.appnoithat.DataModel.Token["status"])
+[ERROR] 20-11-2023 17:40:14 [JavaFX Application Thread] GlobalExceptionHandler:37 - com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "status" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (2 known properties: "token", "refreshToken"])
+ at [Source: (String)"{"status":400,"message":"Invalid refresh token","timeStamp":1700476794374}"; line: 1, column: 14] (through reference chain: com.huy.appnoithat.DataModel.Token["status"])
+[INFO ] 20-11-2023 17:42:15 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 17:42:15 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:42:31 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:43:36 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:43:36 [JavaFX Application Thread] WebClientServiceImpl:215 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:43:36 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[ERROR] 20-11-2023 17:43:42 [JavaFX Application Thread] GlobalExceptionHandler:37 - Cannot invoke "java.util.List.stream()" because "accountList" is null
+[INFO ] 20-11-2023 17:44:43 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 17:44:43 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:44:48 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 20-11-2023 17:45:41 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:48:22 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:48:22 [JavaFX Application Thread] WebClientServiceImpl:215 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:48:22 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[INFO ] 20-11-2023 17:48:25 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:48:30 [Thread-3] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:59:16 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 17:59:17 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 17:59:17 [JavaFX Application Thread] WebClientServiceImpl:208 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 17:59:17 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[ERROR] 20-11-2023 17:59:37 [JavaFX Application Thread] GlobalExceptionHandler:37 - argument "content" is null
+[ERROR] 20-11-2023 17:59:37 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 20-11-2023 17:59:37 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[ERROR] 20-11-2023 17:59:57 [JavaFX Application Thread] GlobalExceptionHandler:37 - argument "content" is null
+[ERROR] 20-11-2023 17:59:57 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 20-11-2023 17:59:57 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 20-11-2023 18:00:22 [main] HelloApplication:41 - Start application
+[INFO ] 20-11-2023 18:00:22 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 20-11-2023 18:00:22 [JavaFX Application Thread] WebClientServiceImpl:208 - Refresh token expired, need to login again
+[ERROR] 20-11-2023 18:00:22 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[INFO ] 21-11-2023 00:08:52 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 00:08:53 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 21-11-2023 00:08:53 [JavaFX Application Thread] WebClientServiceImpl:208 - Refresh token expired, need to login again
+[ERROR] 21-11-2023 00:08:53 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[ERROR] 21-11-2023 00:09:14 [JavaFX Application Thread] GlobalExceptionHandler:37 - argument "content" is null
+[ERROR] 21-11-2023 00:09:14 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 21-11-2023 00:09:14 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 21-11-2023 00:10:03 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 00:10:03 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 21-11-2023 00:10:03 [JavaFX Application Thread] WebClientServiceImpl:208 - Refresh token expired, need to login again
+[ERROR] 21-11-2023 00:10:03 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[INFO ] 21-11-2023 00:11:34 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 00:11:34 [JavaFX Application Thread] WebClientServiceImpl:204 - Trying to refresh jwt token
+[INFO ] 21-11-2023 00:11:34 [JavaFX Application Thread] WebClientServiceImpl:208 - Refresh token expired, need to login again
+[ERROR] 21-11-2023 00:11:34 [JavaFX Application Thread] ErrorHandler:20 - Token expired
+[INFO ] 21-11-2023 00:12:01 [JavaFX Application Thread] HomeController:120 - Login as admin with role Admin
+[INFO ] 21-11-2023 00:12:15 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[WARN ] 21-11-2023 00:12:25 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:12:25 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:12:25 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:12:25 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 00:12:25 [Thread-3] ExportFile:103 - Exporting to XLSX file
+[WARN ] 21-11-2023 00:13:16 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:13:16 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:13:16 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:13:16 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 00:13:16 [Thread-4] ExportFile:103 - Exporting to XLSX file
+[INFO ] 21-11-2023 00:14:05 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 00:14:09 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[WARN ] 21-11-2023 00:14:17 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:14:17 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:14:17 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 00:14:17 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 00:14:17 [Thread-3] ExportFile:103 - Exporting to XLSX file
+[INFO ] 21-11-2023 13:49:17 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 13:49:19 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 13:50:20 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 13:50:21 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 13:50:55 [JavaFX Application Thread] ExportMultipleXLS:42 - Exporting to XLSX file
+[WARN ] 21-11-2023 13:50:55 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 13:50:55 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[ERROR] 21-11-2023 13:50:57 [JavaFX Application Thread] GlobalExceptionHandler:37 - Cannot add merged region C1:J1 to sheet because it overlaps with an existing merged region (C1:J1).
+[ERROR] 21-11-2023 13:50:57 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 21-11-2023 13:50:57 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 21-11-2023 13:52:24 [Thread-3] ExportSingleXLS:55 - Exporting to XLSX file
+[INFO ] 21-11-2023 13:54:00 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 13:54:01 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 13:54:17 [JavaFX Application Thread] ExportMultipleXLS:42 - Exporting to XLSX file
+[WARN ] 21-11-2023 13:54:17 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 13:54:17 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 13:56:07 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 13:56:08 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 13:57:26 [JavaFX Application Thread] ExportMultipleXLS:42 - Exporting to XLSX file
+[WARN ] 21-11-2023 13:57:42 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 13:57:49 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 13:59:24 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 13:59:25 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 14:00:43 [JavaFX Application Thread] ExportMultipleXLS:42 - Exporting to XLSX file
+[WARN ] 21-11-2023 14:00:43 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 14:00:43 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 14:00:43 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[ERROR] 21-11-2023 14:00:46 [JavaFX Application Thread] GlobalExceptionHandler:37 - The workbook already contains a sheet of this name
+[ERROR] 21-11-2023 14:00:46 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 21-11-2023 14:00:46 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 21-11-2023 14:04:27 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 14:04:28 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 14:04:45 [JavaFX Application Thread] ExportMultipleXLS:42 - Exporting to XLSX file
+[WARN ] 21-11-2023 14:04:45 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 14:04:45 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 14:04:45 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 14:06:28 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 14:06:30 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 14:06:44 [JavaFX Application Thread] ExportMultipleXLS:42 - Exporting to XLSX file
+[WARN ] 21-11-2023 14:06:44 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 14:06:44 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 14:06:44 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 14:09:27 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 14:09:28 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 14:09:55 [JavaFX Application Thread] ExportMultipleXLS:42 - Exporting to XLSX file
+[WARN ] 21-11-2023 14:09:55 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 14:09:55 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 14:09:55 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 14:10:49 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 14:10:51 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 14:11:02 [JavaFX Application Thread] ExportMultipleXLS:42 - Exporting to XLSX file
+[WARN ] 21-11-2023 14:11:02 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 14:11:02 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 14:11:02 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[ERROR] 21-11-2023 14:11:03 [JavaFX Application Thread] GlobalExceptionHandler:37 - Cannot add merged region C1:J1 to sheet because it overlaps with an existing merged region (C1:J1).
+[ERROR] 21-11-2023 14:11:03 [JavaFX Application Thread] GlobalExceptionHandler:37 - null
+[ERROR] 21-11-2023 14:11:03 [JavaFX Application Thread] GlobalExceptionHandler:37 - java.lang.reflect.InvocationTargetException
+[INFO ] 21-11-2023 14:12:47 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 14:12:48 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 14:13:05 [JavaFX Application Thread] ExportMultipleXLS:42 - Exporting to XLSX file
+[WARN ] 21-11-2023 14:13:05 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 14:13:05 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 14:13:05 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 14:14:45 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 14:14:47 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 14:15:30 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 14:15:31 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 14:15:56 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 14:15:57 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 14:16:09 [JavaFX Application Thread] ExportMultipleXLS:42 - Exporting to XLSX file
+[WARN ] 21-11-2023 14:16:09 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 14:16:09 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 14:16:09 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 23:13:20 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 23:13:23 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 23:13:52 [Thread-3] ExportSingleXLS:55 - Exporting to XLSX file
+[INFO ] 21-11-2023 23:22:46 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 23:23:08 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 23:24:18 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 23:24:21 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 23:26:11 [Thread-3] ExportMultipleXLS:36 - Exporting to XLSX file
+[WARN ] 21-11-2023 23:26:11 [Thread-3] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 23:26:11 [Thread-3] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 23:26:11 [Thread-3] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 23:27:15 [Thread-4] ExportMultipleXLS:36 - Exporting to XLSX file
+[WARN ] 21-11-2023 23:27:15 [Thread-4] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 23:27:15 [Thread-4] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 23:27:15 [Thread-4] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 21-11-2023 23:28:22 [Thread-5] ExportMultipleXLS:36 - Exporting to XLSX file
+[WARN ] 21-11-2023 23:28:22 [Thread-5] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 23:28:22 [Thread-5] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[WARN ] 21-11-2023 23:28:22 [Thread-5] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[ERROR] 21-11-2023 23:30:10 [JavaFX Application Thread] GlobalExceptionHandler:37 - For input string: "asds"
+[INFO ] 21-11-2023 23:33:13 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 23:33:16 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[INFO ] 21-11-2023 23:35:13 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 23:35:17 [JavaFX Application Thread] HomeController:120 - Login as user with role User
+[ERROR] 21-11-2023 23:35:27 [JavaFX Application Thread] GlobalExceptionHandler:37 - For input string: "gjjhgjh"
+[INFO ] 21-11-2023 23:36:28 [main] HelloApplication:41 - Start application
+[INFO ] 21-11-2023 23:36:31 [JavaFX Application Thread] HomeController:120 - Login as user with role User

@@ -19,10 +19,8 @@ public class NoiThatRestService {
     final static Logger LOGGER = LogManager.getLogger(NoiThatRestService.class);
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
-    private final UserSessionService userSessionService;
     private static final String BASE_ENDPOINT = "/api/noithat";
     private static final String ID_TEMPLATE = "/%d";
-    private static final String OWNER_TEMPLATE = "?owner=%s";
     private static final String PARENT_ID_TEMPLATE = "&parentId=%d";
     public static synchronized NoiThatRestService getInstance() {
         if (instance == null) {
@@ -32,7 +30,6 @@ public class NoiThatRestService {
     }
     private NoiThatRestService() {
         webClientService = new WebClientServiceImpl();
-        userSessionService = new UserSessionService();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
@@ -61,9 +58,8 @@ public class NoiThatRestService {
      * @throws RuntimeException if there is an error when searching for NoiThat objects.
      */
     public List<NoiThat> searchByPhongCach(int id) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + "/searchByPhongCach" + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
-        String response2 = this.webClientService.authorizedHttpGetJson(path, token);
+        String path = String.format(BASE_ENDPOINT + "/searchByPhongCach" + ID_TEMPLATE, id);
+        String response2 = this.webClientService.authorizedHttpGetJson(path);
         if (response2 == null) {
             return new ArrayList<>();
         }
@@ -85,10 +81,9 @@ public class NoiThatRestService {
      * @throws RuntimeException if there is an error when saving the NoiThat object.
      */
     public void save(NoiThat noiThat, int parentID) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE + PARENT_ID_TEMPLATE, userSessionService.getUsername(), parentID);
+        String path = String.format(BASE_ENDPOINT + PARENT_ID_TEMPLATE, parentID);
         try {
-            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(noiThat), token);
+            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(noiThat));
         } catch (IOException e) {
             LOGGER.error("Error when adding new NoiThat");
             throw new RuntimeException(e);
@@ -102,10 +97,9 @@ public class NoiThatRestService {
      * @throws RuntimeException if there is an error when updating the NoiThat object.
      */
     public void update(NoiThat noiThat) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());
+        String path = String.format(BASE_ENDPOINT);
         try {
-            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(noiThat), token);
+            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(noiThat));
         } catch (IOException e) {
             LOGGER.error("Error when editing NoiThat");
             throw new RuntimeException(e);
@@ -119,9 +113,8 @@ public class NoiThatRestService {
      * @throws RuntimeException if there is an error when deleting the NoiThat object.
      */
     public void deleteById(int id) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
-        this.webClientService.authorizedHttpDeleteJson(path, "", token);
+        String path = String.format(BASE_ENDPOINT + ID_TEMPLATE, id);
+        this.webClientService.authorizedHttpDeleteJson(path, "");
     }
 
     /**
@@ -132,9 +125,8 @@ public class NoiThatRestService {
      * @throws RuntimeException if there is an error when searching for NoiThat objects.
      */
     public List<NoiThat> searchBy(String phongCachName) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + "/searchBy" + OWNER_TEMPLATE + "&phongCachName=%s", userSessionService.getUsername(), phongCachName);
-        String response2 = this.webClientService.authorizedHttpGetJson(path, token);
+        String path = String.format(BASE_ENDPOINT + "/searchBy" + "?phongCachName=%s", phongCachName);
+        String response2 = this.webClientService.authorizedHttpGetJson(path);
         if (response2 == null) {
             return null;
         }
@@ -148,14 +140,12 @@ public class NoiThatRestService {
         }
     }
     public void copySampleDataFromAdmin(int parentId) {
-        String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/copySampleData" + "?parentId=%d", parentId);
-        this.webClientService.authorizedHttpGetJson(path, token);
+        this.webClientService.authorizedHttpGetJson(path);
     }
 
     public void swap(int id1, int id2) {
-        String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/swap?id1=%d&id2=%d", id1, id2);
-        this.webClientService.authorizedHttpGetJson(path, token);
+        this.webClientService.authorizedHttpGetJson(path);
     }
 }

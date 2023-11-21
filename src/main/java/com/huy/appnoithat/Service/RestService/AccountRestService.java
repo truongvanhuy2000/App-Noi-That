@@ -4,9 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
-import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -20,7 +20,6 @@ import java.util.Map;
 public class AccountRestService {
     final static Logger LOGGER = LogManager.getLogger(AccountRestService.class);
     private static AccountRestService instance;
-    private final UserSessionService sessionService;
     private final ObjectMapper objectMapper;
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api";
@@ -32,7 +31,6 @@ public class AccountRestService {
     }
 
     private AccountRestService() {
-        this.sessionService = new UserSessionService();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
@@ -40,34 +38,20 @@ public class AccountRestService {
     }
 
     public Account getAccountInformation() {
-        String token = this.sessionService.getToken();
-        String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/info?username=" + this.sessionService.getUsername(), token);
+        String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/info");
         if (response == null) {
             return null;
         }
         try {
             return this.objectMapper.readValue(response, Account.class);
         } catch (IOException e) {
-            LOGGER.error("Error when find account by username: " + this.sessionService.getUsername());
-            throw new RuntimeException(e);
-        }
-    }
-    public Account getAccountInformation(String token) {
-        String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/info", token);
-        if (response == null) {
-            return null;
-        }
-        try {
-            return this.objectMapper.readValue(response, Account.class);
-        } catch (IOException e) {
-            LOGGER.error("Error when find account by username: " + this.sessionService.getUsername());
+            LOGGER.error("Error when find account by username ");
             throw new RuntimeException(e);
         }
     }
 
     public Account findByUsername(String username) {
-        String token = this.sessionService.getToken();
-        String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/search?username=" + username, token);
+        String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/search?username=" + username);
         if (response == null) {
             return null;
         }
@@ -80,8 +64,7 @@ public class AccountRestService {
     }
 
     public Account findById(int id) {
-        String token = this.sessionService.getToken();
-        String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/" + id, token);
+        String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/" + id);
         if (response == null) {
             return null;
         }
@@ -93,39 +76,34 @@ public class AccountRestService {
         }
     }
     public void save(Account account) {
-        String token = this.sessionService.getToken();
         try {
-            this.webClientService.authorizedHttpPostJson(BASE_ENDPOINT + "/accounts", this.objectMapper.writeValueAsString(account), token);
+            this.webClientService.authorizedHttpPostJson(BASE_ENDPOINT + "/accounts",
+                    this.objectMapper.writeValueAsString(account));
         } catch (JsonProcessingException e) {
             LOGGER.error("Error when save account: " + account.getUsername());
             throw new RuntimeException(e);
         }
     }
     public String update(Account account) {
-        String token = this.sessionService.getToken();
         try {
             return this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/" + account.getId(),
-                    this.objectMapper.writeValueAsString(account), token);
+                    this.objectMapper.writeValueAsString(account));
         } catch (JsonProcessingException e) {
             LOGGER.error("Error when update account: " + account.getUsername());
             throw new RuntimeException(e);
         }
     }
     public void deleteById(int id) {
-        String token = this.sessionService.getToken();
-        this.webClientService.authorizedHttpDeleteJson(BASE_ENDPOINT + "/accounts/" + id, " ", token);
+        this.webClientService.authorizedHttpDeleteJson(BASE_ENDPOINT + "/accounts/" + id, " ");
     }
     public void activateAccount(int id) {
-        String token = this.sessionService.getToken();
-        this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/activate/" + id, " ", token);
+        this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/activate/" + id, " ");
     }
     public void deactivateAccount(int id) {
-        String token = this.sessionService.getToken();
-        this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/deactivate/" + id, " ", token);
+        this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/deactivate/" + id, " ");
     }
     public List<Account> findAllEnabledAccount() {
-        String token = this.sessionService.getToken();
-        String response2 = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/enabled", token);
+        String response2 = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/enabled");
         if (response2 == null) {
             return null;
         }
@@ -138,8 +116,7 @@ public class AccountRestService {
         }
     }
     public List<Account> findAllNotEnabledAccount() {
-        String token = this.sessionService.getToken();
-        String response2 = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/notEnabled", token);
+        String response2 = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/notEnabled");
         if (response2 == null) {
             return null;
         }
@@ -152,28 +129,30 @@ public class AccountRestService {
         }
     }
     public void enableAccount(int id) {
-        String token = this.sessionService.getToken();
-        this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/enable/" + id, "long", token);
+        this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/enable/" + id, "1");
     }
     public String sessionCheck() {
-        String token = this.sessionService.getToken();
-        return webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/index", token);
+        return webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/index");
     }
-    public String login(String username, String password) {
+    public Token login(String username, String password) {
         Account account = new Account(0, username, password,
                 true, null, null, false, null);
         try {
-            return webClientService.unauthorizedHttpPostJson(BASE_ENDPOINT + "/login", objectMapper.writeValueAsString(account));
+            String response = webClientService.unauthorizedHttpPostJson(
+                    BASE_ENDPOINT + "/login", objectMapper.writeValueAsString(account));
+            if (response == null) {
+                return null;
+            }
+            return objectMapper.readValue(response, Token.class);
         } catch (JsonProcessingException e) {
             LOGGER.error("Login failed");
             throw new RuntimeException(e);
         }
     }
     public void register(Account account) {
-        String token = this.sessionService.getToken();
         try {
             this.webClientService.authorizedHttpPostJson(BASE_ENDPOINT + "/register",
-                    objectMapper.writeValueAsString(account), token);
+                    objectMapper.writeValueAsString(account));
         } catch (IOException e) {
             LOGGER.error("Can't parse response from server when register new account");
         }
@@ -183,13 +162,12 @@ public class AccountRestService {
         return response != null;
     }
     public boolean changePassword(String oldPassword, String newPassword) {
-        String token = this.sessionService.getToken();
         Map<String, String> requestBody = new HashMap<>();
         requestBody.put("oldPassword", oldPassword);
         requestBody.put("newPassword", newPassword);
         try {
             String response = this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/changePassword",
-                    objectMapper.writeValueAsString(requestBody), token);
+                    objectMapper.writeValueAsString(requestBody));
             if (response != null) {
                 return true;
             }
@@ -199,10 +177,9 @@ public class AccountRestService {
         return false;
     }
     public boolean updateInformation(AccountInformation accountInformation) {
-        String token = this.sessionService.getToken();
         try {
             String response = this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/updateInfo",
-                    objectMapper.writeValueAsString(accountInformation), token);
+                    objectMapper.writeValueAsString(accountInformation));
             if (response != null) {
                 return true;
             }

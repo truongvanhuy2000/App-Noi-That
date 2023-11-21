@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Service.SessionService;
 
 import com.huy.appnoithat.DataModel.Session.PersistenceUserSession;
+import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import com.huy.appnoithat.Service.RestService.AccountRestService;
@@ -38,6 +39,7 @@ public class UserSessionService {
         session.setAccount(new Account(0, "", "", false,
                 null, new ArrayList<>(), false, null));
         session.setJwtToken("");
+        session.setRefreshToken("");
         saveSessionToDisk();
     }
 
@@ -47,8 +49,8 @@ public class UserSessionService {
      * @param username The username of the logged-in user.
      * @param jwtToken The JWT token received upon successful login.
      */
-    public void setSession(String username, String jwtToken) {
-        setToken(jwtToken);
+    public void setSession(String username, Token token) {
+        setToken(token);
         if (!username.isEmpty()) {
             AccountRestService accountRestService = AccountRestService.getInstance();
             Account account = accountRestService.getAccountInformation();
@@ -65,9 +67,10 @@ public class UserSessionService {
      *
      * @param jwtToken The JWT token to set for the user session.
      */
-    public void setToken(String jwtToken) {
+    public void setToken(Token token) {
         UserSession session = UserSession.getInstance();
-        session.setJwtToken(jwtToken);
+        session.setJwtToken(token.getToken());
+        session.setRefreshToken(token.getRefreshToken());
     }
 
     /**
@@ -75,12 +78,19 @@ public class UserSessionService {
      *
      * @return The JWT token from the user session.
      */
-    public String getToken() {
+    public String getJwtToken() {
         UserSession session = UserSession.getInstance();
         return session.getJwtToken();
     }
+    public Token getToken() {
+        UserSession session = UserSession.getInstance();
+        return new Token(session.getJwtToken(), session.getRefreshToken());
+    }
 
-
+    public String getRefreshToken() {
+        UserSession session = UserSession.getInstance();
+        return session.getRefreshToken();
+    }
     /**
      * Sets the logged-in user's account information in the user session.
      *
@@ -135,7 +145,7 @@ public class UserSessionService {
      * @throws RuntimeException If an error occurs while checking the session validity.
      */
     public boolean isSessionValid() {
-        if (getToken().isEmpty()) {
+        if (getJwtToken().isEmpty()) {
             loadSessionFromDisk();
         }
         AccountRestService accountRestService = AccountRestService.getInstance();
@@ -151,10 +161,11 @@ public class UserSessionService {
     public void loadSessionFromDisk() {
         PersistenceUserSession persistenceUserSession = persistenceStorageService.getUserSession();
         if (persistenceUserSession == null) {
-            setToken("");
+            setToken(new Token("", ""));
             return;
         }
-        setSession(persistenceUserSession.getUsername(), persistenceUserSession.getToken());
+        setSession(persistenceUserSession.getUsername(),
+                new Token(persistenceUserSession.getToken(), persistenceUserSession.getRefreshToken()));
     }
 
 
@@ -164,6 +175,10 @@ public class UserSessionService {
      * @throws IOException If an error occurs while writing the session data to the disk.
      */
     public void saveSessionToDisk() {
-        persistenceStorageService.setUserSession(new PersistenceUserSession(getUsername(), getToken()));
+        persistenceStorageService.setUserSession(new PersistenceUserSession(getUsername(), getJwtToken(), getRefreshToken()));
+    }
+    public void saveSessionToDisk(String directory) {
+        persistenceStorageService.exportUserSession(
+                new PersistenceUserSession(getUsername(), getJwtToken(), getRefreshToken()), directory);
     }
 }

@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="1000.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
@@ -24,7 +25,12 @@
                   </Menu>
                   <Menu mnemonicParsing="false" text="Xuất tệp">
                      <items>
-                        <MenuItem fx:id="MenuItemExportXLS" mnemonicParsing="false" onAction="#onClickMenuItem" text="Excel" />
+                        <Menu mnemonicParsing="false" text="Excel">
+                          <items>
+                              <MenuItem fx:id="MenuItemExportXLS" mnemonicParsing="false" onAction="#onClickMenuItem" text="Xuất đơn tệp" />
+                            <MenuItem fx:id="MenuItemExportMultipleXLS" mnemonicParsing="false" onAction="#onClickMenuItem" text="Xuất toàn bộ" />
+                          </items>
+                        </Menu>
                         <MenuItem fx:id="MenuItemExportPDF" mnemonicParsing="false" onAction="#onClickMenuItem" text="PDF" />
                      </items>
                   </Menu>
@@ -44,5 +50,6 @@
             </HBox>
          </children>
       </VBox>
+      <StackPane fx:id="loadingPane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     </children>
 </AnchorPane>

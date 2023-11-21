@@ -3,6 +3,7 @@ package com.huy.appnoithat.Controller;
 import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.RegisterScene;
@@ -100,7 +101,7 @@ public class LoginController {
         if (tokenFile == null) {
             return;
         }
-        String token = Utils.readFromFile(tokenFile);
+        Token token = Utils.readObjectFromFile(tokenFile, Token.class);
         if (token == null) {
             PopupUtils.throwCriticalError("Chữ ký điện tử không hợp lệ");
             return;

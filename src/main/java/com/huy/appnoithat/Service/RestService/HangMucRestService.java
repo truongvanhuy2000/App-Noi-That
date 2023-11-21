@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Entity.HangMuc;
-import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -18,10 +17,8 @@ public class HangMucRestService {
     final static Logger LOGGER = LogManager.getLogger(HangMucRestService.class);
     private final WebClientService webClientService;
     private final ObjectMapper objectMapper;
-    private final UserSessionService userSessionService;
     private static final String BASE_ENDPOINT = "/api/hangmuc";
     private static final String ID_TEMPLATE = "/%d";
-    private static final String OWNER_TEMPLATE = "?owner=%s";
     private static final String PARENT_ID_TEMPLATE = "&parentId=%d";
     public static synchronized HangMucRestService getInstance() {
         if (instance == null) {
@@ -35,7 +32,6 @@ public class HangMucRestService {
      */
     private HangMucRestService() {
         webClientService = new WebClientServiceImpl();
-        userSessionService = new UserSessionService();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
@@ -48,9 +44,8 @@ public class HangMucRestService {
      * @return A list of HangMuc items associated with the given NoiThat ID, or null if no items are found.
      */
     public List<HangMuc> searchByNoiThat(int id) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + "/searchByNoiThat" + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
-        String response2 = this.webClientService.authorizedHttpGetJson(path, token);
+        String path = String.format(BASE_ENDPOINT + "/searchByNoiThat" + ID_TEMPLATE, id);
+        String response2 = this.webClientService.authorizedHttpGetJson(path);
         if (response2 == null) {
             return null;
         }
@@ -71,10 +66,9 @@ public class HangMucRestService {
      * @param parentID The ID of the parent NoiThat.
      */
     public void save(HangMuc hangMuc, int parentID) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE + PARENT_ID_TEMPLATE, userSessionService.getUsername(), parentID);
+        String path = String.format(BASE_ENDPOINT + PARENT_ID_TEMPLATE, parentID);
         try {
-            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(hangMuc), token);
+            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(hangMuc));
         } catch (IOException e) {
             LOGGER.error("Error when adding new HangMuc");
             throw new RuntimeException(e);
@@ -88,10 +82,9 @@ public class HangMucRestService {
      * @throws RuntimeException if there is an error when editing the HangMuc.
      */
     public void update(HangMuc hangMuc) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + OWNER_TEMPLATE, userSessionService.getUsername());
+        String path = String.format(BASE_ENDPOINT);
         try {
-            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(hangMuc), token);
+            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(hangMuc));
         } catch (IOException e) {
             LOGGER.error("Error when editing HangMuc");
             throw new RuntimeException(e);
@@ -104,9 +97,8 @@ public class HangMucRestService {
      * @param id The ID of the HangMuc object to be deleted.
      */
     public void deleteById(int id) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + ID_TEMPLATE + OWNER_TEMPLATE, id, userSessionService.getUsername());
-        this.webClientService.authorizedHttpDeleteJson(path, "", token);
+        String path = String.format(BASE_ENDPOINT + ID_TEMPLATE, id);
+        this.webClientService.authorizedHttpDeleteJson(path, "");
     }
 
     /**
@@ -118,9 +110,8 @@ public class HangMucRestService {
      * @throws RuntimeException if there is an error when searching for HangMuc objects.
      */
     public List<HangMuc> searchBy(String phongCachName, String noiThatName) {
-        String token = this.userSessionService.getToken();
-        String path = String.format(BASE_ENDPOINT + "/searchBy" + OWNER_TEMPLATE + "&phongCachName=%s&noiThatName=%s", userSessionService.getUsername(), phongCachName, noiThatName);
-        String response2 = this.webClientService.authorizedHttpGetJson(path, token);
+        String path = String.format(BASE_ENDPOINT + "/searchBy" + "?phongCachName=%s&noiThatName=%s", phongCachName, noiThatName);
+        String response2 = this.webClientService.authorizedHttpGetJson(path);
         if (response2 == null) {
             return null;
         }
@@ -134,14 +125,12 @@ public class HangMucRestService {
         }
     }
     public void copySampleDataFromAdmin(int parentId) {
-        String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/copySampleData" + "?parentId=%d", parentId);
-        this.webClientService.authorizedHttpGetJson(path, token);
+        this.webClientService.authorizedHttpGetJson(path);
     }
 
     public void swap(int id1, int id2) {
-        String token = this.userSessionService.getToken();
         String path = String.format(BASE_ENDPOINT + "/swap?id1=%d&id2=%d", id1, id2);
-        this.webClientService.authorizedHttpGetJson(path, token);
+        this.webClientService.authorizedHttpGetJson(path);
     }
 }
