@@ -71,8 +71,7 @@ public class LuaChonNoiThatController implements Initializable {
     private TableView<BangThanhToan> bangThanhToan;
     @Setter
     private ByteArrayOutputStream imageStream;
-    @FXML
-    private StackPane loadingPane;
+
     private Timeline autoSaveTimer;
     private final PersistenceStorageService persistenceStorageService;
     public LuaChonNoiThatController() {
@@ -117,12 +116,6 @@ public class LuaChonNoiThatController implements Initializable {
             return;
         }
         ObservableList<TreeItem<BangNoiThat>> listItem = TableNoiThat.getSelectionModel().getSelectedItems();
-//        listItem.stream().sorted(new Comparator<TreeItem<BangNoiThat>>() {
-//            @Override
-//            public int compare(TreeItem<BangNoiThat> o1, TreeItem<BangNoiThat> o2) {
-//                if (o1.getValue().getSTT())
-//            }
-//        });
         for (int i = listItem.size() - 1; i >= 0; i--) {
             TreeItem<BangNoiThat> item = listItem.get(i);
             if (item == null) continue;
@@ -152,19 +145,10 @@ public class LuaChonNoiThatController implements Initializable {
      */
     @Override
     public final void initialize(URL url, ResourceBundle resourceBundle) {
-        loadingPane.setDisable(true);
-        loadingPane.setVisible(false);
         setUpBangThanhToan();
         setUpBangNoiThat();
         setUpButton();
         setUpTruongThongTin();
-    }
-    /**
-     * @param fileType This function will export the table to a file
-     */
-    public String exportFile(FileType fileType) {
-        ExportOperation exportOperation = new ExportOperation(this);
-        return exportOperation.exportFile(fileType);
     }
     public DataPackage exportData() {
         ExportOperation exportOperation = new ExportOperation(this);
@@ -239,8 +223,6 @@ public class LuaChonNoiThatController implements Initializable {
         SetupTruongThongTin setupTruongThongTin = new SetupTruongThongTin(this);
         setupTruongThongTin.setup();
     }
-
-
     public void init(Stage stage) {
 
     }

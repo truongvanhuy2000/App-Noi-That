@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lombok.Data;
@@ -36,6 +37,9 @@ public class NewTabController implements Initializable {
     private CheckMenuItem AutoSave;
     @FXML
     private TabPane tabPane;
+    @FXML
+    private StackPane loadingPane;
+
     private Timeline autoSaveTimer;
     private State currentState;
     private String currentDirectory;
@@ -84,6 +88,9 @@ public class NewTabController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadingPane.setDisable(true);
+        loadingPane.setVisible(false);
+
         tabOperation = new TabOperation(this);
         contentOperation = new ContentOperation(this);
         tabPane.getTabs().clear();
