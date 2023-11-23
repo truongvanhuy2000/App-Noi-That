@@ -879,7 +879,7 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 04-10-2023 00:40:47 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
 [INFO ] 04-10-2023 00:42:31 [main] HelloApplication:33 - Start application
 [INFO ] 04-10-2023 00:42:32 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
-[ERROR] 04-10-2023 00:42:37 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "com.huy.appnoithat.Controller.FileNoiThatExplorer.RecentFile.getDirectory()" because "recentFile" is null
+[ERROR] 04-10-2023 00:42:37 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "com.huy.appnoithat.DataModel.RecentFile.getDirectory()" because "recentFile" is null
 [INFO ] 04-10-2023 00:42:53 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
 [INFO ] 04-10-2023 00:42:56 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
 [INFO ] 04-10-2023 00:43:27 [main] HelloApplication:33 - Start application
@@ -887,7 +887,7 @@ java.lang.NumberFormatException: For input string: "1,999,998"
 [INFO ] 04-10-2023 00:43:32 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
 [INFO ] 04-10-2023 00:44:24 [main] HelloApplication:33 - Start application
 [INFO ] 04-10-2023 00:44:25 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
-[ERROR] 04-10-2023 00:44:34 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "com.huy.appnoithat.Controller.FileNoiThatExplorer.RecentFile.getDirectory()" because "recentFile" is null
+[ERROR] 04-10-2023 00:44:34 [JavaFX Application Thread] GlobalExceptionHandler:21 - Unhandled exception caught! Thread: JavaFX Application Thread Message: Cannot invoke "com.huy.appnoithat.DataModel.RecentFile.getDirectory()" because "recentFile" is null
 [INFO ] 04-10-2023 00:45:09 [main] HelloApplication:33 - Start application
 [INFO ] 04-10-2023 00:45:11 [JavaFX Application Thread] HomeController:62 - Login as kim with role User
 [INFO ] 04-10-2023 00:45:15 [JavaFX Application Thread] ImportOperation:46 - Import file: testtttt.nt
@@ -5988,3 +5988,8 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
  at [Source: (String)"eyJleHBvcnREYXRhIjp7InRob25nVGluQ29uZ1R5Ijp7InRlbkNvbmdUeSI6IlRFU1QxMjNhc2Rhc2Rhc2Rhc2Rhc2RzYXNkcyIsImRpYUNoaVZhblBob25nIjoiVEVTVDEyMzFhc2RzYWFzZGFzZCIsImRpYUNoaVh1b25nIjoiYXNkYXNkIiwic29EaWVuVGhvYWkiOiJhc2RzZHNhZCIsImVtYWlsIjoiZGFzZCJ9LCJ0aG9uZ1RpbktoYWNoSGFuZyI6eyJ0ZW5LaGFjaEhhbmciOiJkYWRzIiwiZGlhQ2hpIjoi4T8iLCJzb0RpZW5UaG9haSI6IuFkIiwiZGF0ZSI6IjE1LzEwLzIwMjMiLCJTYW5QaGFtIjoi4T9hc2FkIn0sIm5vdGVBcmVhIjoiQ2j6IHRo7WNoOiIsInRob25nVGluTm9pVGhhdExpc3QiOlt7IlNUVCI6IkEiLCJUZW5IYW5nTXVjIjoiTj9JIFRIP1Qg"[truncated 628 chars]; line: 1, column: 257]
 [ERROR] 21-11-2023 23:38:06 [JavaFX Application Thread] FileNoiThatExplorerController:102 - com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'eyJleHBvcnREYXRhIjp7InRob25nVGluQ29uZ1R5Ijp7InRlbkNvbmdUeSI6IlRFU1QxMjNhc2Rhc2Rhc2Rhc2Rhc2RzYXNkcyIsImRpYUNoaVZhblBob25nIjoiVEVTVDEyMzFhc2RzYWFzZGFzZCIsImRpYUNoaVh1b25nIjoiYXNkYXNkIiwic29EaWVuVGhvYWkiOiJhc2RzZHNhZCIsImVtYWlsIjoiZGFzZCJ9LCJ0aG9uZ1RpbktoYWNo...': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
  at [Source: (String)"eyJleHBvcnREYXRhIjp7InRob25nVGluQ29uZ1R5Ijp7InRlbkNvbmdUeSI6IlRFU1QxMjNhc2Rhc2Rhc2Rhc2Rhc2RzYXNkcyIsImRpYUNoaVZhblBob25nIjoiVEVTVDEyMzFhc2RzYWFzZGFzZCIsImRpYUNoaVh1b25nIjoiYXNkYXNkIiwic29EaWVuVGhvYWkiOiJhc2RzZHNhZCIsImVtYWlsIjoiZGFzZCJ9LCJ0aG9uZ1RpbktoYWNoSGFuZyI6eyJ0ZW5LaGFjaEhhbmciOiJkYWRzIiwiZGlhQ2hpIjoi4T8iLCJzb0RpZW5UaG9haSI6IuFkIiwiZGF0ZSI6IjE1LzEwLzIwMjMiLCJTYW5QaGFtIjoi4T9hc2FkIn0sIm5vdGVBcmVhIjoiQ2j6IHRo7WNoOiIsInRob25nVGluTm9pVGhhdExpc3QiOlt7IlNUVCI6IkEiLCJUZW5IYW5nTXVjIjoiTj9JIFRIP1Qg"[truncated 628 chars]; line: 1, column: 257]
+[INFO ] 23-11-2023 11:30:32 [main] HelloApplication:41 - Start application
+[INFO ] 23-11-2023 11:30:33 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 23-11-2023 11:30:39 [main] HelloApplication:41 - Start application
+[INFO ] 23-11-2023 11:30:41 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 23-11-2023 11:30:48 [JavaFX Application Thread] HomeController:119 - Login as user with role User

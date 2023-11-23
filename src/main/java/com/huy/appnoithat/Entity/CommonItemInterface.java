@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Entity.Common;
+package com.huy.appnoithat.Entity;
 
 public interface CommonItemInterface {
     String getName();

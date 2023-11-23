@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Configuration.Config;
-import com.huy.appnoithat.Controller.FileNoiThatExplorer.RecentFile;
+import com.huy.appnoithat.DataModel.RecentFile;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
