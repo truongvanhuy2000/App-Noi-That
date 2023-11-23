@@ -3,6 +3,7 @@ package com.huy.appnoithat.Controller.FileNoiThatExplorer;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.NewTab.TabState;
+import com.huy.appnoithat.DataModel.RecentFile;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.NewTabScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;

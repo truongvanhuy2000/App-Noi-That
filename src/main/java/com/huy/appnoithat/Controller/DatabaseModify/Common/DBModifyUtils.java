@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.DatabaseModify.Common;
 
-import com.huy.appnoithat.Entity.Common.CommonItemInterface;
+import com.huy.appnoithat.Entity.CommonItemInterface;
 import javafx.collections.ObservableList;
 
 public class DBModifyUtils {
