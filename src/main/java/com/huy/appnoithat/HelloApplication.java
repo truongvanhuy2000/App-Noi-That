@@ -23,7 +23,7 @@ public class HelloApplication extends Application {
             Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler(stage));
             UserSession.getInstance();
             UserSessionService sessionService = new UserSessionService();
-            if (sessionService.isLogin()) {
+            if (sessionService.isSessionValid()) {
                 Scene scene = HomeScene.getInstance().getScene();
                 Platform.runLater(() -> HomeScene.getInstance().getHomeController().init());
                 StageFactory.closeAndCreateNewMaximizedStage(stage, scene);

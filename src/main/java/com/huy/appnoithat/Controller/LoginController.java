@@ -68,7 +68,7 @@ public class LoginController {
         String password = passwordField.getText();
 
         // Validate the credentials using the login service
-        if (!loginService.Authorization(userName, password)) {
+        if (!loginService.basicAuthorization(userName, password)) {
             // Display error popup for incorrect credentials
             PopupUtils.throwCriticalError("Không thể đăng nhập (Sai tên đăng nhập, mật khẩu, tài khoản hết hạn,...)");
             passwordField.setText("");

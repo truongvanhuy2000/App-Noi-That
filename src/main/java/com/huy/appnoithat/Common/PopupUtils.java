@@ -65,9 +65,9 @@ public class PopupUtils {
 
     public static boolean showExitConfirmation() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Thoát");
-        alert.setHeaderText("Bạn có chắc chắn muốn thoát?\nHãy lưu lại những gì bạn đang thực hiện");
-        alert.setContentText("Nhấn OK để thoát");
+        alert.setTitle("Đóng cửa sổ");
+        alert.setHeaderText("Bạn có chắc chắn muốn đóng cửa sổ?\nHãy lưu lại những gì bạn đang thực hiện");
+        alert.setContentText("Nhấn OK để đóng cửa sổ");
         Optional<ButtonType> result = alert.showAndWait();
         return result.filter(buttonType -> buttonType == ButtonType.OK).isPresent();
     }
