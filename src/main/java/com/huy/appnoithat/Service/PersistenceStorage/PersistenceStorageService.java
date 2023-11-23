@@ -17,8 +17,6 @@ import java.util.List;
 public class PersistenceStorageService {
     final static Logger LOGGER = LogManager.getLogger(PersistenceStorageService.class);
     private static PersistenceStorageService instance;
-    private ThongTinCongTy thongTinCongTy;
-    private PersistenceUserSession persistenceUserSession;
     private final ObjectMapper objectMapper;
     PersistenceStorageService() {
         objectMapper = JsonMapper.builder()
@@ -56,7 +54,7 @@ public class PersistenceStorageService {
      * @param thongTinCongTy ThongTinCongTy object containing company information to be set.
      * @throws RuntimeException if there is an IOException while writing the file.
      */
-    public void setThongTinCongTy(ThongTinCongTy thongTinCongTy) {
+    public void saveThongTinCongTy(ThongTinCongTy thongTinCongTy) {
         try {
             // Write company information to the specified file path
             objectMapper.writeValue(new File(Config.USER.COMPANY_INFO_DIRECTORY), thongTinCongTy);
@@ -112,21 +110,16 @@ public class PersistenceStorageService {
      * @param persistenceUserSession UserSession object representing the user session to be set.
      * @throws RuntimeException if there is an IOException while writing the file.
      */
-    public void setUserSession(PersistenceUserSession persistenceUserSession) {
-        this.persistenceUserSession = persistenceUserSession;
-        exportUserSession(persistenceUserSession, Config.USER.SESSION_DIRECTORY);
-    }
-
-    public void exportUserSession(PersistenceUserSession persistenceUserSession, String directory) {
+    public void saveUserSession(PersistenceUserSession persistenceUserSession) {
         try {
-            objectMapper.writeValue(new File(directory), persistenceUserSession);
+            objectMapper.writeValue(new File(Config.USER.SESSION_DIRECTORY), persistenceUserSession);
         } catch (IOException e) {
             LOGGER.error("Failed to write user session" + e.getMessage());
             throw new RuntimeException(e);
         }
     }
 
-    public void setNoteArea(String noteArea) {
+    public void saveNoteArea(String noteArea) {
         try {
             objectMapper.writeValue(new File(Config.USER.NOTE_AREA_DIRECTORY), noteArea);
         } catch (IOException e) {

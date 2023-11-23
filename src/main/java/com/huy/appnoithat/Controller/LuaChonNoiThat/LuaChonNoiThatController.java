@@ -108,7 +108,7 @@ public class LuaChonNoiThatController implements Initializable {
 
     public void saveNoteArea() {
         String noteArea = noteTextArea.getText();
-        persistenceStorageService.setNoteArea(noteArea);
+        persistenceStorageService.saveNoteArea(noteArea);
         PopupUtils.throwSuccessSignal("Lưu ghi chú thành công");
     }
 
@@ -142,7 +142,7 @@ public class LuaChonNoiThatController implements Initializable {
                 DienThoaiCongTy.getText(),
                 Email.getText()
         );
-        persistenceStorageService.setThongTinCongTy(thongTinCongTy);
+        persistenceStorageService.saveThongTinCongTy(thongTinCongTy);
         PopupUtils.throwSuccessSignal("Lưu thông tin công ty thành công");
     }
     /**

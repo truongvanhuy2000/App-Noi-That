@@ -5955,3 +5955,14 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [WARN ] 21-11-2023 14:16:09 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
 [WARN ] 21-11-2023 14:16:09 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
 [WARN ] 21-11-2023 14:16:09 [JavaFX Application Thread] XSSFWorkbook:682 - Cloning sheets with page setup is not yet supported.
+[INFO ] 23-11-2023 11:18:24 [main] HelloApplication:41 - Start application
+[ERROR] 23-11-2023 11:18:24 [JavaFX Application Thread] PersistenceStorageService:102 - Failed to read user sessionUnrecognized field "username" (class com.huy.appnoithat.DataModel.Session.PersistenceUserSession), not marked as ignorable (2 known properties: "token", "refreshToken"])
+ at [Source: (File); line: 1, column: 14] (through reference chain: com.huy.appnoithat.DataModel.Session.PersistenceUserSession["username"])
+[INFO ] 23-11-2023 11:18:24 [JavaFX Application Thread] WebClientServiceImpl:207 - Trying to refresh jwt token
+[ERROR] 23-11-2023 11:18:24 [JavaFX Application Thread] ServerResponseHandler:17 - Token expired
+[INFO ] 23-11-2023 11:18:42 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 23-11-2023 11:18:54 [main] HelloApplication:41 - Start application
+[INFO ] 23-11-2023 11:18:55 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 23-11-2023 11:20:01 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 23-11-2023 11:22:11 [main] HelloApplication:41 - Start application
+[INFO ] 23-11-2023 11:22:12 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin

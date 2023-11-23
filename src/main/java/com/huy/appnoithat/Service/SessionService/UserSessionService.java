@@ -23,15 +23,6 @@ public class UserSessionService {
     }
 
     /**
-     * Checks if the user is logged in by validating the session.
-     *
-     * @return true if the session is valid and the user is logged in, false otherwise.
-     */
-    public boolean isLogin() {
-        return isSessionValid();
-    }
-
-    /**
      * Clears the user session data, effectively logging the user out.
      */
     public void cleanUserSession() {
@@ -46,20 +37,21 @@ public class UserSessionService {
     /**
      * Sets the user session with the provided username and JWT token.
      *
-     * @param username The username of the logged-in user.
      * @param jwtToken The JWT token received upon successful login.
      */
-    public void setSession(String username, Token token) {
+    public void setSession(Token token) {
         setToken(token);
-        if (!username.isEmpty()) {
-            AccountRestService accountRestService = AccountRestService.getInstance();
-            Account account = accountRestService.getAccountInformation();
-            if (account == null) {
-                LOGGER.error("Account is null");
-                return;
-            }
-            setLoginAccount(account);
+        AccountRestService accountRestService = AccountRestService.getInstance();
+        Account account = accountRestService.getAccountInformation();
+        if (account == null) {
+            LOGGER.error("Account is null");
+            return;
         }
+        setLoginAccount(account);
+    }
+    public void saveSession(Token token) {
+        setSession(token);
+        saveSessionToDisk();
     }
 
     /**
@@ -100,8 +92,6 @@ public class UserSessionService {
         UserSession session = UserSession.getInstance();
         session.setAccount(account);
     }
-
-
     /**
      * Sets the logged-in user's account information in the user session.
      *
@@ -123,20 +113,6 @@ public class UserSessionService {
     public String getPassword() {
         return getLoginAccount().getPassword();
     }
-    /**
-     * Retrieves the user session of the currently logged-in user.
-     *
-     * @return The user session of the currently logged-in user.
-     * @throws RuntimeException If no session is found (user is not logged in).
-     */
-    public UserSession getSession() {
-        if (!isLogin()) {
-            LOGGER.error("No session found");
-            throw new RuntimeException("User is not login");
-        }
-        return UserSession.getInstance();
-    }
-
 
     /**
      * Checks if the user session is valid by making a request to the server.
@@ -164,10 +140,8 @@ public class UserSessionService {
             setToken(new Token("", ""));
             return;
         }
-        setSession(persistenceUserSession.getUsername(),
-                new Token(persistenceUserSession.getToken(), persistenceUserSession.getRefreshToken()));
+        setSession(new Token(persistenceUserSession.getToken(), persistenceUserSession.getRefreshToken()));
     }
-
 
     /**
      * Saves the user session data to the disk.
@@ -175,10 +149,6 @@ public class UserSessionService {
      * @throws IOException If an error occurs while writing the session data to the disk.
      */
     public void saveSessionToDisk() {
-        persistenceStorageService.setUserSession(new PersistenceUserSession(getUsername(), getJwtToken(), getRefreshToken()));
-    }
-    public void saveSessionToDisk(String directory) {
-        persistenceStorageService.exportUserSession(
-                new PersistenceUserSession(getUsername(), getJwtToken(), getRefreshToken()), directory);
+        persistenceStorageService.saveUserSession(new PersistenceUserSession(getJwtToken(), getRefreshToken()));
     }
 }

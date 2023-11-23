@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PersistenceUserSession {
-    @JsonProperty("username")
-    private String username;
     @JsonProperty("token")
     private String token;
     @JsonProperty("refreshToken")
