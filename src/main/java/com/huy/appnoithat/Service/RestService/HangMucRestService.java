@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
-import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,7 +30,7 @@ public class HangMucRestService {
      * Constructs a new instance of HangMucRestService with the necessary dependencies.
      */
     private HangMucRestService() {
-        webClientService = new WebClientServiceImpl();
+        webClientService = new WebClientService();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
