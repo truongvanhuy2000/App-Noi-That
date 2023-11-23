@@ -8,7 +8,6 @@ import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
-import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -34,7 +33,7 @@ public class AccountRestService {
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
-        webClientService = new WebClientServiceImpl();
+        webClientService = new WebClientService();
     }
 
     public Account getAccountInformation() {

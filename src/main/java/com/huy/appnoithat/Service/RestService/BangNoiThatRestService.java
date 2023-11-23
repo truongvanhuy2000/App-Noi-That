@@ -1,8 +1,6 @@
 package com.huy.appnoithat.Service.RestService;
 
-import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
-import com.huy.appnoithat.Service.WebClient.WebClientServiceImpl;
 
 public class BangNoiThatRestService {
     private static final String BASE_ENDPOINT = "/api/bangnoithat";
@@ -15,7 +13,7 @@ public class BangNoiThatRestService {
         return instance;
     }
     private BangNoiThatRestService() {
-        webClientService = new WebClientServiceImpl();
+        webClientService = new WebClientService();
     }
     public void sampleAll() {
         String path = String.format(BASE_ENDPOINT + "/sampleAll");
