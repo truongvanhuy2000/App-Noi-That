@@ -9,7 +9,6 @@ import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementScene;
 import com.huy.appnoithat.Scene.UserDetailScene;
 import com.huy.appnoithat.Service.Login.LoginService;
-import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -181,7 +180,7 @@ public class HomeController {
         Optional<String> result = dialog.showAndWait();
 
         result.ifPresent(password -> {
-            if(loginService.reauthorize(password)) {
+            if(loginService.reAuthorize(password)) {
                 // Clear the primary content pane
                 PCPane.getChildren().clear();
 

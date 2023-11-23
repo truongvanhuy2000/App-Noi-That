@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Session;
 
 import com.huy.appnoithat.Entity.Account;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 // This class is have to be used only by SessionService, if you want to use it, please use SessionService instead
 @Getter
 @Setter
+@Builder
 public class UserSession {
     private static UserSession instance;
     private Account account;
@@ -19,13 +21,20 @@ public class UserSession {
         this.jwtToken = jwtToken;
         this.refreshToken = refreshToken;
     }
-
     public static synchronized UserSession getInstance() {
         if (instance == null) {
-            instance = new UserSession(
-                    new Account(0, "", "", false,
-                            null, new ArrayList<>(), false, null),
-                    "", "");
+            Account account = Account.builder()
+                    .id(0)
+                    .username("")
+                    .password("")
+                    .active(false)
+                    .roleList(new ArrayList<>())
+                    .enabled(false).build();
+
+            instance = UserSession.builder()
+                    .account(account)
+                    .jwtToken("")
+                    .refreshToken("").build();
         }
         return instance;
     }
