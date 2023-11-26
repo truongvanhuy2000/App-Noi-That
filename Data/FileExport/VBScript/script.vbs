@@ -29,7 +29,7 @@ End If
 Set objSheet = objWorkbook.Worksheets(1)
 
 ' Export the worksheet as PDF
-objSheet.ExportAsFixedFormat 0, pdfPath, 1, 0, 0
+objSheet.ExportAsFixedFormat 0, pdfPath, 0, 0, 0
 
 ' Close the workbook and quit Excel
 objWorkbook.Close

@@ -14,19 +14,33 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
+import java.util.List;
+
 public class HelloApplication extends Application {
     final static Logger LOGGER = LogManager.getLogger(HelloApplication.class);
 
     @Override
     public void start(Stage stage) {
+        Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler());
+
         Platform.runLater(() -> {
-            Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler(stage));
+            Parameters params = getParameters();
+            List<String> list = params.getRaw();
+            String fileToOpen = null;
+            if (!list.isEmpty()) {
+                LOGGER.info("Start application with params: " + list.get(0));
+                fileToOpen = list.get(0);
+            }
             UserSession.getInstance();
             UserSessionService sessionService = new UserSessionService();
             if (sessionService.isSessionValid()) {
                 Scene scene = HomeScene.getInstance().getScene();
                 Platform.runLater(() -> HomeScene.getInstance().getHomeController().init());
                 StageFactory.closeAndCreateNewMaximizedStage(stage, scene);
+                if (fileToOpen != null) {
+                    HomeScene.getInstance().getHomeController().openNtFileWith(fileToOpen);
+                }
             }
             else {
                 LoginScene loginScene = new LoginScene();
@@ -37,8 +51,9 @@ public class HelloApplication extends Application {
         });
     }
     public static void main(String[] args) {
+        Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler());
         configurationService.readConfiguration();
         LOGGER.info("Start application");
-        launch();
+        launch(args);
     }
 }

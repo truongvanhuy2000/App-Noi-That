@@ -22,8 +22,9 @@ public class ExportPDF implements ExportFile {
     @Override
     public void export(File exportDirectory) throws IOException {
         setOutputFile(exportDirectory);
-        exportSingleXLS.export(exportDirectory);
-        String xlsFileDir = exportDirectory.getAbsolutePath() + ".xlsx";
+        String tempXlsxFile = "temp" + System.currentTimeMillis() + ".xlsx";
+        String xlsFileDir = Paths.get(Config.CURRENT_DIRECTORY, tempXlsxFile).toAbsolutePath().toString();
+        exportSingleXLS.export(new File(xlsFileDir));
         convertXLStoPDF(xlsFileDir);
         deleteExistingFile(new File(xlsFileDir));
     }
@@ -45,6 +46,8 @@ public class ExportPDF implements ExportFile {
     }
 
     public void convertXLStoPDF(String directory){
+        String tempPdfFile = "temp" + System.currentTimeMillis() + ".pdf";
+        String tempPdfPath = Paths.get(Config.CURRENT_DIRECTORY, tempPdfFile).toAbsolutePath().toString();
         try {
             //read all the lines of the .vbs script into memory as a list
             //here we pull from the resources of a Gradle build, where the vbs script is stored
@@ -55,7 +58,8 @@ public class ExportPDF implements ExportFile {
                     line = line.replace("EXEL_PATH", directory);
                 }
                 if (line.contains("PDF_PATH")) {
-                    line = line.replace("PDF_PATH", outputFile.getAbsolutePath());
+
+                    line = line.replace("PDF_PATH", tempPdfPath);
                 }
                 return line;
             }).toList();
@@ -68,6 +72,7 @@ public class ExportPDF implements ExportFile {
 
             //tell the process how long to wait for timeout
             boolean success = process.waitFor(2, TimeUnit.MINUTES);
+            Files.move(Paths.get(tempPdfPath), Paths.get(outputFile.getAbsolutePath()));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

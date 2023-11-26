@@ -127,4 +127,8 @@ public class FileNoiThatExplorerController {
     private boolean isDirectoryExist(String directory) {
         return new File(directory).exists();
     }
+    public void openWith(String path) {
+        RecentFile recentFile = new RecentFile(path, System.currentTimeMillis());
+        openFile(recentFile);
+    }
 }
