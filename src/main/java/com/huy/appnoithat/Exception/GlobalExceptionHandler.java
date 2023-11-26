@@ -7,13 +7,11 @@ import org.apache.logging.log4j.Logger;
 
 public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
     final static Logger LOGGER = LogManager.getLogger(GlobalExceptionHandler.class);
-    private final Stage stage;
-
-    public GlobalExceptionHandler(Stage stage) {
-        this.stage = stage;
+    public GlobalExceptionHandler() {
     }
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
+        nestedLog(throwable);
 //        PopupUtils.throwCriticalError("Critical Error! Please report back to the developer! \n" + throwable.getMessage());
         if (throwable instanceof ServerConnectionException) {
             PopupUtils.throwCriticalError("Cannot connect to server! Please check your internet connection and try again!");
@@ -28,7 +26,7 @@ public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
             PopupUtils.throwCriticalError("Critical Error! Please report back to the developer! \n" + throwable.getMessage());
         }
         throwable.printStackTrace();
-        nestedLog(throwable);
+
     }
     private void nestedLog(Throwable throwable) {
         if (throwable.getCause() != null) {

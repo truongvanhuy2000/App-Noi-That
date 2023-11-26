@@ -111,6 +111,7 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
                 cancelEdit();
             }
         });
+        comboBox.setVisibleRowCount(8);
         comboBox.setOnMouseClicked((e) -> {
             comboBox.hide();
             showComboBoxAfter(200);

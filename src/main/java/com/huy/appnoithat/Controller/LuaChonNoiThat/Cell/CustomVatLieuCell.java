@@ -141,6 +141,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
                 cancelEdit();
             }
         });
+        comboBox.setVisibleRowCount(8);
         comboBox.setOnMouseClicked((e) -> {
             showComboBoxAfter(200);
         });

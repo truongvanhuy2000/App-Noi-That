@@ -5993,3 +5993,44 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [INFO ] 23-11-2023 11:30:39 [main] HelloApplication:41 - Start application
 [INFO ] 23-11-2023 11:30:41 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
 [INFO ] 23-11-2023 11:30:48 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:07:23 [main] HelloApplication:41 - Start application
+[INFO ] 27-11-2023 00:07:25 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[INFO ] 27-11-2023 00:07:28 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:11:10 [main] HelloApplication:41 - Start application
+[INFO ] 27-11-2023 00:11:13 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:12:00 [JavaFX Application Thread] HomeController:119 - Login as admin with role Admin
+[INFO ] 27-11-2023 00:12:24 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:15:03 [main] HelloApplication:41 - Start application
+[INFO ] 27-11-2023 00:15:06 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:15:45 [main] HelloApplication:41 - Start application
+[INFO ] 27-11-2023 00:15:48 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:16:23 [main] HelloApplication:41 - Start application
+[INFO ] 27-11-2023 00:16:27 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:24:09 [main] HelloApplication:41 - Start application
+[INFO ] 27-11-2023 00:24:12 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:24:34 [Thread-4] ExportSingleXLS:55 - Exporting to XLSX file
+[INFO ] 27-11-2023 00:26:30 [main] HelloApplication:41 - Start application
+[INFO ] 27-11-2023 00:26:32 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:26:56 [Thread-4] ExportSingleXLS:55 - Exporting to XLSX file
+[INFO ] 27-11-2023 00:28:10 [main] HelloApplication:41 - Start application
+[INFO ] 27-11-2023 00:28:16 [main] HelloApplication:41 - Start application
+[INFO ] 27-11-2023 00:28:18 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:28:29 [Thread-4] ExportSingleXLS:55 - Exporting to XLSX file
+[INFO ] 27-11-2023 00:30:22 [main] HelloApplication:41 - Start application
+[INFO ] 27-11-2023 00:30:25 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:30:45 [Thread-4] ExportSingleXLS:55 - Exporting to XLSX file
+[INFO ] 27-11-2023 00:36:01 [main] HelloApplication:41 - Start application
+[INFO ] 27-11-2023 00:36:04 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:36:19 [Thread-4] ExportSingleXLS:55 - Exporting to XLSX file
+[INFO ] 27-11-2023 00:54:51 [main] HelloApplication:56 - Start application
+[INFO ] 27-11-2023 00:54:51 [JavaFX Application Thread] HelloApplication:32 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 27-11-2023 00:54:55 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:55:13 [main] HelloApplication:56 - Start application
+[INFO ] 27-11-2023 00:55:13 [JavaFX Application Thread] HelloApplication:32 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 27-11-2023 00:55:22 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:55:45 [main] HelloApplication:56 - Start application
+[INFO ] 27-11-2023 00:55:45 [JavaFX Application Thread] HelloApplication:32 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 27-11-2023 00:55:48 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 27-11-2023 00:56:06 [main] HelloApplication:56 - Start application
+[INFO ] 27-11-2023 00:56:06 [JavaFX Application Thread] HelloApplication:32 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 27-11-2023 00:56:09 [JavaFX Application Thread] HomeController:119 - Login as user with role User

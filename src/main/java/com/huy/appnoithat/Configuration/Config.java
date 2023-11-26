@@ -3,7 +3,7 @@ package com.huy.appnoithat.Configuration;
 import java.nio.file.Paths;
 
 public class Config {
-    private static final String CURRENT_DIRECTORY = System.getProperty("user.dir");
+    public static final String CURRENT_DIRECTORY = System.getProperty("user.dir");
 
     public static class USER {
         public static final String SESSION_DIRECTORY =
