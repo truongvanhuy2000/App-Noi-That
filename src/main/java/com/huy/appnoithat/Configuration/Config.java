@@ -4,7 +4,7 @@ import java.nio.file.Paths;
 
 public class Config {
     public static final String CURRENT_DIRECTORY = System.getProperty("user.dir");
-
+    public static final String HOME_DIRECTORY = System.getProperty("user.home");
     public static class USER {
         public static final String SESSION_DIRECTORY =
                 Paths.get(CURRENT_DIRECTORY, "Data", "UserSession", "session").toString();

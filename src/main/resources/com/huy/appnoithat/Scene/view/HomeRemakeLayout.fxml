@@ -15,20 +15,20 @@
     <children>
       <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-              <AnchorPane prefHeight="837.0" prefWidth="274.0" styleClass="side_ankerpane">
+              <AnchorPane prefHeight="837.0" prefWidth="289.0" styleClass="side_ankerpane">
                   <children>
-                      <VBox layoutX="-2.0" layoutY="-84.0" prefHeight="805.0" prefWidth="313.0" spacing="25.0" style="-fx-border-radius: 50%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <VBox layoutX="-2.0" layoutY="-84.0" prefHeight="837.0" prefWidth="295.0" spacing="25.0" style="-fx-border-radius: 50%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <children>
                         <AnchorPane id="inner_pane">
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="308.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" x="21.0" y="14.0">
                                        <image>
                                           <Image url="@../icons/man.png" />
                                        </image>
                                     </ImageView>
-                                        <Text fx:id="UserName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" wrappingWidth="179.0" x="80.0" y="47.0">
+                                        <Text fx:id="UserName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" wrappingWidth="141.0" x="80.0" y="47.0">
                     
                 </Text>
                                     <Button id="btnChangeUserDetail" mnemonicParsing="false" onAction="#ChangeUserDetail">
