@@ -21,6 +21,8 @@ class UtilsTest {
 
     @Test
     void isNumeric() {
+        System.out.println(System.getProperty("user.home"));
+
     }
 
     @Test

@@ -6034,3 +6034,21 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [INFO ] 27-11-2023 00:56:06 [main] HelloApplication:56 - Start application
 [INFO ] 27-11-2023 00:56:06 [JavaFX Application Thread] HelloApplication:32 - Start application with params: D:\Project\Java\App-noi-that\test.nt
 [INFO ] 27-11-2023 00:56:09 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 28-11-2023 00:20:01 [main] HelloApplication:56 - Start application
+[INFO ] 28-11-2023 00:20:01 [JavaFX Application Thread] HelloApplication:32 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[ERROR] 28-11-2023 00:20:01 [JavaFX Application Thread] PersistenceStorageService:102 - Failed to read user sessionC:\Users\lenovo\AppNoiThat\Data\UserSession\session (Access is denied)
+[INFO ] 28-11-2023 00:20:02 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 28-11-2023 00:20:02 [JavaFX Application Thread] ServerResponseHandler:17 - Token expired
+[ERROR] 28-11-2023 00:20:02 [JavaFX Application Thread] PersistenceStorageService:117 - Failed to write user sessionC:\Users\lenovo\AppNoiThat\Data\UserSession\session (Access is denied)
+[ERROR] 28-11-2023 00:20:02 [JavaFX Application Thread] GlobalExceptionHandler:35 - C:\Users\lenovo\AppNoiThat\Data\UserSession\session (Access is denied)
+[ERROR] 28-11-2023 00:20:02 [JavaFX Application Thread] GlobalExceptionHandler:35 - java.io.FileNotFoundException: C:\Users\lenovo\AppNoiThat\Data\UserSession\session (Access is denied)
+[INFO ] 28-11-2023 00:20:27 [main] HelloApplication:56 - Start application
+[INFO ] 28-11-2023 00:20:27 [JavaFX Application Thread] HelloApplication:32 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 28-11-2023 00:20:28 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[INFO ] 28-11-2023 00:20:30 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 28-11-2023 00:21:37 [main] HelloApplication:56 - Start application
+[INFO ] 28-11-2023 00:21:37 [JavaFX Application Thread] HelloApplication:32 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 28-11-2023 00:21:40 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 28-11-2023 00:22:26 [main] HelloApplication:56 - Start application
+[INFO ] 28-11-2023 00:22:26 [JavaFX Application Thread] HelloApplication:32 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 28-11-2023 00:22:29 [JavaFX Application Thread] HomeController:119 - Login as user with role User
