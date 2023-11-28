@@ -3,7 +3,7 @@ package com.huy.appnoithat;
 import com.huy.appnoithat.Exception.GlobalExceptionHandler;
 import com.huy.appnoithat.Handler.MultipleInstanceHandler;
 import com.huy.appnoithat.Scene.HomeScene;
-import com.huy.appnoithat.Scene.LoginScene;
+import com.huy.appnoithat.Scene.Login.LoginScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Service.Configuration.configurationService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
@@ -17,7 +17,6 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
 import java.util.List;
 
 public class HelloApplication extends Application {
@@ -36,14 +35,14 @@ public class HelloApplication extends Application {
         UserSessionService sessionService = new UserSessionService();
         if (sessionService.isSessionValid()) {
             Scene scene = HomeScene.getInstance().getScene();
-            Platform.runLater(() -> HomeScene.getInstance().getHomeController().init());
-            StageFactory.closeAndCreateNewMaximizedStage(stage, scene);
+            Stage mainStage = StageFactory.closeAndCreateNewMaximizedStage(stage, scene, true);
+            Platform.runLater(() -> HomeScene.getInstance().getHomeController().init(mainStage));
         }
         else {
             LoginScene loginScene = new LoginScene();
             Scene scene = loginScene.getScene();
             Platform.runLater(() -> loginScene.getLoginController().init());
-            StageFactory.closeAndCreateNewUnresizeableStage(stage, scene);
+            StageFactory.closeAndCreateNewUnresizeableStage(stage, scene, false);
         }
     }
     private void getPendingWorkAtLaunch() {
@@ -58,7 +57,9 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
         Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler());
         configurationService.readConfiguration();
-        new MultipleInstanceHandler().start(args);
+        if (!MultipleInstanceHandler.isSingleInstance(args)) {
+            System.exit(0);
+        }
         LOGGER.info("Start application");
         launch(args);
     }

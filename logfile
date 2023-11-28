@@ -6125,3 +6125,61 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [INFO ] 28-11-2023 15:22:22 [main] HelloApplication:62 - Start application
 [INFO ] 28-11-2023 15:22:22 [Thread-1] MultipleInstanceHandler:34 - Send file to another instance: /home/huy/Project/Java/App-noi-that/test.nt
 [INFO ] 28-11-2023 15:22:22 [Thread-1] MultipleInstanceHandler:53 - Receive file from other instance: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 23:44:17 [Thread-2] MultipleInstanceHandler:30 - Another instance is running.
+[INFO ] 28-11-2023 23:44:17 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 23:44:17 [Thread-2] MultipleInstanceHandler:34 - Send file to another instance: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 28-11-2023 23:44:31 [Thread-2] MultipleInstanceHandler:30 - Another instance is running.
+[INFO ] 28-11-2023 23:44:31 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 23:44:31 [Thread-2] MultipleInstanceHandler:34 - Send file to another instance: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 28-11-2023 23:50:57 [Thread-2] MultipleInstanceHandler:30 - Another instance is running.
+[INFO ] 28-11-2023 23:50:57 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 23:50:57 [Thread-2] MultipleInstanceHandler:34 - Send file to another instance: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 00:12:03 [main] HelloApplication:62 - Start application
+[INFO ] 29-11-2023 00:12:03 [JavaFX Application Thread] HelloApplication:53 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 00:12:05 [Thread-2] MultipleInstanceHandler:48 - First instance
+[INFO ] 29-11-2023 00:12:05 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 29-11-2023 00:12:50 [main] HelloApplication:62 - Start application
+[INFO ] 29-11-2023 00:12:50 [JavaFX Application Thread] HelloApplication:53 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 00:12:52 [Thread-2] MultipleInstanceHandler:48 - First instance
+[INFO ] 29-11-2023 00:13:08 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 29-11-2023 00:13:27 [main] HelloApplication:62 - Start application
+[INFO ] 29-11-2023 00:13:27 [JavaFX Application Thread] HelloApplication:53 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 00:13:29 [Thread-2] MultipleInstanceHandler:48 - First instance
+[INFO ] 29-11-2023 00:20:54 [main] HelloApplication:62 - Start application
+[INFO ] 29-11-2023 00:20:54 [JavaFX Application Thread] HelloApplication:53 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 00:20:56 [Thread-2] MultipleInstanceHandler:49 - First instance
+[INFO ] 29-11-2023 00:21:06 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 29-11-2023 00:21:21 [main] HelloApplication:62 - Start application
+[INFO ] 29-11-2023 00:21:21 [JavaFX Application Thread] HelloApplication:53 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 00:21:23 [Thread-2] MultipleInstanceHandler:49 - First instance
+[INFO ] 29-11-2023 00:21:24 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 29-11-2023 00:45:49 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 00:45:49 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 00:45:49 [JavaFX Application Thread] HelloApplication:52 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 00:45:51 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 00:46:00 [JavaFX Application Thread] HomeController:121 - Close application
+[INFO ] 29-11-2023 00:56:26 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 00:56:26 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 00:56:26 [JavaFX Application Thread] HelloApplication:52 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 00:56:28 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 00:57:11 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 00:57:11 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 00:57:11 [JavaFX Application Thread] HelloApplication:52 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 00:57:13 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 00:58:01 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 00:58:01 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 00:58:01 [JavaFX Application Thread] HelloApplication:52 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 00:58:03 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 00:58:25 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 00:58:25 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 00:58:25 [JavaFX Application Thread] HelloApplication:52 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 00:58:25 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 00:58:25 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[ERROR] 29-11-2023 00:58:28 [JavaFX Application Thread] UserSessionService:47 - Account is null
+[INFO ] 29-11-2023 00:58:28 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 00:58:28 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[INFO ] 29-11-2023 00:58:36 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 01:12:43 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 01:12:43 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 01:12:43 [JavaFX Application Thread] HelloApplication:52 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 01:12:45 [JavaFX Application Thread] HomeController:107 - Login as user with role User

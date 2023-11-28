@@ -6,7 +6,7 @@ import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Enums.Action;
 import com.huy.appnoithat.Scene.HomeScene;
-import com.huy.appnoithat.Scene.RegisterScene;
+import com.huy.appnoithat.Scene.Login.RegisterScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Service.Login.LoginService;
 import javafx.event.ActionEvent;
@@ -92,7 +92,7 @@ public class LoginController {
         RegisterScene registerScene = new RegisterScene();
         Scene scene = registerScene.getScene();
         RegisterScene.getRegisterController().init();
-        StageFactory.CreateNewUnresizeableStage(registerScene.getScene());
+        StageFactory.CreateNewUnresizeableStage(registerScene.getScene(), false);
     }
 
     @FXML
@@ -115,9 +115,7 @@ public class LoginController {
         Object source = event.getSource();
         Stage stage = (Stage) ((Node) source).getScene().getWindow();
 
-        Scene scene = HomeScene.getInstance().getScene();
-        HomeScene.getInstance().getHomeController().init();
-        StageFactory.closeAndCreateNewMaximizedStage(stage, scene);
+        goToHome(stage);
     }
 
     /**
@@ -130,10 +128,14 @@ public class LoginController {
         Stage stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == LoginButton) {
             // Switch to the home scene if the Login button is clicked
-            Scene scene = HomeScene.getInstance().getScene();
-            HomeScene.getInstance().getHomeController().init();
-            StageFactory.closeAndCreateNewMaximizedStage(stage, scene);
+            goToHome(stage);
         }
+    }
+
+    private void goToHome(Stage stage) {
+        Scene scene = HomeScene.getInstance().getScene();
+        Stage mainStage = StageFactory.closeAndCreateNewMaximizedStage(stage, scene, true);
+        HomeScene.getInstance().getHomeController().init(mainStage);
     }
 
 }

@@ -63,11 +63,19 @@ public class PopupUtils {
         stage.show();
     }
 
-    public static boolean showExitConfirmation() {
+    public static boolean showCloseWindowConfirmation() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Đóng cửa sổ");
         alert.setHeaderText("Bạn có chắc chắn muốn đóng cửa sổ?\nHãy lưu lại những gì bạn đang thực hiện");
         alert.setContentText("Nhấn OK để đóng cửa sổ");
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.filter(buttonType -> buttonType == ButtonType.OK).isPresent();
+    }
+    public static boolean showCloseAppConfirmation() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Đóng ứng dụng");
+        alert.setHeaderText("Bạn có chắc chắn muốn đóng ứng dụng?\nHãy lưu lại những gì bạn đang thực hiện");
+        alert.setContentText("Nhấn OK để đóng ứng dụng");
         Optional<ButtonType> result = alert.showAndWait();
         return result.filter(buttonType -> buttonType == ButtonType.OK).isPresent();
     }

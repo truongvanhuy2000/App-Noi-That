@@ -3,7 +3,7 @@ package com.huy.appnoithat.Controller.Register;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Entity.AccountInformation;
-import com.huy.appnoithat.Scene.QRScene;
+import com.huy.appnoithat.Scene.Login.QRScene;
 import com.huy.appnoithat.Service.Register.RegisterService;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
