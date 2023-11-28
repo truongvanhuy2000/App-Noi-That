@@ -7,6 +7,10 @@ import com.huy.appnoithat.DataModel.RecentFile;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.NewTabScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;
+import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
+import com.huy.appnoithat.Work.OpenFileWork;
+import com.huy.appnoithat.Work.WorkFactory;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -82,6 +86,22 @@ public class FileNoiThatExplorerController {
                 openFile(RecentTableView.getSelectionModel().getSelectedItem());
             }
         });
+
+        new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(500);
+                    OpenFileWork openFileWork = WorkFactory.getWork();
+                    if (openFileWork != null) {
+                        Platform.runLater(() -> {
+                            openWith(openFileWork.getParam());
+                        });
+                    }
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }).start();
     }
 
     /**
