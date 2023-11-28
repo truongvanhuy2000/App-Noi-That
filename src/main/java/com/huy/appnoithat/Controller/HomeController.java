@@ -2,8 +2,9 @@ package com.huy.appnoithat.Controller;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Handler.MultipleInstanceHandler;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
-import com.huy.appnoithat.Scene.LoginScene;
+import com.huy.appnoithat.Scene.Login.LoginScene;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.FileNoiThatExplorerScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementScene;
@@ -49,7 +50,7 @@ public class HomeController {
     @FXML
     void ChangeUserDetail(ActionEvent event) {
         UserDetailScene scene = new UserDetailScene();
-        StageFactory.CreateNewUnresizeableStage(scene.getScene());
+        StageFactory.CreateNewUnresizeableStage(scene.getScene(), false);
         scene.getController().init();
     }
     @FXML
@@ -83,7 +84,8 @@ public class HomeController {
      * Initializes the user interface based on the logged-in user's role and displays relevant buttons and actions.
      *
      */
-    public void init() {
+    public void init(Stage mainStage) {
+        MultipleInstanceHandler.startHandleMultipleInstance();
         // Show the primary content pane and clear its children
         PCPane.setVisible(true);
         PCPane.getChildren().clear();
@@ -102,6 +104,7 @@ public class HomeController {
 
         // Determine user role and show appropriate buttons and actions
         String role = sessionService.getLoginAccount().getRoleList().contains("ROLE_ADMIN") ? "Admin" : "User";
+        LOGGER.info("Login as " + username + " with role " + role);
         switch (role) {
             // Enable Admin-related buttons and trigger the QuanLyNguoiDungButton action
             case "Admin" -> {
@@ -113,10 +116,13 @@ public class HomeController {
                 toggleButton(true, false, true);
                 LuaChonNoiThatButton.fire();
             }
-            default -> {
-            }
         }
-        LOGGER.info("Login as " + username + " with role " + role);
+        mainStage.setOnCloseRequest(windowEvent -> {
+            windowEvent.consume();
+            if (PopupUtils.showCloseAppConfirmation()) {
+                System.exit(0);
+            }
+        });
     }
 
     /**
@@ -159,7 +165,7 @@ public class HomeController {
             // Switch to the login scene if the Logout button is clicked
             LoginScene loginScene = new LoginScene();
             Scene scene = loginScene.getScene();
-            StageFactory.closeAndCreateNewUnresizeableStage(stage, scene);
+            StageFactory.closeAndCreateNewUnresizeableStage(stage, scene, false);
         }
     }
 

@@ -1,7 +1,8 @@
 package com.huy.appnoithat.Handler;
 
+import com.huy.appnoithat.Common.FXUtils;
 import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Scene.LoginScene;
+import com.huy.appnoithat.Scene.Login.LoginScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import javafx.application.Platform;
 import javafx.stage.Stage;
@@ -18,20 +19,11 @@ public class ServerResponseHandler {
         aditionalAction.run();
         PopupUtils.throwErrorSignal("Tài khoản đã hết hạn, vui lòng đăng nhập lại!");
         Platform.runLater(() -> {
-            closeAll();
+            FXUtils.closeAll();
             LoginScene loginScene = new LoginScene();
             loginScene.getLoginController().init();
-            StageFactory.CreateNewUnresizeableStage(loginScene.getScene());
+            StageFactory.CreateNewUnresizeableStage(loginScene.getScene(), false);
         });
     }
-    private void closeAll() {
-        List<Window> windows = Window.getWindows();
-        for (int index = 0; index < windows.size(); index ++) {
-            Window window = windows.get(index);
-            if (window != null) {
-                Stage stage = (Stage) window;
-                stage.close();
-            }
-        }
-    }
+
 }

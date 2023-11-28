@@ -134,7 +134,7 @@ public class FileNoiThatExplorerController {
      */
     private void openNewLuaChonNoiThatTab(TabState tabState, String directory) {
         NewTabScene newTabScene = new NewTabScene();
-        Stage currentStage = StageFactory.CreateNewMaximizedStage(newTabScene.getScene());
+        Stage currentStage = StageFactory.CreateNewMaximizedStage(newTabScene.getScene(), true);
         newTabScene.getNewTabController().init(tabState, directory, currentStage);
     }
 

@@ -239,7 +239,7 @@ public class UsersManagementController implements Initializable {
             Scene userManagementAddAccountScene = UserManagementAddAccountScene.getInstance().getScene();
 
             // Create a new stage for the add account form
-            Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(userManagementAddAccountScene);
+            Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(userManagementAddAccountScene, false);
 
             // Populate the active status ComboBox
             ObservableList<String> listActive = FXCollections.observableArrayList("Có", "Không");
@@ -403,7 +403,7 @@ public class UsersManagementController implements Initializable {
 //            txtusername.setText(exampleAccount.getUsername());
 //            txtpassword.setText(exampleAccount.getPassword());
 
-            userManageMentStage = StageFactory.CreateNewUnresizeableStage(userManagementEditorScene);
+            userManageMentStage = StageFactory.CreateNewUnresizeableStage(userManagementEditorScene, false);
             RegisterService registerService = new RegisterService();
             // Handle the edit button click event
             btnedit.setOnAction(actionEvent -> {
@@ -507,7 +507,7 @@ public class UsersManagementController implements Initializable {
         try {
             // Create a new stage for the list of accounts awaiting approval form
             Scene listAccountWaitToApprove = ListAccountWaitToApproveScene.getInstance().getScene();
-            Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(listAccountWaitToApprove);
+            Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(listAccountWaitToApprove, false);
 
             //element field of userManagementEditorScene
             TableView tableView = (TableView) listAccountWaitToApprove.lookup("#tableViewListAccount");
