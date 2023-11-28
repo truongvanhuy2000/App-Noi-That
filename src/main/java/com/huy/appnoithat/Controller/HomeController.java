@@ -219,19 +219,4 @@ public class HomeController {
         PCPane.getChildren().addAll(vBox);
         UserManagementScene.getController().init();
     }
-
-    public void openNtFileWith(String path) {
-        // Clear the primary content pane
-        PCPane.getChildren().clear();
-        // Load the furniture explorer scene
-        FileNoiThatExplorerScene fileNoiThatExplorerScene = new FileNoiThatExplorerScene();
-        // Add the children of the furniture explorer scene to the primary content pane
-        PCPane.getChildren().addAll(((AnchorPane)fileNoiThatExplorerScene.getRoot()).getChildren());
-        FileNoiThatExplorerScene.getController().init();
-        // Set the primary content pane as the root for the furniture explorer scene controller
-        FileNoiThatExplorerScene.getController().setRoot(PCPane);
-        if (path != null) {
-            FileNoiThatExplorerScene.getController().openWith(path);
-        }
-    }
 }

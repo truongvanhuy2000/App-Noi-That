@@ -6052,3 +6052,76 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [INFO ] 28-11-2023 00:22:26 [main] HelloApplication:56 - Start application
 [INFO ] 28-11-2023 00:22:26 [JavaFX Application Thread] HelloApplication:32 - Start application with params: D:\Project\Java\App-noi-that\test.nt
 [INFO ] 28-11-2023 00:22:29 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 28-11-2023 13:29:18 [main] HelloApplication:58 - Start application
+[INFO ] 28-11-2023 13:29:18 [JavaFX Application Thread] HelloApplication:50 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 13:29:22 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 28-11-2023 14:48:24 [main] HelloApplication:57 - Start application
+[INFO ] 28-11-2023 14:48:24 [JavaFX Application Thread] HelloApplication:49 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 14:48:33 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 28-11-2023 14:48:44 [main] HelloApplication:57 - Start application
+[INFO ] 28-11-2023 14:48:44 [JavaFX Application Thread] HelloApplication:49 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 14:48:45 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 28-11-2023 14:48:45 [JavaFX Application Thread] ServerResponseHandler:17 - Token expired
+[ERROR] 28-11-2023 14:48:51 [JavaFX Application Thread] UserSessionService:47 - Account is null
+[INFO ] 28-11-2023 14:48:51 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 28-11-2023 14:48:51 [JavaFX Application Thread] ServerResponseHandler:17 - Token expired
+[INFO ] 28-11-2023 14:49:23 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 28-11-2023 15:08:47 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 15:08:47 [Thread-1] MultipleInstanceHandler:27 - First instance
+[INFO ] 28-11-2023 15:08:47 [JavaFX Application Thread] HelloApplication:53 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 15:08:50 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 28-11-2023 15:09:39 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 15:09:39 [Thread-1] MultipleInstanceHandler:40 - Another instance is running.
+[INFO ] 28-11-2023 15:09:39 [Thread-1] MultipleInstanceHandler:40 - Another instance is running.
+[ERROR] 28-11-2023 15:09:39 [Thread-1] GlobalExceptionHandler:35 - Connection refused
+[ERROR] 28-11-2023 15:09:39 [Thread-1] GlobalExceptionHandler:35 - java.net.ConnectException: Connection refused
+[INFO ] 28-11-2023 15:10:19 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 15:10:19 [Thread-1] MultipleInstanceHandler:29 - First instance
+[INFO ] 28-11-2023 15:10:19 [JavaFX Application Thread] HelloApplication:53 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 15:10:27 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 28-11-2023 15:10:33 [Thread-1] MultipleInstanceHandler:43 - Another instance is running.
+[INFO ] 28-11-2023 15:10:33 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 15:10:33 [Thread-1] MultipleInstanceHandler:43 - Another instance is running.
+[ERROR] 28-11-2023 15:10:33 [Thread-1] GlobalExceptionHandler:35 - Connection refused
+[ERROR] 28-11-2023 15:10:33 [Thread-1] GlobalExceptionHandler:35 - java.net.ConnectException: Connection refused
+[INFO ] 28-11-2023 15:10:54 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 15:10:54 [Thread-1] MultipleInstanceHandler:29 - First instance
+[INFO ] 28-11-2023 15:10:54 [JavaFX Application Thread] HelloApplication:53 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 15:10:59 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 28-11-2023 15:11:10 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 15:11:10 [Thread-1] MultipleInstanceHandler:43 - Another instance is running.
+[INFO ] 28-11-2023 15:11:10 [Thread-1] MultipleInstanceHandler:43 - Another instance is running.
+[ERROR] 28-11-2023 15:11:10 [Thread-1] GlobalExceptionHandler:35 - Connection refused
+[ERROR] 28-11-2023 15:11:10 [Thread-1] GlobalExceptionHandler:35 - java.net.ConnectException: Connection refused
+[INFO ] 28-11-2023 15:18:12 [Thread-1] MultipleInstanceHandler:46 - First instance
+[INFO ] 28-11-2023 15:18:12 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 15:18:12 [JavaFX Application Thread] HelloApplication:53 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 15:18:14 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 28-11-2023 15:18:19 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 15:18:19 [Thread-1] MultipleInstanceHandler:30 - Another instance is running.
+[ERROR] 28-11-2023 15:18:19 [Thread-1] GlobalExceptionHandler:35 - null
+[ERROR] 28-11-2023 15:18:19 [Thread-1] GlobalExceptionHandler:35 - java.io.EOFException
+[INFO ] 28-11-2023 15:20:28 [Thread-1] MultipleInstanceHandler:47 - First instance
+[INFO ] 28-11-2023 15:20:28 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 15:20:28 [JavaFX Application Thread] HelloApplication:53 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 15:20:31 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 28-11-2023 15:20:36 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 15:20:36 [Thread-1] MultipleInstanceHandler:30 - Another instance is running.
+[INFO ] 28-11-2023 15:20:36 [Thread-1] MultipleInstanceHandler:34 - Send file to another instance: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 15:20:36 [Thread-1] MultipleInstanceHandler:53 - Receive file from other instance: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 15:20:54 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 15:20:54 [Thread-1] MultipleInstanceHandler:30 - Another instance is running.
+[INFO ] 28-11-2023 15:20:54 [Thread-1] MultipleInstanceHandler:34 - Send file to another instance: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 15:20:54 [Thread-1] MultipleInstanceHandler:53 - Receive file from other instance: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 15:21:30 [Thread-1] MultipleInstanceHandler:47 - First instance
+[INFO ] 28-11-2023 15:21:30 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 15:21:30 [JavaFX Application Thread] HelloApplication:53 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 15:21:32 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 28-11-2023 15:22:09 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 15:22:09 [Thread-1] MultipleInstanceHandler:47 - First instance
+[INFO ] 28-11-2023 15:22:09 [JavaFX Application Thread] HelloApplication:53 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 15:22:11 [JavaFX Application Thread] HomeController:119 - Login as user with role User
+[INFO ] 28-11-2023 15:22:22 [Thread-1] MultipleInstanceHandler:30 - Another instance is running.
+[INFO ] 28-11-2023 15:22:22 [main] HelloApplication:62 - Start application
+[INFO ] 28-11-2023 15:22:22 [Thread-1] MultipleInstanceHandler:34 - Send file to another instance: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 28-11-2023 15:22:22 [Thread-1] MultipleInstanceHandler:53 - Receive file from other instance: /home/huy/Project/Java/App-noi-that/test.nt
