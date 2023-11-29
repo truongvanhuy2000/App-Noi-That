@@ -35,14 +35,14 @@ public class HelloApplication extends Application {
         UserSessionService sessionService = new UserSessionService();
         if (sessionService.isSessionValid()) {
             Scene scene = HomeScene.getInstance().getScene();
-            Stage mainStage = StageFactory.closeAndCreateNewMaximizedStage(stage, scene, true);
+            Stage mainStage = StageFactory.createNewMaximizedMainStage(stage, scene, true);
             Platform.runLater(() -> HomeScene.getInstance().getHomeController().init(mainStage));
         }
         else {
             LoginScene loginScene = new LoginScene();
             Scene scene = loginScene.getScene();
             Platform.runLater(() -> loginScene.getLoginController().init());
-            StageFactory.closeAndCreateNewUnresizeableStage(stage, scene, false);
+            StageFactory.createNewUnResizeableMainStage(stage, scene, true);
         }
     }
     private void getPendingWorkAtLaunch() {
@@ -60,6 +60,7 @@ public class HelloApplication extends Application {
         if (!MultipleInstanceHandler.isSingleInstance(args)) {
             System.exit(0);
         }
+        MultipleInstanceHandler.startHandleMultipleInstance();
         LOGGER.info("Start application");
         launch(args);
     }

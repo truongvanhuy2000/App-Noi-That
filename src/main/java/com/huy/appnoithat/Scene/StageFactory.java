@@ -2,28 +2,30 @@ package com.huy.appnoithat.Scene;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.HelloApplication;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.util.Objects;
 
 public class StageFactory {
-    public static Stage closeAndCreateNewMaximizedStage(Stage currentStage, Scene nextScene, boolean confirmWhenClose) {
-        currentStage.close();
-        Stage stage = new Stage();
-        stage.setScene(nextScene);
-        stage.setMaximized(true);
-        setUpStage(stage, confirmWhenClose);
-        return stage;
+    public static Stage createNewMaximizedMainStage(Stage currentStage, Scene nextScene, boolean confirmWhenClose) {
+        currentStage.setScene(nextScene);
+        currentStage.setResizable(true);
+        Platform.runLater(() -> {
+            currentStage.setMaximized(true);
+        });
+        setUpStage(currentStage, confirmWhenClose);
+        return currentStage;
     }
-    public static Stage closeAndCreateNewUnresizeableStage(Stage currentStage, Scene nextScene, boolean confirmWhenClose) {
-        currentStage.close();
-        Stage stage = new Stage();
-        stage.setScene(nextScene);
-        stage.setResizable(false);
-        setUpStage(stage, confirmWhenClose);
-        return stage;
+    public static Stage createNewUnResizeableMainStage(Stage currentStage, Scene nextScene, boolean confirmWhenClose) {
+        currentStage.setScene(nextScene);
+        currentStage.setMaximized(false);
+        currentStage.setResizable(false);
+        setUpStage(currentStage, confirmWhenClose);
+        return currentStage;
     }
     public static Stage CreateNewUnresizeableStage(Scene nextScene, boolean confirmWhenClose) {
         Stage stage = new Stage();
@@ -46,13 +48,19 @@ public class StageFactory {
         stage.requestFocus();
         stage.toFront();
         stage.show();
-        if (confirmWhenClose) {
-            stage.setOnCloseRequest(windowEvent -> {
-                windowEvent.consume();
-                if (PopupUtils.showCloseWindowConfirmation()) {
-                    stage.close();
+        stage.setOnCloseRequest(windowEvent -> {
+            windowEvent.consume();
+            if (confirmWhenClose) {
+                if (!PopupUtils.showCloseWindowConfirmation()) {
+                    return;
+                }
+            }
+            stage.close();
+            Platform.runLater(() -> {
+                if (Window.getWindows().isEmpty()) {
+                    System.exit(0);
                 }
             });
-        }
+        });
     }
 }

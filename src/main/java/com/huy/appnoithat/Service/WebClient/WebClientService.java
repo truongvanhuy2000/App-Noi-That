@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.Token;
+import com.huy.appnoithat.Exception.AccountExpiredException;
 import com.huy.appnoithat.Exception.ServerConnectionException;
 import com.huy.appnoithat.Handler.ServerResponseHandler;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
@@ -208,7 +209,7 @@ public class WebClientService {
         String refreshToken = userSessionService.getRefreshToken();
         if (refreshToken == null || refreshToken.isEmpty()) {
             serverResponseHandler.handleTokenExpired(userSessionService::cleanUserSession);
-            return null;
+            throw new AccountExpiredException("Refresh token expired, need to login again");
         }
         try {
             Map<String, String> data = Map.of("refreshToken", refreshToken);
@@ -217,7 +218,7 @@ public class WebClientService {
             if (response.statusCode() != 200) {
                 LOGGER.info("Refresh token expired, need to login again");
                 serverResponseHandler.handleTokenExpired(userSessionService::cleanUserSession);
-                return null;
+                throw new AccountExpiredException("Refresh token expired, need to login again");
             }
             Token token = objectMapper.readValue(response.body(), Token.class);
             userSessionService.setToken(token);

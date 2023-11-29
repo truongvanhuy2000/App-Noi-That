@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Controller.NewTab.Operation;
 
+import com.huy.appnoithat.Common.FXUtils;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
@@ -143,26 +144,11 @@ public class ContentOperation {
 
     }
     private void showLoading() {
-        loadingPane.setVisible(true);
-        loadingPane.setDisable(false);
-        VBox vbox = new VBox();
-        ProgressIndicator progressIndicator = new ProgressIndicator();
-        progressIndicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
-        progressIndicator.setMinHeight(100);
-        progressIndicator.setMinWidth(100);
-        Label textField = new Label("Đang xuất file...");
-        textField.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI';");
-        vbox.getChildren().addAll(progressIndicator, textField);
-        vbox.setAlignment(javafx.geometry.Pos.CENTER);
-        loadingPane.getChildren().addAll(vbox);
-        loadingPane.toFront();
+        FXUtils.showLoading(loadingPane, "Đang xuất file...");
     }
     private void hideLoading(Boolean result) {
         Platform.runLater(() -> {
-            loadingPane.setVisible(false);
-            loadingPane.setDisable(true);
-            loadingPane.getChildren().clear();
-            loadingPane.toBack();
+            FXUtils.hideLoading(loadingPane);
             showResult(result);
         });
     }

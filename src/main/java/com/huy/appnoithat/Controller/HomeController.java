@@ -2,7 +2,6 @@ package com.huy.appnoithat.Controller;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
-import com.huy.appnoithat.Handler.MultipleInstanceHandler;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.Login.LoginScene;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.FileNoiThatExplorerScene;
@@ -85,7 +84,6 @@ public class HomeController {
      *
      */
     public void init(Stage mainStage) {
-        MultipleInstanceHandler.startHandleMultipleInstance();
         // Show the primary content pane and clear its children
         PCPane.setVisible(true);
         PCPane.getChildren().clear();
@@ -117,12 +115,6 @@ public class HomeController {
                 LuaChonNoiThatButton.fire();
             }
         }
-        mainStage.setOnCloseRequest(windowEvent -> {
-            windowEvent.consume();
-            if (PopupUtils.showCloseAppConfirmation()) {
-                System.exit(0);
-            }
-        });
     }
 
     /**
@@ -165,7 +157,8 @@ public class HomeController {
             // Switch to the login scene if the Logout button is clicked
             LoginScene loginScene = new LoginScene();
             Scene scene = loginScene.getScene();
-            StageFactory.closeAndCreateNewUnresizeableStage(stage, scene, false);
+            StageFactory.createNewUnResizeableMainStage(stage, scene, true);
+            loginScene.getLoginController().init();
         }
     }
 

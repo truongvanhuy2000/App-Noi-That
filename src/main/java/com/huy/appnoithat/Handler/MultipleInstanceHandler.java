@@ -2,6 +2,7 @@ package com.huy.appnoithat.Handler;
 
 import com.huy.appnoithat.Work.OpenFileWork;
 import com.huy.appnoithat.Work.WorkFactory;
+import javafx.stage.Window;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,9 +37,10 @@ public class MultipleInstanceHandler {
     }
     public static void startHandleMultipleInstance() {
         new Thread(() -> {
-            try (ServerSocket serverSocket = new ServerSocket(port)) {
-                // Try to open a server socket on a specific port
-                while (true) {
+            // Try to open a server socket on a specific port
+            do {
+                try (ServerSocket serverSocket = new ServerSocket(port)) {
+                    serverSocket.setSoTimeout(5000);
                     // Wait for a connection attempt from another instance
                     Socket socket = serverSocket.accept();
                     ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
@@ -47,10 +49,10 @@ public class MultipleInstanceHandler {
                     WorkFactory.addNewOpenFileWork(new OpenFileWork(message));
                     // Handle the file path sent from the second instance
                     // For example, you can process the file associated with the second instance here
+                } catch (IOException | ClassNotFoundException ignored) {
                 }
-            } catch (IOException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
             }
+            while (!Window.getWindows().isEmpty());
         }).start();
     }
 }
