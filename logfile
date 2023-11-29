@@ -6183,3 +6183,381 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [INFO ] 29-11-2023 01:12:43 [main] HelloApplication:63 - Start application
 [INFO ] 29-11-2023 01:12:43 [JavaFX Application Thread] HelloApplication:52 - Start application with params: D:\Project\Java\App-noi-that\test.nt
 [INFO ] 29-11-2023 01:12:45 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 11:37:40 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 11:37:40 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 11:37:40 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 11:37:49 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 13:09:20 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:09:20 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:09:20 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:09:23 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 13:09:39 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:09:39 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:09:39 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:09:40 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:09:40 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[ERROR] 29-11-2023 13:09:41 [JavaFX Application Thread] UserSessionService:47 - Account is null
+[INFO ] 29-11-2023 13:09:41 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:09:41 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[INFO ] 29-11-2023 13:10:05 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 13:11:14 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:11:14 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:11:14 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:11:14 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:11:14 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[ERROR] 29-11-2023 13:11:15 [JavaFX Application Thread] UserSessionService:47 - Account is null
+[INFO ] 29-11-2023 13:11:15 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:11:15 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[INFO ] 29-11-2023 13:11:28 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 13:11:41 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:11:41 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:11:41 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:11:49 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[ERROR] 29-11-2023 13:12:04 [Thread-5] GlobalExceptionHandler:35 - Address already in use
+[INFO ] 29-11-2023 13:12:04 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[ERROR] 29-11-2023 13:12:04 [Thread-5] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:12:37 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:12:37 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:12:37 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:12:41 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 13:12:52 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[ERROR] 29-11-2023 13:12:52 [Thread-5] GlobalExceptionHandler:35 - Address already in use
+[ERROR] 29-11-2023 13:12:52 [Thread-5] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:13:10 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:13:10 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:13:10 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:13:13 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[ERROR] 29-11-2023 13:13:19 [Thread-4] GlobalExceptionHandler:35 - Address already in use
+[ERROR] 29-11-2023 13:13:19 [Thread-4] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:13:19 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[INFO ] 29-11-2023 13:13:32 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:13:32 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:13:32 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:13:36 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[ERROR] 29-11-2023 13:13:47 [Thread-4] GlobalExceptionHandler:35 - Address already in use
+[ERROR] 29-11-2023 13:13:47 [Thread-4] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:13:47 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[INFO ] 29-11-2023 13:14:13 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:14:13 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:14:13 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:14:19 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[ERROR] 29-11-2023 13:14:37 [Thread-4] GlobalExceptionHandler:35 - Address already in use
+[ERROR] 29-11-2023 13:14:37 [Thread-4] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:14:37 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 13:15:38 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:15:38 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:15:38 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:15:42 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 13:16:26 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:16:26 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:16:26 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:16:34 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[ERROR] 29-11-2023 13:16:48 [Thread-5] GlobalExceptionHandler:35 - Address already in use
+[INFO ] 29-11-2023 13:16:48 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[ERROR] 29-11-2023 13:16:48 [Thread-5] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:17:50 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:17:50 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:17:50 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:17:57 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[ERROR] 29-11-2023 13:18:16 [Thread-4] GlobalExceptionHandler:35 - Address already in use
+[ERROR] 29-11-2023 13:18:16 [Thread-4] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:18:16 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[ERROR] 29-11-2023 13:18:47 [Thread-5] GlobalExceptionHandler:35 - Address already in use
+[ERROR] 29-11-2023 13:18:47 [Thread-5] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:18:47 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 13:20:46 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:20:46 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:20:46 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:20:49 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 13:28:28 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:28:28 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:28:28 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:28:28 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:28:28 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[ERROR] 29-11-2023 13:28:30 [JavaFX Application Thread] UserSessionService:47 - Account is null
+[INFO ] 29-11-2023 13:28:30 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:28:30 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[INFO ] 29-11-2023 13:28:44 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 13:29:10 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:29:10 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:29:10 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:29:14 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 13:31:58 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:31:58 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:31:58 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:31:58 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:31:58 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[ERROR] 29-11-2023 13:32:00 [JavaFX Application Thread] UserSessionService:47 - Account is null
+[INFO ] 29-11-2023 13:32:00 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:32:00 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[INFO ] 29-11-2023 13:32:12 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[INFO ] 29-11-2023 13:35:54 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:35:54 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:35:55 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:36:02 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[ERROR] 29-11-2023 13:36:11 [Thread-5] GlobalExceptionHandler:35 - Address already in use
+[ERROR] 29-11-2023 13:36:11 [Thread-5] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:36:11 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 13:36:22 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[ERROR] 29-11-2023 13:36:22 [Thread-8] GlobalExceptionHandler:35 - Address already in use
+[ERROR] 29-11-2023 13:36:22 [Thread-8] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[ERROR] 29-11-2023 13:36:44 [Thread-10] GlobalExceptionHandler:35 - Address already in use
+[ERROR] 29-11-2023 13:36:44 [Thread-10] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:36:44 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[INFO ] 29-11-2023 13:38:00 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:38:00 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:38:00 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:38:02 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[ERROR] 29-11-2023 13:38:08 [Thread-5] GlobalExceptionHandler:35 - Address already in use
+[ERROR] 29-11-2023 13:38:08 [Thread-5] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:38:08 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 13:38:50 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:38:50 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:38:50 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:38:52 [JavaFX Application Thread] HomeController:107 - Login as user with role User
+[INFO ] 29-11-2023 13:39:04 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[ERROR] 29-11-2023 13:39:04 [Thread-6] GlobalExceptionHandler:35 - Address already in use
+[ERROR] 29-11-2023 13:39:04 [Thread-6] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:39:13 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:39:13 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:39:13 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:39:14 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[ERROR] 29-11-2023 13:39:26 [Thread-5] GlobalExceptionHandler:35 - Address already in use
+[ERROR] 29-11-2023 13:39:26 [Thread-5] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:39:26 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[INFO ] 29-11-2023 13:39:41 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:39:41 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:39:41 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:39:42 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[ERROR] 29-11-2023 13:39:49 [Thread-5] GlobalExceptionHandler:35 - Address already in use
+[ERROR] 29-11-2023 13:39:49 [Thread-5] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:39:49 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[INFO ] 29-11-2023 13:40:01 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:40:01 [main] HelloApplication:63 - Start application
+[INFO ] 29-11-2023 13:40:01 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:40:03 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[ERROR] 29-11-2023 13:40:11 [Thread-5] GlobalExceptionHandler:35 - Address already in use
+[ERROR] 29-11-2023 13:40:11 [Thread-5] GlobalExceptionHandler:35 - java.net.BindException: Address already in use
+[INFO ] 29-11-2023 13:40:11 [JavaFX Application Thread] HomeController:107 - Login as admin with role Admin
+[INFO ] 29-11-2023 13:45:40 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:45:40 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 13:45:40 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:45:40 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:45:40 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[ERROR] 29-11-2023 13:45:42 [JavaFX Application Thread] UserSessionService:47 - Account is null
+[INFO ] 29-11-2023 13:45:42 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:45:42 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[INFO ] 29-11-2023 13:45:51 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:45:51 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 13:45:51 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:45:51 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:45:51 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[ERROR] 29-11-2023 13:45:53 [JavaFX Application Thread] UserSessionService:47 - Account is null
+[INFO ] 29-11-2023 13:45:53 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:45:53 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[INFO ] 29-11-2023 13:56:03 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:56:03 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 13:56:03 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:56:04 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:56:04 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[ERROR] 29-11-2023 13:56:04 [JavaFX Application Thread] UserSessionService:47 - Account is null
+[INFO ] 29-11-2023 13:56:04 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:56:04 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[INFO ] 29-11-2023 13:56:15 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:56:15 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 13:56:15 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:56:15 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:56:15 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[ERROR] 29-11-2023 13:56:15 [JavaFX Application Thread] UserSessionService:47 - Account is null
+[INFO ] 29-11-2023 13:56:15 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:56:15 [JavaFX Application Thread] ServerResponseHandler:18 - Token expired
+[INFO ] 29-11-2023 13:57:33 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:57:33 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 13:57:33 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:57:33 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:57:33 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 13:57:33 [JavaFX Application Thread] UserSessionService:47 - Account is null
+[INFO ] 29-11-2023 13:57:33 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:57:33 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[INFO ] 29-11-2023 13:58:33 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:58:33 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 13:58:33 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:58:34 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:58:34 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 13:58:34 [JavaFX Application Thread] UserSessionService:47 - Account is null
+[INFO ] 29-11-2023 13:58:34 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:58:34 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[INFO ] 29-11-2023 13:58:50 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 13:58:50 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 13:58:50 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 13:58:50 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:58:50 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 13:58:50 [JavaFX Application Thread] UserSessionService:47 - Account is null
+[INFO ] 29-11-2023 13:58:50 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 13:58:50 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[INFO ] 29-11-2023 14:00:46 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:00:46 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:00:46 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:00:46 [JavaFX Application Thread] WebClientService:207 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:00:46 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:00:46 [JavaFX Application Thread] GlobalExceptionHandler:35 - null
+[INFO ] 29-11-2023 14:04:23 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:04:23 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:04:23 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:04:23 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:04:23 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:04:23 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:04:50 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:04:50 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:04:50 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:04:51 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:04:51 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:04:51 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:04:58 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:04:58 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:04:58 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:04:58 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:04:58 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:04:58 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:05:08 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 14:05:21 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:05:21 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:05:21 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:05:22 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 14:07:21 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:07:21 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:07:21 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:07:22 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 14:07:35 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:07:35 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:07:35 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:07:36 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 14:08:42 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:08:42 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:08:42 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:08:45 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 14:09:01 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:09:01 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:09:01 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:09:04 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 14:09:30 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:09:30 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:09:30 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:09:32 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 14:11:52 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:11:52 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:11:52 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:11:53 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 14:12:19 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:12:19 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:12:19 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:12:21 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 14:12:32 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:12:32 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:12:32 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:12:32 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:12:32 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:12:32 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:14:08 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:14:08 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:14:08 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:14:08 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:14:08 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:14:08 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:15:36 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:15:36 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:15:36 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:15:36 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:15:36 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:15:36 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:15:46 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:15:46 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:15:46 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:15:46 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:15:46 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:15:46 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:15:53 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 14:16:12 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:16:12 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:16:12 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:16:14 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 14:16:28 [JavaFX Application Thread] HomeController:105 - Login as admin with role Admin
+[INFO ] 29-11-2023 14:16:46 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:16:46 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:16:46 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:16:49 [JavaFX Application Thread] HomeController:105 - Login as admin with role Admin
+[INFO ] 29-11-2023 14:17:02 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:17:02 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:17:02 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:17:02 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:17:02 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:17:02 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:18:00 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 14:18:06 [main] MultipleInstanceHandler:22 - Another instance is running.
+[INFO ] 29-11-2023 14:18:06 [main] MultipleInstanceHandler:26 - Send file to another instance: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:18:06 [Thread-1] MultipleInstanceHandler:46 - Receive file from other instance: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:18:18 [main] MultipleInstanceHandler:22 - Another instance is running.
+[INFO ] 29-11-2023 14:18:18 [main] MultipleInstanceHandler:26 - Send file to another instance: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:18:18 [Thread-1] MultipleInstanceHandler:46 - Receive file from other instance: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:19:46 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:19:46 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:19:46 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:19:47 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 14:19:57 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:19:57 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:19:57 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:19:57 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:19:57 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:19:57 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:23:15 [main] MultipleInstanceHandler:32 - First instance
+[INFO ] 29-11-2023 14:23:15 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:23:15 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:23:16 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:23:16 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:23:16 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:36:13 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-11-2023 14:36:13 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:36:13 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:36:14 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:36:14 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:36:14 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:37:06 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-11-2023 14:37:06 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:37:06 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:37:06 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:37:06 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:37:06 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:37:37 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-11-2023 14:37:37 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:37:39 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:37:39 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:37:39 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:37:39 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:38:36 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-11-2023 14:38:36 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:38:38 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:38:38 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:38:38 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:38:38 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[ERROR] 29-11-2023 14:38:55 [Thread-1] GlobalExceptionHandler:35 - Accept timed out
+[ERROR] 29-11-2023 14:38:55 [Thread-1] GlobalExceptionHandler:35 - java.net.SocketTimeoutException: Accept timed out
+[INFO ] 29-11-2023 14:39:21 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-11-2023 14:39:23 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:39:24 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:39:25 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:39:25 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:39:25 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[ERROR] 29-11-2023 14:39:31 [Thread-1] GlobalExceptionHandler:35 - Accept timed out
+[ERROR] 29-11-2023 14:39:31 [Thread-1] GlobalExceptionHandler:35 - java.net.SocketTimeoutException: Accept timed out
+[INFO ] 29-11-2023 14:40:27 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-11-2023 14:40:28 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:40:29 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:40:29 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:40:29 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:40:29 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:40:46 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-11-2023 14:40:46 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:40:46 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:40:46 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:40:46 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:40:46 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again

@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
 
+import com.huy.appnoithat.Common.FXUtils;
 import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
@@ -227,12 +228,12 @@ public class DatabaseModifyPhongCachController implements Initializable {
     }
     @FXML
     void FetchSampleData(ActionEvent event) {
-        showLoading();
+        FXUtils.showLoading(loadingPane, "Đang lấy dữ liệu mẫu...");
         new Thread(() -> {
             try {
                 databaseModifyPhongCachService.sampleAll();
                 Platform.runLater(() -> {
-                    hideLoading();
+                    FXUtils.hideLoading(loadingPane);
                     refresh();
                 });
             } catch (Exception e) {
@@ -327,26 +328,5 @@ public class DatabaseModifyPhongCachController implements Initializable {
         }
         noiThatObservableList.clear();
         noiThatObservableList.addAll(noiThatList);
-    }
-    private void showLoading() {
-        loadingPane.setVisible(true);
-        loadingPane.setDisable(false);
-        VBox vbox = new VBox();
-        ProgressIndicator progressIndicator = new ProgressIndicator();
-        progressIndicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
-        progressIndicator.setMinHeight(100);
-        progressIndicator.setMinWidth(100);
-        Label textField = new Label("Đang lấy dữ liệu mẫu...");
-        textField.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI';");
-        vbox.getChildren().addAll(progressIndicator, textField);
-        vbox.setAlignment(javafx.geometry.Pos.CENTER);
-        loadingPane.getChildren().addAll(vbox);
-        loadingPane.toFront();
-    }
-    private void hideLoading() {
-        loadingPane.setVisible(false);
-        loadingPane.setDisable(true);
-        loadingPane.getChildren().clear();
-        loadingPane.toBack();
     }
 }

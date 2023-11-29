@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Controller;
 
+import com.huy.appnoithat.Common.FXUtils;
 import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
@@ -9,6 +10,7 @@ import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.Login.RegisterScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Service.Login.LoginService;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -17,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -29,6 +32,8 @@ public class LoginController {
     PasswordField passwordField;
     @FXML
     private Button LoginButton;
+    @FXML
+    private StackPane loadingPane;
     private final LoginService loginService;
 
     public LoginController() {
@@ -42,6 +47,8 @@ public class LoginController {
      * Call this method everytime you switch scene
      */
     public void init() {
+        loadingPane.setDisable(true);
+        loadingPane.setVisible(false);
         // Enable keyboard shortcut for login when ENTER key is pressed in username or password field
         usernameTextField.setOnKeyPressed(keyEvent -> {
             if (KeyboardUtils.isRightKeyCombo(Action.LOGIN, keyEvent)) {
@@ -66,19 +73,24 @@ public class LoginController {
     public void login(ActionEvent actionEvent) {
         String userName = usernameTextField.getText();
         String password = passwordField.getText();
-
+        FXUtils.showLoading(loadingPane, "Đang đăng nhập, vui lòng đợi");
+        new Thread(() -> {
+            if (!loginService.basicAuthorization(userName, password)) {
+                // Display error popup for incorrect credentials
+                PopupUtils.throwCriticalError("Không thể đăng nhập (Sai tên đăng nhập, mật khẩu, tài khoản hết hạn,...)");
+                passwordField.setText("");
+                return;
+            }
+            Platform.runLater(() -> {
+                sceneSwitcher(actionEvent);
+                usernameTextField.setText("");
+                passwordField.setText("");
+                FXUtils.hideLoading(loadingPane);
+            });
+        }).start();
         // Validate the credentials using the login service
-        if (!loginService.basicAuthorization(userName, password)) {
-            // Display error popup for incorrect credentials
-            PopupUtils.throwCriticalError("Không thể đăng nhập (Sai tên đăng nhập, mật khẩu, tài khoản hết hạn,...)");
-            passwordField.setText("");
-            return;
-        }
-
         // Switch to the next scene upon successful login
-        sceneSwitcher(actionEvent);
-        usernameTextField.setText("");
-        passwordField.setText("");
+
     }
 
     /**
@@ -134,7 +146,7 @@ public class LoginController {
 
     private void goToHome(Stage stage) {
         Scene scene = HomeScene.getInstance().getScene();
-        Stage mainStage = StageFactory.closeAndCreateNewMaximizedStage(stage, scene, true);
+        Stage mainStage = StageFactory.createNewMaximizedMainStage(stage, scene, true);
         HomeScene.getInstance().getHomeController().init(mainStage);
     }
 

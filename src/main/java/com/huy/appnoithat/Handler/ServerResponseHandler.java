@@ -15,14 +15,19 @@ import java.util.List;
 public class ServerResponseHandler {
     final static Logger LOGGER = LogManager.getLogger(ServerResponseHandler.class);
     public void handleTokenExpired(Runnable aditionalAction) {
+        List<Window> windows = Window.getWindows();
         LOGGER.error("Token expired");
         aditionalAction.run();
-        PopupUtils.throwErrorSignal("Tài khoản đã hết hạn, vui lòng đăng nhập lại!");
+        if (!windows.isEmpty()) {
+            PopupUtils.throwErrorSignal("Tài khoản đã hết hạn, vui lòng đăng nhập lại!");
+        }
         Platform.runLater(() -> {
-            FXUtils.closeAll();
-            LoginScene loginScene = new LoginScene();
-            loginScene.getLoginController().init();
-            StageFactory.CreateNewUnresizeableStage(loginScene.getScene(), false);
+            if (!windows.isEmpty()) {
+                FXUtils.closeAll();
+                LoginScene loginScene = new LoginScene();
+                loginScene.getLoginController().init();
+                StageFactory.CreateNewUnresizeableStage(loginScene.getScene(), true);
+            }
         });
     }
 
