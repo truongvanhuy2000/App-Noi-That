@@ -213,8 +213,8 @@ public class WebClientService {
         }
         try {
             Map<String, String> data = Map.of("refreshToken", refreshToken);
-            HttpResponse<String> response = doSendRequest(POST, "/api/refreshToken", null,
-                    objectMapper.writeValueAsString(data));
+            HttpResponse<String> response = doSendRequest(
+                    POST, "/api/refreshToken", null, objectMapper.writeValueAsString(data));
             if (response.statusCode() != 200) {
                 LOGGER.info("Refresh token expired, need to login again");
                 serverResponseHandler.handleTokenExpired(userSessionService::cleanUserSession);

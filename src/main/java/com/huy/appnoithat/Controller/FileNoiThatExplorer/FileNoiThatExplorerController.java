@@ -86,19 +86,17 @@ public class FileNoiThatExplorerController {
                 openFile(RecentTableView.getSelectionModel().getSelectedItem());
             }
         });
-
+        getWork();
+    }
+    private void getWork() {
         new Thread(() -> {
             while (true) {
-                try {
-                    Thread.sleep(500);
-                    OpenFileWork openFileWork = WorkFactory.getWork();
-                    if (openFileWork != null) {
-                        Platform.runLater(() -> {
-                            openWith(openFileWork.getParam());
-                        });
-                    }
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                OpenFileWork openFileWork = WorkFactory.getWork();
+                if (openFileWork != null) {
+                    Platform.runLater(() -> {
+                        LOGGER.info("Open work: " + openFileWork.getParam());
+                        openWith(openFileWork.getParam());
+                    });
                 }
             }
         }).start();
