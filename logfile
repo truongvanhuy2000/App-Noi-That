@@ -6561,3 +6561,16 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [INFO ] 29-11-2023 14:40:46 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
 [ERROR] 29-11-2023 14:40:46 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
 [ERROR] 29-11-2023 14:40:46 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:43:56 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-11-2023 14:43:56 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:43:56 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:43:56 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:43:56 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:43:56 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:44:13 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-11-2023 14:44:13 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 14:44:13 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 29-11-2023 14:44:18 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 14:44:18 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 14:44:18 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 14:44:31 [JavaFX Application Thread] HomeController:105 - Login as user with role User
