@@ -40,7 +40,7 @@ public class MultipleInstanceHandler {
             // Try to open a server socket on a specific port
             do {
                 try (ServerSocket serverSocket = new ServerSocket(port)) {
-                    serverSocket.setSoTimeout(5000);
+                    serverSocket.setSoTimeout(10000);
                     // Wait for a connection attempt from another instance
                     Socket socket = serverSocket.accept();
                     ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());

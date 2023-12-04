@@ -75,17 +75,19 @@ public class LoginController {
         String password = passwordField.getText();
         FXUtils.showLoading(loadingPane, "Đang đăng nhập, vui lòng đợi");
         new Thread(() -> {
-            if (!loginService.basicAuthorization(userName, password)) {
-                // Display error popup for incorrect credentials
-                PopupUtils.throwCriticalError("Không thể đăng nhập (Sai tên đăng nhập, mật khẩu, tài khoản hết hạn,...)");
-                passwordField.setText("");
-                return;
-            }
+            boolean isAuthorized = loginService.basicAuthorization(userName, password);
             Platform.runLater(() -> {
-                sceneSwitcher(actionEvent);
-                usernameTextField.setText("");
-                passwordField.setText("");
                 FXUtils.hideLoading(loadingPane);
+                if (!isAuthorized) {
+                    // Display error popup for incorrect credentials
+                    PopupUtils.throwCriticalError("Không thể đăng nhập, vui lòng kiểm tra lại thông tin");
+                    passwordField.setText("");
+                } else {
+                    sceneSwitcher(actionEvent);
+                    usernameTextField.setText("");
+                    passwordField.setText("");
+                }
+
             });
         }).start();
         // Validate the credentials using the login service
