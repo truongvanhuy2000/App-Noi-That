@@ -19,6 +19,7 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+import java.beans.Encoder;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;

@@ -6574,3 +6574,85 @@ java.lang.RuntimeException: Button.disable : A bound value cannot be set.
 [ERROR] 29-11-2023 14:44:18 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
 [ERROR] 29-11-2023 14:44:18 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
 [INFO ] 29-11-2023 14:44:31 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 21:07:57 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-11-2023 21:07:57 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 21:07:57 [JavaFX Application Thread] HelloApplication:52 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 21:08:00 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 21:08:01 [JavaFX Application Thread] FileNoiThatExplorerController:97 - Open work: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 21:08:11 [JavaFX Application Thread] HomeController:105 - Login as admin with role Admin
+[INFO ] 29-11-2023 21:08:34 [JavaFX Application Thread] HomeController:105 - Login as test with role User
+[INFO ] 29-11-2023 21:09:20 [Thread-11] ExportSingleXLS:55 - Exporting to XLSX file
+[INFO ] 29-11-2023 22:53:48 [main] MultipleInstanceHandler:23 - Another instance is running.
+[INFO ] 29-11-2023 22:53:48 [main] MultipleInstanceHandler:27 - Send file to another instance: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 22:55:41 [main] MultipleInstanceHandler:23 - Another instance is running.
+[INFO ] 29-11-2023 22:55:41 [main] MultipleInstanceHandler:27 - Send file to another instance: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 22:55:58 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-11-2023 22:55:58 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 22:55:58 [JavaFX Application Thread] HelloApplication:52 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 22:56:00 [JavaFX Application Thread] HomeController:105 - Login as test with role User
+[INFO ] 29-11-2023 22:56:01 [JavaFX Application Thread] FileNoiThatExplorerController:97 - Open work: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 22:56:18 [Thread-6] LoginService:24 - Login with account: admin
+[ERROR] 29-11-2023 22:56:18 [Thread-6] GlobalExceptionHandler:35 - Not on FX application thread; currentThread = Thread-6
+[INFO ] 29-11-2023 22:58:56 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-11-2023 22:58:56 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 22:58:56 [JavaFX Application Thread] HelloApplication:52 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 22:58:56 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 22:58:56 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 22:58:56 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[INFO ] 29-11-2023 22:59:06 [Thread-4] LoginService:24 - Login with account: user
+[ERROR] 29-11-2023 22:59:06 [Thread-4] GlobalExceptionHandler:35 - Not on FX application thread; currentThread = Thread-4
+[INFO ] 29-11-2023 22:59:22 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-11-2023 22:59:22 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 22:59:22 [JavaFX Application Thread] HelloApplication:52 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 22:59:23 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[ERROR] 29-11-2023 22:59:23 [JavaFX Application Thread] ServerResponseHandler:19 - Token expired
+[ERROR] 29-11-2023 22:59:23 [JavaFX Application Thread] GlobalExceptionHandler:35 - Refresh token expired, need to login again
+[ERROR] 29-11-2023 22:59:34 [Thread-4] GlobalExceptionHandler:35 - Not on FX application thread; currentThread = Thread-4
+[INFO ] 29-11-2023 23:02:27 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-11-2023 23:02:27 [main] HelloApplication:64 - Start application
+[INFO ] 29-11-2023 23:02:27 [JavaFX Application Thread] HelloApplication:52 - Start application with params: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 23:02:29 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 29-11-2023 23:02:30 [JavaFX Application Thread] FileNoiThatExplorerController:97 - Open work: D:\Project\Java\App-noi-that\test.nt
+[INFO ] 29-11-2023 23:02:38 [Thread-6] LoginService:24 - Login with account: kim
+[INFO ] 29-11-2023 23:02:46 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 04-12-2023 23:42:17 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 04-12-2023 23:42:17 [main] HelloApplication:64 - Start application
+[INFO ] 04-12-2023 23:42:17 [JavaFX Application Thread] HelloApplication:52 - Start application with params: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 04-12-2023 23:42:18 [JavaFX Application Thread] WebClientService:208 - Trying to refresh jwt token
+[INFO ] 04-12-2023 23:42:20 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 04-12-2023 23:42:21 [JavaFX Application Thread] FileNoiThatExplorerController:97 - Open work: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 04-12-2023 23:42:59 [main] MultipleInstanceHandler:23 - Another instance is running.
+[INFO ] 04-12-2023 23:42:59 [main] MultipleInstanceHandler:27 - Send file to another instance: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 04-12-2023 23:43:46 [main] MultipleInstanceHandler:23 - Another instance is running.
+[INFO ] 04-12-2023 23:43:46 [main] MultipleInstanceHandler:27 - Send file to another instance: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 05-12-2023 00:06:31 [main] MultipleInstanceHandler:23 - Another instance is running.
+[INFO ] 05-12-2023 00:06:31 [main] MultipleInstanceHandler:27 - Send file to another instance: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 05-12-2023 00:07:42 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 05-12-2023 00:07:42 [main] HelloApplication:64 - Start application
+[INFO ] 05-12-2023 00:07:42 [JavaFX Application Thread] HelloApplication:52 - Start application with params: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 05-12-2023 00:07:45 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 05-12-2023 00:07:45 [JavaFX Application Thread] FileNoiThatExplorerController:97 - Open work: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 05-12-2023 00:08:38 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 05-12-2023 00:08:38 [main] HelloApplication:64 - Start application
+[INFO ] 05-12-2023 00:08:38 [JavaFX Application Thread] HelloApplication:52 - Start application with params: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 05-12-2023 00:08:40 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 05-12-2023 00:08:41 [JavaFX Application Thread] FileNoiThatExplorerController:97 - Open work: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 05-12-2023 00:32:27 [main] MultipleInstanceHandler:23 - Another instance is running.
+[INFO ] 05-12-2023 00:32:27 [main] MultipleInstanceHandler:27 - Send file to another instance: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 05-12-2023 00:32:40 [main] MultipleInstanceHandler:23 - Another instance is running.
+[INFO ] 05-12-2023 00:32:40 [main] MultipleInstanceHandler:27 - Send file to another instance: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 05-12-2023 00:32:53 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 05-12-2023 00:32:53 [main] HelloApplication:64 - Start application
+[INFO ] 05-12-2023 00:32:53 [JavaFX Application Thread] HelloApplication:52 - Start application with params: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 05-12-2023 00:32:56 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 05-12-2023 00:32:56 [JavaFX Application Thread] FileNoiThatExplorerController:98 - Open work: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 05-12-2023 00:35:32 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 05-12-2023 00:35:32 [main] HelloApplication:64 - Start application
+[INFO ] 05-12-2023 00:35:32 [JavaFX Application Thread] HelloApplication:52 - Start application with params: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 05-12-2023 00:35:34 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 05-12-2023 00:35:35 [JavaFX Application Thread] FileNoiThatExplorerController:98 - Open work: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 05-12-2023 00:53:21 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 05-12-2023 00:53:21 [main] HelloApplication:64 - Start application
+[INFO ] 05-12-2023 00:53:22 [JavaFX Application Thread] HelloApplication:52 - Start application with params: C:\Users\lenovo\Desktop\こんにちは.nt
+[INFO ] 05-12-2023 00:53:24 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 05-12-2023 00:53:24 [JavaFX Application Thread] FileNoiThatExplorerController:98 - Open work: C:\Users\lenovo\Desktop\こんにちは.nt
