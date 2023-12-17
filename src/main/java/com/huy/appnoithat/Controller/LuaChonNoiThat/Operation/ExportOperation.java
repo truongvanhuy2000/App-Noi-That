@@ -1,27 +1,19 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Operation;
 
-import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
-import com.huy.appnoithat.DataModel.DataPackage;
-import com.huy.appnoithat.DataModel.ThongTinCongTy;
-import com.huy.appnoithat.DataModel.ThongTinKhachHang;
-import com.huy.appnoithat.DataModel.ThongTinNoiThat;
-import com.huy.appnoithat.DataModel.ThongTinThanhToan;
-import com.huy.appnoithat.Enums.FileType;
-import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
-import javafx.application.Platform;
-import javafx.scene.control.*;
+import com.huy.appnoithat.DataModel.*;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TreeTableView;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 @RequiredArgsConstructor
@@ -125,12 +117,12 @@ public class ExportOperation {
     }
 
     public DataPackage exportData() {
-        return new DataPackage(
-                getThongTinCongTy(),
-                getThongTinKhachHang(),
-                noteTextArea.getText(),
-                getThongTinNoiThatList(),
-                getThongTinThanhToan()
-        );
+        return DataPackage.builder()
+                .thongTinNoiThatList(getThongTinNoiThatList())
+                .thongTinCongTy(getThongTinCongTy())
+                .thongTinKhachHang(getThongTinKhachHang())
+                .thongTinThanhToan(getThongTinThanhToan())
+                .noteArea(noteTextArea.getText())
+                .build();
     }
 }

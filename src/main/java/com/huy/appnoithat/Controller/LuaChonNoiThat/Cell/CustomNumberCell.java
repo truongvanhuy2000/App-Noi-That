@@ -57,7 +57,7 @@ public class CustomNumberCell<T> extends TextFieldTreeTableCell<BangNoiThat, T> 
         if (isKichThuocCollum) {
             String text = item.toString();
             if (text.contains(".")) {
-                text = text.split("\\.")[0];
+                text = text.split("\\.")[0]; // Turn number like this 123.xx to 123 because the product owner said so
                 setText(text);
             }
         }

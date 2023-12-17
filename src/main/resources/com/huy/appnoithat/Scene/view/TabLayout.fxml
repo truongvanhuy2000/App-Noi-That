@@ -20,7 +20,7 @@
                      <items>
                         <MenuItem fx:id="MenuItemOpenFile" mnemonicParsing="false" text="Mở" visible="false" />
                         <MenuItem fx:id="MenuItemSave" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu tệp" />
-                        <MenuItem fx:id="MenuItemSaveAs" disable="true" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu mới" visible="false" />
+                        <MenuItem fx:id="MenuItemSaveAs" mnemonicParsing="false" onAction="#onClickMenuItem" text="Lưu mới" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Xuất tệp">

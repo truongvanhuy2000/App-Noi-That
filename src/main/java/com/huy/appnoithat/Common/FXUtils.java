@@ -1,6 +1,5 @@
 package com.huy.appnoithat.Common;
 
-import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.StackPane;
