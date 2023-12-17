@@ -20,9 +20,8 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;
     private final ObservableList<String> items;
     private final TreeTableView<BangNoiThat> TableNoiThat;
-    private HBox hBox;
-    private TextArea textArea;
-    private Button startEditButton;
+    private Button dropDownBtn;
+    private Button editButton;
 
     /**
      * Constructs a CustomVatLieuCell with the given ObservableList of items and a TreeTableView.
@@ -45,19 +44,14 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
      */
     @Override
     public void startEdit() {
-        createEditButton();
-        createComboBox();
-        createTextArea();
-        createHBox();
-
         if (!TableUtils.isEditable(TableNoiThat)) {
             return;
         }
+        init();
         if (!isEmpty()) {
             super.startEdit();
-            setGraphic(startEditButton);
+            setGraphic(new HBox(dropDownBtn, editButton));
         }
-
     }
 
 
@@ -96,44 +90,82 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
                 comboBox.setValue(super.getItem());
             }
             super.setText(super.getItem());
-            setGraphic(hBox);
+            setGraphic(comboBox);
             comboBox.show();
         } else {
             super.setText(super.getItem());
             setGraphic(null);
         }
     }
-//    private void customEdit(String value) {
-//        TreeTableView<BangNoiThat> var2 = this.getTreeTableView();
-//        TreeTablePosition<BangNoiThat, ?> pos = var2.getFocusModel().getFocusedCell();
-//        if (var2 != null) {
-//            TreeTableColumn.CellEditEvent var4 = new TreeTableColumn.CellEditEvent(var2, pos, TreeTableColumn.editCommitEvent(), value);
-//            Event.fireEvent(this.getTableColumn(), var4);
-//        }
-//    }
+    private void init() {
+        createComboBox();
+        createDropDownBtn();
+        createEditBtn();
+    }
+    private void createDropDownBtn() {
+        if (dropDownBtn != null) {
+            return;
+        }
+        dropDownBtn = new Button();
+        dropDownBtn.setOnAction((e) -> {
+            setGraphic(comboBox);
+            showComboBoxAfter(200);
+        });
+        Image img = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/dropdown.png")));
+        ImageView view = new ImageView(img);
+        view.setFitHeight(10);
+        view.setFitWidth(10);
+        view.preserveRatioProperty().set(false);
+        dropDownBtn.setGraphic(view);
+        dropDownBtn.setPrefSize(20, 20);
+        dropDownBtn.setMaxSize(20, 20);
+    }
+    private void createEditBtn() {
+        editButton = new Button();
+        Image img = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/edit.png")));
+        ImageView view = new ImageView(img);
+        view.setFitHeight(15);
+        view.setFitWidth(15);
+        view.preserveRatioProperty().set(false);
+        editButton.setGraphic(view);
+        editButton.setPrefSize(20, 20);
+        editButton.setMaxSize(20, 20);
+
+        TextArea textArea = new TextArea();
+        textArea.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
+        textArea.setOnKeyPressed((key) -> {
+            if (KeyboardUtils.isRightKeyCombo(Action.NEXT_LINE, key)) {
+                textArea.appendText(System.getProperty("line.separator"));
+                key.consume();
+                return;
+            }
+            if (KeyboardUtils.isRightKeyCombo(Action.COMMIT, key)) {
+                commitEdit(textArea.getText().trim().strip());
+                updateItem(textArea.getText().trim().strip(), false);
+                key.consume();
+            }
+        });
+        VBox vBox = new VBox();
+        vBox.getChildren().add(new Label("Nhấn Alt + Enter để xuống dòng"));
+        vBox.getChildren().add(textArea);
+
+        editButton.setOnAction((e) -> {
+            super.setText(null);
+            textArea.setText(super.getItem());
+            setGraphic(vBox);
+        });
+    }
     /**
      * Creates a ComboBox for editing the cell's content. If the ComboBox is already
      * initialized, this method does nothing. Configures the ComboBox's behavior,
      * such as handling commit actions and mouse clicks.
      */
-    private void createEditButton() {
-        if (this.startEditButton != null) {
-            return;
-        }
-        this.startEditButton = new Button("V");
-        this.startEditButton.setOnAction((e) -> {
-            setGraphic(hBox);
-            showComboBoxAfter(200);
-        });
-//        this.startEditButton.setStyle("-fx-background-color: transparent");
-    }
     private void createComboBox() {
         if (comboBox != null) {
             return;
         }
         comboBox = new ComboBox<>(items);
         comboBox.valueProperty().set(super.getItem());
-//        comboBox.setMinWidth(this.getWidth() - 30);
         comboBox.setOnAction((e) -> {
             if (comboBox.getSelectionModel().getSelectedItem() != null) {
                 super.commitEdit(comboBox.getSelectionModel().getSelectedItem());
@@ -153,53 +185,14 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
                 cancelEdit();
             }
         });
-    }
-
-    /**
-     * Creates an HBox containing a drop-down button and the ComboBox. If the HBox is already
-     * initialized, this method does nothing. The drop-down button triggers the ComboBox
-     * to be shown after a delay of 100 milliseconds.
-     */
-    private void createHBox() {
-        if (hBox != null) {
-            return;
-        }
-//        Button dropDownButton = new Button("V");
-//        dropDownButton.setOnAction((e) -> {
-//            showComboBoxAfter(100);
-//        });
-        VBox vBox = new VBox();
-        vBox.getChildren().add(new Label("Nhấn Alt + Enter để xuống dòng"));
-        vBox.getChildren().add(textArea);
-
-        Button editButton = new Button();
-        Image img = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/edit.png")));
-        ImageView view = new ImageView(img);
-        view.setFitHeight(20);
-        view.setFitWidth(20);
-        view.preserveRatioProperty().set(true);
-        editButton.setGraphic(view);
-        editButton.setMaxSize(20, 20);
-        editButton.setPrefSize(20, 20);
-        editButton.setOnAction((e) -> {
-            super.setText(null);
-            textArea.setText(super.getItem());
-            setGraphic(vBox);
-        });
-        Platform.runLater(() -> {
-            comboBox.setPrefWidth(getTableColumn().getWidth() - editButton.getWidth() - 40);
-        });
+        comboBox.getStyleClass().add("combo-border");
         getTableColumn().prefWidthProperty().addListener((observable, oldValue, newValue) -> {
 //            System.out.println("New value: " + newValue);
-            comboBox.setPrefWidth(newValue.doubleValue() - editButton.getWidth() - 10);
+            comboBox.setPrefWidth(newValue.doubleValue() - 10);
         });
-        hBox = new HBox();
-        hBox.getChildren().add(comboBox);
-        hBox.getChildren().add(editButton);
-
-//        hBox.getChildren().add(editButton);
-        hBox.setMaxWidth(Double.MAX_VALUE);
-        hBox.setMaxHeight(Double.MAX_VALUE);
+        Platform.runLater(() -> {
+            comboBox.setPrefWidth(getTableColumn().getWidth() - 10);
+        });
     }
 
     /**
@@ -211,25 +204,5 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         PauseTransition delay = new PauseTransition(Duration.millis(millis));
         delay.setOnFinished( event -> comboBox.show());
         delay.play();
-    }
-    private void createTextArea() {
-        if (textArea != null) {
-            return;
-        }
-        textArea = new TextArea();
-        textArea.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
-        textArea.setOnKeyPressed((key) -> {
-            if (KeyboardUtils.isRightKeyCombo(Action.NEXT_LINE, key)) {
-                textArea.appendText(System.getProperty("line.separator"));
-                key.consume();
-                return;
-            }
-            if (KeyboardUtils.isRightKeyCombo(Action.COMMIT, key)) {
-                commitEdit(textArea.getText());
-                updateItem(textArea.getText(), false);
-                key.consume();
-            }
-        });
-
     }
 }

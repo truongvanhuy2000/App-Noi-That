@@ -11,9 +11,13 @@ public class TableCalculationUtils {
     private static final String MET_DAI = "mét dài";
     private static final String MET_VUONG = "mét vuông";
     public static void calculateBangThanhToan(TableView<BangThanhToan> bangThanhToan, Long tongTien) {
-        Long datCocThietKe10 = round(tongTien * 0.1);
-        Long datCocThiCong30 = round(tongTien * 0.3);
-        Long hangDenChanCongTrinh50 = round(tongTien * 0.5);
+        Double datCocThietKePercentage = getPercentageFromHeader(bangThanhToan.getColumns().get(1).getText());
+        Double datCocThiCongPercentage = getPercentageFromHeader(bangThanhToan.getColumns().get(2).getText());
+        Double hangDenChanCongTrinhPercentage = getPercentageFromHeader(bangThanhToan.getColumns().get(3).getText());
+
+        Long datCocThietKe10 = round(tongTien * datCocThietKePercentage / 100);
+        Long datCocThiCong30 = round(tongTien * datCocThiCongPercentage / 100);
+        Long hangDenChanCongTrinh50 = round(tongTien * hangDenChanCongTrinhPercentage / 100);
         Long nghiemThuQuyet = tongTien - datCocThietKe10 - datCocThiCong30 - hangDenChanCongTrinh50;
 
         bangThanhToan.getItems().get(0).setDatCocThietKe10(datCocThietKe10);
@@ -21,6 +25,10 @@ public class TableCalculationUtils {
         bangThanhToan.getItems().get(0).setHangDenChanCongTrinh50(hangDenChanCongTrinh50);
         bangThanhToan.getItems().get(0).setNghiemThuQuyet(nghiemThuQuyet);
         bangThanhToan.getItems().get(0).setTongTien(tongTien);
+    }
+    public static Double getPercentageFromHeader(String header) {
+        String percentage = header.strip().trim().split(":")[1].split("%")[0];
+        return Double.parseDouble(percentage);
     }
     /**
      * @param chieuDai

@@ -144,6 +144,13 @@ public class Utils {
     public static String convertMilisToDateTimeString(long milis) {
         return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(milis));
     }
+    public static long convertDateTimeStringToMilis(String dateTimeString) {
+        try {
+            return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(dateTimeString).getTime();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static String urlEncode(String data) {
         if (data == null)
             return "";

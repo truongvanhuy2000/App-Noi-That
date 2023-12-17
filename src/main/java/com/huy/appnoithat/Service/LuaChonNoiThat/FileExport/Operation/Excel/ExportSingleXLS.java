@@ -1,29 +1,16 @@
 package com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.Operation.Excel;
 
-import com.huy.appnoithat.Common.Utils;
-import com.huy.appnoithat.Configuration.Config;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
-import com.huy.appnoithat.DataModel.DataPackage;
-import com.huy.appnoithat.DataModel.ThongTinCongTy;
-import com.huy.appnoithat.DataModel.ThongTinKhachHang;
-import com.huy.appnoithat.DataModel.ThongTinNoiThat;
-import com.huy.appnoithat.DataModel.ThongTinThanhToan;
+import com.huy.appnoithat.DataModel.*;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.ExportFile;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
-import org.apache.poi.xssf.usermodel.XSSFDrawing;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 public class ExportSingleXLS extends ExportXLS implements ExportFile {
     final static Logger LOGGER = LogManager.getLogger(ExportSingleXLS.class);

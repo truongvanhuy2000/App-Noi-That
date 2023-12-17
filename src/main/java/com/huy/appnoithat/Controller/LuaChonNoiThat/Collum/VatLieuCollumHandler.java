@@ -81,17 +81,27 @@ public class VatLieuCollumHandler {
         Double cao = Objects.requireNonNullElse(coresspondingThongSo.getCao(), 0.0);
         Long donGia = coresspondingThongSo.getDon_gia();
         String donVi = coresspondingThongSo.getDon_vi();
-        Double khoiLuong = TableCalculationUtils.calculateKhoiLuong(dai, cao, rong, donVi);
+
+        if (!dai.equals(0.0)) {
+            event.getRowValue().getValue().setDai(dai);
+        }
+        if (!rong.equals(0.0)) {
+            event.getRowValue().getValue().setRong(rong);
+        }
+        if (!cao.equals(0.0)) {
+            event.getRowValue().getValue().setCao(cao);
+        }
+        event.getRowValue().getValue().setDonGia(donGia);
+        event.getRowValue().getValue().setDonVi(donVi);
+
+        Double khoiLuong = TableCalculationUtils.calculateKhoiLuong(
+                event.getRowValue().getValue().getDai().getValue(),
+                event.getRowValue().getValue().getCao().getValue(),
+                event.getRowValue().getValue().getRong().getValue(), donVi);
         Long thanhTien = TableCalculationUtils.calculateThanhTien(khoiLuong, donGia);
 
         event.getRowValue().getValue().setThanhTien(thanhTien);
         event.getRowValue().getValue().setKhoiLuong(khoiLuong);
-        event.getRowValue().getValue().setDai(dai);
-        event.getRowValue().getValue().setRong(rong);
-        event.getRowValue().getValue().setCao(cao);
-        event.getRowValue().getValue().setDonGia(donGia);
-        event.getRowValue().getValue().setDonVi(donVi);
-
         TableCalculationUtils.recalculateAllTongTien(event.getTreeTableView());
     }
 

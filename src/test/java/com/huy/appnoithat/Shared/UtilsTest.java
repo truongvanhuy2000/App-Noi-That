@@ -2,11 +2,8 @@ package com.huy.appnoithat.Shared;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.DataModel.Token;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UtilsTest {
     String tokenObject = "{\n" +
@@ -30,5 +27,6 @@ class UtilsTest {
     }
     @Test
     void testCalculation() {
+        System.out.println(System.getProperty("file.encoding"));
     }
 }

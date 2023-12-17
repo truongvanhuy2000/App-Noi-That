@@ -210,8 +210,9 @@ public class StylistFactory {
         Font appliedFontStyle = fontStyleFactory(fontStyle, size);
         appliedCellStyle.setFont(appliedFontStyle);
         cell.setCellValue(appliedTextString);
-        if (data.length() >= 80 && data.contains("\n")) {
-            cell.getRow().setHeight((short) (cell.getRow().getHeight() + 800));
+        if (data.contains("\n")) {
+            int numberOfLines = data.split("\n").length;
+            cell.getRow().setHeight((short) (cell.getRow().getHeight() + numberOfLines * 300));
         } else {
             cell.getRow().setHeight((short) (cell.getRow().getHeight() + 50));
         }

@@ -4,6 +4,7 @@ import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Enums.Action;
 import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -18,8 +19,8 @@ import java.util.Objects;
 
 public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
     private ComboBox<String> comboBox;
-    private HBox hBox;
     private final ObservableList<String> items;
+    private Button dropDownBtn;
     private Button editButton;
 
     public CustomHangMucCell(ObservableList<String> items) {
@@ -34,23 +35,56 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
      */
     @Override
     public void startEdit() {
-        createComboBox();
-        createVBox();
-        createEditButton();
-
+        init();
         if (!isEmpty()) {
             super.startEdit();
-            setGraphic(editButton);
+            setGraphic(new HBox(dropDownBtn, editButton));
         }
     }
-    private void createEditButton() {
-        if (editButton != null) {
+    private void init() {
+        createComboBox();
+        createDropDownBtn();
+        createEditBtn();
+    }
+    private void createDropDownBtn() {
+        if (dropDownBtn != null) {
             return;
         }
-        editButton = new Button("V");
-        editButton.setOnAction((e) -> {
-            setGraphic(hBox);
+        dropDownBtn = new Button();
+        dropDownBtn.setOnAction((e) -> {
+            setGraphic(comboBox);
             showComboBoxAfter(200);
+        });
+        Image img = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/dropdown.png")));
+        ImageView view = new ImageView(img);
+        view.setFitHeight(10);
+        view.setFitWidth(10);
+        view.preserveRatioProperty().set(false);
+        dropDownBtn.setGraphic(view);
+        dropDownBtn.setPrefSize(20, 20);
+        dropDownBtn.setMaxSize(20, 20);
+    }
+    private void createEditBtn() {
+        editButton = new Button();
+        Image img = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/edit.png")));
+        ImageView view = new ImageView(img);
+        view.setFitHeight(15);
+        view.setFitWidth(15);
+        view.preserveRatioProperty().set(false);
+        editButton.setGraphic(view);
+        editButton.setPrefSize(20, 20);
+        editButton.setMaxSize(20, 20);
+
+        TextField textField = new TextField();
+        textField.setOnAction((e) -> {
+            super.commitEdit(textField.getText());
+            updateItem(textField.getText(), false);
+        });
+        textField.setMaxWidth(Double.MAX_VALUE);
+        editButton.setOnAction((e) -> {
+            super.setText(null);
+            textField.setText(super.getItem());
+            setGraphic(textField);
         });
     }
 
@@ -79,7 +113,7 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
                 comboBox.setValue(super.getItem());
             }
             super.setText(super.getItem());
-            setGraphic(hBox);
+            setGraphic(comboBox);
         } else {
             super.setText(super.getItem());
             setGraphic(null);
@@ -125,50 +159,13 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
             }
         });
         comboBox.getStyleClass().add("combo-border");
-    }
-
-    /**
-     * Creates an HBox containing a drop-down button and a ComboBox. If the HBox is already
-     * initialized, this method does nothing. The drop-down button triggers the ComboBox
-     * to be shown after a delay of 100 milliseconds.
-     */
-    private void createVBox() {
-        if (hBox != null) {
-            return;
-        }
-//        Button dropDownButton = new Button("V");
-//        dropDownButton.setOnAction((e) -> {
-//            showComboBoxAfter(100);
-//        });
-        Button editButton = new Button();
-        Image img = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/edit.png")));
-        ImageView view = new ImageView(img);
-        view.setFitHeight(20);
-        view.setFitWidth(20);
-        view.preserveRatioProperty().set(true);
-        editButton.setGraphic(view);
-        editButton.setMaxSize(20, 20);
-        comboBox.prefWidthProperty().bind(getTableColumn().widthProperty().subtract(editButton.getWidth() - 10));
-
-        TextField textField = new TextField();
-        textField.setOnAction((e) -> {
-            super.commitEdit(textField.getText());
-            updateItem(textField.getText(), false);
+        getTableColumn().prefWidthProperty().addListener((observable, oldValue, newValue) -> {
+//            System.out.println("New value: " + newValue);
+            comboBox.setPrefWidth(newValue.doubleValue() - 10);
         });
-        textField.setMaxWidth(Double.MAX_VALUE);
-        editButton.setOnAction((e) -> {
-            super.setText(null);
-            textField.setText(super.getItem());
-            setGraphic(textField);
+        Platform.runLater(() -> {
+            comboBox.setPrefWidth(getTableColumn().getWidth() - 10);
         });
-
-        hBox = new HBox();
-        hBox.getChildren().add(comboBox);
-        hBox.getChildren().add(editButton);
-
-//        hBox.getChildren().add(editButton);
-        hBox.setMaxWidth(Double.MAX_VALUE);
-        hBox.setMaxWidth(this.getWidth());
     }
 
     /**

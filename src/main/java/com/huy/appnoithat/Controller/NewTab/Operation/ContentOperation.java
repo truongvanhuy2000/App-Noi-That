@@ -14,14 +14,9 @@ import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 
-import java.beans.Encoder;
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -85,8 +80,9 @@ public class ContentOperation {
     public void stopAutoSaveAction() {
         newTabController.getAutoSaveTimer().stop();
     }
-    private String saveAs() {
-        File selectedFile = PopupUtils.fileSaver();
+    public String saveAs() {
+        File selectedFile;
+        selectedFile = PopupUtils.fileSaver();
         if (selectedFile == null) {
             return null;
         }

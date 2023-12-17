@@ -20,7 +20,6 @@ import java.io.File;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class LuaChonNoiThatService {
     final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatService.class);

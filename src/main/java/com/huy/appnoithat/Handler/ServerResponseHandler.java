@@ -5,7 +5,6 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Scene.Login.LoginScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import javafx.application.Platform;
-import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

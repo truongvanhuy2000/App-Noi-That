@@ -7,7 +7,6 @@ import com.huy.appnoithat.DataModel.RecentFile;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.NewTabScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;
-import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Work.OpenFileWork;
 import com.huy.appnoithat.Work.WorkFactory;
 import javafx.application.Platform;
@@ -75,6 +74,11 @@ public class FileNoiThatExplorerController {
         DirectoryCollum.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDirectory()));
         TimeStampCollum.setCellValueFactory(cellData -> new SimpleObjectProperty<>(
                 Utils.convertMilisToDateTimeString(cellData.getValue().getTimeStamp())));
+        TimeStampCollum.setComparator((o1, o2) -> {
+            long o1Time = Utils.convertDateTimeStringToMilis(o1);
+            long o2Time = Utils.convertDateTimeStringToMilis(o2);
+            return Long.compare(o2Time, o1Time);
+        });
         RecentTableView.setItems(fileNoiThatExplorerService.getRecentFile());
 
         // Double click to open a recent file

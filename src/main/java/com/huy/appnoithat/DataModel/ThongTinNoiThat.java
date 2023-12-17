@@ -32,13 +32,18 @@ public class ThongTinNoiThat {
     @JsonProperty("ThanhTien")
     String ThanhTien;
 
+    /**
+     * @param bangNoiThat This constructor will convert a BangNoiThat object to ThongTinNoiThat object
+     *                    This is used for exporting data to excel file and printing data to pdf file later on
+     */
     public ThongTinNoiThat(BangNoiThat bangNoiThat) {
         STT = bangNoiThat.getSTT().getValue();
         TenHangMuc = bangNoiThat.getHangMuc().getValue();
         ChiTiet = bangNoiThat.getVatLieu().getValue();
-        Dai = bangNoiThat.getDai().getValue().toString();
-        Rong = bangNoiThat.getRong().getValue().toString();
-        Cao = bangNoiThat.getCao().getValue().toString();
+        // Convert this to long because the product owner want so
+        Dai = Long.valueOf(bangNoiThat.getDai().getValue().longValue()).toString();
+        Rong = Long.valueOf(bangNoiThat.getRong().getValue().longValue()).toString();
+        Cao = Long.valueOf(bangNoiThat.getCao().getValue().longValue()).toString();
         DonViTinh = bangNoiThat.getDonVi().getValue();
         DonGia = Utils.convertLongToDecimal(bangNoiThat.getDonGia().getValue());
         SoLuong = bangNoiThat.getKhoiLuong().getValue().toString();

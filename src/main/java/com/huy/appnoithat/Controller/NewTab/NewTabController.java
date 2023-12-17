@@ -65,6 +65,9 @@ public class NewTabController implements Initializable {
         else if (source == MenuItemSave) {
             contentOperation.save();
         }
+        else if (source == MenuItemSaveAs) {
+            contentOperation.saveAs();
+        }
         else if (source == AutoSave) {
             if (AutoSave.isSelected()) {
                 LOGGER.info("Auto save is enabled");

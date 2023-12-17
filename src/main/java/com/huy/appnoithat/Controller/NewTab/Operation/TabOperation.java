@@ -71,9 +71,9 @@ public class TabOperation {
         newTabController.getCurrentlyOpenTab().add(tabContent);
     }
     private void createBlankTab() {
-        createTab("Tab mới", new DataPackage(
-                persistenceStorageService.getThongTinCongTy(), null,
-                persistenceStorageService.getNoteArea(), null, null));
+        createTab("Tab mới", DataPackage.builder()
+                .thongTinCongTy(persistenceStorageService.getThongTinCongTy())
+                .noteArea(persistenceStorageService.getNoteArea()).build());
     }
     private void addNewTabToPane(Tab newTab) {
         tabPane.getTabs().add(newTab);
