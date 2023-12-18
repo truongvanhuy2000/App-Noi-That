@@ -7096,3 +7096,83 @@ java.io.FileNotFoundException: C:\Users\lenovo\Desktop\test.xlsx (The process ca
 [INFO ] 18-12-2023 00:55:11 [JavaFX Application Thread] HelloApplication:52 - Start application with params: D:\こんにちは.nt
 [INFO ] 18-12-2023 00:55:13 [JavaFX Application Thread] HomeController:105 - Login as user with role User
 [INFO ] 18-12-2023 00:55:14 [JavaFX Application Thread] FileNoiThatExplorerController:101 - Open work: D:\こんにちは.nt
+[INFO ] 18-12-2023 09:58:57 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 18-12-2023 09:58:57 [main] HelloApplication:64 - Start application
+[INFO ] 18-12-2023 09:58:57 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 09:59:08 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 18-12-2023 09:59:08 [main] HelloApplication:64 - Start application
+[INFO ] 18-12-2023 09:59:08 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[ERROR] 18-12-2023 09:59:19 [JavaFX Application Thread] WebClientService:172 - Error when sending request to serverGET /api/info eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwiaXNzIjoiYXBwbm9pdGhhdCIsImlhdCI6MTcwMjc5NzE1OCwiZXhwIjoxNzAyODgzNTU4fQ.c2IlUOBdDVVCt2ASKNTOQUZTWK4RMLosQNGWiP9cekvgF9BWNSOq8PTQ3KfaA97tbqeegeHqeaHP6kPuvH0iXg null
+[ERROR] 18-12-2023 09:59:19 [JavaFX Application Thread] GlobalExceptionHandler:35 - HTTP connect timed out
+[ERROR] 18-12-2023 09:59:19 [JavaFX Application Thread] GlobalExceptionHandler:35 - HTTP connect timed out
+[ERROR] 18-12-2023 09:59:19 [JavaFX Application Thread] GlobalExceptionHandler:35 - HTTP connect timed out
+[ERROR] 18-12-2023 09:59:19 [JavaFX Application Thread] GlobalExceptionHandler:35 - java.net.http.HttpConnectTimeoutException: HTTP connect timed out
+[INFO ] 18-12-2023 10:05:33 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 18-12-2023 10:05:33 [main] HelloApplication:64 - Start application
+[INFO ] 18-12-2023 10:05:33 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[ERROR] 18-12-2023 10:05:33 [JavaFX Application Thread] UserSessionService:47 - Account is null
+[INFO ] 18-12-2023 10:05:48 [Thread-3] LoginService:24 - Login with account: user
+[INFO ] 18-12-2023 10:05:50 [Thread-4] LoginService:24 - Login with account: user
+[INFO ] 18-12-2023 10:06:40 [Thread-5] LoginService:24 - Login with account: admin
+[INFO ] 18-12-2023 10:06:45 [Thread-6] LoginService:24 - Login with account: user
+[INFO ] 18-12-2023 10:06:49 [Thread-7] LoginService:24 - Login with account: huy
+[INFO ] 18-12-2023 10:09:34 [main] MultipleInstanceHandler:23 - Another instance is running.
+[INFO ] 18-12-2023 10:09:34 [main] MultipleInstanceHandler:27 - Send file to another instance: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:09:34 [Thread-1] MultipleInstanceHandler:48 - Receive file from other instance: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:09:38 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 18-12-2023 10:09:38 [main] HelloApplication:64 - Start application
+[INFO ] 18-12-2023 10:09:38 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:09:41 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 18-12-2023 10:09:41 [JavaFX Application Thread] FileNoiThatExplorerController:101 - Open work: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:11:22 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 18-12-2023 10:11:22 [main] HelloApplication:64 - Start application
+[INFO ] 18-12-2023 10:11:22 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:11:25 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 18-12-2023 10:11:25 [JavaFX Application Thread] FileNoiThatExplorerController:101 - Open work: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:12:13 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 18-12-2023 10:12:13 [main] HelloApplication:64 - Start application
+[INFO ] 18-12-2023 10:12:13 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:12:19 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 18-12-2023 10:12:19 [main] HelloApplication:64 - Start application
+[INFO ] 18-12-2023 10:12:19 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:12:22 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 18-12-2023 10:12:22 [JavaFX Application Thread] FileNoiThatExplorerController:101 - Open work: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:15:31 [main] MultipleInstanceHandler:23 - Another instance is running.
+[INFO ] 18-12-2023 10:15:31 [main] MultipleInstanceHandler:27 - Send file to another instance: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:15:32 [Thread-1] MultipleInstanceHandler:48 - Receive file from other instance: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:15:32 [JavaFX Application Thread] FileNoiThatExplorerController:101 - Open work: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:15:35 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 18-12-2023 10:15:35 [main] HelloApplication:64 - Start application
+[INFO ] 18-12-2023 10:15:35 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:15:41 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 18-12-2023 10:15:41 [JavaFX Application Thread] FileNoiThatExplorerController:101 - Open work: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:16:36 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 18-12-2023 10:16:36 [main] HelloApplication:64 - Start application
+[INFO ] 18-12-2023 10:16:36 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:16:39 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 18-12-2023 10:16:39 [JavaFX Application Thread] FileNoiThatExplorerController:101 - Open work: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:18:04 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 18-12-2023 10:18:04 [main] HelloApplication:64 - Start application
+[INFO ] 18-12-2023 10:18:04 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:18:06 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 18-12-2023 10:18:06 [JavaFX Application Thread] FileNoiThatExplorerController:101 - Open work: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:30:52 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 18-12-2023 10:30:52 [main] HelloApplication:64 - Start application
+[INFO ] 18-12-2023 10:30:52 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:30:53 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 18-12-2023 10:30:53 [JavaFX Application Thread] FileNoiThatExplorerController:101 - Open work: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:34:03 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 18-12-2023 10:34:03 [main] HelloApplication:64 - Start application
+[INFO ] 18-12-2023 10:34:03 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:34:06 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 18-12-2023 10:34:06 [JavaFX Application Thread] FileNoiThatExplorerController:101 - Open work: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:38:41 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 18-12-2023 10:38:41 [main] HelloApplication:64 - Start application
+[INFO ] 18-12-2023 10:38:41 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:38:42 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 18-12-2023 10:38:42 [JavaFX Application Thread] FileNoiThatExplorerController:101 - Open work: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:41:15 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 18-12-2023 10:41:15 [main] HelloApplication:64 - Start application
+[INFO ] 18-12-2023 10:41:15 [JavaFX Application Thread] HelloApplication:52 - Start application with params: /home/huy/Project/Java/App-noi-that/test.nt
+[INFO ] 18-12-2023 10:41:16 [JavaFX Application Thread] HomeController:105 - Login as user with role User
+[INFO ] 18-12-2023 10:41:16 [JavaFX Application Thread] FileNoiThatExplorerController:101 - Open work: /home/huy/Project/Java/App-noi-that/test.nt

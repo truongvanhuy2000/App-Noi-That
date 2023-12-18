@@ -15,9 +15,9 @@ public class TableCalculationUtils {
         Double datCocThiCongPercentage = getPercentageFromHeader(bangThanhToan.getColumns().get(2).getText());
         Double hangDenChanCongTrinhPercentage = getPercentageFromHeader(bangThanhToan.getColumns().get(3).getText());
 
-        Long datCocThietKe10 = round(tongTien * datCocThietKePercentage / 100);
-        Long datCocThiCong30 = round(tongTien * datCocThiCongPercentage / 100);
-        Long hangDenChanCongTrinh50 = round(tongTien * hangDenChanCongTrinhPercentage / 100);
+        Long datCocThietKe10 = round( tongTien * (datCocThietKePercentage / 100));
+        Long datCocThiCong30 = round(tongTien * (datCocThiCongPercentage / 100));
+        Long hangDenChanCongTrinh50 = round(tongTien * (hangDenChanCongTrinhPercentage / 100));
         Long nghiemThuQuyet = tongTien - datCocThietKe10 - datCocThiCong30 - hangDenChanCongTrinh50;
 
         bangThanhToan.getItems().get(0).setDatCocThietKe10(datCocThietKe10);
