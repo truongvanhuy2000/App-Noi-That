@@ -71,7 +71,7 @@ public class LuaChonNoiThatController implements Initializable {
     private TableView<BangThanhToan> bangThanhToan;
     @Setter
     private ByteArrayOutputStream imageStream;
-    private List<Integer> percentageList = Arrays.asList(10, 30, 50);
+    private final ObservableList<Integer> percentageList = FXCollections.observableArrayList(10, 30, 50);
 
     private Timeline autoSaveTimer;
     private final PersistenceStorageService persistenceStorageService;
