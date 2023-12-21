@@ -9,6 +9,7 @@ import com.huy.appnoithat.DataModel.SaveFile.TabData;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.LuaChonNoiThatScene;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
+import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -18,7 +19,7 @@ import java.util.List;
 public class TabOperation {
     private final NewTabController newTabController;
     private final NoiThatFileService noiThatFileService;
-    private final PersistenceStorageService persistenceStorageService;
+    private final StorageService persistenceStorageService;
     private final Stage currentStage;
     private final TabPane tabPane;
 

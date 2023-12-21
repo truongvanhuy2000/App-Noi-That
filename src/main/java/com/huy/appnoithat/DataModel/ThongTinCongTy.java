@@ -3,6 +3,7 @@ package com.huy.appnoithat.DataModel;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import java.util.Base64;
 
 @Data
 @NoArgsConstructor
+@Builder
 public class ThongTinCongTy {
     @JsonProperty("logo")
     InputStream logo;
