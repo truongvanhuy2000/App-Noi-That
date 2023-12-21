@@ -14,22 +14,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class PersistenceStorageService {
+public class PersistenceStorageService implements StorageService {
     final static Logger LOGGER = LogManager.getLogger(PersistenceStorageService.class);
-    private static PersistenceStorageService instance;
     private final ObjectMapper objectMapper;
-    PersistenceStorageService() {
+    public PersistenceStorageService() {
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
     }
-    public static synchronized PersistenceStorageService getInstance() {
-        if (instance == null) {
-            instance = new PersistenceStorageService();
-        }
-        return instance;
-    }
-
     /**
      * Retrieves the company information from a file. If the information is already
      * loaded in memory, returns the existing object. If not, reads the information
@@ -38,6 +30,7 @@ public class PersistenceStorageService {
      * @return ThongTinCongTy object containing company information.
      * @throws RuntimeException if there is an IOException while reading the file.
      */
+    @Override
     public ThongTinCongTy getThongTinCongTy() {
         try {
             // Read company information from the specified file path
@@ -54,6 +47,7 @@ public class PersistenceStorageService {
      * @param thongTinCongTy ThongTinCongTy object containing company information to be set.
      * @throws RuntimeException if there is an IOException while writing the file.
      */
+    @Override
     public void saveThongTinCongTy(ThongTinCongTy thongTinCongTy) {
         try {
             // Write company information to the specified file path
@@ -63,6 +57,7 @@ public class PersistenceStorageService {
             throw new RuntimeException(e);
         }
     }
+    @Override
     public List<RecentFile> getRecentFileList() {
         try {
             return objectMapper.readValue(new File(Config.FILE_EXPORT.RECENT_NT_FILE_DIRECTORY),
@@ -79,6 +74,7 @@ public class PersistenceStorageService {
      * @return List of RecentFile objects representing the recent files.
      * @throws RuntimeException if there is an IOException while reading the file.
      */
+    @Override
     public void saveRecentFile(List<RecentFile> recentFileList) {
         try {
             // Read recent files from the specified file path
@@ -94,6 +90,7 @@ public class PersistenceStorageService {
      * @return UserSession object representing the user session.
      * @throws RuntimeException if there is an IOException while reading the file.
      */
+    @Override
     public PersistenceUserSession getUserSession() {
         try {
             // Read user session from the specified file path
@@ -110,6 +107,7 @@ public class PersistenceStorageService {
      * @param persistenceUserSession UserSession object representing the user session to be set.
      * @throws RuntimeException if there is an IOException while writing the file.
      */
+    @Override
     public void saveUserSession(PersistenceUserSession persistenceUserSession) {
         try {
             objectMapper.writeValue(new File(Config.USER.SESSION_DIRECTORY), persistenceUserSession);
@@ -118,7 +116,7 @@ public class PersistenceStorageService {
             throw new RuntimeException(e);
         }
     }
-
+    @Override
     public void saveNoteArea(String noteArea) {
         try {
             objectMapper.writeValue(new File(Config.USER.NOTE_AREA_DIRECTORY), noteArea);
@@ -127,6 +125,7 @@ public class PersistenceStorageService {
             throw new RuntimeException(e);
         }
     }
+    @Override
     public String getNoteArea() {
         try {
             return objectMapper.readValue(new File(Config.USER.NOTE_AREA_DIRECTORY), String.class);

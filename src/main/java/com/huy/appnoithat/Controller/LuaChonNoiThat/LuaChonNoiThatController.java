@@ -14,7 +14,9 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupTruongThongTin;
 import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.Enums.Action;
+import com.huy.appnoithat.Service.PersistenceStorage.OnlineStorageService;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
+import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
@@ -73,11 +75,10 @@ public class LuaChonNoiThatController implements Initializable {
     private ByteArrayOutputStream imageStream;
     private final ObservableList<Integer> percentageList = FXCollections.observableArrayList(10, 30, 50);
 
-    private Timeline autoSaveTimer;
-    private final PersistenceStorageService persistenceStorageService;
+    private final StorageService persistenceStorageService;
     public LuaChonNoiThatController() {
         imageStream = new ByteArrayOutputStream();
-        persistenceStorageService = PersistenceStorageService.getInstance();
+        persistenceStorageService = new OnlineStorageService();
     }
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {

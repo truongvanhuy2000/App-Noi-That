@@ -5,7 +5,9 @@ import com.huy.appnoithat.Controller.NewTab.Operation.ContentOperation;
 import com.huy.appnoithat.Controller.NewTab.Operation.TabOperation;
 import com.huy.appnoithat.Enums.FileType;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
+import com.huy.appnoithat.Service.PersistenceStorage.OnlineStorageService;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
+import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -26,7 +28,7 @@ import java.util.ResourceBundle;
 @Data
 public class NewTabController implements Initializable {
     final static Logger LOGGER = LogManager.getLogger(NewTabController.class);
-    private final PersistenceStorageService persistenceStorageService;
+    private final StorageService persistenceStorageService;
     private final NoiThatFileService noiThatFileService;
     private Stage currentStage;
     private final List<TabContent> currentlyOpenTab;
@@ -46,7 +48,7 @@ public class NewTabController implements Initializable {
     private TabOperation tabOperation;
     private ContentOperation contentOperation;
     public NewTabController() {
-        persistenceStorageService = PersistenceStorageService.getInstance();
+        persistenceStorageService = new OnlineStorageService();
         noiThatFileService = new NoiThatFileService();
         currentlyOpenTab = new ArrayList<>();
     }

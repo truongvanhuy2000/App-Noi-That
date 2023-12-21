@@ -4,6 +4,7 @@ import com.huy.appnoithat.DataModel.Session.PersistenceUserSession;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
+import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
 import com.huy.appnoithat.Service.RestService.AccountRestService;
 import com.huy.appnoithat.Session.UserSession;
 import org.apache.logging.log4j.LogManager;
@@ -14,12 +15,12 @@ import java.util.ArrayList;
 
 public class UserSessionService {
     final static Logger LOGGER = LogManager.getLogger(UserSessionService.class);
-    private final PersistenceStorageService persistenceStorageService;
+    private final StorageService persistenceStorageService;
     /**
      * Constructor for UserSessionService. Initializes required services and objects.
      */
     public UserSessionService() {
-        persistenceStorageService = PersistenceStorageService.getInstance();
+        persistenceStorageService = new PersistenceStorageService();
     }
 
     /**
