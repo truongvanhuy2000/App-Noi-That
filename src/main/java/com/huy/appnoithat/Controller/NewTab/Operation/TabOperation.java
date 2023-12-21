@@ -73,7 +73,8 @@ public class TabOperation {
     private void createBlankTab() {
         createTab("Tab mới", DataPackage.builder()
                 .thongTinCongTy(persistenceStorageService.getThongTinCongTy())
-                .noteArea(persistenceStorageService.getNoteArea()).build());
+                .noteArea(persistenceStorageService.getNoteArea())
+                .build());
     }
     private void addNewTabToPane(Tab newTab) {
         tabPane.getTabs().add(newTab);
