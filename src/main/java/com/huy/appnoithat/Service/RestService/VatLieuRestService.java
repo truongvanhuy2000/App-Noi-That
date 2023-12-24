@@ -7,6 +7,7 @@ import com.huy.appnoithat.Entity.VatLieu;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.codehaus.httpcache4j.uri.URIBuilder;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,10 +16,7 @@ public class VatLieuRestService {
     private static VatLieuRestService instance;
     final static Logger LOGGER = LogManager.getLogger(VatLieuRestService.class);
     private final WebClientService webClientService;
-    private final ObjectMapper objectMapper;
     private static final String BASE_ENDPOINT = "/api/vatlieu";
-    private static final String ID_TEMPLATE = "/%d";
-    private static final String PARENT_ID_TEMPLATE = "&parentId=%d";
     public static synchronized VatLieuRestService getInstance() {
         if (instance == null) {
             instance = new VatLieuRestService();
@@ -31,9 +29,6 @@ public class VatLieuRestService {
      */
     private VatLieuRestService() {
         webClientService = new WebClientService();
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
     }
 
     /**
@@ -44,19 +39,8 @@ public class VatLieuRestService {
      * @throws RuntimeException if there is an error when searching for VatLieu objects.
      */
     public List<VatLieu> searchByHangMuc(int id) {
-        String path = String.format(BASE_ENDPOINT + "/searchByHangMuc" + ID_TEMPLATE, id);
-        String response = this.webClientService.authorizedHttpGetJson(path);
-        if (response == null) {
-            return null;
-        }
-        try {
-            // 2. convert JSON array to List of objects
-            return objectMapper.readValue(response, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, VatLieu.class));
-        } catch (IOException e) {
-            LOGGER.error("Error when finding vat lieu");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("searchByHangMuc", String.valueOf(id));
+        return this.webClientService.authorizedHttpGetJson(uriBuilder, VatLieu.class, List.class).orElse(null);
     }
     /**
      * Saves a new VatLieu object.
@@ -66,12 +50,12 @@ public class VatLieuRestService {
      * @throws RuntimeException if there is an error when saving the VatLieu object.
      */
     public void save(VatLieu vatLieu, int parentID) {
-        String path = String.format(BASE_ENDPOINT + PARENT_ID_TEMPLATE, parentID);
-        try {
-            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(vatLieu));
-        } catch (IOException e) {
-            LOGGER.error("Error when adding new VatLieu");
-            throw new RuntimeException(e);
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT)
+                .addParameter("parentId", String.valueOf(parentID));
+        if (this.webClientService.authorizedHttpPostJson(uriBuilder, vatLieu, String.class).isEmpty()) {
+            LOGGER.error("Can't save VatLieu");
+            throw new RuntimeException("Can't save VatLieu");
         }
     }
 
@@ -82,12 +66,10 @@ public class VatLieuRestService {
      * @throws RuntimeException if there is an error when updating the VatLieu object.
      */
     public void update(VatLieu vatLieu) {
-        String path = String.format(BASE_ENDPOINT);
-        try {
-            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(vatLieu));
-        } catch (IOException e) {
-            LOGGER.error("Error when editing VatLieu");
-            throw new RuntimeException(e);
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT);
+        if (this.webClientService.authorizedHttpPutJson(uriBuilder, vatLieu, String.class).isEmpty()) {
+            LOGGER.error("Can't update VatLieu");
+            throw new RuntimeException("Can't update VatLieu");
         }
     }
 
@@ -98,8 +80,11 @@ public class VatLieuRestService {
      * @throws RuntimeException if there is an error when deleting the VatLieu object.
      */
     public void deleteById(int id) {
-        String path = String.format(BASE_ENDPOINT + ID_TEMPLATE, id);
-        this.webClientService.authorizedHttpDeleteJson(path, "");
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath(String.valueOf(id));
+        if (this.webClientService.authorizedHttpDeleteJson(uriBuilder, String.class).isEmpty()) {
+            LOGGER.error("Can't delete VatLieu");
+            throw new RuntimeException("Can't delete VatLieu");
+        }
     }
 
     /**
@@ -112,28 +97,31 @@ public class VatLieuRestService {
      * @throws RuntimeException if there is an error when searching for VatLieu objects.
      */
     public List<VatLieu> searchBy(String phongCachName, String noiThatName, String hangMucName) {
-        String path = String.format(BASE_ENDPOINT + "/searchBy" + "?phongCachName=%s&noiThatName=%s&hangMucName=%s",
-                phongCachName, noiThatName, hangMucName);
-        String response = this.webClientService.authorizedHttpGetJson(path);
-        if (response == null) {
-            return null;
-        }
-        try {
-            // 2. convert JSON array to List of objects
-            return objectMapper.readValue(response, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, VatLieu.class));
-        } catch (IOException e) {
-            LOGGER.error("Error when finding vat lieu");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT).addPath("searchBy")
+                .addParameter("phongCachName", phongCachName)
+                .addParameter("noiThatName", noiThatName)
+                .addParameter("hangMucName", hangMucName);
+        return this.webClientService.authorizedHttpGetJson(uriBuilder, VatLieu.class, List.class).orElse(null);
     }
     public void copySampleDataFromAdmin(int parentId) {
-        String path = String.format(BASE_ENDPOINT + "/copySampleData" + "?parentId=%d", parentId);
-        this.webClientService.authorizedHttpGetJson(path);
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT).addPath("copySampleData")
+                .addParameter("parentId", String.valueOf(parentId));
+        if (this.webClientService.authorizedHttpGetJson(uriBuilder, String.class).isEmpty()) {
+            LOGGER.error("Can't copy sample data");
+            throw new RuntimeException("Can't copy sample data");
+        }
     }
 
     public void swap(int id1, int id2) {
-        String path = String.format(BASE_ENDPOINT + "/swap?id1=%d&id2=%d", id1, id2);
-        this.webClientService.authorizedHttpGetJson(path);
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT).addPath("swap")
+                .addParameter("id1", String.valueOf(id1))
+                .addParameter("id2", String.valueOf(id2));
+        if (this.webClientService.authorizedHttpGetJson(uriBuilder, String.class).isEmpty()) {
+            LOGGER.error("Can't swap VatLieu");
+            throw new RuntimeException("Can't swap VatLieu");
+        }
     }
 }

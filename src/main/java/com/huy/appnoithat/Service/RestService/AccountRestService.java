@@ -10,16 +10,17 @@ import com.huy.appnoithat.Entity.AccountInformation;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.codehaus.httpcache4j.uri.URIBuilder;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class AccountRestService {
     final static Logger LOGGER = LogManager.getLogger(AccountRestService.class);
     private static AccountRestService instance;
-    private final ObjectMapper objectMapper;
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api";
     public static synchronized AccountRestService getInstance() {
@@ -30,161 +31,101 @@ public class AccountRestService {
     }
 
     private AccountRestService() {
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
         webClientService = new WebClientService();
     }
 
     public Account getAccountInformation() {
-        String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/info");
-        if (response == null) {
-            return null;
-        }
-        try {
-            return this.objectMapper.readValue(response, Account.class);
-        } catch (IOException e) {
-            LOGGER.error("Error when find account by username ");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("info");
+        Optional<Account> response = this.webClientService.authorizedHttpGetJson(uriBuilder, Account.class);
+        return response.orElse(null);
     }
 
     public Account findByUsername(String username) {
-        String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/search?username=" + username);
-        if (response == null) {
-            return null;
-        }
-        try {
-            return this.objectMapper.readValue(response, Account.class);
-        } catch (IOException e) {
-            LOGGER.error("Error when find account by username: " + username);
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", "search").addParameter("username", username);
+        Optional<Account> response = this.webClientService.authorizedHttpGetJson(uriBuilder, Account.class);
+        return response.orElse(null);
     }
 
     public Account findById(int id) {
-        String response = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/" + id);
-        if (response == null) {
-            return null;
-        }
-        try {
-            return this.objectMapper.readValue(response, Account.class);
-        } catch (IOException e) {
-            LOGGER.error("Error when find account by id: " + id);
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", String.valueOf(id));
+        Optional<Account> response = this.webClientService.authorizedHttpGetJson(uriBuilder, Account.class);
+        return response.orElse(null);
     }
     public void save(Account account) {
-        try {
-            this.webClientService.authorizedHttpPostJson(BASE_ENDPOINT + "/accounts",
-                    this.objectMapper.writeValueAsString(account));
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Error when save account: " + account.getUsername());
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts");
+        Optional<String> response = this.webClientService.authorizedHttpPostJson(uriBuilder, account, String.class);
+        response.orElseThrow(() -> {
+            LOGGER.error("Can't save account");
+            return new RuntimeException("Can't save account");
+        });
     }
     public String update(Account account) {
-        try {
-            return this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/" + account.getId(),
-                    this.objectMapper.writeValueAsString(account));
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Error when update account: " + account.getUsername());
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", String.valueOf(account.getId()));
+        Optional<String> response = this.webClientService.authorizedHttpPutJson(uriBuilder, account, String.class);
+        return response.orElse(null);
     }
     public void deleteById(int id) {
-        this.webClientService.authorizedHttpDeleteJson(BASE_ENDPOINT + "/accounts/" + id, " ");
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", String.valueOf(id));
+        this.webClientService.authorizedHttpDeleteJson(uriBuilder, String.class);
     }
     public void activateAccount(int id) {
-        this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/activate/" + id, " ");
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", "activate", String.valueOf(id));
+        this.webClientService.authorizedHttpPutJson(uriBuilder, "", String.class);
     }
     public void deactivateAccount(int id) {
-        this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/deactivate/" + id, " ");
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", "deactivate", String.valueOf(id));
+        this.webClientService.authorizedHttpPutJson(uriBuilder, "", String.class);
     }
     public List<Account> findAllEnabledAccount() {
-        String response2 = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/enabled");
-        if (response2 == null) {
-            return null;
-        }
-        try {
-            return this.objectMapper.readValue(response2, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, Account.class));
-        } catch (IOException e) {
-            LOGGER.error("Can't parse response from server when get all account");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", "enabled");
+        Optional<List<Account>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, Account.class, List.class);
+        return response.orElse(null);
     }
     public List<Account> findAllNotEnabledAccount() {
-        String response2 = this.webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/accounts/notEnabled");
-        if (response2 == null) {
-            return null;
-        }
-        try {
-            return this.objectMapper.readValue(response2, this.objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, Account.class));
-        } catch (IOException e) {
-            LOGGER.error("Can't parse response from server when get all account");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", "notEnabled");
+        Optional<List<Account>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, Account.class, List.class);
+        return response.orElse(null);
     }
     public void enableAccount(int id) {
-        this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/accounts/enable/" + id, "1");
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", "enable", String.valueOf(id));
+        this.webClientService.authorizedHttpPutJson(uriBuilder, "", String.class);
     }
     public String sessionCheck() {
-        return webClientService.authorizedHttpGetJson(BASE_ENDPOINT + "/index");
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("index");
+        Optional<String> response = this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
+        return response.orElse(null);
     }
     public Token login(String username, String password) {
-        Account account = new Account(0, username, password,
-                true, null, null, false, null);
-        try {
-            String response = webClientService.unauthorizedHttpPostJson(
-                    BASE_ENDPOINT + "/login", objectMapper.writeValueAsString(account));
-            if (response == null) {
-                return null;
-            }
-            return objectMapper.readValue(response, Token.class);
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Login failed");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("login");
+        Account account = Account.builder().username(username).password(password).build();
+        Optional<Token> response = webClientService.unauthorizedHttpPostJson(uriBuilder, account, Token.class);
+        return response.orElse(null);
     }
     public void register(Account account) {
-        try {
-            this.webClientService.authorizedHttpPostJson(BASE_ENDPOINT + "/register",
-                    objectMapper.writeValueAsString(account));
-        } catch (IOException e) {
-            LOGGER.error("Can't parse response from server when register new account");
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("register");
+        Optional<String> response = this.webClientService.unauthorizedHttpPostJson(uriBuilder, account, String.class);
+        response.orElseThrow(() -> {
+            LOGGER.error("Can't register new account");
+            return new RuntimeException("Can't register new account");
+        });
     }
     public boolean isUsernameValid(String username) {
-        String response = this.webClientService.unauthorizedHttpGetJson("/api/register/usernameValidation?username=" + username);
-        return response != null;
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("register", "usernameValidation")
+                .addParameter("username", username);
+        Optional<String> response = this.webClientService.unauthorizedHttpGetJson(uriBuilder, String.class);
+        return response.isPresent();
     }
     public boolean changePassword(String oldPassword, String newPassword) {
         Map<String, String> requestBody = new HashMap<>();
         requestBody.put("oldPassword", oldPassword);
         requestBody.put("newPassword", newPassword);
-        try {
-            String response = this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/changePassword",
-                    objectMapper.writeValueAsString(requestBody));
-            if (response != null) {
-                return true;
-            }
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
-        return false;
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("changePassword");
+        Optional<String> response = this.webClientService.authorizedHttpPutJson(uriBuilder, requestBody, String.class);
+        return response.isPresent();
     }
     public boolean updateInformation(AccountInformation accountInformation) {
-        try {
-            String response = this.webClientService.authorizedHttpPutJson(BASE_ENDPOINT + "/updateInfo",
-                    objectMapper.writeValueAsString(accountInformation));
-            if (response != null) {
-                return true;
-            }
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
-        return false;
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("updateInfo");
+        Optional<String> response = this.webClientService.authorizedHttpPutJson(uriBuilder, accountInformation, String.class);
+        return response.isPresent();
     }
 }

@@ -15,12 +15,10 @@ import java.util.ArrayList;
 
 public class UserSessionService {
     final static Logger LOGGER = LogManager.getLogger(UserSessionService.class);
-    private final StorageService persistenceStorageService;
     /**
      * Constructor for UserSessionService. Initializes required services and objects.
      */
     public UserSessionService() {
-        persistenceStorageService = new PersistenceStorageService();
     }
 
     /**
@@ -136,6 +134,7 @@ public class UserSessionService {
      * @throws IOException If an error occurs while reading the session data from the disk.
      */
     public void loadSessionFromDisk() {
+        StorageService persistenceStorageService = new PersistenceStorageService();
         PersistenceUserSession persistenceUserSession = persistenceStorageService.getUserSession();
         if (persistenceUserSession == null) {
             setToken(new Token("", ""));
@@ -150,6 +149,7 @@ public class UserSessionService {
      * @throws IOException If an error occurs while writing the session data to the disk.
      */
     public void saveSessionToDisk() {
+        StorageService persistenceStorageService = new PersistenceStorageService();
         persistenceStorageService.saveUserSession(new PersistenceUserSession(getJwtToken(), getRefreshToken()));
     }
 }

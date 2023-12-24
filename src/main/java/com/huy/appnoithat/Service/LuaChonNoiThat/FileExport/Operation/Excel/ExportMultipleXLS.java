@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -56,7 +57,7 @@ public class ExportMultipleXLS extends ExportXLS {
         ThongTinThanhToan thongTinThanhToan = dataPackage.getThongTinThanhToan();
         String noteArea = dataPackage.getNoteArea();
         exportThongTinCongTy(spreadSheet, thongTinCongTy);
-        exportLogo(spreadSheet, thongTinCongTy.getLogo());
+        exportLogo(spreadSheet, new ByteArrayInputStream(thongTinCongTy.getLogo()));
         exportThongTinKhachHang(spreadSheet, thongTinKhachHang);
         int rowID = exportNoiThat(spreadSheet, thongTinNoiThatList);
         exportBangThanhToan(spreadSheet, ++rowID, thongTinThanhToan);

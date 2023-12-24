@@ -16,23 +16,17 @@
     </properties>
     <!--1 -->
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-rs-client -->
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-webflux -->
-        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
         <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna</artifactId>
-            <version>5.14.0</version>
+            <groupId>org.codehaus.httpcache4j.uribuilder</groupId>
+            <artifactId>uribuilder</artifactId>
+            <version>2.0.0</version>
         </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna-platform -->
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
         <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna-platform</artifactId>
-            <version>5.14.0</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.14.0</version>
         </dependency>
-
 
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -44,26 +38,6 @@
             <artifactId>commons-codec</artifactId>
             <version>1.16.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
-        <dependency>
-            <groupId>com.jfoenix</groupId>
-            <artifactId>jfoenix</artifactId>
-            <version>9.0.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>de.jensd</groupId>
-            <artifactId>fontawesomefx</artifactId>
-            <version>8.9</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.groupdocs/groupdocs-conversion -->
-<!--        <dependency>-->
-<!--            <groupId>com.groupdocs</groupId>-->
-<!--            <artifactId>groupdocs-conversion</artifactId>-->
-<!--            <version>17.12</version>-->
-<!--        </dependency>-->
-
-        <!-- Thanks for using https://jar-download.com -->
 
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
@@ -139,16 +113,6 @@
                     <artifactId>*</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.kordamp.ikonli</groupId>
-            <artifactId>ikonli-javafx</artifactId>
-            <version>12.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.kordamp.bootstrapfx</groupId>
-            <artifactId>bootstrapfx-core</artifactId>
-            <version>0.4.0</version>
         </dependency>
 
         <dependency>

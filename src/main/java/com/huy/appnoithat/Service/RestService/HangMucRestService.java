@@ -7,18 +7,17 @@ import com.huy.appnoithat.Entity.HangMuc;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.codehaus.httpcache4j.uri.URIBuilder;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 public class HangMucRestService {
     private static HangMucRestService instance;
     final static Logger LOGGER = LogManager.getLogger(HangMucRestService.class);
     private final WebClientService webClientService;
-    private final ObjectMapper objectMapper;
     private static final String BASE_ENDPOINT = "/api/hangmuc";
-    private static final String ID_TEMPLATE = "/%d";
-    private static final String PARENT_ID_TEMPLATE = "&parentId=%d";
     public static synchronized HangMucRestService getInstance() {
         if (instance == null) {
             instance = new HangMucRestService();
@@ -31,9 +30,6 @@ public class HangMucRestService {
      */
     private HangMucRestService() {
         webClientService = new WebClientService();
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
     }
 
     /**
@@ -43,19 +39,9 @@ public class HangMucRestService {
      * @return A list of HangMuc items associated with the given NoiThat ID, or null if no items are found.
      */
     public List<HangMuc> searchByNoiThat(int id) {
-        String path = String.format(BASE_ENDPOINT + "/searchByNoiThat" + ID_TEMPLATE, id);
-        String response2 = this.webClientService.authorizedHttpGetJson(path);
-        if (response2 == null) {
-            return null;
-        }
-        try {
-            // Convert JSON array to List of HangMuc objects
-            return objectMapper.readValue(response2, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, HangMuc.class));
-        } catch (IOException e) {
-            LOGGER.error("Error when finding hang muc");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("searchByNoiThat", String.valueOf(id));
+        Optional<List<HangMuc>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, HangMuc.class, List.class);
+        return response.orElse(null);
     }
 
     /**
@@ -65,13 +51,14 @@ public class HangMucRestService {
      * @param parentID The ID of the parent NoiThat.
      */
     public void save(HangMuc hangMuc, int parentID) {
-        String path = String.format(BASE_ENDPOINT + PARENT_ID_TEMPLATE, parentID);
-        try {
-            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(hangMuc));
-        } catch (IOException e) {
-            LOGGER.error("Error when adding new HangMuc");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT)
+                .addParameter("parentId", String.valueOf(parentID));
+        Optional<String> response = this.webClientService.authorizedHttpPostJson(uriBuilder, hangMuc, String.class);
+        response.orElseThrow(() -> {
+            LOGGER.error("Error when saving HangMuc");
+            return new RuntimeException("Error when saving HangMuc");
+        });
     }
 
     /**
@@ -81,13 +68,12 @@ public class HangMucRestService {
      * @throws RuntimeException if there is an error when editing the HangMuc.
      */
     public void update(HangMuc hangMuc) {
-        String path = String.format(BASE_ENDPOINT);
-        try {
-            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(hangMuc));
-        } catch (IOException e) {
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT);
+        Optional<String> response = this.webClientService.authorizedHttpPutJson(uriBuilder, hangMuc, String.class);
+        response.orElseThrow(() -> {
             LOGGER.error("Error when editing HangMuc");
-            throw new RuntimeException(e);
-        }
+            return new RuntimeException("Error when editing HangMuc");
+        });
     }
 
     /**
@@ -96,8 +82,8 @@ public class HangMucRestService {
      * @param id The ID of the HangMuc object to be deleted.
      */
     public void deleteById(int id) {
-        String path = String.format(BASE_ENDPOINT + ID_TEMPLATE, id);
-        this.webClientService.authorizedHttpDeleteJson(path, "");
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath(String.valueOf(id));
+        this.webClientService.authorizedHttpDeleteJson(uriBuilder, String.class);
     }
 
     /**
@@ -109,27 +95,25 @@ public class HangMucRestService {
      * @throws RuntimeException if there is an error when searching for HangMuc objects.
      */
     public List<HangMuc> searchBy(String phongCachName, String noiThatName) {
-        String path = String.format(BASE_ENDPOINT + "/searchBy" + "?phongCachName=%s&noiThatName=%s", phongCachName, noiThatName);
-        String response2 = this.webClientService.authorizedHttpGetJson(path);
-        if (response2 == null) {
-            return null;
-        }
-        try {
-            // 2. convert JSON array to List of objects
-            return objectMapper.readValue(response2, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, HangMuc.class));
-        } catch (IOException e) {
-            LOGGER.error("Error when searching hang muc");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT).addPath("searchBy")
+                .addParameter("phongCachName", phongCachName)
+                .addParameter("noiThatName", noiThatName);
+        Optional<List<HangMuc>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, HangMuc.class, List.class);
+        return response.orElse(null);
     }
     public void copySampleDataFromAdmin(int parentId) {
-        String path = String.format(BASE_ENDPOINT + "/copySampleData" + "?parentId=%d", parentId);
-        this.webClientService.authorizedHttpGetJson(path);
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT).addPath("copySampleData")
+                .addParameter("parentId", String.valueOf(parentId));
+        this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
     }
 
     public void swap(int id1, int id2) {
-        String path = String.format(BASE_ENDPOINT + "/swap?id1=%d&id2=%d", id1, id2);
-        this.webClientService.authorizedHttpGetJson(path);
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT).addPath("swap")
+                .addParameter("id1", String.valueOf(id1))
+                .addParameter("id2", String.valueOf(id2));
+        this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
     }
 }

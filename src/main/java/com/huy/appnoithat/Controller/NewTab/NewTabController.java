@@ -5,7 +5,6 @@ import com.huy.appnoithat.Controller.NewTab.Operation.ContentOperation;
 import com.huy.appnoithat.Controller.NewTab.Operation.TabOperation;
 import com.huy.appnoithat.Enums.FileType;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
-import com.huy.appnoithat.Service.PersistenceStorage.OnlineStorageService;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
 import javafx.animation.KeyFrame;
@@ -48,7 +47,7 @@ public class NewTabController implements Initializable {
     private TabOperation tabOperation;
     private ContentOperation contentOperation;
     public NewTabController() {
-        persistenceStorageService = new OnlineStorageService();
+        persistenceStorageService = new PersistenceStorageService();
         noiThatFileService = new NoiThatFileService();
         currentlyOpenTab = new ArrayList<>();
     }

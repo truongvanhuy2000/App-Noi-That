@@ -93,7 +93,7 @@ public class ExportOperation {
     private ThongTinCongTy getThongTinCongTy() {
 
         return new ThongTinCongTy(
-                new ByteArrayInputStream(luaChonNoiThatController.getImageStream().toByteArray()),
+                luaChonNoiThatController.getImageStream().toByteArray(),
                 TenCongTy.getText(),
                 VanPhong.getText(),
                 DiaChiXuong.getText(),
