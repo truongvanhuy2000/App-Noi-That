@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.Service.WebClient.WebClientService;
+import org.codehaus.httpcache4j.uri.URIBuilder;
 
 public class BangNoiThatRestService {
     private static final String BASE_ENDPOINT = "/api/bangnoithat";
@@ -16,7 +17,7 @@ public class BangNoiThatRestService {
         webClientService = new WebClientService();
     }
     public void sampleAll() {
-        String path = String.format(BASE_ENDPOINT + "/sampleAll");
-        this.webClientService.authorizedHttpGetJson(path);
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("sampleAll");
+        this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
     }
 }

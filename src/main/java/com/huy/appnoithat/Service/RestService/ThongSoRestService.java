@@ -7,18 +7,17 @@ import com.huy.appnoithat.Entity.ThongSo;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.codehaus.httpcache4j.uri.URIBuilder;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 public class ThongSoRestService {
     private static ThongSoRestService instance;
     final static Logger LOGGER = LogManager.getLogger(VatLieuRestService.class);
     private final WebClientService webClientService;
-    private final ObjectMapper objectMapper;
     private static final String BASE_ENDPOINT = "/api/thongso";
-    private static final String ID_TEMPLATE = "/%d";
-    private static final String PARENT_ID_TEMPLATE = "&parentId=%d";
     public static synchronized ThongSoRestService getInstance() {
         if (instance == null) {
             instance = new ThongSoRestService();
@@ -31,9 +30,6 @@ public class ThongSoRestService {
      */
     private ThongSoRestService() {
         webClientService = new WebClientService();
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
     }
 
     /**
@@ -44,13 +40,14 @@ public class ThongSoRestService {
      * @throws RuntimeException if there is an error when saving the ThongSo object.
      */
     public void save(ThongSo thongSo, int parentId) {
-        String path = String.format(BASE_ENDPOINT + PARENT_ID_TEMPLATE, parentId);
-        try {
-            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(thongSo));
-        } catch (IOException e) {
-            LOGGER.error("Error when saving ThongSo");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT)
+                .addParameter("parentId", String.valueOf(parentId));
+        Optional<String> response = this.webClientService.authorizedHttpPostJson(uriBuilder, thongSo, String.class);
+        response.orElseThrow(() -> {
+            LOGGER.error("Can't save ThongSo");
+            return new RuntimeException("Can't save ThongSo");
+        });
     }
 
     /**
@@ -61,19 +58,9 @@ public class ThongSoRestService {
      * @throws RuntimeException if there is an error when searching for ThongSo objects.
      */
     public List<ThongSo> searchByVatLieu(int id) {
-        String path = String.format(BASE_ENDPOINT + "/searchByVatlieu" + ID_TEMPLATE, id);
-        String response2 = this.webClientService.authorizedHttpGetJson(path);
-        if (response2 == null) {
-            return null;
-        }
-        try {
-            // 2. convert JSON array to List of objects
-            return objectMapper.readValue(response2, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, ThongSo.class));
-        } catch (IOException e) {
-            LOGGER.error("Error when finding thong so");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("searchByVatLieu", String.valueOf(id));
+        Optional<List<ThongSo>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, ThongSo.class, List.class);
+        return response.orElse(null);
     }
     /**
      * Updates an existing ThongSo object.
@@ -82,16 +69,17 @@ public class ThongSoRestService {
      * @throws RuntimeException if there is an error when updating the ThongSo object.
      */
     public void update(ThongSo thongSo) {
-        String path = String.format(BASE_ENDPOINT);
-        try {
-            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(thongSo));
-        } catch (IOException e) {
-            LOGGER.error("Error when editing ThongSo");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT);
+        Optional<String> response = this.webClientService.authorizedHttpPutJson(uriBuilder, thongSo, String.class);
+        response.orElseThrow(() -> {
+            LOGGER.error("Can't update ThongSo");
+            return new RuntimeException("Can't update ThongSo");
+        });
     }
     public void copySampleDataFromAdmin(int parentId) {
-        String path = String.format(BASE_ENDPOINT + "/copySampleData" + "?parentId=%d", parentId);
-        this.webClientService.authorizedHttpGetJson(path);
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT).addPath("copySampleData")
+                .addParameter("parentId", String.valueOf(parentId));
+        Optional<String> response = this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
     }
 }

@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -41,7 +42,7 @@ public class ExportSingleXLS extends ExportXLS implements ExportFile {
         setOutputFile(exportDirectory);
         LOGGER.info("Exporting to XLSX file");
         exportThongTinCongTy(spreadsheet, this.thongTinCongTy);
-        exportLogo(spreadsheet, this.thongTinCongTy.getLogo());
+        exportLogo(spreadsheet, new ByteArrayInputStream(thongTinCongTy.getLogo()));
         exportThongTinKhachHang(spreadsheet, this.thongTinKhachHang);
         int rowID = exportNoiThat(spreadsheet, this.thongTinNoiThatList);
         exportBangThanhToan(spreadsheet, ++rowID, this.thongTinThanhToan);

@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.InputStream;
+import java.util.Date;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -26,4 +28,6 @@ public class LapBaoGiaInfo {
     private InputStream logo;
     @JsonProperty("note")
     private String note;
+    @JsonProperty("createdDate")
+    private Date createdDate;
 }

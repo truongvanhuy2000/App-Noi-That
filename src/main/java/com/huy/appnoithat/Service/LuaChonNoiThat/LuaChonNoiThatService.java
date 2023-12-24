@@ -69,8 +69,6 @@ public class LuaChonNoiThatService {
      */
     public List<NoiThat> findNoiThatListBy(String phongCach) {
         // Encoding the PhongCach to ensure URL safety.
-        phongCach = URLEncoder.encode(phongCach, StandardCharsets.UTF_8);
-
         String requestId = cacheNoiThatRequestService.createUniqueId("findNoiThatListBy", phongCach);
         if (cacheNoiThatRequestService.isContain(requestId)) {
             return cacheNoiThatRequestService.readCache(requestId, NoiThat.class);
@@ -91,9 +89,6 @@ public class LuaChonNoiThatService {
      */
     public List<HangMuc> findHangMucListBy(String phongCach, String noiThat) {
         // Encoding PhongCach and NoiThat to ensure URL safety.
-        phongCach = URLEncoder.encode(phongCach, StandardCharsets.UTF_8);
-        noiThat = URLEncoder.encode(noiThat, StandardCharsets.UTF_8);
-
         String requestId = cacheNoiThatRequestService.createUniqueId("findHangMucListBy", phongCach, noiThat);
         if (cacheNoiThatRequestService.isContain(requestId)) {
             return cacheNoiThatRequestService.readCache(requestId, HangMuc.class);
@@ -114,10 +109,6 @@ public class LuaChonNoiThatService {
      */
     public List<VatLieu> findVatLieuListBy(String phongCach, String noiThat, String hangMuc) {
         // Encoding PhongCach, NoiThat, and HangMuc to ensure URL safety.
-        phongCach = URLEncoder.encode(phongCach, StandardCharsets.UTF_8);
-        noiThat = URLEncoder.encode(noiThat, StandardCharsets.UTF_8);
-        hangMuc = URLEncoder.encode(hangMuc, StandardCharsets.UTF_8);
-
         String requestId = cacheNoiThatRequestService.createUniqueId("findVatLieuListBy", phongCach, noiThat, hangMuc);
         if (cacheNoiThatRequestService.isContain(requestId)) {
             return cacheNoiThatRequestService.readCache(requestId, VatLieu.class);

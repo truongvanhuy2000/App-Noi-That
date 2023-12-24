@@ -4,23 +4,28 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Configuration.Config;
+import com.huy.appnoithat.DataModel.LapBaoGiaInfo;
 import com.huy.appnoithat.DataModel.RecentFile;
 import com.huy.appnoithat.DataModel.Session.PersistenceUserSession;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
+import com.huy.appnoithat.Service.RestService.LapBaoGiaRestService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 public class PersistenceStorageService implements StorageService {
     final static Logger LOGGER = LogManager.getLogger(PersistenceStorageService.class);
     private final ObjectMapper objectMapper;
+    private final LapBaoGiaRestService lapBaoGiaRestService;
     public PersistenceStorageService() {
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
+        lapBaoGiaRestService = new LapBaoGiaRestService();
     }
     /**
      * Retrieves the company information from a file. If the information is already
@@ -33,8 +38,17 @@ public class PersistenceStorageService implements StorageService {
     @Override
     public ThongTinCongTy getThongTinCongTy() {
         try {
+            ThongTinCongTy thongTinCongTy = objectMapper.readValue(
+                    new File(Config.USER.COMPANY_INFO_DIRECTORY), ThongTinCongTy.class);
+            if (thongTinCongTy == null || thongTinCongTy.getCreatedDate() == null ||
+                    lapBaoGiaRestService.checkInfoModification(thongTinCongTy.getCreatedDate())) {
+                thongTinCongTy = lapBaoGiaRestService.getThongTinCongTy();
+                if (thongTinCongTy != null) {
+                    saveThongTinCongTy(thongTinCongTy);
+                }
+            }
             // Read company information from the specified file path
-            return objectMapper.readValue(new File(Config.USER.COMPANY_INFO_DIRECTORY), ThongTinCongTy.class);
+            return thongTinCongTy;
         } catch (IOException e) {
             LOGGER.error("Failed to read company info" + e.getMessage());
             throw new RuntimeException(e);
@@ -50,7 +64,8 @@ public class PersistenceStorageService implements StorageService {
     @Override
     public void saveThongTinCongTy(ThongTinCongTy thongTinCongTy) {
         try {
-            // Write company information to the specified file path
+            thongTinCongTy.setCreatedDate(new Date());
+            lapBaoGiaRestService.saveThongTinCongTy(thongTinCongTy);
             objectMapper.writeValue(new File(Config.USER.COMPANY_INFO_DIRECTORY), thongTinCongTy);
         } catch (IOException e) {
             LOGGER.error("Failed to write company info" + e.getMessage());
@@ -119,6 +134,7 @@ public class PersistenceStorageService implements StorageService {
     @Override
     public void saveNoteArea(String noteArea) {
         try {
+            lapBaoGiaRestService.saveNote(noteArea);
             objectMapper.writeValue(new File(Config.USER.NOTE_AREA_DIRECTORY), noteArea);
         } catch (IOException e) {
             LOGGER.error("Failed to write note area" + e.getMessage());
@@ -128,7 +144,11 @@ public class PersistenceStorageService implements StorageService {
     @Override
     public String getNoteArea() {
         try {
-            return objectMapper.readValue(new File(Config.USER.NOTE_AREA_DIRECTORY), String.class);
+            String note = objectMapper.readValue(new File(Config.USER.NOTE_AREA_DIRECTORY), String.class);
+            if (note == null) {
+                note = lapBaoGiaRestService.getNote();
+            }
+            return note;
         } catch (IOException e) {
             LOGGER.error("Failed to read note area" + e.getMessage());
             throw new RuntimeException(e);

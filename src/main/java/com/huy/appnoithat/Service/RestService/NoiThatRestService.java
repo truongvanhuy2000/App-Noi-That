@@ -7,19 +7,18 @@ import com.huy.appnoithat.Entity.NoiThat;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.codehaus.httpcache4j.uri.URIBuilder;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class NoiThatRestService {
     private static NoiThatRestService instance;
     final static Logger LOGGER = LogManager.getLogger(NoiThatRestService.class);
     private final WebClientService webClientService;
-    private final ObjectMapper objectMapper;
     private static final String BASE_ENDPOINT = "/api/noithat";
-    private static final String ID_TEMPLATE = "/%d";
-    private static final String PARENT_ID_TEMPLATE = "&parentId=%d";
     public static synchronized NoiThatRestService getInstance() {
         if (instance == null) {
             instance = new NoiThatRestService();
@@ -28,24 +27,6 @@ public class NoiThatRestService {
     }
     private NoiThatRestService() {
         webClientService = new WebClientService();
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
-    }
-    @Deprecated
-    public List<NoiThat> findAll() {
-        return null;
-    }
-    @Deprecated
-    public NoiThat findById(int id) {
-        return null;
-    }
-    @Deprecated
-    public NoiThat findUsingName(String name) {
-        return null;
-    }
-    @Deprecated
-    public void save(NoiThat noiThat) {
     }
 
     /**
@@ -56,19 +37,9 @@ public class NoiThatRestService {
      * @throws RuntimeException if there is an error when searching for NoiThat objects.
      */
     public List<NoiThat> searchByPhongCach(int id) {
-        String path = String.format(BASE_ENDPOINT + "/searchByPhongCach" + ID_TEMPLATE, id);
-        String response2 = this.webClientService.authorizedHttpGetJson(path);
-        if (response2 == null) {
-            return new ArrayList<>();
-        }
-        try {
-            // 2. convert JSON array to List of objects
-            return objectMapper.readValue(response2, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, NoiThat.class));
-        } catch (IOException e) {
-            LOGGER.error("Error when finding noi that");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("searchByPhongCach", String.valueOf(id));
+        Optional<List<NoiThat>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, NoiThat.class, List.class);
+        return response.orElse(new ArrayList<>());
     }
 
     /**
@@ -79,13 +50,12 @@ public class NoiThatRestService {
      * @throws RuntimeException if there is an error when saving the NoiThat object.
      */
     public void save(NoiThat noiThat, int parentID) {
-        String path = String.format(BASE_ENDPOINT + PARENT_ID_TEMPLATE, parentID);
-        try {
-            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(noiThat));
-        } catch (IOException e) {
-            LOGGER.error("Error when adding new NoiThat");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addParameter("parentId", String.valueOf(parentID));
+        Optional<String> response = this.webClientService.authorizedHttpPostJson(uriBuilder, noiThat, String.class);
+        response.orElseThrow(() -> {
+            LOGGER.error("Can't save NoiThat");
+            return new RuntimeException("Can't save NoiThat");
+        });
     }
 
     /**
@@ -95,13 +65,12 @@ public class NoiThatRestService {
      * @throws RuntimeException if there is an error when updating the NoiThat object.
      */
     public void update(NoiThat noiThat) {
-        String path = String.format(BASE_ENDPOINT);
-        try {
-            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(noiThat));
-        } catch (IOException e) {
-            LOGGER.error("Error when editing NoiThat");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT);
+        Optional<String> response = this.webClientService.authorizedHttpPutJson(uriBuilder, noiThat, String.class);
+        response.orElseThrow(() -> {
+            LOGGER.error("Can't update NoiThat");
+            return new RuntimeException("Can't update NoiThat");
+        });
     }
 
     /**
@@ -111,8 +80,8 @@ public class NoiThatRestService {
      * @throws RuntimeException if there is an error when deleting the NoiThat object.
      */
     public void deleteById(int id) {
-        String path = String.format(BASE_ENDPOINT + ID_TEMPLATE, id);
-        this.webClientService.authorizedHttpDeleteJson(path, "");
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath(String.valueOf(id));
+        this.webClientService.authorizedHttpDeleteJson(uriBuilder, String.class);
     }
 
     /**
@@ -123,27 +92,24 @@ public class NoiThatRestService {
      * @throws RuntimeException if there is an error when searching for NoiThat objects.
      */
     public List<NoiThat> searchBy(String phongCachName) {
-        String path = String.format(BASE_ENDPOINT + "/searchBy" + "?phongCachName=%s", phongCachName);
-        String response2 = this.webClientService.authorizedHttpGetJson(path);
-        if (response2 == null) {
-            return null;
-        }
-        try {
-            // 2. convert JSON array to List of objects
-            return objectMapper.readValue(response2, objectMapper.getTypeFactory()
-                    .constructCollectionType(List.class, NoiThat.class));
-        } catch (IOException e) {
-            LOGGER.error("Error when searching noi that");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT).addPath("searchBy")
+                .addParameter("phongCachName", phongCachName);
+        Optional<List<NoiThat>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, NoiThat.class, List.class);
+        return response.orElse(new ArrayList<>());
     }
     public void copySampleDataFromAdmin(int parentId) {
-        String path = String.format(BASE_ENDPOINT + "/copySampleData" + "?parentId=%d", parentId);
-        this.webClientService.authorizedHttpGetJson(path);
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT).addPath("copySampleData")
+                .addParameter("parentId", String.valueOf(parentId));
+        this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
     }
 
     public void swap(int id1, int id2) {
-        String path = String.format(BASE_ENDPOINT + "/swap?id1=%d&id2=%d", id1, id2);
-        this.webClientService.authorizedHttpGetJson(path);
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT).addPath("swap")
+                .addParameter("id1", String.valueOf(id1))
+                .addParameter("id2", String.valueOf(id2));
+        this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
     }
 }

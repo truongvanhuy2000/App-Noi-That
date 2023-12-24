@@ -18,6 +18,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
+
 public class ImportOperation {
     final static Logger LOGGER = LogManager.getLogger(ImportOperation.class);
     private final TextField TenCongTy;
@@ -57,17 +59,17 @@ public class ImportOperation {
     }
     private void importThongTinCongTy(ThongTinCongTy thongTinCongTy) {
         if (thongTinCongTy == null) return;
-        TenCongTy.setText(thongTinCongTy.getTenCongTy());
-        VanPhong.setText(thongTinCongTy.getDiaChiVanPhong());
-        DiaChiXuong.setText(thongTinCongTy.getDiaChiXuong());
-        DienThoaiCongTy.setText(thongTinCongTy.getSoDienThoai());
-        Email.setText(thongTinCongTy.getEmail());
+        TenCongTy.setText(Objects.requireNonNullElse(thongTinCongTy.getTenCongTy(), ""));
+        VanPhong.setText(Objects.requireNonNullElse(thongTinCongTy.getDiaChiVanPhong(), ""));
+        DiaChiXuong.setText(Objects.requireNonNullElse(thongTinCongTy.getDiaChiXuong(), ""));
+        DienThoaiCongTy.setText(Objects.requireNonNullElse(thongTinCongTy.getSoDienThoai(), ""));
+        Email.setText(Objects.requireNonNullElse(thongTinCongTy.getEmail(), ""));
 
         try {
+            if (thongTinCongTy.getLogo() == null) return;
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            IOUtils.copy(thongTinCongTy.getLogo(), byteArrayOutputStream);
+            IOUtils.copy(new ByteArrayInputStream(thongTinCongTy.getLogo()), byteArrayOutputStream);
             luaChonNoiThatController.setImageStream(byteArrayOutputStream);
-
             ImageView.setImage(new Image(new ByteArrayInputStream(byteArrayOutputStream.toByteArray())));
         } catch (IOException e) {
             LOGGER.error("Error while importing logo", e);

@@ -14,14 +14,10 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupTruongThongTin;
 import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.Enums.Action;
-import com.huy.appnoithat.Service.PersistenceStorage.OnlineStorageService;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -78,7 +74,7 @@ public class LuaChonNoiThatController implements Initializable {
     private final StorageService persistenceStorageService;
     public LuaChonNoiThatController() {
         imageStream = new ByteArrayOutputStream();
-        persistenceStorageService = new OnlineStorageService();
+        persistenceStorageService = new PersistenceStorageService();
     }
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {
@@ -130,7 +126,7 @@ public class LuaChonNoiThatController implements Initializable {
     }
     public void saveThongTinCongTy() {
         ThongTinCongTy thongTinCongTy = new ThongTinCongTy(
-                new ByteArrayInputStream(imageStream.toByteArray()),
+                imageStream.toByteArray(),
                 TenCongTy.getText(),
                 VanPhong.getText(),
                 DiaChiXuong.getText(),

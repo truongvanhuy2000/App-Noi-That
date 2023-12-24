@@ -4,8 +4,7 @@ module com.huy.appnoithat {
     requires org.apache.commons.io;
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
-    requires org.kordamp.ikonli.javafx;
-    requires org.kordamp.bootstrapfx.core;
+    requires uribuilder;
     requires lombok;
     requires java.net.http;
     requires com.fasterxml.jackson.databind;
@@ -15,6 +14,7 @@ module com.huy.appnoithat {
     requires java.desktop;
     requires com.fasterxml.jackson.datatype.jsr310;
     requires com.fasterxml.jackson.dataformat.yaml;
+    requires org.apache.commons.lang3;
 
     exports com.huy.appnoithat.Controller;
     opens com.huy.appnoithat.Controller to javafx.fxml;

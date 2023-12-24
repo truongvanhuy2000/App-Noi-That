@@ -9,18 +9,18 @@ import com.huy.appnoithat.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.codehaus.httpcache4j.uri.URIBuilder;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class PhongCachRestService {
     private static PhongCachRestService instance;
     final static Logger LOGGER = LogManager.getLogger(PhongCachRestService.class);
     private final WebClientService webClientService;
-    private final ObjectMapper objectMapper;
     private static final String BASE_ENDPOINT = "/api/phongcach";
-    private static final String ID_TEMPLATE = "/%d";
     public static synchronized PhongCachRestService getInstance() {
         if (instance == null) {
             instance = new PhongCachRestService();
@@ -33,9 +33,6 @@ public class PhongCachRestService {
      */
     private PhongCachRestService() {
         webClientService = new WebClientService();
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
     }
 
     /**
@@ -45,18 +42,9 @@ public class PhongCachRestService {
      * @throws RuntimeException if there is an error when retrieving PhongCachNoiThat objects.
      */
     public List<PhongCachNoiThat> findAll() {
-        String path = String.format(BASE_ENDPOINT);
-        String response = webClientService.authorizedHttpGetJson(path);
-        if (response == null) {
-            return new ArrayList<>();
-        }
-        try {
-            return objectMapper.readValue(response,
-                    objectMapper.getTypeFactory().constructCollectionType(List.class, PhongCachNoiThat.class));
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Can't parse response from server");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT);
+        Optional<List<PhongCachNoiThat>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, PhongCachNoiThat.class, List.class);
+        return response.orElse(new ArrayList<>());
     }
 
     /**
@@ -67,17 +55,9 @@ public class PhongCachRestService {
      * @throws RuntimeException if there is an error when finding the PhongCachNoiThat object.
      */
     public PhongCachNoiThat findById(int id) {
-        String path = String.format(BASE_ENDPOINT + ID_TEMPLATE, id);
-        String response = webClientService.authorizedHttpGetJson(path);
-        if (response == null) {
-            return null;
-        }
-        try {
-            return objectMapper.readValue(response, PhongCachNoiThat.class);
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Can't parse response from server");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath(String.valueOf(id));
+        Optional<PhongCachNoiThat> response = this.webClientService.authorizedHttpGetJson(uriBuilder, PhongCachNoiThat.class);
+        return response.orElse(null);
     }
 
     /**
@@ -88,17 +68,9 @@ public class PhongCachRestService {
      * @throws RuntimeException if there is an error when finding the PhongCachNoiThat object.
      */
     public PhongCachNoiThat findUsingName(String name) {
-        String path = String.format(BASE_ENDPOINT + "/search" + "?name=%s", Utils.encodeValue(name));
-        String response = webClientService.authorizedHttpGetJson(path);
-        if (response == null) {
-            return null;
-        }
-        try {
-            return objectMapper.readValue(response, PhongCachNoiThat.class);
-        } catch (JsonProcessingException e) {
-            LOGGER.error("Can't parse response from server");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("search").addParameter("name", name);
+        Optional<PhongCachNoiThat> response = this.webClientService.authorizedHttpGetJson(uriBuilder, PhongCachNoiThat.class);
+        return response.orElse(null);
     }
 
     /**
@@ -108,13 +80,12 @@ public class PhongCachRestService {
      * @throws RuntimeException if there is an error when saving the PhongCachNoiThat object.
      */
     public void save(PhongCachNoiThat phongCachNoiThat) {
-        String path = String.format(BASE_ENDPOINT);
-        try {
-            this.webClientService.authorizedHttpPostJson(path, objectMapper.writeValueAsString(phongCachNoiThat));
-        } catch (IOException e) {
-            LOGGER.error("Error when adding new PhongCach");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT);
+        Optional<String> response = this.webClientService.authorizedHttpPostJson(uriBuilder, phongCachNoiThat, String.class);
+        response.orElseThrow(() -> {
+            LOGGER.error("Can't save PhongCach");
+            return new RuntimeException("Can't save PhongCach");
+        });
     }
 
     /**
@@ -124,30 +95,33 @@ public class PhongCachRestService {
      * @throws RuntimeException if there is an error when updating the PhongCachNoiThat object.
      */
     public void update(PhongCachNoiThat phongCachNoiThat) {
-        String path = String.format(BASE_ENDPOINT);
-        try {
-            this.webClientService.authorizedHttpPutJson(path, objectMapper.writeValueAsString(phongCachNoiThat));
-        } catch (IOException e) {
-            LOGGER.error("Error when editing PhongCach");
-            throw new RuntimeException(e);
-        }
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT);
+        Optional<String> response = this.webClientService.authorizedHttpPutJson(uriBuilder, phongCachNoiThat, String.class);
+        response.orElseThrow(() -> {
+            LOGGER.error("Can't update PhongCach");
+            return new RuntimeException("Can't update PhongCach");
+        });
     }
 
 /**
  * Deletes a PhongCachNoiThat
  * */
     public void deleteById(int id) {
-        String path = String.format(BASE_ENDPOINT + ID_TEMPLATE, id);
-        this.webClientService.authorizedHttpDeleteJson(path, "");
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath(String.valueOf(id));
+        this.webClientService.authorizedHttpDeleteJson(uriBuilder, String.class);
     }
 
     public void copySampleDataFromAdmin() {
-        String path = String.format(BASE_ENDPOINT + "/copySampleData");
-        this.webClientService.authorizedHttpGetJson(path);
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("copySampleData");
+        this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
     }
 
     public void swap(int id1, int id2) {
-        String path = String.format(BASE_ENDPOINT + "/swap?id1=%d&id2=%d", id1, id2);
-        this.webClientService.authorizedHttpGetJson(path);
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT)
+                .addPath("swap")
+                .addParameter("id1", String.valueOf(id1))
+                .addParameter("id2", String.valueOf(id2));
+        this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
     }
 }
