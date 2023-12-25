@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.poi.sl.draw.geom.GuideIf;
 import org.codehaus.httpcache4j.uri.URIBuilder;
 
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
@@ -59,13 +60,15 @@ public class LapBaoGiaRestService {
     }
 
     public boolean checkInfoModification(Date date) {
-        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("checkModification");
-        uriBuilder.addParameter("date", date.toString());
-        Optional<JsonNode> response = this.webClientService.authorizedHttpGetJson(uriBuilder, JsonNode.class);
+        URIBuilder uriBuilder = URIBuilder.empty()
+                .addRawPath(BASE_ENDPOINT)
+                .addPath("checkModification")
+                .addParameter("date", DateFormat.getInstance().format(date));
+        Optional<Map> response = this.webClientService.authorizedHttpGetJson(uriBuilder, Map.class);
         if (response.isEmpty()) {
             LOGGER.error("Error when check info modification");
             return false;
         }
-        return response.get().get("modified").asBoolean();
+        return (boolean) response.get().get("modified");
     }
 }
