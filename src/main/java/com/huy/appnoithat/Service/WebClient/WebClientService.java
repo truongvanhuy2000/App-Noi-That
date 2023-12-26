@@ -216,7 +216,6 @@ public class WebClientService {
     private HttpRequest buildJsonHttpRequest(String method, URIBuilder uri, String authenticationToken, Object data)
             throws JsonProcessingException {
         URI fullAddress = uri.withHost(SERVER_ADDRESS).toURI();
-        LOGGER.info(fullAddress.toString());
         HttpRequest.Builder builder = HttpRequest.newBuilder();
         builder.uri(fullAddress);
         builder.timeout(java.time.Duration.ofSeconds(this.timeOut));
@@ -241,7 +240,7 @@ public class WebClientService {
         return builder.build();
     }
     private Token tryRefreshToken() {
-        LOGGER.info("Trying to refresh jwt token");
+        LOGGER.info("Refreshing token");
         String refreshToken = userSessionService.getRefreshToken();
         if (StringUtils.isBlank(refreshToken)) {
             serverResponseHandler.handleTokenExpired(userSessionService::cleanUserSession);
