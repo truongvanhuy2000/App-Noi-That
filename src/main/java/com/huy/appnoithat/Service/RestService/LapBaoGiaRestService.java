@@ -26,11 +26,6 @@ public class LapBaoGiaRestService {
     public LapBaoGiaRestService() {
         webClientService = new WebClientService();
     }
-    public LapBaoGiaInfo getLapBaoGiaInfo() {
-        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT);
-        Optional<LapBaoGiaInfo> response = this.webClientService.authorizedHttpGetJson(uriBuilder, LapBaoGiaInfo.class);
-        return response.orElse(null);
-    }
 
     public ThongTinCongTy getThongTinCongTy() {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("thongTinCongTy");
