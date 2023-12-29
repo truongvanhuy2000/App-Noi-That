@@ -106,7 +106,7 @@ public class LuaChonNoiThatController implements Initializable {
     public void saveNoteArea() {
         String noteArea = noteTextArea.getText();
         persistenceStorageService.saveNoteArea(noteArea);
-        PopupUtils.throwSuccessSignal("Lưu ghi chú thành công");
+        PopupUtils.throwSuccessNotification("Lưu ghi chú thành công");
     }
 
     private void handleDeleteAction() {
@@ -134,7 +134,7 @@ public class LuaChonNoiThatController implements Initializable {
                 Email.getText()
         );
         persistenceStorageService.saveThongTinCongTy(thongTinCongTy);
-        PopupUtils.throwSuccessSignal("Lưu thông tin công ty thành công");
+        PopupUtils.throwSuccessNotification("Lưu thông tin công ty thành công");
     }
     /**
      * @param url
@@ -164,7 +164,7 @@ public class LuaChonNoiThatController implements Initializable {
         if (file == null) return;
         String fileExtension = FilenameUtils.getExtension(file.getName());
         if (!(fileExtension.equals("jpg") || fileExtension.equals("jpeg") || fileExtension.equals("png"))) {
-            PopupUtils.throwErrorSignal("File không hợp lệ");
+            PopupUtils.throwErrorNotification("File không hợp lệ");
             return;
         }
         try {

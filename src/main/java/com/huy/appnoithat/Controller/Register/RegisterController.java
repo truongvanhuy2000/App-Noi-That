@@ -108,7 +108,7 @@ public class RegisterController {
 
         btnCheckUserName.setOnAction(actionEvent -> {
             if (!isValidCharacter(txtUsername.getText())) {
-                PopupUtils.throwCriticalError("Tên đăng nhập không hợp lệ\n" +
+                PopupUtils.throwErrorNotification("Tên đăng nhập không hợp lệ\n" +
                         "Tên đăng nhập phải có độ dài từ 8 đến 20 ký tự\n" +
                         "Tên đăng nhập không được chứa ký tự đặc biệt");
                 btnSave.setDisable(true);
@@ -116,7 +116,7 @@ public class RegisterController {
             }
             if (!registerService.isUsernameValid(txtUsername.getText())) {
                 btnSave.setDisable(true);
-                PopupUtils.throwCriticalError("Tên đăng nhập đã tồn tại");
+                PopupUtils.throwErrorNotification("Tên đăng nhập đã tồn tại");
             }
             else {
                 btnSave.setDisable(false);

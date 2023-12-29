@@ -132,7 +132,7 @@ public class HangMucCollumHandler {
             }
             return Optional.of(items.get(0));
         } catch (NullPointerException e) {
-            PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
+            PopupUtils.throwErrorNotification("Chưa lựa chọn thông tin phía trên");
             LOGGER.error("Error when get the first vat lieu item");
             return Optional.empty();
         }
@@ -155,7 +155,7 @@ public class HangMucCollumHandler {
                 try {
                     items = Utils.getObjectNameList(luaChonNoiThatService.findNoiThatListBy(phongCach));
                 } catch (NullPointerException e) {
-                    PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
+                    PopupUtils.throwErrorNotification("Chưa lựa chọn thông tin phía trên");
                     return;
                 }
                 hangMucList.addAll(items);
@@ -164,7 +164,7 @@ public class HangMucCollumHandler {
                 try {
                     items = Utils.getObjectNameList(luaChonNoiThatService.findAllPhongCachNoiThat());
                 } catch (NullPointerException e) {
-                    PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
+                    PopupUtils.throwErrorNotification("Chưa lựa chọn thông tin phía trên");
                     return;
                 }
                 hangMucList.clear();
@@ -176,7 +176,7 @@ public class HangMucCollumHandler {
                 try {
                     items = Utils.getObjectNameList(luaChonNoiThatService.findHangMucListBy(phongCach, noiThat));
                 } catch (NullPointerException e) {
-                    PopupUtils.throwErrorSignal("Chưa lựa chọn thông tin phía trên");
+                    PopupUtils.throwErrorNotification("Chưa lựa chọn thông tin phía trên");
                     return;
                 }
                 hangMucList.clear();

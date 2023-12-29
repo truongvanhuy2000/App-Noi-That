@@ -3,6 +3,7 @@ package com.huy.appnoithat.Exception;
 import com.huy.appnoithat.Common.PopupUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.controlsfx.control.NotificationPane;
 
 public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
     final static Logger LOGGER = LogManager.getLogger(GlobalExceptionHandler.class);
@@ -10,23 +11,9 @@ public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
     }
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
-        throwable.printStackTrace();
+//        throwable.printStackTrace();
         nestedLog(throwable);
-//        PopupUtils.throwCriticalError("Critical Error! Please report back to the developer! \n" + throwable.getMessage());
-        if (throwable instanceof ServerConnectionException) {
-            PopupUtils.throwCriticalError("Cannot connect to server! Please check your internet connection and try again!");
-        }
-        else if (throwable instanceof AccountExpiredException) {
-            PopupUtils.throwErrorSignal("Critical Error! Please report back to the developer! \n" + throwable.getMessage());
-        }
-        else if (throwable instanceof NotAuthorizedException) {
-            PopupUtils.throwErrorSignal(throwable.getMessage());
-        }
-        else {
-            PopupUtils.throwCriticalError("Critical Error! Please report back to the developer! \n" + throwable.getMessage());
-        }
-
-
+        PopupUtils.throwErrorNotification("Critical Error! Please report back to the developer! \n");
     }
     private void nestedLog(Throwable throwable) {
         if (throwable.getCause() != null) {

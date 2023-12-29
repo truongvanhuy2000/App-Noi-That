@@ -43,7 +43,7 @@ public class ChangeProductSpecificationController {
                 !txtDai.getText().matches(regex) ||
                 !txtRong.getText().matches(regex) ||
                 !txtDonGia.getText().matches(regex)) {
-            PopupUtils.throwErrorSignal("Please input is a number !!!");
+            PopupUtils.throwErrorNotification("Please input is a number !!!");
             return;
         }
         // Retrieve ThongSo objects from the database based on the parent ID

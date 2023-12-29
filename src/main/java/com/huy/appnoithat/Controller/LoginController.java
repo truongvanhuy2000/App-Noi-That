@@ -80,7 +80,7 @@ public class LoginController {
                 FXUtils.hideLoading(loadingPane);
                 if (!isAuthorized) {
                     // Display error popup for incorrect credentials
-                    PopupUtils.throwCriticalError("Không thể đăng nhập, vui lòng kiểm tra lại thông tin");
+                    PopupUtils.throwErrorNotification("Không thể đăng nhập, vui lòng kiểm tra lại thông tin");
                     passwordField.setText("");
                 } else {
                     sceneSwitcher(actionEvent);
@@ -117,12 +117,12 @@ public class LoginController {
         }
         Token token = Utils.readObjectFromFile(tokenFile, Token.class);
         if (token == null) {
-            PopupUtils.throwCriticalError("Chữ ký điện tử không hợp lệ");
+            PopupUtils.throwErrorNotification("Chữ ký điện tử không hợp lệ");
             return;
         }
         if (!loginService.authorizeWithToken(token)) {
             // Display error popup for incorrect credentials
-            PopupUtils.throwCriticalError("Chữ ký điện tử không hợp lệ");
+            PopupUtils.throwErrorNotification("Chữ ký điện tử không hợp lệ");
             return;
         }
         // Switch to the next scene upon successful login

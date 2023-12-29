@@ -59,7 +59,7 @@ public class HomeController {
             return;
         }
         Utils.writeObjectToFile(savedFile, sessionService.getToken());
-        PopupUtils.throwSuccessSignal("Xuất chữ ký thành công!");
+        PopupUtils.throwSuccessNotification("Xuất chữ ký thành công!");
     }
     /**
      * Handles the logout action by cleaning the user session, closing the current window,
