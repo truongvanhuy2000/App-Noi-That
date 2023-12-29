@@ -17,16 +17,15 @@ public class ServerResponseHandler {
         List<Window> windows = Window.getWindows();
         LOGGER.error("Token expired");
         aditionalAction.run();
-        if (!windows.isEmpty()) {
-            PopupUtils.throwErrorSignal("Tài khoản đã hết hạn, vui lòng đăng nhập lại!");
-        }
         Platform.runLater(() -> {
             if (!windows.isEmpty()) {
                 FXUtils.closeAll();
-                LoginScene loginScene = new LoginScene();
-                loginScene.getLoginController().init();
-                StageFactory.CreateNewUnresizeableStage(loginScene.getScene(), true);
             }
+            LoginScene loginScene = new LoginScene();
+            loginScene.getLoginController().init();
+            StageFactory.CreateNewUnresizeableStage(loginScene.getScene(), true);
+            PopupUtils.throwErrorNotification("Tài khoản đã hết hạn, vui lòng đăng nhập lại!");
+
         });
     }
 

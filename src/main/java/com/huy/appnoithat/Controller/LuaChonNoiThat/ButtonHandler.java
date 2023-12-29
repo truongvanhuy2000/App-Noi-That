@@ -213,7 +213,7 @@ public class ButtonHandler {
             return false;
         }
         if (root.getParent().getChildren().size() >= limit) {
-            PopupUtils.throwErrorSignal("Đã đạt giới hạn số lượng " + limit + " mục");
+            PopupUtils.throwErrorNotification("Đã đạt giới hạn số lượng " + limit + " mục");
             return true;
         }
         return false;

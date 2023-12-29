@@ -87,7 +87,7 @@ public class ContentOperation {
             return null;
         }
         saveToExistingFile(selectedFile.getAbsolutePath(), true);
-        PopupUtils.throwSuccessSignal("Lưu thành công");
+        PopupUtils.throwSuccessNotification("Lưu thành công");
         return selectedFile.getAbsolutePath();
     }
     private void saveToExistingFile(String fileDirectory, boolean saveToRecentFile) {
@@ -151,10 +151,10 @@ public class ContentOperation {
     }
     private void showResult(Boolean result) {
         if (!result) {
-            PopupUtils.throwErrorSignal("Xuất file thất bại");
+            PopupUtils.throwErrorNotification("Xuất file thất bại");
         }
         else {
-            PopupUtils.throwSuccessSignal("Xuất file thành công");
+            PopupUtils.throwSuccessNotification("Xuất file thành công");
         }
     }
 }

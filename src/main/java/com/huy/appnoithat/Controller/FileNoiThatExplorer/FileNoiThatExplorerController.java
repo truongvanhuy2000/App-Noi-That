@@ -113,7 +113,7 @@ public class FileNoiThatExplorerController {
      */
     public void openFile(RecentFile recentFile) {
         if (!isDirectoryExist(recentFile.getDirectory())) {
-            PopupUtils.throwErrorSignal("File không tồn tại");
+            PopupUtils.throwErrorNotification("File không tồn tại");
             // Remove from recent file
             fileNoiThatExplorerService.removeRecentFile(recentFile);
             return;
@@ -121,7 +121,7 @@ public class FileNoiThatExplorerController {
         try {
             openNewLuaChonNoiThatTab(TabState.IMPORT_TAB, recentFile.getDirectory());
         } catch (Exception e) {
-            PopupUtils.throwErrorSignal("File không hợp lệ");
+            PopupUtils.throwErrorNotification("File không hợp lệ");
             LOGGER.error(e.getMessage());
             return;
         }

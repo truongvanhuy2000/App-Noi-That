@@ -78,7 +78,7 @@ public class STTCollumHandler {
 //            return;
 //        }
 //        if (tempPhongCachList.isEmpty()) {
-////            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
+////            PopupUtils.throwErrorNotification("Chưa lựa chọn phong cách");
 ////            event.consume();
 //            return;
 //        }
@@ -96,14 +96,14 @@ public class STTCollumHandler {
 //            return;
 //        }
 //        if (tempPhongCachList.isEmpty()) {
-////            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
+////            PopupUtils.throwErrorNotification("Chưa lựa chọn phong cách");
 ////            event.consume();
 //            return;
 //        }
 //        removeFromParent(currentItem);
 //        ObservableList<TreeItem<BangNoiThat>> tempNoiThatList = tempPhongCachList.get(tempPhongCachList.size() - 1).getChildren();
 //        if (tempNoiThatList.isEmpty()) {
-////            PopupUtils.throwErrorSignal("Chưa lựa chọn phong cách");
+////            PopupUtils.throwErrorNotification("Chưa lựa chọn phong cách");
 ////            event.consume();
 //            return;
 //        }

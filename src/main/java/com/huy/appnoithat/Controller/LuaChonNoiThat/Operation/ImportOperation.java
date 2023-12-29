@@ -168,7 +168,7 @@ public class ImportOperation {
 
     public void importData(DataPackage dataPackage) {
         if (dataPackage == null) {
-            PopupUtils.throwErrorSignal("File không hợp lệ");
+            PopupUtils.throwErrorNotification("File không hợp lệ");
             return;
         }
         if (dataPackage.getThongTinCongTy() != null) {
@@ -186,7 +186,7 @@ public class ImportOperation {
         if (dataPackage.getThongTinNoiThatList() != null) {
             TreeItem<BangNoiThat> itemRoot = importFromThongTinList(dataPackage.getThongTinNoiThatList());
             if (itemRoot == null) {
-                PopupUtils.throwErrorSignal("Thông tin nội thất không hợp lệ");
+                PopupUtils.throwErrorNotification("Thông tin nội thất không hợp lệ");
                 return;
             }
             TableNoiThat.setRoot(itemRoot);

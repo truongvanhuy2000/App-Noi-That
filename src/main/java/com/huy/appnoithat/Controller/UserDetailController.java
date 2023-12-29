@@ -39,14 +39,14 @@ public class UserDetailController implements Initializable {
     @FXML
     void ChangePassword(ActionEvent event) {
         if (!ConfirmPassword.getText().equals(NewPassword.getText())) {
-            PopupUtils.throwErrorSignal("Mật khẩu xác nhận không khớp");
+            PopupUtils.throwErrorNotification("Mật khẩu xác nhận không khớp");
             return;
         }
         if (userDetailService.updatePassword(OldPassword.getText(), NewPassword.getText())) {
-            PopupUtils.throwSuccessSignal("Đổi mật khẩu thành công");
+            PopupUtils.throwSuccessNotification("Đổi mật khẩu thành công");
             clearPassword();
         } else {
-            PopupUtils.throwErrorSignal("Đổi mật khẩu thất bại");
+            PopupUtils.throwErrorNotification("Đổi mật khẩu thất bại");
             clearPassword();
         }
     }
@@ -60,10 +60,10 @@ public class UserDetailController implements Initializable {
         accountInformation.setEmail(Email.getText());
         accountInformation.setGender(Gender.getValue().equals(GENDER_OPTION1) ? "Male" : "Female");
         if (userDetailService.updateAccountInformation(accountInformation)) {
-            PopupUtils.throwSuccessSignal("Cập nhật thông tin thành công");
+            PopupUtils.throwSuccessNotification("Cập nhật thông tin thành công");
             refreshInfo();
         } else {
-            PopupUtils.throwErrorSignal("Cập nhật thông tin thất bại");
+            PopupUtils.throwErrorNotification("Cập nhật thông tin thất bại");
         }
     }
     void close(ActionEvent event) {

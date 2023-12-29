@@ -267,10 +267,10 @@ public class UsersManagementController implements Initializable {
                 }
                 //check username exist
                 if (txtusername.getText().trim().isEmpty() || txtpassword.getText().trim().isEmpty()) {
-                    PopupUtils.throwErrorSignal("tài khoản và mật khẩu không được trống");
+                    PopupUtils.throwErrorNotification("Tài khoản và mật khẩu không được trống");
                     return;
                 } else if (!registerService.isUsernameValid(txtusername.getText())) {
-                    PopupUtils.throwErrorSignal("tài khoản đã tồn tài");
+                    PopupUtils.throwErrorNotification("Tài khoản đã tồn tài");
                     return;
                 } else {
                     // Add the new account to the list and update the table
@@ -338,7 +338,7 @@ public class UsersManagementController implements Initializable {
             init();
         } else {
             // Display an error message if trying to delete an admin account
-            PopupUtils.throwErrorSignal("Không thể xóa tài khoản admin");
+            PopupUtils.throwErrorNotification("Không thể xóa tài khoản admin");
         }
     }
 
@@ -416,7 +416,7 @@ public class UsersManagementController implements Initializable {
 
                 //check username exist
                 if (!txtusername.getText().isEmpty() && !registerService.isUsernameValid(txtusername.getText())) {
-                    PopupUtils.throwErrorSignal("tài khoản đã tồn tài");
+                    PopupUtils.throwErrorNotification("Tài khoản đã tồn tài");
                     return;
                 }
 
@@ -430,9 +430,9 @@ public class UsersManagementController implements Initializable {
                 account.setExpiredDate(soThangGiaHanThem);
                 // Update the account in the service
                 if (userManagementService.EditAccount(account)) {
-                    PopupUtils.throwSuccessSignal("Cập nhật thành công");
+                    PopupUtils.throwSuccessNotification("Cập nhật thành công");
                 } else {
-                    PopupUtils.throwErrorSignal("Cập nhật thất bại");
+                    PopupUtils.throwErrorNotification("Cập nhật thất bại");
                 }
 
                 // Refresh the table view to update the changes

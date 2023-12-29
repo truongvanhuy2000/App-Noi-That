@@ -50,8 +50,7 @@ public class TabOperation {
             newTabController.setCurrentState(State.OPEN_FROM_EXISTING_FILE);
             newTabController.setCurrentDirectory(importDirectory);
             importFromFile(importDirectory);
-        }
-        else if (tabState == TabState.BLANK_TAB) {
+        } else if (tabState == TabState.BLANK_TAB) {
             newTabController.setCurrentState(State.NEW_FILE);
             createBlankTab();
         }

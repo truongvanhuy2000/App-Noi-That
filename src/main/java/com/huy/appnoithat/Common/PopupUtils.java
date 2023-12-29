@@ -1,14 +1,20 @@
 package com.huy.appnoithat.Common;
 
 import com.huy.appnoithat.Scene.LoadingScene;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.io.File;
+import java.util.Objects;
 import java.util.Optional;
 
 public class PopupUtils {
@@ -21,7 +27,32 @@ public class PopupUtils {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK);
         alert.showAndWait();
     }
-
+    public static void throwSuccessNotification(String message) {
+        Image image = new Image(Objects.requireNonNull(
+                PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/yes.png")));
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(60);
+        imageView.setFitWidth(60);
+        Notifications notifications = Notifications.create()
+                .text(message)
+                .graphic(imageView)
+                .hideAfter(Duration.seconds(3))
+                .position(Pos.TOP_RIGHT);
+        notifications.show();
+    }
+    public static void throwErrorNotification(String message) {
+        Image image = new Image(Objects.requireNonNull(
+                PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/notificationError.png")));
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(60);
+        imageView.setFitWidth(60);
+        Notifications notifications = Notifications.create()
+                .text(message)
+                .graphic(imageView)
+                .hideAfter(Duration.seconds(3))
+                .position(Pos.TOP_RIGHT);
+        notifications.show();
+    }
     public static void throwCriticalError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
         alert.showAndWait();
