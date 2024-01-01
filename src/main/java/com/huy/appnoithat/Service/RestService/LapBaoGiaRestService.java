@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.DataModel.LapBaoGiaInfo;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
@@ -44,6 +45,8 @@ public class LapBaoGiaRestService {
         Optional<String> response = this.webClientService.authorizedHttpPostJson(uriBuilder, thongTinCongTy, String.class);
         if (response.isEmpty()) {
             LOGGER.error("Error when save ThongTinCongTy");
+        } else {
+            PopupUtils.throwSuccessNotification("Lưu thông tin công ty thành công");
         }
     }
     public void saveNote(String note) {
@@ -51,6 +54,8 @@ public class LapBaoGiaRestService {
         Optional<String> response = this.webClientService.authorizedHttpPostJson(uriBuilder, note, String.class);
         if (response.isEmpty()) {
             LOGGER.error("Error when save Note");
+        } else {
+            PopupUtils.throwSuccessNotification("Lưu ghi chú thành công");
         }
     }
 

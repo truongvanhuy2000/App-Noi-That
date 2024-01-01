@@ -39,16 +39,13 @@ public class ChangeProductSpecificationController {
     void clickOK(ActionEvent event) {
         // Validate input: Ensure all input fields contain numerical values
         String regex = "[0-9].+";
-        if (!txtCao.getText().matches(regex) ||
-                !txtDai.getText().matches(regex) ||
-                !txtRong.getText().matches(regex) ||
-                !txtDonGia.getText().matches(regex)) {
-            PopupUtils.throwErrorNotification("Please input is a number !!!");
+        if (!txtCao.getText().matches(regex) || !txtDai.getText().matches(regex) ||
+                !txtRong.getText().matches(regex) || !txtDonGia.getText().matches(regex)) {
+            PopupUtils.throwErrorNotification("Vui lòng điền số vào !!!");
             return;
         }
         // Retrieve ThongSo objects from the database based on the parent ID
         List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByParentId(this.parentID);
-
         // Check if the ThongSo list is empty or null, and exit if so
         if (thongSoList == null || thongSoList.isEmpty()) {
             return;
@@ -108,7 +105,6 @@ public class ChangeProductSpecificationController {
             return;
         }
         ThongSo thongSo = new ThongSo(0, 0.0, 0.0, 0.0, "", 0L);
-
         // Retrieve ThongSo data for the given parent ID
         List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByParentId(this.parentID);
         if (thongSoList == null || thongSoList.isEmpty()) {

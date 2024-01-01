@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.Token;
-import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Exception.AccountExpiredException;
 import com.huy.appnoithat.Exception.ServerConnectionException;
 import com.huy.appnoithat.Handler.ServerResponseHandler;
@@ -24,7 +23,10 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 public class WebClientService {
     final static Logger LOGGER = LogManager.getLogger(WebClientService.class);
@@ -42,6 +44,7 @@ public class WebClientService {
     private final UserSessionService userSessionService;
     private final ServerResponseHandler serverResponseHandler;
     private final ObjectMapper objectMapper;
+
     public WebClientService() {
         this.timeOut = TIME_OUT;
         userSessionService = new UserSessionService();
@@ -77,7 +80,7 @@ public class WebClientService {
         if (token == null) {
             throw new RuntimeException();
         }
-        HttpResponse<String> response =  doSendRequest(POST, uri, token, data);
+        HttpResponse<String> response = doSendRequest(POST, uri, token, data);
         switch (response.statusCode()) {
             case 403 -> {
                 Token newToken = tryRefreshToken();
@@ -100,7 +103,7 @@ public class WebClientService {
         if (token == null) {
             throw new RuntimeException();
         }
-        HttpResponse<String> response =  doSendRequest(GET, uri, token, null);
+        HttpResponse<String> response = doSendRequest(GET, uri, token, null);
         switch (response.statusCode()) {
             case 403 -> {
                 Token newToken = tryRefreshToken();
@@ -117,13 +120,14 @@ public class WebClientService {
             }
         }
     }
+
     public <T> Optional<List<T>> authorizedHttpGetJson(@NonNull URIBuilder uri, @NonNull Class<T> responseClass,
-                                             @NonNull Class<? extends Collection> collectionClass) {
+                                                       @NonNull Class<? extends Collection> collectionClass) {
         String token = userSessionService.getJwtToken();
         if (token == null) {
             throw new RuntimeException();
         }
-        HttpResponse<String> response =  doSendRequest(GET, uri, token, null);
+        HttpResponse<String> response = doSendRequest(GET, uri, token, null);
         switch (response.statusCode()) {
             case 403 -> {
                 Token newToken = tryRefreshToken();
@@ -140,12 +144,13 @@ public class WebClientService {
             }
         }
     }
+
     public <T> Optional<T> authorizedHttpPutJson(@NonNull URIBuilder uri, @NonNull Object data, @NonNull Class<T> responseClass) {
         String token = userSessionService.getJwtToken();
         if (token == null) {
             throw new RuntimeException();
         }
-        HttpResponse<String> response =  doSendRequest(PUT, uri, token, data);
+        HttpResponse<String> response = doSendRequest(PUT, uri, token, data);
         switch (response.statusCode()) {
             case 403 -> {
                 Token newToken = tryRefreshToken();
@@ -165,7 +170,7 @@ public class WebClientService {
 
     public <T> Optional<T> authorizedHttpDeleteJson(@NonNull URIBuilder uri, @NonNull Class<T> responseClass) {
         String token = userSessionService.getJwtToken();
-        HttpResponse<String> response =  doSendRequest(DELETE, uri, token, null);
+        HttpResponse<String> response = doSendRequest(DELETE, uri, token, null);
         switch (response.statusCode()) {
             case 403 -> {
                 Token newToken = tryRefreshToken();
@@ -182,6 +187,7 @@ public class WebClientService {
             }
         }
     }
+
     private <T> T deserializeResponse(String response, Class<T> objectClass) {
         if (objectClass == String.class) {
             return objectClass.cast(response);
@@ -193,6 +199,7 @@ public class WebClientService {
             throw new RuntimeException(e);
         }
     }
+
     private <T> List<T> deserializeResponse(String response, Class<T> objectClass, Class<? extends Collection> collectionClass) {
         try {
             return objectMapper.readValue(response, objectMapper.getTypeFactory()
@@ -202,6 +209,7 @@ public class WebClientService {
             throw new RuntimeException(e);
         }
     }
+
     private HttpResponse<String> doSendRequest(@NonNull String method, @NonNull URIBuilder uri,
                                                String authenticationToken, Object data) {
         try {
@@ -239,6 +247,7 @@ public class WebClientService {
         }
         return builder.build();
     }
+
     private Token tryRefreshToken() {
         LOGGER.info("Refreshing token");
         String refreshToken = userSessionService.getRefreshToken();

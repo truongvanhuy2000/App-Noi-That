@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Service.UsersManagement;
 
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Service.RestService.AccountRestService;
 
@@ -83,8 +84,12 @@ public class UsersManagementService {
      * @param account The updated account object.
      * @throws RuntimeException If there is an error while updating the account on the server.
      */
-    public boolean EditAccount(Account account) {
-        return accountRestService.update(account) != null;
+    public void EditAccount(Account account) {
+        if (accountRestService.update(account) != null) {
+            PopupUtils.throwSuccessNotification("Cập nhật thành công");
+        } else {
+            PopupUtils.throwErrorNotification("Cập nhật thất bại");
+        }
     }
 
 

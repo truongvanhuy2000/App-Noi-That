@@ -270,15 +270,19 @@ public class UsersManagementController implements Initializable {
                     PopupUtils.throwErrorNotification("Tài khoản và mật khẩu không được trống");
                     return;
                 } else if (!registerService.isUsernameValid(txtusername.getText())) {
-                    PopupUtils.throwErrorNotification("Tài khoản đã tồn tài");
                     return;
                 } else {
                     // Add the new account to the list and update the table
                     listUser.add(new AccountTable(listUser.size(), txtusername.getText(), txtpassword.getText(), "", "", Boolean.parseBoolean(active), convertActiveIcon(true), localDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))));
                     userManagementService.addNewAccount(
-                            new Account(0, txtusername.getText(), txtpassword.getText(), Boolean.parseBoolean(active), new AccountInformation(), roleList, true, localDate));
-                    // Clear data, reinitialize the table, and close the form
-
+                            Account.builder().id(0)
+                                    .username(txtusername.getText())
+                                    .password(txtpassword.getText())
+                                    .active(Boolean.parseBoolean(active))
+                                    .accountInformation(new AccountInformation())
+                                    .roleList(roleList)
+                                    .enabled(true)
+                                    .expiredDate(localDate).build());
                 }
                 init();
                 userManageMentStage.close();
@@ -416,10 +420,8 @@ public class UsersManagementController implements Initializable {
 
                 //check username exist
                 if (!txtusername.getText().isEmpty() && !registerService.isUsernameValid(txtusername.getText())) {
-                    PopupUtils.throwErrorNotification("Tài khoản đã tồn tài");
                     return;
                 }
-
                 // Update the account details
                 if (!txtusername.getText().isEmpty()) {
                     account.setUsername(txtusername.getText());
@@ -429,12 +431,7 @@ public class UsersManagementController implements Initializable {
                 }
                 account.setExpiredDate(soThangGiaHanThem);
                 // Update the account in the service
-                if (userManagementService.EditAccount(account)) {
-                    PopupUtils.throwSuccessNotification("Cập nhật thành công");
-                } else {
-                    PopupUtils.throwErrorNotification("Cập nhật thất bại");
-                }
-
+                userManagementService.EditAccount(account);
                 // Refresh the table view to update the changes
                 tableManageUser.refresh();
                 // Close the edit account form

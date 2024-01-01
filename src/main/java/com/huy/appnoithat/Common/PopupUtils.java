@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Common;
 
 import com.huy.appnoithat.Scene.LoadingScene;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -38,7 +39,7 @@ public class PopupUtils {
                 .graphic(imageView)
                 .hideAfter(Duration.seconds(3))
                 .position(Pos.TOP_RIGHT);
-        notifications.show();
+        Platform.runLater(notifications::show);
     }
     public static void throwErrorNotification(String message) {
         Image image = new Image(Objects.requireNonNull(
@@ -51,7 +52,7 @@ public class PopupUtils {
                 .graphic(imageView)
                 .hideAfter(Duration.seconds(3))
                 .position(Pos.TOP_RIGHT);
-        notifications.show();
+        Platform.runLater(notifications::show);
     }
     public static void throwCriticalError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);

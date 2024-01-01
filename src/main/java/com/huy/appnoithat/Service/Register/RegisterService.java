@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Service.Register;
 
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Entity.Account;
 import com.huy.appnoithat.Service.RestService.AccountRestService;
 import org.apache.logging.log4j.LogManager;
@@ -34,6 +35,10 @@ public class RegisterService {
      * @return True if the username is valid, false otherwise.
      */
     public boolean isUsernameValid(String username) {
-        return accountRestService.isUsernameValid(username);
+        boolean result = accountRestService.isUsernameValid(username);
+        if (!result) {
+            PopupUtils.throwErrorNotification("Tài khoản đã tồn tài");
+        }
+        return result;
     }
 }
