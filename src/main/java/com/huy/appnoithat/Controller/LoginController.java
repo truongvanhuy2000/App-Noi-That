@@ -80,7 +80,6 @@ public class LoginController {
                 FXUtils.hideLoading(loadingPane);
                 if (!isAuthorized) {
                     // Display error popup for incorrect credentials
-                    PopupUtils.throwErrorNotification("Không thể đăng nhập, vui lòng kiểm tra lại thông tin");
                     passwordField.setText("");
                 } else {
                     sceneSwitcher(actionEvent);

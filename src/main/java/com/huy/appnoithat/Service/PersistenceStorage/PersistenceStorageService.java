@@ -64,9 +64,9 @@ public class PersistenceStorageService implements StorageService {
     @Override
     public void saveThongTinCongTy(ThongTinCongTy thongTinCongTy) {
         try {
+            objectMapper.writeValue(new File(Config.USER.COMPANY_INFO_DIRECTORY), thongTinCongTy);
             thongTinCongTy.setCreatedDate(new Date());
             lapBaoGiaRestService.saveThongTinCongTy(thongTinCongTy);
-            objectMapper.writeValue(new File(Config.USER.COMPANY_INFO_DIRECTORY), thongTinCongTy);
         } catch (IOException e) {
             LOGGER.error("Failed to write company info" + e.getMessage());
             throw new RuntimeException(e);
@@ -134,8 +134,8 @@ public class PersistenceStorageService implements StorageService {
     @Override
     public void saveNoteArea(String noteArea) {
         try {
-            lapBaoGiaRestService.saveNote(noteArea);
             objectMapper.writeValue(new File(Config.USER.NOTE_AREA_DIRECTORY), noteArea);
+            lapBaoGiaRestService.saveNote(noteArea);
         } catch (IOException e) {
             LOGGER.error("Failed to write note area" + e.getMessage());
             throw new RuntimeException(e);

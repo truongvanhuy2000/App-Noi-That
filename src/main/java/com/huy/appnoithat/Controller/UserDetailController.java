@@ -42,13 +42,8 @@ public class UserDetailController implements Initializable {
             PopupUtils.throwErrorNotification("Mật khẩu xác nhận không khớp");
             return;
         }
-        if (userDetailService.updatePassword(OldPassword.getText(), NewPassword.getText())) {
-            PopupUtils.throwSuccessNotification("Đổi mật khẩu thành công");
-            clearPassword();
-        } else {
-            PopupUtils.throwErrorNotification("Đổi mật khẩu thất bại");
-            clearPassword();
-        }
+        userDetailService.updatePassword(OldPassword.getText(), NewPassword.getText());
+        clearPassword();
     }
 
     @FXML
@@ -59,30 +54,30 @@ public class UserDetailController implements Initializable {
         accountInformation.setPhone(PhoneNumber.getText());
         accountInformation.setEmail(Email.getText());
         accountInformation.setGender(Gender.getValue().equals(GENDER_OPTION1) ? "Male" : "Female");
-        if (userDetailService.updateAccountInformation(accountInformation)) {
-            PopupUtils.throwSuccessNotification("Cập nhật thông tin thành công");
-            refreshInfo();
-        } else {
-            PopupUtils.throwErrorNotification("Cập nhật thông tin thất bại");
-        }
+        userDetailService.updateAccountInformation(accountInformation);
+        refreshInfo();
     }
+
     void close(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
+
     void clearPassword() {
         OldPassword.setText("");
         NewPassword.setText("");
         ConfirmPassword.setText("");
     }
+
     public void init() {
         refreshInfo();
     }
+
     public void refreshInfo() {
         Account account = userDetailService.getAccountInformation();
-        if(account.getAccountInformation().getGender()==null){
+        if (account.getAccountInformation().getGender() == null) {
             Gender.setValue("");
-        }else{
+        } else {
             Gender.setValue(account.getAccountInformation().getGender().equals("Male") ? GENDER_OPTION1 : GENDER_OPTION2);
         }
         FullName.setText(account.getAccountInformation().getName());

@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Service.Login;
 
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Service.RestService.AccountRestService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
@@ -18,10 +19,11 @@ public class LoginService {
     public boolean basicAuthorization(String username, String password) {
         Token token = login(username, password);
         if (token != null) {
+            LOGGER.info("Login with account: " + username);
             this.sessionService.saveSession(token);
             return true;
         }
-        LOGGER.info("Login with account: " + username);
+        PopupUtils.throwErrorNotification("Không thể đăng nhập, vui lòng kiểm tra lại thông tin");
         return false;
     }
     public boolean reAuthorize(String password) {

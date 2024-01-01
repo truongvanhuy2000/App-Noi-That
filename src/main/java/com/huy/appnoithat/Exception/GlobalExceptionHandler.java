@@ -5,20 +5,25 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.controlsfx.control.NotificationPane;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
     final static Logger LOGGER = LogManager.getLogger(GlobalExceptionHandler.class);
     public GlobalExceptionHandler() {
     }
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
-//        throwable.printStackTrace();
         nestedLog(throwable);
         PopupUtils.throwErrorNotification("Critical Error! Please report back to the developer! \n");
     }
     private void nestedLog(Throwable throwable) {
-        if (throwable.getCause() != null) {
-            nestedLog(throwable.getCause());
+        StackTraceElement[] stackTrace = throwable.getStackTrace();
+        List<String> traceList = new ArrayList<>();
+        for (StackTraceElement stackTraceElement : stackTrace) {
+            LOGGER.error(stackTraceElement.toString());
+            traceList.add(stackTraceElement.toString());
         }
-        LOGGER.error(throwable.getMessage());
+
     }
 }
