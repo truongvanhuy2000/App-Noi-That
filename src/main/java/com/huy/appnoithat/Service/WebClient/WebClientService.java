@@ -77,14 +77,14 @@ public class WebClientService {
 
     public <T> Optional<T> authorizedHttpPostJson(@NonNull URIBuilder uri, @NonNull Object data, @NonNull Class<T> responseClass) {
         String token = userSessionService.getJwtToken();
-        if (token == null) {
-            throw new RuntimeException();
+        if (StringUtils.isBlank(token)) {
+            return Optional.empty();
         }
         HttpResponse<String> response = doSendRequest(POST, uri, token, data);
         switch (response.statusCode()) {
             case 403 -> {
-                Token newToken = tryRefreshToken();
-                if (newToken == null) {
+                Optional<Token> newToken = tryRefreshToken();
+                if (newToken.isEmpty()) {
                     return Optional.empty();
                 }
                 return authorizedHttpPostJson(uri, data, responseClass);
@@ -100,14 +100,14 @@ public class WebClientService {
 
     public <T> Optional<T> authorizedHttpGetJson(@NonNull URIBuilder uri, @NonNull Class<T> responseClass) {
         String token = userSessionService.getJwtToken();
-        if (token == null) {
-            throw new RuntimeException();
+        if (StringUtils.isBlank(token)) {
+            return Optional.empty();
         }
         HttpResponse<String> response = doSendRequest(GET, uri, token, null);
         switch (response.statusCode()) {
             case 403 -> {
-                Token newToken = tryRefreshToken();
-                if (newToken == null) {
+                Optional<Token> newToken = tryRefreshToken();
+                if (newToken.isEmpty()) {
                     return Optional.empty();
                 }
                 return authorizedHttpGetJson(uri, responseClass);
@@ -124,14 +124,14 @@ public class WebClientService {
     public <T> Optional<List<T>> authorizedHttpGetJson(@NonNull URIBuilder uri, @NonNull Class<T> responseClass,
                                                        @NonNull Class<? extends Collection> collectionClass) {
         String token = userSessionService.getJwtToken();
-        if (token == null) {
-            throw new RuntimeException();
+        if (StringUtils.isBlank(token)) {
+            return Optional.empty();
         }
         HttpResponse<String> response = doSendRequest(GET, uri, token, null);
         switch (response.statusCode()) {
             case 403 -> {
-                Token newToken = tryRefreshToken();
-                if (newToken == null) {
+                Optional<Token> newToken = tryRefreshToken();
+                if (newToken.isEmpty()) {
                     return Optional.empty();
                 }
                 return authorizedHttpGetJson(uri, responseClass, collectionClass);
@@ -147,14 +147,14 @@ public class WebClientService {
 
     public <T> Optional<T> authorizedHttpPutJson(@NonNull URIBuilder uri, @NonNull Object data, @NonNull Class<T> responseClass) {
         String token = userSessionService.getJwtToken();
-        if (token == null) {
-            throw new RuntimeException();
+        if (StringUtils.isBlank(token)) {
+            return Optional.empty();
         }
         HttpResponse<String> response = doSendRequest(PUT, uri, token, data);
         switch (response.statusCode()) {
             case 403 -> {
-                Token newToken = tryRefreshToken();
-                if (newToken == null) {
+                Optional<Token> newToken = tryRefreshToken();
+                if (newToken.isEmpty()) {
                     return Optional.empty();
                 }
                 return authorizedHttpPutJson(uri, data, responseClass);
@@ -173,8 +173,8 @@ public class WebClientService {
         HttpResponse<String> response = doSendRequest(DELETE, uri, token, null);
         switch (response.statusCode()) {
             case 403 -> {
-                Token newToken = tryRefreshToken();
-                if (newToken == null) {
+                Optional<Token> newToken = tryRefreshToken();
+                if (newToken.isEmpty()) {
                     return Optional.empty();
                 }
                 return authorizedHttpDeleteJson(uri, responseClass);
@@ -248,12 +248,12 @@ public class WebClientService {
         return builder.build();
     }
 
-    private Token tryRefreshToken() {
+    private Optional<Token> tryRefreshToken() {
         LOGGER.info("Refreshing token");
         String refreshToken = userSessionService.getRefreshToken();
         if (StringUtils.isBlank(refreshToken)) {
-            serverResponseHandler.handleTokenExpired(userSessionService::cleanUserSession);
-            throw new AccountExpiredException("Refresh token expired, need to login again");
+            serverResponseHandler.handleTokenExpired();
+            return Optional.empty();
         }
         HttpResponse<String> response = doSendRequest(POST, URIBuilder.empty().addPath("api", "refreshToken"),
                 null, Map.of("refreshToken", refreshToken));
@@ -261,11 +261,11 @@ public class WebClientService {
             Token token = deserializeResponse(response.body(), Token.class);
             userSessionService.setToken(token);
             userSessionService.saveSessionToDisk();
-            return token;
+            return Optional.of(token);
         } else {
             LOGGER.info("Refresh token expired, need to login again");
-            serverResponseHandler.handleTokenExpired(userSessionService::cleanUserSession);
-            throw new AccountExpiredException("Refresh token expired, need to login again");
+            serverResponseHandler.handleTokenExpired();
+            return Optional.empty();
         }
     }
 }

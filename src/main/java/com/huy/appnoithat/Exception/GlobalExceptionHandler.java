@@ -15,15 +15,12 @@ public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
         nestedLog(throwable);
-        PopupUtils.throwErrorNotification("Critical Error! Please report back to the developer! \n");
     }
     private void nestedLog(Throwable throwable) {
+        LOGGER.error(throwable.getMessage());
         StackTraceElement[] stackTrace = throwable.getStackTrace();
-        List<String> traceList = new ArrayList<>();
         for (StackTraceElement stackTraceElement : stackTrace) {
             LOGGER.error(stackTraceElement.toString());
-            traceList.add(stackTraceElement.toString());
         }
-
     }
 }

@@ -37,8 +37,7 @@ public class HelloApplication extends Application {
             Scene scene = HomeScene.getInstance().getScene();
             Stage mainStage = StageFactory.createNewMaximizedMainStage(stage, scene, true);
             Platform.runLater(() -> HomeScene.getInstance().getHomeController().init(mainStage));
-        }
-        else {
+        } else {
             LoginScene loginScene = new LoginScene();
             Scene scene = loginScene.getScene();
             Platform.runLater(() -> loginScene.getLoginController().init());
