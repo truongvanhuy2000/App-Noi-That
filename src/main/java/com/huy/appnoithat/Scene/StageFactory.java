@@ -50,10 +50,8 @@ public class StageFactory {
         stage.show();
         stage.setOnCloseRequest(windowEvent -> {
             windowEvent.consume();
-            if (confirmWhenClose) {
-                if (!PopupUtils.showCloseWindowConfirmation()) {
-                    return;
-                }
+            if (confirmWhenClose && !PopupUtils.showCloseWindowConfirmation()) {
+                return;
             }
             stage.close();
             Platform.runLater(() -> {

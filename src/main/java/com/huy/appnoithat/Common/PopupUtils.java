@@ -31,27 +31,34 @@ public class PopupUtils {
     public static void throwSuccessNotification(String message) {
         Image image = new Image(Objects.requireNonNull(
                 PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/yes.png")));
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(60);
-        imageView.setFitWidth(60);
-        Notifications notifications = Notifications.create()
-                .text(message)
-                .graphic(imageView)
-                .hideAfter(Duration.seconds(3))
-                .position(Pos.TOP_RIGHT);
+        Notifications notifications = createNotification(message, 3,null, image);
         Platform.runLater(notifications::show);
     }
     public static void throwErrorNotification(String message) {
         Image image = new Image(Objects.requireNonNull(
                 PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/notificationError.png")));
+        Notifications notifications = createNotification(message, 3, null, image);
+        Platform.runLater(notifications::show);
+    }
+    private static Notifications createNotification(String message, int durationInSec, Runnable action, Image image) {
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(60);
         imageView.setFitWidth(60);
-        Notifications notifications = Notifications.create()
+        return Notifications.create()
                 .text(message)
                 .graphic(imageView)
-                .hideAfter(Duration.seconds(3))
-                .position(Pos.TOP_RIGHT);
+                .hideAfter(Duration.seconds(durationInSec))
+                .position(Pos.TOP_RIGHT)
+                .onAction((event) -> {
+                    if (action != null) {
+                        action.run();
+                    }
+                });
+    }
+    public static void throwErrorNotification(String message, Runnable action, int durationInSec) {
+        Image image = new Image(Objects.requireNonNull(
+                PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/notificationError.png")));
+        Notifications notifications = createNotification(message, durationInSec, action, image);
         Platform.runLater(notifications::show);
     }
     public static void throwCriticalError(String message) {

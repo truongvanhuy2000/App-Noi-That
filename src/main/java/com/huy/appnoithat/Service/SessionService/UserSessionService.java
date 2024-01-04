@@ -7,6 +7,7 @@ import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
 import com.huy.appnoithat.Service.RestService.AccountRestService;
 import com.huy.appnoithat.Session.UserSession;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -136,7 +137,7 @@ public class UserSessionService {
     public void loadSessionFromDisk() {
         StorageService persistenceStorageService = new PersistenceStorageService();
         PersistenceUserSession persistenceUserSession = persistenceStorageService.getUserSession();
-        if (persistenceUserSession == null) {
+        if (persistenceUserSession == null || StringUtils.isBlank(persistenceUserSession.getRefreshToken())) {
             setToken(new Token("", ""));
             return;
         }
