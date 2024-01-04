@@ -15,9 +15,8 @@ public class FXUtils {
         List<Window> windows = Window.getWindows();
         for (int index = 0; index < windows.size(); index ++) {
             Window window = windows.get(index);
-            if (window != null) {
-                Stage stage = (Stage) window;
-                stage.close();
+            if (window != null && window.isShowing()) {
+                window.hide();
             }
         }
     }
