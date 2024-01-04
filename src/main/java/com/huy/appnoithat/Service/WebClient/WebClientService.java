@@ -60,6 +60,9 @@ public class WebClientService {
     public <T> Optional<T> unauthorizedHttpPostJson(@NonNull URIBuilder uri,
                                                     @NonNull Object data, @NonNull Class<T> responseClass) {
         HttpResponse<String> response = doSendRequest(POST, uri, null, data);
+        if (response == null) {
+            return Optional.empty();
+        }
         if (response.statusCode() == 200) {
             return Optional.of(deserializeResponse(response.body(), responseClass));
         } else {
@@ -69,6 +72,9 @@ public class WebClientService {
 
     public <T> Optional<T> unauthorizedHttpGetJson(@NonNull URIBuilder uri, @NonNull Class<T> responseClass) {
         HttpResponse<String> response = doSendRequest(GET, uri, null, null);
+        if (response == null) {
+            return Optional.empty();
+        }
         if (response.statusCode() == 200) {
             return Optional.of(deserializeResponse(response.body(), responseClass));
         }
@@ -81,6 +87,9 @@ public class WebClientService {
             return Optional.empty();
         }
         HttpResponse<String> response = doSendRequest(POST, uri, token, data);
+        if (response == null) {
+            return Optional.empty();
+        }
         switch (response.statusCode()) {
             case 403 -> {
                 Optional<Token> newToken = tryRefreshToken();
@@ -104,6 +113,9 @@ public class WebClientService {
             return Optional.empty();
         }
         HttpResponse<String> response = doSendRequest(GET, uri, token, null);
+        if (response == null) {
+            return Optional.empty();
+        }
         switch (response.statusCode()) {
             case 403 -> {
                 Optional<Token> newToken = tryRefreshToken();
@@ -128,6 +140,9 @@ public class WebClientService {
             return Optional.empty();
         }
         HttpResponse<String> response = doSendRequest(GET, uri, token, null);
+        if (response == null) {
+            return Optional.empty();
+        }
         switch (response.statusCode()) {
             case 403 -> {
                 Optional<Token> newToken = tryRefreshToken();
@@ -151,6 +166,9 @@ public class WebClientService {
             return Optional.empty();
         }
         HttpResponse<String> response = doSendRequest(PUT, uri, token, data);
+        if (response == null) {
+            return Optional.empty();
+        }
         switch (response.statusCode()) {
             case 403 -> {
                 Optional<Token> newToken = tryRefreshToken();
@@ -171,6 +189,9 @@ public class WebClientService {
     public <T> Optional<T> authorizedHttpDeleteJson(@NonNull URIBuilder uri, @NonNull Class<T> responseClass) {
         String token = userSessionService.getJwtToken();
         HttpResponse<String> response = doSendRequest(DELETE, uri, token, null);
+        if (response == null) {
+            return Optional.empty();
+        }
         switch (response.statusCode()) {
             case 403 -> {
                 Optional<Token> newToken = tryRefreshToken();
@@ -217,7 +238,7 @@ public class WebClientService {
             return client.send(httpRequest, BodyHandlers.ofString());
         } catch (Exception e) {
             LOGGER.error("Error when sending request to server" + method + " " + uri + " " + authenticationToken + " " + data);
-            throw new ServerConnectionException(e);
+            return null;
         }
     }
 
@@ -257,6 +278,9 @@ public class WebClientService {
         }
         HttpResponse<String> response = doSendRequest(POST, URIBuilder.empty().addPath("api", "refreshToken"),
                 null, Map.of("refreshToken", refreshToken));
+        if (response == null) {
+            return Optional.empty();
+        }
         if (response.statusCode() == 200) {
             Token token = deserializeResponse(response.body(), Token.class);
             userSessionService.setToken(token);

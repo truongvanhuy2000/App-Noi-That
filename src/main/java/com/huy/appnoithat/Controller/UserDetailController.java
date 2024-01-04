@@ -75,9 +75,10 @@ public class UserDetailController implements Initializable {
 
     public void refreshInfo() {
         Account account = userDetailService.getAccountInformation();
-        if (account.getAccountInformation().getGender() == null) {
-            Gender.setValue("");
-        } else {
+        if (account == null) {
+            return;
+        }
+        if (account.getAccountInformation().getGender() != null) {
             Gender.setValue(account.getAccountInformation().getGender().equals("Male") ? GENDER_OPTION1 : GENDER_OPTION2);
         }
         FullName.setText(account.getAccountInformation().getName());
