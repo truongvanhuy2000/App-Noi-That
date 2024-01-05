@@ -52,12 +52,12 @@
 }
 
 #inner_pane{
-    -fx-background-color:#748CF1;
+    -fx-background-color: #657bd3;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-border-style: solid;
-    -fx-border-color: #748CF1;
+    -fx-border-color: #657bd3;
 }
 
 .side_ankerpane{

@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
 import javafx.util.Duration;
 import org.controlsfx.control.NotificationPane;
 import org.controlsfx.control.Notifications;
@@ -36,20 +37,29 @@ public class PopupUtils {
     public static void throwSuccessNotification(String message) {
         Image image = new Image(Objects.requireNonNull(
                 PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/yes.png")));
-        Notifications notifications = createNotification("", message, 3,null, image);
-        Platform.runLater(notifications::show);
+        Platform.runLater(() -> {
+            Notifications notifications = createNotification("Thành công", message, 3,null, image);
+            notifications.show();
+        });
     }
     public static void throwErrorNotification(String message) {
         Image image = new Image(Objects.requireNonNull(
                 PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/notificationError.png")));
-        Notifications notifications = createNotification("", message, 3, null, image);
-        Platform.runLater(notifications::show);
+
+        Platform.runLater(() -> {
+            Notifications notifications = createNotification("Thất bại", message, 3, null, image);
+            notifications.show();
+        });
     }
     private static Notifications createNotification(String title, String message, int durationInSec, Runnable action, Image image) {
         ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(60);
-        imageView.setFitWidth(60);
+        imageView.setFitHeight(30);
+        imageView.setFitWidth(30);
+        String css = Objects.requireNonNull(PopupUtils.class.getResource("/Notification.css")).toExternalForm();
+        Window popupWindow = org.controlsfx.tools.Utils.getWindow(null);
+        popupWindow.getScene().getStylesheets().add(css);
         return Notifications.create()
+                .owner(popupWindow)
                 .title(title)
                 .text(message)
                 .graphic(imageView)
@@ -64,8 +74,10 @@ public class PopupUtils {
     public static void throwErrorNotification(String title, String message, Runnable action, int durationInSec) {
         Image image = new Image(Objects.requireNonNull(
                 PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/notificationError.png")));
-        Notifications notifications = createNotification(title, message, durationInSec, action, image);
-        Platform.runLater(notifications::show);
+        Platform.runLater(() -> {
+            Notifications notifications = createNotification(title, message, durationInSec, action, image);
+            notifications.show();
+        });
     }
     public static void throwCriticalError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);

@@ -14,8 +14,11 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
@@ -31,6 +34,8 @@ public class FileNoiThatExplorerController {
     private TableView<RecentFile> RecentTableView;
     @FXML
     private TableColumn<RecentFile, String> TimeStampCollum;
+    @FXML
+    private TableColumn<RecentFile, String> ActionCollum;
     private final FileNoiThatExplorerService fileNoiThatExplorerService;
     @Setter
     private Parent root;
@@ -58,12 +63,10 @@ public class FileNoiThatExplorerController {
     @FXML
     void openFileButton(ActionEvent event) {
         File selectedFile = PopupUtils.fileOpener();
-        if (selectedFile == null) {
-            return;
+        if (selectedFile != null) {
+            RecentFile recentFile = new RecentFile(selectedFile.getAbsolutePath(), System.currentTimeMillis());
+            openFile(recentFile);
         }
-        RecentFile recentFile = new RecentFile(selectedFile.getAbsolutePath(), System.currentTimeMillis());
-        // Add to recent file
-        openFile(recentFile);
     }
 
 
@@ -74,6 +77,8 @@ public class FileNoiThatExplorerController {
         DirectoryCollum.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDirectory()));
         TimeStampCollum.setCellValueFactory(cellData -> new SimpleObjectProperty<>(
                 Utils.convertMilisToDateTimeString(cellData.getValue().getTimeStamp())));
+        ActionCollum.setCellFactory(tableColumn -> new ActionCell(this::deleteFile));
+        ActionCollum.setCellValueFactory(new PropertyValueFactory<>(""));
         TimeStampCollum.setComparator((o1, o2) -> {
             long o1Time = Utils.convertDateTimeStringToMilis(o1);
             long o2Time = Utils.convertDateTimeStringToMilis(o2);
@@ -92,15 +97,23 @@ public class FileNoiThatExplorerController {
         });
         getWork();
     }
+    private void deleteFile(int index) {
+        fileNoiThatExplorerService.removeRecentFile(RecentTableView.getItems().get(index));
+    }
     private void getWork() {
         new Thread(() -> {
             while (true) {
-                OpenFileWork openFileWork = WorkFactory.getWork();
-                if (openFileWork != null) {
-                    Platform.runLater(() -> {
-                        LOGGER.info("Open work: " + openFileWork.getParam());
-                        openWith(openFileWork.getParam());
-                    });
+                try {
+                    OpenFileWork openFileWork = WorkFactory.getWork();
+                    if (openFileWork != null) {
+                        Platform.runLater(() -> {
+                            LOGGER.info("Open work: " + openFileWork.getParam());
+                            openWith(openFileWork.getParam());
+                        });
+                    }
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
         }).start();
