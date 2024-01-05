@@ -152,33 +152,18 @@ public class HangMucCollumHandler {
         switch (ItemTypeUtils.determineItemType(currentItem)) {
             case ROMAN -> {
                 String phongCach = currentItem.getParent().getValue().getHangMuc().getValue();
-                try {
-                    items = Utils.getObjectNameList(luaChonNoiThatService.findNoiThatListBy(phongCach));
-                } catch (NullPointerException e) {
-                    PopupUtils.throwErrorNotification("Chưa lựa chọn thông tin phía trên");
-                    return;
-                }
+                items = Utils.getObjectNameList(luaChonNoiThatService.findNoiThatListBy(phongCach));
                 hangMucList.addAll(items);
             }
             case AlPHA -> {
-                try {
-                    items = Utils.getObjectNameList(luaChonNoiThatService.findAllPhongCachNoiThat());
-                } catch (NullPointerException e) {
-                    PopupUtils.throwErrorNotification("Chưa lựa chọn thông tin phía trên");
-                    return;
-                }
+                items = Utils.getObjectNameList(luaChonNoiThatService.findAllPhongCachNoiThat());
                 hangMucList.clear();
                 hangMucList.addAll(items);
             }
             case NUMERIC -> {
                 String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
                 String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
-                try {
-                    items = Utils.getObjectNameList(luaChonNoiThatService.findHangMucListBy(phongCach, noiThat));
-                } catch (NullPointerException e) {
-                    PopupUtils.throwErrorNotification("Chưa lựa chọn thông tin phía trên");
-                    return;
-                }
+                items = Utils.getObjectNameList(luaChonNoiThatService.findHangMucListBy(phongCach, noiThat));
                 hangMucList.clear();
                 hangMucList.addAll(items);
             }

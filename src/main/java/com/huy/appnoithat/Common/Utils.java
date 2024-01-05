@@ -111,8 +111,9 @@ public class Utils {
      * @return
      */
     public static List<String> getObjectNameList(List<?> list) {
-        if (list == null || list.isEmpty())
-            new ArrayList<>();
+        if (list == null || list.isEmpty()) {
+            list = new ArrayList<>();
+        }
         return list.stream().map(Object::toString).collect(Collectors.toList());
     }
 
