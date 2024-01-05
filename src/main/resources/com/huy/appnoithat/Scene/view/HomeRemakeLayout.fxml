@@ -25,7 +25,7 @@
                                  <children>
                                     <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" x="21.0" y="14.0">
                                        <image>
-                                          <Image url="@../icons/man.png" />
+                                          <Image url="@../icons/verify.png" />
                                        </image>
                                     </ImageView>
                                         <Text fx:id="UserName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" wrappingWidth="102.0" x="80.0" y="47.0">
@@ -74,7 +74,7 @@
                                   <graphic>
                                       <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                                           <image>
-                                              <Image url="@../icons/house.png" />
+                                              <Image url="@../icons/software-engineer.png" />
                                           </image>
                                       </ImageView>
                                   </graphic>
@@ -89,7 +89,7 @@
                                   <graphic>
                                       <ImageView fitHeight="57.0" fitWidth="53.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" x="13.0">
                                           <image>
-                                              <Image url="@../icons/chair1.png" />
+                                              <Image url="@../icons/couch.png" />
                                           </image>
                                       </ImageView>
                                   </graphic>
@@ -104,7 +104,7 @@
                                   <graphic>
                                       <ImageView fitHeight="55.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                                           <image>
-                                              <Image url="@../icons/database.png" />
+                                              <Image url="@../icons/data-lake.png" />
                                           </image>
                                       </ImageView>
                                   </graphic>

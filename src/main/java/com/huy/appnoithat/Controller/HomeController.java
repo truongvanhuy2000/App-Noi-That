@@ -139,9 +139,11 @@ public class HomeController {
     }
 
     private void toggleButton(boolean luaChonNoiThatBtn, boolean quanLyNguoiDungBtn, boolean suadoidatabaseBtn) {
-        LuaChonNoiThatButton.setDisable(!luaChonNoiThatBtn);
-        QuanLyNguoiDungButton.setDisable(!quanLyNguoiDungBtn);
-        suadoidatabaseButton.setDisable(!suadoidatabaseBtn);
+        LuaChonNoiThatButton.setManaged(luaChonNoiThatBtn);
+
+        QuanLyNguoiDungButton.setManaged(quanLyNguoiDungBtn);
+
+        suadoidatabaseButton.setManaged(suadoidatabaseBtn);
     }
 
     /**
