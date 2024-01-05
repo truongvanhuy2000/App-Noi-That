@@ -8,13 +8,14 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import lombok.experimental.UtilityClass;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 @UtilityClass
 public class FXUtils {
     public static void closeAll() {
-        List<Window> windows = Window.getWindows();
-        for (int index = 0; index < windows.size(); index ++) {
-            Window window = windows.get(index);
+        List<Window> windows = new ArrayList<>(Window.getWindows());
+        for (Window window : windows) {
             if (window != null && window.isShowing()) {
                 window.hide();
             }

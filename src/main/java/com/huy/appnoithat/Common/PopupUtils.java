@@ -1,17 +1,22 @@
 package com.huy.appnoithat.Common;
 
 import com.huy.appnoithat.Scene.LoadingScene;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import org.controlsfx.control.NotificationPane;
 import org.controlsfx.control.Notifications;
 
 import java.io.File;
@@ -31,20 +36,21 @@ public class PopupUtils {
     public static void throwSuccessNotification(String message) {
         Image image = new Image(Objects.requireNonNull(
                 PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/yes.png")));
-        Notifications notifications = createNotification(message, 3,null, image);
+        Notifications notifications = createNotification("", message, 3,null, image);
         Platform.runLater(notifications::show);
     }
     public static void throwErrorNotification(String message) {
         Image image = new Image(Objects.requireNonNull(
                 PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/notificationError.png")));
-        Notifications notifications = createNotification(message, 3, null, image);
+        Notifications notifications = createNotification("", message, 3, null, image);
         Platform.runLater(notifications::show);
     }
-    private static Notifications createNotification(String message, int durationInSec, Runnable action, Image image) {
+    private static Notifications createNotification(String title, String message, int durationInSec, Runnable action, Image image) {
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(60);
         imageView.setFitWidth(60);
         return Notifications.create()
+                .title(title)
                 .text(message)
                 .graphic(imageView)
                 .hideAfter(Duration.seconds(durationInSec))
@@ -55,10 +61,10 @@ public class PopupUtils {
                     }
                 });
     }
-    public static void throwErrorNotification(String message, Runnable action, int durationInSec) {
+    public static void throwErrorNotification(String title, String message, Runnable action, int durationInSec) {
         Image image = new Image(Objects.requireNonNull(
                 PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/notificationError.png")));
-        Notifications notifications = createNotification(message, durationInSec, action, image);
+        Notifications notifications = createNotification(title, message, durationInSec, action, image);
         Platform.runLater(notifications::show);
     }
     public static void throwCriticalError(String message) {

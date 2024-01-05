@@ -41,7 +41,8 @@ public class AccountRestService {
     }
 
     public Account findByUsername(String username) {
-        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", "search").addParameter("username", username);
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", "search")
+                .addParameter("username", username);
         Optional<Account> response = this.webClientService.authorizedHttpGetJson(uriBuilder, Account.class);
         return response.orElse(null);
     }
