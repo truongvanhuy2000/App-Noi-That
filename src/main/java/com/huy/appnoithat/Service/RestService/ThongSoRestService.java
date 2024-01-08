@@ -58,7 +58,7 @@ public class ThongSoRestService {
      * @throws RuntimeException if there is an error when searching for ThongSo objects.
      */
     public List<ThongSo> searchByVatLieu(int id) {
-        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("searchByVatLieu", String.valueOf(id));
+        URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("searchByVatlieu", String.valueOf(id));
         Optional<List<ThongSo>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, ThongSo.class, List.class);
         return response.orElse(null);
     }

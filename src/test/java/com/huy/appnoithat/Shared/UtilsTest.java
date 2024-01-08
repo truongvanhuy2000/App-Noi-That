@@ -27,6 +27,6 @@ class UtilsTest {
     }
     @Test
     void testCalculation() {
-        System.out.println(System.getProperty("file.encoding"));
+        System.out.println(System.getProperty("user.home"));
     }
 }

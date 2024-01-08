@@ -10,6 +10,9 @@ import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService
 import com.huy.appnoithat.Work.OpenFileWork;
 import com.huy.appnoithat.Work.WorkFactory;
 import javafx.application.Platform;
+import javafx.beans.binding.DoubleBinding;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -84,6 +87,14 @@ public class FileNoiThatExplorerController {
             long o2Time = Utils.convertDateTimeStringToMilis(o2);
             return Long.compare(o2Time, o1Time);
         });
+        RecentTableView.widthProperty().addListener((observableValue, number, t1) -> {
+            DoubleBinding usedWidth = ActionCollum.widthProperty()
+                    .add(TimeStampCollum.widthProperty());
+            double width = t1.doubleValue() - usedWidth.doubleValue() - 5;
+            DoubleProperty observableDouble = new SimpleDoubleProperty(width);
+            DirectoryCollum.prefWidthProperty().bind(observableDouble);
+        });
+
         RecentTableView.setItems(fileNoiThatExplorerService.getRecentFile());
 
         // Double click to open a recent file

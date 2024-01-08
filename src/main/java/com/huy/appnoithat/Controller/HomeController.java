@@ -88,9 +88,6 @@ public class HomeController {
         PCPane.setVisible(true);
         PCPane.getChildren().clear();
 
-        // Disable all buttons by default
-        toggleButton(false, false, false);
-
         // Set actions for different buttons
         QuanLyNguoiDungButton.setOnAction(this::OnClickQuanLyNguoiDung);
         suadoidatabaseButton.setOnAction(this::OnClickSuaDoiDatabase);
@@ -139,10 +136,13 @@ public class HomeController {
     }
 
     private void toggleButton(boolean luaChonNoiThatBtn, boolean quanLyNguoiDungBtn, boolean suadoidatabaseBtn) {
+        LuaChonNoiThatButton.setVisible(luaChonNoiThatBtn);
         LuaChonNoiThatButton.setManaged(luaChonNoiThatBtn);
 
+        QuanLyNguoiDungButton.setVisible(quanLyNguoiDungBtn);
         QuanLyNguoiDungButton.setManaged(quanLyNguoiDungBtn);
 
+        suadoidatabaseButton.setVisible(suadoidatabaseBtn);
         suadoidatabaseButton.setManaged(suadoidatabaseBtn);
     }
 

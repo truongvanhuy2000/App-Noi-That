@@ -34,14 +34,16 @@ public class PopupUtils {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK);
         alert.showAndWait();
     }
+
     public static void throwSuccessNotification(String message) {
         Image image = new Image(Objects.requireNonNull(
                 PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/yes.png")));
         Platform.runLater(() -> {
-            Notifications notifications = createNotification("Thành công", message, 3,null, image);
+            Notifications notifications = createNotification("Thành công", message, 3, null, image);
             notifications.show();
         });
     }
+
     public static void throwErrorNotification(String message) {
         Image image = new Image(Objects.requireNonNull(
                 PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/notificationError.png")));
@@ -51,6 +53,7 @@ public class PopupUtils {
             notifications.show();
         });
     }
+
     private static Notifications createNotification(String title, String message, int durationInSec, Runnable action, Image image) {
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(30);
@@ -71,6 +74,7 @@ public class PopupUtils {
                     }
                 });
     }
+
     public static void throwErrorNotification(String title, String message, Runnable action, int durationInSec) {
         Image image = new Image(Objects.requireNonNull(
                 PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/notificationError.png")));
@@ -79,6 +83,7 @@ public class PopupUtils {
             notifications.show();
         });
     }
+
     public static void throwCriticalError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
         alert.showAndWait();
@@ -89,11 +94,13 @@ public class PopupUtils {
         chooser.setTitle("Choose location To Save Report");
         return chooser.showSaveDialog(null);
     }
+
     public static File fileOpener() {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Choose location To Open Report");
         return chooser.showOpenDialog(null);
     }
+
     public static String openDialog(String title, String header, String content) {
         TextInputDialog dialog = new TextInputDialog("");
 
@@ -103,6 +110,7 @@ public class PopupUtils {
         Optional<String> result = dialog.showAndWait();
         return result.orElse(null);
     }
+
     public static boolean confirmationDialog(String title, String header, String content) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(title);
@@ -111,6 +119,7 @@ public class PopupUtils {
         Optional<ButtonType> result = alert.showAndWait();
         return result.filter(buttonType -> buttonType == ButtonType.OK).isPresent();
     }
+
     public static void showLoading(Stage stage) {
         LoadingScene loadingScene = LoadingScene.getInstance();
         stage.setScene(loadingScene.getScene());
@@ -128,6 +137,7 @@ public class PopupUtils {
         Optional<ButtonType> result = alert.showAndWait();
         return result.filter(buttonType -> buttonType == ButtonType.OK).isPresent();
     }
+
     public static boolean showCloseAppConfirmation() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Đóng ứng dụng");

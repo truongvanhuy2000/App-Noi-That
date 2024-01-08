@@ -27,7 +27,7 @@ public class CustomEditingListCell<T extends CommonItemInterface> extends ListCe
         } else {
             if (isEditing()) {
                 if (textArea != null) {
-                    textArea.setText(getString());
+                    textArea.setText(getValue());
                     setGraphic(null);
                 }
                 setText(null);
@@ -74,7 +74,7 @@ public class CustomEditingListCell<T extends CommonItemInterface> extends ListCe
         if (textArea != null) {
             return;
         }
-        textArea = new TextArea(getString());
+        textArea = new TextArea(getValue());
         textArea.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
         textArea.setOnKeyPressed((event) -> {
             T item = getItem();
@@ -107,6 +107,9 @@ public class CustomEditingListCell<T extends CommonItemInterface> extends ListCe
      * @return The string representation of the item's name.
      */
     private String getString() {
+        return getItem() == null ? "" : (getIndex() + 1 + ". " + getItem().getName());
+    }
+    private String getValue() {
         return getItem() == null ? "" : getItem().getName();
     }
 }

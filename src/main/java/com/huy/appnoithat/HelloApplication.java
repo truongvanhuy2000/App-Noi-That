@@ -1,11 +1,12 @@
 package com.huy.appnoithat;
 
+import com.huy.appnoithat.Configuration.Config;
+import com.huy.appnoithat.Configuration.ConfigHandler;
 import com.huy.appnoithat.Exception.GlobalExceptionHandler;
 import com.huy.appnoithat.Handler.MultipleInstanceHandler;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.Login.LoginScene;
 import com.huy.appnoithat.Scene.StageFactory;
-import com.huy.appnoithat.Service.Configuration.configurationService;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Session.UserSession;
 import com.huy.appnoithat.Work.OpenFileWork;
@@ -55,12 +56,12 @@ public class HelloApplication extends Application {
     }
     public static void main(String[] args) {
         Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler());
-        configurationService.readConfiguration();
         if (!MultipleInstanceHandler.isSingleInstance(args)) {
             System.exit(0);
         }
         MultipleInstanceHandler.startHandleMultipleInstance();
         LOGGER.info("Start application");
+        ConfigHandler.getInstance().readConfiguration();
         launch(args);
     }
 }
