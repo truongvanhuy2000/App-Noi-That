@@ -1,5 +1,9 @@
 package com.huy.appnoithat.Common;
 
+import com.huy.appnoithat.Event.RestEvent;
+import javafx.application.Platform;
+import javafx.event.EventType;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.StackPane;
@@ -42,5 +46,20 @@ public class FXUtils {
         loadingPane.setDisable(true);
         loadingPane.getChildren().clear();
         loadingPane.toBack();
+    }
+    public static Node getCurrentRootNode() {
+        Window popupWindow = org.controlsfx.tools.Utils.getWindow(null);
+        if (popupWindow == null) {
+            return null;
+        }
+        return popupWindow.getScene().getRoot();
+    }
+    public static void fireEventFromCurrentNode(EventType<?> eventType) {
+        Platform.runLater(() -> {
+            Node currentRootNode = getCurrentRootNode();
+            if (currentRootNode != null) {
+                currentRootNode.fireEvent(new RestEvent(eventType));
+            }
+        });
     }
 }

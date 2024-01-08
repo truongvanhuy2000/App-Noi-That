@@ -27,9 +27,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) {
         Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler());
         getPendingWorkAtLaunch();
-        Platform.runLater(() -> {
-            startUI(stage);
-        });
+        startUI(stage);
     }
     private void startUI(Stage stage) {
         UserSession.getInstance();
@@ -37,11 +35,11 @@ public class HelloApplication extends Application {
         if (sessionService.isSessionValid()) {
             Scene scene = HomeScene.getInstance().getScene();
             Stage mainStage = StageFactory.createNewMaximizedMainStage(stage, scene, true);
-            Platform.runLater(() -> HomeScene.getInstance().getHomeController().init(mainStage));
+            HomeScene.getInstance().getHomeController().init(mainStage);
         } else {
             LoginScene loginScene = new LoginScene();
             Scene scene = loginScene.getScene();
-            Platform.runLater(() -> loginScene.getLoginController().init());
+            loginScene.getLoginController().init();
             StageFactory.createNewUnResizeableMainStage(stage, scene, true);
         }
     }
