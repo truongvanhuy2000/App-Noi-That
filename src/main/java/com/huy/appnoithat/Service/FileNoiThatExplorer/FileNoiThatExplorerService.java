@@ -12,6 +12,9 @@ import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 public class FileNoiThatExplorerService {
@@ -86,7 +89,18 @@ public class FileNoiThatExplorerService {
         }
         // Remove the recent file from the list and save the updated list to the file system
         recentFileObservableList.remove(recentFile);
+        removePhysicalFile(recentFile);
         saveRecentFile();
+    }
+
+    private void removePhysicalFile(RecentFile recentFile) {
+        if (Files.exists(Path.of(recentFile.getDirectory()))) {
+            try {
+                Files.delete(Path.of(recentFile.getDirectory()));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     /**

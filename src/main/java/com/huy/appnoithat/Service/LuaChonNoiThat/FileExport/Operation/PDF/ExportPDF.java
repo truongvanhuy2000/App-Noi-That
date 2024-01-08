@@ -6,6 +6,9 @@ import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.ExportFile;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.Operation.Excel.ExportSingleXLS;
+import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +19,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ExportPDF implements ExportFile {
+    final static Logger LOGGER = LogManager.getLogger(ExportPDF.class);
     ExportSingleXLS exportSingleXLS = new ExportSingleXLS();
     private File outputFile;
 
@@ -23,7 +27,7 @@ public class ExportPDF implements ExportFile {
     public void export(File exportDirectory) throws IOException {
         setOutputFile(exportDirectory);
         String tempXlsxFile = "temp" + System.currentTimeMillis() + ".xlsx";
-        String xlsFileDir = Paths.get(Config.CURRENT_DIRECTORY, tempXlsxFile).toAbsolutePath().toString();
+        String xlsFileDir = Paths.get(Config.FILE_EXPORT.XLSX_DEFAULT_OUTPUT_DIRECTORY, tempXlsxFile).toAbsolutePath().toString();
         exportSingleXLS.export(new File(xlsFileDir));
         convertXLStoPDF(xlsFileDir);
         deleteExistingFile(new File(xlsFileDir));
@@ -47,7 +51,7 @@ public class ExportPDF implements ExportFile {
 
     public void convertXLStoPDF(String directory){
         String tempPdfFile = "temp" + System.currentTimeMillis() + ".pdf";
-        String tempPdfPath = Paths.get(Config.CURRENT_DIRECTORY, tempPdfFile).toAbsolutePath().toString();
+        String tempPdfPath = Paths.get(Config.ROOT_DIRECTORY, tempPdfFile).toAbsolutePath().toString();
         try {
             //read all the lines of the .vbs script into memory as a list
             //here we pull from the resources of a Gradle build, where the vbs script is stored
@@ -73,6 +77,7 @@ public class ExportPDF implements ExportFile {
             //tell the process how long to wait for timeout
             boolean success = process.waitFor(2, TimeUnit.MINUTES);
             Files.move(Paths.get(tempPdfPath), Paths.get(outputFile.getAbsolutePath()));
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

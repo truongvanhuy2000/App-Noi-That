@@ -4,11 +4,15 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.DataModel.RecentFile;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TreeTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 
 public class ActionCell extends TableCell<RecentFile, String> {
@@ -39,10 +43,15 @@ public class ActionCell extends TableCell<RecentFile, String> {
     }
 
     private void init() {
-        Button deleteButton = new Button("Delete");
+        Button deleteButton = new Button();
+        ImageView imageView = new ImageView(new Image(Objects.requireNonNull(
+                this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/icons8-delete-48.png"))));
+        imageView.setFitHeight(20);
+        imageView.setFitWidth(20);
+        deleteButton.setGraphic(imageView);
         hBox = new HBox(deleteButton);
         deleteButton.setOnAction((event) -> {
-            PopupUtils.throwSuccessNotification("bing chilling" + getTableRow().getIndex());
+            PopupUtils.throwSuccessNotification("Xoá thành công");
             deleteAction.accept(getTableRow().getIndex());
         });
     }

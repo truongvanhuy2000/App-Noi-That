@@ -10,4 +10,6 @@ import lombok.NoArgsConstructor;
 public class Configuration {
     @JsonProperty("Webserver")
     private Webserver Webserver;
+    @JsonProperty("Path")
+    private PathConfig path;
 }

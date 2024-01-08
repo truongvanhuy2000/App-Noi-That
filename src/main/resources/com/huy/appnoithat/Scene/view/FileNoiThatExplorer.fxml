@@ -76,9 +76,9 @@
                      <children>
                         <TableView id="RecentTableView" fx:id="RecentTableView" prefHeight="572.0" prefWidth="955.0" VBox.vgrow="ALWAYS">
                           <columns>
-                            <TableColumn fx:id="DirectoryCollum" prefWidth="679.1999939084053" styleClass="column-header" text="Đường dẫn" />
-                            <TableColumn fx:id="TimeStampCollum" minWidth="0.0" prefWidth="232.0" style="-fx-alignment: CENTER;" styleClass="column-header" text="Thời gian" />
-                              <TableColumn fx:id="ActionCollum" minWidth="0.0" prefWidth="110.0" resizable="false" style="-fx-alignment: CENTER;" styleClass="column-header" text="Hành động" />
+                            <TableColumn fx:id="DirectoryCollum" prefWidth="600.0" resizable="false" styleClass="column-header" text="Đường dẫn" />
+                            <TableColumn fx:id="TimeStampCollum" minWidth="0.0" prefWidth="275.0" resizable="false" style="-fx-alignment: CENTER;" styleClass="column-header" text="Thời gian" />
+                              <TableColumn fx:id="ActionCollum" minWidth="0.0" prefWidth="78.0" resizable="false" sortable="false" styleClass="column-header" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
