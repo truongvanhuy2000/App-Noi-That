@@ -226,18 +226,8 @@ public class DatabaseModifyPhongCachController implements Initializable {
     }
     @FXML
     void FetchSampleData(ActionEvent event) {
-        FXUtils.showLoading(loadingPane, "Đang lấy dữ liệu mẫu...");
-        new Thread(() -> {
-            try {
-                databaseModifyPhongCachService.sampleAll();
-                Platform.runLater(() -> {
-                    FXUtils.hideLoading(loadingPane);
-                    refresh();
-                });
-            } catch (Exception e) {
-                LOGGER.error("Some thing is wrong with the export operation", e);
-            }
-        }).start();
+        databaseModifyPhongCachService.sampleAll();
+        refresh();
     }
 
 

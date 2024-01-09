@@ -67,26 +67,30 @@ public class StageFactory {
             });
         });
         stage.addEventFilter(RestEvent.REST_START, (event) -> {
+            System.out.println("start http request");
             if (!(stage.isFocused() && stage.isShowing())) {
                 return;
             }
             if (stage.getScene().getRoot() instanceof AnchorPane) {
                 AnchorPane root = (AnchorPane)stage.getScene().getRoot();
                 root.getChildren().add(stackPane);
+                AnchorPane.setBottomAnchor(stackPane, 0.0);
+                AnchorPane.setLeftAnchor(stackPane, 0.0);
+                AnchorPane.setRightAnchor(stackPane, 0.0);
+                AnchorPane.setTopAnchor(stackPane, 0.0);
                 FXUtils.showLoading(stackPane, "....");
                 event.consume();
             }
 
         });
         stage.addEventFilter(RestEvent.REST_STOP, (event -> {
-            if (stage.isFocused() && stage.isShowing()) {
+            System.out.println("staop http request");
                 FXUtils.hideLoading(stackPane);
                 if (stage.getScene().getRoot() instanceof AnchorPane) {
                     AnchorPane root = (AnchorPane)stage.getScene().getRoot();
                     root.getChildren().remove(stackPane);
                 }
                 event.consume();
-            }
         }));
     }
 }

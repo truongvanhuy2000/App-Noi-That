@@ -73,7 +73,6 @@ public class LoginController {
     public void login(ActionEvent actionEvent) {
         String userName = usernameTextField.getText();
         String password = passwordField.getText();
-        FXUtils.showLoading(loadingPane, "Đang đăng nhập, vui lòng đợi");
         boolean isAuthorized = loginService.basicAuthorization(userName, password);
         if (!isAuthorized) {
             // Display error popup for incorrect credentials

@@ -30,6 +30,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
 public class WebClientService {
@@ -240,7 +242,14 @@ public class WebClientService {
         try {
             FXUtils.fireEventFromCurrentNode(RestEvent.REST_START);
             HttpRequest httpRequest = buildJsonHttpRequest(method, uri, authenticationToken, data);
-            HttpResponse<String> response = client.send(httpRequest, BodyHandlers.ofString());
+            HttpResponse<String> response;
+            CompletableFuture<HttpResponse<String>> completableFuture = client.sendAsync(httpRequest, BodyHandlers.ofString());
+
+            try {
+                response = completableFuture.get(30, TimeUnit.SECONDS);
+            } catch (Exception e) {
+                response = null;
+            }
             FXUtils.fireEventFromCurrentNode(RestEvent.REST_STOP);
             return response;
         } catch (Exception e) {
