@@ -1,23 +1,16 @@
 package com.huy.appnoithat.Common;
 
-import com.huy.appnoithat.Scene.LoadingScene;
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import javafx.util.Duration;
-import org.controlsfx.control.NotificationPane;
 import org.controlsfx.control.Notifications;
 
 import java.io.File;
@@ -120,14 +113,7 @@ public class PopupUtils {
         return result.filter(buttonType -> buttonType == ButtonType.OK).isPresent();
     }
 
-    public static void showLoading(Stage stage) {
-        LoadingScene loadingScene = LoadingScene.getInstance();
-        stage.setScene(loadingScene.getScene());
-        stage.setResizable(false);
-        stage.setAlwaysOnTop(true);
-        stage.initStyle(StageStyle.TRANSPARENT);
-        stage.show();
-    }
+
 
     public static boolean showCloseWindowConfirmation() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

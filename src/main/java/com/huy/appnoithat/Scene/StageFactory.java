@@ -71,8 +71,7 @@ public class StageFactory {
             if (!(stage.isFocused() && stage.isShowing())) {
                 return;
             }
-            if (stage.getScene().getRoot() instanceof AnchorPane) {
-                AnchorPane root = (AnchorPane)stage.getScene().getRoot();
+            if (stage.getScene().getRoot() instanceof AnchorPane root) {
                 root.getChildren().add(stackPane);
                 AnchorPane.setBottomAnchor(stackPane, 0.0);
                 AnchorPane.setLeftAnchor(stackPane, 0.0);

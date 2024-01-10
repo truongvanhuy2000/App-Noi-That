@@ -9,16 +9,13 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Common.FXUtils;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.Token;
-import com.huy.appnoithat.Event.RestEvent;
-import com.huy.appnoithat.Exception.AccountExpiredException;
-import com.huy.appnoithat.Exception.ServerConnectionException;
 import com.huy.appnoithat.Handler.ServerResponseHandler;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
+import javafx.scene.layout.StackPane;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.poi.ss.formula.functions.T;
 import org.codehaus.httpcache4j.uri.URIBuilder;
 
 import java.net.URI;
@@ -32,7 +29,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
 
 public class WebClientService {
     final static Logger LOGGER = LogManager.getLogger(WebClientService.class);
@@ -240,17 +236,19 @@ public class WebClientService {
     private HttpResponse<String> doSendRequest(@NonNull String method, @NonNull URIBuilder uri,
                                                String authenticationToken, Object data) {
         try {
-            FXUtils.fireEventFromCurrentNode(RestEvent.REST_START);
+            StackPane stackPane = FXUtils.showLoading();
             HttpRequest httpRequest = buildJsonHttpRequest(method, uri, authenticationToken, data);
             HttpResponse<String> response;
             CompletableFuture<HttpResponse<String>> completableFuture = client.sendAsync(httpRequest, BodyHandlers.ofString());
-
             try {
                 response = completableFuture.get(30, TimeUnit.SECONDS);
             } catch (Exception e) {
                 response = null;
             }
-            FXUtils.fireEventFromCurrentNode(RestEvent.REST_STOP);
+//            FXUtils.fireEventFromCurrentNode(RestEvent.REST_STOP);
+            if (stackPane != null) {
+                FXUtils.hideLoading(stackPane);
+            }
             return response;
         } catch (Exception e) {
             LOGGER.error("Error when sending request to server" + method + " " + uri + " " + authenticationToken + " " + data);
