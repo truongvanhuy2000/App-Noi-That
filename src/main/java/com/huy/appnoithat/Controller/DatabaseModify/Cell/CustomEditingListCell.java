@@ -76,15 +76,27 @@ public class CustomEditingListCell<T extends CommonItemInterface> extends ListCe
         }
         textArea = new TextArea(getValue());
         textArea.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
-        textArea.setOnKeyPressed((event) -> {
-            T item = getItem();
-            if (item == null) {
+        textArea.setOnKeyPressed((key) -> {
+            if (KeyboardUtils.isRightKeyCombo(Action.NEXT_LINE, key)) {
+                int currentTextPos = textArea.getCaretPosition();
+                if (currentTextPos > textArea.getText().length()) {
+                    currentTextPos = textArea.getText().length();
+                }
+                textArea.setText(new StringBuilder(textArea.getText())
+                        .insert(currentTextPos, System.lineSeparator()).toString());
+                textArea.positionCaret(currentTextPos + 1);
+                key.consume();
                 return;
             }
-            item.setName(textArea.getText());
-            if (KeyboardUtils.isRightKeyCombo(Action.SAVE, event)) {
+            if (KeyboardUtils.isRightKeyCombo(Action.COMMIT, key)) {
+                T item = getItem();
+                if (item == null) {
+                    return;
+                }
+                item.setName(textArea.getText().trim());
                 commitEdit(item);
                 updateItem(item, false);
+                key.consume();
             }
         });
     }
@@ -98,7 +110,7 @@ public class CustomEditingListCell<T extends CommonItemInterface> extends ListCe
             return;
         }
         vBox = new VBox();
-        vBox.getChildren().add(new Label("Nhấn Ctrl + S để lưu"));
+        vBox.getChildren().add(new Label("Nhấn Alt + Enter để xuống dòng"));
         vBox.getChildren().add(textArea);
     }
 

@@ -135,7 +135,13 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         textArea.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
         textArea.setOnKeyPressed((key) -> {
             if (KeyboardUtils.isRightKeyCombo(Action.NEXT_LINE, key)) {
-                textArea.appendText(System.getProperty("line.separator"));
+                int currentTextPos = textArea.getCaretPosition();
+                if (currentTextPos > textArea.getText().length()) {
+                    currentTextPos = textArea.getText().length();
+                }
+                textArea.setText(new StringBuilder(textArea.getText())
+                        .insert(currentTextPos, System.lineSeparator()).toString());
+                textArea.positionCaret(currentTextPos + 1);
                 key.consume();
                 return;
             }
