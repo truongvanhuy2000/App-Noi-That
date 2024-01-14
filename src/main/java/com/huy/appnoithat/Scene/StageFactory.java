@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.util.Objects;
-import java.util.Stack;
 
 public class StageFactory {
     public static Stage createNewMaximizedMainStage(Stage currentStage, Scene nextScene, boolean confirmWhenClose) {
@@ -25,6 +24,7 @@ public class StageFactory {
         setUpStage(currentStage, confirmWhenClose);
         return currentStage;
     }
+
     public static Stage createNewUnResizeableMainStage(Stage currentStage, Scene nextScene, boolean confirmWhenClose) {
         currentStage.setScene(nextScene);
         currentStage.setMaximized(false);
@@ -32,6 +32,7 @@ public class StageFactory {
         setUpStage(currentStage, confirmWhenClose);
         return currentStage;
     }
+
     public static Stage CreateNewUnresizeableStage(Scene nextScene, boolean confirmWhenClose) {
         Stage stage = new Stage();
         stage.setScene(nextScene);
@@ -39,6 +40,7 @@ public class StageFactory {
         setUpStage(stage, confirmWhenClose);
         return stage;
     }
+
     public static Stage CreateNewMaximizedStage(Scene nextScene, boolean confirmWhenClose) {
         Stage stage = new Stage();
         stage.setScene(nextScene);
@@ -46,6 +48,7 @@ public class StageFactory {
         setUpStage(stage, confirmWhenClose);
         return stage;
     }
+
     private static void setUpStage(Stage stage, boolean confirmWhenClose) {
         StackPane stackPane = new StackPane();
         stage.setTitle("App Noi That");
@@ -67,8 +70,7 @@ public class StageFactory {
             });
         });
         stage.addEventFilter(RestEvent.REST_START, (event) -> {
-            System.out.println("start http request");
-            if (!(stage.isFocused() && stage.isShowing())) {
+            if (!stage.isFocused()) {
                 return;
             }
             if (stage.getScene().getRoot() instanceof AnchorPane root) {
@@ -79,17 +81,17 @@ public class StageFactory {
                 AnchorPane.setTopAnchor(stackPane, 0.0);
                 FXUtils.showLoading(stackPane, "....");
                 event.consume();
+                System.out.println("consume Rest start event");
             }
 
         });
         stage.addEventFilter(RestEvent.REST_STOP, (event -> {
-            System.out.println("staop http request");
+            if (stage.getScene().getRoot() instanceof AnchorPane root) {
                 FXUtils.hideLoading(stackPane);
-                if (stage.getScene().getRoot() instanceof AnchorPane) {
-                    AnchorPane root = (AnchorPane)stage.getScene().getRoot();
-                    root.getChildren().remove(stackPane);
-                }
+                root.getChildren().remove(stackPane);
+                System.out.println("consume Rest stop event");
                 event.consume();
+            }
         }));
     }
 }

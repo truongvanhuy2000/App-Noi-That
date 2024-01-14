@@ -2,6 +2,7 @@ package com.huy.appnoithat.Common;
 
 import com.huy.appnoithat.Event.RestEvent;
 import javafx.application.Platform;
+import javafx.event.Event;
 import javafx.event.EventType;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -59,12 +60,14 @@ public class FXUtils {
         return popupWindow.getScene().getRoot();
     }
     public static void fireEventFromCurrentNode(EventType<?> eventType) {
-        Platform.runLater(() -> {
+        if (Platform.isFxApplicationThread()) {
             Node currentRootNode = getCurrentRootNode();
             if (currentRootNode != null) {
-                currentRootNode.fireEvent(new RestEvent(eventType));
+                System.out.println("fire event " + eventType.getName());
+                Event newEvent = new RestEvent(eventType);
+                currentRootNode.fireEvent(newEvent);
             }
-        });
+        }
     }
     public static StackPane showLoading() {
         Node node = getCurrentRootNode();

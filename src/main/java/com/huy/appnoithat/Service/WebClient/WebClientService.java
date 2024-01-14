@@ -9,6 +9,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Common.FXUtils;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.Token;
+import com.huy.appnoithat.Event.RestEvent;
 import com.huy.appnoithat.Handler.ServerResponseHandler;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import javafx.scene.layout.StackPane;
@@ -236,19 +237,18 @@ public class WebClientService {
     private HttpResponse<String> doSendRequest(@NonNull String method, @NonNull URIBuilder uri,
                                                String authenticationToken, Object data) {
         try {
-            StackPane stackPane = FXUtils.showLoading();
+            FXUtils.fireEventFromCurrentNode(RestEvent.REST_START);
             HttpRequest httpRequest = buildJsonHttpRequest(method, uri, authenticationToken, data);
             HttpResponse<String> response;
             CompletableFuture<HttpResponse<String>> completableFuture = client.sendAsync(httpRequest, BodyHandlers.ofString());
+
             try {
                 response = completableFuture.get(30, TimeUnit.SECONDS);
             } catch (Exception e) {
                 response = null;
             }
-//            FXUtils.fireEventFromCurrentNode(RestEvent.REST_STOP);
-            if (stackPane != null) {
-                FXUtils.hideLoading(stackPane);
-            }
+            TimeUnit.MILLISECONDS.sleep(500);
+            FXUtils.fireEventFromCurrentNode(RestEvent.REST_STOP);
             return response;
         } catch (Exception e) {
             LOGGER.error("Error when sending request to server" + method + " " + uri + " " + authenticationToken + " " + data);
