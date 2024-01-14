@@ -1,5 +1,5 @@
 Webserver:
-  host: "http://noithatthuongaone.online:8080"
+  host: "https://noithatthuongaone.online"
 #  host : "http://localhost:8080"
   timeout: 10
 
