@@ -279,7 +279,7 @@ public class ButtonHandler {
             return;
         }
         for (int i = 0; i < count; i++) {
-            TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem(ItemType.NUMERIC, String.valueOf(i));
+            TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem(ItemType.NUMERIC, String.valueOf(i + 1));
             parent.getChildren().add(tempNewItem);
         }
     }
