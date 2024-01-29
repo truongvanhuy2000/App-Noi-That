@@ -4,27 +4,34 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+
 <AnchorPane prefHeight="542.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ImageView fitHeight="355.0" fitWidth="365.0" layoutX="139.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="181.0">
-            <image>
-                <Image url="@../icons/QRcode.jpg" />
-            </image>
-        </ImageView>
-        <Label fx:id="giaTienQR" layoutX="106.0" layoutY="390.0" prefHeight="41.0" prefWidth="510.0" textFill="#e40b0b">
-            <font>
-                <Font name="System Bold Italic" size="15.0" />
-            </font></Label>
-      <Label layoutX="139.0" layoutY="431.0" prefHeight="41.0" prefWidth="378.0" text="Nội dung chuyển khoản: “ Tên Tài Khoản “" textFill="#e40b0b">
-         <font>
-            <Font name="System Bold Italic" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="139.0" layoutY="479.0" prefHeight="41.0" prefWidth="432.0" text="Quý khách chụp biên lai gửi zalo: 0886.656.111" textFill="#e40b0b">
-         <font>
-            <Font name="System Bold Italic" size="15.0" />
-         </font>
-      </Label>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+              <ImageView fitHeight="355.0" fitWidth="365.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../icons/QRcode.jpg" />
+                  </image>
+              </ImageView>
+              <Label fx:id="giaTienQR" prefHeight="41.0" prefWidth="697.0" style="-fx-alignment: CENTER;" textFill="#e40b0b">
+                  <font>
+                      <Font name="System Bold Italic" size="15.0" />
+                  </font>
+            </Label>
+            <Label prefHeight="41.0" prefWidth="690.0" style="-fx-alignment: CENTER;" text="Nội dung chuyển khoản: “ Tên Tài Khoản “" textFill="#e40b0b">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
+            <Label prefHeight="41.0" prefWidth="694.0" style="-fx-alignment: CENTER;" text="Quý khách chụp biên lai gửi zalo: 0886.656.111" textFill="#e40b0b">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>
