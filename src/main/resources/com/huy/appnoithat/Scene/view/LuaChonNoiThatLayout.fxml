@@ -117,6 +117,18 @@
                                     <Tooltip style="-fx-show-delay: 20ms;" text="Nhân bản mục trong bảng" />
                                  </tooltip>
                               </Button>
+                              <Button fx:id="deleteButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/cancel.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Xóa hàng" />
+                                 </tooltip>
+                              </Button>
                            </items>
                         </ToolBar>
                         <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">

@@ -58,7 +58,7 @@ public class LuaChonNoiThatController implements Initializable {
     private TreeTableColumn<BangNoiThat, String> DonVi, HangMuc, VatLieu, STT;
     // Button
     @FXML
-    private Button addContinuousButton, addNewButton, ExportButton, SaveButton, duplicateButton;
+    private Button addContinuousButton, addNewButton, ExportButton, SaveButton, duplicateButton, deleteButton;
     @FXML
     private ImageView ImageView;
     @FXML
@@ -91,7 +91,7 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     void onKeyPressed(KeyEvent event) {
         if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
-            handleDeleteAction();
+            deleteButton.fire();
         }
         if (KeyboardUtils.isRightKeyCombo(Action.CLEAR_SELECTION, event)) {
             TableNoiThat.getSelectionModel().clearSelection();
@@ -108,21 +108,7 @@ public class LuaChonNoiThatController implements Initializable {
         persistenceStorageService.saveNoteArea(noteArea);
     }
 
-    private void handleDeleteAction() {
-        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
-            return;
-        }
-        ObservableList<TreeItem<BangNoiThat>> listItem = TableNoiThat.getSelectionModel().getSelectedItems();
-        for (int i = listItem.size() - 1; i >= 0; i--) {
-            TreeItem<BangNoiThat> item = listItem.get(i);
-            if (item == null) continue;
-            if (item.getParent() == null) continue;
-            item.getParent().getChildren().remove(item);
-        }
-        TableNoiThat.getSelectionModel().clearSelection();
-        TableUtils.reArrangeList(TableNoiThat);
-        TableCalculationUtils.recalculateAllTongTien(TableNoiThat);
-    }
+
     public void saveThongTinCongTy() {
         ThongTinCongTy thongTinCongTy = new ThongTinCongTy(
                 imageStream.toByteArray(),
@@ -205,6 +191,8 @@ public class LuaChonNoiThatController implements Initializable {
         SaveButton.setOnAction(buttonHandler::onSaveAction);
         duplicateButton.setOnAction(buttonHandler::duplicateButtonHandler);
         duplicateButton.disableProperty().bind(TableNoiThat.getSelectionModel().selectedItemProperty().isNull());
+        deleteButton.setOnAction(buttonHandler::handleDeleteAction);
+        deleteButton.disableProperty().bind(TableNoiThat.getSelectionModel().selectedItemProperty().isNull());
     }
 
     /**
