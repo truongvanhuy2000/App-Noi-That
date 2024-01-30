@@ -1,5 +1,8 @@
 package com.huy.appnoithat.Common;
 
+import javafx.application.Platform;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.StackPane;
@@ -11,6 +14,8 @@ import lombok.experimental.UtilityClass;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
+
 @UtilityClass
 public class FXUtils {
     public static void closeAll() {
@@ -42,5 +47,24 @@ public class FXUtils {
         loadingPane.setDisable(true);
         loadingPane.getChildren().clear();
         loadingPane.toBack();
+    }
+
+    public static Node getCurrentRootNode() {
+        Window popupWindow = org.controlsfx.tools.Utils.getWindow(null);
+        if (popupWindow == null) {
+            return null;
+        }
+        return popupWindow.getScene().getRoot();
+    }
+
+    public static void loadingMouse() {
+        if (Platform.isFxApplicationThread()) {
+            Objects.requireNonNull(FXUtils.getCurrentRootNode()).getScene().setCursor(Cursor.WAIT);
+        }
+    }
+    public static void normalMouse() {
+        if (Platform.isFxApplicationThread()) {
+            Objects.requireNonNull(FXUtils.getCurrentRootNode()).getScene().setCursor(Cursor.DEFAULT);
+        }
     }
 }

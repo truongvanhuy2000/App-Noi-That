@@ -6,6 +6,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
@@ -306,5 +307,21 @@ public class ButtonHandler {
             newItem.getChildren().add(deepCopy(child));
         }
         return newItem;
+    }
+
+    public void handleDeleteAction(ActionEvent event) {
+        if (TableNoiThat.getSelectionModel().getSelectedItems().isEmpty()) {
+            return;
+        }
+        ObservableList<TreeItem<BangNoiThat>> listItem = TableNoiThat.getSelectionModel().getSelectedItems();
+        for (int i = listItem.size() - 1; i >= 0; i--) {
+            TreeItem<BangNoiThat> item = listItem.get(i);
+            if (item == null) continue;
+            if (item.getParent() == null) continue;
+            item.getParent().getChildren().remove(item);
+        }
+        TableNoiThat.getSelectionModel().clearSelection();
+        TableUtils.reArrangeList(TableNoiThat);
+        TableCalculationUtils.recalculateAllTongTien(TableNoiThat);
     }
 }
