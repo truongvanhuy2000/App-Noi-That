@@ -37,7 +37,8 @@ public class LoginService {
         sessionService.setToken(token);
         if (accountRestService.sessionCheck() != null) {
             sessionService.saveSession(token);
+            return true;
         }
-        return true;
+        return false;
     }
 }
