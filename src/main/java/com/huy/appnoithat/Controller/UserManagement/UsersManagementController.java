@@ -2,8 +2,8 @@ package com.huy.appnoithat.Controller.UserManagement;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.UserManagement.DataModel.AccountTable;
-import com.huy.appnoithat.Entity.Account;
-import com.huy.appnoithat.Entity.AccountInformation;
+import com.huy.appnoithat.DataModel.Entity.Account;
+import com.huy.appnoithat.DataModel.Entity.AccountInformation;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.ListAccountWaitToApproveScene;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementAddAccountScene;

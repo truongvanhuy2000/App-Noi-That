@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Service.DatabaseModify;
 
-import com.huy.appnoithat.Entity.VatLieu;
+import com.huy.appnoithat.DataModel.Entity.VatLieu;
 import com.huy.appnoithat.Service.RestService.VatLieuRestService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

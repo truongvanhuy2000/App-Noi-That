@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Service.UsersManagement;
 
 import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Entity.Account;
+import com.huy.appnoithat.DataModel.Entity.Account;
 import com.huy.appnoithat.Service.RestService.AccountRestService;
 
 import java.util.List;

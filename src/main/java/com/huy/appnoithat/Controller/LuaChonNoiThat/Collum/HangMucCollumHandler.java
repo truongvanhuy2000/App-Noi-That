@@ -8,9 +8,9 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import com.huy.appnoithat.Entity.HangMuc;
-import com.huy.appnoithat.Entity.ThongSo;
-import com.huy.appnoithat.Entity.VatLieu;
+import com.huy.appnoithat.DataModel.Entity.HangMuc;
+import com.huy.appnoithat.DataModel.Entity.ThongSo;
+import com.huy.appnoithat.DataModel.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;

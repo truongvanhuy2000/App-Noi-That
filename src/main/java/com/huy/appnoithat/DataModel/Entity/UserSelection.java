@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Entity;
+package com.huy.appnoithat.DataModel.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

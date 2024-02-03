@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
 import com.huy.appnoithat.Common.KeyboardUtils;
-import com.huy.appnoithat.Enums.Action;
+import com.huy.appnoithat.DataModel.Enums.Action;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeTableCell;

@@ -1,11 +1,11 @@
 package com.huy.appnoithat.Service.LuaChonNoiThat;
 
 import com.huy.appnoithat.DataModel.DataPackage;
-import com.huy.appnoithat.Entity.HangMuc;
-import com.huy.appnoithat.Entity.NoiThat;
-import com.huy.appnoithat.Entity.PhongCachNoiThat;
-import com.huy.appnoithat.Entity.VatLieu;
-import com.huy.appnoithat.Enums.FileType;
+import com.huy.appnoithat.DataModel.Entity.HangMuc;
+import com.huy.appnoithat.DataModel.Entity.NoiThat;
+import com.huy.appnoithat.DataModel.Entity.PhongCachNoiThat;
+import com.huy.appnoithat.DataModel.Entity.VatLieu;
+import com.huy.appnoithat.DataModel.Enums.FileType;
 import com.huy.appnoithat.Service.Event.DBUpdateEventService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.ExportFile;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.FileExportService;
@@ -17,8 +17,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class LuaChonNoiThatService {

@@ -1,8 +1,8 @@
 package com.huy.appnoithat.Controller;
 
 import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Entity.Account;
-import com.huy.appnoithat.Entity.AccountInformation;
+import com.huy.appnoithat.DataModel.Entity.Account;
+import com.huy.appnoithat.DataModel.Entity.AccountInformation;
 import com.huy.appnoithat.Service.UserDetail.UserDetailService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

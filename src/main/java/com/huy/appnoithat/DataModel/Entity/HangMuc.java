@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Entity;
+package com.huy.appnoithat.DataModel.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -11,16 +11,16 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class NoiThat implements CommonItemInterface {
+public class HangMuc implements CommonItemInterface {
     @JsonProperty("id")
     private int id;
     @JsonProperty("name")
     private String name;
-    @JsonProperty("hangMuc")
-    List<HangMuc> hangMucList;
+    @JsonProperty("vatLieu")
+    List<VatLieu> vatLieuList;
 
-    public void add(HangMuc hangMuc) {
-        hangMucList.add(hangMuc);
+    public void add(VatLieu vatLieu) {
+        vatLieuList.add(vatLieu);
     }
 
     @Override

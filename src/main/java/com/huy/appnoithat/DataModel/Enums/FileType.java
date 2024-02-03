@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Enums;
+package com.huy.appnoithat.DataModel.Enums;
 
 public enum FileType {
     PDF,

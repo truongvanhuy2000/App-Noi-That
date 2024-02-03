@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
 import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Entity.ThongSo;
+import com.huy.appnoithat.DataModel.Entity.ThongSo;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyVatLieuScene;
 import com.huy.appnoithat.Service.DatabaseModify.DatabaseModifyThongSoService;
 import javafx.event.ActionEvent;
