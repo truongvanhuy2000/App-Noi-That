@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Common;
 
-import com.huy.appnoithat.Enums.Action;
+import com.huy.appnoithat.DataModel.Enums.Action;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 

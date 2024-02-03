@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Service.DatabaseModify;
 
-import com.huy.appnoithat.Entity.NoiThat;
+import com.huy.appnoithat.DataModel.Entity.NoiThat;
 import com.huy.appnoithat.Service.RestService.NoiThatRestService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

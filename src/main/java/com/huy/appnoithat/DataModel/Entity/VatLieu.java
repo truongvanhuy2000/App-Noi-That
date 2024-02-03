@@ -1,29 +1,20 @@
-package com.huy.appnoithat.Entity;
+package com.huy.appnoithat.DataModel.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.util.List;
-
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class PhongCachNoiThat implements CommonItemInterface {
+public class VatLieu implements CommonItemInterface {
     @JsonProperty("id")
     private int id;
     @JsonProperty("name")
     private String name;
-    @JsonProperty("noiThat")
-    List<NoiThat> noiThatList;
-
-    public void add(NoiThat noiThat) {
-        noiThatList.add(noiThat);
-    }
+    @JsonProperty("thongSo")
+    ThongSo thongSo;
 
     @Override
     public String toString() {

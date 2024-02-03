@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Service.DatabaseModify;
 
-import com.huy.appnoithat.Entity.ThongSo;
+import com.huy.appnoithat.DataModel.Entity.ThongSo;
 import com.huy.appnoithat.Service.RestService.ThongSoRestService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -18,8 +18,8 @@ module com.huy.appnoithat {
 
     exports com.huy.appnoithat.Controller;
     opens com.huy.appnoithat.Controller to javafx.fxml;
-    exports com.huy.appnoithat.Entity;
-    opens com.huy.appnoithat.Entity to javafx.fxml;
+    exports com.huy.appnoithat.DataModel.Entity;
+    opens com.huy.appnoithat.DataModel.Entity to javafx.fxml;
     opens com.huy.appnoithat to javafx.fxml;
     exports com.huy.appnoithat;
     exports com.huy.appnoithat.Controller.LuaChonNoiThat;

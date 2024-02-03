@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Service.DatabaseModify;
 
-import com.huy.appnoithat.Entity.PhongCachNoiThat;
+import com.huy.appnoithat.DataModel.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.Service.RestService.BangNoiThatRestService;
 import com.huy.appnoithat.Service.RestService.PhongCachRestService;
 import org.apache.logging.log4j.LogManager;

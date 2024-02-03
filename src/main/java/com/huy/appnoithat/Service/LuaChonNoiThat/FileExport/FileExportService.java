@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Service.LuaChonNoiThat.FileExport;
 
-import com.huy.appnoithat.Enums.FileType;
+import com.huy.appnoithat.DataModel.Enums.FileType;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.Operation.Excel.ExportSingleXLS;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.Operation.PDF.ExportPDF;
 

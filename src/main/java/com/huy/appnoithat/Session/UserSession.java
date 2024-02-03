@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Session;
 
-import com.huy.appnoithat.Entity.Account;
+import com.huy.appnoithat.DataModel.Entity.Account;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
