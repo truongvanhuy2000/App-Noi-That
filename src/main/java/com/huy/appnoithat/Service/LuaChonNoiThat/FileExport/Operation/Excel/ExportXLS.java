@@ -176,14 +176,15 @@ public abstract class ExportXLS {
         Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
         stylistFactory.CellPresetFactory(cell0, ItemTypeUtils.getIdFromFullId(thongTinNoiThat.getSTT()),
                 12, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
-
+        stylistFactory.setCellBackgroundColor(cell0, "eeeeee");
         Cell cell1 = spreadsheet.getRow(mergeRowId).getCell(cellId + 1);
         stylistFactory.CellPresetFactory(cell1, thongTinNoiThat.getTenHangMuc(),
                 14, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
-
+        stylistFactory.setCellBackgroundColor(cell1, "eeeeee");
         Cell cell2 = spreadsheet.getRow(mergeRowId).getCell(cellId + 9);
         stylistFactory.CellPresetFactory(cell2, thongTinNoiThat.getThanhTien(),
                 18, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.setCellBackgroundColor(cell2, "eeeeee");
     }
 
     protected void exportNoiThatContent(XSSFSheet spreadsheet, int mergeRowId, int mergeColumnId, int mergeRowRange,
@@ -228,18 +229,24 @@ public abstract class ExportXLS {
 
         Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
         stylistFactory.CellPresetFactory(cell0, thongTinThanhToan.getTongTien(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.setCellBackgroundColor(cell0, "eeeeee");
 
         Cell cell1 = spreadsheet.getRow(mergeRowId).getCell(cellId + 2);
         stylistFactory.CellPresetFactory(cell1, thongTinThanhToan.getDatCocThietKe10(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.setCellBackgroundColor(cell1, "eeeeee");
 
         Cell cell2 = spreadsheet.getRow(mergeRowId).getCell(cellId + 3);
         stylistFactory.CellPresetFactory(cell2, thongTinThanhToan.getDatCocThiCong30(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.setCellBackgroundColor(cell2, "eeeeee");
 
         Cell cell3 = spreadsheet.getRow(mergeRowId).getCell(cellId + 6);
         stylistFactory.CellPresetFactory(cell3, thongTinThanhToan.getHangDenChanCongTrinh50(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.setCellBackgroundColor(cell3, "eeeeee");
 
         Cell cell4 = spreadsheet.getRow(mergeRowId).getCell(cellId + 8);
         stylistFactory.CellPresetFactory(cell4, thongTinThanhToan.getNghiemThuQuyet(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.setCellBackgroundColor(cell4, "eeeeee");
+
     }
 
     protected Row createPopulatedRow(XSSFSheet spreadsheet, int rowId, int num) {

@@ -15,8 +15,11 @@ import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.layout.StackPane;
+import java.awt.*;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -118,11 +121,12 @@ public class ContentOperation {
         if (selectedFile == null) {
             return;
         }
+        File fullPathFile = concatFileExtension(selectedFile, fileType);
         DataPackage dataPackage = selectedTabContent.getLuaChonNoiThatController().exportData();
         showLoading();
         new Thread(() -> {
-            boolean result = new LuaChonNoiThatService().exportFile(selectedFile, fileType, dataPackage);
-            hideLoading(result);
+            boolean result = new LuaChonNoiThatService().exportFile(fullPathFile, fileType, dataPackage);
+            hideLoading(result, fullPathFile);
         }).start();
     }
     public void exportMultipleExcel() {
@@ -131,30 +135,58 @@ public class ContentOperation {
         if (selectedFile == null) {
             return;
         }
+        File fullPathFile = concatFileExtension(selectedFile, FileType.EXCEL);
         showLoading();
         new Thread(() -> {
             ExportMultipleXLS exportMultipleXLS = new ExportMultipleXLS();
             exportMultipleXLS.setUpDataForExport(exportDataList);
-            boolean result = exportMultipleXLS.export(selectedFile);
-            hideLoading(result);
+            boolean result = exportMultipleXLS.export(fullPathFile);
+            hideLoading(result, fullPathFile);
         }).start();
 
     }
     private void showLoading() {
         FXUtils.showLoading(loadingPane, "Đang xuất file...");
     }
-    private void hideLoading(Boolean result) {
+    private void hideLoading(Boolean result, File outputFile) {
         Platform.runLater(() -> {
             FXUtils.hideLoading(loadingPane);
-            showResult(result);
+            showResult(result, outputFile);
         });
     }
-    private void showResult(Boolean result) {
+    private void showResult(Boolean result, File outputFile) {
         if (!result) {
             PopupUtils.throwErrorNotification("Xuất file thất bại");
         }
         else {
-            PopupUtils.throwSuccessNotification("Xuất file thành công");
+            PopupUtils.throwSuccessNotification("Xuất file thành công. Nhấn để mở", () -> {
+                if (!outputFile.exists()) {
+                    return;
+                }
+                new Thread(() -> {
+                    Desktop desktop = Desktop.getDesktop();
+                    try {
+                        desktop.open(outputFile);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }).start();
+            });
         }
+    }
+    private File concatFileExtension(File selectedFile, FileType fileType) {
+        File outputFile = selectedFile;
+        if (fileType == FileType.PDF) {
+            if (!selectedFile.getAbsolutePath().contains(FileType.PDF.extension)) {
+                outputFile = new File(String.format("%s.%s", outputFile.getAbsolutePath(), FileType.PDF.extension));
+            }
+        } else if (fileType == FileType.EXCEL) {
+            if (!selectedFile.getAbsolutePath().contains(FileType.EXCEL.extension)) {
+                outputFile = new File(String.format("%s.%s", outputFile.getAbsolutePath(), FileType.EXCEL.extension));
+            }
+        } else {
+            throw new IllegalArgumentException();
+        }
+        return outputFile;
     }
 }
