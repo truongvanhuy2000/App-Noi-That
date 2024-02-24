@@ -1,5 +1,7 @@
 package com.huy.appnoithat.Common;
 
+import com.huy.appnoithat.Controller.NewTab.Operation.ContentOperation;
+import com.huy.appnoithat.DataModel.Enums.FileType;
 import com.huy.appnoithat.Scene.LoadingScene;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -17,6 +19,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import javafx.util.Duration;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.controlsfx.control.NotificationPane;
 import org.controlsfx.control.Notifications;
 
@@ -25,6 +29,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class PopupUtils {
+    final static Logger LOGGER = LogManager.getLogger(PopupUtils.class);
     public static void throwErrorSignal(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
         alert.showAndWait();
@@ -43,6 +48,7 @@ public class PopupUtils {
             notifications.show();
         });
     }
+
     public static void throwSuccessNotification(String message, Runnable runnable) {
         Image image = new Image(Objects.requireNonNull(
                 PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/yes.png")));
@@ -101,6 +107,48 @@ public class PopupUtils {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Choose location To Save Report");
         return chooser.showSaveDialog(null);
+    }
+
+    public static File fileSaver(FileType fileType) {
+        FileChooser chooser = new FileChooser();
+        boolean isOverwrite;
+        chooser.setTitle("Choose location To Save Report");
+        File choosenFile = chooser.showSaveDialog(null);
+        if (choosenFile == null) {
+            return null;
+        }
+        File fullPathFile = concatFileExtension(choosenFile, fileType);
+        if (fullPathFile.exists()) {
+            isOverwrite = confirmationDialog("", "File đã tồn tại!!!", "Bạn có muốn ghi đè file này?");
+            if (!isOverwrite) {
+                throwErrorNotification("Vui lòng chọn tên khác");
+                return fileSaver(fileType);
+            } else {
+                fullPathFile.delete();
+            }
+        }
+        return fullPathFile;
+    }
+
+    private static File concatFileExtension(File selectedFile, FileType fileType) {
+        File outputFile = selectedFile;
+        if (fileType == FileType.PDF) {
+            if (!selectedFile.getAbsolutePath().contains(FileType.PDF.extension)) {
+                outputFile = new File(String.format("%s.%s", outputFile.getAbsolutePath(), FileType.PDF.extension));
+            }
+        } else if (fileType == FileType.EXCEL) {
+            if (!selectedFile.getAbsolutePath().contains(FileType.EXCEL.extension)) {
+                outputFile = new File(String.format("%s.%s", outputFile.getAbsolutePath(), FileType.EXCEL.extension));
+            }
+        } else if (fileType == FileType.NT) {
+            if (!selectedFile.getAbsolutePath().contains(FileType.NT.extension)) {
+                outputFile = new File(String.format("%s.%s", outputFile.getAbsolutePath(), FileType.NT.extension));
+            }
+        } else {
+            LOGGER.error("Not supported file type");
+            throw new IllegalArgumentException();
+        }
+        return outputFile;
     }
 
     public static File fileOpener() {

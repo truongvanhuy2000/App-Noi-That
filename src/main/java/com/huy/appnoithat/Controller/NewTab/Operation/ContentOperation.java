@@ -4,6 +4,7 @@ import com.huy.appnoithat.Common.FXUtils;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.Controller.NewTab.NewTabController;
 import com.huy.appnoithat.Controller.NewTab.TabContent;
 import com.huy.appnoithat.DataModel.DataPackage;
@@ -15,6 +16,9 @@ import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.layout.StackPane;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.awt.*;
 
 import java.io.File;
@@ -27,6 +31,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ContentOperation {
+    final static Logger LOGGER = LogManager.getLogger(ContentOperation.class);
     private final NewTabController newTabController;
     private final NoiThatFileService noiThatFileService;
     private final StackPane loadingPane;
@@ -85,7 +90,7 @@ public class ContentOperation {
     }
     public String saveAs() {
         File selectedFile;
-        selectedFile = PopupUtils.fileSaver();
+        selectedFile = PopupUtils.fileSaver(FileType.NT);
         if (selectedFile == null) {
             return null;
         }
@@ -117,31 +122,29 @@ public class ContentOperation {
         if (selectedTabContent == null) {
             return;
         }
-        File selectedFile = PopupUtils.fileSaver();
+        File selectedFile = PopupUtils.fileSaver(fileType);
         if (selectedFile == null) {
             return;
         }
-        File fullPathFile = concatFileExtension(selectedFile, fileType);
         DataPackage dataPackage = selectedTabContent.getLuaChonNoiThatController().exportData();
         showLoading();
         new Thread(() -> {
-            boolean result = new LuaChonNoiThatService().exportFile(fullPathFile, fileType, dataPackage);
-            hideLoading(result, fullPathFile);
+            boolean result = new LuaChonNoiThatService().exportFile(selectedFile, fileType, dataPackage);
+            hideLoading(result, selectedFile);
         }).start();
     }
     public void exportMultipleExcel() {
         List<TabData> exportDataList = exportData();
-        File selectedFile = PopupUtils.fileSaver();
+        File selectedFile = PopupUtils.fileSaver(FileType.EXCEL);
         if (selectedFile == null) {
             return;
         }
-        File fullPathFile = concatFileExtension(selectedFile, FileType.EXCEL);
         showLoading();
         new Thread(() -> {
             ExportMultipleXLS exportMultipleXLS = new ExportMultipleXLS();
             exportMultipleXLS.setUpDataForExport(exportDataList);
-            boolean result = exportMultipleXLS.export(fullPathFile);
-            hideLoading(result, fullPathFile);
+            boolean result = exportMultipleXLS.export(selectedFile);
+            hideLoading(result, selectedFile);
         }).start();
 
     }
@@ -164,29 +167,17 @@ public class ContentOperation {
                     return;
                 }
                 new Thread(() -> {
+                    LOGGER.info("Opening file: " + outputFile.getAbsolutePath());
                     Desktop desktop = Desktop.getDesktop();
                     try {
                         desktop.open(outputFile);
                     } catch (IOException e) {
+                        PopupUtils.throwErrorNotification("Không có phần mềm hỗ trợ mở loại tệp này");
                         throw new RuntimeException(e);
                     }
                 }).start();
             });
         }
     }
-    private File concatFileExtension(File selectedFile, FileType fileType) {
-        File outputFile = selectedFile;
-        if (fileType == FileType.PDF) {
-            if (!selectedFile.getAbsolutePath().contains(FileType.PDF.extension)) {
-                outputFile = new File(String.format("%s.%s", outputFile.getAbsolutePath(), FileType.PDF.extension));
-            }
-        } else if (fileType == FileType.EXCEL) {
-            if (!selectedFile.getAbsolutePath().contains(FileType.EXCEL.extension)) {
-                outputFile = new File(String.format("%s.%s", outputFile.getAbsolutePath(), FileType.EXCEL.extension));
-            }
-        } else {
-            throw new IllegalArgumentException();
-        }
-        return outputFile;
-    }
+
 }

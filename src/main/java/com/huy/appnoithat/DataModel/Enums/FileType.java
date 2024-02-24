@@ -8,6 +8,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public enum FileType {
     PDF("pdf"),
-    EXCEL("xlsx");
+    EXCEL("xlsx"),
+    NT("nt");
     public final String extension;
 }
