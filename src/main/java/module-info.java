@@ -17,6 +17,7 @@ module com.huy.appnoithat {
     requires org.apache.commons.lang3;
 
     exports com.huy.appnoithat.Controller;
+    requires org.apache.commons.codec;
     opens com.huy.appnoithat.Controller to javafx.fxml;
     exports com.huy.appnoithat.DataModel.Entity;
     opens com.huy.appnoithat.DataModel.Entity to javafx.fxml;

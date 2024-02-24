@@ -43,6 +43,14 @@ public class PopupUtils {
             notifications.show();
         });
     }
+    public static void throwSuccessNotification(String message, Runnable runnable) {
+        Image image = new Image(Objects.requireNonNull(
+                PopupUtils.class.getResourceAsStream("/com/huy/appnoithat/Scene/icons/yes.png")));
+        Platform.runLater(() -> {
+            Notifications notifications = createNotification("Thành công", message, 3, runnable, image);
+            notifications.show();
+        });
+    }
 
     public static void throwErrorNotification(String message) {
         Image image = new Image(Objects.requireNonNull(

@@ -1,12 +1,15 @@
 package com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.Operation.Excel;
 
+import org.apache.commons.codec.DecoderException;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 
+import java.util.HexFormat;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import org.apache.commons.codec.binary.Hex;
 public class StylistFactory {
     Workbook workbook;
 
@@ -217,5 +220,18 @@ public class StylistFactory {
             cell.getRow().setHeight((short) (cell.getRow().getHeight() + 50));
         }
         cell.setCellStyle(appliedCellStyle);
+    }
+    public void setCellBackgroundColor(Cell cell, String hexCode) {
+        byte[] rgbB = HexFormat.of().parseHex(hexCode);
+        setCellBackgroundColor(cell, rgbB);
+    }
+    public void setCellBackgroundColor(Cell cell, byte[] rgbB) {
+        CellStyle cellStyle = cell.getCellStyle();
+        if(cellStyle == null) {
+            cellStyle = cell.getSheet().getWorkbook().createCellStyle();
+        }
+        XSSFColor color = new XSSFColor(rgbB, null);
+        cellStyle.setFillForegroundColor(color);
+        cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
     }
 }

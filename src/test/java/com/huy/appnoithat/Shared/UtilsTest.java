@@ -4,6 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.DataModel.Token;
 import org.junit.jupiter.api.Test;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 class UtilsTest {
     String tokenObject = "{\n" +
@@ -28,5 +31,10 @@ class UtilsTest {
     @Test
     void testCalculation() {
         System.out.println(System.getProperty("user.home"));
+    }
+
+    @Test
+    void testOpenFile() throws IOException {
+
     }
 }
