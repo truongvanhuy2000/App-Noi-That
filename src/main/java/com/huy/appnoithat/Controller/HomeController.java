@@ -3,6 +3,7 @@ package com.huy.appnoithat.Controller;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
+import com.huy.appnoithat.Scene.GlobalSettingScene;
 import com.huy.appnoithat.Scene.Login.LoginScene;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.FileNoiThatExplorerScene;
 import com.huy.appnoithat.Scene.StageFactory;
@@ -36,6 +37,8 @@ public class HomeController {
     private Button QuanLyNguoiDungButton;
     @FXML
     private Button suadoidatabaseButton;
+    @FXML
+    private Button settingButton;
     @FXML
     private Text UserName;
     @FXML
@@ -92,7 +95,7 @@ public class HomeController {
         QuanLyNguoiDungButton.setOnAction(this::OnClickQuanLyNguoiDung);
         suadoidatabaseButton.setOnAction(this::OnClickSuaDoiDatabase);
         LuaChonNoiThatButton.setOnAction(this::OnClickLuaChonNoiThat);
-
+        settingButton.setOnAction(this::onClickGlobalSettingOption);
         // Get the username from the session service and display a welcome message
         String username = sessionService.getLoginAccount().getUsername();
         UserName.setText("Welcome " + username);
@@ -103,15 +106,29 @@ public class HomeController {
         switch (role) {
             // Enable Admin-related buttons and trigger the QuanLyNguoiDungButton action
             case "Admin" -> {
-                toggleButton(false, true, true);
+                toggleButton(false, true, true, true);
                 QuanLyNguoiDungButton.fire();
             }
             case "User" -> {
                 // Enable User-related buttons and trigger the LuaChonNoiThatButton action
-                toggleButton(true, false, true);
+                toggleButton(true, false, true, false);
                 LuaChonNoiThatButton.fire();
             }
         }
+    }
+
+    private void onClickGlobalSettingOption(ActionEvent actionEvent) {
+        PCPane.getChildren().clear();
+
+        // Load the user management scene
+        GlobalSettingScene scene = new GlobalSettingScene();
+
+        // Extract VBox from the scene and add it to the primary content pane
+        VBox vBox = (VBox) ((AnchorPane)scene.getRoot()).getChildren().get(0);
+
+        // Initialize the user management scene controller
+        PCPane.getChildren().addAll(vBox);
+        scene.getController().init();
     }
 
     /**
@@ -135,7 +152,7 @@ public class HomeController {
         FileNoiThatExplorerScene.getController().setRoot(PCPane);
     }
 
-    private void toggleButton(boolean luaChonNoiThatBtn, boolean quanLyNguoiDungBtn, boolean suadoidatabaseBtn) {
+    private void toggleButton(boolean luaChonNoiThatBtn, boolean quanLyNguoiDungBtn, boolean suadoidatabaseBtn, boolean pricingSetting) {
         LuaChonNoiThatButton.setVisible(luaChonNoiThatBtn);
         LuaChonNoiThatButton.setManaged(luaChonNoiThatBtn);
 
@@ -144,6 +161,9 @@ public class HomeController {
 
         suadoidatabaseButton.setVisible(suadoidatabaseBtn);
         suadoidatabaseButton.setManaged(suadoidatabaseBtn);
+
+        settingButton.setVisible(pricingSetting);
+        settingButton.setManaged(pricingSetting);
     }
 
     /**

@@ -16,7 +16,7 @@
                       <Image url="@../icons/QRcode.jpg" />
                   </image>
               </ImageView>
-              <Label fx:id="giaTienQR" prefHeight="41.0" prefWidth="697.0" style="-fx-alignment: CENTER;" textFill="#e40b0b">
+              <Label fx:id="giaTienQR" alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="697.0" style="-fx-alignment: CENTER;" textAlignment="CENTER" textFill="#e40b0b">
                   <font>
                       <Font name="System Bold Italic" size="15.0" />
                   </font>
