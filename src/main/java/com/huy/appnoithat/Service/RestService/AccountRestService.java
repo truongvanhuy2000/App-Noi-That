@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Service.RestService;
 
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.DataModel.Entity.Account;
 import com.huy.appnoithat.DataModel.Entity.AccountInformation;
@@ -100,10 +101,12 @@ public class AccountRestService {
     public void register(Account account) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("register");
         Optional<String> response = this.webClientService.unauthorizedHttpPostJson(uriBuilder, account, String.class);
-        response.orElseThrow(() -> {
+        if (response.isPresent()) {
+            PopupUtils.throwSuccessNotification("Đăng ký thành công, vui lòng chờ Admin duyệt");
+        } else {
             LOGGER.error("Can't register new account");
-            return new RuntimeException("Can't register new account");
-        });
+            PopupUtils.throwSuccessNotification("Đăng ký thất bại");
+        }
     }
     public boolean isUsernameValid(String username) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("register", "usernameValidation")

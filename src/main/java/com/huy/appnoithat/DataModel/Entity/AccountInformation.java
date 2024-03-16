@@ -2,13 +2,14 @@ package com.huy.appnoithat.DataModel.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Builder
 public class AccountInformation {
     @JsonProperty("id")
     private int id;
