@@ -3,7 +3,7 @@ module com.huy.appnoithat {
     requires javafx.fxml;
     requires org.apache.commons.io;
     requires org.controlsfx.controls;
-    requires com.dlsc.formsfx;
+//    requires com.dlsc.formsfx;
     requires uribuilder;
     requires lombok;
     requires java.net.http;

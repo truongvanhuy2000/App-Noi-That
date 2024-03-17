@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Scene;
 
 import com.huy.appnoithat.Controller.GlobalSettingController;
-import com.huy.appnoithat.Controller.UserDetailController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

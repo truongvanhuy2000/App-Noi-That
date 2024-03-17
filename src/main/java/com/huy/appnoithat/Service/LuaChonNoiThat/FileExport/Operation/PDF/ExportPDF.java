@@ -6,7 +6,6 @@ import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.ExportFile;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.Operation.Excel.ExportSingleXLS;
-import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

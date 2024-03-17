@@ -1,15 +1,12 @@
 package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.DataModel.Entity.NoiThat;
 import com.huy.appnoithat.DataModel.PricingModelDTO;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.codehaus.httpcache4j.uri.URIBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class PricingModelRestService {

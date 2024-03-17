@@ -10,8 +10,6 @@ import javafx.stage.Window;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.List;
-
 public class ServerResponseHandler {
     final static Logger LOGGER = LogManager.getLogger(ServerResponseHandler.class);
     private final UserSessionService userSessionService;

@@ -1,13 +1,9 @@
 package com.huy.appnoithat.Controller.FileNoiThatExplorer;
 
 import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.DataModel.RecentFile;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
-import javafx.scene.control.TreeTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;

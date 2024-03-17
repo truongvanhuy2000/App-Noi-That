@@ -4,12 +4,11 @@ import com.huy.appnoithat.Common.FXUtils;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.Controller.NewTab.NewTabController;
 import com.huy.appnoithat.Controller.NewTab.TabContent;
 import com.huy.appnoithat.DataModel.DataPackage;
-import com.huy.appnoithat.DataModel.SaveFile.TabData;
 import com.huy.appnoithat.DataModel.Enums.FileType;
+import com.huy.appnoithat.DataModel.SaveFile.TabData;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.Operation.Excel.ExportMultipleXLS;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
@@ -20,9 +19,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
-
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
