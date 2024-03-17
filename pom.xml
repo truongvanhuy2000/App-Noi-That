@@ -104,30 +104,17 @@
             <version>11.1.2</version>
         </dependency>
 <!--        <dependency>-->
-<!--            <groupId>com.dlsc.formsfx</groupId>-->
-<!--            <artifactId>formsfx-core</artifactId>-->
-<!--            <version>11.6.0</version>-->
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <groupId>org.openjfx</groupId>-->
-<!--                    <artifactId>*</artifactId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-api</artifactId>-->
+<!--            <version>${junit.version}</version>-->
+<!--            <scope>test</scope>-->
 <!--        </dependency>-->
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-engine</artifactId>-->
+<!--            <version>${junit.version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -141,10 +128,37 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>3.5.2</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.5.2</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.huy.appnoithat.App</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
