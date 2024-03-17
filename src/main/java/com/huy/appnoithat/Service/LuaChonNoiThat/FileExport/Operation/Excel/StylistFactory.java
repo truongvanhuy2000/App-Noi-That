@@ -1,6 +1,5 @@
 package com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.Operation.Excel;
 
-import org.apache.commons.codec.DecoderException;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFRichTextString;
@@ -9,7 +8,6 @@ import java.util.HexFormat;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.apache.commons.codec.binary.Hex;
 public class StylistFactory {
     Workbook workbook;
 

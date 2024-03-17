@@ -1,9 +1,5 @@
 package com.huy.appnoithat.Service.FileNoiThatExplorer;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.RecentFile;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import com.huy.appnoithat.Service.PersistenceStorage.StorageService;

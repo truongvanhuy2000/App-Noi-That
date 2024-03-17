@@ -1,12 +1,9 @@
 package com.huy.appnoithat.Service.PersistenceStorage;
 
-import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.RecentFile;
 import com.huy.appnoithat.DataModel.Session.PersistenceUserSession;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 public interface StorageService {

@@ -8,15 +8,12 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.Token;
-import com.huy.appnoithat.Exception.AccountExpiredException;
-import com.huy.appnoithat.Exception.ServerConnectionException;
 import com.huy.appnoithat.Handler.ServerResponseHandler;
 import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.poi.ss.formula.functions.T;
 import org.codehaus.httpcache4j.uri.URIBuilder;
 
 import java.net.URI;
@@ -28,7 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 public class WebClientService {
     final static Logger LOGGER = LogManager.getLogger(WebClientService.class);

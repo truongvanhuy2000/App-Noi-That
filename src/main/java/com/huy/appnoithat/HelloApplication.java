@@ -1,6 +1,5 @@
 package com.huy.appnoithat;
 
-import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Configuration.ConfigHandler;
 import com.huy.appnoithat.Exception.GlobalExceptionHandler;
 import com.huy.appnoithat.Handler.MultipleInstanceHandler;
