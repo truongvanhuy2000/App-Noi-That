@@ -32,5 +32,5 @@ jobs:
       
     - uses: actions/upload-artifact@v4
       with:
-        name: Buit exe file
+        name: LapBaoGia
         path: ProductionOutput/AppNoiThat/bin/LapBaoGia.exe
