@@ -59,21 +59,20 @@ public class GlobalSettingController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AddNewRowBtn.setOnAction(this::onClickAddNewRowBtn);
+
         DeleteRowBtn.disableProperty().bind(PricingTable.getSelectionModel().selectedItemProperty().isNull());
         DeleteRowBtn.setOnAction(this::onClickDeleteRowBtn);
+
         PricingTable.disableProperty().bind(ActivateCheckBox.selectedProperty().not());
 
         MonthOptionColumn.setCellValueFactory(param -> param.getValue().getMonthOption().asObject());
         MonthOptionColumn.setCellFactory(param -> new TextFieldTableCell<>(new IntegerStringConverter()));
-//        MonthOptionColumn.setOnEditCommit((event) -> event.getRowValue().getMonthOption().set(event.getNewValue()));
 
         MonthlyPriceColumn.setCellValueFactory(param -> param.getValue().getMonthlyPriceColumn().asObject());
         MonthlyPriceColumn.setCellFactory(param -> new TextFieldTableCell<>(new PricingConverter()));
-//        MonthlyPriceColumn.setOnEditCommit((event) -> event.getRowValue().getMonthlyPriceColumn().set(event.getNewValue()));
 
         BonusMonthColumn.setCellValueFactory(param -> param.getValue().getBonusMonthColumn().asObject());
         BonusMonthColumn.setCellFactory(param -> new TextFieldTableCell<>(new IntegerStringConverter()));
-//        BonusMonthColumn.setOnEditCommit((event) -> event.getRowValue().getBonusMonthColumn().set(event.getNewValue()));
 
         UpdateButton.setOnAction(this::onClickUpdateButton);
     }

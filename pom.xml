@@ -14,20 +14,17 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.9.2</junit.version>
     </properties>
-    <!--1 -->
     <dependencies>
         <dependency>
             <groupId>org.codehaus.httpcache4j.uribuilder</groupId>
             <artifactId>uribuilder</artifactId>
             <version>2.0.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.14.0</version>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>
@@ -38,44 +35,31 @@
             <artifactId>commons-codec</artifactId>
             <version>1.16.0</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.20.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <version>2.20.0</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.13.0</version>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>2.15.2</version> <!-- Use the latest version available -->
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.15.2</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.jxls/jxls -->
-        <!-- Apache POI -->
-        <!-- https://mvnrepository.com/artifact/org.jxls/jxls -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -86,8 +70,6 @@
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.3</version>
         </dependency>
-
-
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -103,19 +85,6 @@
             <artifactId>controlsfx</artifactId>
             <version>11.1.2</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.junit.jupiter</groupId>-->
-<!--            <artifactId>junit-jupiter-api</artifactId>-->
-<!--            <version>${junit.version}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.junit.jupiter</groupId>-->
-<!--            <artifactId>junit-jupiter-engine</artifactId>-->
-<!--            <version>${junit.version}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -127,20 +96,11 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin -->
-        <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-shade-plugin</artifactId>
-            <version>3.5.2</version>
-        </dependency>
-
-
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.5.2</version>
                 <executions>
@@ -155,6 +115,42 @@
                                     <mainClass>com.huy.appnoithat.App</mainClass>
                                 </transformer>
                             </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>2.5.0</version>
+                <executions>
+                    <execution>
+                        <id>l4j-clui</id>
+                        <phase>package</phase>
+                        <goals><goal>launch4j</goal></goals>
+                        <configuration>
+                            <headerType>gui</headerType>
+                            <dontWrapJar>false</dontWrapJar>
+                            <outfile>ProductionOutput/AppNoiThat/bin/LapBaoGia.exe</outfile>
+                            <jar>target/AppNoiThat-1.0-SNAPSHOT.jar</jar>
+                            <stayAlive>false</stayAlive>
+                            <restartOnCrash>false</restartOnCrash>
+                            <icon>ProductionOutput/AppNoiThat/asset/logoapp.ico</icon>
+                            <jre>
+                                <minVersion>1.5.0</minVersion>
+                                <path>jdk-17</path>
+                                <requires64Bit>true</requires64Bit>
+                                <opts>
+                                    <opt>-Dfile.encoding=UTF8</opt>
+                                </opts>
+                            </jre>
+                            <versionInfo>
+                                <fileVersion>1.0.0.0</fileVersion>
+                                <fileDescription>App Lap Bao Gia</fileDescription>
+                                <copyright>AOne</copyright>
+                                <productVersion>1.0.0.0</productVersion>
+                                <productName>LapBaoGia</productName>
+                            </versionInfo>
                         </configuration>
                     </execution>
                 </executions>
@@ -176,26 +172,26 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.8</version>
-                <executions>
-                    <execution>
-                        <!-- Default configuration for running with: mvn clean javafx:run -->
-                        <id>default-cli</id>
-                        <configuration>
-                            <mainClass>com.huy.appnoithat/com.huy.appnoithat.HelloApplication</mainClass>
-                            <launcher>app</launcher>
-                            <jlinkZipName>app</jlinkZipName>
-                            <jlinkImageName>app</jlinkImageName>
-                            <noManPages>true</noManPages>
-                            <stripDebug>true</stripDebug>
-                            <noHeaderFiles>true</noHeaderFiles>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.openjfx</groupId>-->
+<!--                <artifactId>javafx-maven-plugin</artifactId>-->
+<!--                <version>0.0.8</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        &lt;!&ndash; Default configuration for running with: mvn clean javafx:run &ndash;&gt;-->
+<!--                        <id>default-cli</id>-->
+<!--                        <configuration>-->
+<!--                            <mainClass>com.huy.appnoithat/com.huy.appnoithat.HelloApplication</mainClass>-->
+<!--                            <launcher>app</launcher>-->
+<!--                            <jlinkZipName>app</jlinkZipName>-->
+<!--                            <jlinkImageName>app</jlinkImageName>-->
+<!--                            <noManPages>true</noManPages>-->
+<!--                            <stripDebug>true</stripDebug>-->
+<!--                            <noHeaderFiles>true</noHeaderFiles>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
 
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
