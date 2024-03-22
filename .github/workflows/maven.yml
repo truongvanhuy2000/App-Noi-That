@@ -15,10 +15,8 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
-
+  buildExe:
     runs-on: windows-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -34,3 +32,21 @@ jobs:
       with:
         name: LapBaoGia
         path: ProductionOutput/AppNoiThat/bin/LapBaoGia.exe
+
+  buildSetup:
+    runs-on: windows-latest
+    needs: [buildExe]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Download a single artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: LapBaoGia
+        path: /download/build.zip
+        
+    - run: tar -xf /download/build.zip ProductionOutput/AppNoiThat/bin/
+    - name: Setup Symfony
+      working-directory: ./ProductionOutput
+    - uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
+      with:
+        path: setup.iss
