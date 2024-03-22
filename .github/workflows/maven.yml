@@ -29,3 +29,8 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+      
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Buit exe file
+        path: ProductionOutput/AppNoiThat/bin/LapBaoGia.exe
