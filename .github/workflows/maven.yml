@@ -45,7 +45,7 @@ jobs:
         path: /download/build.zip
         
     - name: Extract artifact
-      run: tar -xf /download/LapBaoGia.zip -C ProductionOutput/AppNoiThat/bin/
+      run: tar -xf /download/build.zip -C ProductionOutput/AppNoiThat/bin/
     - name: Run Inno Setup Action
       uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
       with:
