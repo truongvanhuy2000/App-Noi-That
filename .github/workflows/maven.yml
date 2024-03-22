@@ -47,6 +47,7 @@ jobs:
     - run: tar -xf /download/build.zip ProductionOutput/AppNoiThat/bin/
     - name: Setup Symfony
       working-directory: ./ProductionOutput
-    - uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
+    - name: Run Inno Setup Action
+      uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
       with:
         path: setup.iss
