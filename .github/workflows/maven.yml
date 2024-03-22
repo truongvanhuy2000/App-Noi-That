@@ -44,9 +44,8 @@ jobs:
         name: LapBaoGia
         path: /download/build.zip
         
-    - run: tar -xf /download/build.zip ProductionOutput/AppNoiThat/bin/
-    - name: Setup Symfony
-      working-directory: ./ProductionOutput
+    - name: Extract artifact
+      run: tar -xf download/LapBaoGia.zip -C ProductionOutput/AppNoiThat/bin/
     - name: Run Inno Setup Action
       uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
       with:
