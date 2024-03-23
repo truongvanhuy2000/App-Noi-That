@@ -56,5 +56,5 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: AppNoiThatSetup
-        path: output/AppNoiThatSetup.exe
+        path: ProductionOutput/output/AppNoiThatSetup.exe
         retention-days: 1
