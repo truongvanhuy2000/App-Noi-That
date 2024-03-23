@@ -15,7 +15,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  buildExe:
+  BuildExe:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
@@ -34,7 +34,7 @@ jobs:
         path: ProductionOutput/AppNoiThat/bin/LapBaoGia.exe
         retention-days: 1
 
-  buildSetup:
+  BuildSetup:
     runs-on: windows-latest
     permissions:
         contents: write
@@ -64,3 +64,31 @@ jobs:
         name: AppNoiThatSetup
         path: ProductionOutput/output/AppNoiThatSetup.exe
         retention-days: 1
+#
+#  CreateRelease:
+#    name: Create Release
+#    permissions:
+#      contents: write
+#    needs: [ BuildSetup ]
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Download a single artifact
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: AppNoiThatSetup
+#          path: download
+#
+#      - name: Create Release
+#        id: create_release
+#        uses: actions/create-release@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+#        with:
+#          tag_name: ${{ github.ref }}
+#          release_name: Release ${{ github.ref }}
+#          body: |
+#            Changes in this Release
+#            - First Change
+#            - Second Change
+#          draft: false
+#          prerelease: false

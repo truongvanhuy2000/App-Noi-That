@@ -138,7 +138,7 @@
                             <icon>ProductionOutput/AppNoiThat/asset/logoapp.ico</icon>
                             <jre>
                                 <minVersion>1.5.0</minVersion>
-                                <path>jdk-17</path>
+                                <path>jdk-17.0.10</path>
                                 <requires64Bit>true</requires64Bit>
                                 <opts>
                                     <opt>-Dfile.encoding=UTF8</opt>
