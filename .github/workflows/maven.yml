@@ -48,11 +48,17 @@ jobs:
         path: download
     - name: Copy to build folder
       run: copy download/LapBaoGia.exe ProductionOutput/AppNoiThat/bin/
+    - name: Download JDK 17 for Windows
+      run: |
+        Invoke-WebRequest -Uri "https://download.oracle.com/java/17/archive/jdk-17.0.10_windows-x64_bin.zip" -OutFile "download/jdk17.zip"
+    - name: Extract artifact
+      run: tar -xf download/jdk17.zip -C ProductionOutput/AppNoiThat/bin/
       
     - name: Run Inno Setup Action
       uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
       with:
         path: ProductionOutput/setup.iss
+        
     - uses: actions/upload-artifact@v4
       with:
         name: AppNoiThatSetup
