@@ -51,6 +51,7 @@ jobs:
     - name: Download JDK 17 for Windows
       run: |
         Invoke-WebRequest -Uri "https://download.oracle.com/java/17/archive/jdk-17.0.10_windows-x64_bin.zip" -OutFile "download/jdk17.zip"
+
     - name: Extract artifact
       run: tar -xf download/jdk17.zip -C ProductionOutput/AppNoiThat/bin/
       
@@ -84,12 +85,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: test
+          tag_name: main
           release_name: Release
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
+#          body: |
+#            Changes in this Release
+#            - New feature update
           draft: false
           prerelease: false
 
