@@ -53,3 +53,8 @@ jobs:
       uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
       with:
         path: ProductionOutput/setup.iss
+    - uses: actions/upload-artifact@v4
+      with:
+        name: AppNoiThatSetup
+        path: output/AppNoiThatSetup.exe
+        retention-days: 1
