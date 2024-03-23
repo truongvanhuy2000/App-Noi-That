@@ -12,7 +12,7 @@ DefaultGroupName=AppNoiThat
 LicenseFile=AppNoiThat\license\license.txt
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\Users\lenovo\Desktop
+OutputDir=output
 OutputBaseFilename=AppNoiThatSetup
 SetupIconFile=AppNoiThat\asset\logoapp.ico
 Compression=lzma
