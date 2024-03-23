@@ -45,12 +45,11 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: LapBaoGia
-        path: /download
-        
-    - name: Extract artifact
-      run: tar -xf /download/LapBaoGia.zip -C ProductionOutput/AppNoiThat/bin/
+        path: download
+    - name: Copy to build folder
+      run: copy download/LapBaoGia.exe ProductionOutput/AppNoiThat/bin/
       
     - name: Run Inno Setup Action
       uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
       with:
-        path: setup.iss
+        path: ProductionOutput/setup.iss
