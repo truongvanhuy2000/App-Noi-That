@@ -32,9 +32,12 @@ jobs:
       with:
         name: LapBaoGia
         path: ProductionOutput/AppNoiThat/bin/LapBaoGia.exe
+        retention-days: 1
 
   buildSetup:
     runs-on: windows-latest
+    permissions:
+        contents: write
     needs: [buildExe]
     steps:
     - uses: actions/checkout@v3
