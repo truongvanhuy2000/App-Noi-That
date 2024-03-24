@@ -14,6 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.9.2</junit.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.codehaus.httpcache4j.uribuilder</groupId>
@@ -97,6 +98,7 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -119,6 +121,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>com.akathist.maven.plugins.launch4j</groupId>
                 <artifactId>launch4j-maven-plugin</artifactId>
@@ -155,6 +158,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -171,27 +175,6 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-
-<!--            <plugin>-->
-<!--                <groupId>org.openjfx</groupId>-->
-<!--                <artifactId>javafx-maven-plugin</artifactId>-->
-<!--                <version>0.0.8</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        &lt;!&ndash; Default configuration for running with: mvn clean javafx:run &ndash;&gt;-->
-<!--                        <id>default-cli</id>-->
-<!--                        <configuration>-->
-<!--                            <mainClass>com.huy.appnoithat/com.huy.appnoithat.HelloApplication</mainClass>-->
-<!--                            <launcher>app</launcher>-->
-<!--                            <jlinkZipName>app</jlinkZipName>-->
-<!--                            <jlinkImageName>app</jlinkImageName>-->
-<!--                            <noManPages>true</noManPages>-->
-<!--                            <stripDebug>true</stripDebug>-->
-<!--                            <noHeaderFiles>true</noHeaderFiles>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
 
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
