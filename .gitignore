@@ -40,3 +40,4 @@ build/
 logfile
 session
 /out/
+./.mvn
