@@ -70,14 +70,29 @@ jobs:
     name: Create Release
     permissions:
       contents: write
+
     needs: [ BuildSetup ]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+
       - name: Download a single artifact
         uses: actions/download-artifact@v4
         with:
           name: AppNoiThatSetup
           path: download
+
+      - name: Read Tag Name from File
+        id: read_tag_name
+        run: echo "::set-output name=tag_name::$(cat ReleaseNote/tag_name.txt)"
+
+      - name: Read Release Name from File
+        id: read_release_name
+        run: echo "::set-output name=release_name::$(cat ReleaseNote/release_name.txt)"
+
+      - name: Read Release Body from File
+        id: read_body
+        run: echo "::set-output name=body::$(cat ReleaseNote/body.txt)"
 
       - name: Create Release
         id: create_release
@@ -85,11 +100,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: main
-          release_name: Release
-#          body: |
-#            Changes in this Release
-#            - New feature update
+          tag_name: ${{ steps.read_tag_name.outputs.tag_name }}  # Use the tag name read from the file
+          release_name: ${{ steps.read_release_name.outputs.release_name }}  # Use the release name read from the file
+          body: ${{ steps.read_body.outputs.body }}  # Use the body read from the file
           draft: false
           prerelease: false
 
