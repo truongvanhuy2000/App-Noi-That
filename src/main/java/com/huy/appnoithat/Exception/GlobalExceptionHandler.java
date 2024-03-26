@@ -9,13 +9,14 @@ public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
     }
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
-        nestedLog(throwable);
+        throwable.printStackTrace();
+//        nestedLog(throwable);
     }
-    private void nestedLog(Throwable throwable) {
-        LOGGER.error(throwable.getMessage());
-        StackTraceElement[] stackTrace = throwable.getStackTrace();
-        for (StackTraceElement stackTraceElement : stackTrace) {
-            LOGGER.error(stackTraceElement.toString());
-        }
-    }
+//    private void nestedLog(Throwable throwable) {
+//        LOGGER.error(throwable.getMessage());
+//        StackTraceElement[] stackTrace = throwable.getStackTrace();
+//        for (StackTraceElement stackTraceElement : stackTrace) {
+//            LOGGER.error(stackTraceElement.toString());
+//        }
+//    }
 }

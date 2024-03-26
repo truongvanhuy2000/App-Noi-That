@@ -63,9 +63,9 @@ public class TabOperation {
     private void createTab(String TabName, DataPackage content) {
         LuaChonNoiThatScene luaChonNoiThatScene = createNoiThatScene();
         Tab newTab = setUpTab(TabName);
+        addNewTabToPane(newTab);
         newTab.setContent(luaChonNoiThatScene.getRoot());
         luaChonNoiThatScene.getLuaChonNoiThatController().importData(content);
-        addNewTabToPane(newTab);
         TabContent tabContent = new TabContent(newTab, luaChonNoiThatScene, luaChonNoiThatScene.getLuaChonNoiThatController());
         newTabController.getCurrentlyOpenTab().add(tabContent);
     }

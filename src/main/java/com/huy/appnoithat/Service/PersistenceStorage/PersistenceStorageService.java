@@ -8,6 +8,7 @@ import com.huy.appnoithat.DataModel.RecentFile;
 import com.huy.appnoithat.DataModel.Session.PersistenceUserSession;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.Service.RestService.LapBaoGiaRestService;
+import lombok.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,11 +21,13 @@ public class PersistenceStorageService implements StorageService {
     final static Logger LOGGER = LogManager.getLogger(PersistenceStorageService.class);
     private final ObjectMapper objectMapper;
     private final LapBaoGiaRestService lapBaoGiaRestService;
+    private final CachedData cachedData;
     public PersistenceStorageService() {
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .build();
         lapBaoGiaRestService = new LapBaoGiaRestService();
+        cachedData = new CachedData();
     }
     /**
      * Retrieves the company information from a file. If the information is already
@@ -36,6 +39,9 @@ public class PersistenceStorageService implements StorageService {
      */
     @Override
     public ThongTinCongTy getThongTinCongTy() {
+        if (cachedData.getThongTinCongTy() != null) {
+            return cachedData.getThongTinCongTy();
+        }
         try {
             ThongTinCongTy thongTinCongTy = objectMapper.readValue(
                     new File(Config.USER.COMPANY_INFO_DIRECTORY), ThongTinCongTy.class);
@@ -46,6 +52,7 @@ public class PersistenceStorageService implements StorageService {
                     saveThongTinCongTy(thongTinCongTy);
                 }
             }
+            cachedData.setThongTinCongTy(thongTinCongTy);
             // Read company information from the specified file path
             return thongTinCongTy;
         } catch (IOException e) {
@@ -70,6 +77,7 @@ public class PersistenceStorageService implements StorageService {
             LOGGER.error("Failed to write company info" + e.getMessage());
             throw new RuntimeException(e);
         }
+        cachedData.setThongTinCongTy(thongTinCongTy);
     }
     @Override
     public List<RecentFile> getRecentFileList() {
@@ -139,18 +147,29 @@ public class PersistenceStorageService implements StorageService {
             LOGGER.error("Failed to write note area" + e.getMessage());
             throw new RuntimeException(e);
         }
+        cachedData.setNoteArea(noteArea);
     }
     @Override
     public String getNoteArea() {
+        if (cachedData.getNoteArea() != null) {
+            return cachedData.getNoteArea();
+        }
         try {
             String note = objectMapper.readValue(new File(Config.USER.NOTE_AREA_DIRECTORY), String.class);
             if (note == null) {
                 note = lapBaoGiaRestService.getNote();
             }
+            cachedData.setNoteArea(note);
             return note;
         } catch (IOException e) {
             LOGGER.error("Failed to read note area" + e.getMessage());
             throw new RuntimeException(e);
         }
+    }
+
+    @Data
+    private static class CachedData {
+        private ThongTinCongTy thongTinCongTy;
+        private String noteArea;
     }
 }

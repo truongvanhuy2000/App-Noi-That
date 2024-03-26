@@ -14,6 +14,8 @@ import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.StackPane;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -103,7 +105,8 @@ public class ContentOperation {
     }
     private List<TabData> exportData() {
         List<TabData> tabDataList = new ArrayList<>();
-        for(TabContent tabContent : newTabController.getCurrentlyOpenTab()) {
+        List<TabContent> tabContentList = resortTab(newTabController.getCurrentlyOpenTab(), newTabController.getTabPane());
+        for(TabContent tabContent : tabContentList) {
             DataPackage dataPackage = tabContent.getLuaChonNoiThatController().exportData();
             if (dataPackage == null) {
                 continue;
@@ -112,6 +115,20 @@ public class ContentOperation {
             tabDataList.add(new TabData(dataPackage, tabName));
         }
         return tabDataList;
+    }
+
+    /**
+     * @param tabContentList
+     * @param tabPane
+     * Sorting tabContent based on its current position on the tabPane
+     */
+    private List<TabContent> resortTab(List<TabContent> tabContentList, TabPane tabPane) {
+        List<Tab> tabList = tabPane.getTabs();
+        List<TabContent> sortedTab = new ArrayList<>(tabContentList);
+        for (TabContent tabContent : tabContentList) {
+            sortedTab.set(tabList.indexOf(tabContent.getTab()) - 1, tabContent);
+        }
+        return sortedTab;
     }
 
     public void exportFile(FileType fileType) {
@@ -143,7 +160,6 @@ public class ContentOperation {
             boolean result = exportMultipleXLS.export(selectedFile);
             hideLoading(result, selectedFile);
         }).start();
-
     }
     private void showLoading() {
         FXUtils.showLoading(loadingPane, "Đang xuất file...");

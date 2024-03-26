@@ -9,6 +9,9 @@ import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,6 +25,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 @Data
@@ -98,7 +102,11 @@ public class NewTabController implements Initializable {
         tabOperation = new TabOperation(this);
         contentOperation = new ContentOperation(this);
         tabPane.getTabs().clear();
-        tabPane.getTabs().add(newTabButton());
+        Tab newTabButton = newTabButton();
+        tabPane.getTabs().add(newTabButton);
+        tabPane.setTabDragPolicy(TabPane.TabDragPolicy.REORDER);
+        tabPane.getTabs().addListener((ListChangeListener.Change<? extends Tab> change) ->
+                handleMovingNewTabButton(change, newTabButton));
         currentState = State.NEW_FILE;
         AutoSave.setSelected(true);
         autoSaveTimer = new Timeline(new KeyFrame(Duration.minutes(10), event -> {
@@ -110,6 +118,24 @@ public class NewTabController implements Initializable {
             }
         }));
         contentOperation.startAutoSaveAction();
+    }
+
+    /**
+     * @param change
+     * @param newTabButton
+     * This method will handle the situation when user trying to move the add new tab button because it a tab :))
+     */
+    private void handleMovingNewTabButton(ListChangeListener.Change<? extends Tab> change, Tab newTabButton) {
+        {
+            int indexOfNewTab = tabPane.getTabs().indexOf(newTabButton);
+            if (indexOfNewTab > 0 && tabPane.getTabs().size() >= 2) {
+                ObservableList<Tab> observableList = FXCollections.observableArrayList(tabPane.getTabs());
+                Collections.swap(observableList, indexOfNewTab, 0);
+                tabPane.getTabs().clear();
+                tabPane.getTabs().addAll(observableList);
+                tabPane.getSelectionModel().select(1);
+            }
+        }
     }
 
     public void init(TabState tabState, String importDirectory, Stage currentStage) {
@@ -128,6 +154,7 @@ public class NewTabController implements Initializable {
         });
         addTab.setClosable(false);
         addTab.setGraphic(newTabButton);
+
         return addTab;
     }
     public TabContent getSelectedTabContent() {
