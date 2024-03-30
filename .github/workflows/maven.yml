@@ -117,7 +117,7 @@ jobs:
           asset_content_type: application/exe
 
   CreateReleaseOnPublicBranch:
-    name: Create Release
+    name: Create Release on Public Release Branch
 
     needs: [ BuildSetup ]
     runs-on: ubuntu-latest
