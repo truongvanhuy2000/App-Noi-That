@@ -154,6 +154,8 @@ jobs:
           cd ${{github.workspace}}/AppNoiThatRelease
           git tag ${{ steps.read_tag_name.outputs.tag_name }}
           git push --tags --porcelain
+      - name: checkoutToCurrentBranch
+        uses: actions/checkout@v3
 
       - name: Create Release
         id: create_release
@@ -168,9 +170,6 @@ jobs:
           prerelease: false
           owner: truongvanhuy2000
           repo: AppNoiThatRelease
-
-      - name: checkoutToCurrentBranch
-        uses: actions/checkout@v3
 
       - name: Upload exe setup file
         uses: actions/upload-release-asset@v1
