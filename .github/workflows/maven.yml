@@ -98,20 +98,18 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_SECRET }} # This token is provided by Actions, you do not need to create your own token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
           tag_name: ${{ steps.read_tag_name.outputs.tag_name }}  # Use the tag name read from the file
           release_name: ${{ steps.read_release_name.outputs.release_name }}  # Use the release name read from the file
           body: ${{ steps.read_body.outputs.body }}  # Use the body read from the file
           draft: false
           prerelease: false
-          owner: truongvanhuy2000
-          repo: AppNoiThatRelease
 
       - name: Upload exe setup file
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_SECRET }}
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: download/AppNoiThatSetup.exe
