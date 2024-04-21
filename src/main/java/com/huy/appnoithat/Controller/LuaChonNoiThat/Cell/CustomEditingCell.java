@@ -9,10 +9,10 @@ import javafx.scene.control.TreeTableCell;
 public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, String> {
     private TextField textField;
     boolean isSttCell = false;
+
     public CustomEditingCell(boolean isSttCell) {
         this.isSttCell = isSttCell;
     }
-
 
     /**
      * Starts the editing process for this component. Overrides the superclass method

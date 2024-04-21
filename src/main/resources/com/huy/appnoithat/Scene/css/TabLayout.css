@@ -53,6 +53,12 @@
     -fx-border-color: #707070; /* Set the border color if needed */
     -fx-border-width: 0 1 1 0; /* Add a bottom border if needed */
 }
+
+.table-view {
+    -fx-border-color: #707070; /* Set the border color if needed */
+    -fx-border-width: 1 1 1 1; /* Add a bottom border if needed */
+}
+
 .table-cell {
     -fx-border-color: #a8a8a8;
     -fx-border-width: 0 1 0 0;
