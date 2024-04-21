@@ -1,8 +1,10 @@
 package com.huy.appnoithat.Controller.NewTab;
 
+import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
 import com.huy.appnoithat.Controller.NewTab.Operation.ContentOperation;
 import com.huy.appnoithat.Controller.NewTab.Operation.TabOperation;
+import com.huy.appnoithat.DataModel.Enums.Action;
 import com.huy.appnoithat.DataModel.Enums.FileType;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
@@ -16,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -92,6 +95,14 @@ public class NewTabController implements Initializable {
 
     @FXML
     private void sceneSwitcher(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    void onKeyPressed(KeyEvent event) {
+        if (KeyboardUtils.isRightKeyCombo(Action.SAVE, event)) {
+            LOGGER.info("Save key combo pressed");
+            contentOperation.save();
+        }
     }
 
     @Override

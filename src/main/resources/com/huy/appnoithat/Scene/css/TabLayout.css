@@ -1,37 +1,43 @@
 .tree-table-row-cell {
     -fx-indent: 0;
 }
-
+.tree-table-view {
+    -fx-border-color: #707070; /* Set the border color if needed */
+    -fx-border-width: 1 1 1 1; /* Add a bottom border if needed */
+}
 /* Disable gradient and set background color for column headers */
 .tree-table-view .column-header {
     -fx-background-color: #f6f6f6; /* Set your desired background color */
     -fx-background-insets: 1, 1, 1, 1;
     -fx-padding: 3px;
     -fx-text-fill: #000000; /* Set the text color for column headers */
-    -fx-border-color: #777777; /* Set the border color if needed */
-    -fx-border-width: 0 0 1 0; /* Add a bottom border if needed */
+    -fx-border-color: #707070; /* Set the border color if needed */
+    -fx-border-width: 0 1 1 0; /* Add a bottom border if needed */
+}
+.tree-table-cell {
+    -fx-border-color: #a8a8a8, #a8a8a8;
+    -fx-border-width: 0 0 1 0, 0 1 0 0;
+    -fx-text-fill: black;
+    -fx-min-height: 27px;
 }
 
 .tree-table-row-cell {
-    -fx-background-color: -fx-table-cell-border-color, -fx-control-inner-background;
+    -fx-background-color: #fcfcfc;
     -fx-background-insets: 0, 0 0 1 0;
-    -fx-padding: 0.0em;
-    -fx-text-fill: -fx-text-inner-color;
-}
-
-.tree-table-row-cell:selected {
-    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-focus-color;
-    -fx-background-insets: 0, 1, 2;
 }
 
 .tree-table-row-cell:odd {
-    -fx-background-color: -fx-table-cell-border-color, derive(-fx-control-inner-background, -2%);
+    -fx-background-color: #fcfcfc;
     -fx-background-insets: 0, 0 0 1 0;
 }
 
+.tree-table-row-cell:selected {
+    -fx-background-color: #e8e8e8;
+    -fx-background-insets: 0, 0 0 1 0;
+}
 .tree-table-row-cell:selected:odd {
-    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-focus-color;
-    -fx-background-insets: 0, 1, 2;
+    -fx-background-color: #e8e8e8;
+    -fx-background-insets: 0, 0 0 1 0;
 }
 
 .table-row-cell {
@@ -44,10 +50,13 @@
     -fx-background-insets: 1, 1, 1, 1;
     -fx-padding: 3px;
     -fx-text-fill: #000000; /* Set the text color for column headers */
-    -fx-border-color: #777777; /* Set the border color if needed */
-    -fx-border-width: 0 0 1 0; /* Add a bottom border if needed */
+    -fx-border-color: #707070; /* Set the border color if needed */
+    -fx-border-width: 0 1 1 0; /* Add a bottom border if needed */
 }
-
+.table-cell {
+    -fx-border-color: #a8a8a8;
+    -fx-border-width: 0 1 0 0;
+}
 .table-row-cell {
     -fx-background-color: -fx-table-cell-border-color, -fx-control-inner-background;
     -fx-background-insets: 0, 0 0 1 0;

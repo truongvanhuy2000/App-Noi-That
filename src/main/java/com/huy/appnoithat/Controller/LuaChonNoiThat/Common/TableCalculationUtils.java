@@ -7,15 +7,21 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
 
+import java.math.RoundingMode;
+import java.math.BigDecimal;
+
+import java.text.DecimalFormat;
+
 public class TableCalculationUtils {
     private static final String MET_DAI = "mét dài";
     private static final String MET_VUONG = "mét vuông";
+
     public static void calculateBangThanhToan(TableView<BangThanhToan> bangThanhToan, Long tongTien) {
         Double datCocThietKePercentage = getPercentageFromHeader(bangThanhToan.getColumns().get(1).getText());
         Double datCocThiCongPercentage = getPercentageFromHeader(bangThanhToan.getColumns().get(2).getText());
         Double hangDenChanCongTrinhPercentage = getPercentageFromHeader(bangThanhToan.getColumns().get(3).getText());
 
-        Long datCocThietKe10 = round( tongTien * (datCocThietKePercentage / 100));
+        Long datCocThietKe10 = round(tongTien * (datCocThietKePercentage / 100));
         Long datCocThiCong30 = round(tongTien * (datCocThiCongPercentage / 100));
         Long hangDenChanCongTrinh50 = round(tongTien * (hangDenChanCongTrinhPercentage / 100));
         Long nghiemThuQuyet = tongTien - datCocThietKe10 - datCocThiCong30 - hangDenChanCongTrinh50;
@@ -26,10 +32,12 @@ public class TableCalculationUtils {
         bangThanhToan.getItems().get(0).setNghiemThuQuyet(nghiemThuQuyet);
         bangThanhToan.getItems().get(0).setTongTien(tongTien);
     }
+
     public static Double getPercentageFromHeader(String header) {
         String percentage = header.strip().trim().split(":")[1].split("%")[0];
         return Double.parseDouble(percentage);
     }
+
     /**
      * @param chieuDai
      * @param chieuCao
@@ -38,29 +46,38 @@ public class TableCalculationUtils {
      * @return
      */
     public static Double calculateKhoiLuong(Double chieuDai, Double chieuCao, Double rong, String donVi) {
-        double khoiLuong = 0.0;
-        if (donVi != null && !donVi.isEmpty()) {
-            if (donVi.trim().equalsIgnoreCase(MET_DAI)) {
-                if (chieuDai == 0.0) {
-                    return 0.0;
-                }
-                khoiLuong = chieuDai / 1000;
-                return khoiLuong;
-            }
-
-            if (donVi.trim().equalsIgnoreCase(MET_VUONG)) {
-                if (chieuDai == 0.0 || chieuCao == 0.0) {
-                    return 0.0;
-                }
-                khoiLuong = chieuDai * chieuCao / 1000000;
-            } else {
-                khoiLuong = 1.0;
-            }
-            return khoiLuong;
+        double khoiLuong;
+        if (donVi == null || donVi.isEmpty()) {
+            return 0.0;
         }
-        return 0.0;
+        if (donVi.trim().equalsIgnoreCase(MET_DAI)) {
+            if (chieuDai == 0.0) {
+                return 0.0;
+            }
+            khoiLuong = chieuDai / 1000;
+        } else if (donVi.trim().equalsIgnoreCase(MET_VUONG)) {
+            if (chieuDai == 0.0 || chieuCao == 0.0) {
+                return 0.0;
+            }
+            khoiLuong = chieuDai * chieuCao / 1000000;
+        } else {
+            khoiLuong = 1.0;
+        }
+        return roundToDecimal(khoiLuong, 1);
     }
 
+    /**
+     * @param value Double value that need to be round
+     * @param pattern Patter format is 0.0, 0.00,.....
+     * @return
+     */
+    public static double roundToDecimal(double value, int decimalRounding) {
+        BigDecimal salary = new BigDecimal(value);
+        // This is to fix the problem with number like this 123.35 can't be round to 123.4
+        // https://stackoverflow.com/questions/47781393/java-roundingmode-half-up-doesnt-round-up-as-expected
+        return salary.setScale(decimalRounding + 1, RoundingMode.HALF_UP)
+                .setScale(decimalRounding, RoundingMode.HALF_UP).doubleValue();
+    }
     /**
      * @param khoiLuong
      * @param donGia    This method will calculate the thanh tien of the item
@@ -114,7 +131,7 @@ public class TableCalculationUtils {
             }
             // Iterate through children of the current item
             for (TreeItem<BangNoiThat> child : root.getChildren()) {
-                for(TreeItem<BangNoiThat> grandChild : child.getChildren()) {
+                for (TreeItem<BangNoiThat> grandChild : child.getChildren()) {
                     calculateTongTien(grandChild);
                 }
                 calculateTongTien(child);
@@ -126,7 +143,7 @@ public class TableCalculationUtils {
 
 
     public static long round(double input) {
-        return Math.round(input/1000000) * 1000000;
+        return Math.round(input / 1000000) * 1000000;
     }
 
 }

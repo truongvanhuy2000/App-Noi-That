@@ -9,6 +9,7 @@ import com.huy.appnoithat.DataModel.Session.PersistenceUserSession;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.Service.RestService.LapBaoGiaRestService;
 import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -56,7 +57,7 @@ public class PersistenceStorageService implements StorageService {
             // Read company information from the specified file path
             return thongTinCongTy;
         } catch (IOException e) {
-            LOGGER.error("Failed to read company info" + e.getMessage());
+            LOGGER.error("Failed to read company info{}", e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -74,7 +75,7 @@ public class PersistenceStorageService implements StorageService {
             thongTinCongTy.setCreatedDate(new Date());
             lapBaoGiaRestService.saveThongTinCongTy(thongTinCongTy);
         } catch (IOException e) {
-            LOGGER.error("Failed to write company info" + e.getMessage());
+            LOGGER.error("Failed to write company info{}", e.getMessage());
             throw new RuntimeException(e);
         }
         cachedData.setThongTinCongTy(thongTinCongTy);
@@ -85,7 +86,7 @@ public class PersistenceStorageService implements StorageService {
             return objectMapper.readValue(new File(Config.FILE_EXPORT.RECENT_NT_FILE_DIRECTORY),
                     objectMapper.getTypeFactory().constructCollectionType(List.class, RecentFile.class));
         } catch (IOException e) {
-            LOGGER.error("Failed to read recent file" + e.getMessage());
+            LOGGER.error("Failed to read recent file{}", e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -102,7 +103,7 @@ public class PersistenceStorageService implements StorageService {
             // Read recent files from the specified file path
             objectMapper.writeValue(new File(Config.FILE_EXPORT.RECENT_NT_FILE_DIRECTORY), recentFileList);
         } catch (IOException e) {
-            LOGGER.error("Failed to write recent file" + e.getMessage());
+            LOGGER.error("Failed to write recent file{}", e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -118,7 +119,7 @@ public class PersistenceStorageService implements StorageService {
             // Read user session from the specified file path
             return objectMapper.readValue(new File(Config.USER.SESSION_DIRECTORY), PersistenceUserSession.class);
         } catch (IOException e) {
-            LOGGER.error("Failed to read user session" + e.getMessage());
+            LOGGER.error("Failed to read user session{}", e.getMessage());
             return null;
         }
     }
@@ -134,7 +135,7 @@ public class PersistenceStorageService implements StorageService {
         try {
             objectMapper.writeValue(new File(Config.USER.SESSION_DIRECTORY), persistenceUserSession);
         } catch (IOException e) {
-            LOGGER.error("Failed to write user session" + e.getMessage());
+            LOGGER.error("Failed to write user session{}", e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -144,27 +145,39 @@ public class PersistenceStorageService implements StorageService {
             objectMapper.writeValue(new File(Config.USER.NOTE_AREA_DIRECTORY), noteArea);
             lapBaoGiaRestService.saveNote(noteArea);
         } catch (IOException e) {
-            LOGGER.error("Failed to write note area" + e.getMessage());
+            LOGGER.error("Failed to write note area{}", e.getMessage());
             throw new RuntimeException(e);
         }
         cachedData.setNoteArea(noteArea);
     }
     @Override
     public String getNoteArea() {
-        if (cachedData.getNoteArea() != null) {
+        if (StringUtils.isNotEmpty(cachedData.getNoteArea())) {
             return cachedData.getNoteArea();
         }
+        String note = "";
         try {
-            String note = objectMapper.readValue(new File(Config.USER.NOTE_AREA_DIRECTORY), String.class);
-            if (note == null) {
-                note = lapBaoGiaRestService.getNote();
-            }
-            cachedData.setNoteArea(note);
-            return note;
+            note = objectMapper.readValue(new File(Config.USER.NOTE_AREA_DIRECTORY), String.class);
         } catch (IOException e) {
-            LOGGER.error("Failed to read note area" + e.getMessage());
-            throw new RuntimeException(e);
+            LOGGER.error("Failed to read note area{}", e.getMessage());
         }
+        if (StringUtils.isEmpty(note)) {
+            // Remove the double quote because I don't even know how they appear there
+            note = removeDoubleQuote(lapBaoGiaRestService.getNote());
+        }
+        cachedData.setNoteArea(note);
+        return note;
+
+    }
+
+    private String removeDoubleQuote(String string) {
+        if (StringUtils.isEmpty(string)) {
+            return "";
+        }
+        if (string.startsWith("\"") && string.endsWith("\"")) {
+            string = string.substring(1, string.length() - 1);
+        }
+        return string;
     }
 
     @Data

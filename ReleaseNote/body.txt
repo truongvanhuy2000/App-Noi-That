@@ -1,0 +1,4 @@
+- Fix can't save note
+- Change table view in the "Lap bao gia" area look
+- Add Ctrl+S to "Lap bao gia"
+- Rounding Khoi-Luong column to the first decimal
