@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.DataModel.Entity.NoiThat;
+import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,7 +23,7 @@ public class NoiThatRestService {
         return instance;
     }
     private NoiThatRestService() {
-        webClientService = new WebClientService();
+        webClientService = new JavaNetHttpClient();
     }
 
     /**
@@ -34,7 +35,7 @@ public class NoiThatRestService {
      */
     public List<NoiThat> searchByPhongCach(int id) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("searchByPhongCach", String.valueOf(id));
-        Optional<List<NoiThat>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, NoiThat.class, List.class);
+        Optional<List<NoiThat>> response = this.webClientService.authorizedHttpGet(uriBuilder, NoiThat.class, List.class);
         return response.orElse(new ArrayList<>());
     }
 
@@ -47,7 +48,7 @@ public class NoiThatRestService {
      */
     public void save(NoiThat noiThat, int parentID) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addParameter("parentId", String.valueOf(parentID));
-        Optional<String> response = this.webClientService.authorizedHttpPostJson(uriBuilder, noiThat, String.class);
+        Optional<String> response = this.webClientService.authorizedHttpPost(uriBuilder, noiThat, String.class);
         response.orElseThrow(() -> {
             LOGGER.error("Can't save NoiThat");
             return new RuntimeException("Can't save NoiThat");
@@ -91,14 +92,14 @@ public class NoiThatRestService {
         URIBuilder uriBuilder = URIBuilder.empty()
                 .addRawPath(BASE_ENDPOINT).addPath("searchBy")
                 .addParameter("phongCachName", phongCachName);
-        Optional<List<NoiThat>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, NoiThat.class, List.class);
+        Optional<List<NoiThat>> response = this.webClientService.authorizedHttpGet(uriBuilder, NoiThat.class, List.class);
         return response.orElse(new ArrayList<>());
     }
     public void copySampleDataFromAdmin(int parentId) {
         URIBuilder uriBuilder = URIBuilder.empty()
                 .addRawPath(BASE_ENDPOINT).addPath("copySampleData")
                 .addParameter("parentId", String.valueOf(parentId));
-        this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
+        this.webClientService.authorizedHttpGet(uriBuilder, String.class);
     }
 
     public void swap(int id1, int id2) {
@@ -106,6 +107,6 @@ public class NoiThatRestService {
                 .addRawPath(BASE_ENDPOINT).addPath("swap")
                 .addParameter("id1", String.valueOf(id1))
                 .addParameter("id2", String.valueOf(id2));
-        this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
+        this.webClientService.authorizedHttpGet(uriBuilder, String.class);
     }
 }

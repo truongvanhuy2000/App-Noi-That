@@ -1,18 +1,25 @@
 package com.huy.appnoithat.Service.SessionService;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.huy.appnoithat.DataModel.Entity.Account;
 import com.huy.appnoithat.DataModel.Session.PersistenceUserSession;
 import com.huy.appnoithat.DataModel.Token;
+import com.huy.appnoithat.Handler.ServerResponseHandler;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
 import com.huy.appnoithat.Service.RestService.AccountRestService;
+import com.huy.appnoithat.Service.RestService.TokenRestService;
 import com.huy.appnoithat.Session.UserSession;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class UserSessionService {
     final static Logger LOGGER = LogManager.getLogger(UserSessionService.class);
@@ -152,5 +159,38 @@ public class UserSessionService {
     public void saveSessionToDisk() {
         StorageService persistenceStorageService = new PersistenceStorageService();
         persistenceStorageService.saveUserSession(new PersistenceUserSession(getJwtToken(), getRefreshToken()));
+    }
+
+    public Optional<String> getJwtToken(boolean autoRenewIfExpire) {
+        UserSession session = UserSession.getInstance();
+        if (StringUtils.isBlank(session.getJwtToken())) {
+            return Optional.empty();
+        }
+        if (autoRenewIfExpire) {
+            try {
+
+                DecodedJWT jwt = JWT.decode(session.getJwtToken());
+
+                if (isTokenExpired(jwt)) {
+                    TokenRestService tokenRestService = new TokenRestService();
+                    DecodedJWT refreshToken = JWT.decode(session.getJwtToken());
+                    if (isTokenExpired(refreshToken)) {
+                        ServerResponseHandler.handleTokenExpired();
+                        return Optional.empty();
+                    }
+                    Optional<Token> token = tokenRestService.refreshToken(session.getRefreshToken());
+                    return token.map(Token::getToken);
+                }
+            } catch (JWTDecodeException e) {
+                LOGGER.error("Can't decode token", e);
+                return Optional.empty();
+            }
+        }
+        return Optional.of(session.getJwtToken());
+    }
+
+    public boolean isTokenExpired(DecodedJWT jwtToken) {
+        // Check if token expire time is 60 sec before the current time
+        return jwtToken.getExpiresAtAsInstant().minusSeconds(60).isBefore(Instant.now());
     }
 }

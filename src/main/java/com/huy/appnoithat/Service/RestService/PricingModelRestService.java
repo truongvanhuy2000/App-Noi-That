@@ -2,6 +2,7 @@ package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.DataModel.PricingModelDTO;
+import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,7 +16,7 @@ public class PricingModelRestService {
     private static final String BASE_ENDPOINT = "/api/pricingModel";
 
     public PricingModelRestService() {
-        this.webClientService = new WebClientService();
+        this.webClientService = new JavaNetHttpClient();
     }
 
     public PricingModelDTO getPricingModel() {
@@ -26,7 +27,7 @@ public class PricingModelRestService {
 
     public void setPricingModel(PricingModelDTO pricingModel) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT);
-        Optional<String> response = this.webClientService.authorizedHttpPostJson(uriBuilder, pricingModel, String.class);
+        Optional<String> response = this.webClientService.authorizedHttpPost(uriBuilder, pricingModel, String.class);
         if (response.isEmpty()) {
             LOGGER.error("Can't set pricing model");
             PopupUtils.throwErrorNotification("Không thể thiết lập mô hình thanh toán");

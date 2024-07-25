@@ -41,3 +41,4 @@ logfile
 session
 /out/
 ./.mvn
+/Data/Temp/

@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.DataModel.Entity.ThongSo;
+import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,7 +26,7 @@ public class ThongSoRestService {
      * Constructor for ThongSoRestService.
      */
     private ThongSoRestService() {
-        webClientService = new WebClientService();
+        webClientService = new JavaNetHttpClient();
     }
 
     /**
@@ -39,7 +40,7 @@ public class ThongSoRestService {
         URIBuilder uriBuilder = URIBuilder.empty()
                 .addRawPath(BASE_ENDPOINT)
                 .addParameter("parentId", String.valueOf(parentId));
-        Optional<String> response = this.webClientService.authorizedHttpPostJson(uriBuilder, thongSo, String.class);
+        Optional<String> response = this.webClientService.authorizedHttpPost(uriBuilder, thongSo, String.class);
         response.orElseThrow(() -> {
             LOGGER.error("Can't save ThongSo");
             return new RuntimeException("Can't save ThongSo");
@@ -55,7 +56,7 @@ public class ThongSoRestService {
      */
     public List<ThongSo> searchByVatLieu(int id) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("searchByVatlieu", String.valueOf(id));
-        Optional<List<ThongSo>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, ThongSo.class, List.class);
+        Optional<List<ThongSo>> response = this.webClientService.authorizedHttpGet(uriBuilder, ThongSo.class, List.class);
         return response.orElse(null);
     }
     /**
@@ -76,6 +77,6 @@ public class ThongSoRestService {
         URIBuilder uriBuilder = URIBuilder.empty()
                 .addRawPath(BASE_ENDPOINT).addPath("copySampleData")
                 .addParameter("parentId", String.valueOf(parentId));
-        Optional<String> response = this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
+        Optional<String> response = this.webClientService.authorizedHttpGet(uriBuilder, String.class);
     }
 }

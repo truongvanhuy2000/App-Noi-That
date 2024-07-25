@@ -14,7 +14,7 @@ public class LoginService {
 
     public LoginService() {
         this.sessionService = new UserSessionService();
-        accountRestService = AccountRestService.getInstance();
+        accountRestService = new AccountRestService();
     }
     public boolean basicAuthorization(String username, String password) {
         Token token = login(username, password);

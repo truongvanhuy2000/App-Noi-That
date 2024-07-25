@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Service.RestService;
 
+import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import org.codehaus.httpcache4j.uri.URIBuilder;
 
@@ -14,10 +15,10 @@ public class BangNoiThatRestService {
         return instance;
     }
     private BangNoiThatRestService() {
-        webClientService = new WebClientService();
+        webClientService = new JavaNetHttpClient();
     }
     public void sampleAll() {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("sampleAll");
-        this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
+        this.webClientService.authorizedHttpGet(uriBuilder, String.class);
     }
 }

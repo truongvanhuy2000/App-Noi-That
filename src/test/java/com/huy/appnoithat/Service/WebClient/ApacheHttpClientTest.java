@@ -1,0 +1,166 @@
+package com.huy.appnoithat.Service.WebClient;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.huy.appnoithat.DataModel.WebClient.Response;
+import com.huy.appnoithat.Service.SessionService.UserSessionService;
+import org.apache.hc.client5.http.classic.HttpClient;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.*;
+import org.apache.hc.core5.http.io.HttpClientResponseHandler;
+import org.apache.hc.core5.http.io.entity.InputStreamEntity;
+import org.codehaus.httpcache4j.uri.URIBuilder;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mockito;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.*;
+
+class ApacheHttpClientTest {
+    private final HttpClient httpclient = Mockito.mock(CloseableHttpClient.class);
+    private final UserSessionService userSessionService = Mockito.mock();
+    private final ObjectMapper objectMapper = Mockito.mock();
+    private final ApacheHttpClient apacheHttpClient = new ApacheHttpClient(httpclient, userSessionService, objectMapper);
+
+    @Test
+    void authorizedPostMultipartUpload() {
+    }
+
+    @Test
+    void authorizedPutMultipartUpload() {
+    }
+
+    @Test
+    void authorizedHttpGet_happyPath() throws IOException, ProtocolException {
+        String token = "test";
+        ArgumentCaptor<HttpGet> captor = ArgumentCaptor.forClass(HttpGet.class);
+        given(httpclient.execute(any(ClassicHttpRequest.class), any(HttpClientResponseHandler.class)))
+                .willReturn(Mockito.mock(Response.class));
+        given(userSessionService.getJwtToken(true)).willReturn(Optional.of(token));
+        URIBuilder uri = URIBuilder.empty();
+        TypeReference<Object> typeReference = Mockito.mock();
+
+        apacheHttpClient.authorizedHttpGet(uri, typeReference);
+
+        verify(userSessionService, times(1)).getJwtToken(true);
+        verify(httpclient, times(1)).execute(any(HttpGet.class), any(HttpClientResponseHandler.class));
+        verify(httpclient).execute(captor.capture(), any(HttpClientResponseHandler.class));
+        HttpGet httpGet = captor.getValue();
+        assertNull(httpGet.getEntity());
+        assertEquals(httpGet.getHeader(HttpHeaders.AUTHORIZATION).getValue(), "Bearer " + token);
+    }
+
+    @Test
+    void authorizedHttpGet_noToken() {
+        given(userSessionService.getJwtToken(true)).willReturn(Optional.empty());
+        URIBuilder uri = URIBuilder.empty();
+        TypeReference<Object> typeReference = Mockito.mock();
+        Response<Object> response = apacheHttpClient.authorizedHttpGet(uri, typeReference);
+        verify(userSessionService, times(1)).getJwtToken(true);
+        assertFalse(response.isSuccess());
+        assertTrue(response.getResponse().isEmpty());
+        assertTrue(response.getRawResponse().isEmpty());
+        assertTrue(response.getErrorResponse().isEmpty());
+    }
+
+    @Test
+    void authorizedHttpGet_httpClientThrowIOException() throws IOException {
+        given(httpclient.execute(any(ClassicHttpRequest.class), any(HttpClientResponseHandler.class)))
+                .willThrow(IOException.class);
+        given(userSessionService.getJwtToken(true)).willReturn(Optional.of("test"));
+        URIBuilder uri = URIBuilder.empty();
+        TypeReference<Object> typeReference = Mockito.mock();
+        Response<Object> response = apacheHttpClient.authorizedHttpGet(uri, typeReference);
+        verify(userSessionService, times(1)).getJwtToken(true);
+        assertFalse(response.isSuccess());
+        assertTrue(response.getResponse().isEmpty());
+        assertTrue(response.getRawResponse().isEmpty());
+        assertTrue(response.getErrorResponse().isEmpty());
+    }
+
+    @Test
+    void authorizedHttpPost_happyPath() throws IOException, ProtocolException {
+        String serializedObject = "test";
+        String token = "test";
+        ArgumentCaptor<HttpPost> captor = ArgumentCaptor.forClass(HttpPost.class);
+
+        given(httpclient.execute(any(ClassicHttpRequest.class), any(HttpClientResponseHandler.class)))
+                .willReturn(Mockito.mock(Response.class));
+        given(userSessionService.getJwtToken(true)).willReturn(Optional.of(token));
+        given(objectMapper.writeValueAsString(any())).willReturn(serializedObject);
+
+        URIBuilder uri = URIBuilder.empty();
+        TypeReference<Object> typeReference = Mockito.mock();
+        apacheHttpClient.authorizedHttpPost(uri, Mockito.mock(Object.class), typeReference);
+
+        verify(userSessionService, times(1)).getJwtToken(true);
+        verify(httpclient, times(1)).execute(any(HttpPost.class), any(HttpClientResponseHandler.class));
+        verify(httpclient).execute(captor.capture(), any(HttpClientResponseHandler.class));
+
+        HttpPost httpPost = captor.getValue();
+        assertEquals(new String(httpPost.getEntity().getContent().readAllBytes()), serializedObject);
+        assertEquals(httpPost.getHeader(HttpHeaders.AUTHORIZATION).getValue(), "Bearer " + token);
+    }
+
+    @Test
+    void authorizedHttpDelete() {
+    }
+
+    @Test
+    void authorizedHttpPut() {
+    }
+
+    @Test
+    void authorizedHttpGetFile() {
+    }
+
+    @Test
+    void unauthorizedHttpPost() {
+
+    }
+
+    @Test
+    void doHttpRequest() {
+    }
+
+    @Test
+    void handleResponse_statusCode200() throws IOException {
+        Response<Object> restResponse = Response.builder().build();
+        ClassicHttpResponse classicHttpResponse = Mockito.mock(CloseableHttpResponse.class);
+        TypeReference<Object> typeReference = Mockito.mock();
+        HttpEntity httpEntity = Mockito.mock(InputStreamEntity.class);
+        Object body = Mockito.mock(Object.class);
+        long contentLength = 10 * 1024;
+        ByteBuffer byteBuffer = ByteBuffer.allocate((int) contentLength);
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteBuffer.array());
+        given(objectMapper.readValue(any(InputStream.class), eq(typeReference))).willReturn(body);
+        given(classicHttpResponse.getCode()).willReturn(HttpStatus.SC_OK);
+        given(classicHttpResponse.getEntity()).willReturn(httpEntity);
+        given(httpEntity.getContent()).willReturn(byteArrayInputStream);
+
+        Response<Object> response = apacheHttpClient.handleResponse(classicHttpResponse, restResponse, typeReference);
+        assertTrue(response.getResponse().isPresent());
+        assertEquals(response.getResponse().get(), body);
+        assertTrue(response.isSuccess());
+        assertTrue(response.getErrorResponse().isEmpty());
+        assertTrue(response.getRawResponse().isEmpty());
+    }
+
+    @Test
+    void prepareMultipartEntity() {
+    }
+}

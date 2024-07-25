@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.DataModel.Entity.PhongCachNoiThat;
+import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,7 +27,7 @@ public class PhongCachRestService {
      * Service class for managing PhongCachNoiThat objects via REST API.
      */
     private PhongCachRestService() {
-        webClientService = new WebClientService();
+        webClientService = new JavaNetHttpClient();
     }
 
     /**
@@ -37,7 +38,7 @@ public class PhongCachRestService {
      */
     public List<PhongCachNoiThat> findAll() {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT);
-        Optional<List<PhongCachNoiThat>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, PhongCachNoiThat.class, List.class);
+        Optional<List<PhongCachNoiThat>> response = this.webClientService.authorizedHttpGet(uriBuilder, PhongCachNoiThat.class, List.class);
         return response.orElse(new ArrayList<>());
     }
 
@@ -50,7 +51,7 @@ public class PhongCachRestService {
      */
     public PhongCachNoiThat findById(int id) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath(String.valueOf(id));
-        Optional<PhongCachNoiThat> response = this.webClientService.authorizedHttpGetJson(uriBuilder, PhongCachNoiThat.class);
+        Optional<PhongCachNoiThat> response = this.webClientService.authorizedHttpGet(uriBuilder, PhongCachNoiThat.class);
         return response.orElse(null);
     }
 
@@ -63,7 +64,7 @@ public class PhongCachRestService {
      */
     public PhongCachNoiThat findUsingName(String name) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("search").addParameter("name", name);
-        Optional<PhongCachNoiThat> response = this.webClientService.authorizedHttpGetJson(uriBuilder, PhongCachNoiThat.class);
+        Optional<PhongCachNoiThat> response = this.webClientService.authorizedHttpGet(uriBuilder, PhongCachNoiThat.class);
         return response.orElse(null);
     }
 
@@ -75,7 +76,7 @@ public class PhongCachRestService {
      */
     public void save(PhongCachNoiThat phongCachNoiThat) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT);
-        Optional<String> response = this.webClientService.authorizedHttpPostJson(uriBuilder, phongCachNoiThat, String.class);
+        Optional<String> response = this.webClientService.authorizedHttpPost(uriBuilder, phongCachNoiThat, String.class);
         response.orElseThrow(() -> {
             LOGGER.error("Can't save PhongCach");
             return new RuntimeException("Can't save PhongCach");
@@ -107,7 +108,7 @@ public class PhongCachRestService {
 
     public void copySampleDataFromAdmin() {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("copySampleData");
-        this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
+        this.webClientService.authorizedHttpGet(uriBuilder, String.class);
     }
 
     public void swap(int id1, int id2) {
@@ -116,6 +117,6 @@ public class PhongCachRestService {
                 .addPath("swap")
                 .addParameter("id1", String.valueOf(id1))
                 .addParameter("id2", String.valueOf(id2));
-        this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
+        this.webClientService.authorizedHttpGet(uriBuilder, String.class);
     }
 }

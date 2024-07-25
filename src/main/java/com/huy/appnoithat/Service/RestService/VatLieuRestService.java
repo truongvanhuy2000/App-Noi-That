@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.DataModel.Entity.VatLieu;
+import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,7 +25,7 @@ public class VatLieuRestService {
      * Constructor for VatLieuRestService.
      */
     private VatLieuRestService() {
-        webClientService = new WebClientService();
+        webClientService = new JavaNetHttpClient();
     }
 
     /**
@@ -36,7 +37,7 @@ public class VatLieuRestService {
      */
     public List<VatLieu> searchByHangMuc(int id) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("searchByHangMuc", String.valueOf(id));
-        return this.webClientService.authorizedHttpGetJson(uriBuilder, VatLieu.class, List.class).orElse(null);
+        return this.webClientService.authorizedHttpGet(uriBuilder, VatLieu.class, List.class).orElse(null);
     }
     /**
      * Saves a new VatLieu object.
@@ -49,7 +50,7 @@ public class VatLieuRestService {
         URIBuilder uriBuilder = URIBuilder.empty()
                 .addRawPath(BASE_ENDPOINT)
                 .addParameter("parentId", String.valueOf(parentID));
-        if (this.webClientService.authorizedHttpPostJson(uriBuilder, vatLieu, String.class).isEmpty()) {
+        if (this.webClientService.authorizedHttpPost(uriBuilder, vatLieu, String.class).isEmpty()) {
             LOGGER.error("Can't save VatLieu");
             throw new RuntimeException("Can't save VatLieu");
         }
@@ -98,13 +99,13 @@ public class VatLieuRestService {
                 .addParameter("phongCachName", phongCachName)
                 .addParameter("noiThatName", noiThatName)
                 .addParameter("hangMucName", hangMucName);
-        return this.webClientService.authorizedHttpGetJson(uriBuilder, VatLieu.class, List.class).orElse(null);
+        return this.webClientService.authorizedHttpGet(uriBuilder, VatLieu.class, List.class).orElse(null);
     }
     public void copySampleDataFromAdmin(int parentId) {
         URIBuilder uriBuilder = URIBuilder.empty()
                 .addRawPath(BASE_ENDPOINT).addPath("copySampleData")
                 .addParameter("parentId", String.valueOf(parentId));
-        if (this.webClientService.authorizedHttpGetJson(uriBuilder, String.class).isEmpty()) {
+        if (this.webClientService.authorizedHttpGet(uriBuilder, String.class).isEmpty()) {
             LOGGER.error("Can't copy sample data");
             throw new RuntimeException("Can't copy sample data");
         }
@@ -115,7 +116,7 @@ public class VatLieuRestService {
                 .addRawPath(BASE_ENDPOINT).addPath("swap")
                 .addParameter("id1", String.valueOf(id1))
                 .addParameter("id2", String.valueOf(id2));
-        if (this.webClientService.authorizedHttpGetJson(uriBuilder, String.class).isEmpty()) {
+        if (this.webClientService.authorizedHttpGet(uriBuilder, String.class).isEmpty()) {
             LOGGER.error("Can't swap VatLieu");
             throw new RuntimeException("Can't swap VatLieu");
         }

@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.DataModel.Entity.HangMuc;
+import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,7 +26,7 @@ public class HangMucRestService {
      * Constructs a new instance of HangMucRestService with the necessary dependencies.
      */
     private HangMucRestService() {
-        webClientService = new WebClientService();
+        webClientService = new JavaNetHttpClient();
     }
 
     /**
@@ -36,7 +37,7 @@ public class HangMucRestService {
      */
     public List<HangMuc> searchByNoiThat(int id) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("searchByNoiThat", String.valueOf(id));
-        Optional<List<HangMuc>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, HangMuc.class, List.class);
+        Optional<List<HangMuc>> response = this.webClientService.authorizedHttpGet(uriBuilder, HangMuc.class, List.class);
         return response.orElse(null);
     }
 
@@ -50,7 +51,7 @@ public class HangMucRestService {
         URIBuilder uriBuilder = URIBuilder.empty()
                 .addRawPath(BASE_ENDPOINT)
                 .addParameter("parentId", String.valueOf(parentID));
-        Optional<String> response = this.webClientService.authorizedHttpPostJson(uriBuilder, hangMuc, String.class);
+        Optional<String> response = this.webClientService.authorizedHttpPost(uriBuilder, hangMuc, String.class);
         response.orElseThrow(() -> {
             LOGGER.error("Error when saving HangMuc");
             return new RuntimeException("Error when saving HangMuc");
@@ -95,14 +96,14 @@ public class HangMucRestService {
                 .addRawPath(BASE_ENDPOINT).addPath("searchBy")
                 .addParameter("phongCachName", phongCachName)
                 .addParameter("noiThatName", noiThatName);
-        Optional<List<HangMuc>> response = this.webClientService.authorizedHttpGetJson(uriBuilder, HangMuc.class, List.class);
+        Optional<List<HangMuc>> response = this.webClientService.authorizedHttpGet(uriBuilder, HangMuc.class, List.class);
         return response.orElse(null);
     }
     public void copySampleDataFromAdmin(int parentId) {
         URIBuilder uriBuilder = URIBuilder.empty()
                 .addRawPath(BASE_ENDPOINT).addPath("copySampleData")
                 .addParameter("parentId", String.valueOf(parentId));
-        this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
+        this.webClientService.authorizedHttpGet(uriBuilder, String.class);
     }
 
     public void swap(int id1, int id2) {
@@ -110,6 +111,6 @@ public class HangMucRestService {
                 .addRawPath(BASE_ENDPOINT).addPath("swap")
                 .addParameter("id1", String.valueOf(id1))
                 .addParameter("id2", String.valueOf(id2));
-        this.webClientService.authorizedHttpGetJson(uriBuilder, String.class);
+        this.webClientService.authorizedHttpGet(uriBuilder, String.class);
     }
 }

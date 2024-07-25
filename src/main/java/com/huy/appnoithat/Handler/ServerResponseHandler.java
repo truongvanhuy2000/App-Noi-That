@@ -12,16 +12,14 @@ import org.apache.logging.log4j.Logger;
 
 public class ServerResponseHandler {
     final static Logger LOGGER = LogManager.getLogger(ServerResponseHandler.class);
-    private final UserSessionService userSessionService;
-    public ServerResponseHandler() {
-        userSessionService = new UserSessionService();
-    }
-    public void handleTokenExpired() {
+
+    public static void handleTokenExpired() {
         LOGGER.error("Token expired");
         PopupUtils.throwErrorNotification("Tài khoản đã hết hạn!", "Nhấn đây để đăng nhập lại! \n" +
-                        "Hãy lưu lại những công việc quan trọng", this::handleLogout, 5);
+                        "Hãy lưu lại những công việc quan trọng", ServerResponseHandler::handleLogout, 5);
     }
-    private void handleLogout() {
+    private static void handleLogout() {
+        UserSessionService userSessionService = new UserSessionService();
         userSessionService.cleanUserSession();
         Platform.runLater(() -> {
             if (!Window.getWindows().isEmpty()) {
