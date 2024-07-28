@@ -168,9 +168,7 @@ public class UserSessionService {
         }
         if (autoRenewIfExpire) {
             try {
-
                 DecodedJWT jwt = JWT.decode(session.getJwtToken());
-
                 if (isTokenExpired(jwt)) {
                     TokenRestService tokenRestService = new TokenRestService();
                     DecodedJWT refreshToken = JWT.decode(session.getJwtToken());

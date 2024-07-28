@@ -41,7 +41,7 @@ class FileStorageRestServiceIntegrationTest {
 
     @Test
     void saveNtFile() {
-        long contentLength = 10 * 1024;
+        long contentLength = 1024;
         ByteBuffer byteBuffer = ByteBuffer.allocate((int) contentLength);
         InputStream inputStream = new ByteArrayInputStream(byteBuffer.array());
         Optional<SavedFileDTO> optional = fileStorageRestService.saveNtFile(inputStream, "test");
@@ -51,7 +51,7 @@ class FileStorageRestServiceIntegrationTest {
 
     @Test
     void updateNtFile() throws InterruptedException {
-        long contentLength = 10 * 1024;
+        long contentLength = 1024;
         ByteBuffer byteBuffer = ByteBuffer.allocate((int) contentLength);
         InputStream inputStream = new ByteArrayInputStream(byteBuffer.array());
         Optional<SavedFileDTO> optional = fileStorageRestService.saveNtFile(inputStream, "test");
@@ -68,7 +68,7 @@ class FileStorageRestServiceIntegrationTest {
 
     @Test
     void getNtFileList() {
-        long contentLength = 10 * 1024;
+        long contentLength = 1024;
         ByteBuffer byteBuffer = ByteBuffer.allocate((int) contentLength);
         InputStream inputStream = new ByteArrayInputStream(byteBuffer.array());
         Optional<SavedFileDTO> savedFileDTOOptional = fileStorageRestService.saveNtFile(inputStream, "test");
@@ -80,11 +80,11 @@ class FileStorageRestServiceIntegrationTest {
 
     @Test
     void getNtFile() throws InterruptedException {
-        long contentLength = 10 * 1024;
+        long contentLength = 1024;
         ByteBuffer byteBuffer = ByteBuffer.allocate((int) contentLength);
         InputStream inputStream = new ByteArrayInputStream(byteBuffer.array());
         Optional<SavedFileDTO> savedFileDTOOptional = fileStorageRestService.saveNtFile(inputStream, "test");
-        Thread.sleep(TimeUnit.SECONDS.toMillis(10));
+        Thread.sleep(TimeUnit.SECONDS.toMillis(5));
         Optional<ByteBuffer> optionalByteBuffer = fileStorageRestService.getNtFile(savedFileDTOOptional.get().getId());
         assertTrue(optionalByteBuffer.isPresent());
         assertEquals(optionalByteBuffer.get().array().length, contentLength);
@@ -92,19 +92,21 @@ class FileStorageRestServiceIntegrationTest {
 
     @Test
     void deleteNtFile() throws InterruptedException {
-        long contentLength = 10 * 1024;
+        long contentLength = 1024;
         ByteBuffer byteBuffer = ByteBuffer.allocate((int) contentLength);
         InputStream inputStream = new ByteArrayInputStream(byteBuffer.array());
         Optional<SavedFileDTO> savedFileDTOOptional = fileStorageRestService.saveNtFile(inputStream, "test");
-        Thread.sleep(TimeUnit.SECONDS.toMillis(10));
+        Thread.sleep(TimeUnit.SECONDS.toMillis(5));
         fileStorageRestService.deleteNtFile(savedFileDTOOptional.get().getId());
         Optional<ByteBuffer> optionalByteBuffer = fileStorageRestService.getNtFile(savedFileDTOOptional.get().getId());
         assertTrue(optionalByteBuffer.isEmpty());
+        Optional<SavedFileDTO> savedFileDTO = fileStorageRestService.getFileInfo(savedFileDTOOptional.get().getId());
+        assertTrue(savedFileDTO.isEmpty());
     }
 
     @Test
     void updateFileInfo() throws InterruptedException {
-        long contentLength = 10 * 1024;
+        long contentLength = 1024;
         ByteBuffer byteBuffer = ByteBuffer.allocate((int) contentLength);
         InputStream inputStream = new ByteArrayInputStream(byteBuffer.array());
         Optional<SavedFileDTO> savedFileDTOOptional = fileStorageRestService.saveNtFile(inputStream, "test");
@@ -118,7 +120,7 @@ class FileStorageRestServiceIntegrationTest {
 
     @Test
     void getFileInfo() throws InterruptedException {
-        long contentLength = 10 * 1024;
+        long contentLength = 1024;
         ByteBuffer byteBuffer = ByteBuffer.allocate((int) contentLength);
         InputStream inputStream = new ByteArrayInputStream(byteBuffer.array());
         String fileName = UUID.randomUUID().toString();

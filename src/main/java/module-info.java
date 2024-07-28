@@ -60,4 +60,5 @@ module com.huy.appnoithat {
     opens com.huy.appnoithat.Controller.LuaChonNoiThat.Constant to javafx.fxml;
     opens com.huy.appnoithat.DataModel.SaveFile to javafx.fxml;
     opens com.huy.appnoithat.DataModel to javafx.fxml;
+    exports com.huy.appnoithat.DataModel.WebClient;
 }
