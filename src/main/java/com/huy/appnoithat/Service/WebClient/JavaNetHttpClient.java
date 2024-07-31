@@ -8,8 +8,8 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.Token;
-import com.huy.appnoithat.Handler.ServerResponseHandler;
-import com.huy.appnoithat.Service.SessionService.UserSessionService;
+import com.huy.appnoithat.Handler.SessionExpiredHandler;
+import com.huy.appnoithat.Session.UserSessionService;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -40,19 +40,28 @@ public class JavaNetHttpClient implements WebClientService {
     private final long timeOut;
     private final HttpClient client;
     private final UserSessionService userSessionService;
-    private final ServerResponseHandler serverResponseHandler;
+    private final SessionExpiredHandler sessionExpiredHandler;
     private final ObjectMapper objectMapper;
 
-    public JavaNetHttpClient() {
+    private static JavaNetHttpClient instance;
+
+    private JavaNetHttpClient() {
         this.timeOut = TIME_OUT;
         userSessionService = new UserSessionService();
         client = HttpClient.newHttpClient();
-        serverResponseHandler = new ServerResponseHandler();
+        sessionExpiredHandler = new SessionExpiredHandler();
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
                 .serializationInclusion(JsonInclude.Include.NON_NULL)
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
                 .build();
+    }
+
+    public static synchronized JavaNetHttpClient getInstance() {
+        if (instance == null) {
+            instance = new JavaNetHttpClient();
+        }
+        return instance;
     }
 
     @Override
@@ -83,7 +92,7 @@ public class JavaNetHttpClient implements WebClientService {
 
     @Override
     public <T> Optional<T> authorizedHttpPost(@NonNull URIBuilder uri, @NonNull Object data, @NonNull Class<T> responseClass) {
-        String token = userSessionService.getJwtToken();
+        String token = userSessionService.getToken().getAccessToken();
         if (StringUtils.isBlank(token)) {
             return Optional.empty();
         }
@@ -110,7 +119,7 @@ public class JavaNetHttpClient implements WebClientService {
 
     @Override
     public <T> Optional<T> authorizedHttpGet(@NonNull URIBuilder uri, @NonNull Class<T> responseClass) {
-        String token = userSessionService.getJwtToken();
+        String token = userSessionService.getToken().getAccessToken();
         if (StringUtils.isBlank(token)) {
             return Optional.empty();
         }
@@ -138,7 +147,7 @@ public class JavaNetHttpClient implements WebClientService {
     @Override
     public <T> Optional<List<T>> authorizedHttpGet(@NonNull URIBuilder uri, @NonNull Class<T> responseClass,
                                                    @NonNull Class<? extends Collection> collectionClass) {
-        String token = userSessionService.getJwtToken();
+        String token = userSessionService.getToken().getAccessToken();
         if (StringUtils.isBlank(token)) {
             return Optional.empty();
         }
@@ -165,7 +174,7 @@ public class JavaNetHttpClient implements WebClientService {
 
     @Override
     public <T> Optional<T> authorizedHttpPutJson(@NonNull URIBuilder uri, @NonNull Object data, @NonNull Class<T> responseClass) {
-        String token = userSessionService.getJwtToken();
+        String token = userSessionService.getToken().getAccessToken();
         if (StringUtils.isBlank(token)) {
             return Optional.empty();
         }
@@ -192,7 +201,7 @@ public class JavaNetHttpClient implements WebClientService {
 
     @Override
     public <T> Optional<T> authorizedHttpDeleteJson(@NonNull URIBuilder uri, @NonNull Class<T> responseClass) {
-        String token = userSessionService.getJwtToken();
+        String token = userSessionService.getToken().getAccessToken();
         HttpResponse<String> response = doSendRequest(DELETE, uri, token, null);
         if (response == null) {
             return Optional.empty();
@@ -276,9 +285,9 @@ public class JavaNetHttpClient implements WebClientService {
 
     private Optional<Token> tryRefreshToken() {
         LOGGER.info("Refreshing token");
-        String refreshToken = userSessionService.getRefreshToken();
+        String refreshToken = userSessionService.getToken().getRefreshToken();
         if (StringUtils.isBlank(refreshToken)) {
-            ServerResponseHandler.handleTokenExpired();
+            sessionExpiredHandler.handleTokenExpired();
             return Optional.empty();
         }
         HttpResponse<String> response = doSendRequest(POST, URIBuilder.empty().addPath("api", "refreshToken"),
@@ -288,12 +297,12 @@ public class JavaNetHttpClient implements WebClientService {
         }
         if (response.statusCode() == 200) {
             Token token = deserializeResponse(response.body(), Token.class);
-            userSessionService.setToken(token);
+            userSessionService.saveSession(token);
             userSessionService.saveSessionToDisk();
             return Optional.of(token);
         } else {
             LOGGER.info("Refresh token expired, need to login again");
-            ServerResponseHandler.handleTokenExpired();
+            sessionExpiredHandler.handleTokenExpired();
             return Optional.empty();
         }
     }

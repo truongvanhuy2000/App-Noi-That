@@ -1,16 +1,23 @@
 package com.huy.appnoithat.DataModel;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class Token {
-    @JsonProperty("token")
-    private String token;
-    @JsonProperty("refreshToken")
+    private String accessToken;
+    private Date accessTokenExpiration;
     private String refreshToken;
+    private Date refreshTokenExpiration;
+
+    public static Token empty() {
+        return Token.builder().accessToken("").refreshToken("").build();
+    }
 }

@@ -12,7 +12,7 @@ public class DatabaseModifyVatlieuService {
     private final VatLieuRestService vatLieuRestService;
 
     public DatabaseModifyVatlieuService() {
-        vatLieuRestService = VatLieuRestService.getInstance();
+        vatLieuRestService = new VatLieuRestService();
     }
 
     public List<VatLieu> findVatLieuByParentId(int id) {

@@ -14,18 +14,11 @@ public class VatLieuRestService {
     final static Logger LOGGER = LogManager.getLogger(VatLieuRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/vatlieu";
-    public static synchronized VatLieuRestService getInstance() {
-        if (instance == null) {
-            instance = new VatLieuRestService();
-        }
-        return instance;
-    }
-
     /**
      * Constructor for VatLieuRestService.
      */
-    private VatLieuRestService() {
-        webClientService = new JavaNetHttpClient();
+    public VatLieuRestService() {
+        webClientService = JavaNetHttpClient.getInstance();
     }
 
     /**

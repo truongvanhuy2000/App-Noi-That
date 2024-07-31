@@ -10,7 +10,7 @@ import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementScene;
 import com.huy.appnoithat.Scene.UserDetailScene;
 import com.huy.appnoithat.Service.Login.LoginService;
-import com.huy.appnoithat.Service.SessionService.UserSessionService;
+import com.huy.appnoithat.Session.UserSessionService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;

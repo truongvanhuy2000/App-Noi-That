@@ -37,7 +37,7 @@ public class FileStorageRestService {
     private final WebClientService webClientService;
 
     public FileStorageRestService() {
-        webClientService = new ApacheHttpClient();
+        webClientService = ApacheHttpClient.getInstance();
     }
 
     public void updateNtFile(InputStream file, String fileName, int fileId) {

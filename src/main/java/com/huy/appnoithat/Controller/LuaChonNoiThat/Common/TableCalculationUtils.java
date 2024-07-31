@@ -7,10 +7,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
 
-import java.math.RoundingMode;
 import java.math.BigDecimal;
-
-import java.text.DecimalFormat;
+import java.math.RoundingMode;
 
 public class TableCalculationUtils {
     private static final String MET_DAI = "mét dài";

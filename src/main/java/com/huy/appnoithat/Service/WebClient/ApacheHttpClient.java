@@ -5,11 +5,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.MultipartForm;
+import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.DataModel.WebClient.ErrorResponse;
 import com.huy.appnoithat.DataModel.WebClient.Response;
-import com.huy.appnoithat.Service.SessionService.UserSessionService;
-import lombok.AllArgsConstructor;
-import lombok.NonNull;
+import com.huy.appnoithat.Handler.SessionExpiredHandler;
+import com.huy.appnoithat.Session.UserSessionService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpDelete;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
@@ -24,72 +27,43 @@ import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.apache.hc.core5.http.message.BasicNameValuePair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.poi.sl.draw.geom.GuideIf;
 import org.codehaus.httpcache4j.uri.URIBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.List;
+import java.text.ParseException;
+import java.util.Map;
 import java.util.Optional;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ApacheHttpClient implements WebClientService {
     final static Logger LOGGER = LogManager.getLogger(ApacheHttpClient.class);
 
     private static final String SERVER_ADDRESS = Config.WEB_CLIENT.BASE_URL;
+    public static final URI REFRESH_TOKEN = URIBuilder.empty().addPath("api", "refreshToken").toURI();
 
     private final HttpClient httpclient;
     private final UserSessionService userSessionService;
     private final ObjectMapper objectMapper;
+    private SessionExpiredHandler sessionExpiredHandler;
 
-    public ApacheHttpClient() {
+    private static ApacheHttpClient instance;
+
+    private ApacheHttpClient() {
         httpclient = HttpClients.createDefault();
         userSessionService = new UserSessionService();
+        sessionExpiredHandler = new SessionExpiredHandler();
         objectMapper = new ObjectMapper();
     }
 
-    @Override
-    @Deprecated
-    public <T> Optional<T> unauthorizedHttpPostJson(@NonNull URIBuilder uri, @NonNull Object data, @NonNull Class<T> responseClass) {
-        throw new RuntimeException("Not supported anymore :((");
-    }
-
-    @Override
-    @Deprecated
-    public <T> Optional<T> unauthorizedHttpGetJson(@NonNull URIBuilder uri, @NonNull Class<T> responseClass) {
-        throw new RuntimeException("Not supported anymore :((");
-    }
-
-    @Override
-    @Deprecated
-    public <T> Optional<T> authorizedHttpPost(@NonNull URIBuilder uri, @NonNull Object data, @NonNull Class<T> responseClass) {
-        throw new RuntimeException("Not supported anymore :((");
-    }
-
-    @Override
-    @Deprecated
-    public <T> Optional<T> authorizedHttpGet(@NonNull URIBuilder uri, @NonNull Class<T> responseClass) {
-        throw new RuntimeException("Not supported anymore :((");
-    }
-
-    @Deprecated
-    @Override
-    public <T> Optional<List<T>> authorizedHttpGet(@NonNull URIBuilder uri, @NonNull Class<T> responseClass, @NonNull Class<? extends Collection> collectionClass) {
-        throw new RuntimeException("Not supported anymore :((");
-    }
-
-    @Override
-    @Deprecated
-    public <T> Optional<T> authorizedHttpPutJson(@NonNull URIBuilder uri, @NonNull Object data, @NonNull Class<T> responseClass) {
-        throw new RuntimeException("Not supported anymore :((");
-    }
-
-    @Override
-    @Deprecated
-    public <T> Optional<T> authorizedHttpDeleteJson(@NonNull URIBuilder uri, @NonNull Class<T> responseClass) {
-        throw new RuntimeException("Not supported anymore :((");
+    public static ApacheHttpClient getInstance() {
+        if (instance == null) {
+            instance = new ApacheHttpClient();
+        }
+        return instance;
     }
 
     @Override
@@ -181,7 +155,7 @@ public class ApacheHttpClient implements WebClientService {
     ) {
         Response<X> restResponse = Response.<X>builder().build();
         if (requireAuthentication) {
-            Optional<String> token = userSessionService.getJwtToken(true);
+            Optional<String> token = getAndCheckForTokenExpiration();
             if (token.isEmpty()) {
                 return restResponse.toBuilder().isSuccess(false).build();
             }
@@ -234,5 +208,38 @@ public class ApacheHttpClient implements WebClientService {
             });
         }
         return multipartEntityBuilder.build();
+    }
+
+    private Optional<String> getAndCheckForTokenExpiration() {
+        Token token = userSessionService.getToken();
+        if (token == null) {
+            LOGGER.error("Token is null");
+            return Optional.empty();
+        }
+        if (!userSessionService.isAccessTokenExpired()) {
+            return Optional.of(token.getAccessToken());
+        }
+        if (userSessionService.isRefreshTokenExpired()) {
+            sessionExpiredHandler.handleTokenExpired();
+            return Optional.empty();
+        }
+        Optional<Token> newToken = tryRefreshingToken(token.getRefreshToken());
+        return newToken.map(Token::getAccessToken);
+    }
+
+    private Optional<Token> tryRefreshingToken(String refreshToken) {
+        if (StringUtils.isEmpty(refreshToken)) {
+            return Optional.empty();
+        }
+        Map<String, String> body = Map.of("refreshToken", refreshToken);
+        URIBuilder uriBuilder = URIBuilder.fromURI(REFRESH_TOKEN);
+        TypeReference<Token> typeReference = new TypeReference<>() {};
+        Response<Token> response = unauthorizedHttpPost(uriBuilder, body, typeReference);
+        if (!response.isSuccess() || response.getResponse().isEmpty()) {
+            sessionExpiredHandler.handleTokenExpired();
+            return Optional.empty();
+        }
+        userSessionService.setToken(response.getResponse().get());
+        return response.getResponse();
     }
 }

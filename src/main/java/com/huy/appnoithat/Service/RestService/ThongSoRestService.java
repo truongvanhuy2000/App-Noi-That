@@ -15,18 +15,12 @@ public class ThongSoRestService {
     final static Logger LOGGER = LogManager.getLogger(VatLieuRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/thongso";
-    public static synchronized ThongSoRestService getInstance() {
-        if (instance == null) {
-            instance = new ThongSoRestService();
-        }
-        return instance;
-    }
 
     /**
      * Constructor for ThongSoRestService.
      */
-    private ThongSoRestService() {
-        webClientService = new JavaNetHttpClient();
+    public ThongSoRestService() {
+        webClientService = JavaNetHttpClient.getInstance();
     }
 
     /**

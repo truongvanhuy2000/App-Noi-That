@@ -12,7 +12,7 @@ public class DatabaseModifyThongSoService {
     private final ThongSoRestService thongSoRestService;
 
     public DatabaseModifyThongSoService() {
-        thongSoRestService = ThongSoRestService.getInstance();
+        thongSoRestService = new ThongSoRestService();
     }
 
     public List<ThongSo> findThongSoByParentId(int id) {

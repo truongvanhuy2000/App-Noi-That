@@ -9,7 +9,7 @@ public class UserDetailService {
     private final AccountRestService accountRestService;
 
     public UserDetailService() {
-        this.accountRestService = AccountRestService.getInstance();
+        this.accountRestService = new AccountRestService();
     }
     public Account getAccountInformation() {
         return accountRestService.getAccountInformation();

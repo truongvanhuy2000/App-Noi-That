@@ -3,7 +3,6 @@ module com.huy.appnoithat {
     requires javafx.fxml;
     requires org.apache.commons.io;
     requires org.controlsfx.controls;
-//    requires com.dlsc.formsfx;
     requires uribuilder;
     requires lombok;
     requires java.net.http;
@@ -15,12 +14,13 @@ module com.huy.appnoithat {
     requires com.fasterxml.jackson.datatype.jsr310;
     requires com.fasterxml.jackson.dataformat.yaml;
     requires org.apache.commons.lang3;
+    requires org.slf4j;
 
     exports com.huy.appnoithat.Controller;
     requires org.apache.commons.codec;
     requires org.apache.httpcomponents.client5.httpclient5;
     requires org.apache.httpcomponents.core5.httpcore5;
-    requires com.auth0.jwt;
+
     opens com.huy.appnoithat.Controller to javafx.fxml;
     exports com.huy.appnoithat.DataModel.Entity;
     opens com.huy.appnoithat.DataModel.Entity to javafx.fxml;

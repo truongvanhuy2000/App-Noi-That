@@ -6,7 +6,6 @@ import com.huy.appnoithat.DataModel.Entity.NoiThat;
 import com.huy.appnoithat.DataModel.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.DataModel.Entity.VatLieu;
 import com.huy.appnoithat.DataModel.Enums.FileType;
-import com.huy.appnoithat.Service.Event.DBUpdateEventService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.ExportFile;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.FileExportService;
 import com.huy.appnoithat.Service.RestService.HangMucRestService;
@@ -27,20 +26,17 @@ public class LuaChonNoiThatService {
     private final HangMucRestService hangMucRestService;
     private final VatLieuRestService vatLieuRestService;
     private final CacheNoiThatRequestService cacheNoiThatRequestService;
-    private final DBUpdateEventService dbUpdateEventService;
 
     /**
      * Initializes the LuaChonNoiThatService by initializing required services and components.
      */
     public LuaChonNoiThatService() {
         fileExportService = new FileExportService();
-        phongCachRestService = PhongCachRestService.getInstance();
-        noiThatRestService = NoiThatRestService.getInstance();
-        hangMucRestService = HangMucRestService.getInstance();
-        vatLieuRestService = VatLieuRestService.getInstance();
+        phongCachRestService = new PhongCachRestService();
+        noiThatRestService = new NoiThatRestService();
+        hangMucRestService = new HangMucRestService();
+        vatLieuRestService = new VatLieuRestService();
         cacheNoiThatRequestService = CacheNoiThatRequestService.getInstance();
-        dbUpdateEventService = DBUpdateEventService.getInstance();
-        dbUpdateEventService.start();
     }
 
     /**

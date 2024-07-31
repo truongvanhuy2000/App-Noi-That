@@ -4,8 +4,8 @@ package com.huy.appnoithat.Service.RestService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.DataModel.SavedFileDTO;
 import com.huy.appnoithat.DataModel.Token;
-import com.huy.appnoithat.Service.SessionService.UserSessionService;
 import com.huy.appnoithat.Service.WebClient.ApacheHttpClient;
+import com.huy.appnoithat.Session.UserSessionService;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +22,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.BDDMockito.*;
+import static org.mockito.BDDMockito.given;
 
 class FileStorageRestServiceIntegrationTest {
     UserSessionService userSessionService = Mockito.mock();
@@ -36,7 +36,9 @@ class FileStorageRestServiceIntegrationTest {
     @BeforeEach
     void setUp() {
         Optional<Token> token = tokenRestService.login("test", "test");
-        given(userSessionService.getJwtToken(anyBoolean())).willReturn(token.map(Token::getToken));
+        assertTrue(token.isPresent());
+        given(userSessionService.getToken()).willReturn(token.get());
+        given(userSessionService.isAccessTokenExpired()).willReturn(false);
     }
 
     @Test

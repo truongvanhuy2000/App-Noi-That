@@ -4,19 +4,20 @@ import com.huy.appnoithat.Common.FXUtils;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Scene.Login.LoginScene;
 import com.huy.appnoithat.Scene.StageFactory;
-import com.huy.appnoithat.Service.SessionService.UserSessionService;
+import com.huy.appnoithat.Session.UserSessionService;
 import javafx.application.Platform;
 import javafx.stage.Window;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class ServerResponseHandler {
-    final static Logger LOGGER = LogManager.getLogger(ServerResponseHandler.class);
+public class SessionExpiredHandler {
+    final static Logger LOGGER = LogManager.getLogger(SessionExpiredHandler.class);
 
-    public static void handleTokenExpired() {
+    public void handleTokenExpired() {
         LOGGER.error("Token expired");
         PopupUtils.throwErrorNotification("Tài khoản đã hết hạn!", "Nhấn đây để đăng nhập lại! \n" +
-                        "Hãy lưu lại những công việc quan trọng", ServerResponseHandler::handleLogout, 5);
+                        "Hãy lưu lại những công việc quan trọng", SessionExpiredHandler::handleLogout, 5);
     }
     private static void handleLogout() {
         UserSessionService userSessionService = new UserSessionService();

@@ -16,14 +16,8 @@ public class NoiThatRestService {
     final static Logger LOGGER = LogManager.getLogger(NoiThatRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/noithat";
-    public static synchronized NoiThatRestService getInstance() {
-        if (instance == null) {
-            instance = new NoiThatRestService();
-        }
-        return instance;
-    }
-    private NoiThatRestService() {
-        webClientService = new JavaNetHttpClient();
+    public NoiThatRestService() {
+        webClientService = JavaNetHttpClient.getInstance();
     }
 
     /**

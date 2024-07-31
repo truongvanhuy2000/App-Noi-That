@@ -12,22 +12,15 @@ import java.util.List;
 import java.util.Optional;
 
 public class PhongCachRestService {
-    private static PhongCachRestService instance;
     final static Logger LOGGER = LogManager.getLogger(PhongCachRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/phongcach";
-    public static synchronized PhongCachRestService getInstance() {
-        if (instance == null) {
-            instance = new PhongCachRestService();
-        }
-        return instance;
-    }
 
     /**
      * Service class for managing PhongCachNoiThat objects via REST API.
      */
-    private PhongCachRestService() {
-        webClientService = new JavaNetHttpClient();
+    public PhongCachRestService() {
+        webClientService = JavaNetHttpClient.getInstance();
     }
 
     /**

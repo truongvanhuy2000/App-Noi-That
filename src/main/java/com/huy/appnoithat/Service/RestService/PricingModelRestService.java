@@ -16,7 +16,7 @@ public class PricingModelRestService {
     private static final String BASE_ENDPOINT = "/api/pricingModel";
 
     public PricingModelRestService() {
-        this.webClientService = new JavaNetHttpClient();
+        this.webClientService = JavaNetHttpClient.getInstance();
     }
 
     public PricingModelDTO getPricingModel() {

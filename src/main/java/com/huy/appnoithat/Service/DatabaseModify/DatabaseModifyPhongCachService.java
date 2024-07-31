@@ -14,8 +14,8 @@ public class DatabaseModifyPhongCachService {
     private final BangNoiThatRestService bangNoiThatRestService;
 
     public DatabaseModifyPhongCachService() {
-        phongCachRestService = PhongCachRestService.getInstance();
-        bangNoiThatRestService = BangNoiThatRestService.getInstance();
+        phongCachRestService = new PhongCachRestService();
+        bangNoiThatRestService = new BangNoiThatRestService();
     }
 
     public List<PhongCachNoiThat> findAllPhongCach() {

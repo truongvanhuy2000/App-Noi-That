@@ -18,7 +18,7 @@ public class LapBaoGiaRestService {
     private static final String BASE_ENDPOINT = "/api/lapBaoGiaInfo";
     private final WebClientService webClientService;
     public LapBaoGiaRestService() {
-        webClientService = new JavaNetHttpClient();
+        webClientService = JavaNetHttpClient.getInstance();
     }
 
     public ThongTinCongTy getThongTinCongTy() {

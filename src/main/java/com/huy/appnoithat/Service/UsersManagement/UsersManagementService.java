@@ -12,7 +12,7 @@ public class UsersManagementService {
      * Initializes the UsersManagementService with required dependencies.
      */
     public UsersManagementService() {
-        accountRestService = AccountRestService.getInstance();
+        accountRestService = new AccountRestService();
     }
 
 

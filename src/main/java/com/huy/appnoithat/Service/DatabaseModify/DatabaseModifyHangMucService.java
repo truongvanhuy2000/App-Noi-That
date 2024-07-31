@@ -12,7 +12,7 @@ public class DatabaseModifyHangMucService {
     private final HangMucRestService hangMucRestService;
 
     public DatabaseModifyHangMucService() {
-        hangMucRestService = HangMucRestService.getInstance();
+        hangMucRestService = new HangMucRestService();
     }
 
     public List<HangMuc> findHangMucByParentId(int id) {

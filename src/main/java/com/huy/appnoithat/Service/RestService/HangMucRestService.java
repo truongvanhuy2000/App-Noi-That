@@ -11,22 +11,14 @@ import java.util.List;
 import java.util.Optional;
 
 public class HangMucRestService {
-    private static HangMucRestService instance;
     final static Logger LOGGER = LogManager.getLogger(HangMucRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/hangmuc";
-    public static synchronized HangMucRestService getInstance() {
-        if (instance == null) {
-            instance = new HangMucRestService();
-        }
-        return instance;
-    }
-
     /**
      * Constructs a new instance of HangMucRestService with the necessary dependencies.
      */
-    private HangMucRestService() {
-        webClientService = new JavaNetHttpClient();
+    public HangMucRestService() {
+        webClientService = JavaNetHttpClient.getInstance();
     }
 
     /**

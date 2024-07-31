@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -30,6 +31,11 @@ public class Account {
     private boolean enabled;
     @JsonProperty("expiredDate")
     private LocalDate expiredDate;
+
+    public static Account empty() {
+        return Account.builder().username("").password("").active(false).enabled(false)
+                .roleList(new ArrayList<>()).build();
+    }
 
     @Override
     public String toString() {

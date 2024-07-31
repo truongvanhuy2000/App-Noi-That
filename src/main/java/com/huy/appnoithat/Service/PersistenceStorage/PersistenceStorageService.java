@@ -23,6 +23,7 @@ public class PersistenceStorageService implements StorageService {
     private final ObjectMapper objectMapper;
     private final LapBaoGiaRestService lapBaoGiaRestService;
     private final CachedData cachedData;
+
     public PersistenceStorageService() {
         objectMapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())

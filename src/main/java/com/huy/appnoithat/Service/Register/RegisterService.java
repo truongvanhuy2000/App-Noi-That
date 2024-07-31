@@ -15,7 +15,7 @@ public class RegisterService {
      * Initializes the WebClientService, ObjectMapper, and UserSessionService.
      */
     public RegisterService() {
-        accountRestService = AccountRestService.getInstance();
+        accountRestService = new AccountRestService();
     }
 
     /**

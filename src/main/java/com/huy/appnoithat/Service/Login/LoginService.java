@@ -1,9 +1,10 @@
 package com.huy.appnoithat.Service.Login;
 
 import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.DataModel.Entity.Account;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Service.RestService.AccountRestService;
-import com.huy.appnoithat.Service.SessionService.UserSessionService;
+import com.huy.appnoithat.Session.UserSessionService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,6 +17,7 @@ public class LoginService {
         this.sessionService = new UserSessionService();
         accountRestService = new AccountRestService();
     }
+
     public boolean basicAuthorization(String username, String password) {
         Token token = login(username, password);
         if (token != null) {
@@ -26,13 +28,17 @@ public class LoginService {
         PopupUtils.throwErrorNotification("Không thể đăng nhập, vui lòng kiểm tra lại thông tin");
         return false;
     }
+
     public boolean reAuthorize(String password) {
-        Token token = login(this.sessionService.getUsername(), password);
+        Account loginAccount = this.sessionService.getLoginAccount();
+        Token token = login(loginAccount.getUsername(), password);
         return token != null;
     }
+
     private Token login(String username, String password) {
         return accountRestService.login(username, password);
     }
+
     public boolean authorizeWithToken(Token token) {
         sessionService.setToken(token);
         if (accountRestService.sessionCheck() != null) {

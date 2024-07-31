@@ -28,7 +28,7 @@ public class AccountRestService {
     }
 
     public AccountRestService() {
-        webClientService = new JavaNetHttpClient();
+        webClientService = JavaNetHttpClient.getInstance();
     }
 
     public Account getAccountInformation() {
@@ -128,6 +128,4 @@ public class AccountRestService {
         Optional<String> response = this.webClientService.authorizedHttpPutJson(uriBuilder, accountInformation, String.class);
         return response.isPresent();
     }
-    
-
 }

@@ -5,7 +5,6 @@ import com.huy.appnoithat.DataModel.Entity.Account;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.DataModel.WebClient.Response;
 import com.huy.appnoithat.Service.WebClient.ApacheHttpClient;
-import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -14,7 +13,6 @@ import org.codehaus.httpcache4j.uri.URIBuilder;
 import java.net.URI;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
 
 @RequiredArgsConstructor
 public class TokenRestService {
@@ -26,7 +24,7 @@ public class TokenRestService {
     private final WebClientService webClientService;
 
     public TokenRestService() {
-        webClientService = new ApacheHttpClient();
+        webClientService = ApacheHttpClient.getInstance();
     }
 
     public Optional<Token> refreshToken(String refreshToken) {
@@ -58,6 +56,4 @@ public class TokenRestService {
             return Optional.empty();
         }
     }
-
-
 }

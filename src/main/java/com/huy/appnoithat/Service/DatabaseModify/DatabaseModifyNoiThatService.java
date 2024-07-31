@@ -12,7 +12,7 @@ public class DatabaseModifyNoiThatService {
     private final NoiThatRestService noiThatRestService;
 
     public DatabaseModifyNoiThatService() {
-        noiThatRestService = NoiThatRestService.getInstance();
+        noiThatRestService = new NoiThatRestService();
     }
 
     public List<NoiThat> findNoiThatListByParentID(int parentID) {
