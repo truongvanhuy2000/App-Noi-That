@@ -10,7 +10,8 @@ import com.huy.appnoithat.Scene.UseManagement.UserManagementAddAccountScene;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementEditorScene;
 import com.huy.appnoithat.Service.Register.RegisterService;
 import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
-import com.huy.appnoithat.Session.UserSessionService;
+import com.huy.appnoithat.Session.UserSessionManagerImpl;
+import com.huy.appnoithat.Session.UserSessionManager;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -51,10 +52,10 @@ public class UsersManagementController implements Initializable {
     private TableColumn<AccountTable, String> username, password, email, phone;
     UsersManagementService userManagementService;
     ObservableList<AccountTable> listUser = FXCollections.observableArrayList();
-    UserSessionService userSessionService;
+    UserSessionManager userSessionManager;
 
     public UsersManagementController() {
-        userSessionService = new UserSessionService();
+        userSessionManager = new UserSessionManagerImpl();
         userManagementService = new UsersManagementService();
     }
 

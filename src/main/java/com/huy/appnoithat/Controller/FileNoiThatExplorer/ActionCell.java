@@ -12,6 +12,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 
 public class ActionCell extends TableCell<RecentFile, String> {
+    private static final String DELETE_ICON = "/com/huy/appnoithat/Scene/icons/icons8-delete-48.png";
     private HBox hBox;
     Consumer<Integer> deleteAction;
     public ActionCell(Consumer<Integer> deleteAction) {
@@ -41,7 +42,7 @@ public class ActionCell extends TableCell<RecentFile, String> {
     private void init() {
         Button deleteButton = new Button();
         ImageView imageView = new ImageView(new Image(Objects.requireNonNull(
-                this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/icons8-delete-48.png"))));
+                this.getClass().getResourceAsStream(DELETE_ICON))));
         imageView.setFitHeight(20);
         imageView.setFitWidth(20);
         deleteButton.setGraphic(imageView);

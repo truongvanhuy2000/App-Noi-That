@@ -7,7 +7,8 @@ import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.Login.LoginScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Session.UserSession;
-import com.huy.appnoithat.Session.UserSessionService;
+import com.huy.appnoithat.Session.UserSessionManagerImpl;
+import com.huy.appnoithat.Session.UserSessionManager;
 import com.huy.appnoithat.Work.OpenFileWork;
 import com.huy.appnoithat.Work.WorkFactory;
 import javafx.application.Application;
@@ -32,7 +33,7 @@ public class HelloApplication extends Application {
     }
     private void startUI(Stage stage) {
         UserSession.getInstance();
-        UserSessionService sessionService = new UserSessionService();
+        UserSessionManager sessionService = new UserSessionManagerImpl();
         if (sessionService.isSessionValid()) {
             Scene scene = HomeScene.getInstance().getScene();
             Stage mainStage = StageFactory.createNewMaximizedMainStage(stage, scene, true);

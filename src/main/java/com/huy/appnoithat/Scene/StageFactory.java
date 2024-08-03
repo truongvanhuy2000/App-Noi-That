@@ -7,9 +7,11 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import lombok.experimental.UtilityClass;
 
 import java.util.Objects;
 
+@UtilityClass
 public class StageFactory {
     public static Stage createNewMaximizedMainStage(Stage currentStage, Scene nextScene, boolean confirmWhenClose) {
         currentStage.setScene(nextScene);

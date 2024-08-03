@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.DataModel.WebClient.Response;
 import com.huy.appnoithat.Service.WebClient.ApacheHttpClient;
-import com.huy.appnoithat.Session.UserSessionService;
+import com.huy.appnoithat.Session.UserSessionManagerImpl;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.codehaus.httpcache4j.uri.URIBuilder;
@@ -21,9 +21,9 @@ import static org.mockito.BDDMockito.given;
 
 public class TokenRestServiceIntegrationTest {
     ObjectMapper objectMapper = Mockito.spy(new ObjectMapper());
-    UserSessionService userSessionService = Mockito.mock(UserSessionService.class);
+    UserSessionManagerImpl userSessionManagerImpl = Mockito.mock(UserSessionManagerImpl.class);
     HttpClient httpclient = Mockito.spy(HttpClients.createDefault());
-    ApacheHttpClient apacheHttpClient = Mockito.spy(new ApacheHttpClient(httpclient, userSessionService, objectMapper));
+    ApacheHttpClient apacheHttpClient = Mockito.spy(new ApacheHttpClient(httpclient, userSessionManagerImpl, objectMapper));
     TokenRestService tokenRestService = new TokenRestService(apacheHttpClient);
 
     @BeforeEach
@@ -37,7 +37,7 @@ public class TokenRestServiceIntegrationTest {
         Token token = optionalToken.get();
         assertNotNull(token.getAccessToken());
         assertNotNull(token.getRefreshToken());
-        given(userSessionService.getToken()).willReturn(token);
+        given(userSessionManagerImpl.getToken()).willReturn(token);
         Response<Object> response = heathCheckApi();
         assertTrue(response.isSuccess());
     }

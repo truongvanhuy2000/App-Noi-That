@@ -4,10 +4,10 @@ import com.huy.appnoithat.Common.FXUtils;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Scene.Login.LoginScene;
 import com.huy.appnoithat.Scene.StageFactory;
-import com.huy.appnoithat.Session.UserSessionService;
+import com.huy.appnoithat.Session.UserSessionManagerImpl;
+import com.huy.appnoithat.Session.UserSessionManager;
 import javafx.application.Platform;
 import javafx.stage.Window;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,8 +20,8 @@ public class SessionExpiredHandler {
                         "Hãy lưu lại những công việc quan trọng", SessionExpiredHandler::handleLogout, 5);
     }
     private static void handleLogout() {
-        UserSessionService userSessionService = new UserSessionService();
-        userSessionService.cleanUserSession();
+        UserSessionManager userSessionManager = new UserSessionManagerImpl();
+        userSessionManager.cleanUserSession();
         Platform.runLater(() -> {
             if (!Window.getWindows().isEmpty()) {
                 FXUtils.closeAll();

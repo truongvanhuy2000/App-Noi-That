@@ -1,0 +1,98 @@
+[INFO ] 29-07-2024 00:04:08 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-07-2024 00:04:08 [main] HelloApplication:62 - Start application
+[ERROR] 29-07-2024 00:04:09 [JavaFX Application Thread] UserSessionService:54 - Account is null
+[INFO ] 29-07-2024 00:04:41 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 29-07-2024 00:04:41 [main] HelloApplication:62 - Start application
+[ERROR] 29-07-2024 00:04:41 [JavaFX Application Thread] UserSessionService:54 - Account is null
+[ERROR] 31-07-2024 23:13:52 [main] ApacheHttpClient:193 - com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "token" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (4 known properties: "accessTokenExpiration", "accessToken", "refreshToken", "refreshTokenExpiration"])
+ at [Source: (org.apache.hc.core5.http.io.EofSensorInputStream); line: 1, column: 11] (through reference chain: com.huy.appnoithat.DataModel.Token["token"])
+[ERROR] 31-07-2024 23:13:53 [main] ApacheHttpClient:193 - com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "token" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (4 known properties: "accessTokenExpiration", "accessToken", "refreshToken", "refreshTokenExpiration"])
+ at [Source: (org.apache.hc.core5.http.io.EofSensorInputStream); line: 1, column: 11] (through reference chain: com.huy.appnoithat.DataModel.Token["token"])
+[ERROR] 31-07-2024 23:13:53 [main] ApacheHttpClient:193 - com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "token" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (4 known properties: "accessTokenExpiration", "accessToken", "refreshToken", "refreshTokenExpiration"])
+ at [Source: (org.apache.hc.core5.http.io.EofSensorInputStream); line: 1, column: 11] (through reference chain: com.huy.appnoithat.DataModel.Token["token"])
+[ERROR] 31-07-2024 23:13:53 [main] ApacheHttpClient:193 - com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "token" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (4 known properties: "accessTokenExpiration", "accessToken", "refreshToken", "refreshTokenExpiration"])
+ at [Source: (org.apache.hc.core5.http.io.EofSensorInputStream); line: 1, column: 11] (through reference chain: com.huy.appnoithat.DataModel.Token["token"])
+[ERROR] 31-07-2024 23:13:53 [main] ApacheHttpClient:193 - com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "token" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (4 known properties: "accessTokenExpiration", "accessToken", "refreshToken", "refreshTokenExpiration"])
+ at [Source: (org.apache.hc.core5.http.io.EofSensorInputStream); line: 1, column: 11] (through reference chain: com.huy.appnoithat.DataModel.Token["token"])
+[ERROR] 31-07-2024 23:13:54 [main] ApacheHttpClient:193 - com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "token" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (4 known properties: "accessTokenExpiration", "accessToken", "refreshToken", "refreshTokenExpiration"])
+ at [Source: (org.apache.hc.core5.http.io.EofSensorInputStream); line: 1, column: 11] (through reference chain: com.huy.appnoithat.DataModel.Token["token"])
+[ERROR] 31-07-2024 23:13:54 [main] ApacheHttpClient:193 - com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "token" (class com.huy.appnoithat.DataModel.Token), not marked as ignorable (4 known properties: "accessTokenExpiration", "accessToken", "refreshToken", "refreshTokenExpiration"])
+ at [Source: (org.apache.hc.core5.http.io.EofSensorInputStream); line: 1, column: 11] (through reference chain: com.huy.appnoithat.DataModel.Token["token"])
+[ERROR] 31-07-2024 23:40:19 [main] ApacheHttpClient:172 - java.io.IOException
+[ERROR] 31-07-2024 23:41:41 [main] ApacheHttpClient:172 - java.io.IOException
+[ERROR] 31-07-2024 23:42:14 [main] ApacheHttpClient:172 - java.io.IOException
+[ERROR] 31-07-2024 23:48:49 [main] ApacheHttpClient:172 - java.io.IOException
+[INFO ] 01-08-2024 00:28:28 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 01-08-2024 00:28:28 [main] HelloApplication:62 - Start application
+[INFO ] 01-08-2024 00:29:14 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 01-08-2024 00:29:14 [main] HelloApplication:62 - Start application
+[INFO ] 01-08-2024 00:29:37 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 01-08-2024 00:29:37 [main] HelloApplication:62 - Start application
+[ERROR] 01-08-2024 00:29:38 [JavaFX Application Thread] PersistenceStorageService:123 - Failed to read user sessionUnrecognized field "token" (class com.huy.appnoithat.DataModel.Session.PersistenceUserSession), not marked as ignorable (4 known properties: "accessTokenExpiration", "accessToken", "refreshToken", "refreshTokenExpiration"])
+ at [Source: (File); line: 1, column: 11] (through reference chain: com.huy.appnoithat.DataModel.Session.PersistenceUserSession["token"])
+[INFO ] 01-08-2024 00:30:07 [Thread-3] LoginService:24 - Login with account: test
+[INFO ] 01-08-2024 00:30:08 [JavaFX Application Thread] HomeController:105 - Login as  with role User
+[INFO ] 01-08-2024 00:33:36 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 01-08-2024 00:33:36 [main] HelloApplication:62 - Start application
+[INFO ] 01-08-2024 00:33:49 [Thread-3] LoginService:24 - Login with account: test
+[INFO ] 01-08-2024 00:33:51 [JavaFX Application Thread] HomeController:105 - Login as  with role User
+[INFO ] 01-08-2024 00:35:06 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 01-08-2024 00:35:06 [main] HelloApplication:62 - Start application
+[INFO ] 01-08-2024 00:35:40 [Thread-3] LoginService:24 - Login with account: test
+[INFO ] 01-08-2024 00:36:34 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 01-08-2024 00:36:34 [main] HelloApplication:62 - Start application
+[INFO ] 01-08-2024 00:36:44 [Thread-3] LoginService:24 - Login with account: test
+[INFO ] 01-08-2024 00:43:07 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 01-08-2024 00:43:07 [main] HelloApplication:62 - Start application
+[INFO ] 01-08-2024 00:43:15 [Thread-3] LoginService:24 - Login with account: test
+[ERROR] 01-08-2024 00:43:15 [Thread-3] ApacheHttpClient:56 - Account is null
+[INFO ] 01-08-2024 00:45:06 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 01-08-2024 00:45:06 [main] HelloApplication:62 - Start application
+[INFO ] 01-08-2024 00:45:15 [Thread-3] LoginService:24 - Login with account: test
+[ERROR] 01-08-2024 00:45:15 [Thread-3] ApacheHttpClient:56 - Account is null
+[INFO ] 01-08-2024 00:45:15 [Thread-3] GlobalExceptionHandler:13 - Account is null
+java.lang.RuntimeException: Account is null
+	at com.huy.appnoithat.Session.UserSessionManagerImpl.setSession(UserSessionService.java:57) ~[classes/:?]
+	at com.huy.appnoithat.Session.UserSessionManagerImpl.saveSession(UserSessionService.java:64) ~[classes/:?]
+	at com.huy.appnoithat.Service.Login.LoginService.basicAuthorization(LoginService.java:25) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LoginController.lambda$login$3(LoginController.java:78) ~[classes/:?]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+[INFO ] 01-08-2024 00:47:10 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 01-08-2024 00:47:10 [main] HelloApplication:62 - Start application
+[INFO ] 01-08-2024 00:47:21 [Thread-3] LoginService:24 - Login with account: test
+[ERROR] 01-08-2024 00:47:21 [Thread-3] ApacheHttpClient:56 - Account is null
+[INFO ] 01-08-2024 00:47:21 [Thread-3] GlobalExceptionHandler:15 - Account is null
+java.lang.RuntimeException: Account is null
+	at com.huy.appnoithat.Session.UserSessionManagerImpl.setSession(UserSessionService.java:57) ~[classes/:?]
+	at com.huy.appnoithat.Session.UserSessionManagerImpl.saveSession(UserSessionService.java:64) ~[classes/:?]
+	at com.huy.appnoithat.Service.Login.LoginService.basicAuthorization(LoginService.java:25) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LoginController.lambda$login$3(LoginController.java:78) ~[classes/:?]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+[INFO ] 01-08-2024 00:54:59 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 01-08-2024 00:54:59 [main] HelloApplication:62 - Start application
+[INFO ] 01-08-2024 00:55:12 [Thread-3] LoginService:24 - Login with account: test
+[ERROR] 01-08-2024 00:55:12 [Thread-3] ApacheHttpClient:56 - Account is null
+[INFO ] 01-08-2024 00:55:12 [Thread-3] GlobalExceptionHandler:15 - Account is null
+java.lang.RuntimeException: Account is null
+	at com.huy.appnoithat.Session.UserSessionManagerImpl.setSession(UserSessionService.java:57) ~[classes/:?]
+	at com.huy.appnoithat.Session.UserSessionManagerImpl.saveSession(UserSessionService.java:64) ~[classes/:?]
+	at com.huy.appnoithat.Service.Login.LoginService.basicAuthorization(LoginService.java:25) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LoginController.lambda$login$3(LoginController.java:78) ~[classes/:?]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+[INFO ] 01-08-2024 00:55:50 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 01-08-2024 00:55:51 [main] HelloApplication:62 - Start application
+[INFO ] 01-08-2024 00:56:01 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 01-08-2024 00:56:01 [main] HelloApplication:62 - Start application
+[INFO ] 01-08-2024 00:56:10 [Thread-3] LoginService:24 - Login with account: test
+[ERROR] 01-08-2024 00:56:42 [Thread-3] ApacheHttpClient:56 - Account is null
+[INFO ] 01-08-2024 00:56:42 [Thread-3] GlobalExceptionHandler:15 - Account is null
+java.lang.RuntimeException: Account is null
+	at com.huy.appnoithat.Session.UserSessionManagerImpl.setSession(UserSessionService.java:57) ~[classes/:?]
+	at com.huy.appnoithat.Session.UserSessionManagerImpl.saveSession(UserSessionService.java:64) ~[classes/:?]
+	at com.huy.appnoithat.Service.Login.LoginService.basicAuthorization(LoginService.java:25) ~[classes/:?]
+	at com.huy.appnoithat.Controller.LoginController.lambda$login$3(LoginController.java:78) ~[classes/:?]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+[INFO ] 01-08-2024 01:11:55 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 01-08-2024 01:11:55 [main] HelloApplication:62 - Start application
+[INFO ] 01-08-2024 01:12:01 [Thread-3] LoginService:24 - Login with account: test
+[INFO ] 01-08-2024 01:12:07 [JavaFX Application Thread] HomeController:105 - Login as test with role User

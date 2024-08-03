@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.DataModel.SavedFileDTO;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Service.WebClient.ApacheHttpClient;
-import com.huy.appnoithat.Session.UserSessionService;
+import com.huy.appnoithat.Session.UserSessionManagerImpl;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,11 +25,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 
 class FileStorageRestServiceIntegrationTest {
-    UserSessionService userSessionService = Mockito.mock();
+    UserSessionManagerImpl userSessionManagerImpl = Mockito.mock();
     ObjectMapper objectMapper = new ObjectMapper();
     HttpClient httpclient = HttpClients.createDefault();
     @Spy
-    ApacheHttpClient apacheHttpClient = new ApacheHttpClient(httpclient, userSessionService, objectMapper);
+    ApacheHttpClient apacheHttpClient = new ApacheHttpClient(httpclient, userSessionManagerImpl, objectMapper);
     @Spy
     FileStorageRestService fileStorageRestService = new FileStorageRestService(apacheHttpClient);
     TokenRestService tokenRestService = new TokenRestService(apacheHttpClient);
@@ -37,8 +37,8 @@ class FileStorageRestServiceIntegrationTest {
     void setUp() {
         Optional<Token> token = tokenRestService.login("test", "test");
         assertTrue(token.isPresent());
-        given(userSessionService.getToken()).willReturn(token.get());
-        given(userSessionService.isAccessTokenExpired()).willReturn(false);
+        given(userSessionManagerImpl.getToken()).willReturn(token.get());
+        given(userSessionManagerImpl.isAccessTokenExpired()).willReturn(false);
     }
 
     @Test

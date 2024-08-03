@@ -10,7 +10,8 @@ import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementScene;
 import com.huy.appnoithat.Scene.UserDetailScene;
 import com.huy.appnoithat.Service.Login.LoginService;
-import com.huy.appnoithat.Session.UserSessionService;
+import com.huy.appnoithat.Session.UserSessionManagerImpl;
+import com.huy.appnoithat.Session.UserSessionManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -43,10 +44,10 @@ public class HomeController {
     private Text UserName;
     @FXML
     private AnchorPane PCPane;
-    private final UserSessionService sessionService;
+    private final UserSessionManager sessionService;
     private final LoginService loginService;
     public HomeController() {
-        this.sessionService = new UserSessionService();
+        this.sessionService = new UserSessionManagerImpl();
         loginService = new LoginService();
     }
     @FXML
@@ -97,11 +98,11 @@ public class HomeController {
         LuaChonNoiThatButton.setOnAction(this::OnClickLuaChonNoiThat);
         settingButton.setOnAction(this::onClickGlobalSettingOption);
         // Get the username from the session service and display a welcome message
-        String username = sessionService.getLoginAccount().getUsername();
+        String username = sessionService.getAccount().getUsername();
         UserName.setText("Welcome " + username);
 
         // Determine user role and show appropriate buttons and actions
-        String role = sessionService.getLoginAccount().getRoleList().contains("ROLE_ADMIN") ? "Admin" : "User";
+        String role = sessionService.getAccount().getRoleList().contains("ROLE_ADMIN") ? "Admin" : "User";
         LOGGER.info("Login as " + username + " with role " + role);
         switch (role) {
             // Enable Admin-related buttons and trigger the QuanLyNguoiDungButton action

@@ -9,9 +9,9 @@ import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.DataModel.WebClient.ErrorResponse;
 import com.huy.appnoithat.DataModel.WebClient.Response;
 import com.huy.appnoithat.Handler.SessionExpiredHandler;
-import com.huy.appnoithat.Session.UserSessionService;
+import com.huy.appnoithat.Session.UserSessionManagerImpl;
+import com.huy.appnoithat.Session.UserSessionManager;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpDelete;
@@ -27,14 +27,12 @@ import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.apache.hc.core5.http.message.BasicNameValuePair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.poi.sl.draw.geom.GuideIf;
 import org.codehaus.httpcache4j.uri.URIBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.nio.ByteBuffer;
-import java.text.ParseException;
 import java.util.Map;
 import java.util.Optional;
 
@@ -46,7 +44,7 @@ public class ApacheHttpClient implements WebClientService {
     public static final URI REFRESH_TOKEN = URIBuilder.empty().addPath("api", "refreshToken").toURI();
 
     private final HttpClient httpclient;
-    private final UserSessionService userSessionService;
+    private final UserSessionManager userSessionManager;
     private final ObjectMapper objectMapper;
     private SessionExpiredHandler sessionExpiredHandler;
 
@@ -54,7 +52,7 @@ public class ApacheHttpClient implements WebClientService {
 
     private ApacheHttpClient() {
         httpclient = HttpClients.createDefault();
-        userSessionService = new UserSessionService();
+        userSessionManager = new UserSessionManagerImpl();
         sessionExpiredHandler = new SessionExpiredHandler();
         objectMapper = new ObjectMapper();
     }
@@ -211,15 +209,15 @@ public class ApacheHttpClient implements WebClientService {
     }
 
     private Optional<String> getAndCheckForTokenExpiration() {
-        Token token = userSessionService.getToken();
+        Token token = userSessionManager.getToken();
         if (token == null) {
             LOGGER.error("Token is null");
             return Optional.empty();
         }
-        if (!userSessionService.isAccessTokenExpired()) {
+        if (!userSessionManager.isAccessTokenExpired()) {
             return Optional.of(token.getAccessToken());
         }
-        if (userSessionService.isRefreshTokenExpired()) {
+        if (userSessionManager.isRefreshTokenExpired()) {
             sessionExpiredHandler.handleTokenExpired();
             return Optional.empty();
         }
@@ -239,7 +237,7 @@ public class ApacheHttpClient implements WebClientService {
             sessionExpiredHandler.handleTokenExpired();
             return Optional.empty();
         }
-        userSessionService.setToken(response.getResponse().get());
+        userSessionManager.saveToken(response.getResponse().get());
         return response.getResponse();
     }
 }
