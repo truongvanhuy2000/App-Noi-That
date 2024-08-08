@@ -9,17 +9,17 @@ import lombok.Getter;
 import java.io.IOException;
 import java.util.Objects;
 @Getter
-public class UserDetailScene {
+public class UserDetailScene implements GenericScene {
     private static final String VIEW_PATH = "/com/huy/appnoithat/Scene/view/UserDetail.fxml";
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/UserDetail.css";
     private Scene scene;
     private Parent root;
-    private UserDetailController controller;
+    private final UserDetailController controller;
 
-    public UserDetailScene() {
+    public UserDetailScene(UserDetailController controller) {
+        this.controller = controller;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH));
-            controller = new UserDetailController();
             fxmlLoader.setController(controller);
             root = fxmlLoader.load();
         } catch (IOException e) {

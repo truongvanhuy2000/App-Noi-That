@@ -67,14 +67,18 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private TableView<BangThanhToan> bangThanhToan;
     @Setter
-    private ByteArrayOutputStream imageStream;
+    private ByteArrayOutputStream imageStream = new ByteArrayOutputStream();
     private final ObservableList<Integer> percentageList = FXCollections.observableArrayList(10, 30, 50);
-
     private final StorageService persistenceStorageService;
+
     public LuaChonNoiThatController() {
-        imageStream = new ByteArrayOutputStream();
         persistenceStorageService = new PersistenceStorageService();
     }
+
+    public LuaChonNoiThatController(StorageService persistenceStorageService) {
+        this.persistenceStorageService = persistenceStorageService;
+    }
+
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {
         Object source = event.getSource();
@@ -107,7 +111,6 @@ public class LuaChonNoiThatController implements Initializable {
         persistenceStorageService.saveNoteArea(noteArea);
     }
 
-
     public void saveThongTinCongTy() {
         ThongTinCongTy thongTinCongTy = new ThongTinCongTy(
                 imageStream.toByteArray(),
@@ -119,6 +122,8 @@ public class LuaChonNoiThatController implements Initializable {
         );
         persistenceStorageService.saveThongTinCongTy(thongTinCongTy);
     }
+
+
     /**
      * @param url
      * @param resourceBundle

@@ -45,6 +45,11 @@ public class RegisterController {
         pricingModelRestService = new PricingModelRestService();
     }
 
+    public RegisterController(RegisterService registerService, PricingModelRestService pricingModelRestService) {
+        this.registerService = registerService;
+        this.pricingModelRestService = pricingModelRestService;
+    }
+
     /**
      * Initializes the registration process.
      * Sets up initial values for ComboBoxes and disables the save button by default.

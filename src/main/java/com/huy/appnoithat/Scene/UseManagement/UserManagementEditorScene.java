@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Scene.UseManagement;
 
+import com.huy.appnoithat.Scene.GenericScene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -7,7 +8,7 @@ import javafx.scene.Scene;
 import java.io.IOException;
 import java.util.Objects;
 
-public class UserManagementEditorScene {
+public class UserManagementEditorScene implements GenericScene {
     private Scene scene;
     private Parent root;
     private static UserManagementEditorScene single_instance = null;

@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Scene.LuaChonNoiThat;
 
 import com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController;
+import com.huy.appnoithat.Scene.GenericScene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,20 +10,18 @@ import lombok.Getter;
 import java.io.IOException;
 import java.util.Objects;
 @Getter
-public class FileNoiThatExplorerScene {
+public class FileNoiThatExplorerScene implements GenericScene {
     private static final String VIEW_PATH = "/com/huy/appnoithat/Scene/view/FileNoiThatExplorer.fxml";
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/FileNoiThatExplorer.css";
     private Scene scene;
     private Parent root;
-    private final FXMLLoader fxmlLoader;
-    @Getter
-    private static FileNoiThatExplorerController controller;
-    public FileNoiThatExplorerScene() {
+    private FXMLLoader fxmlLoader;
+    private FileNoiThatExplorerController controller;
+
+    public FileNoiThatExplorerScene(FileNoiThatExplorerController controller) {
+        this.controller = controller;
         try {
             this.fxmlLoader = new FXMLLoader(FileNoiThatExplorerScene.class.getResource(VIEW_PATH));
-            if (controller == null) {
-                controller = new FileNoiThatExplorerController();
-            }
             fxmlLoader.setController(controller);
             root = fxmlLoader.load();
             scene = new Scene(root);
@@ -31,6 +30,7 @@ public class FileNoiThatExplorerScene {
         }
         addCssToScence();
     }
+
     public void setRoot(Parent root) {
         this.root = root;
         scene.setRoot(this.root);

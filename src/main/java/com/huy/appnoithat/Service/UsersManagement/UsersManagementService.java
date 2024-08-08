@@ -8,6 +8,11 @@ import java.util.List;
 
 public class UsersManagementService {
     private final AccountRestService accountRestService;
+
+    public UsersManagementService(AccountRestService accountRestService) {
+        this.accountRestService = accountRestService;
+    }
+
     /**
      * Initializes the UsersManagementService with required dependencies.
      */

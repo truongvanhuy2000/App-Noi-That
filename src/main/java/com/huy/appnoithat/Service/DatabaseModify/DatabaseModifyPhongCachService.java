@@ -18,6 +18,12 @@ public class DatabaseModifyPhongCachService {
         bangNoiThatRestService = new BangNoiThatRestService();
     }
 
+    public DatabaseModifyPhongCachService(PhongCachRestService phongCachRestService,
+                                          BangNoiThatRestService bangNoiThatRestService) {
+        this.phongCachRestService = phongCachRestService;
+        this.bangNoiThatRestService = bangNoiThatRestService;
+    }
+
     public List<PhongCachNoiThat> findAllPhongCach() {
         return phongCachRestService.findAll();
     }

@@ -30,6 +30,11 @@ public class NoiThatFileService {
         fileNoiThatExplorerService = FileNoiThatExplorerService.getInstance();
     }
 
+    public NoiThatFileService(ObjectMapper mapper, FileNoiThatExplorerService fileNoiThatExplorerService) {
+        this.mapper = mapper;
+        this.fileNoiThatExplorerService = fileNoiThatExplorerService;
+    }
+
     private void setOutputFile(File outputFile) throws FileNotFoundException {
         if (!outputFile.getAbsolutePath().contains(".nt")) {
             this.outputFile = new FileOutputStream(outputFile.getAbsolutePath() + ".nt");

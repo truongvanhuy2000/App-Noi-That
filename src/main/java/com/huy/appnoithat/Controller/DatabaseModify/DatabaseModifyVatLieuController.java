@@ -57,8 +57,8 @@ public class DatabaseModifyVatLieuController implements Initializable {
     private int parentID;
     private final DatabaseModifyVatlieuService databaseModifyVatlieuService;
     private final DatabaseModifyThongSoService databaseModifyThongSoService;
-    private final ObservableList<ThongSo> thongSoObservableList;
-    private final ObservableList<VatLieu> vatLieuObservableList;
+    private final ObservableList<ThongSo> thongSoObservableList = FXCollections.observableArrayList();
+    private final ObservableList<VatLieu> vatLieuObservableList = FXCollections.observableArrayList();
     @Setter
     private Parent root;
 
@@ -69,8 +69,12 @@ public class DatabaseModifyVatLieuController implements Initializable {
     public DatabaseModifyVatLieuController() {
         databaseModifyThongSoService = new DatabaseModifyThongSoService();
         databaseModifyVatlieuService = new DatabaseModifyVatlieuService();
-        vatLieuObservableList = FXCollections.observableArrayList();
-        thongSoObservableList = FXCollections.observableArrayList();
+    }
+
+    public DatabaseModifyVatLieuController(DatabaseModifyVatlieuService databaseModifyVatlieuService,
+                                           DatabaseModifyThongSoService databaseModifyThongSoService) {
+        this.databaseModifyVatlieuService = databaseModifyVatlieuService;
+        this.databaseModifyThongSoService = databaseModifyThongSoService;
     }
 
     @FXML
@@ -154,8 +158,8 @@ public class DatabaseModifyVatLieuController implements Initializable {
         VBox vBox = (VBox) ((AnchorPane)changeProductSpecificationScene.getRoot()).getChildren().get(0);
         ((AnchorPane)this.root).getChildren().clear();
         ((AnchorPane)this.root).getChildren().add(vBox);
-        ChangeProductSpecificationScene.getController().initializeThongSo(selectID);
-        ChangeProductSpecificationScene.getController().setRoot(this.root);
+        changeProductSpecificationScene.getController().initializeThongSo(selectID);
+        changeProductSpecificationScene.getController().setRoot(this.root);
     }
 
 
@@ -175,8 +179,8 @@ public class DatabaseModifyVatLieuController implements Initializable {
             HBox hBox = (HBox) ((AnchorPane)databaseModifyHangMucScene.getRoot()).getChildren().get(0);
             ((AnchorPane)this.root).getChildren().clear();
             ((AnchorPane)this.root).getChildren().add(hBox);
-            DatabaseModifyHangMucScene.getController().refresh();
-            DatabaseModifyHangMucScene.getController().setRoot(this.root);
+            databaseModifyHangMucScene.getController().refresh();
+            databaseModifyHangMucScene.getController().setRoot(this.root);
         }
     }
 

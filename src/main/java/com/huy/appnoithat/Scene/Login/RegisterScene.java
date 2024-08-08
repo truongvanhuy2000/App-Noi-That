@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Scene.Login;
 
 import com.huy.appnoithat.Controller.Register.RegisterController;
+import com.huy.appnoithat.Scene.GenericScene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,14 +11,26 @@ import java.io.IOException;
 import java.util.Objects;
 
 @Getter
-public class RegisterScene {
+public class RegisterScene implements GenericScene {
     private static final String VIEW_PATH = "/com/huy/appnoithat/Scene/view/RegisterLayout.fxml";
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/UserManagementLayout.css";
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
-    @Getter
-    private static RegisterController registerController;
+    private RegisterController registerController;
+
+    public RegisterScene(RegisterController registerController) {
+        this.registerController = registerController;
+        try {
+            fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH));
+            fxmlLoader.setController(registerController);
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        scene = new Scene(root);
+        addCssToScence();
+    }
 
     public RegisterScene() {
         try {

@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Scene.DatabaseModify;
 
 import com.huy.appnoithat.Controller.DatabaseModify.ChangeProductSpecificationController;
+import com.huy.appnoithat.Scene.GenericScene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,12 +11,26 @@ import java.io.IOException;
 import java.util.Objects;
 
 @Getter
-public class ChangeProductSpecificationScene {
+public class ChangeProductSpecificationScene implements GenericScene {
     private Scene scene;
     private Parent root;
-    private final FXMLLoader fxmlLoader;
-    @Getter
-    private static ChangeProductSpecificationController controller;
+    private FXMLLoader fxmlLoader;
+    private ChangeProductSpecificationController controller;
+
+    public ChangeProductSpecificationScene(ChangeProductSpecificationController controller) {
+        this.controller = controller;
+        String viewPath = "view/ChangeProductSpecificationLayout.fxml";
+        try {
+            fxmlLoader = new FXMLLoader(ChangeProductSpecificationScene.class.getResource(viewPath));
+            fxmlLoader.setController(controller);
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        scene = new Scene(root);
+        addCssToScence();
+    }
+
     public ChangeProductSpecificationScene() {
         String viewPath = "view/ChangeProductSpecificationLayout.fxml";
         try {

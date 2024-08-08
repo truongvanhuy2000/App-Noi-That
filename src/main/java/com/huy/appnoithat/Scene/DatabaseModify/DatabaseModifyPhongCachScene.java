@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Scene.DatabaseModify;
 
 import com.huy.appnoithat.Controller.DatabaseModify.DatabaseModifyPhongCachController;
+import com.huy.appnoithat.Scene.GenericScene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,11 +11,25 @@ import java.io.IOException;
 import java.util.Objects;
 
 @Getter
-public class DatabaseModifyPhongCachScene {
+public class DatabaseModifyPhongCachScene implements GenericScene {
     private Scene scene;
     private Parent root;
-    @Getter
-    private static DatabaseModifyPhongCachController controller;
+    private DatabaseModifyPhongCachController controller;
+
+    public DatabaseModifyPhongCachScene(DatabaseModifyPhongCachController controller) {
+        this.controller = controller;
+        String viewPath = "view/DatabaseModifyPhongCachLayout.fxml";
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(DatabaseModifyPhongCachScene.class.getResource(viewPath));
+            fxmlLoader.setController(controller);
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        scene = new Scene(root);
+        addCssToScence();
+    }
+
     public DatabaseModifyPhongCachScene() {
         String viewPath = "view/DatabaseModifyPhongCachLayout.fxml";
         try {

@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Module.DIContainer;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.GlobalSettingScene;
 import com.huy.appnoithat.Scene.Login.LoginScene;
@@ -46,13 +47,20 @@ public class HomeController {
     private AnchorPane PCPane;
     private final UserSessionManager sessionService;
     private final LoginService loginService;
+
     public HomeController() {
         this.sessionService = new UserSessionManagerImpl();
         loginService = new LoginService();
     }
+
+    public HomeController(UserSessionManager sessionService, LoginService loginService) {
+        this.sessionService = sessionService;
+        this.loginService = loginService;
+    }
+
     @FXML
     void ChangeUserDetail(ActionEvent event) {
-        UserDetailScene scene = new UserDetailScene();
+        UserDetailScene scene = DIContainer.get();
         StageFactory.CreateNewUnresizeableStage(scene.getScene(), false);
         scene.getController().init();
     }
@@ -80,9 +88,6 @@ public class HomeController {
         LogoutButton.getScene().getWindow().hide();
         sceneSwitcher(event);
     }
-    private void initController() {
-    }
-
     /**
      * Initializes the user interface based on the logged-in user's role and displays relevant buttons and actions.
      *
@@ -122,7 +127,7 @@ public class HomeController {
         PCPane.getChildren().clear();
 
         // Load the user management scene
-        GlobalSettingScene scene = new GlobalSettingScene();
+        GlobalSettingScene scene = DIContainer.get();
 
         // Extract VBox from the scene and add it to the primary content pane
         VBox vBox = (VBox) ((AnchorPane)scene.getRoot()).getChildren().get(0);
@@ -141,16 +146,15 @@ public class HomeController {
     private void OnClickLuaChonNoiThat(ActionEvent actionEvent) {
         // Clear the primary content pane
         PCPane.getChildren().clear();
-
         // Load the furniture explorer scene
-        FileNoiThatExplorerScene fileNoiThatExplorerScene = new FileNoiThatExplorerScene();
+        FileNoiThatExplorerScene fileNoiThatExplorerScene = DIContainer.get();
 
         // Add the children of the furniture explorer scene to the primary content pane
         PCPane.getChildren().addAll(((AnchorPane)fileNoiThatExplorerScene.getRoot()).getChildren());
-        FileNoiThatExplorerScene.getController().init();
+        fileNoiThatExplorerScene.getController().init();
 
         // Set the primary content pane as the root for the furniture explorer scene controller
-        FileNoiThatExplorerScene.getController().setRoot(PCPane);
+        fileNoiThatExplorerScene.getController().setRoot(PCPane);
     }
 
     private void toggleButton(boolean luaChonNoiThatBtn, boolean quanLyNguoiDungBtn, boolean suadoidatabaseBtn, boolean pricingSetting) {
@@ -213,8 +217,8 @@ public class HomeController {
                 PCPane.getChildren().addAll(((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren());
 
                 // Initialize the database modification scene controller
-                DatabaseModifyPhongCachScene.getController().init();
-                DatabaseModifyPhongCachScene.getController().setRoot(PCPane);
+                databaseModifyPhongCachScene.getController().init();
+                databaseModifyPhongCachScene.getController().setRoot(PCPane);
             }
         });
 
@@ -239,6 +243,6 @@ public class HomeController {
 
         // Initialize the user management scene controller
         PCPane.getChildren().addAll(vBox);
-        UserManagementScene.getController().init();
+        userManagementScene.getController().init();
     }
 }

@@ -6,6 +6,7 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.DataModel.Enums.Action;
 import com.huy.appnoithat.DataModel.Token;
+import com.huy.appnoithat.Module.DIContainer;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.Login.RegisterScene;
 import com.huy.appnoithat.Scene.StageFactory;
@@ -24,6 +25,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
+import static com.huy.appnoithat.Module.DIContainer.get;
+
 public class LoginController {
 
     @FXML
@@ -40,6 +43,9 @@ public class LoginController {
         loginService = new LoginService();
     }
 
+    public LoginController(LoginService loginService) {
+        this.loginService = loginService;
+    }
 
     /**
      * Initializes the login form, enabling keyboard shortcuts for the login action.
@@ -104,7 +110,7 @@ public class LoginController {
     void registerAccount(MouseEvent event) {
         RegisterScene registerScene = new RegisterScene();
         Scene scene = registerScene.getScene();
-        RegisterScene.getRegisterController().init();
+        registerScene.getRegisterController().init();
         StageFactory.CreateNewUnresizeableStage(registerScene.getScene(), false);
     }
 
@@ -146,9 +152,10 @@ public class LoginController {
     }
 
     private void goToHome(Stage stage) {
-        Scene scene = HomeScene.getInstance().getScene();
+        HomeScene homeScene = DIContainer.get();
+        Scene scene = homeScene.getScene();
         Stage mainStage = StageFactory.createNewMaximizedMainStage(stage, scene, true);
-        HomeScene.getInstance().getHomeController().init(mainStage);
+        homeScene.getHomeController().init(mainStage);
     }
 
 }

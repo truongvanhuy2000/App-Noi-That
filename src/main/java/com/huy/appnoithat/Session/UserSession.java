@@ -5,6 +5,7 @@ import com.huy.appnoithat.DataModel.Token;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.poi.ss.formula.functions.T;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,12 +19,14 @@ public class UserSession {
     private Account account;
     private Token token;
 
+    public UserSession(Account account, Token token) {
+        this.account = account;
+        this.token = token;
+    }
+
     public static synchronized UserSession getInstance() {
         if (instance == null) {
-            Account account = Account.empty();
-            instance = UserSession.builder()
-                    .account(account)
-                    .token(Token.empty()).build();
+            instance = new UserSession(Account.empty(), Token.empty());
         }
         return instance;
     }

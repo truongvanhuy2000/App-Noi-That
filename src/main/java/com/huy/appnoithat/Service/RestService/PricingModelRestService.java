@@ -4,12 +4,14 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.DataModel.PricingModelDTO;
 import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.codehaus.httpcache4j.uri.URIBuilder;
 
 import java.util.Optional;
 
+@RequiredArgsConstructor
 public class PricingModelRestService {
     final static Logger LOGGER = LogManager.getLogger(PricingModelRestService.class);
     private final WebClientService webClientService;

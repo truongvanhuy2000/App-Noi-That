@@ -9,17 +9,17 @@ import lombok.Getter;
 import java.io.IOException;
 import java.util.Objects;
 @Getter
-public class GlobalSettingScene {
+public class GlobalSettingScene implements GenericScene {
     private static final String VIEW_PATH = "/com/huy/appnoithat/Scene/view/GlobalSetting.fxml";
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/GlobalSetting.css";
     private Scene scene;
     private Parent root;
-    private GlobalSettingController controller;
+    private final GlobalSettingController controller;
 
-    public GlobalSettingScene() {
+    public GlobalSettingScene(GlobalSettingController controller) {
+        this.controller = controller;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH));
-            controller = new GlobalSettingController();
             fxmlLoader.setController(controller);
             root = fxmlLoader.load();
         } catch (IOException e) {

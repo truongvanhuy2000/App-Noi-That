@@ -6,9 +6,11 @@ import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Service.RestService.AccountRestService;
 import com.huy.appnoithat.Session.UserSessionManagerImpl;
 import com.huy.appnoithat.Session.UserSessionManager;
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+@RequiredArgsConstructor
 public class LoginService {
     final static Logger LOGGER = LogManager.getLogger(LoginService.class);
     private final UserSessionManager sessionService;

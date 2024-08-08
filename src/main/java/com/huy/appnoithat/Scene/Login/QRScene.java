@@ -1,5 +1,6 @@
 package com.huy.appnoithat.Scene.Login;
 
+import com.huy.appnoithat.Scene.GenericScene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,7 +10,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 @Getter
-public class QRScene {
+public class QRScene implements GenericScene {
     private static final String VIEW_PATH = "/com/huy/appnoithat/Scene/view/QRLayout.fxml";
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/UserManagementLayout.css";
     private Scene scene;

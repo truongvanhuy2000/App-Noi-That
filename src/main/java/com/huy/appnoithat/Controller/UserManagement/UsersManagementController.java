@@ -50,12 +50,14 @@ public class UsersManagementController implements Initializable {
     private TextField txtSearchUser;
     @FXML
     private TableColumn<AccountTable, String> username, password, email, phone;
-    UsersManagementService userManagementService;
-    ObservableList<AccountTable> listUser = FXCollections.observableArrayList();
-    UserSessionManager userSessionManager;
+    private final UsersManagementService userManagementService;
+    private ObservableList<AccountTable> listUser = FXCollections.observableArrayList();
+
+    public UsersManagementController(UsersManagementService userManagementService) {
+        this.userManagementService = userManagementService;
+    }
 
     public UsersManagementController() {
-        userSessionManager = new UserSessionManagerImpl();
         userManagementService = new UsersManagementService();
     }
 

@@ -37,7 +37,7 @@ public class NewTabController implements Initializable {
     private final StorageService persistenceStorageService;
     private final NoiThatFileService noiThatFileService;
     private Stage currentStage;
-    private final List<TabContent> currentlyOpenTab;
+    private final List<TabContent> currentlyOpenTab = new ArrayList<>();;
     @FXML
     private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs,
             MenuItemSaveCompanyInfo, MenuItemSaveNoteArea, MenuItemExportMultipleXLS;
@@ -56,8 +56,13 @@ public class NewTabController implements Initializable {
     public NewTabController() {
         persistenceStorageService = new PersistenceStorageService();
         noiThatFileService = new NoiThatFileService();
-        currentlyOpenTab = new ArrayList<>();
     }
+
+    public NewTabController(StorageService persistenceStorageService, NoiThatFileService noiThatFileService) {
+        this.persistenceStorageService = persistenceStorageService;
+        this.noiThatFileService = noiThatFileService;
+    }
+
     @FXML
     void onClickMenuItem(ActionEvent event) {
         Object source = event.getSource();

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.DataModel.WebClient.Response;
+import com.huy.appnoithat.Handler.SessionExpiredHandler;
 import com.huy.appnoithat.Service.WebClient.ApacheHttpClient;
 import com.huy.appnoithat.Session.UserSessionManagerImpl;
 import org.apache.hc.client5.http.classic.HttpClient;
@@ -23,7 +24,8 @@ public class TokenRestServiceIntegrationTest {
     ObjectMapper objectMapper = Mockito.spy(new ObjectMapper());
     UserSessionManagerImpl userSessionManagerImpl = Mockito.mock(UserSessionManagerImpl.class);
     HttpClient httpclient = Mockito.spy(HttpClients.createDefault());
-    ApacheHttpClient apacheHttpClient = Mockito.spy(new ApacheHttpClient(httpclient, userSessionManagerImpl, objectMapper));
+    SessionExpiredHandler sessionExpiredHandler = Mockito.mock();
+    ApacheHttpClient apacheHttpClient = Mockito.spy(new ApacheHttpClient(httpclient, userSessionManagerImpl, objectMapper, sessionExpiredHandler));
     TokenRestService tokenRestService = new TokenRestService(apacheHttpClient);
 
     @BeforeEach

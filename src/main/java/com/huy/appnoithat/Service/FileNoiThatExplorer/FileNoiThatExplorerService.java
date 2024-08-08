@@ -18,6 +18,7 @@ public class FileNoiThatExplorerService {
     private static FileNoiThatExplorerService instance;
     private ObservableList<RecentFile> recentFileObservableList = FXCollections.observableArrayList();
     StorageService persistenceStorageService;
+
     public static synchronized FileNoiThatExplorerService getInstance() {
         if (instance == null) {
             instance = new FileNoiThatExplorerService();
@@ -26,6 +27,10 @@ public class FileNoiThatExplorerService {
     }
     private FileNoiThatExplorerService() {
         persistenceStorageService = new PersistenceStorageService();
+    }
+
+    public FileNoiThatExplorerService(StorageService persistenceStorageService) {
+        this.persistenceStorageService = persistenceStorageService;
     }
 
     /**

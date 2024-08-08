@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Common;
 
 import com.huy.appnoithat.DataModel.Enums.FileType;
-import com.huy.appnoithat.Scene.LoadingScene;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
@@ -168,15 +167,6 @@ public class PopupUtils {
         alert.setContentText(content);
         Optional<ButtonType> result = alert.showAndWait();
         return result.filter(buttonType -> buttonType == ButtonType.OK).isPresent();
-    }
-
-    public static void showLoading(Stage stage) {
-        LoadingScene loadingScene = LoadingScene.getInstance();
-        stage.setScene(loadingScene.getScene());
-        stage.setResizable(false);
-        stage.setAlwaysOnTop(true);
-        stage.initStyle(StageStyle.TRANSPARENT);
-        stage.show();
     }
 
     public static boolean showCloseWindowConfirmation() {

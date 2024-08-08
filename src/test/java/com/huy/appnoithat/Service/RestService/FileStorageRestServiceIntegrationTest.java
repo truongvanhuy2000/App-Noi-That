@@ -4,6 +4,7 @@ package com.huy.appnoithat.Service.RestService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.DataModel.SavedFileDTO;
 import com.huy.appnoithat.DataModel.Token;
+import com.huy.appnoithat.Handler.SessionExpiredHandler;
 import com.huy.appnoithat.Service.WebClient.ApacheHttpClient;
 import com.huy.appnoithat.Session.UserSessionManagerImpl;
 import org.apache.hc.client5.http.classic.HttpClient;
@@ -28,8 +29,9 @@ class FileStorageRestServiceIntegrationTest {
     UserSessionManagerImpl userSessionManagerImpl = Mockito.mock();
     ObjectMapper objectMapper = new ObjectMapper();
     HttpClient httpclient = HttpClients.createDefault();
+    SessionExpiredHandler sessionExpiredHandler = Mockito.mock();
     @Spy
-    ApacheHttpClient apacheHttpClient = new ApacheHttpClient(httpclient, userSessionManagerImpl, objectMapper);
+    ApacheHttpClient apacheHttpClient = new ApacheHttpClient(httpclient, userSessionManagerImpl, objectMapper, sessionExpiredHandler);
     @Spy
     FileStorageRestService fileStorageRestService = new FileStorageRestService(apacheHttpClient);
     TokenRestService tokenRestService = new TokenRestService(apacheHttpClient);

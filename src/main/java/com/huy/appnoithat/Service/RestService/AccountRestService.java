@@ -6,6 +6,7 @@ import com.huy.appnoithat.DataModel.Entity.AccountInformation;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.codehaus.httpcache4j.uri.URIBuilder;
@@ -15,11 +16,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 public class AccountRestService {
     final static Logger LOGGER = LogManager.getLogger(AccountRestService.class);
     private static AccountRestService instance;
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api";
+
     public static synchronized AccountRestService getInstance() {
         if (instance == null) {
             instance = new AccountRestService();

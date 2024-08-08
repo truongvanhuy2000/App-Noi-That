@@ -4,6 +4,7 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.codehaus.httpcache4j.uri.URIBuilder;
@@ -13,6 +14,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 public class LapBaoGiaRestService {
     final static Logger LOGGER = LogManager.getLogger(LapBaoGiaRestService.class);
     private static final String BASE_ENDPOINT = "/api/lapBaoGiaInfo";

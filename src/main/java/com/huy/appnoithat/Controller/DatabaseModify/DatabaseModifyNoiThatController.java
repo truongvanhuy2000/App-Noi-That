@@ -46,8 +46,8 @@ public class DatabaseModifyNoiThatController implements Initializable {
     int parentID;
     private final DatabaseModifyHangMucService databaseModifyHangMucService;
     private final DatabaseModifyNoiThatService databaseModifyNoiThatService;
-    private final ObservableList<HangMuc> hangMucObservableList;
-    private final ObservableList<NoiThat> noiThatObservableList;
+    private final ObservableList<HangMuc> hangMucObservableList = FXCollections.observableArrayList();
+    private final ObservableList<NoiThat> noiThatObservableList = FXCollections.observableArrayList();
     @Setter
     private Parent root;
 
@@ -58,8 +58,12 @@ public class DatabaseModifyNoiThatController implements Initializable {
     public DatabaseModifyNoiThatController() {
         databaseModifyNoiThatService = new DatabaseModifyNoiThatService();
         databaseModifyHangMucService = new DatabaseModifyHangMucService();
-        noiThatObservableList = FXCollections.observableArrayList();
-        hangMucObservableList = FXCollections.observableArrayList();
+    }
+
+    public DatabaseModifyNoiThatController(DatabaseModifyHangMucService databaseModifyHangMucService,
+                                           DatabaseModifyNoiThatService databaseModifyNoiThatService) {
+        this.databaseModifyHangMucService = databaseModifyHangMucService;
+        this.databaseModifyNoiThatService = databaseModifyNoiThatService;
     }
 
     @FXML
@@ -163,8 +167,8 @@ public class DatabaseModifyNoiThatController implements Initializable {
             HBox hBox = (HBox) ((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren().get(0);
             ((AnchorPane)this.root).getChildren().clear();
             ((AnchorPane)this.root).getChildren().add(hBox);
-            DatabaseModifyPhongCachScene.getController().init();
-            DatabaseModifyPhongCachScene.getController().setRoot(this.root);
+            databaseModifyPhongCachScene.getController().init();
+            databaseModifyPhongCachScene.getController().setRoot(this.root);
         }
     }
 

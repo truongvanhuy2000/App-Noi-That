@@ -3,6 +3,7 @@ package com.huy.appnoithat.Service.WebClient;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.inject.Inject;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.MultipartForm;
 import com.huy.appnoithat.DataModel.Token;
@@ -36,7 +37,7 @@ import java.nio.ByteBuffer;
 import java.util.Map;
 import java.util.Optional;
 
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor_ = @Inject)
 public class ApacheHttpClient implements WebClientService {
     final static Logger LOGGER = LogManager.getLogger(ApacheHttpClient.class);
 
@@ -46,7 +47,7 @@ public class ApacheHttpClient implements WebClientService {
     private final HttpClient httpclient;
     private final UserSessionManager userSessionManager;
     private final ObjectMapper objectMapper;
-    private SessionExpiredHandler sessionExpiredHandler;
+    private final SessionExpiredHandler sessionExpiredHandler;
 
     private static ApacheHttpClient instance;
 

@@ -3,6 +3,7 @@ package com.huy.appnoithat.Service.RestService;
 import com.huy.appnoithat.DataModel.Entity.ThongSo;
 import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.codehaus.httpcache4j.uri.URIBuilder;
@@ -10,6 +11,7 @@ import org.codehaus.httpcache4j.uri.URIBuilder;
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 public class ThongSoRestService {
     private static ThongSoRestService instance;
     final static Logger LOGGER = LogManager.getLogger(VatLieuRestService.class);

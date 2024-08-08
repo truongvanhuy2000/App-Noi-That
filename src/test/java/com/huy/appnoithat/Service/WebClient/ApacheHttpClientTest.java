@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.DataModel.WebClient.Response;
+import com.huy.appnoithat.Handler.SessionExpiredHandler;
 import com.huy.appnoithat.Session.UserSessionManagerImpl;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
@@ -31,7 +32,8 @@ class ApacheHttpClientTest {
     private final HttpClient httpclient = Mockito.mock(CloseableHttpClient.class);
     private final UserSessionManagerImpl userSessionManagerImpl = Mockito.mock();
     private final ObjectMapper objectMapper = Mockito.mock();
-    private final ApacheHttpClient apacheHttpClient = new ApacheHttpClient(httpclient, userSessionManagerImpl, objectMapper);
+    SessionExpiredHandler sessionExpiredHandler = Mockito.mock();
+    private final ApacheHttpClient apacheHttpClient = new ApacheHttpClient(httpclient, userSessionManagerImpl, objectMapper, sessionExpiredHandler);
 
     @Test
     void authorizedPostMultipartUpload() {

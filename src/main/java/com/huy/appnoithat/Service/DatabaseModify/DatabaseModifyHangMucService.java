@@ -15,6 +15,10 @@ public class DatabaseModifyHangMucService {
         hangMucRestService = new HangMucRestService();
     }
 
+    public DatabaseModifyHangMucService(HangMucRestService hangMucRestService) {
+        this.hangMucRestService = hangMucRestService;
+    }
+
     public List<HangMuc> findHangMucByParentId(int id) {
         return hangMucRestService.searchByNoiThat(id);
     }

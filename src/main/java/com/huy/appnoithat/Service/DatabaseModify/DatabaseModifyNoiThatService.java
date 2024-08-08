@@ -15,6 +15,10 @@ public class DatabaseModifyNoiThatService {
         noiThatRestService = new NoiThatRestService();
     }
 
+    public DatabaseModifyNoiThatService(NoiThatRestService noiThatRestService) {
+        this.noiThatRestService = noiThatRestService;
+    }
+
     public List<NoiThat> findNoiThatListByParentID(int parentID) {
         return noiThatRestService.searchByPhongCach(parentID);
     }

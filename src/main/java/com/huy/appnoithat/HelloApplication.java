@@ -3,16 +3,14 @@ package com.huy.appnoithat;
 import com.huy.appnoithat.Configuration.ConfigHandler;
 import com.huy.appnoithat.Exception.GlobalExceptionHandler;
 import com.huy.appnoithat.Handler.MultipleInstanceHandler;
+import com.huy.appnoithat.Module.DIContainer;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.Login.LoginScene;
 import com.huy.appnoithat.Scene.StageFactory;
-import com.huy.appnoithat.Session.UserSession;
-import com.huy.appnoithat.Session.UserSessionManagerImpl;
 import com.huy.appnoithat.Session.UserSessionManager;
 import com.huy.appnoithat.Work.OpenFileWork;
 import com.huy.appnoithat.Work.WorkFactory;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
@@ -20,31 +18,35 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+import static com.huy.appnoithat.Module.DIContainer.get;
+
 public class HelloApplication extends Application {
     final static Logger LOGGER = LogManager.getLogger(HelloApplication.class);
 
     @Override
     public void start(Stage stage) {
+        long previousTime = System.currentTimeMillis();
+        DIContainer.createInjector();
+        LOGGER.info("Create injector took {}", System.currentTimeMillis() - previousTime);
         Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler());
         getPendingWorkAtLaunch();
-        Platform.runLater(() -> {
-            startUI(stage);
-        });
+        startUI(stage);
     }
+
     private void startUI(Stage stage) {
-        UserSession.getInstance();
-        UserSessionManager sessionService = new UserSessionManagerImpl();
+        UserSessionManager sessionService = DIContainer.get();
         if (sessionService.isSessionValid()) {
-            Scene scene = HomeScene.getInstance().getScene();
-            Stage mainStage = StageFactory.createNewMaximizedMainStage(stage, scene, true);
-            Platform.runLater(() -> HomeScene.getInstance().getHomeController().init(mainStage));
+            HomeScene homeScene = DIContainer.get();
+            Stage mainStage = StageFactory.createNewMaximizedMainStage(stage, homeScene.getScene(), true);
+            homeScene.getHomeController().init(mainStage);
         } else {
-            LoginScene loginScene = new LoginScene();
+            LoginScene loginScene = DIContainer.get();
             Scene scene = loginScene.getScene();
-            Platform.runLater(() -> loginScene.getLoginController().init());
+            loginScene.getLoginController().init();
             StageFactory.createNewUnResizeableMainStage(stage, scene, true);
         }
     }
+
     private void getPendingWorkAtLaunch() {
         Parameters params = getParameters();
         List<String> list = params.getRaw();
@@ -54,14 +56,14 @@ public class HelloApplication extends Application {
             WorkFactory.addNewOpenFileWork(new OpenFileWork(fileToOpen));
         }
     }
+
     public static void main(String[] args) {
-        Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler());
         if (!MultipleInstanceHandler.isSingleInstance(args)) {
             System.exit(0);
         }
         MultipleInstanceHandler.startHandleMultipleInstance();
         LOGGER.info("Start application");
         ConfigHandler.getInstance().readConfiguration();
-        launch(args);
+        launch(HelloApplication.class, args);
     }
 }

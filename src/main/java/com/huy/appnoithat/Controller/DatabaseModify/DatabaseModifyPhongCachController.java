@@ -9,6 +9,7 @@ import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.DataModel.Entity.NoiThat;
 import com.huy.appnoithat.DataModel.Entity.PhongCachNoiThat;
 import com.huy.appnoithat.DataModel.Enums.Action;
+import com.huy.appnoithat.Module.DIContainer;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Service.DatabaseModify.DatabaseModifyNoiThatService;
@@ -40,6 +41,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static com.huy.appnoithat.Module.DIContainer.get;
+
 public class DatabaseModifyPhongCachController implements Initializable {
     final static Logger LOGGER = LogManager.getLogger(DatabaseModifyPhongCachController.class);
     @FXML
@@ -57,8 +60,8 @@ public class DatabaseModifyPhongCachController implements Initializable {
 
     private final DatabaseModifyPhongCachService databaseModifyPhongCachService;
     private final DatabaseModifyNoiThatService databaseModifyNoiThatService;
-    private final ObservableList<PhongCachNoiThat> phongCachNoiThatObservableList;
-    private final ObservableList<NoiThat> noiThatObservableList;
+    private final ObservableList<PhongCachNoiThat> phongCachNoiThatObservableList = FXCollections.observableArrayList();
+    private final ObservableList<NoiThat> noiThatObservableList = FXCollections.observableArrayList();
     @Setter
     private Parent root;
 
@@ -69,12 +72,13 @@ public class DatabaseModifyPhongCachController implements Initializable {
     public DatabaseModifyPhongCachController() {
         databaseModifyPhongCachService = new DatabaseModifyPhongCachService();
         databaseModifyNoiThatService = new DatabaseModifyNoiThatService();
-
-        // Initialize observable lists for phong cach noi that and noi that entities
-        phongCachNoiThatObservableList = FXCollections.observableArrayList();
-        noiThatObservableList = FXCollections.observableArrayList();
     }
 
+    public DatabaseModifyPhongCachController(DatabaseModifyPhongCachService databaseModifyPhongCachService,
+                                             DatabaseModifyNoiThatService databaseModifyNoiThatService) {
+        this.databaseModifyPhongCachService = databaseModifyPhongCachService;
+        this.databaseModifyNoiThatService = databaseModifyNoiThatService;
+    }
 
     /**
      * Handles the action event for adding a new PhongCachNoiThat entity.
@@ -161,8 +165,8 @@ public class DatabaseModifyPhongCachController implements Initializable {
 
         ((AnchorPane)this.root).getChildren().clear();
         ((AnchorPane)this.root).getChildren().add(hBox);
-        DatabaseModifyNoiThatScene.getController().init(selectID);
-        DatabaseModifyNoiThatScene.getController().setRoot(this.root);
+        databaseModifyNoiThatScene.getController().init(selectID);
+        databaseModifyNoiThatScene.getController().setRoot(this.root);
     }
 
     /**
@@ -204,7 +208,8 @@ public class DatabaseModifyPhongCachController implements Initializable {
         Object source = actionEvent.getSource();
         stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == backButton) {
-            scene = HomeScene.getInstance().getScene();
+            HomeScene homeScene = DIContainer.get();
+            scene = homeScene.getScene();
             listView.getItems().clear();
         } else {
             return;

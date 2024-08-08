@@ -15,6 +15,10 @@ public class DatabaseModifyThongSoService {
         thongSoRestService = new ThongSoRestService();
     }
 
+    public DatabaseModifyThongSoService(ThongSoRestService thongSoRestService) {
+        this.thongSoRestService = thongSoRestService;
+    }
+
     public List<ThongSo> findThongSoByParentId(int id) {
         return thongSoRestService.searchByVatLieu(id);
     }

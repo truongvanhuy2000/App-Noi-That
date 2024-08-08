@@ -29,6 +29,10 @@ public class ChangeProductSpecificationController {
         databaseModifyThongSoService = new DatabaseModifyThongSoService();
     }
 
+    public ChangeProductSpecificationController(DatabaseModifyThongSoService databaseModifyThongSoService) {
+        this.databaseModifyThongSoService = databaseModifyThongSoService;
+    }
+
     /**
      * Handles the action event triggered when the user clicks the OK button to edit "Thong So" properties.
      * Validates input values, updates the ThongSo object, and navigates back to the main view.
@@ -77,9 +81,9 @@ public class ChangeProductSpecificationController {
         // Clear the current content and add the new HBox to the root AnchorPane
         ((AnchorPane)this.root).getChildren().clear();
         ((AnchorPane)this.root).getChildren().add(hBox);
-        DatabaseModifyVatLieuScene.getController().refresh();
+        databaseModifyVatLieuScene.getController().refresh();
         // Set the root for the controller of the DatabaseModifyVatLieuScene
-        DatabaseModifyVatLieuScene.getController().setRoot(this.root);
+        databaseModifyVatLieuScene.getController().setRoot(this.root);
     }
 
     @FXML

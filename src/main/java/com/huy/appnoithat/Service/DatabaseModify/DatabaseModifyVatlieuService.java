@@ -15,6 +15,10 @@ public class DatabaseModifyVatlieuService {
         vatLieuRestService = new VatLieuRestService();
     }
 
+    public DatabaseModifyVatlieuService(VatLieuRestService vatLieuRestService) {
+        this.vatLieuRestService = vatLieuRestService;
+    }
+
     public List<VatLieu> findVatLieuByParentId(int id) {
         return vatLieuRestService.searchByHangMuc(id);
     }

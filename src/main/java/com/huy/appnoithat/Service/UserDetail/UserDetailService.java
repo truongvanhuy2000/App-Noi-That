@@ -8,6 +8,10 @@ import com.huy.appnoithat.Service.RestService.AccountRestService;
 public class UserDetailService {
     private final AccountRestService accountRestService;
 
+    public UserDetailService(AccountRestService accountRestService) {
+        this.accountRestService = accountRestService;
+    }
+
     public UserDetailService() {
         this.accountRestService = new AccountRestService();
     }

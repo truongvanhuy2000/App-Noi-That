@@ -6,12 +6,14 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.google.inject.Inject;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Handler.SessionExpiredHandler;
 import com.huy.appnoithat.Session.UserSessionManagerImpl;
 import com.huy.appnoithat.Session.UserSessionManager;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,6 +29,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Deprecated
+@RequiredArgsConstructor(onConstructor_ = @Inject)
 public class JavaNetHttpClient implements WebClientService {
     final static Logger LOGGER = LogManager.getLogger(JavaNetHttpClient.class);
     private static final String CONTENT_TYPE = "Content-Type";
@@ -38,7 +41,7 @@ public class JavaNetHttpClient implements WebClientService {
     private static final String DELETE = "DELETE";
     private static final String SERVER_ADDRESS = Config.WEB_CLIENT.BASE_URL;
     private static final long TIME_OUT = Config.WEB_CLIENT.TIME_OUT;
-    private final long timeOut;
+
     private final HttpClient client;
     private final UserSessionManager userSessionManager;
     private final SessionExpiredHandler sessionExpiredHandler;
@@ -47,7 +50,6 @@ public class JavaNetHttpClient implements WebClientService {
     private static JavaNetHttpClient instance;
 
     private JavaNetHttpClient() {
-        this.timeOut = TIME_OUT;
         userSessionManager = new UserSessionManagerImpl();
         client = HttpClient.newHttpClient();
         sessionExpiredHandler = new SessionExpiredHandler();
@@ -262,7 +264,7 @@ public class JavaNetHttpClient implements WebClientService {
         URI fullAddress = uri.withHost(SERVER_ADDRESS).toURI();
         HttpRequest.Builder builder = HttpRequest.newBuilder();
         builder.uri(fullAddress);
-        builder.timeout(java.time.Duration.ofSeconds(this.timeOut));
+        builder.timeout(java.time.Duration.ofSeconds(TIME_OUT));
         builder.header(CONTENT_TYPE, JSON);
 
         switch (method) {

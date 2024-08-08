@@ -31,6 +31,13 @@ public class PersistenceStorageService implements StorageService {
         lapBaoGiaRestService = new LapBaoGiaRestService();
         cachedData = new CachedData();
     }
+
+    public PersistenceStorageService(ObjectMapper objectMapper, LapBaoGiaRestService lapBaoGiaRestService, CachedData cachedData) {
+        this.objectMapper = objectMapper;
+        this.lapBaoGiaRestService = lapBaoGiaRestService;
+        this.cachedData = cachedData;
+    }
+
     /**
      * Retrieves the company information from a file. If the information is already
      * loaded in memory, returns the existing object. If not, reads the information
@@ -182,7 +189,7 @@ public class PersistenceStorageService implements StorageService {
     }
 
     @Data
-    private static class CachedData {
+    public static class CachedData {
         private ThongTinCongTy thongTinCongTy;
         private String noteArea;
     }

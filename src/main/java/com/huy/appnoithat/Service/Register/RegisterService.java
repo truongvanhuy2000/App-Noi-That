@@ -18,6 +18,10 @@ public class RegisterService {
         accountRestService = new AccountRestService();
     }
 
+    public RegisterService(AccountRestService accountRestService) {
+        this.accountRestService = accountRestService;
+    }
+
     /**
      * Registers a new account by sending a POST request to the server.
      * Requires an authorized session token.

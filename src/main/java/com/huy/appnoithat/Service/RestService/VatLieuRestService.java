@@ -3,12 +3,14 @@ package com.huy.appnoithat.Service.RestService;
 import com.huy.appnoithat.DataModel.Entity.VatLieu;
 import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.codehaus.httpcache4j.uri.URIBuilder;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 public class VatLieuRestService {
     private static VatLieuRestService instance;
     final static Logger LOGGER = LogManager.getLogger(VatLieuRestService.class);

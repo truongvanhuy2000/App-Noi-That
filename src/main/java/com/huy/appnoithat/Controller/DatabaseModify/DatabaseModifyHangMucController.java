@@ -47,8 +47,8 @@ public class DatabaseModifyHangMucController implements Initializable {
     private int parentID;
     private final DatabaseModifyHangMucService databaseModifyHangMucService;
     private final DatabaseModifyVatlieuService databaseModifyVatlieuService;
-    private final ObservableList<HangMuc> hangMucObservableList;
-    private final ObservableList<VatLieu> vatLieuObservableList;
+    private final ObservableList<HangMuc> hangMucObservableList = FXCollections.observableArrayList();;
+    private final ObservableList<VatLieu> vatLieuObservableList = FXCollections.observableArrayList();;
     @Setter
     private Parent root;
 
@@ -59,9 +59,14 @@ public class DatabaseModifyHangMucController implements Initializable {
     public DatabaseModifyHangMucController() {
         databaseModifyHangMucService = new com.huy.appnoithat.Service.DatabaseModify.DatabaseModifyHangMucService();
         databaseModifyVatlieuService = new DatabaseModifyVatlieuService();
-        vatLieuObservableList = FXCollections.observableArrayList();
-        hangMucObservableList = FXCollections.observableArrayList();
     }
+
+    public DatabaseModifyHangMucController(DatabaseModifyHangMucService databaseModifyHangMucService,
+                                           DatabaseModifyVatlieuService databaseModifyVatlieuService) {
+        this.databaseModifyHangMucService = databaseModifyHangMucService;
+        this.databaseModifyVatlieuService = databaseModifyVatlieuService;
+    }
+
     @FXML
     void swap(ActionEvent event) {
         HangMuc hangMuc = listView.getSelectionModel().getSelectedItem();
@@ -142,8 +147,8 @@ public class DatabaseModifyHangMucController implements Initializable {
 
         ((AnchorPane)this.root).getChildren().clear();
         ((AnchorPane)this.root).getChildren().add(hBox);
-        DatabaseModifyVatLieuScene.getController().init(selectID);
-        DatabaseModifyVatLieuScene.getController().setRoot(this.root);
+        databaseModifyVatLieuScene.getController().init(selectID);
+        databaseModifyVatLieuScene.getController().setRoot(this.root);
     }
 
     /**
@@ -160,8 +165,8 @@ public class DatabaseModifyHangMucController implements Initializable {
             HBox hBox = (HBox) ((AnchorPane)databaseModifyNoiThatScene.getRoot()).getChildren().get(0);
             ((AnchorPane)this.root).getChildren().clear();
             ((AnchorPane)this.root).getChildren().add(hBox);
-            DatabaseModifyNoiThatScene.getController().refresh();
-            DatabaseModifyNoiThatScene.getController().setRoot(this.root);
+            databaseModifyNoiThatScene.getController().refresh();
+            databaseModifyNoiThatScene.getController().setRoot(this.root);
         }
     }
 

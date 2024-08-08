@@ -44,6 +44,10 @@ public class FileNoiThatExplorerController {
         fileNoiThatExplorerService = FileNoiThatExplorerService.getInstance();
     }
 
+    public FileNoiThatExplorerController(FileNoiThatExplorerService fileNoiThatExplorerService) {
+        this.fileNoiThatExplorerService = fileNoiThatExplorerService;
+    }
+
     /**
      * Handles the action when the new file button is clicked.
      * Opens a new Lua Chon Noi That tab with a blank state.

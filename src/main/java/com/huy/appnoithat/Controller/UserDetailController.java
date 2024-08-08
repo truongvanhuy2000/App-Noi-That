@@ -32,6 +32,10 @@ public class UserDetailController implements Initializable {
     private Button ChangePasswordBtn;
     private final UserDetailService userDetailService;
 
+    public UserDetailController(UserDetailService userDetailService) {
+        this.userDetailService = userDetailService;
+    }
+
     public UserDetailController() {
         userDetailService = new UserDetailService();
     }

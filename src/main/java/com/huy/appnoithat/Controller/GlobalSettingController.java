@@ -48,6 +48,10 @@ public class GlobalSettingController implements Initializable {
 
     private final PricingModelRestService pricingModelRestService;
 
+    public GlobalSettingController(PricingModelRestService pricingModelRestService) {
+        this.pricingModelRestService = pricingModelRestService;
+    }
+
     public GlobalSettingController() {
         pricingModelRestService = new PricingModelRestService();
     }
