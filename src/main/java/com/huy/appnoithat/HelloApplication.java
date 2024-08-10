@@ -1,9 +1,9 @@
 package com.huy.appnoithat;
 
-import com.huy.appnoithat.Configuration.ConfigHandler;
+import com.huy.appnoithat.configuration.ConfigHandler;
 import com.huy.appnoithat.Exception.GlobalExceptionHandler;
 import com.huy.appnoithat.Handler.MultipleInstanceHandler;
-import com.huy.appnoithat.Module.DIContainer;
+import com.huy.appnoithat.IOC.DIContainer;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.Login.LoginScene;
 import com.huy.appnoithat.Scene.StageFactory;
@@ -11,7 +11,6 @@ import com.huy.appnoithat.Session.UserSessionManager;
 import com.huy.appnoithat.Work.OpenFileWork;
 import com.huy.appnoithat.Work.WorkFactory;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,13 +34,12 @@ public class HelloApplication extends Application {
         UserSessionManager sessionService = DIContainer.get();
         if (sessionService.isSessionValid()) {
             HomeScene homeScene = DIContainer.get();
-            Stage mainStage = StageFactory.createNewMaximizedMainStage(stage, homeScene.getScene(), true);
+            Stage mainStage = StageFactory.createNewMaximizedMainStage(stage, homeScene, true);
             homeScene.getHomeController().init(mainStage);
         } else {
             LoginScene loginScene = DIContainer.get();
-            Scene scene = loginScene.getScene();
             loginScene.getLoginController().init();
-            StageFactory.createNewUnResizeableMainStage(stage, scene, true);
+            StageFactory.createNewUnResizeableMainStage(stage, loginScene, true);
         }
     }
 

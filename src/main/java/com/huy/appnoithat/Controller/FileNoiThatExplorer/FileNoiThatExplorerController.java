@@ -1,10 +1,10 @@
 package com.huy.appnoithat.Controller.FileNoiThatExplorer;
 
-import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.common.PopupUtils;
+import com.huy.appnoithat.common.Utils;
 import com.huy.appnoithat.Controller.NewTab.TabState;
 import com.huy.appnoithat.DataModel.RecentFile;
-import com.huy.appnoithat.Module.DIContainer;
+import com.huy.appnoithat.IOC.DIContainer;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.NewTabScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;
@@ -161,7 +161,7 @@ public class FileNoiThatExplorerController {
      */
     private void openNewLuaChonNoiThatTab(TabState tabState, String directory) {
         NewTabScene newTabScene = DIContainer.get();
-        Stage currentStage = StageFactory.CreateNewMaximizedStage(newTabScene.getScene(), true);
+        Stage currentStage = StageFactory.CreateNewMaximizedStage(newTabScene, true);
         newTabScene.getNewTabController().init(tabState, directory, currentStage);
     }
 

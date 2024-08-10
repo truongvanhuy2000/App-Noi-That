@@ -1,8 +1,8 @@
 package com.huy.appnoithat.Controller.NewTab.Operation;
 
-import com.huy.appnoithat.Common.FXUtils;
-import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Configuration.Config;
+import com.huy.appnoithat.common.FXUtils;
+import com.huy.appnoithat.common.PopupUtils;
+import com.huy.appnoithat.configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
 import com.huy.appnoithat.Controller.NewTab.NewTabController;
 import com.huy.appnoithat.Controller.NewTab.TabContent;

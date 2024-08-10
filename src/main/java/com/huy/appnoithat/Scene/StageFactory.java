@@ -1,9 +1,8 @@
 package com.huy.appnoithat.Scene;
 
-import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.common.PopupUtils;
 import com.huy.appnoithat.HelloApplication;
 import javafx.application.Platform;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -13,8 +12,8 @@ import java.util.Objects;
 
 @UtilityClass
 public class StageFactory {
-    public static Stage createNewMaximizedMainStage(Stage currentStage, Scene nextScene, boolean confirmWhenClose) {
-        currentStage.setScene(nextScene);
+    public static Stage createNewMaximizedMainStage(Stage currentStage, GenericScene nextScene, boolean confirmWhenClose) {
+        currentStage.setScene(nextScene.getScene());
         currentStage.setResizable(true);
         Platform.runLater(() -> {
             currentStage.setMaximized(true);
@@ -22,23 +21,23 @@ public class StageFactory {
         setUpStage(currentStage, confirmWhenClose);
         return currentStage;
     }
-    public static Stage createNewUnResizeableMainStage(Stage currentStage, Scene nextScene, boolean confirmWhenClose) {
-        currentStage.setScene(nextScene);
+    public static Stage createNewUnResizeableMainStage(Stage currentStage, GenericScene nextScene, boolean confirmWhenClose) {
+        currentStage.setScene(nextScene.getScene());
         currentStage.setMaximized(false);
         currentStage.setResizable(false);
         setUpStage(currentStage, confirmWhenClose);
         return currentStage;
     }
-    public static Stage CreateNewUnresizeableStage(Scene nextScene, boolean confirmWhenClose) {
+    public static Stage CreateNewUnresizeableStage(GenericScene nextScene, boolean confirmWhenClose) {
         Stage stage = new Stage();
-        stage.setScene(nextScene);
+        stage.setScene(nextScene.getScene());
         stage.setResizable(false);
         setUpStage(stage, confirmWhenClose);
         return stage;
     }
-    public static Stage CreateNewMaximizedStage(Scene nextScene, boolean confirmWhenClose) {
+    public static Stage CreateNewMaximizedStage(GenericScene nextScene, boolean confirmWhenClose) {
         Stage stage = new Stage();
-        stage.setScene(nextScene);
+        stage.setScene(nextScene.getScene());
         stage.setMaximized(true);
         setUpStage(stage, confirmWhenClose);
         return stage;

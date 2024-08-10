@@ -28,17 +28,6 @@ public class ListAccountWaitToApproveScene implements GenericScene {
         addCssToScence();
     }
 
-    public void setRoot(Parent root) {
-        this.root = root;
-        scene.setRoot(this.root);
-    }
-
-    public void setScene(Scene scene) {
-        this.scene = scene;
-        scene.setRoot(this.root);
-        addCssToScence();
-    }
-
     private void addCssToScence() {
         String cssPath = "/com/huy/appnoithat/Scene/css/UserManagementLayout.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());

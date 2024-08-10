@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Service.PersistenceStorage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.huy.appnoithat.Configuration.Config;
+import com.huy.appnoithat.configuration.Config;
 import com.huy.appnoithat.DataModel.RecentFile;
 import com.huy.appnoithat.DataModel.Session.PersistenceUserSession;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;

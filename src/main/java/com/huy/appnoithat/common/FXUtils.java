@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Common;
+package com.huy.appnoithat.common;
 
 import javafx.application.Platform;
 import javafx.scene.Cursor;

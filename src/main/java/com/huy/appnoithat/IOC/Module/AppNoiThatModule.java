@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Module;
+package com.huy.appnoithat.IOC.Module;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;

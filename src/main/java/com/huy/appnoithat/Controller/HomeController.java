@@ -1,8 +1,8 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Common.Utils;
-import com.huy.appnoithat.Module.DIContainer;
+import com.huy.appnoithat.common.PopupUtils;
+import com.huy.appnoithat.common.Utils;
+import com.huy.appnoithat.IOC.DIContainer;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.GlobalSettingScene;
 import com.huy.appnoithat.Scene.Login.LoginScene;
@@ -15,7 +15,6 @@ import com.huy.appnoithat.Session.UserSessionManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
@@ -55,7 +54,7 @@ public class HomeController {
     @FXML
     void ChangeUserDetail(ActionEvent event) {
         UserDetailScene scene = DIContainer.get();
-        StageFactory.CreateNewUnresizeableStage(scene.getScene(), false);
+        StageFactory.CreateNewUnresizeableStage(scene, false);
         scene.getController().init();
     }
     @FXML
@@ -177,8 +176,7 @@ public class HomeController {
         if (source == LogoutButton) {
             // Switch to the login scene if the Logout button is clicked
             LoginScene loginScene = DIContainer.get();
-            Scene scene = loginScene.getScene();
-            StageFactory.createNewUnResizeableMainStage(stage, scene, true);
+            StageFactory.createNewUnResizeableMainStage(stage, loginScene, true);
             loginScene.getLoginController().init();
         }
     }

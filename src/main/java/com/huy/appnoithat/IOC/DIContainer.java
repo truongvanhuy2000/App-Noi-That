@@ -1,8 +1,9 @@
-package com.huy.appnoithat.Module;
+package com.huy.appnoithat.IOC;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Stage;
+import com.huy.appnoithat.IOC.Module.AppNoiThatModule;
 
 public final class DIContainer {
     private static Injector injector;

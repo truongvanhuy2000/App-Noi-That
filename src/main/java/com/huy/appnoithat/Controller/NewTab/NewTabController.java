@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.NewTab;
 
-import com.huy.appnoithat.Common.KeyboardUtils;
+import com.huy.appnoithat.common.KeyboardUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
 import com.huy.appnoithat.Controller.NewTab.Operation.ContentOperation;
 import com.huy.appnoithat.Controller.NewTab.Operation.TabOperation;

@@ -3,7 +3,7 @@ package com.huy.appnoithat.Service.WebClient;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
-import com.huy.appnoithat.Configuration.Config;
+import com.huy.appnoithat.configuration.Config;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Handler.SessionExpiredHandler;
 import com.huy.appnoithat.Session.UserSessionManager;

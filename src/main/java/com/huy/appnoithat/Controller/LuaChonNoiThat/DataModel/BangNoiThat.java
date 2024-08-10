@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel;
 
-import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.common.Utils;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleLongProperty;

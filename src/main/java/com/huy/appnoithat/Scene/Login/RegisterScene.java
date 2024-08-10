@@ -31,18 +31,6 @@ public class RegisterScene implements GenericScene {
         scene = new Scene(root);
         addCssToScence();
     }
-
-    public void setRoot(Parent root) {
-        this.root = root;
-        scene.setRoot(this.root);
-    }
-
-    public void setScene(Scene scene) {
-        this.scene = scene;
-        scene.setRoot(this.root);
-        addCssToScence();
-    }
-
     // Create an object of this class, call this function
 
     private void addCssToScence() {

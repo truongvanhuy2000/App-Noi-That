@@ -1,9 +1,9 @@
 package com.huy.appnoithat.Handler;
 
 import com.google.inject.Inject;
-import com.huy.appnoithat.Common.FXUtils;
-import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Module.DIContainer;
+import com.huy.appnoithat.common.FXUtils;
+import com.huy.appnoithat.common.PopupUtils;
+import com.huy.appnoithat.IOC.DIContainer;
 import com.huy.appnoithat.Scene.Login.LoginScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Session.UserSessionManager;
@@ -31,7 +31,7 @@ public class SessionExpiredHandler {
             }
             LoginScene loginScene = DIContainer.get();
             loginScene.getLoginController().init();
-            StageFactory.CreateNewUnresizeableStage(loginScene.getScene(), true);
+            StageFactory.CreateNewUnresizeableStage(loginScene, true);
         });
     }
 

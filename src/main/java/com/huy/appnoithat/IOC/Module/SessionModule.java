@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Module;
+package com.huy.appnoithat.IOC.Module;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;

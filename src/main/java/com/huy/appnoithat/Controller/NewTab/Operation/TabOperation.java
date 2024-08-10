@@ -6,7 +6,7 @@ import com.huy.appnoithat.Controller.NewTab.TabContent;
 import com.huy.appnoithat.Controller.NewTab.TabState;
 import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.DataModel.SaveFile.TabData;
-import com.huy.appnoithat.Module.DIContainer;
+import com.huy.appnoithat.IOC.DIContainer;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.LuaChonNoiThatScene;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
 import com.huy.appnoithat.Service.PersistenceStorage.StorageService;

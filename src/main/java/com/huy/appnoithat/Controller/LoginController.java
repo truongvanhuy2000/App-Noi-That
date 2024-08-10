@@ -1,12 +1,12 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.Common.FXUtils;
-import com.huy.appnoithat.Common.KeyboardUtils;
-import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.common.FXUtils;
+import com.huy.appnoithat.common.KeyboardUtils;
+import com.huy.appnoithat.common.PopupUtils;
+import com.huy.appnoithat.common.Utils;
 import com.huy.appnoithat.DataModel.Enums.Action;
 import com.huy.appnoithat.DataModel.Token;
-import com.huy.appnoithat.Module.DIContainer;
+import com.huy.appnoithat.IOC.DIContainer;
 import com.huy.appnoithat.Scene.HomeScene;
 import com.huy.appnoithat.Scene.Login.RegisterScene;
 import com.huy.appnoithat.Scene.StageFactory;
@@ -15,7 +15,6 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -103,9 +102,8 @@ public class LoginController {
     @FXML
     void registerAccount(MouseEvent event) {
         RegisterScene registerScene = DIContainer.get();
-        Scene scene = registerScene.getScene();
         registerScene.getRegisterController().init();
-        StageFactory.CreateNewUnresizeableStage(registerScene.getScene(), false);
+        StageFactory.CreateNewUnresizeableStage(registerScene, false);
     }
 
     @FXML
@@ -147,8 +145,7 @@ public class LoginController {
 
     private void goToHome(Stage stage) {
         HomeScene homeScene = DIContainer.get();
-        Scene scene = homeScene.getScene();
-        Stage mainStage = StageFactory.createNewMaximizedMainStage(stage, scene, true);
+        Stage mainStage = StageFactory.createNewMaximizedMainStage(stage, homeScene, true);
         homeScene.getHomeController().init(mainStage);
     }
 

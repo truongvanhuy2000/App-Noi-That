@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.common.PopupUtils;
+import com.huy.appnoithat.common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;

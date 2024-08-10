@@ -108,7 +108,7 @@ java.lang.RuntimeException: Exception in Application start method
 	at java.lang.Thread.run(Thread.java:840) [?:?]
 Caused by: com.google.inject.CreationException: Unable to create injector, see the following errors:
 
-1) An exception was caught and reported. Message: Unable to make Service.WebClient.WebClientService Module.AppNoiThatModule.apacheHttpClient(Service.WebClient.ApacheHttpClient) accessible: module com.huy.appnoithat does not "opens com.huy.appnoithat.Module" to module com.google.guice
+1) An exception was caught and reported. Message: Unable to make Service.WebClient.WebClientService Module.AppNoiThatModule.apacheHttpClient(Service.WebClient.ApacheHttpClient) accessible: module com.huy.appnoithat does not "opens com.huy.appnoithat.IOC" to module com.google.guice
   at [unknown source]
 
 1 error
@@ -116,7 +116,7 @@ Caused by: com.google.inject.CreationException: Unable to create injector, see t
 ======================
 Full classname legend:
 ======================
-Module:  "com.huy.appnoithat.Module"
+Module:  "com.huy.appnoithat.IOC"
 Service: "com.huy.appnoithat.Service"
 ========================
 End of classname legend:
@@ -140,7 +140,7 @@ End of classname legend:
 	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
 	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
 	... 1 more
-Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make com.huy.appnoithat.Service.WebClient.WebClientService com.huy.appnoithat.Module.AppNoiThatModule.apacheHttpClient(com.huy.appnoithat.Service.WebClient.ApacheHttpClient) accessible: module com.huy.appnoithat does not "opens com.huy.appnoithat.Module" to module com.google.guice
+Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make com.huy.appnoithat.Service.WebClient.WebClientService com.huy.appnoithat.IOC.Module.AppNoiThatModule.apacheHttpClient(com.huy.appnoithat.Service.WebClient.ApacheHttpClient) accessible: module com.huy.appnoithat does not "opens com.huy.appnoithat.IOC" to module com.google.guice
 	at java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354) ~[?:?]
 	at java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297) ~[?:?]
 	at java.lang.reflect.Method.checkCanSetAccessible(Method.java:199) ~[?:?]
@@ -196,7 +196,7 @@ Learn more:
 Full classname legend:
 ======================
 HttpClient: "org.apache.hc.client5.http.classic.HttpClient"
-Module:     "com.huy.appnoithat.Module"
+Module:     "com.huy.appnoithat.IOC"
 Service:    "com.huy.appnoithat.Service"
 ========================
 End of classname legend:
@@ -322,8 +322,8 @@ java.lang.RuntimeException: Exception in Application start method
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:196) ~[javafx-graphics-17.0.6-linux.jar:?]
 	at java.lang.Thread.run(Thread.java:840) [?:?]
 Caused by: java.lang.IllegalArgumentException: Array must not be null or empty
-	at com.huy.appnoithat.Module.DIContainer.getClassOf(DIContainer.java:27) ~[classes/:?]
-	at com.huy.appnoithat.Module.DIContainer.get(DIContainer.java:15) ~[classes/:?]
+	at com.huy.appnoithat.IOC.DIContainer.getClassOf(DIContainer.java:27) ~[classes/:?]
+	at com.huy.appnoithat.IOC.DIContainer.get(DIContainer.java:15) ~[classes/:?]
 	at com.huy.appnoithat.HelloApplication.startUI(HelloApplication.java:37) ~[classes/:?]
 	at com.huy.appnoithat.HelloApplication.start(HelloApplication.java:33) ~[classes/:?]
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847) ~[javafx-graphics-17.0.6-linux.jar:?]
@@ -344,8 +344,8 @@ java.lang.RuntimeException: Exception in Application start method
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:196) ~[javafx-graphics-17.0.6-linux.jar:?]
 	at java.lang.Thread.run(Thread.java:840) [?:?]
 Caused by: java.lang.IllegalArgumentException: Array must not be null or empty
-	at com.huy.appnoithat.Module.DIContainer.getClassOf(DIContainer.java:27) ~[classes/:?]
-	at com.huy.appnoithat.Module.DIContainer.get(DIContainer.java:15) ~[classes/:?]
+	at com.huy.appnoithat.IOC.DIContainer.getClassOf(DIContainer.java:27) ~[classes/:?]
+	at com.huy.appnoithat.IOC.DIContainer.get(DIContainer.java:15) ~[classes/:?]
 	at com.huy.appnoithat.HelloApplication.startUI(HelloApplication.java:37) ~[classes/:?]
 	at com.huy.appnoithat.HelloApplication.start(HelloApplication.java:33) ~[classes/:?]
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847) ~[javafx-graphics-17.0.6-linux.jar:?]
@@ -367,8 +367,8 @@ java.lang.RuntimeException: Exception in Application start method
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:196) ~[javafx-graphics-17.0.6-linux.jar:?]
 	at java.lang.Thread.run(Thread.java:840) [?:?]
 Caused by: java.lang.IllegalArgumentException: Array must not be null or empty
-	at com.huy.appnoithat.Module.DIContainer.getClassOf(DIContainer.java:27) ~[classes/:?]
-	at com.huy.appnoithat.Module.DIContainer.get(DIContainer.java:15) ~[classes/:?]
+	at com.huy.appnoithat.IOC.DIContainer.getClassOf(DIContainer.java:27) ~[classes/:?]
+	at com.huy.appnoithat.IOC.DIContainer.get(DIContainer.java:15) ~[classes/:?]
 	at com.huy.appnoithat.HelloApplication.startUI(HelloApplication.java:37) ~[classes/:?]
 	at com.huy.appnoithat.HelloApplication.start(HelloApplication.java:33) ~[classes/:?]
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847) ~[javafx-graphics-17.0.6-linux.jar:?]
@@ -390,8 +390,8 @@ java.lang.RuntimeException: Exception in Application start method
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:196) ~[javafx-graphics-17.0.6-linux.jar:?]
 	at java.lang.Thread.run(Thread.java:840) [?:?]
 Caused by: java.lang.IllegalArgumentException: Array must not be null or empty
-	at com.huy.appnoithat.Module.DIContainer.getClassOf(DIContainer.java:27) ~[classes/:?]
-	at com.huy.appnoithat.Module.DIContainer.get(DIContainer.java:15) ~[classes/:?]
+	at com.huy.appnoithat.IOC.DIContainer.getClassOf(DIContainer.java:27) ~[classes/:?]
+	at com.huy.appnoithat.IOC.DIContainer.get(DIContainer.java:15) ~[classes/:?]
 	at com.huy.appnoithat.HelloApplication.startUI(HelloApplication.java:37) ~[classes/:?]
 	at com.huy.appnoithat.HelloApplication.start(HelloApplication.java:33) ~[classes/:?]
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847) ~[javafx-graphics-17.0.6-linux.jar:?]
@@ -596,3 +596,14 @@ java.lang.RuntimeException: null
 [ERROR] 10-08-2024 16:41:08 [Thread-9] JavaNetHttpClient:232 - Error when sending request to serverPOST org.codehaus.httpcache4j.uri.URIBuilder@a9fd6c8 null Account{id=0, username='admin', password='1', active=false, accountInformation=null, expiredDate=null}
 [INFO ] 10-08-2024 16:43:58 [Thread-11] LoginService:21 - Login with account: test
 [INFO ] 10-08-2024 16:43:59 [JavaFX Application Thread] HomeController:105 - Login as test with role User
+[INFO ] 10-08-2024 16:50:45 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 16:50:46 [main] HelloApplication:62 - Start application
+[INFO ] 10-08-2024 16:50:47 [JavaFX Application Thread] HelloApplication:28 - Create injector took 783
+[INFO ] 10-08-2024 16:50:48 [JavaFX Application Thread] HomeController:105 - Login as test with role User
+[INFO ] 10-08-2024 16:54:38 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 16:54:38 [main] HelloApplication:62 - Start application
+[INFO ] 10-08-2024 16:54:40 [JavaFX Application Thread] HelloApplication:28 - Create injector took 846
+[INFO ] 10-08-2024 16:54:41 [JavaFX Application Thread] HomeController:105 - Login as test with role User
+[INFO ] 10-08-2024 16:57:37 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 16:57:37 [main] HelloApplication:62 - Start application
+[INFO ] 10-08-2024 16:57:39 [JavaFX Application Thread] HelloApplication:28 - Create injector took 1197

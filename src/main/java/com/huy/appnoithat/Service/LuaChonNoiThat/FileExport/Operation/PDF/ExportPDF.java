@@ -2,7 +2,7 @@ package com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.Operation.PDF;
 //import com.groupdocs.conversion.Converter;
 //import com.groupdocs.conversion.options.convert.PdfConvertOptions;
 
-import com.huy.appnoithat.Configuration.Config;
+import com.huy.appnoithat.configuration.Config;
 import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.ExportFile;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.Operation.Excel.ExportSingleXLS;

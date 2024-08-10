@@ -1,13 +1,13 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
-import com.huy.appnoithat.Common.KeyboardUtils;
-import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.common.KeyboardUtils;
+import com.huy.appnoithat.common.PopupUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.DataModel.Entity.HangMuc;
 import com.huy.appnoithat.DataModel.Entity.VatLieu;
 import com.huy.appnoithat.DataModel.Enums.Action;
-import com.huy.appnoithat.Module.DIContainer;
+import com.huy.appnoithat.IOC.DIContainer;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyNoiThatScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyVatLieuScene;
 import com.huy.appnoithat.Service.DatabaseModify.DatabaseModifyHangMucService;

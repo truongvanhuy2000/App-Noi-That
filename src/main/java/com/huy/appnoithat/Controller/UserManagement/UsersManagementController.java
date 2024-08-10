@@ -1,10 +1,10 @@
 package com.huy.appnoithat.Controller.UserManagement;
 
-import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.common.PopupUtils;
 import com.huy.appnoithat.Controller.UserManagement.DataModel.AccountTable;
 import com.huy.appnoithat.DataModel.Entity.Account;
 import com.huy.appnoithat.DataModel.Entity.AccountInformation;
-import com.huy.appnoithat.Module.DIContainer;
+import com.huy.appnoithat.IOC.DIContainer;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.ListAccountWaitToApproveScene;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementAddAccountScene;
@@ -241,7 +241,7 @@ public class UsersManagementController implements Initializable {
             Scene scene = userManagementAddAccountScene.getScene();
 
             // Create a new stage for the add account form
-            Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(scene, false);
+            Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(userManagementAddAccountScene, false);
 
             // Populate the active status ComboBox
             ObservableList<String> listActive = FXCollections.observableArrayList("Có", "Không");
@@ -408,7 +408,7 @@ public class UsersManagementController implements Initializable {
 //            txtusername.setText(exampleAccount.getUsername());
 //            txtpassword.setText(exampleAccount.getPassword());
 
-            userManageMentStage = StageFactory.CreateNewUnresizeableStage(scene, false);
+            userManageMentStage = StageFactory.CreateNewUnresizeableStage(userManagementEditorScene, false);
             // Handle the edit button click event
             btnedit.setOnAction(actionEvent -> {
 //
@@ -505,7 +505,7 @@ public class UsersManagementController implements Initializable {
             // Create a new stage for the list of accounts awaiting approval form
             ListAccountWaitToApproveScene listAccountWaitToApproveScene = DIContainer.get();
             Scene scene = listAccountWaitToApproveScene.getScene();
-            Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(scene, false);
+            Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(listAccountWaitToApproveScene, false);
 
             //element field of userManagementEditorScene
             TableView tableView = (TableView) scene.lookup("#tableViewListAccount");

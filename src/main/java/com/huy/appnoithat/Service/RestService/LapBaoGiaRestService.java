@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Service.RestService;
 
-import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.common.PopupUtils;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import lombok.RequiredArgsConstructor;

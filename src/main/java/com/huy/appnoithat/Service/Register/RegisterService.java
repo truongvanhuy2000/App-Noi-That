@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Service.Register;
 
-import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.common.PopupUtils;
 import com.huy.appnoithat.DataModel.Entity.Account;
 import com.huy.appnoithat.Service.RestService.AccountRestService;
 import org.apache.logging.log4j.LogManager;

@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
-import com.huy.appnoithat.Common.KeyboardUtils;
+import com.huy.appnoithat.common.KeyboardUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.DataModel.Enums.Action;
 import javafx.scene.control.Label;

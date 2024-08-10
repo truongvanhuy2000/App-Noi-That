@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Configuration;
+package com.huy.appnoithat.configuration;
 
 import java.nio.file.Paths;
 
