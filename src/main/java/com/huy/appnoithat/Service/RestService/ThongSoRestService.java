@@ -12,7 +12,6 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 public class ThongSoRestService {
-    private static ThongSoRestService instance;
     final static Logger LOGGER = LogManager.getLogger(VatLieuRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/thongso";

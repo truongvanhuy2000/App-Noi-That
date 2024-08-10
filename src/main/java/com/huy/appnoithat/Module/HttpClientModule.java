@@ -45,10 +45,10 @@ public class HttpClientModule extends AbstractModule {
     @Qualifier
     @Target({ FIELD, PARAMETER, METHOD })
     @Retention(RUNTIME)
-    public static @interface JavaNet {}
+    public @interface JavaNet {}
 
     @BindingAnnotation
     @Target({ FIELD, PARAMETER, METHOD })
     @Retention(RUNTIME)
-    public static @interface ApacheHttp {}
+    public @interface ApacheHttp {}
 }

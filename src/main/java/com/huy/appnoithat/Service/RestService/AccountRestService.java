@@ -18,7 +18,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AccountRestService {
     final static Logger LOGGER = LogManager.getLogger(AccountRestService.class);
-    private static AccountRestService instance;
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api";
 

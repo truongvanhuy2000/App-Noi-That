@@ -15,7 +15,7 @@ public class DatabaseModifyNoiThatScene implements GenericScene {
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
-    private DatabaseModifyNoiThatController controller;
+    private final DatabaseModifyNoiThatController controller;
 
     public DatabaseModifyNoiThatScene(DatabaseModifyNoiThatController controller) {
         this.controller = controller;

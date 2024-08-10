@@ -16,8 +16,8 @@ public class LoginScene implements GenericScene {
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/LoginLayout.css";
     private Scene scene;
     private Parent root;
-    private FXMLLoader fxmlLoader;
-    private LoginController loginController;
+    private final FXMLLoader fxmlLoader;
+    private final LoginController loginController;
 
     public LoginScene(LoginController loginController) {
         this.loginController = loginController;

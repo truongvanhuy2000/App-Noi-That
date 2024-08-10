@@ -15,8 +15,8 @@ public class FileNoiThatExplorerScene implements GenericScene {
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/FileNoiThatExplorer.css";
     private Scene scene;
     private Parent root;
-    private FXMLLoader fxmlLoader;
-    private FileNoiThatExplorerController controller;
+    private final FXMLLoader fxmlLoader;
+    private final FileNoiThatExplorerController controller;
 
     public FileNoiThatExplorerScene(FileNoiThatExplorerController controller) {
         this.controller = controller;

@@ -21,9 +21,10 @@ public class UserSessionManagerImpl implements UserSessionManager {
     private final StorageService persistenceStorageService;
     private final AccountRestService accountRestService;
 
-    public UserSessionManagerImpl(UserSession session,
-                                  StorageService persistenceStorageService,
-                                  AccountRestService accountRestService
+    public UserSessionManagerImpl(
+            UserSession session,
+            StorageService persistenceStorageService,
+            AccountRestService accountRestService
     ) {
         this.session = session;
         this.persistenceStorageService = persistenceStorageService;
@@ -109,6 +110,12 @@ public class UserSessionManagerImpl implements UserSessionManager {
                 .refreshTokenExpiration(persistenceUserSession.getRefreshTokenExpiration())
                 .accessTokenExpiration(persistenceUserSession.getAccessTokenExpiration())
                 .build());
+        Account account = accountRestService.getAccountInformation();
+        if (account == null) {
+            LOGGER.error("Can't get account information");
+            throw new RuntimeException();
+        }
+        session.setAccount(account);
     }
 
     /**

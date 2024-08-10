@@ -436,3 +436,163 @@ Caused by: java.lang.IllegalArgumentException: Array must not be null or empty
 [INFO ] 10-08-2024 15:29:43 [main] HelloApplication:65 - Start application
 [INFO ] 10-08-2024 15:29:44 [JavaFX Application Thread] HelloApplication:30 - Create injector took 982
 [INFO ] 10-08-2024 15:30:44 [JavaFX Application Thread] HomeController:106 - Login as  with role User
+[INFO ] 10-08-2024 15:42:21 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 15:42:21 [main] HelloApplication:63 - Start application
+[INFO ] 10-08-2024 15:42:22 [JavaFX Application Thread] HelloApplication:28 - Create injector took 742
+[INFO ] 10-08-2024 15:42:23 [JavaFX Application Thread] HomeController:105 - Login as test with role User
+[INFO ] 10-08-2024 15:43:08 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 15:43:08 [main] HelloApplication:63 - Start application
+[INFO ] 10-08-2024 15:43:09 [JavaFX Application Thread] HelloApplication:28 - Create injector took 766
+[INFO ] 10-08-2024 15:43:10 [JavaFX Application Thread] HomeController:105 - Login as test with role User
+[ERROR] 10-08-2024 15:43:17 [JavaFX Application Thread] PersistenceStorageService:160 - Failed to read note areaNo content to map due to end-of-input
+ at [Source: (File); line: 1, column: 0]
+[INFO ] 10-08-2024 15:49:58 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 15:49:58 [main] HelloApplication:63 - Start application
+[INFO ] 10-08-2024 15:50:00 [JavaFX Application Thread] HelloApplication:28 - Create injector took 808
+[INFO ] 10-08-2024 15:50:01 [JavaFX Application Thread] HomeController:105 - Login as test with role User
+[INFO ] 10-08-2024 15:50:13 [Thread-5] LoginService:21 - Login with account: admin
+[INFO ] 10-08-2024 15:50:14 [JavaFX Application Thread] HomeController:105 - Login as admin with role Admin
+[INFO ] 10-08-2024 15:51:05 [JavaFX Application Thread] GlobalExceptionHandler:15 - Cannot invoke "com.huy.appnoithat.DataModel.PricingModelDTO.isActive()" because "pricingModelDTO" is null
+java.lang.NullPointerException: Cannot invoke "com.huy.appnoithat.DataModel.PricingModelDTO.isActive()" because "pricingModelDTO" is null
+	at com.huy.appnoithat.Controller.GlobalSettingController.refresh(GlobalSettingController.java:105) ~[classes/:?]
+	at com.huy.appnoithat.Controller.GlobalSettingController.init(GlobalSettingController.java:53) ~[classes/:?]
+	at com.huy.appnoithat.Controller.HomeController.onClickGlobalSettingOption(HomeController.java:131) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8792) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3897) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+[INFO ] 10-08-2024 15:53:07 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 15:53:07 [main] HelloApplication:63 - Start application
+[INFO ] 10-08-2024 15:53:09 [JavaFX Application Thread] HelloApplication:28 - Create injector took 906
+[INFO ] 10-08-2024 15:53:10 [JavaFX Application Thread] HomeController:105 - Login as admin with role Admin
+[ERROR] 10-08-2024 15:53:11 [JavaFX Application Thread] ApacheHttpClient:110 - pricingModelDTO can't be null
+[INFO ] 10-08-2024 15:53:11 [JavaFX Application Thread] GlobalExceptionHandler:15 - null
+java.lang.RuntimeException: null
+	at com.huy.appnoithat.Controller.GlobalSettingController.refresh(GlobalSettingController.java:111) ~[classes/:?]
+	at com.huy.appnoithat.Controller.GlobalSettingController.init(GlobalSettingController.java:57) ~[classes/:?]
+	at com.huy.appnoithat.Controller.HomeController.onClickGlobalSettingOption(HomeController.java:131) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8792) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3897) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+[INFO ] 10-08-2024 15:53:57 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 15:53:57 [main] HelloApplication:63 - Start application
+[INFO ] 10-08-2024 15:53:58 [JavaFX Application Thread] HelloApplication:28 - Create injector took 797
+[INFO ] 10-08-2024 15:53:59 [JavaFX Application Thread] HomeController:105 - Login as admin with role Admin
+[INFO ] 10-08-2024 15:56:12 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 15:56:12 [main] HelloApplication:63 - Start application
+[INFO ] 10-08-2024 15:56:13 [JavaFX Application Thread] HelloApplication:28 - Create injector took 784
+[INFO ] 10-08-2024 16:28:27 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 16:28:27 [main] HelloApplication:63 - Start application
+[INFO ] 10-08-2024 16:28:29 [JavaFX Application Thread] HelloApplication:28 - Create injector took 770
+[INFO ] 10-08-2024 16:28:34 [Thread-3] LoginService:21 - Login with account: admin
+[INFO ] 10-08-2024 16:28:35 [JavaFX Application Thread] HomeController:105 - Login as admin with role Admin
+[INFO ] 10-08-2024 16:29:41 [Thread-5] LoginService:21 - Login with account: test
+[INFO ] 10-08-2024 16:29:42 [JavaFX Application Thread] HomeController:105 - Login as test with role User
+[INFO ] 10-08-2024 16:36:29 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 16:36:29 [main] HelloApplication:63 - Start application
+[INFO ] 10-08-2024 16:36:31 [JavaFX Application Thread] HelloApplication:28 - Create injector took 1216
+[INFO ] 10-08-2024 16:36:35 [JavaFX Application Thread] HomeController:105 - Login as test with role User
+[INFO ] 10-08-2024 16:37:03 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 16:37:03 [main] HelloApplication:63 - Start application
+[INFO ] 10-08-2024 16:37:05 [JavaFX Application Thread] HelloApplication:28 - Create injector took 1068
+[INFO ] 10-08-2024 16:37:06 [JavaFX Application Thread] HomeController:105 - Login as test with role User
+[INFO ] 10-08-2024 16:37:55 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 16:37:55 [main] HelloApplication:63 - Start application
+[INFO ] 10-08-2024 16:37:56 [JavaFX Application Thread] HelloApplication:28 - Create injector took 958
+[INFO ] 10-08-2024 16:37:58 [JavaFX Application Thread] HomeController:105 - Login as test with role User
+[INFO ] 10-08-2024 16:38:45 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 16:38:45 [main] HelloApplication:63 - Start application
+[INFO ] 10-08-2024 16:38:46 [JavaFX Application Thread] HelloApplication:28 - Create injector took 818
+[INFO ] 10-08-2024 16:38:47 [JavaFX Application Thread] HomeController:105 - Login as test with role User
+[INFO ] 10-08-2024 16:38:53 [Thread-5] LoginService:21 - Login with account: test
+[INFO ] 10-08-2024 16:38:54 [JavaFX Application Thread] HomeController:105 - Login as test with role User
+[INFO ] 10-08-2024 16:39:01 [Thread-7] LoginService:21 - Login with account: admin
+[INFO ] 10-08-2024 16:39:02 [JavaFX Application Thread] HomeController:105 - Login as admin with role Admin
+[INFO ] 10-08-2024 16:40:29 [Thread-8] LoginService:21 - Login with account: admin
+[INFO ] 10-08-2024 16:40:29 [JavaFX Application Thread] HomeController:105 - Login as admin with role Admin
+[ERROR] 10-08-2024 16:41:08 [Thread-9] JavaNetHttpClient:232 - Error when sending request to serverPOST org.codehaus.httpcache4j.uri.URIBuilder@a9fd6c8 null Account{id=0, username='admin', password='1', active=false, accountInformation=null, expiredDate=null}
+[INFO ] 10-08-2024 16:43:58 [Thread-11] LoginService:21 - Login with account: test
+[INFO ] 10-08-2024 16:43:59 [JavaFX Application Thread] HomeController:105 - Login as test with role User

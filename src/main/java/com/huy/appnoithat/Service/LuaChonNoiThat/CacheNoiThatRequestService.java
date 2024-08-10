@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class CacheNoiThatRequestService {
-    private HashMap<String, String> cache = new HashMap<>();
+    private final HashMap<String, String> cache = new HashMap<>();
     private final ObjectMapper objectMapper;
 
     public CacheNoiThatRequestService(ObjectMapper objectMapper) {

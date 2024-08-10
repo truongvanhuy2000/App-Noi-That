@@ -17,7 +17,7 @@ public class RegisterScene implements GenericScene {
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
-    private RegisterController registerController;
+    private final RegisterController registerController;
 
     public RegisterScene(RegisterController registerController) {
         this.registerController = registerController;

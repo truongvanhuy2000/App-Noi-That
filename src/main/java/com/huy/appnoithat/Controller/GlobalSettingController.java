@@ -4,6 +4,7 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.DataModel.PricingModelDTO;
 import com.huy.appnoithat.Service.RestService.PricingModelRestService;
+import com.huy.appnoithat.Service.WebClient.ApacheHttpClient;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.collections.FXCollections;
@@ -19,6 +20,8 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import lombok.Data;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.Comparator;
@@ -26,15 +29,13 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class GlobalSettingController implements Initializable {
+    final static Logger LOGGER = LogManager.getLogger(ApacheHttpClient.class);
     @FXML
     private CheckBox ActivateCheckBox;
-
     @FXML
     private TableColumn<PricingOption, Integer> BonusMonthColumn;
-
     @FXML
     private TableColumn<PricingOption, Integer> MonthOptionColumn;
-
     @FXML
     private TableColumn<PricingOption, Long> MonthlyPriceColumn;
     @FXML
@@ -105,6 +106,10 @@ public class GlobalSettingController implements Initializable {
 
     private void refresh() {
         PricingModelDTO pricingModelDTO = pricingModelRestService.getPricingModel();
+        if (pricingModelDTO == null) {
+            LOGGER.error("pricingModelDTO can't be null");
+            return;
+        }
         ActivateCheckBox.setSelected(pricingModelDTO.isActive());
         pricingModelDTO.getPricingModelList().sort(Comparator.comparingLong((PricingModelDTO.PricingModel::getMonthOption)));
         List<PricingOption> pricingOptionList = pricingModelDTO.getPricingModelList().stream().map((item) ->

@@ -13,7 +13,7 @@ import java.util.Objects;
 public class UserManagementEditorScene implements GenericScene {
     private Scene scene;
     private Parent root;
-    private static UserManagementEditorScene single_instance = null;
+    private static final UserManagementEditorScene single_instance = null;
     private final FXMLLoader fxmlLoader;
 
     public UserManagementEditorScene() {

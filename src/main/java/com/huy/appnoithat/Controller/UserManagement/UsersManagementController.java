@@ -51,7 +51,7 @@ public class UsersManagementController implements Initializable {
     private TableColumn<AccountTable, String> username, password, email, phone;
     private final UsersManagementService userManagementService;
     private final RegisterService registerService;
-    private ObservableList<AccountTable> listUser = FXCollections.observableArrayList();
+    private final ObservableList<AccountTable> listUser = FXCollections.observableArrayList();
 
 
     public UsersManagementController(UsersManagementService userManagementService, RegisterService registerService) {

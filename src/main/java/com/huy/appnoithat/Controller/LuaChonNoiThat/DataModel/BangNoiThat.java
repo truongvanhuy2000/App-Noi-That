@@ -9,16 +9,16 @@ import lombok.Getter;
 
 @Getter
 public class BangNoiThat {
-    private SimpleStringProperty STT;
-    private SimpleDoubleProperty Cao;
-    private SimpleDoubleProperty Dai;
-    private SimpleDoubleProperty Rong;
-    private SimpleLongProperty DonGia;
-    private SimpleStringProperty DonVi;
-    private SimpleStringProperty HangMuc;
-    private SimpleStringProperty VatLieu;
-    private SimpleLongProperty ThanhTien;
-    private SimpleDoubleProperty KhoiLuong;
+    private final SimpleStringProperty STT;
+    private final SimpleDoubleProperty Cao;
+    private final SimpleDoubleProperty Dai;
+    private final SimpleDoubleProperty Rong;
+    private final SimpleLongProperty DonGia;
+    private final SimpleStringProperty DonVi;
+    private final SimpleStringProperty HangMuc;
+    private final SimpleStringProperty VatLieu;
+    private final SimpleLongProperty ThanhTien;
+    private final SimpleDoubleProperty KhoiLuong;
 
     public BangNoiThat(String id, Double cao, Double dai, Double rong, Long donGia, String donVi, String hangMuc, String vatLieu, Long thanhTien, Double khoiLuong) {
         STT = new SimpleStringProperty(id);

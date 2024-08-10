@@ -13,7 +13,7 @@ import java.util.Objects;
 public class ListAccountWaitToApproveScene implements GenericScene {
     private Scene scene;
     private Parent root;
-    private static ListAccountWaitToApproveScene single_instance = null;
+    private static final ListAccountWaitToApproveScene single_instance = null;
     private final FXMLLoader fxmlLoader;
 
     public ListAccountWaitToApproveScene() {

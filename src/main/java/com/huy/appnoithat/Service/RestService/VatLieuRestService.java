@@ -11,7 +11,6 @@ import java.util.List;
 
 @RequiredArgsConstructor
 public class VatLieuRestService {
-    private static VatLieuRestService instance;
     final static Logger LOGGER = LogManager.getLogger(VatLieuRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/vatlieu";

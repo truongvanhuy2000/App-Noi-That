@@ -14,8 +14,8 @@ import java.util.Objects;
 public class ChangeProductSpecificationScene implements GenericScene {
     private Scene scene;
     private Parent root;
-    private FXMLLoader fxmlLoader;
-    private ChangeProductSpecificationController controller;
+    private final FXMLLoader fxmlLoader;
+    private final ChangeProductSpecificationController controller;
 
     public ChangeProductSpecificationScene(ChangeProductSpecificationController controller) {
         this.controller = controller;

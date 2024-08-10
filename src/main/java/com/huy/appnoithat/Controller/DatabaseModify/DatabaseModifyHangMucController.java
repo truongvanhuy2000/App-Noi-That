@@ -48,8 +48,8 @@ public class DatabaseModifyHangMucController implements Initializable {
     private int parentID;
     private final DatabaseModifyHangMucService databaseModifyHangMucService;
     private final DatabaseModifyVatlieuService databaseModifyVatlieuService;
-    private final ObservableList<HangMuc> hangMucObservableList = FXCollections.observableArrayList();;
-    private final ObservableList<VatLieu> vatLieuObservableList = FXCollections.observableArrayList();;
+    private final ObservableList<HangMuc> hangMucObservableList = FXCollections.observableArrayList();
+    private final ObservableList<VatLieu> vatLieuObservableList = FXCollections.observableArrayList();
     @Setter
     private Parent root;
 

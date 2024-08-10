@@ -13,7 +13,6 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 public class NoiThatRestService {
-    private static NoiThatRestService instance;
     final static Logger LOGGER = LogManager.getLogger(NoiThatRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/noithat";

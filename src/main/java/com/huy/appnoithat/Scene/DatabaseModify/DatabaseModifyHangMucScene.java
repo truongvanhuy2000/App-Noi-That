@@ -15,7 +15,7 @@ public class DatabaseModifyHangMucScene implements GenericScene {
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
-    private DatabaseModifyHangMucController controller;
+    private final DatabaseModifyHangMucController controller;
 
     public DatabaseModifyHangMucScene(DatabaseModifyHangMucController controller) {
         this.controller = controller;

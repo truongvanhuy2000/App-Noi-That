@@ -16,7 +16,7 @@ public class UserManagementScene implements GenericScene {
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/UserManagementLayout.css";
     private Scene scene;
     private Parent root;
-    private UsersManagementController controller;
+    private final UsersManagementController controller;
 
     public UserManagementScene(UsersManagementController controller) {
         this.controller = controller;

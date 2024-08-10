@@ -40,7 +40,6 @@ public class NewTabController implements Initializable {
     private final LuaChonNoiThatService luaChonNoiThatService;
     private Stage currentStage;
     private final List<TabContent> currentlyOpenTab = new ArrayList<>();
-    ;
     @FXML
     private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs,
             MenuItemSaveCompanyInfo, MenuItemSaveNoteArea, MenuItemExportMultipleXLS;

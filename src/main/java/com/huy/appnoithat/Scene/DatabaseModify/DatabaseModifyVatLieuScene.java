@@ -15,7 +15,7 @@ public class DatabaseModifyVatLieuScene implements GenericScene {
     private Scene scene;
     private Parent root;
     private final FXMLLoader fxmlLoader;
-    private DatabaseModifyVatLieuController controller;
+    private final DatabaseModifyVatLieuController controller;
 
     public DatabaseModifyVatLieuScene(DatabaseModifyVatLieuController controller) {
         this.controller = controller;

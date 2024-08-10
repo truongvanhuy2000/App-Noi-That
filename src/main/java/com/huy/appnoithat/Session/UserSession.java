@@ -11,19 +11,11 @@ import lombok.Setter;
 @Setter
 @Builder
 public class UserSession {
-    private static UserSession instance;
     private Account account;
     private Token token;
 
     public UserSession(Account account, Token token) {
         this.account = account;
         this.token = token;
-    }
-
-    public static synchronized UserSession getInstance() {
-        if (instance == null) {
-            instance = new UserSession(Account.empty(), Token.empty());
-        }
-        return instance;
     }
 }

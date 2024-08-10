@@ -16,8 +16,8 @@ public class HomeScene implements GenericScene{
     final static Logger LOGGER = LogManager.getLogger(HomeScene.class);
     private static final String VIEW_PATH = "view/HomeRemakeLayout.fxml";
     private static final String CSS_PATH = "css/HomeLayout.css";
-    private Scene scene;
-    private Parent root;
+    private final Scene scene;
+    private final Parent root;
     private final HomeController homeController;
 
     public HomeScene(HomeController homeController) {
