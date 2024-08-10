@@ -3,9 +3,13 @@ package com.huy.appnoithat.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
+import com.google.inject.Singleton;
 import com.huy.appnoithat.Service.DatabaseModify.*;
 import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;
 import com.huy.appnoithat.Service.Login.LoginService;
+import com.huy.appnoithat.Service.LuaChonNoiThat.CacheNoiThatRequestService;
+import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.FileExportService;
+import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
 import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
@@ -89,8 +93,26 @@ public class ServiceModule extends AbstractModule {
         }
 
         @Provides
+        @Singleton
         FileNoiThatExplorerService fileNoiThatExplorerService(StorageService persistenceStorageService) {
             return new FileNoiThatExplorerService(persistenceStorageService);
         }
+
+        @Provides
+        LuaChonNoiThatService luaChonNoiThatService(
+                FileExportService fileExportService, PhongCachRestService phongCachRestService,
+                NoiThatRestService noiThatRestService, HangMucRestService hangMucRestService,
+                VatLieuRestService vatLieuRestService, CacheNoiThatRequestService cacheNoiThatRequestService
+        ) {
+            return new LuaChonNoiThatService(fileExportService, phongCachRestService, noiThatRestService,
+                    hangMucRestService, vatLieuRestService, cacheNoiThatRequestService);
+        }
+
+        @Provides
+        @Singleton
+        CacheNoiThatRequestService cacheNoiThatRequestService(ObjectMapper objectMapper) {
+            return new CacheNoiThatRequestService(objectMapper);
+        }
     }
+
 }

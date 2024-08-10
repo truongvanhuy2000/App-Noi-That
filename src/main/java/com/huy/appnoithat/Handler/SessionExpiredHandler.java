@@ -3,9 +3,9 @@ package com.huy.appnoithat.Handler;
 import com.google.inject.Inject;
 import com.huy.appnoithat.Common.FXUtils;
 import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Module.DIContainer;
 import com.huy.appnoithat.Scene.Login.LoginScene;
 import com.huy.appnoithat.Scene.StageFactory;
-import com.huy.appnoithat.Session.UserSessionManagerImpl;
 import com.huy.appnoithat.Session.UserSessionManager;
 import javafx.application.Platform;
 import javafx.stage.Window;
@@ -18,10 +18,6 @@ public class SessionExpiredHandler {
     final static Logger LOGGER = LogManager.getLogger(SessionExpiredHandler.class);
     private final UserSessionManager userSessionManager;
 
-    public SessionExpiredHandler() {
-        userSessionManager = new UserSessionManagerImpl();
-    }
-
     public void handleTokenExpired() {
         LOGGER.error("Token expired");
         PopupUtils.throwErrorNotification("Tài khoản đã hết hạn!", "Nhấn đây để đăng nhập lại! \n" +
@@ -33,7 +29,7 @@ public class SessionExpiredHandler {
             if (!Window.getWindows().isEmpty()) {
                 FXUtils.closeAll();
             }
-            LoginScene loginScene = new LoginScene();
+            LoginScene loginScene = DIContainer.get();
             loginScene.getLoginController().init();
             StageFactory.CreateNewUnresizeableStage(loginScene.getScene(), true);
         });

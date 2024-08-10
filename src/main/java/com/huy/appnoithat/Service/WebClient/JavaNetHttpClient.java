@@ -1,16 +1,11 @@
 package com.huy.appnoithat.Service.WebClient;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.inject.Inject;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Handler.SessionExpiredHandler;
-import com.huy.appnoithat.Session.UserSessionManagerImpl;
 import com.huy.appnoithat.Session.UserSessionManager;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -46,26 +41,6 @@ public class JavaNetHttpClient implements WebClientService {
     private final UserSessionManager userSessionManager;
     private final SessionExpiredHandler sessionExpiredHandler;
     private final ObjectMapper objectMapper;
-
-    private static JavaNetHttpClient instance;
-
-    private JavaNetHttpClient() {
-        userSessionManager = new UserSessionManagerImpl();
-        client = HttpClient.newHttpClient();
-        sessionExpiredHandler = new SessionExpiredHandler();
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .serializationInclusion(JsonInclude.Include.NON_NULL)
-                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-                .build();
-    }
-
-    public static synchronized JavaNetHttpClient getInstance() {
-        if (instance == null) {
-            instance = new JavaNetHttpClient();
-        }
-        return instance;
-    }
 
     @Override
     public <T> Optional<T> unauthorizedHttpPostJson(@NonNull URIBuilder uri,

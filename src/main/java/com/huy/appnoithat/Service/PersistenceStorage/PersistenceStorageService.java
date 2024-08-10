@@ -1,8 +1,6 @@
 package com.huy.appnoithat.Service.PersistenceStorage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.DataModel.RecentFile;
 import com.huy.appnoithat.DataModel.Session.PersistenceUserSession;
@@ -23,14 +21,6 @@ public class PersistenceStorageService implements StorageService {
     private final ObjectMapper objectMapper;
     private final LapBaoGiaRestService lapBaoGiaRestService;
     private final CachedData cachedData;
-
-    public PersistenceStorageService() {
-        objectMapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
-        lapBaoGiaRestService = new LapBaoGiaRestService();
-        cachedData = new CachedData();
-    }
 
     public PersistenceStorageService(ObjectMapper objectMapper, LapBaoGiaRestService lapBaoGiaRestService, CachedData cachedData) {
         this.objectMapper = objectMapper;

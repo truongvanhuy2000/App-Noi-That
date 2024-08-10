@@ -10,7 +10,6 @@ import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.DataModel.WebClient.ErrorResponse;
 import com.huy.appnoithat.DataModel.WebClient.Response;
 import com.huy.appnoithat.Handler.SessionExpiredHandler;
-import com.huy.appnoithat.Session.UserSessionManagerImpl;
 import com.huy.appnoithat.Session.UserSessionManager;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -22,7 +21,6 @@ import org.apache.hc.client5.http.classic.methods.HttpPut;
 import org.apache.hc.client5.http.entity.mime.ContentBody;
 import org.apache.hc.client5.http.entity.mime.InputStreamBody;
 import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
-import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.*;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.apache.hc.core5.http.message.BasicNameValuePair;
@@ -48,22 +46,6 @@ public class ApacheHttpClient implements WebClientService {
     private final UserSessionManager userSessionManager;
     private final ObjectMapper objectMapper;
     private final SessionExpiredHandler sessionExpiredHandler;
-
-    private static ApacheHttpClient instance;
-
-    private ApacheHttpClient() {
-        httpclient = HttpClients.createDefault();
-        userSessionManager = new UserSessionManagerImpl();
-        sessionExpiredHandler = new SessionExpiredHandler();
-        objectMapper = new ObjectMapper();
-    }
-
-    public static ApacheHttpClient getInstance() {
-        if (instance == null) {
-            instance = new ApacheHttpClient();
-        }
-        return instance;
-    }
 
     @Override
     public <X> Response<X> authorizedPostMultipartUpload(URIBuilder uri, MultipartForm multipartForm, TypeReference<X> typeReference) {

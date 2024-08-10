@@ -12,12 +12,14 @@ import com.huy.appnoithat.Service.RestService.HangMucRestService;
 import com.huy.appnoithat.Service.RestService.NoiThatRestService;
 import com.huy.appnoithat.Service.RestService.PhongCachRestService;
 import com.huy.appnoithat.Service.RestService.VatLieuRestService;
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.util.List;
 
+@RequiredArgsConstructor
 public class LuaChonNoiThatService {
     final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatService.class);
     private final FileExportService fileExportService;
@@ -26,18 +28,6 @@ public class LuaChonNoiThatService {
     private final HangMucRestService hangMucRestService;
     private final VatLieuRestService vatLieuRestService;
     private final CacheNoiThatRequestService cacheNoiThatRequestService;
-
-    /**
-     * Initializes the LuaChonNoiThatService by initializing required services and components.
-     */
-    public LuaChonNoiThatService() {
-        fileExportService = new FileExportService();
-        phongCachRestService = new PhongCachRestService();
-        noiThatRestService = new NoiThatRestService();
-        hangMucRestService = new HangMucRestService();
-        vatLieuRestService = new VatLieuRestService();
-        cacheNoiThatRequestService = CacheNoiThatRequestService.getInstance();
-    }
 
     /**
      * Retrieves a list of all PhongCachNoiThat from the service.

@@ -31,21 +31,6 @@ public class DatabaseModifyHangMucScene implements GenericScene {
         addCssToScence();
     }
 
-    public DatabaseModifyHangMucScene() {
-        String viewPath = "view/DatabaseModifyHangMucLayout.fxml";
-        try {
-            fxmlLoader = new FXMLLoader(DatabaseModifyHangMucScene.class.getResource(viewPath));
-            if (controller == null)
-                controller = new DatabaseModifyHangMucController();
-            fxmlLoader.setController(controller);
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        scene = new Scene(root);
-        addCssToScence();
-    }
-
     public void setRoot(Parent root) {
         this.root = root;
         scene.setRoot(this.root);

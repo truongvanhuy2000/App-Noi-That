@@ -32,19 +32,6 @@ public class LoginScene implements GenericScene {
         addCssToScence();
     }
 
-    public LoginScene() {
-        try {
-            loginController = new LoginController();
-            fxmlLoader = new FXMLLoader(LoginScene.class.getResource(VIEW_PATH));
-            fxmlLoader.setController(loginController);
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        scene = new Scene(root);
-        addCssToScence();
-    }
-
     public void setRoot(Parent root) {
         this.root = root;
         scene.setRoot(this.root);

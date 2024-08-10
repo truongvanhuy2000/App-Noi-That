@@ -4,14 +4,15 @@ import com.huy.appnoithat.Scene.GenericScene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.util.Objects;
 
+@Getter
 public class UserManagementAddAccountScene implements GenericScene {
     private Scene scene;
     private Parent root;
-    private static UserManagementAddAccountScene single_instance = null;
     private final FXMLLoader fxmlLoader;
 
     public UserManagementAddAccountScene() {
@@ -35,17 +36,6 @@ public class UserManagementAddAccountScene implements GenericScene {
         this.scene = scene;
         scene.setRoot(this.root);
         addCssToScence();
-    }
-
-    public Scene getScene() {
-        return scene;
-    }
-
-    // Create an object of this class, call this function
-    public static synchronized UserManagementAddAccountScene getInstance() {
-        if (single_instance == null)
-            single_instance = new UserManagementAddAccountScene();
-        return single_instance;
     }
 
     private void addCssToScence() {

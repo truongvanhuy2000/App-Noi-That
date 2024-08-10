@@ -36,10 +36,6 @@ public class UserDetailController implements Initializable {
         this.userDetailService = userDetailService;
     }
 
-    public UserDetailController() {
-        userDetailService = new UserDetailService();
-    }
-
     @FXML
     void ChangePassword(ActionEvent event) {
         if (!ConfirmPassword.getText().equals(NewPassword.getText())) {

@@ -30,21 +30,6 @@ public class DatabaseModifyPhongCachScene implements GenericScene {
         addCssToScence();
     }
 
-    public DatabaseModifyPhongCachScene() {
-        String viewPath = "view/DatabaseModifyPhongCachLayout.fxml";
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(DatabaseModifyPhongCachScene.class.getResource(viewPath));
-            if (controller == null) {
-                controller = new DatabaseModifyPhongCachController();
-            }
-            fxmlLoader.setController(controller);
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        scene = new Scene(root);
-        addCssToScence();
-    }
     public void setRoot(Parent root) {
         this.root = root;
         scene.setRoot(this.root);

@@ -14,14 +14,6 @@ public class UsersManagementService {
     }
 
     /**
-     * Initializes the UsersManagementService with required dependencies.
-     */
-    public UsersManagementService() {
-        accountRestService = new AccountRestService();
-    }
-
-
-    /**
      * Retrieves a list of all enabled accounts from the server.
      *
      * @return List of enabled accounts.

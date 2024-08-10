@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.huy.appnoithat.DataModel.Entity.Account;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.DataModel.WebClient.Response;
-import com.huy.appnoithat.Service.WebClient.ApacheHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -22,10 +21,6 @@ public class TokenRestService {
         public static final URI LOGIN = URIBuilder.fromURI(BASE_URL).addPath("login").toURI();
     }
     private final WebClientService webClientService;
-
-    public TokenRestService() {
-        webClientService = ApacheHttpClient.getInstance();
-    }
 
     public Optional<Token> refreshToken(String refreshToken) {
         if (StringUtils.isBlank(refreshToken)) {

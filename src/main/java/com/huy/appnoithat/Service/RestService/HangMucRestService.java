@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.DataModel.Entity.HangMuc;
-import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -16,13 +15,6 @@ public class HangMucRestService {
     final static Logger LOGGER = LogManager.getLogger(HangMucRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/hangmuc";
-    /**
-     * Constructs a new instance of HangMucRestService with the necessary dependencies.
-     */
-    public HangMucRestService() {
-        webClientService = JavaNetHttpClient.getInstance();
-    }
-
     /**
      * Searches for HangMuc items associated with a specific NoiThat ID.
      *

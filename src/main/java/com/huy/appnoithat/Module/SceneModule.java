@@ -1,6 +1,5 @@
 package com.huy.appnoithat.Module;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
@@ -11,6 +10,7 @@ import com.huy.appnoithat.Controller.HomeController;
 import com.huy.appnoithat.Controller.LoginController;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.Controller.NewTab.NewTabController;
+import com.huy.appnoithat.Controller.Register.RegisterController;
 import com.huy.appnoithat.Controller.UserDetailController;
 import com.huy.appnoithat.Controller.UserManagement.UsersManagementController;
 import com.huy.appnoithat.Scene.DatabaseModify.*;
@@ -22,6 +22,9 @@ import com.huy.appnoithat.Scene.Login.RegisterScene;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.FileNoiThatExplorerScene;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.LuaChonNoiThatScene;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.NewTabScene;
+import com.huy.appnoithat.Scene.UseManagement.ListAccountWaitToApproveScene;
+import com.huy.appnoithat.Scene.UseManagement.UserManagementAddAccountScene;
+import com.huy.appnoithat.Scene.UseManagement.UserManagementEditorScene;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementScene;
 import com.huy.appnoithat.Scene.UserDetailScene;
 
@@ -33,11 +36,29 @@ public class SceneModule extends AbstractModule {
         install(new LuaChonNoiThatModule());
         install(new LoginModule());
         install(new HomeModule());
+        install(new UserManagementModule());
     }
 
-    @Provides
-    UserManagementScene userManagementScene(UsersManagementController usersManagementController) {
-        return new UserManagementScene(usersManagementController);
+    private static class UserManagementModule extends AbstractModule {
+        @Provides
+        UserManagementScene userManagementScene(UsersManagementController usersManagementController) {
+            return new UserManagementScene(usersManagementController);
+        }
+
+        @Provides
+        UserManagementEditorScene userManagementEditorScene() {
+            return new UserManagementEditorScene();
+        }
+
+        @Provides
+        UserManagementAddAccountScene userManagementAddAccountScene() {
+            return new UserManagementAddAccountScene();
+        }
+
+        @Provides
+        ListAccountWaitToApproveScene listAccountWaitToApproveScene() {
+            return new ListAccountWaitToApproveScene();
+        }
     }
 
     private static class LoginModule extends AbstractModule {
@@ -52,8 +73,8 @@ public class SceneModule extends AbstractModule {
         }
 
         @Provides
-        RegisterScene registerScene() {
-            return new RegisterScene();
+        RegisterScene registerScene(RegisterController registerController) {
+            return new RegisterScene(registerController);
         }
     }
 

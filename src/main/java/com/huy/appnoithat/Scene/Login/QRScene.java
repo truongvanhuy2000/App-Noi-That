@@ -40,13 +40,6 @@ public class QRScene implements GenericScene {
         addCssToScence();
     }
 
-    // Create an object of this class, call this function
-    public static synchronized QRScene getInstance() {
-        if (single_instance == null)
-            single_instance = new QRScene();
-        return single_instance;
-    }
-
     private void addCssToScence() {
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(CSS_PATH)).toExternalForm());
     }

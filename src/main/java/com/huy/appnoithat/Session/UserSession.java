@@ -5,10 +5,6 @@ import com.huy.appnoithat.DataModel.Token;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.poi.ss.formula.functions.T;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 // This class is have to be used only by SessionService, if you want to use it, please use SessionService instead
 @Getter

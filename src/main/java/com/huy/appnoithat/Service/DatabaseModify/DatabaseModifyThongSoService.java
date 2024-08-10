@@ -11,10 +11,6 @@ public class DatabaseModifyThongSoService {
     final static Logger LOGGER = LogManager.getLogger(DatabaseModifyThongSoService.class);
     private final ThongSoRestService thongSoRestService;
 
-    public DatabaseModifyThongSoService() {
-        thongSoRestService = new ThongSoRestService();
-    }
-
     public DatabaseModifyThongSoService(ThongSoRestService thongSoRestService) {
         this.thongSoRestService = thongSoRestService;
     }

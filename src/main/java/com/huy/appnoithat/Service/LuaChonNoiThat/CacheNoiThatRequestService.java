@@ -8,19 +8,13 @@ import java.util.List;
 import java.util.UUID;
 
 public class CacheNoiThatRequestService {
-    private final HashMap<String, String> cache;
+    private HashMap<String, String> cache = new HashMap<>();
     private final ObjectMapper objectMapper;
-    private static CacheNoiThatRequestService instance;
-    public static synchronized CacheNoiThatRequestService getInstance() {
-        if (instance == null) {
-            instance = new CacheNoiThatRequestService();
-        }
-        return instance;
+
+    public CacheNoiThatRequestService(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
     }
-    private CacheNoiThatRequestService() {
-        cache = new HashMap<>();
-        objectMapper = new ObjectMapper();
-    }
+
     public String createUniqueId(String... param) {
         String seed = "";
         for (String s : param) {

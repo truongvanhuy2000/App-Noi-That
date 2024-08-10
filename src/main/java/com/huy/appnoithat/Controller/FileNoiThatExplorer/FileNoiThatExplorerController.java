@@ -4,6 +4,7 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.NewTab.TabState;
 import com.huy.appnoithat.DataModel.RecentFile;
+import com.huy.appnoithat.Module.DIContainer;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.NewTabScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;
@@ -40,9 +41,6 @@ public class FileNoiThatExplorerController {
     private final FileNoiThatExplorerService fileNoiThatExplorerService;
     @Setter
     private Parent root;
-    public FileNoiThatExplorerController () {
-        fileNoiThatExplorerService = FileNoiThatExplorerService.getInstance();
-    }
 
     public FileNoiThatExplorerController(FileNoiThatExplorerService fileNoiThatExplorerService) {
         this.fileNoiThatExplorerService = fileNoiThatExplorerService;
@@ -113,6 +111,7 @@ public class FileNoiThatExplorerController {
     private void deleteFile(int index) {
         fileNoiThatExplorerService.removeRecentFile(RecentTableView.getItems().get(index));
     }
+
     private void getWork() {
         new Thread(() -> {
             while (true) {
@@ -161,7 +160,7 @@ public class FileNoiThatExplorerController {
      * @param directory  The directory associated with the tab.
      */
     private void openNewLuaChonNoiThatTab(TabState tabState, String directory) {
-        NewTabScene newTabScene = new NewTabScene();
+        NewTabScene newTabScene = DIContainer.get();
         Stage currentStage = StageFactory.CreateNewMaximizedStage(newTabScene.getScene(), true);
         newTabScene.getNewTabController().init(tabState, directory, currentStage);
     }

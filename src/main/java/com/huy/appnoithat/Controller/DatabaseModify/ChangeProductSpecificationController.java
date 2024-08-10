@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller.DatabaseModify;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.DataModel.Entity.ThongSo;
+import com.huy.appnoithat.Module.DIContainer;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyVatLieuScene;
 import com.huy.appnoithat.Service.DatabaseModify.DatabaseModifyThongSoService;
 import javafx.event.ActionEvent;
@@ -25,9 +26,6 @@ public class ChangeProductSpecificationController {
     private ThongSo currentThongSoItem;
     @Setter
     private Parent root;
-    public ChangeProductSpecificationController() {
-        databaseModifyThongSoService = new DatabaseModifyThongSoService();
-    }
 
     public ChangeProductSpecificationController(DatabaseModifyThongSoService databaseModifyThongSoService) {
         this.databaseModifyThongSoService = databaseModifyThongSoService;
@@ -75,7 +73,7 @@ public class ChangeProductSpecificationController {
      * Clears the current view, loads the main content, and refreshes the displayed data.
      */
     void backToMain() {
-        DatabaseModifyVatLieuScene databaseModifyVatLieuScene = new DatabaseModifyVatLieuScene();
+        DatabaseModifyVatLieuScene databaseModifyVatLieuScene = DIContainer.get();
         HBox hBox = (HBox) ((AnchorPane)databaseModifyVatLieuScene.getRoot()).getChildren().get(0);
 
         // Clear the current content and add the new HBox to the root AnchorPane

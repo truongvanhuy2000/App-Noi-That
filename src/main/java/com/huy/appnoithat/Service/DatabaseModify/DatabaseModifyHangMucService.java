@@ -11,10 +11,6 @@ public class DatabaseModifyHangMucService {
     final static Logger LOGGER = LogManager.getLogger(DatabaseModifyHangMucService.class);
     private final HangMucRestService hangMucRestService;
 
-    public DatabaseModifyHangMucService() {
-        hangMucRestService = new HangMucRestService();
-    }
-
     public DatabaseModifyHangMucService(HangMucRestService hangMucRestService) {
         this.hangMucRestService = hangMucRestService;
     }

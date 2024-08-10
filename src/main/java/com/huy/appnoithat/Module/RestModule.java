@@ -2,11 +2,10 @@ package com.huy.appnoithat.Module;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import com.google.inject.name.Named;
+import com.huy.appnoithat.Module.HttpClientModule.ApacheHttp;
+import com.huy.appnoithat.Module.HttpClientModule.JavaNet;
 import com.huy.appnoithat.Service.RestService.*;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
-import com.huy.appnoithat.Module.HttpClientModule.JavaNet;
-import com.huy.appnoithat.Module.HttpClientModule.ApacheHttp;
 
 public class RestModule extends AbstractModule {
     @Provides

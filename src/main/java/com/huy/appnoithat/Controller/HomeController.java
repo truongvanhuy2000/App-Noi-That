@@ -11,7 +11,6 @@ import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementScene;
 import com.huy.appnoithat.Scene.UserDetailScene;
 import com.huy.appnoithat.Service.Login.LoginService;
-import com.huy.appnoithat.Session.UserSessionManagerImpl;
 import com.huy.appnoithat.Session.UserSessionManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,11 +46,6 @@ public class HomeController {
     private AnchorPane PCPane;
     private final UserSessionManager sessionService;
     private final LoginService loginService;
-
-    public HomeController() {
-        this.sessionService = new UserSessionManagerImpl();
-        loginService = new LoginService();
-    }
 
     public HomeController(UserSessionManager sessionService, LoginService loginService) {
         this.sessionService = sessionService;
@@ -182,7 +176,7 @@ public class HomeController {
         Stage stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == LogoutButton) {
             // Switch to the login scene if the Logout button is clicked
-            LoginScene loginScene = new LoginScene();
+            LoginScene loginScene = DIContainer.get();
             Scene scene = loginScene.getScene();
             StageFactory.createNewUnResizeableMainStage(stage, scene, true);
             loginScene.getLoginController().init();
@@ -211,7 +205,7 @@ public class HomeController {
                 PCPane.getChildren().clear();
 
                 // Load the database modification scene
-                DatabaseModifyPhongCachScene databaseModifyPhongCachScene = new DatabaseModifyPhongCachScene();
+                DatabaseModifyPhongCachScene databaseModifyPhongCachScene = DIContainer.get();
 
                 // Extract HBox from the scene and add it to the primary content pane
                 PCPane.getChildren().addAll(((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren());
@@ -236,7 +230,7 @@ public class HomeController {
         PCPane.getChildren().clear();
 
         // Load the user management scene
-        UserManagementScene userManagementScene = new UserManagementScene();
+        UserManagementScene userManagementScene = DIContainer.get();
 
         // Extract VBox from the scene and add it to the primary content pane
         VBox vBox = (VBox) ((AnchorPane)userManagementScene.getRoot()).getChildren().get(0);

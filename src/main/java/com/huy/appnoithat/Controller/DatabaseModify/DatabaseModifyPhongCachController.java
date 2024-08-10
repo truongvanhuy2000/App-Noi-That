@@ -41,8 +41,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.huy.appnoithat.Module.DIContainer.get;
-
 public class DatabaseModifyPhongCachController implements Initializable {
     final static Logger LOGGER = LogManager.getLogger(DatabaseModifyPhongCachController.class);
     @FXML
@@ -64,15 +62,6 @@ public class DatabaseModifyPhongCachController implements Initializable {
     private final ObservableList<NoiThat> noiThatObservableList = FXCollections.observableArrayList();
     @Setter
     private Parent root;
-
-    /**
-     * Constructor for the DatabaseModifyPhongCachController class.
-     * Initializes the services and observable lists used in the controller.
-     */
-    public DatabaseModifyPhongCachController() {
-        databaseModifyPhongCachService = new DatabaseModifyPhongCachService();
-        databaseModifyNoiThatService = new DatabaseModifyNoiThatService();
-    }
 
     public DatabaseModifyPhongCachController(DatabaseModifyPhongCachService databaseModifyPhongCachService,
                                              DatabaseModifyNoiThatService databaseModifyNoiThatService) {
@@ -160,7 +149,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
             return;
         }
         int selectID = listView.getSelectionModel().getSelectedItem().getId();
-        DatabaseModifyNoiThatScene databaseModifyNoiThatScene = new DatabaseModifyNoiThatScene();
+        DatabaseModifyNoiThatScene databaseModifyNoiThatScene = DIContainer.get();
         HBox hBox = (HBox) ((AnchorPane)databaseModifyNoiThatScene.getRoot()).getChildren().get(0);
 
         ((AnchorPane)this.root).getChildren().clear();

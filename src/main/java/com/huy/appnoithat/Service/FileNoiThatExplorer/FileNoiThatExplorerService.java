@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Service.FileNoiThatExplorer;
 
 import com.huy.appnoithat.DataModel.RecentFile;
-import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,19 +14,8 @@ import java.util.List;
 
 public class FileNoiThatExplorerService {
     final static Logger LOGGER = LogManager.getLogger(FileNoiThatExplorerService.class);
-    private static FileNoiThatExplorerService instance;
     private ObservableList<RecentFile> recentFileObservableList = FXCollections.observableArrayList();
-    StorageService persistenceStorageService;
-
-    public static synchronized FileNoiThatExplorerService getInstance() {
-        if (instance == null) {
-            instance = new FileNoiThatExplorerService();
-        }
-        return instance;
-    }
-    private FileNoiThatExplorerService() {
-        persistenceStorageService = new PersistenceStorageService();
-    }
+    private final StorageService persistenceStorageService;
 
     public FileNoiThatExplorerService(StorageService persistenceStorageService) {
         this.persistenceStorageService = persistenceStorageService;

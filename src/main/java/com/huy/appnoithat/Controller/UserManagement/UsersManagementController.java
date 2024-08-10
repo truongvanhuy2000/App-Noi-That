@@ -4,14 +4,13 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.UserManagement.DataModel.AccountTable;
 import com.huy.appnoithat.DataModel.Entity.Account;
 import com.huy.appnoithat.DataModel.Entity.AccountInformation;
+import com.huy.appnoithat.Module.DIContainer;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Scene.UseManagement.ListAccountWaitToApproveScene;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementAddAccountScene;
 import com.huy.appnoithat.Scene.UseManagement.UserManagementEditorScene;
 import com.huy.appnoithat.Service.Register.RegisterService;
 import com.huy.appnoithat.Service.UsersManagement.UsersManagementService;
-import com.huy.appnoithat.Session.UserSessionManagerImpl;
-import com.huy.appnoithat.Session.UserSessionManager;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -51,14 +50,13 @@ public class UsersManagementController implements Initializable {
     @FXML
     private TableColumn<AccountTable, String> username, password, email, phone;
     private final UsersManagementService userManagementService;
+    private final RegisterService registerService;
     private ObservableList<AccountTable> listUser = FXCollections.observableArrayList();
 
-    public UsersManagementController(UsersManagementService userManagementService) {
-        this.userManagementService = userManagementService;
-    }
 
-    public UsersManagementController() {
-        userManagementService = new UsersManagementService();
+    public UsersManagementController(UsersManagementService userManagementService, RegisterService registerService) {
+        this.userManagementService = userManagementService;
+        this.registerService = registerService;
     }
 
     /**
@@ -239,23 +237,22 @@ public class UsersManagementController implements Initializable {
     void AddAccount(ActionEvent event) {
         try {
             // Retrieve the scene for adding a new account
-            Scene userManagementAddAccountScene = UserManagementAddAccountScene.getInstance().getScene();
+            UserManagementAddAccountScene userManagementAddAccountScene = DIContainer.get();
+            Scene scene = userManagementAddAccountScene.getScene();
 
             // Create a new stage for the add account form
-            Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(userManagementAddAccountScene, false);
+            Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(scene, false);
 
             // Populate the active status ComboBox
             ObservableList<String> listActive = FXCollections.observableArrayList("Có", "Không");
 
             // Get UI elements from the scene
-            TextField txtusername = (TextField) userManagementAddAccountScene.lookup("#txtaddusername");
-            TextField txtpassword = (TextField) userManagementAddAccountScene.lookup("#txtaddpassword");
-            ComboBox comboBoxActive = (ComboBox) userManagementAddAccountScene.lookup("#txtaddactive");
-            Button btnadd = (Button) userManagementAddAccountScene.lookup("#btnadd");
-            Button btncancel = (Button) userManagementAddAccountScene.lookup("#btncancel");
+            TextField txtusername = (TextField) scene.lookup("#txtaddusername");
+            TextField txtpassword = (TextField) scene.lookup("#txtaddpassword");
+            ComboBox comboBoxActive = (ComboBox) scene.lookup("#txtaddactive");
+            Button btnadd = (Button) scene.lookup("#btnadd");
+            Button btncancel = (Button) scene.lookup("#btncancel");
             comboBoxActive.setItems(listActive);
-            RegisterService registerService = new RegisterService();
-
             // Handle the add button click event
             btnadd.setOnAction(actionEvent -> {
                 // default when add new user active must be false
@@ -387,19 +384,20 @@ public class UsersManagementController implements Initializable {
             }
             // Get the selected user's index in the table
             Stage userManageMentStage;
-            Scene userManagementEditorScene = UserManagementEditorScene.getInstance().getScene();
+            UserManagementEditorScene userManagementEditorScene = DIContainer.get();
+            Scene scene = userManagementEditorScene.getScene();
 
             //element field of AccountTable
             String username = tableManageUser.getSelectionModel().getSelectedItem().getUsername();
             String password = tableManageUser.getSelectionModel().getSelectedItem().getPassword();
 
             //element field of userManagementEditorScene
-            TextField txtusername = (TextField) userManagementEditorScene.lookup("#txteditusername");
-            TextField txtpassword = (TextField) userManagementEditorScene.lookup("#txteditpassword");
-            TextField txtGiaHan = (TextField) userManagementEditorScene.lookup("#txtGiaHan");
+            TextField txtusername = (TextField) scene.lookup("#txteditusername");
+            TextField txtpassword = (TextField) scene.lookup("#txteditpassword");
+            TextField txtGiaHan = (TextField) scene.lookup("#txtGiaHan");
 
-            Button btnedit = (Button) userManagementEditorScene.lookup("#btnedit");
-            Button btncancel = (Button) userManagementEditorScene.lookup("#btncancel");
+            Button btnedit = (Button) scene.lookup("#btnedit");
+            Button btncancel = (Button) scene.lookup("#btncancel");
 
 //            // Create an AccountTable object
 //            AccountTable exampleAccount = new AccountTable();
@@ -410,8 +408,7 @@ public class UsersManagementController implements Initializable {
 //            txtusername.setText(exampleAccount.getUsername());
 //            txtpassword.setText(exampleAccount.getPassword());
 
-            userManageMentStage = StageFactory.CreateNewUnresizeableStage(userManagementEditorScene, false);
-            RegisterService registerService = new RegisterService();
+            userManageMentStage = StageFactory.CreateNewUnresizeableStage(scene, false);
             // Handle the edit button click event
             btnedit.setOnAction(actionEvent -> {
 //
@@ -506,14 +503,15 @@ public class UsersManagementController implements Initializable {
         ObservableList<Account> listUserNotEnable = FXCollections.observableArrayList();
         try {
             // Create a new stage for the list of accounts awaiting approval form
-            Scene listAccountWaitToApprove = ListAccountWaitToApproveScene.getInstance().getScene();
-            Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(listAccountWaitToApprove, false);
+            ListAccountWaitToApproveScene listAccountWaitToApproveScene = DIContainer.get();
+            Scene scene = listAccountWaitToApproveScene.getScene();
+            Stage userManageMentStage = StageFactory.CreateNewUnresizeableStage(scene, false);
 
             //element field of userManagementEditorScene
-            TableView tableView = (TableView) listAccountWaitToApprove.lookup("#tableViewListAccount");
-            Button btnApprove = (Button) listAccountWaitToApprove.lookup("#btnApprove");
-            Button btnReject = (Button) listAccountWaitToApprove.lookup("#btnReject");
-            Button btnCancel = (Button) listAccountWaitToApprove.lookup("#btnCancel");
+            TableView tableView = (TableView) scene.lookup("#tableViewListAccount");
+            Button btnApprove = (Button) scene.lookup("#btnApprove");
+            Button btnReject = (Button) scene.lookup("#btnReject");
+            Button btnCancel = (Button) scene.lookup("#btnCancel");
 
             ObservableList<TableColumn<Account, ?>> columns = tableView.getColumns();
 

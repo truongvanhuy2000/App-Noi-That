@@ -5,6 +5,7 @@ import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.DataModel.Entity.Account;
 import com.huy.appnoithat.DataModel.Entity.AccountInformation;
 import com.huy.appnoithat.DataModel.PricingModelDTO;
+import com.huy.appnoithat.Module.DIContainer;
 import com.huy.appnoithat.Scene.Login.QRScene;
 import com.huy.appnoithat.Service.Register.RegisterService;
 import com.huy.appnoithat.Service.RestService.PricingModelRestService;
@@ -40,10 +41,6 @@ public class RegisterController {
     private final RegisterService registerService;
     private final PricingModelRestService pricingModelRestService;
     private boolean isPricingEnable = false;
-    public RegisterController() {
-        registerService = new RegisterService();
-        pricingModelRestService = new PricingModelRestService();
-    }
 
     public RegisterController(RegisterService registerService, PricingModelRestService pricingModelRestService) {
         this.registerService = registerService;
@@ -119,7 +116,8 @@ public class RegisterController {
     }
 
     private void onLickSaveBtn(ActionEvent actionEvent) {
-        Scene QRpopup = QRScene.getInstance().getScene();
+        QRScene qrScene = DIContainer.get();
+        Scene QRpopup = qrScene.getScene();
         Label giaTienQR = (Label) QRpopup.lookup("#giaTienQR");
         String Gender = "Male";
         if (ComboBoxGender.getSelectionModel().getSelectedItem() != null) {

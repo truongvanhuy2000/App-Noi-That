@@ -13,6 +13,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.CustomConverter.CustomLongSt
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
+import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import javafx.application.Platform;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.DoubleProperty;
@@ -37,6 +38,8 @@ public class SetupBangNoiThat {
     private final TableView<BangThanhToan> bangThanhToan;
     private final int itemCount = 0;
     private final LuaChonNoiThatController luaChonNoiThatController;
+    private final LuaChonNoiThatService luaChonNoiThatService;
+
     public SetupBangNoiThat(LuaChonNoiThatController luaChonNoiThatController) {
         Cao = luaChonNoiThatController.getCao();
         Dai = luaChonNoiThatController.getDai();
@@ -50,6 +53,7 @@ public class SetupBangNoiThat {
         STT = luaChonNoiThatController.getSTT();
         TableNoiThat = luaChonNoiThatController.getTableNoiThat();
         bangThanhToan = luaChonNoiThatController.getBangThanhToan();
+        this.luaChonNoiThatService = luaChonNoiThatController.getLuaChonNoiThatService();
         this.luaChonNoiThatController = luaChonNoiThatController;
     }
 
@@ -174,7 +178,7 @@ public class SetupBangNoiThat {
     private void setUpVatLieu() {
         // Set up collum for VatLieu
         ObservableList<String> vatLieuList = FXCollections.observableArrayList();
-        VatLieuCollumHandler vatLieuCollumHandler = new VatLieuCollumHandler(vatLieuList);
+        VatLieuCollumHandler vatLieuCollumHandler = new VatLieuCollumHandler(vatLieuList, luaChonNoiThatService);
         VatLieu.setCellValueFactory(vatLieuCollumHandler::getCustomCellValueFactory);
         VatLieu.setCellFactory(vatLieuCollumHandler::getCustomCellFactory);
         VatLieu.setOnEditStart(vatLieuCollumHandler::onStartEditVatLieu);
@@ -187,7 +191,7 @@ public class SetupBangNoiThat {
     private void setUpHangMuc() {
 
         ObservableList<String> hangMucList = FXCollections.observableArrayList();
-        HangMucCollumHandler hangMucCollumHandler = new HangMucCollumHandler(hangMucList);
+        HangMucCollumHandler hangMucCollumHandler = new HangMucCollumHandler(hangMucList, luaChonNoiThatService);
         // Set up collum for HangMuc
         HangMuc.setCellValueFactory(hangMucCollumHandler::getCustomCellValueFactory);
 //        HangMuc.setGraphic(checkBox);

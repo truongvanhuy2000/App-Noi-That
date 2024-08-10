@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.DataModel.Entity.VatLieu;
-import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -16,13 +15,6 @@ public class VatLieuRestService {
     final static Logger LOGGER = LogManager.getLogger(VatLieuRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/vatlieu";
-    /**
-     * Constructor for VatLieuRestService.
-     */
-    public VatLieuRestService() {
-        webClientService = JavaNetHttpClient.getInstance();
-    }
-
     /**
      * Searches for VatLieu objects by HangMuc ID.
      *

@@ -33,12 +33,15 @@ public class ContentOperation {
     final static Logger LOGGER = LogManager.getLogger(ContentOperation.class);
     private final NewTabController newTabController;
     private final NoiThatFileService noiThatFileService;
+    private final LuaChonNoiThatService luaChonNoiThatService;
     private final StackPane loadingPane;
+
 
     public ContentOperation(NewTabController newTabController) {
         this.newTabController = newTabController;
         this.noiThatFileService = newTabController.getNoiThatFileService();
         this.loadingPane = newTabController.getLoadingPane();
+        this.luaChonNoiThatService = newTabController.getLuaChonNoiThatService();
     }
 
     public void saveNoteArea() {
@@ -143,7 +146,7 @@ public class ContentOperation {
         DataPackage dataPackage = selectedTabContent.getLuaChonNoiThatController().exportData();
         showLoading();
         new Thread(() -> {
-            boolean result = new LuaChonNoiThatService().exportFile(selectedFile, fileType, dataPackage);
+            boolean result = luaChonNoiThatService.exportFile(selectedFile, fileType, dataPackage);
             hideLoading(result, selectedFile);
         }).start();
     }

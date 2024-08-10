@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.DataModel.Entity.NoiThat;
-import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -18,9 +17,6 @@ public class NoiThatRestService {
     final static Logger LOGGER = LogManager.getLogger(NoiThatRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/noithat";
-    public NoiThatRestService() {
-        webClientService = JavaNetHttpClient.getInstance();
-    }
 
     /**
      * Searches for NoiThat objects based on the provided PhongCach ID.

@@ -4,7 +4,6 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.DataModel.Entity.Account;
 import com.huy.appnoithat.DataModel.Entity.AccountInformation;
 import com.huy.appnoithat.DataModel.Token;
-import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -22,17 +21,6 @@ public class AccountRestService {
     private static AccountRestService instance;
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api";
-
-    public static synchronized AccountRestService getInstance() {
-        if (instance == null) {
-            instance = new AccountRestService();
-        }
-        return instance;
-    }
-
-    public AccountRestService() {
-        webClientService = JavaNetHttpClient.getInstance();
-    }
 
     public Account getAccountInformation() {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("info");

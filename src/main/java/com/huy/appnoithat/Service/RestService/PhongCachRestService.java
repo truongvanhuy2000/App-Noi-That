@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.DataModel.Entity.PhongCachNoiThat;
-import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -17,13 +16,6 @@ public class PhongCachRestService {
     final static Logger LOGGER = LogManager.getLogger(PhongCachRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/phongcach";
-
-    /**
-     * Service class for managing PhongCachNoiThat objects via REST API.
-     */
-    public PhongCachRestService() {
-        webClientService = JavaNetHttpClient.getInstance();
-    }
 
     /**
      * Retrieves a list of all PhongCachNoiThat objects associated with the current user.

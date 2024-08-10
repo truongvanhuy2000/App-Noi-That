@@ -18,8 +18,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
-import static com.huy.appnoithat.Module.DIContainer.get;
-
 public class HelloApplication extends Application {
     final static Logger LOGGER = LogManager.getLogger(HelloApplication.class);
 

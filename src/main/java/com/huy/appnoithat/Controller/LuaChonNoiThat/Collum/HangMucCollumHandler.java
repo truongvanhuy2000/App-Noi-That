@@ -34,9 +34,10 @@ public class HangMucCollumHandler {
      *
      * @param hangMucList The ObservableList of String representing hangMucList data.
      */
-    public HangMucCollumHandler(ObservableList<String> hangMucList) {
+
+    public HangMucCollumHandler(ObservableList<String> hangMucList, LuaChonNoiThatService luaChonNoiThatService) {
         this.hangMucList = hangMucList;
-        luaChonNoiThatService = new LuaChonNoiThatService();
+        this.luaChonNoiThatService = luaChonNoiThatService;
     }
 
     /**

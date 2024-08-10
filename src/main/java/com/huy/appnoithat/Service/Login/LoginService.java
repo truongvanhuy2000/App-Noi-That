@@ -4,7 +4,6 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.DataModel.Entity.Account;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Service.RestService.AccountRestService;
-import com.huy.appnoithat.Session.UserSessionManagerImpl;
 import com.huy.appnoithat.Session.UserSessionManager;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -15,11 +14,6 @@ public class LoginService {
     final static Logger LOGGER = LogManager.getLogger(LoginService.class);
     private final UserSessionManager sessionService;
     private final AccountRestService accountRestService;
-
-    public LoginService() {
-        this.sessionService = new UserSessionManagerImpl();
-        accountRestService = new AccountRestService();
-    }
 
     public boolean basicAuthorization(String username, String password) {
         Token token = login(username, password);

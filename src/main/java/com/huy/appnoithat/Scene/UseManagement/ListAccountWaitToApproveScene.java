@@ -4,10 +4,12 @@ import com.huy.appnoithat.Scene.GenericScene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.util.Objects;
 
+@Getter
 public class ListAccountWaitToApproveScene implements GenericScene {
     private Scene scene;
     private Parent root;
@@ -35,17 +37,6 @@ public class ListAccountWaitToApproveScene implements GenericScene {
         this.scene = scene;
         scene.setRoot(this.root);
         addCssToScence();
-    }
-
-    public Scene getScene() {
-        return scene;
-    }
-
-    // Create an object of this class, call this function
-    public static synchronized ListAccountWaitToApproveScene getInstance() {
-        if (single_instance == null)
-            single_instance = new ListAccountWaitToApproveScene();
-        return single_instance;
     }
 
     private void addCssToScence() {

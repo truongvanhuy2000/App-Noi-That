@@ -6,6 +6,8 @@ import com.google.inject.Singleton;
 import com.huy.appnoithat.DataModel.Entity.Account;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.Handler.SessionExpiredHandler;
+import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
+import com.huy.appnoithat.Service.RestService.AccountRestService;
 import com.huy.appnoithat.Session.UserSession;
 import com.huy.appnoithat.Session.UserSessionManager;
 import com.huy.appnoithat.Session.UserSessionManagerImpl;
@@ -24,7 +26,11 @@ public class SessionModule extends AbstractModule {
 
     @Provides
     @Singleton
-    UserSessionManager userSessionManager(UserSession userSession) {
-        return new UserSessionManagerImpl();
+    UserSessionManager userSessionManager(
+            UserSession session,
+            StorageService persistenceStorageService,
+            AccountRestService accountRestService
+    ) {
+        return new UserSessionManagerImpl(session, persistenceStorageService, accountRestService);
     }
 }

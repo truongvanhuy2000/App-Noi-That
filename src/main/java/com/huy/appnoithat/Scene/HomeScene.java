@@ -1,12 +1,10 @@
 package com.huy.appnoithat.Scene;
 
-import com.google.inject.Inject;
 import com.huy.appnoithat.Controller.HomeController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

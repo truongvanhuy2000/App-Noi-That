@@ -30,18 +30,6 @@ public class NewTabScene implements GenericScene {
         addCssToScence();
     }
 
-    public NewTabScene() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(NewTabScene.class.getResource(viewPath));
-            newTabController = new NewTabController();
-            fxmlLoader.setController(newTabController);
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        scene = new Scene(root);
-        addCssToScence();
-    }
     private void addCssToScence() {
         String cssPath = "/com/huy/appnoithat/Scene/css/TabLayout.css";
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(cssPath)).toExternalForm());

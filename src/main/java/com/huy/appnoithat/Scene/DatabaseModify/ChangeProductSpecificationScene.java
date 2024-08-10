@@ -31,22 +31,6 @@ public class ChangeProductSpecificationScene implements GenericScene {
         addCssToScence();
     }
 
-    public ChangeProductSpecificationScene() {
-        String viewPath = "view/ChangeProductSpecificationLayout.fxml";
-        try {
-            fxmlLoader = new FXMLLoader(ChangeProductSpecificationScene.class.getResource(viewPath));
-            if (controller == null) {
-                controller = new ChangeProductSpecificationController();
-            }
-            fxmlLoader.setController(controller);
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        scene = new Scene(root);
-        addCssToScence();
-    }
-
     public void setRoot(Parent root) {
         this.root = root;
         scene.setRoot(this.root);

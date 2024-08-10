@@ -25,8 +25,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
-import static com.huy.appnoithat.Module.DIContainer.get;
-
 public class LoginController {
 
     @FXML
@@ -38,10 +36,6 @@ public class LoginController {
     @FXML
     private StackPane loadingPane;
     private final LoginService loginService;
-
-    public LoginController() {
-        loginService = new LoginService();
-    }
 
     public LoginController(LoginService loginService) {
         this.loginService = loginService;
@@ -108,7 +102,7 @@ public class LoginController {
      */
     @FXML
     void registerAccount(MouseEvent event) {
-        RegisterScene registerScene = new RegisterScene();
+        RegisterScene registerScene = DIContainer.get();
         Scene scene = registerScene.getScene();
         registerScene.getRegisterController().init();
         StageFactory.CreateNewUnresizeableStage(registerScene.getScene(), false);

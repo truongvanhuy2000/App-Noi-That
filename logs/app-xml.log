@@ -412,3 +412,27 @@ Caused by: java.lang.IllegalArgumentException: Array must not be null or empty
 [INFO ] 09-08-2024 00:49:38 [main] HelloApplication:65 - Start application
 [INFO ] 09-08-2024 00:49:40 [JavaFX Application Thread] HelloApplication:30 - Create injector took 764
 [INFO ] 09-08-2024 00:49:41 [JavaFX Application Thread] HomeController:111 - Login as  with role User
+[INFO ] 10-08-2024 14:28:12 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 14:28:12 [main] HelloApplication:65 - Start application
+[INFO ] 10-08-2024 14:28:14 [JavaFX Application Thread] HelloApplication:30 - Create injector took 1246
+[INFO ] 10-08-2024 14:28:14 [JavaFX Application Thread] JavaNetHttpClient:290 - Refreshing token
+[INFO ] 10-08-2024 14:28:16 [JavaFX Application Thread] HomeController:111 - Login as  with role User
+[INFO ] 10-08-2024 15:25:57 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 15:25:57 [main] HelloApplication:65 - Start application
+[INFO ] 10-08-2024 15:25:58 [JavaFX Application Thread] HelloApplication:30 - Create injector took 904
+[INFO ] 10-08-2024 15:25:59 [JavaFX Application Thread] HomeController:106 - Login as  with role User
+[ERROR] 10-08-2024 15:26:09 [JavaFX Application Thread] PersistenceStorageService:162 - Failed to read note areaNo content to map due to end-of-input
+ at [Source: (File); line: 1, column: 0]
+[INFO ] 10-08-2024 15:27:50 [Thread-6] LoginService:22 - Login with account: test
+[INFO ] 10-08-2024 15:27:51 [JavaFX Application Thread] HomeController:106 - Login as test with role User
+[INFO ] 10-08-2024 15:27:58 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 15:27:58 [main] HelloApplication:65 - Start application
+[INFO ] 10-08-2024 15:28:00 [JavaFX Application Thread] HelloApplication:30 - Create injector took 872
+[INFO ] 10-08-2024 15:28:01 [JavaFX Application Thread] HomeController:106 - Login as  with role User
+[INFO ] 10-08-2024 15:28:12 [Thread-5] LoginService:22 - Login with account: test
+[INFO ] 10-08-2024 15:28:12 [JavaFX Application Thread] HomeController:106 - Login as test with role User
+[ERROR] 10-08-2024 15:28:32 [Thread-7] JavaNetHttpClient:237 - Error when sending request to serverGET org.codehaus.httpcache4j.uri.URIBuilder@374a2737 eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImp3ayI6eyJrdHkiOiJFQyIsInVzZSI6InNpZyIsImNydiI6IlAtMjU2Iiwia2lkIjoiOWEwNGFkMDktOThiMC00ZTEyLWIwZDUtZjc2Y2Y0NzBkOWQyIiwieCI6InBhUzVLejlzSGd0UHBYZTIwRmNhcWkxWnU2a2toenZWazBGTWYxczNyOUUiLCJ5IjoibFZpYnF5bFQwNEpvM2pzLUI0OG5sUEhua3U0N2NvbGFhNnVLUk9NUHlKdyIsImV4cCI6MTcyMzM2NDg5MiwiYWxnIjoiRVMyNTYiLCJpYXQiOjE3MjMyNzg0OTJ9fQ.eyJzdWIiOiJ0ZXN0IiwiYXVkIjoiYXBwX25vaV90aGF0IiwiaXNzIjoiYXBwX25vaV90aGF0X2JhY2tlbmQiLCJyZWZyZXNoX3Rva2VuX2lkIjoiNzhmZDUzMjUtNDk5Ni00NjM3LWJlZmMtM2YyOTI4NWY2YjJjIiwiZXhwIjoxNzIzMzY0ODkyLCJ0b2tlbl90eXBlIjoiQUNDRVNTX1RPS0VOIiwiaWF0IjoxNzIzMjc4NDkyLCJqdGkiOiJmZDZlNDQ1Yi1hYTM4LTRlMGQtODQxNC1iNmNiMWY2MTJmMjUifQ.tkpbX3WFWlWJZpGwo89SMqa8orQXPJam8qLqbo9G6yPhmFFeBkXecD_O65COk92DCQ0brhQ45NkW0geF-7Ug5g null
+[INFO ] 10-08-2024 15:29:43 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 15:29:43 [main] HelloApplication:65 - Start application
+[INFO ] 10-08-2024 15:29:44 [JavaFX Application Thread] HelloApplication:30 - Create injector took 982
+[INFO ] 10-08-2024 15:30:44 [JavaFX Application Thread] HomeController:106 - Login as  with role User

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.huy.appnoithat.DataModel.MultipartForm;
 import com.huy.appnoithat.DataModel.SavedFileDTO;
 import com.huy.appnoithat.DataModel.WebClient.Response;
-import com.huy.appnoithat.Service.WebClient.ApacheHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import lombok.RequiredArgsConstructor;
 import org.codehaus.httpcache4j.uri.URIBuilder;
@@ -35,10 +34,6 @@ public class FileStorageRestService {
                 .addPath("update-nt-file", fileId).toURI();
     }
     private final WebClientService webClientService;
-
-    public FileStorageRestService() {
-        webClientService = ApacheHttpClient.getInstance();
-    }
 
     public void updateNtFile(InputStream file, String fileName, int fileId) {
         URI uri = Path.UPDATE_NT_FILE.apply(String.valueOf(fileId));

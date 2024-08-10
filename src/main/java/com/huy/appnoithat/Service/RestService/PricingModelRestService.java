@@ -2,7 +2,6 @@ package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.DataModel.PricingModelDTO;
-import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -16,10 +15,6 @@ public class PricingModelRestService {
     final static Logger LOGGER = LogManager.getLogger(PricingModelRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/pricingModel";
-
-    public PricingModelRestService() {
-        this.webClientService = JavaNetHttpClient.getInstance();
-    }
 
     public PricingModelDTO getPricingModel() {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT);

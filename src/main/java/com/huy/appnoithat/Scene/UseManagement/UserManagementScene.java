@@ -22,20 +22,6 @@ public class UserManagementScene implements GenericScene {
         this.controller = controller;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH));
-            controller = new UsersManagementController();
-            fxmlLoader.setController(controller);
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        scene = new Scene(root);
-        addCssToScence();
-    }
-
-    public UserManagementScene() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH));
-            controller = new UsersManagementController();
             fxmlLoader.setController(controller);
             root = fxmlLoader.load();
         } catch (IOException e) {

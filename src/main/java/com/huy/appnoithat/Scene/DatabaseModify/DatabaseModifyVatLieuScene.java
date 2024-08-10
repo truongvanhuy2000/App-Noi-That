@@ -31,22 +31,6 @@ public class DatabaseModifyVatLieuScene implements GenericScene {
         addCssToScence();
     }
 
-    public DatabaseModifyVatLieuScene() {
-        String viewPath = "view/DatabaseModifyVatLieuLayout.fxml";
-        try {
-            fxmlLoader = new FXMLLoader(DatabaseModifyVatLieuScene.class.getResource(viewPath));
-            if (controller == null) {
-                controller = new DatabaseModifyVatLieuController();
-            }
-            fxmlLoader.setController(controller);
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        scene = new Scene(root);
-        addCssToScence();
-    }
-
     public void setRoot(Parent root) {
         this.root = root;
         scene.setRoot(this.root);

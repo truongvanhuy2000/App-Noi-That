@@ -10,14 +10,6 @@ public class RegisterService {
     final static Logger LOGGER = LogManager.getLogger(RegisterService.class);
     private final AccountRestService accountRestService;
 
-    /**
-     * Initializes a new instance of the RegisterService class.
-     * Initializes the WebClientService, ObjectMapper, and UserSessionService.
-     */
-    public RegisterService() {
-        accountRestService = new AccountRestService();
-    }
-
     public RegisterService(AccountRestService accountRestService) {
         this.accountRestService = accountRestService;
     }

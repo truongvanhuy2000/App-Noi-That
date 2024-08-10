@@ -32,21 +32,6 @@ public class RegisterScene implements GenericScene {
         addCssToScence();
     }
 
-    public RegisterScene() {
-        try {
-            fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH));
-            if (registerController == null) {
-                registerController = new RegisterController();
-            }
-            fxmlLoader.setController(registerController);
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        scene = new Scene(root);
-        addCssToScence();
-    }
-
     public void setRoot(Parent root) {
         this.root = root;
         scene.setRoot(this.root);

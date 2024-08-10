@@ -13,11 +13,6 @@ public class DatabaseModifyPhongCachService {
     private final PhongCachRestService phongCachRestService;
     private final BangNoiThatRestService bangNoiThatRestService;
 
-    public DatabaseModifyPhongCachService() {
-        phongCachRestService = new PhongCachRestService();
-        bangNoiThatRestService = new BangNoiThatRestService();
-    }
-
     public DatabaseModifyPhongCachService(PhongCachRestService phongCachRestService,
                                           BangNoiThatRestService bangNoiThatRestService) {
         this.phongCachRestService = phongCachRestService;

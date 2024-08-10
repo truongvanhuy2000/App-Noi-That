@@ -31,19 +31,6 @@ public class LuaChonNoiThatScene implements GenericScene {
         addCssToScence();
     }
 
-    public LuaChonNoiThatScene() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(LuaChonNoiThatScene.class.getResource(VIEW_PATH));
-            luaChonNoiThatController = new LuaChonNoiThatController();
-            fxmlLoader.setController(luaChonNoiThatController);
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        scene = new Scene(root);
-        addCssToScence();
-    }
-
     public void setRoot(Parent root) {
         this.root = root;
         scene.setRoot(this.root);

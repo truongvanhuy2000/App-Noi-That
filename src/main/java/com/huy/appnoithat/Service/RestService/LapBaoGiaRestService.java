@@ -2,7 +2,6 @@ package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
-import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -19,9 +18,6 @@ public class LapBaoGiaRestService {
     final static Logger LOGGER = LogManager.getLogger(LapBaoGiaRestService.class);
     private static final String BASE_ENDPOINT = "/api/lapBaoGiaInfo";
     private final WebClientService webClientService;
-    public LapBaoGiaRestService() {
-        webClientService = JavaNetHttpClient.getInstance();
-    }
 
     public ThongTinCongTy getThongTinCongTy() {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("thongTinCongTy");

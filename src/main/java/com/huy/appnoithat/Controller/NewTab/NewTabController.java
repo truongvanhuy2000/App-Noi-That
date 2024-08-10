@@ -6,8 +6,8 @@ import com.huy.appnoithat.Controller.NewTab.Operation.ContentOperation;
 import com.huy.appnoithat.Controller.NewTab.Operation.TabOperation;
 import com.huy.appnoithat.DataModel.Enums.Action;
 import com.huy.appnoithat.DataModel.Enums.FileType;
+import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
-import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
 import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -31,13 +31,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
+
 @Data
 public class NewTabController implements Initializable {
     final static Logger LOGGER = LogManager.getLogger(NewTabController.class);
     private final StorageService persistenceStorageService;
     private final NoiThatFileService noiThatFileService;
+    private final LuaChonNoiThatService luaChonNoiThatService;
     private Stage currentStage;
-    private final List<TabContent> currentlyOpenTab = new ArrayList<>();;
+    private final List<TabContent> currentlyOpenTab = new ArrayList<>();
+    ;
     @FXML
     private MenuItem MenuItemExportPDF, MenuItemExportXLS, MenuItemSave, MenuItemSaveAs,
             MenuItemSaveCompanyInfo, MenuItemSaveNoteArea, MenuItemExportMultipleXLS;
@@ -53,14 +56,15 @@ public class NewTabController implements Initializable {
     private String currentDirectory;
     private TabOperation tabOperation;
     private ContentOperation contentOperation;
-    public NewTabController() {
-        persistenceStorageService = new PersistenceStorageService();
-        noiThatFileService = new NoiThatFileService();
-    }
 
-    public NewTabController(StorageService persistenceStorageService, NoiThatFileService noiThatFileService) {
+    public NewTabController(
+            StorageService persistenceStorageService,
+            NoiThatFileService noiThatFileService,
+            LuaChonNoiThatService luaChonNoiThatService
+    ) {
         this.persistenceStorageService = persistenceStorageService;
         this.noiThatFileService = noiThatFileService;
+        this.luaChonNoiThatService = luaChonNoiThatService;
     }
 
     @FXML
@@ -68,20 +72,15 @@ public class NewTabController implements Initializable {
         Object source = event.getSource();
         if (source == MenuItemExportPDF) {
             contentOperation.exportFile(FileType.PDF);
-        }
-        else if (source == MenuItemExportXLS) {
+        } else if (source == MenuItemExportXLS) {
             contentOperation.exportFile(FileType.EXCEL);
-        }
-        else if (source == MenuItemExportMultipleXLS) {
+        } else if (source == MenuItemExportMultipleXLS) {
             contentOperation.exportMultipleExcel();
-        }
-        else if (source == MenuItemSave) {
+        } else if (source == MenuItemSave) {
             contentOperation.save();
-        }
-        else if (source == MenuItemSaveAs) {
+        } else if (source == MenuItemSaveAs) {
             contentOperation.saveAs();
-        }
-        else if (source == AutoSave) {
+        } else if (source == AutoSave) {
             if (AutoSave.isSelected()) {
                 LOGGER.info("Auto save is enabled");
                 contentOperation.startAutoSaveAction();
@@ -89,11 +88,9 @@ public class NewTabController implements Initializable {
                 LOGGER.info("Auto save is disabled");
                 contentOperation.stopAutoSaveAction();
             }
-        }
-        else if (source == MenuItemSaveCompanyInfo) {
+        } else if (source == MenuItemSaveCompanyInfo) {
             contentOperation.saveThongTinCongTy();
-        }
-        else if (source == MenuItemSaveNoteArea) {
+        } else if (source == MenuItemSaveNoteArea) {
             contentOperation.saveNoteArea();
         }
     }
@@ -128,8 +125,7 @@ public class NewTabController implements Initializable {
         autoSaveTimer = new Timeline(new KeyFrame(Duration.minutes(10), event -> {
             if (currentState == State.OPEN_FROM_EXISTING_FILE && currentDirectory != null) {
                 contentOperation.save();
-            }
-            else if (currentState == State.NEW_FILE) {
+            } else if (currentState == State.NEW_FILE) {
                 contentOperation.backup();
             }
         }));
@@ -138,8 +134,7 @@ public class NewTabController implements Initializable {
 
     /**
      * @param change
-     * @param newTabButton
-     * This method will handle the situation when user trying to move the add new tab button because it a tab :))
+     * @param newTabButton This method will handle the situation when user trying to move the add new tab button because it a tab :))
      */
     private void handleMovingNewTabButton(ListChangeListener.Change<? extends Tab> change, Tab newTabButton) {
         {
@@ -159,6 +154,7 @@ public class NewTabController implements Initializable {
         AutoSave.setSelected(true);
         tabOperation.createNewTab(tabState, importDirectory);
     }
+
     private Tab newTabButton() {
         Tab addTab = new Tab();
         Button newTabButton = new Button("+");
@@ -173,6 +169,7 @@ public class NewTabController implements Initializable {
 
         return addTab;
     }
+
     public TabContent getSelectedTabContent() {
         Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
         if (selectedTab == null) {

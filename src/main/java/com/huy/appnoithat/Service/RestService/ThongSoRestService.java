@@ -1,7 +1,6 @@
 package com.huy.appnoithat.Service.RestService;
 
 import com.huy.appnoithat.DataModel.Entity.ThongSo;
-import com.huy.appnoithat.Service.WebClient.JavaNetHttpClient;
 import com.huy.appnoithat.Service.WebClient.WebClientService;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -17,13 +16,6 @@ public class ThongSoRestService {
     final static Logger LOGGER = LogManager.getLogger(VatLieuRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/thongso";
-
-    /**
-     * Constructor for ThongSoRestService.
-     */
-    public ThongSoRestService() {
-        webClientService = JavaNetHttpClient.getInstance();
-    }
 
     /**
      * Saves a new ThongSo object.

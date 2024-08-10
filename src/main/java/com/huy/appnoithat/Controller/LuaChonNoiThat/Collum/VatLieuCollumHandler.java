@@ -30,9 +30,10 @@ public class VatLieuCollumHandler {
      *
      * @param vatLieuList The list of VatLieu items to populate the VatLieu column options.
      */
-    public VatLieuCollumHandler(ObservableList<String> vatLieuList) {
+
+    public VatLieuCollumHandler(ObservableList<String> vatLieuList, LuaChonNoiThatService luaChonNoiThatService) {
         this.vatLieuList = vatLieuList;
-        luaChonNoiThatService = new LuaChonNoiThatService();
+        this.luaChonNoiThatService = luaChonNoiThatService;
     }
 
     /**

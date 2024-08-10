@@ -1,8 +1,6 @@
 package com.huy.appnoithat.Service.LuaChonNoiThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.DataModel.RecentFile;
 import com.huy.appnoithat.DataModel.SaveFile.Metadata;
@@ -20,15 +18,8 @@ public class NoiThatFileService {
     final static Logger LOGGER = LogManager.getLogger(NoiThatFileService.class);
     private ObjectData objectData;
     private final ObjectMapper mapper;
-    FileNoiThatExplorerService fileNoiThatExplorerService;
+    private final FileNoiThatExplorerService fileNoiThatExplorerService;
     private OutputStream outputFile;
-
-    public NoiThatFileService() {
-        this.mapper = JsonMapper.builder()
-                .addModule(new JavaTimeModule())
-                .build();
-        fileNoiThatExplorerService = FileNoiThatExplorerService.getInstance();
-    }
 
     public NoiThatFileService(ObjectMapper mapper, FileNoiThatExplorerService fileNoiThatExplorerService) {
         this.mapper = mapper;

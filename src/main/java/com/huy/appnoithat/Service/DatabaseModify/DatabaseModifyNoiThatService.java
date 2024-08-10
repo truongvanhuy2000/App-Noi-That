@@ -11,10 +11,6 @@ public class DatabaseModifyNoiThatService {
     final static Logger LOGGER = LogManager.getLogger(DatabaseModifyNoiThatService.class);
     private final NoiThatRestService noiThatRestService;
 
-    public DatabaseModifyNoiThatService() {
-        noiThatRestService = new NoiThatRestService();
-    }
-
     public DatabaseModifyNoiThatService(NoiThatRestService noiThatRestService) {
         this.noiThatRestService = noiThatRestService;
     }

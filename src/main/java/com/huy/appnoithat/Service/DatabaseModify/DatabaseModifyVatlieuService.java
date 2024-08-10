@@ -11,10 +11,6 @@ public class DatabaseModifyVatlieuService {
     final Logger LOGGER = LogManager.getLogger(DatabaseModifyVatlieuService.class);
     private final VatLieuRestService vatLieuRestService;
 
-    public DatabaseModifyVatlieuService() {
-        vatLieuRestService = new VatLieuRestService();
-    }
-
     public DatabaseModifyVatlieuService(VatLieuRestService vatLieuRestService) {
         this.vatLieuRestService = vatLieuRestService;
     }

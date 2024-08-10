@@ -16,6 +16,7 @@ import com.huy.appnoithat.Controller.UserManagement.UsersManagementController;
 import com.huy.appnoithat.Service.DatabaseModify.*;
 import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;
 import com.huy.appnoithat.Service.Login.LoginService;
+import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
 import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
 import com.huy.appnoithat.Service.Register.RegisterService;
@@ -35,8 +36,9 @@ public class ControllerModule extends AbstractModule {
     }
 
     @Provides
-    UsersManagementController usersManagementController(UsersManagementService usersManagementService) {
-        return new UsersManagementController(usersManagementService);
+    UsersManagementController usersManagementController(UsersManagementService usersManagementService,
+                                                        RegisterService registerService) {
+        return new UsersManagementController(usersManagementService, registerService);
     }
 
     private static class DatabaseModifyModule extends AbstractModule {
@@ -82,13 +84,16 @@ public class ControllerModule extends AbstractModule {
         }
 
         @Provides
-        LuaChonNoiThatController luaChonNoiThatController(StorageService persistenceStorageService) {
-            return new LuaChonNoiThatController(persistenceStorageService);
+        LuaChonNoiThatController luaChonNoiThatController(StorageService persistenceStorageService,
+                                                          LuaChonNoiThatService luaChonNoiThatService) {
+            return new LuaChonNoiThatController(persistenceStorageService, luaChonNoiThatService);
         }
 
         @Provides
-        NewTabController newTabController(StorageService persistenceStorageService, NoiThatFileService noiThatFileService) {
-            return new NewTabController(persistenceStorageService, noiThatFileService);
+        NewTabController newTabController(StorageService persistenceStorageService,
+                                          NoiThatFileService noiThatFileService,
+                                          LuaChonNoiThatService luaChonNoiThatService) {
+            return new NewTabController(persistenceStorageService, noiThatFileService, luaChonNoiThatService);
         }
     }
 

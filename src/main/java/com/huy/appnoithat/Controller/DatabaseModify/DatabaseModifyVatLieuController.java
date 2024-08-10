@@ -7,6 +7,7 @@ import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.DataModel.Entity.ThongSo;
 import com.huy.appnoithat.DataModel.Entity.VatLieu;
 import com.huy.appnoithat.DataModel.Enums.Action;
+import com.huy.appnoithat.Module.DIContainer;
 import com.huy.appnoithat.Scene.DatabaseModify.ChangeProductSpecificationScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
 import com.huy.appnoithat.Service.DatabaseModify.DatabaseModifyThongSoService;
@@ -61,15 +62,6 @@ public class DatabaseModifyVatLieuController implements Initializable {
     private final ObservableList<VatLieu> vatLieuObservableList = FXCollections.observableArrayList();
     @Setter
     private Parent root;
-
-    /**
-     * Constructs a new DatabaseModifyVatLieuController instance.
-     * Initializes the necessary services and observable lists.
-     */
-    public DatabaseModifyVatLieuController() {
-        databaseModifyThongSoService = new DatabaseModifyThongSoService();
-        databaseModifyVatlieuService = new DatabaseModifyVatlieuService();
-    }
 
     public DatabaseModifyVatLieuController(DatabaseModifyVatlieuService databaseModifyVatlieuService,
                                            DatabaseModifyThongSoService databaseModifyThongSoService) {
@@ -154,7 +146,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
             return;
         }
         int selectID = listView.getSelectionModel().getSelectedItem().getId();
-        ChangeProductSpecificationScene changeProductSpecificationScene = new ChangeProductSpecificationScene();
+        ChangeProductSpecificationScene changeProductSpecificationScene = DIContainer.get();
         VBox vBox = (VBox) ((AnchorPane)changeProductSpecificationScene.getRoot()).getChildren().get(0);
         ((AnchorPane)this.root).getChildren().clear();
         ((AnchorPane)this.root).getChildren().add(vBox);
@@ -175,7 +167,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
         Object source = event.getSource();
         stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == backButton) {
-            DatabaseModifyHangMucScene databaseModifyHangMucScene = new DatabaseModifyHangMucScene();
+            DatabaseModifyHangMucScene databaseModifyHangMucScene = DIContainer.get();
             HBox hBox = (HBox) ((AnchorPane)databaseModifyHangMucScene.getRoot()).getChildren().get(0);
             ((AnchorPane)this.root).getChildren().clear();
             ((AnchorPane)this.root).getChildren().add(hBox);

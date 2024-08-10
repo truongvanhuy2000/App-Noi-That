@@ -7,15 +7,6 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import com.huy.appnoithat.Controller.GlobalSettingController;
-import com.huy.appnoithat.Controller.UserDetailController;
-import com.huy.appnoithat.Scene.GlobalSettingScene;
-import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
-import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
-import com.huy.appnoithat.Service.RestService.AccountRestService;
-import com.huy.appnoithat.Service.RestService.LapBaoGiaRestService;
-import com.huy.appnoithat.Service.RestService.PricingModelRestService;
-import com.huy.appnoithat.Service.UserDetail.UserDetailService;
 
 
 public class AppNoiThatModule extends AbstractModule {

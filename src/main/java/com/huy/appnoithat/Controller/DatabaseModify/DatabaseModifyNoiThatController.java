@@ -8,6 +8,7 @@ import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.DataModel.Entity.HangMuc;
 import com.huy.appnoithat.DataModel.Entity.NoiThat;
 import com.huy.appnoithat.DataModel.Enums.Action;
+import com.huy.appnoithat.Module.DIContainer;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyHangMucScene;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Service.DatabaseModify.DatabaseModifyHangMucService;
@@ -50,15 +51,6 @@ public class DatabaseModifyNoiThatController implements Initializable {
     private final ObservableList<NoiThat> noiThatObservableList = FXCollections.observableArrayList();
     @Setter
     private Parent root;
-
-    /**
-     * Constructor for DatabaseModifyNoiThatController class.
-     * Initializes the necessary services and observable lists.
-     */
-    public DatabaseModifyNoiThatController() {
-        databaseModifyNoiThatService = new DatabaseModifyNoiThatService();
-        databaseModifyHangMucService = new DatabaseModifyHangMucService();
-    }
 
     public DatabaseModifyNoiThatController(DatabaseModifyHangMucService databaseModifyHangMucService,
                                            DatabaseModifyNoiThatService databaseModifyNoiThatService) {
@@ -143,7 +135,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
             return;
         }
         int selectID = listView.getSelectionModel().getSelectedItem().getId();
-        DatabaseModifyHangMucScene databaseModifyHangMucScene = new DatabaseModifyHangMucScene();
+        DatabaseModifyHangMucScene databaseModifyHangMucScene = DIContainer.get();
         HBox hBox = (HBox) ((AnchorPane)databaseModifyHangMucScene.getRoot()).getChildren().get(0);
 
         ((AnchorPane)this.root).getChildren().clear();
@@ -163,7 +155,7 @@ public class DatabaseModifyNoiThatController implements Initializable {
     void sceneSwitcher(ActionEvent event) {
         Object source = event.getSource();
         if (source == backButton) {
-            DatabaseModifyPhongCachScene databaseModifyPhongCachScene = new DatabaseModifyPhongCachScene();
+            DatabaseModifyPhongCachScene databaseModifyPhongCachScene = DIContainer.get();
             HBox hBox = (HBox) ((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren().get(0);
             ((AnchorPane)this.root).getChildren().clear();
             ((AnchorPane)this.root).getChildren().add(hBox);

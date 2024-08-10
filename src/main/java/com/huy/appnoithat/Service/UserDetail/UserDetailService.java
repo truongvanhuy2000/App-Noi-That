@@ -12,9 +12,6 @@ public class UserDetailService {
         this.accountRestService = accountRestService;
     }
 
-    public UserDetailService() {
-        this.accountRestService = new AccountRestService();
-    }
     public Account getAccountInformation() {
         return accountRestService.getAccountInformation();
     }

@@ -12,7 +12,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupTruongThongTin;
 import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.DataModel.Enums.Action;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
-import com.huy.appnoithat.Service.PersistenceStorage.PersistenceStorageService;
+import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,13 +40,10 @@ import java.util.ResourceBundle;
 @Getter
 public class LuaChonNoiThatController implements Initializable {
     final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatController.class);
-    // Thong Tin ve cong ty
     @FXML
     private TextField TenCongTy, VanPhong, DiaChiXuong, DienThoaiCongTy, Email;
-    // Thong tin ve khach hang
     @FXML
     private TextField TenKhachHang, DienThoaiKhachHang, DiaChiKhachHang, NgayLapBaoGia, SanPham;
-    // Bang noi that
     @FXML
     private TreeTableView<BangNoiThat> TableNoiThat;
     @FXML
@@ -70,13 +67,11 @@ public class LuaChonNoiThatController implements Initializable {
     private ByteArrayOutputStream imageStream = new ByteArrayOutputStream();
     private final ObservableList<Integer> percentageList = FXCollections.observableArrayList(10, 30, 50);
     private final StorageService persistenceStorageService;
+    private final LuaChonNoiThatService luaChonNoiThatService;
 
-    public LuaChonNoiThatController() {
-        persistenceStorageService = new PersistenceStorageService();
-    }
-
-    public LuaChonNoiThatController(StorageService persistenceStorageService) {
+    public LuaChonNoiThatController(StorageService persistenceStorageService, LuaChonNoiThatService luaChonNoiThatService) {
         this.persistenceStorageService = persistenceStorageService;
+        this.luaChonNoiThatService = luaChonNoiThatService;
     }
 
     @FXML
