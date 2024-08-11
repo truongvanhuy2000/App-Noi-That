@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Exception;
 
-import com.huy.appnoithat.common.PopupUtils;
+import com.huy.appnoithat.Common.PopupUtils;
 import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;

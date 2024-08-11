@@ -1,4 +1,4 @@
-package com.huy.appnoithat.common;
+package com.huy.appnoithat.Common;
 
 import com.huy.appnoithat.DataModel.Enums.FileType;
 import javafx.application.Platform;

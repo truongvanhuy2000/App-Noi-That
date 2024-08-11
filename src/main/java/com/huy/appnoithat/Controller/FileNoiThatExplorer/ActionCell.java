@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.FileNoiThatExplorer;
 
-import com.huy.appnoithat.common.PopupUtils;
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.DataModel.RecentFile;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;

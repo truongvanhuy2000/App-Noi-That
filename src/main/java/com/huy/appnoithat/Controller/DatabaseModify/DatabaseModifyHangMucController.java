@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller.DatabaseModify;
 
-import com.huy.appnoithat.common.KeyboardUtils;
-import com.huy.appnoithat.common.PopupUtils;
+import com.huy.appnoithat.Common.KeyboardUtils;
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.DatabaseModify.Cell.CustomEditingListCell;
 import com.huy.appnoithat.Controller.DatabaseModify.Common.DBModifyUtils;
 import com.huy.appnoithat.DataModel.Entity.HangMuc;

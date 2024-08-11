@@ -1,4 +1,4 @@
-package com.huy.appnoithat.configuration;
+package com.huy.appnoithat.Configuration;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

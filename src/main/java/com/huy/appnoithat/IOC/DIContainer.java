@@ -41,6 +41,6 @@ public final class DIContainer {
         if (injector != null) {
             throw new RuntimeException("Injector can only be created one time");
         }
-        injector = Guice.createInjector(Stage.PRODUCTION, new AppNoiThatModule());
+        injector = Guice.createInjector(Stage.DEVELOPMENT, new AppNoiThatModule());
     }
 }

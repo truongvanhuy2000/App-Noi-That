@@ -1,9 +1,9 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.common.FXUtils;
-import com.huy.appnoithat.common.KeyboardUtils;
-import com.huy.appnoithat.common.PopupUtils;
-import com.huy.appnoithat.common.Utils;
+import com.huy.appnoithat.Common.FXUtils;
+import com.huy.appnoithat.Common.KeyboardUtils;
+import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.DataModel.Enums.Action;
 import com.huy.appnoithat.DataModel.Token;
 import com.huy.appnoithat.IOC.DIContainer;

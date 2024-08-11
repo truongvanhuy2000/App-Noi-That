@@ -15,7 +15,6 @@ public class QRScene implements GenericScene {
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/UserManagementLayout.css";
     private Scene scene;
     private Parent root;
-    private static final QRScene single_instance = null;
     private final FXMLLoader fxmlLoader;
 
     public QRScene() {

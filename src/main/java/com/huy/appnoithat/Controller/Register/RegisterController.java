@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller.Register;
 
-import com.huy.appnoithat.common.PopupUtils;
-import com.huy.appnoithat.common.Utils;
+import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.DataModel.Entity.Account;
 import com.huy.appnoithat.DataModel.Entity.AccountInformation;
 import com.huy.appnoithat.DataModel.PricingModelDTO;

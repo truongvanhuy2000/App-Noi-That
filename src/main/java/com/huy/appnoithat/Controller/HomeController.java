@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.common.PopupUtils;
-import com.huy.appnoithat.common.Utils;
+import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.IOC.DIContainer;
 import com.huy.appnoithat.Scene.DatabaseModify.DatabaseModifyPhongCachScene;
 import com.huy.appnoithat.Scene.GlobalSettingScene;

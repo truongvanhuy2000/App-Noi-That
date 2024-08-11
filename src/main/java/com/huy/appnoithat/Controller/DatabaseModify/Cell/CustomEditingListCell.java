@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.DatabaseModify.Cell;
 
-import com.huy.appnoithat.common.KeyboardUtils;
+import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.DataModel.Entity.CommonItemInterface;
 import com.huy.appnoithat.DataModel.Enums.Action;
 import javafx.scene.control.Label;

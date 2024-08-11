@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller;
 
-import com.huy.appnoithat.common.PopupUtils;
-import com.huy.appnoithat.common.Utils;
+import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.DataModel.PricingModelDTO;
 import com.huy.appnoithat.Service.RestService.PricingModelRestService;
 import com.huy.appnoithat.Service.WebClient.ApacheHttpClient;

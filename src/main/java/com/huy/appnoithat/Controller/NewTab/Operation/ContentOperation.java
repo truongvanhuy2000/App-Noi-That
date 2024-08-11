@@ -1,8 +1,8 @@
 package com.huy.appnoithat.Controller.NewTab.Operation;
 
-import com.huy.appnoithat.common.FXUtils;
-import com.huy.appnoithat.common.PopupUtils;
-import com.huy.appnoithat.configuration.Config;
+import com.huy.appnoithat.Common.FXUtils;
+import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
 import com.huy.appnoithat.Controller.NewTab.NewTabController;
 import com.huy.appnoithat.Controller.NewTab.TabContent;
@@ -78,18 +78,22 @@ public class ContentOperation {
             saveToExistingFile(newTabController.getCurrentDirectory(), true);
         }
     }
+
     public void backup() {
         String filename = "backup-" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS").format(new Date()) + ".nt";
         String tempDirectory = Paths.get(Config.FILE_EXPORT.TEMP_NT_FILE_DIRECTORY, filename).toString();
         saveToExistingFile(tempDirectory, false);
     }
+
     public void startAutoSaveAction() {
         newTabController.getAutoSaveTimer().setCycleCount(Timeline.INDEFINITE);
         newTabController.getAutoSaveTimer().play();
     }
+
     public void stopAutoSaveAction() {
         newTabController.getAutoSaveTimer().stop();
     }
+
     public String saveAs() {
         File selectedFile;
         selectedFile = PopupUtils.fileSaver(FileType.NT);
@@ -100,21 +104,23 @@ public class ContentOperation {
         PopupUtils.throwSuccessNotification("Lưu thành công");
         return selectedFile.getAbsolutePath();
     }
+
     private void saveToExistingFile(String fileDirectory, boolean saveToRecentFile) {
         if (fileDirectory == null) {
             return;
         }
         noiThatFileService.export(exportData(), new File(fileDirectory), saveToRecentFile);
     }
+
     private List<TabData> exportData() {
         List<TabData> tabDataList = new ArrayList<>();
         List<TabContent> tabContentList = resortTab(newTabController.getCurrentlyOpenTab(), newTabController.getTabPane());
-        for(TabContent tabContent : tabContentList) {
+        for (TabContent tabContent : tabContentList) {
             DataPackage dataPackage = tabContent.getLuaChonNoiThatController().exportData();
             if (dataPackage == null) {
                 continue;
             }
-            String tabName =  tabContent.getTab().getText();
+            String tabName = tabContent.getTab().getText();
             tabDataList.add(new TabData(dataPackage, tabName));
         }
         return tabDataList;
@@ -122,8 +128,7 @@ public class ContentOperation {
 
     /**
      * @param tabContentList
-     * @param tabPane
-     * Sorting tabContent based on its current position on the tabPane
+     * @param tabPane        Sorting tabContent based on its current position on the tabPane
      */
     private List<TabContent> resortTab(List<TabContent> tabContentList, TabPane tabPane) {
         List<Tab> tabList = tabPane.getTabs();
@@ -150,6 +155,7 @@ public class ContentOperation {
             hideLoading(result, selectedFile);
         }).start();
     }
+
     public void exportMultipleExcel() {
         List<TabData> exportDataList = exportData();
         File selectedFile = PopupUtils.fileSaver(FileType.EXCEL);
@@ -164,20 +170,22 @@ public class ContentOperation {
             hideLoading(result, selectedFile);
         }).start();
     }
+
     private void showLoading() {
         FXUtils.showLoading(loadingPane, "Đang xuất file...");
     }
+
     private void hideLoading(Boolean result, File outputFile) {
         Platform.runLater(() -> {
             FXUtils.hideLoading(loadingPane);
             showResult(result, outputFile);
         });
     }
+
     private void showResult(Boolean result, File outputFile) {
         if (!result) {
             PopupUtils.throwErrorNotification("Xuất file thất bại");
-        }
-        else {
+        } else {
             PopupUtils.throwSuccessNotification("Xuất file thành công. Nhấn để mở", () -> {
                 if (!outputFile.exists()) {
                     return;

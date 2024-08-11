@@ -1,14 +1,13 @@
 package com.huy.appnoithat.Controller.FileNoiThatExplorer;
 
-import com.huy.appnoithat.common.PopupUtils;
-import com.huy.appnoithat.common.Utils;
+import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.NewTab.TabState;
 import com.huy.appnoithat.DataModel.RecentFile;
 import com.huy.appnoithat.IOC.DIContainer;
 import com.huy.appnoithat.Scene.LuaChonNoiThat.NewTabScene;
 import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;
-import com.huy.appnoithat.Work.OpenFileWork;
 import com.huy.appnoithat.Work.WorkFactory;
 import javafx.application.Platform;
 import javafx.beans.binding.DoubleBinding;
@@ -41,7 +40,6 @@ public class FileNoiThatExplorerController {
     private final FileNoiThatExplorerService fileNoiThatExplorerService;
     @Setter
     private Parent root;
-
     public FileNoiThatExplorerController(FileNoiThatExplorerService fileNoiThatExplorerService) {
         this.fileNoiThatExplorerService = fileNoiThatExplorerService;
     }
@@ -49,6 +47,7 @@ public class FileNoiThatExplorerController {
     /**
      * Handles the action when the new file button is clicked.
      * Opens a new Lua Chon Noi That tab with a blank state.
+     *
      * @param event The event triggered by the new file button.
      */
     @FXML
@@ -61,6 +60,7 @@ public class FileNoiThatExplorerController {
      * Handles the action when the open file button is clicked.
      * Opens a file dialog for the user to select a file to open.
      * Adds the selected file to the recent files list and opens it.
+     *
      * @param event The event triggered by the open file button.
      */
     @FXML
@@ -71,7 +71,6 @@ public class FileNoiThatExplorerController {
             openFile(recentFile);
         }
     }
-
 
     /**
      * Initializes the Recent Files tab by setting up the table columns and populating the table with recent files.
@@ -106,29 +105,22 @@ public class FileNoiThatExplorerController {
                 openFile(RecentTableView.getSelectionModel().getSelectedItem());
             }
         });
-        getWork();
+        startGetWork();
     }
+
     private void deleteFile(int index) {
         fileNoiThatExplorerService.removeRecentFile(RecentTableView.getItems().get(index));
     }
 
-    private void getWork() {
-        new Thread(() -> {
-            while (true) {
-                try {
-                    OpenFileWork openFileWork = WorkFactory.getWork();
-                    if (openFileWork != null) {
-                        Platform.runLater(() -> {
-                            LOGGER.info("Open work: " + openFileWork.getParam());
-                            openWith(openFileWork.getParam());
-                        });
-                    }
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+    private void startGetWork() {
+        WorkFactory.startGetWork((openFileWork) -> {
+            if (openFileWork != null) {
+                Platform.runLater(() -> {
+                    LOGGER.info("Open work: " + openFileWork.getParam());
+                    openWith(openFileWork.getParam());
+                });
             }
-        }).start();
+        });
     }
 
     /**
@@ -156,8 +148,8 @@ public class FileNoiThatExplorerController {
     /**
      * Opens a new Lua Chon Noi That tab with the specified tab state and directory.
      *
-     * @param tabState   The state of the tab (e.g., BLANK_TAB, IMPORT_TAB).
-     * @param directory  The directory associated with the tab.
+     * @param tabState  The state of the tab (e.g., BLANK_TAB, IMPORT_TAB).
+     * @param directory The directory associated with the tab.
      */
     private void openNewLuaChonNoiThatTab(TabState tabState, String directory) {
         NewTabScene newTabScene = DIContainer.get();
@@ -174,6 +166,7 @@ public class FileNoiThatExplorerController {
     private boolean isDirectoryExist(String directory) {
         return new File(directory).exists();
     }
+
     public void openWith(String path) {
         RecentFile recentFile = new RecentFile(path, System.currentTimeMillis());
         openFile(recentFile);

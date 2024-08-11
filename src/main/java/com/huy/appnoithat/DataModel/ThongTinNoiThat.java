@@ -1,7 +1,7 @@
 package com.huy.appnoithat.DataModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.huy.appnoithat.common.Utils;
+import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import lombok.AllArgsConstructor;
 import lombok.Data;

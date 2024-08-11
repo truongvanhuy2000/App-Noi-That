@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Scene;
 
-import com.huy.appnoithat.common.PopupUtils;
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.HelloApplication;
 import javafx.application.Platform;
 import javafx.scene.image.Image;

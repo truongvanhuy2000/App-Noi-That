@@ -607,3 +607,554 @@ java.lang.RuntimeException: null
 [INFO ] 10-08-2024 16:57:37 [main] MultipleInstanceHandler:33 - First instance
 [INFO ] 10-08-2024 16:57:37 [main] HelloApplication:62 - Start application
 [INFO ] 10-08-2024 16:57:39 [JavaFX Application Thread] HelloApplication:28 - Create injector took 1197
+[INFO ] 10-08-2024 17:08:26 [main] MultipleInstanceHandler:33 - First instance
+[INFO ] 10-08-2024 17:08:26 [main] HelloApplication:61 - Start application
+[INFO ] 10-08-2024 17:08:28 [JavaFX Application Thread] HelloApplication:27 - Create injector took 871
+[INFO ] 10-08-2024 17:08:29 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[ERROR] 10-08-2024 22:49:03 [main] HomeScene:30 - Error loading HomeScene: 
+/home/huy/Project/Java/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/HomeRemakeLayout.fxml:22
+
+[ERROR] 10-08-2024 22:50:01 [main] HomeScene:30 - Error loading HomeScene: 
+/home/huy/Project/Java/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/HomeRemakeLayout.fxml:22
+
+[ERROR] 10-08-2024 22:50:29 [main] HomeScene:30 - Error loading HomeScene: 
+/home/huy/Project/Java/App-noi-that/target/classes/com/huy/appnoithat/Scene/view/HomeRemakeLayout.fxml:22
+
+[INFO ] 10-08-2024 22:56:25 [main] MultipleInstanceHandler:38 - First instance
+[INFO ] 10-08-2024 22:56:26 [main] HelloApplication:58 - Start application
+[INFO ] 10-08-2024 22:56:26 [pool-2-thread-1] MultipleInstanceHandler:47 - job running
+[INFO ] 10-08-2024 22:56:28 [pool-2-thread-1] MultipleInstanceHandler:47 - job running
+[INFO ] 10-08-2024 22:56:28 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 10-08-2024 22:56:38 [pool-2-thread-1] MultipleInstanceHandler:63 - java.net.SocketTimeoutException: Accept timed out
+[INFO ] 10-08-2024 22:56:38 [pool-2-thread-2] MultipleInstanceHandler:47 - job running
+[INFO ] 10-08-2024 22:56:48 [pool-2-thread-2] MultipleInstanceHandler:63 - java.net.SocketTimeoutException: Accept timed out
+[INFO ] 10-08-2024 22:56:48 [pool-2-thread-1] MultipleInstanceHandler:47 - job running
+[INFO ] 10-08-2024 22:56:58 [pool-2-thread-1] MultipleInstanceHandler:63 - java.net.SocketTimeoutException: Accept timed out
+[INFO ] 10-08-2024 22:56:58 [pool-2-thread-1] MultipleInstanceHandler:47 - job running
+[INFO ] 10-08-2024 23:27:38 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 10-08-2024 23:27:38 [main] HelloApplication:59 - Start application
+[INFO ] 10-08-2024 23:27:47 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 10-08-2024 23:27:47 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:27:48 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:27:49 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:27:50 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:27:51 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:27:52 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:27:53 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:27:54 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:27:55 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:27:56 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:27:57 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:27:58 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:27:59 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:00 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:00 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:01 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:01 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:02 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:02 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:03 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:03 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:03 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:03 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:04 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:04 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:04 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:04 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:04 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:05 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:05 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:05 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:05 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:05 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:06 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:06 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:06 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:06 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:06 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:07 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:07 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:07 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:07 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:07 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:08 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:08 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:08 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:08 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:08 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:09 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:09 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:09 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:09 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:09 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:10 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:10 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:10 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:10 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:10 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:11 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:11 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:11 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:11 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:11 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:12 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:12 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:12 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:12 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:12 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:13 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:13 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:13 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:13 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:13 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:14 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:14 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:14 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:14 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:14 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:15 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:15 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:15 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:15 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:15 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:16 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:16 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:16 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:16 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:16 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:17 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:17 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:17 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:17 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:17 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:18 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:18 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:18 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:18 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:18 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:18 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:19 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:19 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:19 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:19 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:19 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:19 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:20 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:20 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:20 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:20 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:20 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:20 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:21 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:21 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:21 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:21 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:21 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:21 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:22 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:22 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:22 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:22 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:22 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:22 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:23 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:23 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:23 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:23 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:23 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:23 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:24 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:24 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:24 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:24 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:24 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:24 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:25 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:25 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:25 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:25 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:25 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:25 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:26 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:26 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:26 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:26 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:26 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:26 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:27 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:27 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:27 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:27 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:27 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:27 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:28 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:28 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:28 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:28 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:28 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:28 [Thread-10] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:28 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:29 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:29 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:29 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:29 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:29 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:29 [Thread-10] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:29 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:30 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:30 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:30 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:30 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:30 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:30 [Thread-10] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:30 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:31 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:31 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:31 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:31 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:31 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:31 [Thread-10] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:31 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:32 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:32 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:32 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:32 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:32 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:32 [Thread-10] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:32 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:33 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:33 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:33 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:33 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:33 [Thread-9] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:33 [Thread-10] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:33 [Thread-7] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:34 [Thread-6] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:34 [Thread-4] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:34 [Thread-8] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:28:34 [Thread-5] FileNoiThatExplorerController:119 - get work
+[INFO ] 10-08-2024 23:33:52 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 10-08-2024 23:33:52 [main] HelloApplication:59 - Start application
+[INFO ] 10-08-2024 23:49:14 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 10-08-2024 23:49:14 [main] HelloApplication:59 - Start application
+[INFO ] 10-08-2024 23:49:18 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 10-08-2024 23:49:20 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:22 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:24 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:26 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:28 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:30 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:32 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:34 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:36 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:38 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:40 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:42 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:44 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:45 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:46 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:47 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:48 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:49 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:50 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:51 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:52 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:53 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:54 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:55 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:56 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:57 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:58 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:59 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:49:59 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:50:00 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:50:01 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:50:01 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:50:02 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:50:03 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 10-08-2024 23:50:03 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:14:54 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 00:14:54 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 00:15:05 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 00:19:39 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 00:19:39 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 00:19:48 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 00:19:50 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:19:52 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:19:54 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:19:56 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:19:58 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:00 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:02 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:04 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:06 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:06 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:08 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:08 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:10 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:10 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:12 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:12 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:14 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:14 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:16 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:16 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:18 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:18 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:20 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:20 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:22 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:22 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:24 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:24 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:26 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:26 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:28 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:28 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:30 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:30 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:32 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:32 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:34 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:34 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:36 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:36 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:37 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:38 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:38 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:39 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:40 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:40 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:41 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:42 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:42 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:43 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:44 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:44 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:20:45 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:06 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 00:21:07 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 00:21:12 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 00:21:18 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:23 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:23 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:28 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:28 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:33 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:33 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:37 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:38 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:38 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:38 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:38 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:38 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:38 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:39 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:39 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:39 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:39 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:21:39 [JavaFX Application Thread] FileNoiThatExplorerController:126 - get work
+[INFO ] 11-08-2024 00:52:14 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 00:52:14 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 00:52:17 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 00:52:18 [main] GlobalExceptionHandler:15 - Exception in Application start method
+java.lang.RuntimeException: Exception in Application start method
+	at com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:901) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:196) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+Caused by: java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@4bf43099[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@251a3d4f[Wrapped task = com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController$$Lambda$661/0x00007f72a45157b0@4eb4cc7e]] rejected from java.util.concurrent.ScheduledThreadPoolExecutor@1ed80e2b[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0]
+	at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2065) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:833) ~[?:?]
+	at java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(ScheduledThreadPoolExecutor.java:340) ~[?:?]
+	at java.util.concurrent.ScheduledThreadPoolExecutor.scheduleAtFixedRate(ScheduledThreadPoolExecutor.java:632) ~[?:?]
+	at java.util.concurrent.Executors$DelegatedScheduledExecutorService.scheduleAtFixedRate(Executors.java:819) ~[?:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.startGetWork(FileNoiThatExplorerController.java:133) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.init(FileNoiThatExplorerController.java:114) ~[classes/:?]
+	at com.huy.appnoithat.Controller.HomeController.OnClickLuaChonNoiThat(HomeController.java:147) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8792) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.huy.appnoithat.Controller.HomeController.init(HomeController.java:114) ~[classes/:?]
+	at com.huy.appnoithat.HelloApplication.startUI(HelloApplication.java:36) ~[classes/:?]
+	at com.huy.appnoithat.HelloApplication.start(HelloApplication.java:28) ~[classes/:?]
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:484) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	... 1 more
+[INFO ] 11-08-2024 00:53:07 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 00:53:07 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 00:53:09 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 00:53:10 [main] GlobalExceptionHandler:15 - Exception in Application start method
+java.lang.RuntimeException: Exception in Application start method
+	at com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:901) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:196) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+Caused by: java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@1b329347[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@13ab0ef2[Wrapped task = com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController$$Lambda$661/0x00007fcb105115a8@81d1082]] rejected from java.util.concurrent.ScheduledThreadPoolExecutor@3edf0ac7[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0]
+	at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2065) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:833) ~[?:?]
+	at java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(ScheduledThreadPoolExecutor.java:340) ~[?:?]
+	at java.util.concurrent.ScheduledThreadPoolExecutor.scheduleAtFixedRate(ScheduledThreadPoolExecutor.java:632) ~[?:?]
+	at java.util.concurrent.Executors$DelegatedScheduledExecutorService.scheduleAtFixedRate(Executors.java:819) ~[?:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.startGetWork(FileNoiThatExplorerController.java:133) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.init(FileNoiThatExplorerController.java:114) ~[classes/:?]
+	at com.huy.appnoithat.Controller.HomeController.OnClickLuaChonNoiThat(HomeController.java:147) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8792) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.huy.appnoithat.Controller.HomeController.init(HomeController.java:114) ~[classes/:?]
+	at com.huy.appnoithat.HelloApplication.startUI(HelloApplication.java:36) ~[classes/:?]
+	at com.huy.appnoithat.HelloApplication.start(HelloApplication.java:28) ~[classes/:?]
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:484) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	... 1 more
+[INFO ] 11-08-2024 00:54:14 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 00:54:14 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 00:54:17 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 00:54:17 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:19 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:21 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:23 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:24 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:25 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:26 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:27 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:28 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:28 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:29 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:29 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:29 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:29 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:29 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:29 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:29 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:29 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:30 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:30 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:31 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:31 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:31 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:31 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:31 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:31 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:31 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:31 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:32 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:32 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:33 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:33 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:33 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:33 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:33 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:33 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:33 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:54:33 [pool-3-thread-1] FileNoiThatExplorerController:123 - get work
+[INFO ] 11-08-2024 00:55:10 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 00:55:10 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 00:55:13 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 00:55:14 [main] GlobalExceptionHandler:15 - Exception in Application start method
+java.lang.RuntimeException: Exception in Application start method
+	at com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:901) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:196) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+Caused by: java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask@7fc1c11a[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@125d2b7d[Wrapped task = com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController$$Lambda$661/0x00007fec585157b0@425164fe]] rejected from java.util.concurrent.ScheduledThreadPoolExecutor@4de38b75[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0]
+	at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2065) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:833) ~[?:?]
+	at java.util.concurrent.ScheduledThreadPoolExecutor.delayedExecute(ScheduledThreadPoolExecutor.java:340) ~[?:?]
+	at java.util.concurrent.ScheduledThreadPoolExecutor.scheduleAtFixedRate(ScheduledThreadPoolExecutor.java:632) ~[?:?]
+	at java.util.concurrent.Executors$DelegatedScheduledExecutorService.scheduleAtFixedRate(Executors.java:819) ~[?:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.startGetWork(FileNoiThatExplorerController.java:136) ~[classes/:?]
+	at com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController.init(FileNoiThatExplorerController.java:115) ~[classes/:?]
+	at com.huy.appnoithat.Controller.HomeController.OnClickLuaChonNoiThat(HomeController.java:147) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.6-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.6-linux.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8792) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-17.0.6-linux.jar:?]
+	at com.huy.appnoithat.Controller.HomeController.init(HomeController.java:114) ~[classes/:?]
+	at com.huy.appnoithat.HelloApplication.startUI(HelloApplication.java:36) ~[classes/:?]
+	at com.huy.appnoithat.HelloApplication.start(HelloApplication.java:28) ~[classes/:?]
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:484) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	... 1 more
+[INFO ] 11-08-2024 01:17:29 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 01:17:29 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 01:17:32 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 01:18:22 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 01:18:22 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 01:18:24 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 01:20:54 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 01:20:54 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 01:20:58 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 01:21:59 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 01:21:59 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 01:22:02 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 16:47:37 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 16:47:37 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 16:47:39 [JavaFX Application Thread] JavaNetHttpClient:265 - Refreshing token
+[INFO ] 11-08-2024 16:47:42 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 16:48:36 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 16:48:36 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 16:48:39 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 16:50:34 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 16:50:34 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 16:50:37 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 16:51:36 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 16:51:36 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 16:51:38 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 16:52:19 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 16:52:19 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 16:52:21 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 17:10:39 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 17:10:39 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 17:10:42 [JavaFX Application Thread] HomeController:104 - Login as test with role User

@@ -1,6 +1,6 @@
 package com.huy.appnoithat;
 
-import com.huy.appnoithat.configuration.ConfigHandler;
+import com.huy.appnoithat.Configuration.ConfigHandler;
 import com.huy.appnoithat.Exception.GlobalExceptionHandler;
 import com.huy.appnoithat.Handler.MultipleInstanceHandler;
 import com.huy.appnoithat.IOC.DIContainer;
@@ -22,9 +22,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) {
-        long previousTime = System.currentTimeMillis();
         DIContainer.createInjector();
-        LOGGER.info("Create injector took {}", System.currentTimeMillis() - previousTime);
         Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler());
         getPendingWorkAtLaunch();
         startUI(stage);
@@ -47,7 +45,7 @@ public class HelloApplication extends Application {
         Parameters params = getParameters();
         List<String> list = params.getRaw();
         if (!list.isEmpty()) {
-            LOGGER.info("Start application with params: " + list.get(0));
+            LOGGER.info("Start application with params: {}", list.get(0));
             String fileToOpen = list.get(0);
             WorkFactory.addNewOpenFileWork(new OpenFileWork(fileToOpen));
         }

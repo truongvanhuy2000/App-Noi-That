@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Setup;
 
-import com.huy.appnoithat.common.PopupUtils;
+import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.CustomConverter.CustomLongStringConverter;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;

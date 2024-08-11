@@ -1,4 +1,4 @@
-package com.huy.appnoithat.common;
+package com.huy.appnoithat.Common;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

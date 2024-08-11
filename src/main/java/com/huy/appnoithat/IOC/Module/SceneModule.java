@@ -85,7 +85,7 @@ public class SceneModule extends AbstractModule {
         }
 
         @Provides
-        @Singleton
+//        @Singleton
         HomeScene homeScene(HomeController homeController) {
             return new HomeScene(homeController);
         }
@@ -97,7 +97,6 @@ public class SceneModule extends AbstractModule {
     }
 
     private static class DatabaseModifyModule extends AbstractModule {
-
         @Provides
         ChangeProductSpecificationScene changeProductSpecificationScene(ChangeProductSpecificationController controller) {
             return new ChangeProductSpecificationScene(controller);
@@ -126,6 +125,7 @@ public class SceneModule extends AbstractModule {
 
     private static class LuaChonNoiThatModule extends AbstractModule {
         @Provides
+//        @Singleton
         FileNoiThatExplorerScene fileNoiThatExplorerScene(FileNoiThatExplorerController controller) {
             return new FileNoiThatExplorerScene(controller);
         }

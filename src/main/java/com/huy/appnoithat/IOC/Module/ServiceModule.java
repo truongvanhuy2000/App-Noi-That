@@ -6,6 +6,7 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.huy.appnoithat.Service.DatabaseModify.*;
 import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService;
+import com.huy.appnoithat.Service.FileNoiThatExplorer.LocalFileNoiThatExplorerService;
 import com.huy.appnoithat.Service.Login.LoginService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.CacheNoiThatRequestService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.FileExportService;
@@ -93,9 +94,9 @@ public class ServiceModule extends AbstractModule {
         }
 
         @Provides
-        @Singleton
+//        @Singleton
         FileNoiThatExplorerService fileNoiThatExplorerService(StorageService persistenceStorageService) {
-            return new FileNoiThatExplorerService(persistenceStorageService);
+            return new LocalFileNoiThatExplorerService(persistenceStorageService);
         }
 
         @Provides
