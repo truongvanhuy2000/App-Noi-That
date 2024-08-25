@@ -14,8 +14,8 @@ import java.util.Objects;
 public class LuaChonNoiThatScene implements GenericScene {
     private static final String VIEW_PATH = "/com/huy/appnoithat/Scene/view/LuaChonNoiThatLayout.fxml";
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/LuaChonNoiThatLayout.css";
-    private Scene scene;
-    private Parent root;
+    private final Scene scene;
+    private final Parent root;
     private final LuaChonNoiThatController luaChonNoiThatController;
 
     public LuaChonNoiThatScene(LuaChonNoiThatController luaChonNoiThatController) {

@@ -2,7 +2,6 @@ package com.huy.appnoithat.IOC.Module;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import com.google.inject.Singleton;
 import com.huy.appnoithat.Controller.DatabaseModify.*;
 import com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerController;
 import com.huy.appnoithat.Controller.GlobalSettingController;

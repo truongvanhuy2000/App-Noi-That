@@ -104,6 +104,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
                 new ThongSo(0, 0.0, 0.0, 0.0, " ", 0L)), this.parentID);
         refreshList();
     }
+
     @FXML
     void FetchSampleData(ActionEvent event) {
         databaseModifyVatlieuService.fetchSampleVatLieuData(this.parentID);
@@ -112,6 +113,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
             databaseModifyThongSoService.fetchSampleThongSoData(item.getId());
         }
     }
+
     /**
      * Handles the action when the user deletes an item.
      *
@@ -147,9 +149,9 @@ public class DatabaseModifyVatLieuController implements Initializable {
         }
         int selectID = listView.getSelectionModel().getSelectedItem().getId();
         ChangeProductSpecificationScene changeProductSpecificationScene = DIContainer.get();
-        VBox vBox = (VBox) ((AnchorPane)changeProductSpecificationScene.getRoot()).getChildren().get(0);
-        ((AnchorPane)this.root).getChildren().clear();
-        ((AnchorPane)this.root).getChildren().add(vBox);
+        VBox vBox = (VBox) ((AnchorPane) changeProductSpecificationScene.getRoot()).getChildren().get(0);
+        ((AnchorPane) this.root).getChildren().clear();
+        ((AnchorPane) this.root).getChildren().add(vBox);
         changeProductSpecificationScene.getController().initializeThongSo(selectID);
         changeProductSpecificationScene.getController().setRoot(this.root);
     }
@@ -168,9 +170,9 @@ public class DatabaseModifyVatLieuController implements Initializable {
         stage = (Stage) ((Node) source).getScene().getWindow();
         if (source == backButton) {
             DatabaseModifyHangMucScene databaseModifyHangMucScene = DIContainer.get();
-            HBox hBox = (HBox) ((AnchorPane)databaseModifyHangMucScene.getRoot()).getChildren().get(0);
-            ((AnchorPane)this.root).getChildren().clear();
-            ((AnchorPane)this.root).getChildren().add(hBox);
+            HBox hBox = (HBox) ((AnchorPane) databaseModifyHangMucScene.getRoot()).getChildren().get(0);
+            ((AnchorPane) this.root).getChildren().clear();
+            ((AnchorPane) this.root).getChildren().add(hBox);
             databaseModifyHangMucScene.getController().refresh();
             databaseModifyHangMucScene.getController().setRoot(this.root);
         }
@@ -250,6 +252,7 @@ public class DatabaseModifyVatLieuController implements Initializable {
         setUpThongSoTableView();
         setupButton();
     }
+
     private void setupButton() {
         deleteButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
         nextButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
@@ -322,18 +325,16 @@ public class DatabaseModifyVatLieuController implements Initializable {
             return new SimpleObjectProperty<>(param.getValue().getDon_vi());
         });
     }
+
     @FXML
     void onKeyPressed(KeyEvent event) {
         if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {
             addButton.fire();
-        }
-        else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
+        } else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
             deleteButton.fire();
-        }
-        else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
+        } else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
             nextButton.fire();
-        }
-        else if (KeyboardUtils.isRightKeyCombo(Action.EXIT, event)) {
+        } else if (KeyboardUtils.isRightKeyCombo(Action.EXIT, event)) {
             backButton.fire();
         }
     }

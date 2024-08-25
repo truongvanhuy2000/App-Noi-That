@@ -11,8 +11,8 @@ import java.util.Objects;
 
 @Getter
 public class ListAccountWaitToApproveScene implements GenericScene {
-    private Scene scene;
-    private Parent root;
+    private final Scene scene;
+    private final Parent root;
     private static final ListAccountWaitToApproveScene single_instance = null;
     private final FXMLLoader fxmlLoader;
 

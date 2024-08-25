@@ -15,6 +15,7 @@ public class HangMucRestService {
     final static Logger LOGGER = LogManager.getLogger(HangMucRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/hangmuc";
+
     /**
      * Searches for HangMuc items associated with a specific NoiThat ID.
      *
@@ -30,7 +31,7 @@ public class HangMucRestService {
     /**
      * Saves a HangMuc object associated with a specific parent NoiThat ID.
      *
-     * @param hangMuc The HangMuc object to save.
+     * @param hangMuc  The HangMuc object to save.
      * @param parentID The ID of the parent NoiThat.
      */
     public void save(HangMuc hangMuc, int parentID) {
@@ -73,7 +74,7 @@ public class HangMucRestService {
      * Searches for HangMuc objects based on the provided PhongCach and NoiThat names.
      *
      * @param phongCachName The name of the PhongCach to search for.
-     * @param noiThatName The name of the NoiThat to search for.
+     * @param noiThatName   The name of the NoiThat to search for.
      * @return A list of HangMuc objects matching the search criteria.
      * @throws RuntimeException if there is an error when searching for HangMuc objects.
      */
@@ -85,6 +86,7 @@ public class HangMucRestService {
         Optional<List<HangMuc>> response = this.webClientService.authorizedHttpGet(uriBuilder, HangMuc.class, List.class);
         return response.orElse(null);
     }
+
     public void copySampleDataFromAdmin(int parentId) {
         URIBuilder uriBuilder = URIBuilder.empty()
                 .addRawPath(BASE_ENDPOINT).addPath("copySampleData")

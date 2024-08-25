@@ -33,7 +33,7 @@ public class NoiThatRestService {
     /**
      * Saves a new NoiThat object with the specified parent ID.
      *
-     * @param noiThat The NoiThat object to be saved.
+     * @param noiThat  The NoiThat object to be saved.
      * @param parentID The ID of the parent object.
      * @throws RuntimeException if there is an error when saving the NoiThat object.
      */
@@ -86,6 +86,7 @@ public class NoiThatRestService {
         Optional<List<NoiThat>> response = this.webClientService.authorizedHttpGet(uriBuilder, NoiThat.class, List.class);
         return response.orElse(new ArrayList<>());
     }
+
     public void copySampleDataFromAdmin(int parentId) {
         URIBuilder uriBuilder = URIBuilder.empty()
                 .addRawPath(BASE_ENDPOINT).addPath("copySampleData")

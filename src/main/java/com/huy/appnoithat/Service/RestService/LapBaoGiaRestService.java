@@ -40,6 +40,7 @@ public class LapBaoGiaRestService {
             PopupUtils.throwSuccessNotification("Lưu thông tin công ty thành công");
         }
     }
+
     public void saveNote(String note) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("noteArea");
         Optional<String> response = this.webClientService.authorizedHttpPost(uriBuilder, note, String.class);

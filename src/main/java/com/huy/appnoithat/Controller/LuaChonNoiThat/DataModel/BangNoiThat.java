@@ -32,6 +32,7 @@ public class BangNoiThat {
         ThanhTien = new SimpleLongProperty(thanhTien);
         KhoiLuong = new SimpleDoubleProperty(khoiLuong);
     }
+
     public BangNoiThat() {
         STT = new SimpleStringProperty("");
         Cao = new SimpleDoubleProperty(0);
@@ -44,6 +45,7 @@ public class BangNoiThat {
         ThanhTien = new SimpleLongProperty(0);
         KhoiLuong = new SimpleDoubleProperty(0);
     }
+
     public BangNoiThat(ThongTinNoiThat thongTinNoiThat) {
         this.STT = new SimpleStringProperty(thongTinNoiThat.getSTT());
         this.Cao = new SimpleDoubleProperty(Double.parseDouble(thongTinNoiThat.getCao()));

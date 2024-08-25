@@ -13,6 +13,7 @@ public class KichThuocHandler {
     private final TreeTableColumn<BangNoiThat, Double> Dai;
     private final TreeTableColumn<BangNoiThat, Double> Rong;
     private final TreeTableColumn<BangNoiThat, Long> DonGia;
+
     /**
      * Handler class for managing size-related columns in a TreeTableView.
      * Manages the editing events for columns representing height (Cao), length (Dai),

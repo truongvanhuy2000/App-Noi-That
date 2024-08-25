@@ -11,8 +11,8 @@ import java.util.Objects;
 
 @Getter
 public class UserManagementAddAccountScene implements GenericScene {
-    private Scene scene;
-    private Parent root;
+    private final Scene scene;
+    private final Parent root;
     private final FXMLLoader fxmlLoader;
 
     public UserManagementAddAccountScene() {

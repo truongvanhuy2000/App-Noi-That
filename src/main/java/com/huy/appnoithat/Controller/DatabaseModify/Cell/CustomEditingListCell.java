@@ -116,11 +116,13 @@ public class CustomEditingListCell<T extends CommonItemInterface> extends ListCe
 
     /**
      * Retrieves the string representation of the cell's item.
+     *
      * @return The string representation of the item's name.
      */
     private String getString() {
         return getItem() == null ? "" : (getIndex() + 1 + ". " + getItem().getName());
     }
+
     private String getValue() {
         return getItem() == null ? "" : getItem().getName();
     }

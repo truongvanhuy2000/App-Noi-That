@@ -29,15 +29,18 @@ public abstract class ExportXLS {
     protected InputStream inputTemplate;
     protected XSSFWorkbook workbook;
     protected StylistFactory stylistFactory;
+
     protected void exportNoteArea(XSSFSheet spreadsheet, int rowId, String noteArea) {
         Cell cell0 = spreadsheet.getRow(rowId).getCell(0);
         stylistFactory.CellPresetFactory(cell0, noteArea, 13, Stylist.Preset.NormalText_TimeNewRoman_VerticalCenter_ThinBorder);
     }
+
     protected void mergeCells(XSSFSheet spreadsheet, int row, int col, int rowSpan, int colSpan, int howMany) {
         for (int i = 0; i < howMany; i++) {
             spreadsheet.addMergedRegion(new CellRangeAddress(row + i, row + rowSpan + i, col, col + colSpan));
         }
     }
+
     protected void setOutputFile(File outputFile) throws FileNotFoundException {
         if (!outputFile.getAbsolutePath().contains(".xlsx")) {
             this.outputFile = new FileOutputStream(outputFile.getAbsolutePath() + ".xlsx");
@@ -45,6 +48,7 @@ public abstract class ExportXLS {
             this.outputFile = new FileOutputStream(outputFile.getAbsolutePath());
         }
     }
+
     protected List<ThongTinNoiThat> setThongTinNoiThatList(List<ThongTinNoiThat> thongTinNoiThatList) {
         List<ThongTinNoiThat> thongTinForExport = new ArrayList<>();
         thongTinNoiThatList.forEach(item -> {
@@ -57,6 +61,7 @@ public abstract class ExportXLS {
         rearrangeList(thongTinForExport);
         return thongTinForExport;
     }
+
     protected void rearrangeList(List<ThongTinNoiThat> list) {
         int romanCount = 0;
         for (ThongTinNoiThat item : list) {
@@ -66,6 +71,7 @@ public abstract class ExportXLS {
             }
         }
     }
+
     protected ThongTinCongTy setThongTinCongTy(ThongTinCongTy thongTinCongTy) {
         ThongTinCongTy thongTinForExport = new ThongTinCongTy();
         thongTinForExport.setLogo(thongTinCongTy.getLogo());
@@ -76,6 +82,7 @@ public abstract class ExportXLS {
         thongTinForExport.setEmail("Email: " + thongTinCongTy.getEmail());
         return thongTinForExport;
     }
+
     protected ThongTinKhachHang setThongTinKhachHang(ThongTinKhachHang thongTinKhachHang) {
         ThongTinKhachHang thongTinForExport = new ThongTinKhachHang();
         thongTinForExport.setTenKhachHang("Khách hàng : " + thongTinKhachHang.getTenKhachHang());
@@ -85,6 +92,7 @@ public abstract class ExportXLS {
         thongTinForExport.setSanPham("Sản phẩm: " + thongTinKhachHang.getSanPham());
         return thongTinForExport;
     }
+
     protected void exportThongTinCongTy(XSSFSheet spreadsheet, ThongTinCongTy thongTinCongTy) {
         int mergeColumnRange = 7;
         int mergeColumnId = 2;
@@ -170,7 +178,7 @@ public abstract class ExportXLS {
     }
 
     protected void exportNoiThatTitle(XSSFSheet spreadsheet, int mergeRowId, int mergeColumnId, int mergeRowRange,
-                                    int mergeColumnRange, int cellId, ThongTinNoiThat thongTinNoiThat) {
+                                      int mergeColumnRange, int cellId, ThongTinNoiThat thongTinNoiThat) {
         mergeCells(spreadsheet, mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, 1);
 
         Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
@@ -188,7 +196,7 @@ public abstract class ExportXLS {
     }
 
     protected void exportNoiThatContent(XSSFSheet spreadsheet, int mergeRowId, int mergeColumnId, int mergeRowRange,
-                                      int mergeColumnRange, int cellId, ThongTinNoiThat thongTinNoiThat) {
+                                        int mergeColumnRange, int cellId, ThongTinNoiThat thongTinNoiThat) {
         Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
         stylistFactory.CellPresetFactory(cell0, ItemTypeUtils.getIdFromFullId(thongTinNoiThat.getSTT()), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
 

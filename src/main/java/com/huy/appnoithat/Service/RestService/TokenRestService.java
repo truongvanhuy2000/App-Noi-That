@@ -20,6 +20,7 @@ public class TokenRestService {
         public static final URI REFRESH_TOKEN = URIBuilder.fromURI(BASE_URL).addPath("refreshToken").toURI();
         public static final URI LOGIN = URIBuilder.fromURI(BASE_URL).addPath("login").toURI();
     }
+
     private final WebClientService webClientService;
 
     public Optional<Token> refreshToken(String refreshToken) {
@@ -41,7 +42,8 @@ public class TokenRestService {
 
     public Optional<Token> login(String username, String password) {
         URIBuilder uriBuilder = URIBuilder.fromURI(Path.LOGIN);
-        TypeReference<Token> typeReference = new TypeReference<>() {};
+        TypeReference<Token> typeReference = new TypeReference<>() {
+        };
         Account account = Account.builder().username(username).password(password).build();
         Response<Token> response = this.webClientService.unauthorizedHttpPost(uriBuilder, account, typeReference);
         if (response.isSuccess()) {

@@ -1,6 +1,5 @@
 package com.huy.appnoithat.Handler;
 
-import com.huy.appnoithat.IOC.DIContainer;
 import com.huy.appnoithat.Work.OpenFileWork;
 import com.huy.appnoithat.Work.WorkFactory;
 import javafx.stage.Window;
@@ -13,11 +12,11 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.concurrent.ScheduledExecutorService;
 
 public class MultipleInstanceHandler {
     final static Logger LOGGER = LogManager.getLogger(MultipleInstanceHandler.class);
     private static final int port = 12675;
+
     public static boolean isSingleInstance(String[] args) {
         try {
             InetAddress host = InetAddress.getLocalHost();
@@ -37,6 +36,7 @@ public class MultipleInstanceHandler {
         }
 
     }
+
     public static void startHandleMultipleInstance() {
         new Thread(() -> {
             // Try to open a server socket on a specific port

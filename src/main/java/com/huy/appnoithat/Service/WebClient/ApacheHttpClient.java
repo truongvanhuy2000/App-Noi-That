@@ -214,7 +214,8 @@ public class ApacheHttpClient implements WebClientService {
         }
         Map<String, String> body = Map.of("refreshToken", refreshToken);
         URIBuilder uriBuilder = URIBuilder.fromURI(REFRESH_TOKEN);
-        TypeReference<Token> typeReference = new TypeReference<>() {};
+        TypeReference<Token> typeReference = new TypeReference<>() {
+        };
         Response<Token> response = unauthorizedHttpPost(uriBuilder, body, typeReference);
         if (!response.isSuccess() || response.getResponse().isEmpty()) {
             sessionExpiredHandler.handleTokenExpired();

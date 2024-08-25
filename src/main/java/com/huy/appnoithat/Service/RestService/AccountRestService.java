@@ -39,6 +39,7 @@ public class AccountRestService {
         Optional<Account> response = this.webClientService.authorizedHttpGet(uriBuilder, Account.class);
         return response.orElse(null);
     }
+
     public void save(Account account) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts");
         Optional<String> response = this.webClientService.authorizedHttpPost(uriBuilder, account, String.class);
@@ -47,48 +48,58 @@ public class AccountRestService {
             return new RuntimeException("Can't save account");
         });
     }
+
     public String update(Account account) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", String.valueOf(account.getId()));
         Optional<String> response = this.webClientService.authorizedHttpPutJson(uriBuilder, account, String.class);
         return response.orElse(null);
     }
+
     public void deleteById(int id) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", String.valueOf(id));
         this.webClientService.authorizedHttpDeleteJson(uriBuilder, String.class);
     }
+
     public void activateAccount(int id) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", "activate", String.valueOf(id));
         this.webClientService.authorizedHttpPutJson(uriBuilder, "", String.class);
     }
+
     public void deactivateAccount(int id) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", "deactivate", String.valueOf(id));
         this.webClientService.authorizedHttpPutJson(uriBuilder, "", String.class);
     }
+
     public List<Account> findAllEnabledAccount() {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", "enabled");
         Optional<List<Account>> response = this.webClientService.authorizedHttpGet(uriBuilder, Account.class, List.class);
         return response.orElse(null);
     }
+
     public List<Account> findAllNotEnabledAccount() {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", "notEnabled");
         Optional<List<Account>> response = this.webClientService.authorizedHttpGet(uriBuilder, Account.class, List.class);
         return response.orElse(null);
     }
+
     public void enableAccount(int id) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("accounts", "enable", String.valueOf(id));
         this.webClientService.authorizedHttpPutJson(uriBuilder, "", String.class);
     }
+
     public String sessionCheck() {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("index");
         Optional<String> response = this.webClientService.authorizedHttpGet(uriBuilder, String.class);
         return response.orElse(null);
     }
+
     public Token login(String username, String password) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("login");
         Account account = Account.builder().username(username).password(password).build();
         Optional<Token> response = webClientService.unauthorizedHttpPostJson(uriBuilder, account, Token.class);
         return response.orElse(null);
     }
+
     public void register(Account account) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("register");
         Optional<String> response = this.webClientService.unauthorizedHttpPostJson(uriBuilder, account, String.class);
@@ -99,12 +110,14 @@ public class AccountRestService {
             PopupUtils.throwSuccessNotification("Đăng ký thất bại");
         }
     }
+
     public boolean isUsernameValid(String username) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("register", "usernameValidation")
                 .addParameter("username", username);
         Optional<String> response = this.webClientService.unauthorizedHttpGetJson(uriBuilder, String.class);
         return response.isPresent();
     }
+
     public boolean changePassword(String oldPassword, String newPassword) {
         Map<String, String> requestBody = new HashMap<>();
         requestBody.put("oldPassword", oldPassword);
@@ -113,6 +126,7 @@ public class AccountRestService {
         Optional<String> response = this.webClientService.authorizedHttpPutJson(uriBuilder, requestBody, String.class);
         return response.isPresent();
     }
+
     public boolean updateInformation(AccountInformation accountInformation) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("updateInfo");
         Optional<String> response = this.webClientService.authorizedHttpPutJson(uriBuilder, accountInformation, String.class);

@@ -26,7 +26,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
     /**
      * Constructs a CustomVatLieuCell with the given ObservableList of items and a TreeTableView.
      *
-     * @param items       The ObservableList of String items associated with this cell.
+     * @param items        The ObservableList of String items associated with this cell.
      * @param TableNoiThat The TreeTableView associated with this cell.
      */
     public CustomVatLieuCell(ObservableList<String> items, TreeTableView<BangNoiThat> TableNoiThat) {
@@ -97,11 +97,13 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
             setGraphic(null);
         }
     }
+
     private void init() {
         createComboBox();
         createDropDownBtn();
         createEditBtn();
     }
+
     private void createDropDownBtn() {
         if (dropDownBtn != null) {
             return;
@@ -120,6 +122,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         dropDownBtn.setPrefSize(20, 20);
         dropDownBtn.setMaxSize(20, 20);
     }
+
     private void createEditBtn() {
         editButton = new Button();
         Image img = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/edit.png")));
@@ -161,6 +164,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
             setGraphic(vBox);
         });
     }
+
     /**
      * Creates a ComboBox for editing the cell's content. If the ComboBox is already
      * initialized, this method does nothing. Configures the ComboBox's behavior,
@@ -208,7 +212,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
      */
     private void showComboBoxAfter(double millis) {
         PauseTransition delay = new PauseTransition(Duration.millis(millis));
-        delay.setOnFinished( event -> comboBox.show());
+        delay.setOnFinished(event -> comboBox.show());
         delay.play();
     }
 }

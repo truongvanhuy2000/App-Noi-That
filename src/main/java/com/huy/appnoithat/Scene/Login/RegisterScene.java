@@ -14,8 +14,8 @@ import java.util.Objects;
 public class RegisterScene implements GenericScene {
     private static final String VIEW_PATH = "/com/huy/appnoithat/Scene/view/RegisterLayout.fxml";
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/UserManagementLayout.css";
-    private Scene scene;
-    private Parent root;
+    private final Scene scene;
+    private final Parent root;
     private final FXMLLoader fxmlLoader;
     private final RegisterController registerController;
 

@@ -40,6 +40,7 @@ public class ThongTinCongTy {
         this.soDienThoai = soDienThoai;
         this.email = email;
     }
+
     @JsonGetter("logo")
     public String getBase64Logo() {
         if (logo == null) {
@@ -47,6 +48,7 @@ public class ThongTinCongTy {
         }
         return Base64.getEncoder().encodeToString(logo);
     }
+
     @JsonSetter("logo")
     public void setBase64Logo(String base64Logo) {
         if (StringUtils.isBlank(base64Logo)) {

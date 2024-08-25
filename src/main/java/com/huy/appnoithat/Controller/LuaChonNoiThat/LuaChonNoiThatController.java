@@ -81,6 +81,7 @@ public class LuaChonNoiThatController implements Initializable {
             imageViewHandler();
         }
     }
+
     /**
      * @param event
      * @see javafx.scene.input.KeyEvent
@@ -131,14 +132,17 @@ public class LuaChonNoiThatController implements Initializable {
         setUpButton();
         setUpTruongThongTin();
     }
+
     public DataPackage exportData() {
         ExportOperation exportOperation = new ExportOperation(this);
         return exportOperation.exportData();
     }
+
     public void importData(DataPackage dataPackage) {
         ImportOperation importOperation = new ImportOperation(this);
         importOperation.importData(dataPackage);
     }
+
     /**
      * This function will handle the event when user want to choose an image
      */
@@ -161,6 +165,7 @@ public class LuaChonNoiThatController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
     /**
      * This function will set up the bang noi that
      */
@@ -168,6 +173,7 @@ public class LuaChonNoiThatController implements Initializable {
         SetupBangNoiThat setupBangNoiThat = new SetupBangNoiThat(this);
         setupBangNoiThat.setUpBangNoiThat();
     }
+
     /**
      * This function will set up the collum for KichThuoc
      */
@@ -206,6 +212,7 @@ public class LuaChonNoiThatController implements Initializable {
         SetupTruongThongTin setupTruongThongTin = new SetupTruongThongTin(this);
         setupTruongThongTin.setup();
     }
+
     public void init(Stage stage) {
 
     }

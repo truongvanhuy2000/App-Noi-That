@@ -61,7 +61,7 @@ public class TokenRestServiceIntegrationTest {
         assertNotEquals(optionalToken1.get().getAccessToken(), token.getAccessToken());
     }
 
-     Response<Object> heathCheckApi() {
+    Response<Object> heathCheckApi() {
         return apacheHttpClient.authorizedHttpGet(URIBuilder.empty().addPath("api", "index"), (TypeReference<Object>) null);
     }
 }

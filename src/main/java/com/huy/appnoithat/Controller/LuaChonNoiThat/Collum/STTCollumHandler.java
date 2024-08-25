@@ -12,6 +12,7 @@ import javafx.scene.control.TreeTableView;
 
 public class STTCollumHandler {
     private final TreeTableView<BangNoiThat> TableNoiThat;
+
     /**
      * Handler class for managing STT (Serial Number) column in a TreeTableView of BangNoiThat items.
      * Handles cell editing and provides custom cell factory and cell value factory for the STT column.
@@ -158,15 +159,16 @@ public class STTCollumHandler {
                     switch (ItemTypeUtils.determineItemType(getItem())) {
                         case ROMAN -> currentRow.setStyle(
                                 "-fx-font-weight: bold; " +
-                                "-fx-background-color: #d0e1e7"
+                                        "-fx-background-color: #d0e1e7"
                         );
                         case AlPHA -> currentRow.setStyle(
                                 "-fx-font-weight: bold; " +
-                                "-fx-font-size: 14px; " +
-                                "-fx-background-color: #d0e1e7"
+                                        "-fx-font-size: 14px; " +
+                                        "-fx-background-color: #d0e1e7"
                         );
                         case NUMERIC -> currentRow.setStyle("-fx-font-weight: normal");
-                        default -> {}
+                        default -> {
+                        }
                     }
                 }
             }
@@ -180,7 +182,7 @@ public class STTCollumHandler {
      *
      * @param param The CellDataFeatures instance representing the data for the current cell.
      * @return An ObservableValue<String> representing the 'STT' property of the current cell's data.
-     *         Returns null if the current row's data is null or STT value is empty.
+     * Returns null if the current row's data is null or STT value is empty.
      */
     public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {
         if (param.getValue() == null) {

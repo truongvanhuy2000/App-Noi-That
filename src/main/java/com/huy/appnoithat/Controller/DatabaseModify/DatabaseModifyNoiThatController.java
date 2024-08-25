@@ -136,10 +136,10 @@ public class DatabaseModifyNoiThatController implements Initializable {
         }
         int selectID = listView.getSelectionModel().getSelectedItem().getId();
         DatabaseModifyHangMucScene databaseModifyHangMucScene = DIContainer.get();
-        HBox hBox = (HBox) ((AnchorPane)databaseModifyHangMucScene.getRoot()).getChildren().get(0);
+        HBox hBox = (HBox) ((AnchorPane) databaseModifyHangMucScene.getRoot()).getChildren().get(0);
 
-        ((AnchorPane)this.root).getChildren().clear();
-        ((AnchorPane)this.root).getChildren().add(hBox);
+        ((AnchorPane) this.root).getChildren().clear();
+        ((AnchorPane) this.root).getChildren().add(hBox);
         databaseModifyHangMucScene.getController().init(selectID);
         databaseModifyHangMucScene.getController().setRoot(this.root);
     }
@@ -156,9 +156,9 @@ public class DatabaseModifyNoiThatController implements Initializable {
         Object source = event.getSource();
         if (source == backButton) {
             DatabaseModifyPhongCachScene databaseModifyPhongCachScene = DIContainer.get();
-            HBox hBox = (HBox) ((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren().get(0);
-            ((AnchorPane)this.root).getChildren().clear();
-            ((AnchorPane)this.root).getChildren().add(hBox);
+            HBox hBox = (HBox) ((AnchorPane) databaseModifyPhongCachScene.getRoot()).getChildren().get(0);
+            ((AnchorPane) this.root).getChildren().clear();
+            ((AnchorPane) this.root).getChildren().add(hBox);
             databaseModifyPhongCachScene.getController().init();
             databaseModifyPhongCachScene.getController().setRoot(this.root);
         }
@@ -255,11 +255,13 @@ public class DatabaseModifyNoiThatController implements Initializable {
         childrenList.setItems(hangMucObservableList);
         setupButton();
     }
+
     private void setupButton() {
         deleteButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
         nextButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
         swapButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
     }
+
     /**
      * Handles key events and triggers corresponding actions.
      *
@@ -269,14 +271,11 @@ public class DatabaseModifyNoiThatController implements Initializable {
     void onKeyPressed(KeyEvent event) {
         if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {
             addButton.fire();
-        }
-        else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
+        } else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
             deleteButton.fire();
-        }
-        else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
+        } else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
             nextButton.fire();
-        }
-        else if (KeyboardUtils.isRightKeyCombo(Action.EXIT, event)) {
+        } else if (KeyboardUtils.isRightKeyCombo(Action.EXIT, event)) {
             backButton.fire();
         }
     }

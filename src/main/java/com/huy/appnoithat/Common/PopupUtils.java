@@ -21,6 +21,7 @@ import java.util.Optional;
 
 public class PopupUtils {
     final static Logger LOGGER = LogManager.getLogger(PopupUtils.class);
+
     public static void throwErrorSignal(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
         alert.showAndWait();

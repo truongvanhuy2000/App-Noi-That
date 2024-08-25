@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public interface WebClientService {
     default <X> Optional<X> unauthorizedHttpPostJson(@NonNull URIBuilder uri,
-                                             @NonNull Object data, @NonNull Class<X> responseClass) {
+                                                     @NonNull Object data, @NonNull Class<X> responseClass) {
         throw new RuntimeException("Check for implementation");
     }
 
@@ -30,7 +30,7 @@ public interface WebClientService {
     }
 
     default <X> Optional<List<X>> authorizedHttpGet(@NonNull URIBuilder uri, @NonNull Class<X> responseClass,
-                                            @NonNull Class<? extends Collection> collectionClass) {
+                                                    @NonNull Class<? extends Collection> collectionClass) {
         throw new RuntimeException("Check for implementation");
     }
 

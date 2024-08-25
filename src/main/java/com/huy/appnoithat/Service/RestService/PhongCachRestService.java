@@ -85,9 +85,9 @@ public class PhongCachRestService {
         });
     }
 
-/**
- * Deletes a PhongCachNoiThat
- * */
+    /**
+     * Deletes a PhongCachNoiThat
+     */
     public void deleteById(int id) {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath(String.valueOf(id));
         this.webClientService.authorizedHttpDeleteJson(uriBuilder, String.class);

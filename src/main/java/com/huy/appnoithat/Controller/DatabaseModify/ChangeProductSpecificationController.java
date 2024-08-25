@@ -74,11 +74,11 @@ public class ChangeProductSpecificationController {
      */
     void backToMain() {
         DatabaseModifyVatLieuScene databaseModifyVatLieuScene = DIContainer.get();
-        HBox hBox = (HBox) ((AnchorPane)databaseModifyVatLieuScene.getRoot()).getChildren().get(0);
+        HBox hBox = (HBox) ((AnchorPane) databaseModifyVatLieuScene.getRoot()).getChildren().get(0);
 
         // Clear the current content and add the new HBox to the root AnchorPane
-        ((AnchorPane)this.root).getChildren().clear();
-        ((AnchorPane)this.root).getChildren().add(hBox);
+        ((AnchorPane) this.root).getChildren().clear();
+        ((AnchorPane) this.root).getChildren().add(hBox);
         databaseModifyVatLieuScene.getController().refresh();
         // Set the root for the controller of the DatabaseModifyVatLieuScene
         databaseModifyVatLieuScene.getController().setRoot(this.root);
@@ -111,8 +111,7 @@ public class ChangeProductSpecificationController {
         List<ThongSo> thongSoList = databaseModifyThongSoService.findThongSoByParentId(this.parentID);
         if (thongSoList == null || thongSoList.isEmpty()) {
             databaseModifyThongSoService.addNewThongSo(thongSo, this.parentID);
-        }
-        else {
+        } else {
             // If ThongSo data is found, use the retrieved ThongSo instance
             thongSo = thongSoList.get(0);
         }

@@ -33,18 +33,20 @@ public class TabOperation {
 
     private void duplicateTab(ActionEvent action, Tab currentTab) {
         TabContent currentTabContent = newTabController.getCurrentlyOpenTab().stream().filter(
-                tabContent -> tabContent.getTab().equals(currentTab))
+                        tabContent -> tabContent.getTab().equals(currentTab))
                 .findFirst().orElse(null);
         if (currentTabContent == null) {
             throw new RuntimeException("Tab not found");
         }
         createTab(currentTab.getText(), currentTabContent.getLuaChonNoiThatController().exportData());
     }
+
     private LuaChonNoiThatScene createNoiThatScene() {
         LuaChonNoiThatScene luaChonNoiThatScene = DIContainer.get();
         luaChonNoiThatScene.getLuaChonNoiThatController().init(currentStage);
         return luaChonNoiThatScene;
     }
+
     public void createNewTab(TabState tabState, String importDirectory) {
         if (tabState == TabState.IMPORT_TAB) {
             newTabController.setCurrentState(State.OPEN_FROM_EXISTING_FILE);
@@ -55,12 +57,14 @@ public class TabOperation {
             createBlankTab();
         }
     }
+
     private void importFromFile(String directory) {
         List<TabData> tabDataList = noiThatFileService.importData(directory);
-        for(TabData tabData : tabDataList) {
+        for (TabData tabData : tabDataList) {
             createTab(tabData.getTabName(), tabData.getDataPackage());
         }
     }
+
     private void createTab(String TabName, DataPackage content) {
         LuaChonNoiThatScene luaChonNoiThatScene = createNoiThatScene();
         Tab newTab = setUpTab(TabName);
@@ -70,12 +74,14 @@ public class TabOperation {
         TabContent tabContent = new TabContent(newTab, luaChonNoiThatScene, luaChonNoiThatScene.getLuaChonNoiThatController());
         newTabController.getCurrentlyOpenTab().add(tabContent);
     }
+
     private void createBlankTab() {
         createTab("Tab mới", DataPackage.builder()
                 .thongTinCongTy(persistenceStorageService.getThongTinCongTy())
                 .noteArea(persistenceStorageService.getNoteArea())
                 .build());
     }
+
     private void addNewTabToPane(Tab newTab) {
         tabPane.getTabs().add(newTab);
         tabPane.getSelectionModel().select(newTab);

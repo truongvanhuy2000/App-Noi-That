@@ -150,10 +150,10 @@ public class DatabaseModifyPhongCachController implements Initializable {
         }
         int selectID = listView.getSelectionModel().getSelectedItem().getId();
         DatabaseModifyNoiThatScene databaseModifyNoiThatScene = DIContainer.get();
-        HBox hBox = (HBox) ((AnchorPane)databaseModifyNoiThatScene.getRoot()).getChildren().get(0);
+        HBox hBox = (HBox) ((AnchorPane) databaseModifyNoiThatScene.getRoot()).getChildren().get(0);
 
-        ((AnchorPane)this.root).getChildren().clear();
-        ((AnchorPane)this.root).getChildren().add(hBox);
+        ((AnchorPane) this.root).getChildren().clear();
+        ((AnchorPane) this.root).getChildren().add(hBox);
         databaseModifyNoiThatScene.getController().init(selectID);
         databaseModifyNoiThatScene.getController().setRoot(this.root);
     }
@@ -206,18 +206,18 @@ public class DatabaseModifyPhongCachController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     void onKeyPressed(KeyEvent event) {
         if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {
             addButton.fire();
-        }
-        else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
+        } else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
             deleteButton.fire();
-        }
-        else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
+        } else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
             nextButton.fire();
         }
     }
+
     @FXML
     void FetchSampleData(ActionEvent event) {
         FXUtils.showLoading(loadingPane, "Đang lấy dữ liệu mẫu...");
@@ -239,7 +239,7 @@ public class DatabaseModifyPhongCachController implements Initializable {
      * Initializes the controller after the FXML has been loaded.
      * Configures the UI elements, sets up event listeners, and populates initial data.
      *
-     * @param url The location used to resolve relative paths for root object or null if the location is not known.
+     * @param url            The location used to resolve relative paths for root object or null if the location is not known.
      * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
      */
     @Override

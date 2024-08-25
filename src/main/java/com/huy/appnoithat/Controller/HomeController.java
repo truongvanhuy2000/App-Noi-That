@@ -57,6 +57,7 @@ public class HomeController {
         StageFactory.CreateNewUnresizeableStage(scene, false);
         scene.getController().init();
     }
+
     @FXML
     void xuatChuKy(ActionEvent event) {
         File savedFile = PopupUtils.fileSaver();
@@ -66,14 +67,15 @@ public class HomeController {
         Utils.writeObjectToFile(savedFile, sessionService.getToken());
         PopupUtils.throwSuccessNotification("Xuất chữ ký thành công!");
     }
+
     /**
      * Handles the logout action by cleaning the user session, closing the current window,
      * and switching to a different scene.
      *
      * @param event The ActionEvent triggering the logout.
-     * Clean the user session
-     * Close the current window
-     * Switch to a different scene (assuming sceneSwitcher method exists)
+     *              Clean the user session
+     *              Close the current window
+     *              Switch to a different scene (assuming sceneSwitcher method exists)
      */
     @FXML
     void logout(ActionEvent event) {
@@ -81,9 +83,9 @@ public class HomeController {
         LogoutButton.getScene().getWindow().hide();
         sceneSwitcher(event);
     }
+
     /**
      * Initializes the user interface based on the logged-in user's role and displays relevant buttons and actions.
-     *
      */
     public void init(Stage mainStage) {
         // Show the primary content pane and clear its children
@@ -123,7 +125,7 @@ public class HomeController {
         GlobalSettingScene scene = DIContainer.get();
 
         // Extract VBox from the scene and add it to the primary content pane
-        VBox vBox = (VBox) ((AnchorPane)scene.getRoot()).getChildren().get(0);
+        VBox vBox = (VBox) ((AnchorPane) scene.getRoot()).getChildren().get(0);
 
         // Initialize the user management scene controller
         PCPane.getChildren().addAll(vBox);
@@ -143,7 +145,7 @@ public class HomeController {
         FileNoiThatExplorerScene fileNoiThatExplorerScene = DIContainer.get();
 
         // Add the children of the furniture explorer scene to the primary content pane
-        PCPane.getChildren().addAll(((AnchorPane)fileNoiThatExplorerScene.getRoot()).getChildren());
+        PCPane.getChildren().addAll(((AnchorPane) fileNoiThatExplorerScene.getRoot()).getChildren());
         fileNoiThatExplorerScene.getController().init();
 
         // Set the primary content pane as the root for the furniture explorer scene controller
@@ -198,7 +200,7 @@ public class HomeController {
         Optional<String> result = dialog.showAndWait();
 
         result.ifPresent(password -> {
-            if(loginService.reAuthorize(password)) {
+            if (loginService.reAuthorize(password)) {
                 // Clear the primary content pane
                 PCPane.getChildren().clear();
 
@@ -206,7 +208,7 @@ public class HomeController {
                 DatabaseModifyPhongCachScene databaseModifyPhongCachScene = DIContainer.get();
 
                 // Extract HBox from the scene and add it to the primary content pane
-                PCPane.getChildren().addAll(((AnchorPane)databaseModifyPhongCachScene.getRoot()).getChildren());
+                PCPane.getChildren().addAll(((AnchorPane) databaseModifyPhongCachScene.getRoot()).getChildren());
 
                 // Initialize the database modification scene controller
                 databaseModifyPhongCachScene.getController().init();
@@ -231,7 +233,7 @@ public class HomeController {
         UserManagementScene userManagementScene = DIContainer.get();
 
         // Extract VBox from the scene and add it to the primary content pane
-        VBox vBox = (VBox) ((AnchorPane)userManagementScene.getRoot()).getChildren().get(0);
+        VBox vBox = (VBox) ((AnchorPane) userManagementScene.getRoot()).getChildren().get(0);
 
         // Initialize the user management scene controller
         PCPane.getChildren().addAll(vBox);

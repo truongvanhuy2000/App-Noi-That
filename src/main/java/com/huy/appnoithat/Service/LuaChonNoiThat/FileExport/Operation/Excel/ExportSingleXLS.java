@@ -32,11 +32,13 @@ public class ExportSingleXLS extends ExportXLS implements ExportFile {
             throw new RuntimeException(e);
         }
     }
+
     private void initWorkbook() throws IOException {
         workbook = new XSSFWorkbook(inputTemplate);
         spreadsheet = workbook.getSheet("Sheet1");
         stylistFactory = new StylistFactory(workbook);
     }
+
     @Override
     public void export(File exportDirectory) throws IOException {
         setOutputFile(exportDirectory);

@@ -12,8 +12,8 @@ import java.util.Objects;
 
 @Getter
 public class DatabaseModifyPhongCachScene implements GenericScene {
-    private Scene scene;
-    private Parent root;
+    private final Scene scene;
+    private final Parent root;
     private final DatabaseModifyPhongCachController controller;
 
     public DatabaseModifyPhongCachScene(DatabaseModifyPhongCachController controller) {

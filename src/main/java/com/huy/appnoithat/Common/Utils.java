@@ -22,9 +22,11 @@ public class Utils {
             return false;
         return name.matches("[a-zA-Z]+");
     }
+
     public static String toAlpha(int i) {
-        return i > 0 && i < 27 ? String.valueOf((char)(i + 'A' - 1)) : null;
+        return i > 0 && i < 27 ? String.valueOf((char) (i + 'A' - 1)) : null;
     }
+
     /**
      * @param str This function will check if the input is numeric or not
      * @return
@@ -142,9 +144,11 @@ public class Utils {
             throw new RuntimeException(e);
         }
     }
+
     public static String convertMilisToDateTimeString(long milis) {
         return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(milis));
     }
+
     public static long convertDateTimeStringToMilis(String dateTimeString) {
         try {
             return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(dateTimeString).getTime();
@@ -152,27 +156,32 @@ public class Utils {
             throw new RuntimeException(e);
         }
     }
+
     public static String urlEncode(String data) {
         if (data == null)
             return "";
         return URLEncoder.encode(data, StandardCharsets.UTF_8);
     }
+
     public static String base64EncodeData(String data) {
         if (data == null)
             return "";
         return Base64.getEncoder().encodeToString(data.getBytes());
     }
+
     public static String base64DecodeData(byte[] data) {
         if (data == null)
             return "";
         return new String(Base64.getDecoder().decode(data));
     }
+
     public static String urlDecode(byte[] data) {
         if (data == null)
             return "";
         String encodedData = new String(data, StandardCharsets.UTF_8);
         return URLDecoder.decode(encodedData, StandardCharsets.UTF_8);
     }
+
     public static String readFromFile(File file) {
         try (InputStream inputStream = new FileInputStream(file)) {
             return Utils.urlDecode(inputStream.readAllBytes());
@@ -180,6 +189,7 @@ public class Utils {
             return null;
         }
     }
+
     public static void writeToFile(File file, String data) {
         try (OutputStream outputStream = new FileOutputStream(file)) {
             outputStream.write(Utils.urlEncode(data).getBytes());
@@ -187,6 +197,7 @@ public class Utils {
             throw new RuntimeException(e);
         }
     }
+
     public static <T> T readObjectFromFile(File file, Class<T> clazz) {
         try (InputStream inputStream = new FileInputStream(file)) {
             return new ObjectMapper().readValue(Utils.urlDecode(
@@ -195,6 +206,7 @@ public class Utils {
             return null;
         }
     }
+
     public static <T> void writeObjectToFile(File file, T object) {
         try (OutputStream outputStream = new FileOutputStream(file)) {
             outputStream.write(Utils.base64EncodeData(

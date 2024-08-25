@@ -81,6 +81,7 @@ public class DatabaseModifyHangMucController implements Initializable {
         databaseModifyHangMucService.swap(hangMuc.getId(), hangMucObservableList.get(index - 1).getId());
         refreshList();
     }
+
     /**
      * Handles the action event for adding a new HangMuc item.
      *
@@ -135,10 +136,10 @@ public class DatabaseModifyHangMucController implements Initializable {
         }
         int selectID = listView.getSelectionModel().getSelectedItem().getId();
         DatabaseModifyVatLieuScene databaseModifyVatLieuScene = DIContainer.get();
-        HBox hBox = (HBox) ((AnchorPane)databaseModifyVatLieuScene.getRoot()).getChildren().get(0);
+        HBox hBox = (HBox) ((AnchorPane) databaseModifyVatLieuScene.getRoot()).getChildren().get(0);
 
-        ((AnchorPane)this.root).getChildren().clear();
-        ((AnchorPane)this.root).getChildren().add(hBox);
+        ((AnchorPane) this.root).getChildren().clear();
+        ((AnchorPane) this.root).getChildren().add(hBox);
         databaseModifyVatLieuScene.getController().init(selectID);
         databaseModifyVatLieuScene.getController().setRoot(this.root);
     }
@@ -154,9 +155,9 @@ public class DatabaseModifyHangMucController implements Initializable {
         Object source = event.getSource();
         if (source == backButton) {
             DatabaseModifyNoiThatScene databaseModifyNoiThatScene = DIContainer.get();
-            HBox hBox = (HBox) ((AnchorPane)databaseModifyNoiThatScene.getRoot()).getChildren().get(0);
-            ((AnchorPane)this.root).getChildren().clear();
-            ((AnchorPane)this.root).getChildren().add(hBox);
+            HBox hBox = (HBox) ((AnchorPane) databaseModifyNoiThatScene.getRoot()).getChildren().get(0);
+            ((AnchorPane) this.root).getChildren().clear();
+            ((AnchorPane) this.root).getChildren().add(hBox);
             databaseModifyNoiThatScene.getController().refresh();
             databaseModifyNoiThatScene.getController().setRoot(this.root);
         }
@@ -253,11 +254,13 @@ public class DatabaseModifyHangMucController implements Initializable {
         childrenList.setItems(vatLieuObservableList);
         setupButton();
     }
+
     private void setupButton() {
         deleteButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
         nextButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
         swapButton.disableProperty().bind(listView.getSelectionModel().selectedItemProperty().isNull());
     }
+
     /**
      * Handles key pressed events to perform corresponding actions based on the keyboard shortcuts.
      *
@@ -267,14 +270,11 @@ public class DatabaseModifyHangMucController implements Initializable {
     void onKeyPressed(KeyEvent event) {
         if (KeyboardUtils.isRightKeyCombo(Action.ADD_NEW_ROW, event)) {
             addButton.fire();
-        }
-        else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
+        } else if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
             deleteButton.fire();
-        }
-        else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
+        } else if (KeyboardUtils.isRightKeyCombo(Action.NEXT_SCREEN, event)) {
             nextButton.fire();
-        }
-        else if (KeyboardUtils.isRightKeyCombo(Action.EXIT, event)) {
+        } else if (KeyboardUtils.isRightKeyCombo(Action.EXIT, event)) {
             backButton.fire();
         }
     }

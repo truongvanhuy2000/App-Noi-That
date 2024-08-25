@@ -8,12 +8,13 @@ import lombok.Getter;
 
 import java.io.IOException;
 import java.util.Objects;
+
 @Getter
 public class GlobalSettingScene implements GenericScene {
     private static final String VIEW_PATH = "/com/huy/appnoithat/Scene/view/GlobalSetting.fxml";
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/GlobalSetting.css";
-    private Scene scene;
-    private Parent root;
+    private final Scene scene;
+    private final Parent root;
     private final GlobalSettingController controller;
 
     public GlobalSettingScene(GlobalSettingController controller) {

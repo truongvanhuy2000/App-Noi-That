@@ -141,6 +141,7 @@ public class GlobalSettingController implements Initializable {
             BonusMonthColumn = new SimpleIntegerProperty(bonusMonthColumn);
         }
     }
+
     public static class PricingConverter extends StringConverter<Long> {
         @Override
         public String toString(Long aLong) {

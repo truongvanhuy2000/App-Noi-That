@@ -16,6 +16,7 @@ import java.util.List;
 public class ExportMultipleXLS extends ExportXLS {
     final static Logger LOGGER = LogManager.getLogger(ExportMultipleXLS.class);
     private List<TabData> exportData;
+
     public ExportMultipleXLS() {
         try {
             this.inputTemplate = new FileInputStream(DEFAULT_TEMPLATE_PATH);
@@ -25,14 +26,17 @@ public class ExportMultipleXLS extends ExportXLS {
             throw new RuntimeException(e);
         }
     }
+
     private void initWorkbook() throws IOException {
         workbook = new XSSFWorkbook(inputTemplate);
         stylistFactory = new StylistFactory(workbook);
     }
+
     public void setUpDataForExport(List<TabData> exportData) {
         this.exportData = exportData;
     }
-    public boolean export(File exportDirectory){
+
+    public boolean export(File exportDirectory) {
         LOGGER.info("Exporting to XLSX file");
         try {
             setOutputFile(exportDirectory);
@@ -45,11 +49,12 @@ public class ExportMultipleXLS extends ExportXLS {
             }
             workbook.removeSheetAt(0);
             save();
-        } catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
         return true;
     }
+
     private void exportSingleSheet(XSSFSheet spreadSheet, DataPackage dataPackage) throws IOException {
         ThongTinCongTy thongTinCongTy = setThongTinCongTy(dataPackage.getThongTinCongTy());
         ThongTinKhachHang thongTinKhachHang = setThongTinKhachHang(dataPackage.getThongTinKhachHang());
@@ -63,6 +68,7 @@ public class ExportMultipleXLS extends ExportXLS {
         exportBangThanhToan(spreadSheet, ++rowID, thongTinThanhToan);
         exportNoteArea(spreadSheet, ++rowID, noteArea);
     }
+
     private void cloneSheet() {
         for (int index = 0; index < exportData.size(); index++) {
             workbook.cloneSheet(0);

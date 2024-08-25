@@ -14,6 +14,7 @@ public class VatLieuRestService {
     final static Logger LOGGER = LogManager.getLogger(VatLieuRestService.class);
     private final WebClientService webClientService;
     private static final String BASE_ENDPOINT = "/api/vatlieu";
+
     /**
      * Searches for VatLieu objects by HangMuc ID.
      *
@@ -25,6 +26,7 @@ public class VatLieuRestService {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT).addPath("searchByHangMuc", String.valueOf(id));
         return this.webClientService.authorizedHttpGet(uriBuilder, VatLieu.class, List.class).orElse(null);
     }
+
     /**
      * Saves a new VatLieu object.
      *
@@ -87,6 +89,7 @@ public class VatLieuRestService {
                 .addParameter("hangMucName", hangMucName);
         return this.webClientService.authorizedHttpGet(uriBuilder, VatLieu.class, List.class).orElse(null);
     }
+
     public void copySampleDataFromAdmin(int parentId) {
         URIBuilder uriBuilder = URIBuilder.empty()
                 .addRawPath(BASE_ENDPOINT).addPath("copySampleData")

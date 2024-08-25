@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @RequiredArgsConstructor
 public class ExportOperation {
     @NonNull
@@ -30,6 +31,7 @@ public class ExportOperation {
     @NonNull
     private TextArea noteTextArea;
     LuaChonNoiThatController luaChonNoiThatController;
+
     public ExportOperation(LuaChonNoiThatController luaChonNoiThatController) {
         TenCongTy = luaChonNoiThatController.getTenCongTy();
         VanPhong = luaChonNoiThatController.getVanPhong();
@@ -47,6 +49,7 @@ public class ExportOperation {
         noteTextArea = luaChonNoiThatController.getNoteTextArea();
         this.luaChonNoiThatController = luaChonNoiThatController;
     }
+
     /**
      * THis function will return a list of ThongTinNoiThat from item root from the table
      *
@@ -100,6 +103,7 @@ public class ExportOperation {
                 Email.getText()
         );
     }
+
     /**
      * This function will return ThongTinKhachHang from thong tin khach hang text field
      *

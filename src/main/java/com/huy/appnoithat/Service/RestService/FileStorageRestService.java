@@ -33,6 +33,7 @@ public class FileStorageRestService {
         public static final Function<String, URI> UPDATE_FILE_INFO = fileId -> URIBuilder.fromURI(BASE_URL)
                 .addPath("update-nt-file", fileId).toURI();
     }
+
     private final WebClientService webClientService;
 
     public void updateNtFile(InputStream file, String fileName, int fileId) {
@@ -51,7 +52,8 @@ public class FileStorageRestService {
     }
 
     public Optional<SavedFileDTO> saveNtFile(InputStream file, String fileName) {
-        TypeReference<SavedFileDTO> typeReference = new TypeReference<>() {};
+        TypeReference<SavedFileDTO> typeReference = new TypeReference<>() {
+        };
         MultipartForm.Multipart multipart = MultipartForm.Multipart.builder()
                 .fileName(fileName)
                 .inputStream(file)
@@ -70,7 +72,8 @@ public class FileStorageRestService {
     }
 
     public Optional<List<SavedFileDTO>> getNtFileList() {
-        TypeReference<List<SavedFileDTO>> listTypeReference = new TypeReference<>() {};
+        TypeReference<List<SavedFileDTO>> listTypeReference = new TypeReference<>() {
+        };
         Response<List<SavedFileDTO>> response = webClientService.authorizedHttpGet(URIBuilder.fromURI(Path.GET_ALL), listTypeReference);
         if (response.isSuccess()) {
             return response.getResponse();
@@ -92,8 +95,7 @@ public class FileStorageRestService {
     }
 
     /**
-     * @param fileId
-     *  When using this method, must check if the file is already upload to s3
+     * @param fileId When using this method, must check if the file is already upload to s3
      */
     public void deleteNtFile(Integer fileId) {
         URI uri = Path.DELETE_NT_FILE.apply(fileId.toString());
@@ -105,16 +107,17 @@ public class FileStorageRestService {
 
     public void updateFileInfo(Integer fileId, SavedFileDTO savedFileDTO) {
         URI uri = Path.UPDATE_FILE_INFO.apply(fileId.toString());
-        Response<Object> response = webClientService.authorizedHttpPut(URIBuilder.fromURI(uri), savedFileDTO,null);
+        Response<Object> response = webClientService.authorizedHttpPut(URIBuilder.fromURI(uri), savedFileDTO, null);
         if (!response.isSuccess()) {
             // TODO: Handle error response
         }
     }
 
     public Optional<SavedFileDTO> getFileInfo(Integer fileId) {
-        TypeReference<SavedFileDTO> typeReference = new TypeReference<>() {};
+        TypeReference<SavedFileDTO> typeReference = new TypeReference<>() {
+        };
         URI uri = Path.GET_FILE_INFO.apply(fileId.toString());
-        Response<SavedFileDTO> response = webClientService.authorizedHttpGet(URIBuilder.fromURI(uri),typeReference);
+        Response<SavedFileDTO> response = webClientService.authorizedHttpGet(URIBuilder.fromURI(uri), typeReference);
         if (response.isSuccess()) {
             return response.getResponse();
         } else {

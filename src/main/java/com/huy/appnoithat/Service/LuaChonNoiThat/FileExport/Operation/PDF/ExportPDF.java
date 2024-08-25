@@ -31,11 +31,13 @@ public class ExportPDF implements ExportFile {
         convertXLStoPDF(xlsFileDir);
         deleteExistingFile(new File(xlsFileDir));
     }
-    private void deleteExistingFile(File file){
-        if(file.exists()){
+
+    private void deleteExistingFile(File file) {
+        if (file.exists()) {
             file.delete();
         }
     }
+
     private void setOutputFile(File outputFile) {
         if (!outputFile.getAbsolutePath().contains(".pdf")) {
             this.outputFile = new File(outputFile.getAbsolutePath() + ".pdf");
@@ -43,12 +45,13 @@ public class ExportPDF implements ExportFile {
             this.outputFile = new File(outputFile.getAbsolutePath());
         }
     }
+
     @Override
     public void setUpDataForExport(DataPackage dataForExport) {
         exportSingleXLS.setUpDataForExport(dataForExport);
     }
 
-    public void convertXLStoPDF(String directory){
+    public void convertXLStoPDF(String directory) {
         String tempPdfFile = "temp" + System.currentTimeMillis() + ".pdf";
         String tempPdfPath = Paths.get(Config.ROOT_DIRECTORY, tempPdfFile).toAbsolutePath().toString();
         try {

@@ -23,6 +23,7 @@ public class Config {
     private static final String DEFAULT_VBS_SCRIPT_DIRECTORY =
             Paths.get("Data", "FileExport", "VBScript", "script.vbs").toString();
     public static String ROOT_DIRECTORY;
+
     public static void setupDirectory() {
         USER.SESSION_DIRECTORY = Paths.get(ROOT_DIRECTORY, DEFAULT_SESSION_DIRECTORY).toString();
         USER.COMPANY_INFO_DIRECTORY = Paths.get(ROOT_DIRECTORY, DEFAULT_COMPANY_INFO_DIRECTORY).toString();
@@ -33,6 +34,7 @@ public class Config {
         FILE_EXPORT.VBS_SCRIPT_DIRECTORY = Paths.get(ROOT_DIRECTORY, DEFAULT_VBS_SCRIPT_DIRECTORY).toString();
         FILE_EXPORT.XLSX_TEMPLATE_DIRECTORY = Paths.get(ROOT_DIRECTORY, DEFAULT_XLSX_TEMPLATE_DIRECTORY).toString();
     }
+
     public static class USER {
         public static String SESSION_DIRECTORY;
         public static String COMPANY_INFO_DIRECTORY;
@@ -47,9 +49,10 @@ public class Config {
         public static String TEMP_NT_FILE_DIRECTORY;
         public static String VBS_SCRIPT_DIRECTORY;
     }
+
     public static class WEB_CLIENT {
         public static String BASE_URL = "http://localhost:8080";
-//        public static final String BASE_URL = "http://localhost:8085";
+        //        public static final String BASE_URL = "http://localhost:8085";
         public static int TIME_OUT = 10;
     }
 }

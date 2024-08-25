@@ -24,6 +24,7 @@ public class FXUtils {
             }
         }
     }
+
     public static void showLoading(StackPane loadingPane, String text) {
         loadingPane.setVisible(true);
         loadingPane.setDisable(false);
@@ -40,6 +41,7 @@ public class FXUtils {
         loadingPane.toFront();
         loadingPane.setStyle("-fx-background-color: rgba(255,255,255,0.65)");
     }
+
     public static void hideLoading(StackPane loadingPane) {
         loadingPane.setVisible(false);
         loadingPane.setDisable(true);
@@ -60,6 +62,7 @@ public class FXUtils {
             Objects.requireNonNull(FXUtils.getCurrentRootNode()).getScene().setCursor(Cursor.WAIT);
         }
     }
+
     public static void normalMouse() {
         if (Platform.isFxApplicationThread()) {
             Objects.requireNonNull(FXUtils.getCurrentRootNode()).getScene().setCursor(Cursor.DEFAULT);

@@ -103,6 +103,7 @@ public class SetupBangThanhToan {
             updateBangThanhToan();
         });
     }
+
     private void updateBangThanhToan() {
         DatCocThietKe10.setText(String.format("Đặt cọc thiết kế: %s", percentageList.get(0) + "%"));
         DatCocThiCong30.setText(String.format("Đặt cọc thi công: %s", percentageList.get(1) + "%"));

@@ -9,12 +9,13 @@ import lombok.Getter;
 
 import java.io.IOException;
 import java.util.Objects;
+
 @Getter
 public class FileNoiThatExplorerScene implements GenericScene {
     private static final String VIEW_PATH = "/com/huy/appnoithat/Scene/view/FileNoiThatExplorer.fxml";
     private static final String CSS_PATH = "/com/huy/appnoithat/Scene/css/FileNoiThatExplorer.css";
-    private Scene scene;
-    private Parent root;
+    private final Scene scene;
+    private final Parent root;
     private final FXMLLoader fxmlLoader;
     private final FileNoiThatExplorerController controller;
 

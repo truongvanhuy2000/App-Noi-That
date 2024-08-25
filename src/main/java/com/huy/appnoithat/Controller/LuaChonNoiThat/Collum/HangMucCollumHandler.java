@@ -97,6 +97,7 @@ public class HangMucCollumHandler {
         event.getTreeTableView().edit(event.getTreeTablePosition().getRow(), event.getTreeTableView().getVisibleLeafColumn(2));
 
     }
+
     private void automaticallyInsertVatLieuAndThongSo(TreeItem<BangNoiThat> rowValue) {
         Optional<VatLieu> vatLieu = getTheFirstVatLieu(rowValue);
         if (vatLieu.isPresent()) {
@@ -122,6 +123,7 @@ public class HangMucCollumHandler {
             rowValue.getValue().setVatLieu(firstVatLieu);
         }
     }
+
     private Optional<VatLieu> getTheFirstVatLieu(TreeItem<BangNoiThat> currentItem) {
         try {
             String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
@@ -138,6 +140,7 @@ public class HangMucCollumHandler {
             return Optional.empty();
         }
     }
+
     /**
      * Handles the event when a cell in the 'HangMuc' TreeTableColumn is being edited.
      * Dynamically populates 'hangMucList' based on the type of the edited item (noi that, phong cach, or hang muc).
@@ -192,7 +195,7 @@ public class HangMucCollumHandler {
      *
      * @param param The CellDataFeatures instance representing the data for the current cell.
      * @return An ObservableValue<String> representing the 'hangMuc' property of the current cell's data.
-     *         Returns null if the current row's data is null.
+     * Returns null if the current row's data is null.
      */
     public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {
         if (param.getValue() == null) {

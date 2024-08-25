@@ -65,7 +65,7 @@ public class TableCalculationUtils {
     }
 
     /**
-     * @param value Double value that need to be round
+     * @param value   Double value that need to be round
      * @param pattern Patter format is 0.0, 0.00,.....
      * @return
      */
@@ -76,6 +76,7 @@ public class TableCalculationUtils {
         return salary.setScale(decimalRounding + 1, RoundingMode.HALF_UP)
                 .setScale(decimalRounding, RoundingMode.HALF_UP).doubleValue();
     }
+
     /**
      * @param khoiLuong
      * @param donGia    This method will calculate the thanh tien of the item

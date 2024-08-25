@@ -67,7 +67,7 @@ public class SetupBangNoiThat {
         TableNoiThat.setShowRoot(false);
         TableNoiThat.setEditable(true);
 
-        TreeItem<BangNoiThat> childItem = TableUtils.createNewItem(ItemType.AlPHA,"A");
+        TreeItem<BangNoiThat> childItem = TableUtils.createNewItem(ItemType.AlPHA, "A");
         itemRoot.getChildren().add(childItem);
         TableNoiThat.getSelectionModel().select(childItem);
         Platform.runLater(() -> {
@@ -91,6 +91,7 @@ public class SetupBangNoiThat {
             }
         });
     }
+
     /**
      * This function will resize the table to fit the current screen
      */
@@ -113,6 +114,7 @@ public class SetupBangNoiThat {
             VatLieu.prefWidthProperty().bind(observableDouble);
         });
     }
+
     private void setUpCollum() {
         setUpKichThuoc();
 //        setUpDonGia();

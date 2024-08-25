@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 @Getter
-public class HomeScene implements GenericScene{
+public class HomeScene implements GenericScene {
     final static Logger LOGGER = LogManager.getLogger(HomeScene.class);
     private static final String VIEW_PATH = "view/HomeRemakeLayout.fxml";
     private static final String CSS_PATH = "css/HomeLayout.css";

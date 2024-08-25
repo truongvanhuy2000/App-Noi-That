@@ -23,6 +23,7 @@ public class UserDetailService {
             PopupUtils.throwErrorNotification("Cập nhật thông tin thất bại");
         }
     }
+
     public void updatePassword(String oldPassword, String newPassword) {
         if (accountRestService.changePassword(oldPassword, newPassword)) {
             PopupUtils.throwSuccessNotification("Đổi mật khẩu thành công");

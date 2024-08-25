@@ -68,6 +68,7 @@ public class LocalFileNoiThatExplorerService implements FileNoiThatExplorerServi
         recentFileObservableList.add(recentFile);
         saveRecentFile();
     }
+
     /**
      * Removes a recent file from the list and saves the updated list to the file system.
      *
@@ -105,8 +106,8 @@ public class LocalFileNoiThatExplorerService implements FileNoiThatExplorerServi
     private RecentFile isFileExist(RecentFile recentFile) {
         return recentFileObservableList.stream().filter(
                 recentFile1 -> recentFile1.getDirectory().equals(recentFile.getDirectory())).map(file -> {
-                    file.setTimeStamp(recentFile.getTimeStamp());
-                    return file;
-                }).findFirst().orElse(null);
+            file.setTimeStamp(recentFile.getTimeStamp());
+            return file;
+        }).findFirst().orElse(null);
     }
 }

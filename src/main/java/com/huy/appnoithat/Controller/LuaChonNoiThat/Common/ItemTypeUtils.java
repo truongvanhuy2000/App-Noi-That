@@ -14,12 +14,14 @@ public class ItemTypeUtils {
     public static String createFullId(ItemType type, String id) {
         return type.toString() + ":" + id;
     }
+
     public static String getIdFromFullId(String fullId) {
         if (fullId == null || fullId.isEmpty()) {
             return "";
         }
         return fullId.split(":")[1];
     }
+
     public static ItemType determineItemType(String fullId) {
         if (fullId == null || fullId.isEmpty()) {
             return ItemType.NONE;
@@ -32,9 +34,11 @@ public class ItemTypeUtils {
             default -> ItemType.NONE;
         };
     }
+
     public static ItemType determineItemType(@NonNull TreeItem<BangNoiThat> item) {
         return determineItemType(item.getValue().getSTT().getValue());
     }
+
     public static Optional<String> findTheNextStt(String stt) {
         if (stt == null || stt.isEmpty()) {
             return Optional.empty();

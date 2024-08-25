@@ -14,7 +14,9 @@ import java.util.List;
 public class PricingModelDTO {
     private boolean active;
     private List<PricingModel> pricingModelList;
-    @Data @Builder
+
+    @Data
+    @Builder
     @AllArgsConstructor
     @NoArgsConstructor
     public static class PricingModel {

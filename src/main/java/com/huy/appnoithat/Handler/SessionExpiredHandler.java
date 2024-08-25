@@ -21,8 +21,9 @@ public class SessionExpiredHandler {
     public void handleTokenExpired() {
         LOGGER.error("Token expired");
         PopupUtils.throwErrorNotification("Tài khoản đã hết hạn!", "Nhấn đây để đăng nhập lại! \n" +
-                        "Hãy lưu lại những công việc quan trọng", this::handleLogout, 5);
+                "Hãy lưu lại những công việc quan trọng", this::handleLogout, 5);
     }
+
     private void handleLogout() {
         userSessionManager.cleanUserSession();
         Platform.runLater(() -> {

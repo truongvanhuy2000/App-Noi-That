@@ -78,6 +78,7 @@ public class PersistenceStorageService implements StorageService {
         }
         cachedData.setThongTinCongTy(thongTinCongTy);
     }
+
     @Override
     public List<RecentFile> getRecentFileList() {
         try {
@@ -105,6 +106,7 @@ public class PersistenceStorageService implements StorageService {
             throw new RuntimeException(e);
         }
     }
+
     /**
      * Retrieves the user session from the specified file path.
      *
@@ -137,6 +139,7 @@ public class PersistenceStorageService implements StorageService {
             throw new RuntimeException(e);
         }
     }
+
     @Override
     public void saveNoteArea(String noteArea) {
         try {
@@ -148,6 +151,7 @@ public class PersistenceStorageService implements StorageService {
         }
         cachedData.setNoteArea(noteArea);
     }
+
     @Override
     public String getNoteArea() {
         if (StringUtils.isNotEmpty(cachedData.getNoteArea())) {

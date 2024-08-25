@@ -41,11 +41,13 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
             setGraphic(new HBox(dropDownBtn, editButton));
         }
     }
+
     private void init() {
         createComboBox();
         createDropDownBtn();
         createEditBtn();
     }
+
     private void createDropDownBtn() {
         if (dropDownBtn != null) {
             return;
@@ -64,6 +66,7 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         dropDownBtn.setPrefSize(20, 20);
         dropDownBtn.setMaxSize(20, 20);
     }
+
     private void createEditBtn() {
         editButton = new Button();
         Image img = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/edit.png")));
@@ -175,7 +178,7 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
      */
     private void showComboBoxAfter(double millis) {
         PauseTransition delay = new PauseTransition(Duration.millis(millis));
-        delay.setOnFinished( event -> comboBox.show());
+        delay.setOnFinished(event -> comboBox.show());
         delay.play();
     }
 }

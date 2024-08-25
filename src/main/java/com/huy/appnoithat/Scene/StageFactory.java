@@ -21,6 +21,7 @@ public class StageFactory {
         setUpStage(currentStage, confirmWhenClose);
         return currentStage;
     }
+
     public static Stage createNewUnResizeableMainStage(Stage currentStage, GenericScene nextScene, boolean confirmWhenClose) {
         currentStage.setScene(nextScene.getScene());
         currentStage.setMaximized(false);
@@ -28,6 +29,7 @@ public class StageFactory {
         setUpStage(currentStage, confirmWhenClose);
         return currentStage;
     }
+
     public static Stage CreateNewUnresizeableStage(GenericScene nextScene, boolean confirmWhenClose) {
         Stage stage = new Stage();
         stage.setScene(nextScene.getScene());
@@ -35,6 +37,7 @@ public class StageFactory {
         setUpStage(stage, confirmWhenClose);
         return stage;
     }
+
     public static Stage CreateNewMaximizedStage(GenericScene nextScene, boolean confirmWhenClose) {
         Stage stage = new Stage();
         stage.setScene(nextScene.getScene());
@@ -42,6 +45,7 @@ public class StageFactory {
         setUpStage(stage, confirmWhenClose);
         return stage;
     }
+
     private static void setUpStage(Stage stage, boolean confirmWhenClose) {
         stage.setTitle("App Noi That");
         stage.getIcons().add(new Image(Objects.requireNonNull(

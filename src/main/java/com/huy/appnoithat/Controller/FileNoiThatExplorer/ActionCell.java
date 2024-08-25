@@ -15,12 +15,14 @@ public class ActionCell extends TableCell<RecentFile, String> {
     private static final String DELETE_ICON = "/com/huy/appnoithat/Scene/icons/icons8-delete-48.png";
     private HBox hBox;
     Consumer<Integer> deleteAction;
+
     public ActionCell(Consumer<Integer> deleteAction) {
         if (hBox == null) {
             init();
         }
         this.deleteAction = deleteAction;
     }
+
     @Override
     public void startEdit() {
         if (!isEmpty()) {

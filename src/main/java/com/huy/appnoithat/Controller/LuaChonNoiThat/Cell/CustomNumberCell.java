@@ -9,10 +9,11 @@ import javafx.util.StringConverter;
 public class CustomNumberCell<T> extends TextFieldTreeTableCell<BangNoiThat, T> {
     private final TreeTableView<BangNoiThat> TableNoiThat;
     private boolean isKichThuocCollum = false;
+
     /**
      * Constructs a CustomNumberCell with the given StringConverter and TreeTableView.
      *
-     * @param var0        The StringConverter object for converting between strings and the generic type T.
+     * @param var0         The StringConverter object for converting between strings and the generic type T.
      * @param TableNoiThat The TreeTableView associated with this cell.
      */
     public CustomNumberCell(StringConverter<T> var0, TreeTableView<BangNoiThat> TableNoiThat, boolean isKichThuocCollum) {
@@ -62,6 +63,7 @@ public class CustomNumberCell<T> extends TextFieldTreeTableCell<BangNoiThat, T> 
             }
         }
     }
+
     @Override
     public void cancelEdit() {
         super.cancelEdit();

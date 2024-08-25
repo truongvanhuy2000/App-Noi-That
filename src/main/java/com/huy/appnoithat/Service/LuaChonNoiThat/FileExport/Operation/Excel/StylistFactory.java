@@ -8,6 +8,7 @@ import java.util.HexFormat;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 public class StylistFactory {
     Workbook workbook;
 
@@ -89,8 +90,10 @@ public class StylistFactory {
                 textString.applyFont(0, data.length(), fontStyleFactory(Stylist.Style.Font_TimeNewRoman_NORMAL, size));
                 textString.applyFont(0, endPos, fontStyleFactory(Stylist.Style.Font_TimeNewRoman_BOLDTALIC, size));
             }
-            case Stylist.Style.Text_BOLDALL -> textString.applyFont(0, data.length(), fontStyleFactory(Stylist.Style.Font_TimeNewRoman_BOLD, size));
-            case Stylist.Style.Text_NORMAL -> textString.applyFont(0, data.length(), fontStyleFactory(Stylist.Style.Font_TimeNewRoman_NORMAL, size));
+            case Stylist.Style.Text_BOLDALL ->
+                    textString.applyFont(0, data.length(), fontStyleFactory(Stylist.Style.Font_TimeNewRoman_BOLD, size));
+            case Stylist.Style.Text_NORMAL ->
+                    textString.applyFont(0, data.length(), fontStyleFactory(Stylist.Style.Font_TimeNewRoman_NORMAL, size));
             case Stylist.Style.Text_CUSTOMBOLD3 -> {
                 // Define a regular expression pattern to match the desired text
                 Pattern pattern = Pattern.compile("-\\s(.*?):");
@@ -219,13 +222,15 @@ public class StylistFactory {
         }
         cell.setCellStyle(appliedCellStyle);
     }
+
     public void setCellBackgroundColor(Cell cell, String hexCode) {
         byte[] rgbB = HexFormat.of().parseHex(hexCode);
         setCellBackgroundColor(cell, rgbB);
     }
+
     public void setCellBackgroundColor(Cell cell, byte[] rgbB) {
         CellStyle cellStyle = cell.getCellStyle();
-        if(cellStyle == null) {
+        if (cellStyle == null) {
             cellStyle = cell.getSheet().getWorkbook().createCellStyle();
         }
         XSSFColor color = new XSSFColor(rgbB, null);

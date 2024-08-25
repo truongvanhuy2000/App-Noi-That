@@ -23,6 +23,7 @@ public class CacheNoiThatRequestService {
         UUID uuid = UUID.nameUUIDFromBytes(seed.getBytes());
         return uuid.toString();
     }
+
     public <X> void writeCache(List<X> data, String uniqueId) {
         try {
             String result = objectMapper.writeValueAsString(data);
@@ -31,6 +32,7 @@ public class CacheNoiThatRequestService {
             throw new RuntimeException(e);
         }
     }
+
     public <C> List<C> readCache(String uniqueId, Class<C> objectType) {
         String result = cache.get(uniqueId);
         if (result == null) {
@@ -43,9 +45,11 @@ public class CacheNoiThatRequestService {
             throw new RuntimeException(e);
         }
     }
+
     public boolean isContain(String uniqueId) {
         return cache.containsKey(uniqueId);
     }
+
     public void clearCache() {
         cache.clear();
     }

@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 @NoArgsConstructor
 public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
     final static Logger LOGGER = LogManager.getLogger(GlobalExceptionHandler.class);
+
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
         PopupUtils.throwErrorNotification("Lỗi hệ thống, vui lòng thông báo cho nhà phát triển");

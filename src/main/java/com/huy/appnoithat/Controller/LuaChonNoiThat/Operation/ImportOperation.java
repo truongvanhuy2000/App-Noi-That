@@ -57,6 +57,7 @@ public class ImportOperation {
         ImageView = luaChonNoiThatController.getImageView();
         this.luaChonNoiThatController = luaChonNoiThatController;
     }
+
     private void importThongTinCongTy(ThongTinCongTy thongTinCongTy) {
         if (thongTinCongTy == null) return;
         TenCongTy.setText(Objects.requireNonNullElse(thongTinCongTy.getTenCongTy(), ""));
@@ -103,6 +104,7 @@ public class ImportOperation {
         bangThanhToan.getItems().clear();
         bangThanhToan.getItems().add(new BangThanhToan(thongTinThanhToan));
     }
+
     /**
      * @param thongTinNoiThatList
      * @return

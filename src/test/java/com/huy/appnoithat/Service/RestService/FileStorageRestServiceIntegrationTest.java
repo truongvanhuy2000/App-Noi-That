@@ -35,6 +35,7 @@ class FileStorageRestServiceIntegrationTest {
     @Spy
     FileStorageRestService fileStorageRestService = new FileStorageRestService(apacheHttpClient);
     TokenRestService tokenRestService = new TokenRestService(apacheHttpClient);
+
     @BeforeEach
     void setUp() {
         Optional<Token> token = tokenRestService.login("test", "test");

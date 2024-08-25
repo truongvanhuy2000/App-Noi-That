@@ -27,11 +27,13 @@ public class ConfigHandler {
         }
         return instance;
     }
+
     public ConfigHandler() {
         if (System.getenv().get("APPNOITHAT_IS_DEVELOPMENT") != null) {
             isInDevelopment = true;
         }
     }
+
     public void readConfiguration() {
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
         objectMapper.findAndRegisterModules();
@@ -46,10 +48,12 @@ public class ConfigHandler {
             throw new RuntimeException(e);
         }
     }
+
     private void readWebserverConfig(Webserver webServer) {
         Config.WEB_CLIENT.BASE_URL = webServer.getHost();
         Config.WEB_CLIENT.TIME_OUT = webServer.getTimeout();
     }
+
     private void readDirectoryConfig(PathConfig pathConfig) {
         if (isInDevelopment) {
             Config.ROOT_DIRECTORY = Config.CURRENT_DIRECTORY;

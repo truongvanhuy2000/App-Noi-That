@@ -47,6 +47,7 @@ public class TableUtils {
         }
         return isAllowedToEdit(selectedItem);
     }
+
     /**
      * @param id This method will create a new item with the given id
      * @return
@@ -57,6 +58,7 @@ public class TableUtils {
         setupNewItem(newItem);
         return newItem;
     }
+
     public static TreeItem<BangNoiThat> createNewItem(ItemType type, String id) {
         String fullId = ItemTypeUtils.createFullId(type, id);
         return createNewItem(fullId);
@@ -79,6 +81,7 @@ public class TableUtils {
         });
         return newItem;
     }
+
     /**
      * @param bangNoiThat This method will create a new item with the given BangNoiThat
      * @return
@@ -120,6 +123,7 @@ public class TableUtils {
     public static TreeItem<BangNoiThat> convertToTreeItem(ThongTinNoiThat thongTinNoiThat) {
         return TableUtils.createNewItem(new BangNoiThat(thongTinNoiThat));
     }
+
     public static void reArrangeList(TreeTableView<BangNoiThat> TableNoiThat) {
         ObservableList<TreeItem<BangNoiThat>> listItem = TableNoiThat.getRoot().getChildren();
         for (int i = 0; i < listItem.size(); i++) {

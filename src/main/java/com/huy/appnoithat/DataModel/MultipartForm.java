@@ -15,6 +15,7 @@ import java.util.Map;
 public class MultipartForm {
     private Map<String, String> params;
     private Map<String, Multipart> multipartMap;
+
     @Data
     @Builder
     public static class Multipart {

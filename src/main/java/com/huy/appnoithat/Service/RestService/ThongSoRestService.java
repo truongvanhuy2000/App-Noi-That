@@ -19,8 +19,8 @@ public class ThongSoRestService {
     /**
      * Saves a new ThongSo object.
      *
-     * @param thongSo   The ThongSo object to be saved.
-     * @param parentId  The ID of the parent entity associated with this ThongSo.
+     * @param thongSo  The ThongSo object to be saved.
+     * @param parentId The ID of the parent entity associated with this ThongSo.
      * @throws RuntimeException if there is an error when saving the ThongSo object.
      */
     public void save(ThongSo thongSo, int parentId) {
@@ -46,6 +46,7 @@ public class ThongSoRestService {
         Optional<List<ThongSo>> response = this.webClientService.authorizedHttpGet(uriBuilder, ThongSo.class, List.class);
         return response.orElse(null);
     }
+
     /**
      * Updates an existing ThongSo object.
      *
@@ -60,6 +61,7 @@ public class ThongSoRestService {
             return new RuntimeException("Can't update ThongSo");
         });
     }
+
     public void copySampleDataFromAdmin(int parentId) {
         URIBuilder uriBuilder = URIBuilder.empty()
                 .addRawPath(BASE_ENDPOINT).addPath("copySampleData")

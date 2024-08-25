@@ -1158,3 +1158,73 @@ Caused by: java.util.concurrent.RejectedExecutionException: Task java.util.concu
 [INFO ] 11-08-2024 17:10:39 [main] MultipleInstanceHandler:35 - First instance
 [INFO ] 11-08-2024 17:10:39 [main] HelloApplication:59 - Start application
 [INFO ] 11-08-2024 17:10:42 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[INFO ] 11-08-2024 17:36:37 [main] MultipleInstanceHandler:35 - First instance
+[INFO ] 11-08-2024 17:36:37 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 17:36:40 [JavaFX Application Thread] HomeController:104 - Login as test with role User
+[ERROR] 11-08-2024 17:37:32 [JavaFX Application Thread] PersistenceStorageService:160 - Failed to read note areaNo content to map due to end-of-input
+ at [Source: (File); line: 1, column: 0]
+[ERROR] 11-08-2024 17:37:52 [JavaFX Application Thread] PersistenceStorageService:160 - Failed to read note areaNo content to map due to end-of-input
+ at [Source: (File); line: 1, column: 0]
+[ERROR] 11-08-2024 17:38:39 [JavaFX Application Thread] PersistenceStorageService:160 - Failed to read note areaNo content to map due to end-of-input
+ at [Source: (File); line: 1, column: 0]
+[INFO ] 11-08-2024 17:50:18 [main] MultipleInstanceHandler:34 - First instance
+[INFO ] 11-08-2024 17:50:18 [main] HelloApplication:59 - Start application
+[INFO ] 11-08-2024 17:50:22 [JavaFX Application Thread] HomeController:106 - Login as test with role User
+[INFO ] 25-08-2024 21:18:57 [main] MultipleInstanceHandler:34 - First instance
+[INFO ] 25-08-2024 21:18:57 [main] HelloApplication:59 - Start application
+[INFO ] 25-08-2024 21:18:59 [JavaFX Application Thread] JavaNetHttpClient:265 - Refreshing token
+[INFO ] 25-08-2024 21:19:00 [JavaFX Application Thread] JavaNetHttpClient:281 - Refresh token expired, need to login again
+[ERROR] 25-08-2024 21:19:00 [JavaFX Application Thread] SessionExpiredHandler:22 - Token expired
+[ERROR] 25-08-2024 21:19:00 [JavaFX Application Thread] ApacheHttpClient:115 - Can't get account information
+[INFO ] 25-08-2024 21:19:00 [JavaFX Application Thread] GlobalExceptionHandler:16 - Cannot invoke "javafx.stage.Window.getScene()" because "popupWindow" is null
+java.lang.NullPointerException: Cannot invoke "javafx.stage.Window.getScene()" because "popupWindow" is null
+	at com.huy.appnoithat.Common.PopupUtils.createNotification(PopupUtils.java:69) ~[classes/:?]
+	at com.huy.appnoithat.Common.PopupUtils.lambda$throwErrorNotification$4(PopupUtils.java:88) ~[classes/:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+[INFO ] 25-08-2024 21:19:00 [JavaFX Application Thread] GlobalExceptionHandler:16 - Cannot invoke "javafx.stage.Window.getScene()" because "popupWindow" is null
+java.lang.NullPointerException: Cannot invoke "javafx.stage.Window.getScene()" because "popupWindow" is null
+	at com.huy.appnoithat.Common.PopupUtils.createNotification(PopupUtils.java:69) ~[classes/:?]
+	at com.huy.appnoithat.Common.PopupUtils.lambda$throwErrorNotification$2(PopupUtils.java:58) ~[classes/:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+[INFO ] 25-08-2024 21:19:00 [JavaFX Application Thread] GlobalExceptionHandler:16 - Cannot invoke "javafx.stage.Window.getScene()" because "popupWindow" is null
+java.lang.NullPointerException: Cannot invoke "javafx.stage.Window.getScene()" because "popupWindow" is null
+	at com.huy.appnoithat.Common.PopupUtils.createNotification(PopupUtils.java:69) ~[classes/:?]
+	at com.huy.appnoithat.Common.PopupUtils.lambda$throwErrorNotification$2(PopupUtils.java:58) ~[classes/:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+[INFO ] 25-08-2024 21:19:00 [main] GlobalExceptionHandler:16 - Exception in Application start method
+java.lang.RuntimeException: Exception in Application start method
+	at com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:901) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:196) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:840) [?:?]
+Caused by: java.lang.RuntimeException
+	at com.huy.appnoithat.Session.UserSessionManagerImpl.loadSessionFromDisk(UserSessionManagerImpl.java:116) ~[classes/:?]
+	at com.huy.appnoithat.Session.UserSessionManagerImpl.isSessionValid(UserSessionManagerImpl.java:90) ~[classes/:?]
+	at com.huy.appnoithat.HelloApplication.startUI(HelloApplication.java:33) ~[classes/:?]
+	at com.huy.appnoithat.HelloApplication.start(HelloApplication.java:28) ~[classes/:?]
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:484) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) ~[javafx-graphics-17.0.6-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:290) ~[javafx-graphics-17.0.6-linux.jar:?]
+	... 1 more

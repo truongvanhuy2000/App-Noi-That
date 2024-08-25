@@ -34,12 +34,15 @@ public class DatabaseModifyPhongCachService {
     public void deletePhongCach(int id) {
         phongCachRestService.deleteById(id);
     }
+
     public void fetchSamplePhongCachData() {
         phongCachRestService.copySampleDataFromAdmin();
     }
+
     public void sampleAll() {
         bangNoiThatRestService.sampleAll();
     }
+
     public void swap(int id1, int id2) {
         phongCachRestService.swap(id1, id2);
     }

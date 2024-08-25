@@ -56,6 +56,7 @@ public class ButtonHandler {
         }
         TableUtils.reArrangeList(TableNoiThat);
     }
+
     private void addNewItemIfEmpty() {
         // If no items are selected and the TreeTableView is empty, add a new item with STT "A"
         if (TableNoiThat.getRoot().getChildren().isEmpty()) {
@@ -111,12 +112,14 @@ public class ButtonHandler {
             newItem.getChildren().add(newRomanStt);
         }
     }
+
     /**
      * Handles the continuous addition of items in the numeric sequence format. Adds five new items to the TreeTableView.
      */
     private void handleContinuousAddForNumericStt() {
         addNewNumericStt(5);
     }
+
     private void addNewNumericStt(int num) {
         for (int i = 0; i < num; i++) {
             TreeItem<BangNoiThat> item = TableNoiThat.getSelectionModel().getSelectedItem();
@@ -265,6 +268,7 @@ public class ButtonHandler {
      */
     public void exportButtonHandler(ActionEvent event) {
     }
+
     /**
      * @param event This function will handle the event when user want to save the table
      */
@@ -275,6 +279,7 @@ public class ButtonHandler {
 //            this.luaChonNoiThatController.save();
 //        }
     }
+
     public void automaticallyAddNewNumericStt(TreeItem<BangNoiThat> parent, int count) {
         if (parent == null) {
             return;
@@ -284,6 +289,7 @@ public class ButtonHandler {
             parent.getChildren().add(tempNewItem);
         }
     }
+
     public void duplicateButtonHandler(ActionEvent actionEvent) {
         TreeItem<BangNoiThat> currentSelectedItem = TableNoiThat.getSelectionModel().getSelectedItem();
         if (currentSelectedItem == null) {
@@ -298,6 +304,7 @@ public class ButtonHandler {
         TableCalculationUtils.recalculateAllTongTien(TableNoiThat);
 
     }
+
     private TreeItem<BangNoiThat> deepCopy(TreeItem<BangNoiThat> item) {
         if (item == null) {
             return null;
