@@ -36,7 +36,6 @@ public class SetupBangNoiThat {
     private final TreeTableColumn<BangNoiThat, String> STT;
     private final TreeTableView<BangNoiThat> TableNoiThat;
     private final TableView<BangThanhToan> bangThanhToan;
-    private final int itemCount = 0;
     private final LuaChonNoiThatController luaChonNoiThatController;
     private final LuaChonNoiThatService luaChonNoiThatService;
 

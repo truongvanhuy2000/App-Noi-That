@@ -3,6 +3,8 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Command;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.AutomaticallyInsertVatLieuAndThongSoCommand;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
@@ -99,46 +101,13 @@ public class HangMucCollumHandler {
     }
 
     private void automaticallyInsertVatLieuAndThongSo(TreeItem<BangNoiThat> rowValue) {
-        Optional<VatLieu> vatLieu = getTheFirstVatLieu(rowValue);
-        if (vatLieu.isPresent()) {
-            String firstVatLieu = vatLieu.get().getName();
-            ThongSo thongSo = vatLieu.get().getThongSo();
-            if (thongSo != null) {
-                Double dai = Objects.requireNonNullElse(thongSo.getDai(), 0.0);
-                Double rong = Objects.requireNonNullElse(thongSo.getRong(), 0.0);
-                Double cao = Objects.requireNonNullElse(thongSo.getCao(), 0.0);
-                Long donGia = thongSo.getDon_gia();
-                String donVi = thongSo.getDon_vi();
-                Double khoiLuong = TableCalculationUtils.calculateKhoiLuong(dai, cao, rong, donVi);
-                Long thanhTien = TableCalculationUtils.calculateThanhTien(khoiLuong, donGia);
+        Command command = AutomaticallyInsertVatLieuAndThongSoCommand.builder()
+                .luaChonNoiThatService(this.luaChonNoiThatService)
+                .rowValue(rowValue)
+                .build();
 
-                rowValue.getValue().setThanhTien(thanhTien);
-                rowValue.getValue().setKhoiLuong(khoiLuong);
-                rowValue.getValue().setDai(dai);
-                rowValue.getValue().setRong(rong);
-                rowValue.getValue().setCao(cao);
-                rowValue.getValue().setDonGia(donGia);
-                rowValue.getValue().setDonVi(donVi);
-            }
-            rowValue.getValue().setVatLieu(firstVatLieu);
-        }
-    }
-
-    private Optional<VatLieu> getTheFirstVatLieu(TreeItem<BangNoiThat> currentItem) {
-        try {
-            String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
-            String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
-            String hangMuc = currentItem.getValue().getHangMuc().getValue();
-            List<VatLieu> items = luaChonNoiThatService.findVatLieuListBy(phongCach, noiThat, hangMuc);
-            if (items.isEmpty()) {
-                return Optional.empty();
-            }
-            return Optional.of(items.get(0));
-        } catch (NullPointerException e) {
-            PopupUtils.throwErrorNotification("Chưa lựa chọn thông tin phía trên");
-            LOGGER.error("Error when get the first vat lieu item");
-            return Optional.empty();
-        }
+        command.execute();
+        // TODO: push this to command stack
     }
 
     /**

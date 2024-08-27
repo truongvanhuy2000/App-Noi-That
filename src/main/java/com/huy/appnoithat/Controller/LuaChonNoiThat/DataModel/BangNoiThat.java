@@ -1,13 +1,16 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel;
 
 import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Memento;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
 public class BangNoiThat {
     private final SimpleStringProperty STT;
     private final SimpleDoubleProperty Cao;
@@ -110,5 +113,50 @@ public class BangNoiThat {
 
     public void setKhoiLuong(double khoiLuong) {
         this.KhoiLuong.setValue(khoiLuong);
+    }
+
+    public Memento createSnapshot() {
+        return Snapshot.builder()
+                .bangNoiThat(this)
+                .id(STT.getValue())
+                .cao(Cao.getValue())
+                .dai(Dai.getValue())
+                .rong(Rong.getValue())
+                .donGia(DonGia.getValue())
+                .donVi(DonVi.getValue())
+                .hangMuc(HangMuc.getValue())
+                .vatLieu(VatLieu.getValue())
+                .thanhTien(ThanhTien.getValue())
+                .khoiLuong(KhoiLuong.getValue())
+                .build();
+    }
+
+    @Builder
+    public static class Snapshot implements Memento {
+        private BangNoiThat bangNoiThat;
+        private String id;
+        private double cao;
+        private double dai;
+        private double rong;
+        private long donGia;
+        private String donVi;
+        private String hangMuc;
+        private String vatLieu;
+        private long thanhTien;
+        private double khoiLuong;
+
+        @Override
+        public void restore() {
+            bangNoiThat.setSTT(id);
+            bangNoiThat.setCao(cao);
+            bangNoiThat.setDai(dai);
+            bangNoiThat.setRong(rong);
+            bangNoiThat.setDonGia(donGia);
+            bangNoiThat.setDonVi(donVi);
+            bangNoiThat.setHangMuc(hangMuc);
+            bangNoiThat.setVatLieu(vatLieu);
+            bangNoiThat.setThanhTien(thanhTien);
+            bangNoiThat.setKhoiLuong(khoiLuong);
+        }
     }
 }
