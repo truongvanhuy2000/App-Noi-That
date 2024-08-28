@@ -8,6 +8,7 @@ import com.huy.appnoithat.Controller.FileNoiThatExplorer.FileNoiThatExplorerCont
 import com.huy.appnoithat.Controller.GlobalSettingController;
 import com.huy.appnoithat.Controller.HomeController;
 import com.huy.appnoithat.Controller.LoginController;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.Controller.NewTab.NewTabController;
 import com.huy.appnoithat.Controller.Register.RegisterController;
@@ -84,9 +85,19 @@ public class ControllerModule extends AbstractModule {
         }
 
         @Provides
-        LuaChonNoiThatController luaChonNoiThatController(StorageService persistenceStorageService,
-                                                          LuaChonNoiThatService luaChonNoiThatService) {
-            return new LuaChonNoiThatController(persistenceStorageService, luaChonNoiThatService);
+        LuaChonNoiThatController luaChonNoiThatController(
+                StorageService persistenceStorageService,
+                LuaChonNoiThatService luaChonNoiThatService,
+                CommandManager commandManager
+        ) {
+            return new LuaChonNoiThatController(
+                    persistenceStorageService, luaChonNoiThatService, commandManager
+            );
+        }
+
+        @Provides
+        CommandManager commandManager() {
+            return new CommandManager();
         }
 
         @Provides

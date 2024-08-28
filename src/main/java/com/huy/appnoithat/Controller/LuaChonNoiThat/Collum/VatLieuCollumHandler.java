@@ -2,6 +2,10 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomVatLieuCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Command;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitHangMucCommand;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitVatLieuCommand;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
@@ -21,6 +25,8 @@ import java.util.Objects;
 public class VatLieuCollumHandler {
     private final ObservableList<String> vatLieuList;
     private final LuaChonNoiThatService luaChonNoiThatService;
+    private final CommandManager commandManager;
+
     HashMap<String, ThongSo> vatLieuThongSoHashMap = new HashMap<>();
 
     /**
@@ -31,9 +37,14 @@ public class VatLieuCollumHandler {
      * @param vatLieuList The list of VatLieu items to populate the VatLieu column options.
      */
 
-    public VatLieuCollumHandler(ObservableList<String> vatLieuList, LuaChonNoiThatService luaChonNoiThatService) {
+    public VatLieuCollumHandler(
+            ObservableList<String> vatLieuList,
+            LuaChonNoiThatService luaChonNoiThatService,
+            CommandManager commandManager
+    ) {
         this.vatLieuList = vatLieuList;
         this.luaChonNoiThatService = luaChonNoiThatService;
+        this.commandManager = commandManager;
     }
 
     /**
@@ -70,40 +81,9 @@ public class VatLieuCollumHandler {
      * @param event The CellEditEvent instance representing the edit event for the VatLieu column.
      */
     public void onEditCommitVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
-//        System.out.println("Commit edit 1");
-        String vatLieu = event.getNewValue();
-        event.getRowValue().getValue().setVatLieu(vatLieu);
-        ThongSo coresspondingThongSo = vatLieuThongSoHashMap.get(vatLieu);
-        if (coresspondingThongSo == null) {
-            return;
-        }
-        Double dai = Objects.requireNonNullElse(coresspondingThongSo.getDai(), 0.0);
-        Double rong = Objects.requireNonNullElse(coresspondingThongSo.getRong(), 0.0);
-        Double cao = Objects.requireNonNullElse(coresspondingThongSo.getCao(), 0.0);
-        Long donGia = coresspondingThongSo.getDon_gia();
-        String donVi = coresspondingThongSo.getDon_vi();
-
-        if (!dai.equals(0.0)) {
-            event.getRowValue().getValue().setDai(dai);
-        }
-        if (!rong.equals(0.0)) {
-            event.getRowValue().getValue().setRong(rong);
-        }
-        if (!cao.equals(0.0)) {
-            event.getRowValue().getValue().setCao(cao);
-        }
-        event.getRowValue().getValue().setDonGia(donGia);
-        event.getRowValue().getValue().setDonVi(donVi);
-
-        Double khoiLuong = TableCalculationUtils.calculateKhoiLuong(
-                event.getRowValue().getValue().getDai().getValue(),
-                event.getRowValue().getValue().getCao().getValue(),
-                event.getRowValue().getValue().getRong().getValue(), donVi);
-        Long thanhTien = TableCalculationUtils.calculateThanhTien(khoiLuong, donGia);
-
-        event.getRowValue().getValue().setThanhTien(thanhTien);
-        event.getRowValue().getValue().setKhoiLuong(khoiLuong);
-        TableCalculationUtils.recalculateAllTongTien(event.getTreeTableView());
+        Command command = new EditCommitVatLieuCommand(vatLieuThongSoHashMap, event);
+        commandManager.push(command);
+        command.execute();
     }
 
 

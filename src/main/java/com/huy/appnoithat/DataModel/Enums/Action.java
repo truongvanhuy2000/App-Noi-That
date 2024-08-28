@@ -9,5 +9,6 @@ public enum Action {
     ADD_NEW_ROW,
     NEXT_SCREEN,
     COMMIT,
-    NEXT_LINE
+    NEXT_LINE,
+    UNDO
 }

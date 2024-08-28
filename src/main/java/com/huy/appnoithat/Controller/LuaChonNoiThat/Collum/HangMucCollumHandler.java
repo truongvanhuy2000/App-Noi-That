@@ -4,7 +4,9 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Command;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.AutomaticallyInsertVatLieuAndThongSoCommand;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitHangMucCommand;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
@@ -19,6 +21,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
+import lombok.Builder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,6 +32,7 @@ import java.util.Optional;
 public class HangMucCollumHandler {
     private final ObservableList<String> hangMucList;
     private final LuaChonNoiThatService luaChonNoiThatService;
+    private final CommandManager commandManager;
     final static Logger LOGGER = LogManager.getLogger(HangMucCollumHandler.class);
 
     /**
@@ -37,9 +41,16 @@ public class HangMucCollumHandler {
      * @param hangMucList The ObservableList of String representing hangMucList data.
      */
 
-    public HangMucCollumHandler(ObservableList<String> hangMucList, LuaChonNoiThatService luaChonNoiThatService) {
+    @Builder
+    public HangMucCollumHandler(
+            ObservableList<String> hangMucList,
+            LuaChonNoiThatService luaChonNoiThatService,
+            CommandManager commandManager
+
+    ) {
         this.hangMucList = hangMucList;
         this.luaChonNoiThatService = luaChonNoiThatService;
+        this.commandManager = commandManager;
     }
 
     /**
@@ -49,65 +60,9 @@ public class HangMucCollumHandler {
      * @param event The CellEditEvent containing information about the edit event.
      */
     public void onEditCommitHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
-        TreeItem<BangNoiThat> rowValue = event.getRowValue();
-        if (rowValue != null) {
-            String stt = rowValue.getValue().getSTT().getValue();
-            String newValue = event.getNewValue();
-            rowValue.getValue().setHangMuc(newValue);
-            if (ItemTypeUtils.determineItemType(stt) == ItemType.ROMAN) {
-                automaticallyInsertNoiThat(event);
-            }
-            if (ItemTypeUtils.determineItemType(stt) == ItemType.NUMERIC) {
-                automaticallyInsertVatLieuAndThongSo(event);
-            }
-        }
-    }
-
-    private void automaticallyInsertNoiThat(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
-        TreeItem<BangNoiThat> rowValue = event.getRowValue();
-        if (rowValue == null) {
-            LOGGER.error("Null row value when automatically insert vat lieu and thong so");
-            return;
-        }
-        String noiThat = rowValue.getValue().getHangMuc().getValue();
-        String phongCach = rowValue.getParent().getValue().getHangMuc().getValue();
-
-        List<HangMuc> items = luaChonNoiThatService.findHangMucListBy(phongCach, noiThat);
-        if (items == null || items.isEmpty()) {
-            LOGGER.error("cant found nothing");
-            return;
-        }
-        rowValue.getChildren().clear();
-        int index = 1;
-        for (HangMuc item : items) {
-            TreeItem<BangNoiThat> newItem = TableUtils.createNewItem(ItemType.NUMERIC, String.valueOf(index++));
-            rowValue.getChildren().add(newItem);
-            newItem.getValue().setHangMuc(item.getName());
-            automaticallyInsertVatLieuAndThongSo(newItem);
-        }
-        TableCalculationUtils.recalculateAllTongTien(event.getTreeTableView());
-    }
-
-    private void automaticallyInsertVatLieuAndThongSo(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
-        TreeItem<BangNoiThat> rowValue = event.getRowValue();
-        if (rowValue == null) {
-            LOGGER.error("Null row value when automatically insert vat lieu and thong so");
-            return;
-        }
-        automaticallyInsertVatLieuAndThongSo(rowValue);
-        TableCalculationUtils.recalculateAllTongTien(event.getTreeTableView());
-        event.getTreeTableView().edit(event.getTreeTablePosition().getRow(), event.getTreeTableView().getVisibleLeafColumn(2));
-
-    }
-
-    private void automaticallyInsertVatLieuAndThongSo(TreeItem<BangNoiThat> rowValue) {
-        Command command = AutomaticallyInsertVatLieuAndThongSoCommand.builder()
-                .luaChonNoiThatService(this.luaChonNoiThatService)
-                .rowValue(rowValue)
-                .build();
-
+        Command command = new EditCommitHangMucCommand(luaChonNoiThatService, event);
+        commandManager.push(command);
         command.execute();
-        // TODO: push this to command stack
     }
 
     /**
@@ -118,7 +73,6 @@ public class HangMucCollumHandler {
      */
     public void onStartEditHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
-        String stt = currentItem.getValue().getSTT().getValue();
         List<String> items;
         hangMucList.clear();
         // Roman mean it's a noi that, mean that its parent is phong cach

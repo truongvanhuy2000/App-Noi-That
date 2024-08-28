@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat;
 
 import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Operation.ExportOperation;
@@ -68,14 +69,21 @@ public class LuaChonNoiThatController implements Initializable {
     private final ObservableList<Integer> percentageList = FXCollections.observableArrayList(10, 30, 50);
     private final StorageService persistenceStorageService;
     private final LuaChonNoiThatService luaChonNoiThatService;
+    private final CommandManager commandManager;
 
-    public LuaChonNoiThatController(StorageService persistenceStorageService, LuaChonNoiThatService luaChonNoiThatService) {
+    public LuaChonNoiThatController(
+            StorageService persistenceStorageService,
+            LuaChonNoiThatService luaChonNoiThatService,
+            CommandManager commandManager
+    ) {
         this.persistenceStorageService = persistenceStorageService;
         this.luaChonNoiThatService = luaChonNoiThatService;
+        this.commandManager = commandManager;
     }
 
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {
+
         Object source = event.getSource();
         if (source == ImageView) {
             imageViewHandler();
@@ -91,9 +99,10 @@ public class LuaChonNoiThatController implements Initializable {
     void onKeyPressed(KeyEvent event) {
         if (KeyboardUtils.isRightKeyCombo(Action.DELETE, event)) {
             deleteButton.fire();
-        }
-        if (KeyboardUtils.isRightKeyCombo(Action.CLEAR_SELECTION, event)) {
+        } else if (KeyboardUtils.isRightKeyCombo(Action.CLEAR_SELECTION, event)) {
             TableNoiThat.getSelectionModel().clearSelection();
+        } else if (KeyboardUtils.isRightKeyCombo(Action.UNDO, event)) {
+            commandManager.undo();
         }
     }
 

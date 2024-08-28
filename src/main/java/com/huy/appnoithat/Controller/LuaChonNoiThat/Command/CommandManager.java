@@ -14,11 +14,11 @@ public class CommandManager {
         commandStack.push(command);
     }
 
-    public Command pop() {
+    public void undo() {
         if (commandStack.isEmpty()) {
-            LOGGER.error("Command stack is empty");
-            throw new RuntimeException();
+            return;
         }
-        return commandStack.pop();
+        Command command = commandStack.pop();
+        command.undo();
     }
 }

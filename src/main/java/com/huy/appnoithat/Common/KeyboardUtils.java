@@ -29,6 +29,9 @@ public class KeyboardUtils {
             case NEXT_LINE -> {
                 return keyEvent.isAltDown() && keyEvent.getCode().equals(KeyCode.ENTER);
             }
+            case UNDO -> {
+                return keyEvent.isControlDown() && keyEvent.getCode().equals(KeyCode.Z);
+            }
         }
         return false;
     }
