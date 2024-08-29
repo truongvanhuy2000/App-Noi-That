@@ -83,7 +83,6 @@ public class LuaChonNoiThatController implements Initializable {
 
     @FXML
     void OnMouseClickedHandler(MouseEvent event) {
-
         Object source = event.getSource();
         if (source == ImageView) {
             imageViewHandler();
@@ -101,8 +100,6 @@ public class LuaChonNoiThatController implements Initializable {
             deleteButton.fire();
         } else if (KeyboardUtils.isRightKeyCombo(Action.CLEAR_SELECTION, event)) {
             TableNoiThat.getSelectionModel().clearSelection();
-        } else if (KeyboardUtils.isRightKeyCombo(Action.UNDO, event)) {
-            commandManager.undo();
         }
     }
 
@@ -128,6 +125,10 @@ public class LuaChonNoiThatController implements Initializable {
         persistenceStorageService.saveThongTinCongTy(thongTinCongTy);
     }
 
+    public void undo() {
+        LOGGER.info("Undo action");
+        commandManager.undo();
+    }
 
     /**
      * @param url

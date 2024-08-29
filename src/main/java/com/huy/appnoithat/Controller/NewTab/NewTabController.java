@@ -103,6 +103,9 @@ public class NewTabController implements Initializable {
         if (KeyboardUtils.isRightKeyCombo(Action.SAVE, event)) {
             LOGGER.info("Save key combo pressed");
             contentOperation.save();
+        } else if (KeyboardUtils.isRightKeyCombo(Action.UNDO, event)) {
+            LOGGER.info("Undo key combo pressed");
+            contentOperation.undoAction();
         }
     }
 

@@ -3,10 +3,11 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Setup;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomEditingCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomNumberCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.HangMucCollumHandler;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.KichThuocHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.STTCollumHandler;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.VatLieuCollumHandler;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Command;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.*;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
@@ -119,7 +120,6 @@ public class SetupBangNoiThat {
 
     private void setUpCollum() {
         setUpKichThuoc();
-//        setUpDonGia();
         setUpDonVi();
         setUpHangMuc();
         setUpVatLieu();
@@ -151,12 +151,9 @@ public class SetupBangNoiThat {
         });
         KhoiLuong.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat, false));
         KhoiLuong.setOnEditCommit(event -> {
-            double khoiLuong = event.getNewValue();
-            long donGia = event.getRowValue().getValue().getDonGia().getValue();
-            long thanhTien = TableCalculationUtils.calculateThanhTien(khoiLuong, donGia);
-            event.getRowValue().getValue().setThanhTien(thanhTien);
-            event.getRowValue().getValue().setKhoiLuong(khoiLuong);
-            TableCalculationUtils.recalculateAllTongTien(TableNoiThat);
+            Command command = new EditCommitKhoiLuongCommand(event);
+            commandManager.push(command);
+            command.execute();
         });
     }
 
@@ -171,8 +168,9 @@ public class SetupBangNoiThat {
         });
         ThanhTien.setCellFactory(param -> new CustomNumberCell<>(new CustomLongStringConverter(), TableNoiThat, false));
         ThanhTien.setOnEditCommit(event -> {
-            event.getRowValue().getValue().setThanhTien(event.getNewValue());
-            TableCalculationUtils.recalculateAllTongTien(TableNoiThat);
+            Command command = new EditCommitThanhTienCommand(event);
+            commandManager.push(command);
+            command.execute();
         });
     }
 
@@ -199,7 +197,6 @@ public class SetupBangNoiThat {
         // Set up collum for HangMuc
         HangMuc.setCellValueFactory(hangMucCollumHandler::getCustomCellValueFactory);
 //        HangMuc.setGraphic(checkBox);
-
         HangMuc.setCellFactory(hangMucCollumHandler::getCustomCellFactory);
         HangMuc.setOnEditCommit(hangMucCollumHandler::onEditCommitHangMuc);
         HangMuc.setOnEditStart(hangMucCollumHandler::onStartEditHangMuc);
@@ -220,34 +217,48 @@ public class SetupBangNoiThat {
      * This function will set up the collum for KichThuoc
      */
     private void setUpKichThuoc() {
-        KichThuocHandler kichThuocHandler = new KichThuocHandler(TableNoiThat, Cao, Dai, Rong, DonGia);
-
         Cao.setCellValueFactory(param -> {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getCao().asObject();
         });
         Cao.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat, true));
-        Cao.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
+        Cao.setOnEditCommit(event -> {
+            Command command = new EditCommitCaoCommand(event);
+            commandManager.push(command);
+            command.execute();
+        });
 
         Dai.setCellValueFactory(param -> {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getDai().asObject();
         });
         Dai.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat, true));
-        Dai.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
+        Dai.setOnEditCommit(event -> {
+            Command command = new EditCommitDaiCommand(event);
+            commandManager.push(command);
+            command.execute();
+        });
 
         Rong.setCellValueFactory(param -> {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getRong().asObject();
         });
         Rong.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat, true));
-        Rong.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
+        Rong.setOnEditCommit(event -> {
+            Command command = new EditCommitRongCommand(event);
+            commandManager.push(command);
+            command.execute();
+        });
 
         DonGia.setCellValueFactory(param -> {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getDonGia().asObject();
         });
         DonGia.setCellFactory(param -> new CustomNumberCell<>(new CustomLongStringConverter(), TableNoiThat, false));
-        DonGia.setOnEditCommit(kichThuocHandler::onCommitEditKichThuoc);
+        DonGia.setOnEditCommit(event -> {
+            Command command = new EditCommitDonGiaCommand(event);
+            commandManager.push(command);
+            command.execute();
+        });
     }
 }

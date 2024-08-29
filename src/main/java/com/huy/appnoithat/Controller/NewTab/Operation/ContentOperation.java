@@ -47,14 +47,25 @@ public class ContentOperation {
     public void saveNoteArea() {
         TabContent selectedTabContent = newTabController.getSelectedTabContent();
         if (selectedTabContent == null) {
+            LOGGER.error("No tab was selected");
             return;
         }
         selectedTabContent.getLuaChonNoiThatController().saveNoteArea();
     }
 
+    public void undoAction() {
+        TabContent selectedTabContent = newTabController.getSelectedTabContent();
+        if (selectedTabContent == null) {
+            LOGGER.error("No tab was selected");
+            return;
+        }
+        selectedTabContent.getLuaChonNoiThatController().undo();
+    }
+
     public void saveThongTinCongTy() {
         TabContent selectedTabContent = newTabController.getSelectedTabContent();
         if (selectedTabContent == null) {
+            LOGGER.error("No tab was selected");
             return;
         }
         selectedTabContent.getLuaChonNoiThatController().saveThongTinCongTy();

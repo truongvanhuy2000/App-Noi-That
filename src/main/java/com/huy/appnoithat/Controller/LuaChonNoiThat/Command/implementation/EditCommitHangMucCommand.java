@@ -18,6 +18,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,46 +27,27 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 public class EditCommitHangMucCommand implements Command {
     private final Logger LOGGER = LogManager.getLogger(this);
     private final LuaChonNoiThatService luaChonNoiThatService;
     private final TreeTableColumn.CellEditEvent<BangNoiThat, String> event;
 
     private TreeItem<BangNoiThat> rowValue;
+    private TreeTableView<BangNoiThat> treeTableView;
     private Memento bangNoiThatSnapshot;
-    private ObservableList<TreeItem<BangNoiThat>> oldChildren = FXCollections.observableArrayList();
-
-    public EditCommitHangMucCommand(
-            LuaChonNoiThatService luaChonNoiThatService,
-            TreeTableColumn.CellEditEvent<BangNoiThat, String> event
-    ) {
-        this.luaChonNoiThatService = luaChonNoiThatService;
-        this.event = event;
-    }
+    private final ObservableList<TreeItem<BangNoiThat>> oldChildren = FXCollections.observableArrayList();
 
     @Override
     public void execute() {
         rowValue = event.getRowValue();
+        treeTableView = event.getTreeTableView();
         if (rowValue == null) {
             return;
         }
         bangNoiThatSnapshot = rowValue.getValue().createSnapshot();
         oldChildren.addAll(rowValue.getChildren());
-        onEditCommitHangMuc();
-    }
 
-    @Override
-    public void undo() {
-        bangNoiThatSnapshot.restore();
-        rowValue.getChildren().clear();
-        rowValue.getChildren().addAll(oldChildren);
-    }
-
-    public void onEditCommitHangMuc() {
-        TreeItem<BangNoiThat> rowValue = event.getRowValue();
-        if (rowValue == null) {
-            return;
-        }
         String stt = rowValue.getValue().getSTT().getValue();
         String newValue = event.getNewValue();
         rowValue.getValue().setHangMuc(newValue);
@@ -74,6 +57,18 @@ public class EditCommitHangMucCommand implements Command {
         if (ItemTypeUtils.determineItemType(stt) == ItemType.NUMERIC) {
             automaticallyInsertVatLieuAndThongSo(event);
         }
+    }
+
+    @Override
+    public void undo() {
+        if (bangNoiThatSnapshot == null) {
+            return;
+        }
+        bangNoiThatSnapshot.restore();
+        rowValue.getChildren().clear();
+        rowValue.getChildren().addAll(oldChildren);
+
+        TableCalculationUtils.recalculateAllTongTien(treeTableView);
     }
 
     private void automaticallyInsertNoiThat(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
@@ -98,7 +93,7 @@ public class EditCommitHangMucCommand implements Command {
             newItem.getValue().setHangMuc(item.getName());
             automaticallyInsertVatLieuAndThongSo(newItem);
         }
-        TableCalculationUtils.recalculateAllTongTien(event.getTreeTableView());
+        TableCalculationUtils.recalculateAllTongTien(treeTableView);
     }
 
     private void automaticallyInsertVatLieuAndThongSo(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
@@ -108,7 +103,7 @@ public class EditCommitHangMucCommand implements Command {
             return;
         }
         automaticallyInsertVatLieuAndThongSo(rowValue);
-        TableCalculationUtils.recalculateAllTongTien(event.getTreeTableView());
+        TableCalculationUtils.recalculateAllTongTien(treeTableView);
         event.getTreeTableView().edit(event.getTreeTablePosition().getRow(), event.getTreeTableView().getVisibleLeafColumn(2));
 
     }
