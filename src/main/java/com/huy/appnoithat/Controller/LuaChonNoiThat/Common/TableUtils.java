@@ -12,6 +12,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
 
+import java.util.Optional;
+
 public class TableUtils {
     /**
      * @param root THis method will return the youngest childern of the root
@@ -141,5 +143,41 @@ public class TableUtils {
             item1.getValue().setSTT(
                     ItemTypeUtils.createFullId(ItemType.AlPHA, Utils.toAlpha(i + 1)));
         }
+    }
+
+    /**
+     * Checks if adding a new child item to the given root TreeItem would exceed the maximum allowed limit of 30 children.
+     * If the limit is reached, displays an error message and returns true; otherwise, returns false.
+     *
+     * @param root The parent TreeItem to which a new child item is to be added.
+     * @return True if the limit is reached, false otherwise.
+     */
+    public static TreeItem<BangNoiThat> createNewSibling(TreeItem<BangNoiThat> currentItem) {
+        if (currentItem == null) {
+            return null;
+        }
+        String stt = currentItem.getValue().getSTT().getValue();
+        Optional<String> nextStt = ItemTypeUtils.findTheNextStt(stt);
+        if (nextStt.isPresent()) {
+            TreeItem<BangNoiThat> newItem = TableUtils.createNewItem(
+                    ItemTypeUtils.determineItemType(stt), nextStt.get());
+            return createNewSibling(currentItem, newItem);
+        }
+        return null;
+    }
+
+    public static TreeItem<BangNoiThat> createNewSibling(TreeItem<BangNoiThat> currentItem, TreeItem<BangNoiThat> newItem) {
+        if (currentItem == null || newItem == null) {
+            return null;
+        }
+        if (currentItem.getParent() == null) {
+            return null;
+        }
+        int currentPos = currentItem.getParent().getChildren().indexOf(currentItem);
+        if (currentPos != -1) {
+            currentItem.getParent().getChildren().add(currentPos + 1, newItem);
+        }
+
+        return newItem;
     }
 }

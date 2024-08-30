@@ -198,7 +198,7 @@ public class LuaChonNoiThatController implements Initializable {
      */
     private void setUpButton() {
         // Creates a ButtonHandler instance with the current object.
-        ButtonHandler buttonHandler = new ButtonHandler(this);
+        ButtonHandler buttonHandler = new ButtonHandler(this, commandManager);
         // Assigns the continuousLineAdd method to the addContinuousButton's action event.
         addContinuousButton.setOnAction(buttonHandler::continuousLineAdd);
         // Assigns the exportButtonHandler method to the ExportButton's action event.

@@ -113,7 +113,7 @@ public class UserSessionManagerImpl implements UserSessionManager {
         Account account = accountRestService.getAccountInformation();
         if (account == null) {
             LOGGER.error("Can't get account information");
-            throw new RuntimeException();
+            return;
         }
         session.setAccount(account);
     }
