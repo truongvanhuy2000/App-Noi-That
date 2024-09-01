@@ -140,6 +140,17 @@ public class TableCalculationUtils {
         });
     }
 
+    public static void recalculateBangNoiThat(BangNoiThat bangNoiThat) {
+        Double dai = bangNoiThat.getDai().getValue();
+        Double rong = bangNoiThat.getRong().getValue();
+        Double cao = bangNoiThat.getCao().getValue();
+        String donvi = bangNoiThat.getDonVi().getValue();
+        Long dongia = bangNoiThat.getDonGia().getValue();
+        Double khoiluong = TableCalculationUtils.calculateKhoiLuong(dai, cao, rong, donvi);
+        Long thanhTien = TableCalculationUtils.calculateThanhTien(khoiluong, dongia);
+        bangNoiThat.setKhoiLuong(khoiluong);
+        bangNoiThat.setThanhTien(thanhTien);
+    }
 
     public static long round(double input) {
         return Math.round(input / 1000000) * 1000000;

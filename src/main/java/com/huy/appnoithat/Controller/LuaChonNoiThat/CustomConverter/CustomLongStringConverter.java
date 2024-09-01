@@ -10,8 +10,7 @@ public class CustomLongStringConverter extends StringConverter<Long> {
             return 0L;
         }
         var1 = var1.trim();
-        Long returnLong = Utils.convertDecimalToLong(var1);
-        return returnLong;
+        return Utils.convertDecimalToLong(var1);
     }
 
     @Override

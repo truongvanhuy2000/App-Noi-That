@@ -14,7 +14,6 @@ import javafx.scene.control.TreeTableView;
 
 public class ButtonHandler {
     private final TreeTableView<BangNoiThat> TableNoiThat;
-    private final LuaChonNoiThatController luaChonNoiThatController;
     private final CommandManager commandManager;
 
     /**
@@ -25,7 +24,6 @@ public class ButtonHandler {
      */
     public ButtonHandler(LuaChonNoiThatController luaChonNoiThatController, CommandManager commandManager) {
         this.TableNoiThat = luaChonNoiThatController.getTableNoiThat();
-        this.luaChonNoiThatController = luaChonNoiThatController;
         this.commandManager = commandManager;
     }
 
@@ -41,23 +39,6 @@ public class ButtonHandler {
         Command command = new ContinuousLineAddCommand(TableNoiThat);
         commandManager.push(command);
         command.execute();
-    }
-
-    /**
-     * Creates a new TreeItem sibling with the next sequential STT and adds it after the given TreeItem in the parent.
-     * If the current item is null or its parent is null, the method does nothing.
-     *
-     * @param currentItem The TreeItem after which the new sibling is added.
-     */
-    @Deprecated
-    public void exportButtonHandler(ActionEvent event) {
-    }
-
-    /**
-     * @param event This function will handle the event when user want to save the table
-     */
-    @Deprecated
-    public void onSaveAction(ActionEvent event) {
     }
 
     public void duplicateButtonHandler(ActionEvent actionEvent) {

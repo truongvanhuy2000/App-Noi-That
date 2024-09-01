@@ -10,7 +10,8 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class BangNoiThat {
+public class
+BangNoiThat {
     private final SimpleStringProperty STT;
     private final SimpleDoubleProperty Cao;
     private final SimpleDoubleProperty Dai;

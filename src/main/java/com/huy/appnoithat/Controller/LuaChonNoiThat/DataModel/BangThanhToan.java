@@ -1,9 +1,18 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel;
 
 import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Memento;
 import com.huy.appnoithat.DataModel.ThongTinThanhToan;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.apache.poi.ss.formula.functions.T;
+import org.checkerframework.checker.units.qual.A;
 
 @Getter
 public class BangThanhToan {
@@ -57,5 +66,65 @@ public class BangThanhToan {
                 ", HangDenChanCongTrinh50=" + HangDenChanCongTrinh50 +
                 ", NghiemThuQuyet=" + NghiemThuQuyet +
                 '}';
+    }
+
+    public static BangThanhToan empty() {
+        return new BangThanhToan(0L, 0L, 0L, 0L, 0L);
+    }
+
+    @Getter
+    public static class Percentage {
+        private final SimpleIntegerProperty DatCocThietKePercentage;
+        private final SimpleIntegerProperty DatCocThiCongPercentage;
+        private final SimpleIntegerProperty HangDenChanCongTrinhPercentage;
+
+        @Builder
+        public Percentage(Integer datCocThietKePercentage, Integer datCocThiCongPercentage, Integer hangDenChanCongTrinhPercentage) {
+            DatCocThietKePercentage = new SimpleIntegerProperty(datCocThietKePercentage);
+            DatCocThiCongPercentage = new SimpleIntegerProperty(datCocThiCongPercentage);
+            HangDenChanCongTrinhPercentage = new SimpleIntegerProperty(hangDenChanCongTrinhPercentage);
+        }
+
+        public Memento createSnapshot() {
+            return Snapshot.builder(this)
+                    .DatCocThietKePercentage(DatCocThietKePercentage.get())
+                    .DatCocThiCongPercentage(DatCocThiCongPercentage.get())
+                    .HangDenChanCongTrinhPercentage(HangDenChanCongTrinhPercentage.get())
+                    .build();
+        }
+
+        public static Percentage createDefault() {
+            return Percentage.builder()
+                    .datCocThietKePercentage(10)
+                    .datCocThiCongPercentage(30)
+                    .hangDenChanCongTrinhPercentage(50)
+                    .build();
+        }
+
+        public void addListener(ChangeListener<Number> changeListener) {
+            getDatCocThiCongPercentage().addListener(changeListener);
+            getDatCocThietKePercentage().addListener(changeListener);
+            getHangDenChanCongTrinhPercentage().addListener(changeListener);
+        }
+
+        @Builder(builderMethodName = "hiddenBuilder")
+        @RequiredArgsConstructor
+        public static class Snapshot implements Memento {
+            private final Percentage percentage;
+            private final int DatCocThietKePercentage;
+            private final int DatCocThiCongPercentage;
+            private final int HangDenChanCongTrinhPercentage;
+
+            public static SnapshotBuilder builder(Percentage percentage) {
+                return hiddenBuilder().percentage(percentage);
+            }
+
+            @Override
+            public void restore() {
+                percentage.getDatCocThietKePercentage().set(DatCocThietKePercentage);
+                percentage.getDatCocThiCongPercentage().set(DatCocThiCongPercentage);
+                percentage.getHangDenChanCongTrinhPercentage().set(HangDenChanCongTrinhPercentage);
+            }
+        }
     }
 }

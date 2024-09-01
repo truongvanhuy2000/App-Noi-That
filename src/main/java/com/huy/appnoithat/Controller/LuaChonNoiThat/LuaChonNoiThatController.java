@@ -66,7 +66,6 @@ public class LuaChonNoiThatController implements Initializable {
     private TableView<BangThanhToan> bangThanhToan;
     @Setter
     private ByteArrayOutputStream imageStream = new ByteArrayOutputStream();
-    private final ObservableList<Integer> percentageList = FXCollections.observableArrayList(10, 30, 50);
     private final StorageService persistenceStorageService;
     private final LuaChonNoiThatService luaChonNoiThatService;
     private final CommandManager commandManager;
@@ -126,7 +125,6 @@ public class LuaChonNoiThatController implements Initializable {
     }
 
     public void undo() {
-        LOGGER.info("Undo action");
         commandManager.undo();
     }
 
@@ -201,9 +199,6 @@ public class LuaChonNoiThatController implements Initializable {
         ButtonHandler buttonHandler = new ButtonHandler(this, commandManager);
         // Assigns the continuousLineAdd method to the addContinuousButton's action event.
         addContinuousButton.setOnAction(buttonHandler::continuousLineAdd);
-        // Assigns the exportButtonHandler method to the ExportButton's action event.
-        ExportButton.setOnAction(buttonHandler::exportButtonHandler);
-        SaveButton.setOnAction(buttonHandler::onSaveAction);
         duplicateButton.setOnAction(buttonHandler::duplicateButtonHandler);
         duplicateButton.disableProperty().bind(TableNoiThat.getSelectionModel().selectedItemProperty().isNull());
         deleteButton.setOnAction(buttonHandler::handleDeleteAction);

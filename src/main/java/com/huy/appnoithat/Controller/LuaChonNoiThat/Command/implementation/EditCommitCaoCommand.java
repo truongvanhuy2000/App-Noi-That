@@ -29,16 +29,7 @@ public class EditCommitCaoCommand implements Command {
 
         bangNoiThat.setCao(event.getNewValue());
 
-        Double dai = bangNoiThat.getDai().getValue();
-        Double rong = bangNoiThat.getRong().getValue();
-        Double cao = bangNoiThat.getCao().getValue();
-        String donvi = bangNoiThat.getDonVi().getValue();
-        Long dongia = bangNoiThat.getDonGia().getValue();
-        Double khoiluong = TableCalculationUtils.calculateKhoiLuong(dai, cao, rong, donvi);
-        Long thanhTien = TableCalculationUtils.calculateThanhTien(khoiluong, dongia);
-        bangNoiThat.setKhoiLuong(khoiluong);
-        bangNoiThat.setThanhTien(thanhTien);
-
+        TableCalculationUtils.recalculateBangNoiThat(bangNoiThat);
         TableCalculationUtils.recalculateAllTongTien(treeTableView);
     }
 
