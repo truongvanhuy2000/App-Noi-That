@@ -30,7 +30,11 @@ public class ContinuousAddForNumericSttCommand implements Command {
             return;
         }
         parent = item.getParent();
-        addNewNumericStt(5);
+        if (item.nextSibling() != null) {
+            TableUtils.createNewSibling(item);
+        } else {
+            addNewNumericStt(5);
+        }
     }
 
     @Override

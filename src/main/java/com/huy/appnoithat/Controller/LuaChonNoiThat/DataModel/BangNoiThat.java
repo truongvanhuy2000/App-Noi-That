@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel;
 
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Memento;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleLongProperty;
@@ -23,6 +24,8 @@ BangNoiThat {
     private final SimpleLongProperty ThanhTien;
     private final SimpleDoubleProperty KhoiLuong;
 
+
+    @Builder
     public BangNoiThat(String id, Double cao, Double dai, Double rong, Long donGia, String donVi, String hangMuc, String vatLieu, Long thanhTien, Double khoiLuong) {
         STT = new SimpleStringProperty(id);
         Cao = new SimpleDoubleProperty(cao);

@@ -3,10 +3,7 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Setup;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Command;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.BangThanhToan.EditBangThanhToan;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.BangThanhToan.EditDatCocThiCongPercentCommand;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.BangThanhToan.EditDatCocThietKePercentCommand;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.BangThanhToan.EditHangDenChanCongTrinhPercentCommand;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.BangThanhToan.*;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.CustomConverter.CustomLongStringConverter;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
@@ -65,7 +62,9 @@ public class SetupBangThanhToan {
         });
         MenuItem recalculate = new MenuItem("Tính toán lại");
         recalculate.setOnAction((event) -> {
-            updateBangThanhToan();
+            Command command = new RecalculateCommand(bangThanhToan.getItems().get(0), percentage);
+            commandManager.push(command);
+            command.execute();
         });
         bangThanhToan.getContextMenu().getItems().addAll(DatCocThietKePercent, DatCocThiCongPercent, HangDenChanCongTrinhPercent, recalculate);
 

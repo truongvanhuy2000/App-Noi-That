@@ -146,9 +146,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
                         .insert(currentTextPos, System.lineSeparator()).toString());
                 textArea.positionCaret(currentTextPos + 1);
                 key.consume();
-                return;
-            }
-            if (KeyboardUtils.isRightKeyCombo(Action.COMMIT, key)) {
+            } else if (KeyboardUtils.isRightKeyCombo(Action.COMMIT, key)) {
                 commitEdit(textArea.getText().trim().strip());
                 updateItem(textArea.getText().trim().strip(), false);
                 key.consume();
@@ -197,7 +195,6 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
         });
         comboBox.getStyleClass().add("combo-border");
         getTableColumn().prefWidthProperty().addListener((observable, oldValue, newValue) -> {
-//            System.out.println("New value: " + newValue);
             comboBox.setPrefWidth(newValue.doubleValue() - 10);
         });
         Platform.runLater(() -> {

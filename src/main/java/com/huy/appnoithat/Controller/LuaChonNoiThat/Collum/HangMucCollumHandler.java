@@ -45,7 +45,6 @@ public class HangMucCollumHandler {
             ObservableList<String> hangMucList,
             LuaChonNoiThatService luaChonNoiThatService,
             CommandManager commandManager
-
     ) {
         this.hangMucList = hangMucList;
         this.luaChonNoiThatService = luaChonNoiThatService;

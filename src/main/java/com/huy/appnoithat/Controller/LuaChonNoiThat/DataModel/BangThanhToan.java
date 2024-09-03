@@ -13,6 +13,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.formula.functions.T;
 import org.checkerframework.checker.units.qual.A;
+import org.checkerframework.checker.units.qual.Time;
 
 @Getter
 public class BangThanhToan {
@@ -72,6 +73,40 @@ public class BangThanhToan {
         return new BangThanhToan(0L, 0L, 0L, 0L, 0L);
     }
 
+    public Memento createSnapshot() {
+        return Snapshot.builder(this)
+                .DatCocThietKe10(DatCocThietKe10.get())
+                .DatCocThiCong30(DatCocThiCong30.get())
+                .HangDenChanCongTrinh50(HangDenChanCongTrinh50.get())
+                .NghiemThuQuyet(NghiemThuQuyet.get())
+                .TongTien(TongTien.get())
+                .build();
+    }
+
+    @Builder(builderMethodName = "hiddenBuilder")
+    @RequiredArgsConstructor
+    private static class Snapshot implements Memento {
+        private final BangThanhToan bangThanhToan;
+        private final long DatCocThietKe10;
+        private final long DatCocThiCong30;
+        private final long HangDenChanCongTrinh50;
+        private final long NghiemThuQuyet;
+        private final long TongTien;
+
+        public static Snapshot.SnapshotBuilder builder(BangThanhToan bangThanhToan) {
+            return hiddenBuilder().bangThanhToan(bangThanhToan);
+        }
+
+        @Override
+        public void restore() {
+            bangThanhToan.getDatCocThietKe10().setValue(DatCocThietKe10);
+            bangThanhToan.getDatCocThiCong30().setValue(DatCocThiCong30);
+            bangThanhToan.getHangDenChanCongTrinh50().setValue(HangDenChanCongTrinh50);
+            bangThanhToan.getNghiemThuQuyet().setValue(NghiemThuQuyet);
+            bangThanhToan.getTongTien().setValue(TongTien);
+        }
+    }
+
     @Getter
     public static class Percentage {
         private final SimpleIntegerProperty DatCocThietKePercentage;
@@ -109,7 +144,7 @@ public class BangThanhToan {
 
         @Builder(builderMethodName = "hiddenBuilder")
         @RequiredArgsConstructor
-        public static class Snapshot implements Memento {
+        private static class Snapshot implements Memento {
             private final Percentage percentage;
             private final int DatCocThietKePercentage;
             private final int DatCocThiCongPercentage;

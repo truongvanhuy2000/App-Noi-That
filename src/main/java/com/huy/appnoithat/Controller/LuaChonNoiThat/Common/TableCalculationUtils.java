@@ -15,20 +15,38 @@ public class TableCalculationUtils {
     private static final String MET_VUONG = "mét vuông";
 
     public static void calculateBangThanhToan(TableView<BangThanhToan> bangThanhToan, Long tongTien) {
-        Double datCocThietKePercentage = getPercentageFromHeader(bangThanhToan.getColumns().get(1).getText());
-        Double datCocThiCongPercentage = getPercentageFromHeader(bangThanhToan.getColumns().get(2).getText());
-        Double hangDenChanCongTrinhPercentage = getPercentageFromHeader(bangThanhToan.getColumns().get(3).getText());
+        double datCocThietKePercentage = getPercentageFromHeader(bangThanhToan.getColumns().get(1).getText());
+        double datCocThiCongPercentage = getPercentageFromHeader(bangThanhToan.getColumns().get(2).getText());
+        double hangDenChanCongTrinhPercentage = getPercentageFromHeader(bangThanhToan.getColumns().get(3).getText());
 
-        Long datCocThietKe10 = round(tongTien * (datCocThietKePercentage / 100));
-        Long datCocThiCong30 = round(tongTien * (datCocThiCongPercentage / 100));
-        Long hangDenChanCongTrinh50 = round(tongTien * (hangDenChanCongTrinhPercentage / 100));
-        Long nghiemThuQuyet = tongTien - datCocThietKe10 - datCocThiCong30 - hangDenChanCongTrinh50;
+        long datCocThietKe10 = round(tongTien * (datCocThietKePercentage / 100));
+        long datCocThiCong30 = round(tongTien * (datCocThiCongPercentage / 100));
+        long hangDenChanCongTrinh50 = round(tongTien * (hangDenChanCongTrinhPercentage / 100));
+        long nghiemThuQuyet = tongTien - datCocThietKe10 - datCocThiCong30 - hangDenChanCongTrinh50;
 
         bangThanhToan.getItems().get(0).setDatCocThietKe10(datCocThietKe10);
         bangThanhToan.getItems().get(0).setDatCocThiCong30(datCocThiCong30);
         bangThanhToan.getItems().get(0).setHangDenChanCongTrinh50(hangDenChanCongTrinh50);
         bangThanhToan.getItems().get(0).setNghiemThuQuyet(nghiemThuQuyet);
         bangThanhToan.getItems().get(0).setTongTien(tongTien);
+    }
+
+    public static void calculateBangThanhToan(BangThanhToan bangThanhToan, BangThanhToan.Percentage percentage) {
+        long tongTien = bangThanhToan.getTongTien().getValue();
+        int datCocThietKePercentage = percentage.getDatCocThietKePercentage().getValue();
+        int datCocThiCongPercentage = percentage.getDatCocThiCongPercentage().getValue();
+        int hangDenChanCongTrinhPercentage = percentage.getHangDenChanCongTrinhPercentage().getValue();
+
+        long datCocThietKe10 = round(tongTien * ((double) datCocThietKePercentage / 100));
+        long datCocThiCong30 = round(tongTien * ((double) datCocThiCongPercentage / 100));
+        long hangDenChanCongTrinh50 = round(tongTien * ((double) hangDenChanCongTrinhPercentage / 100));
+        long nghiemThuQuyet = tongTien - datCocThietKe10 - datCocThiCong30 - hangDenChanCongTrinh50;
+
+        bangThanhToan.setDatCocThietKe10(datCocThietKe10);
+        bangThanhToan.setDatCocThiCong30(datCocThiCong30);
+        bangThanhToan.setHangDenChanCongTrinh50(hangDenChanCongTrinh50);
+        bangThanhToan.setNghiemThuQuyet(nghiemThuQuyet);
+        bangThanhToan.setTongTien(tongTien);
     }
 
     public static Double getPercentageFromHeader(String header) {

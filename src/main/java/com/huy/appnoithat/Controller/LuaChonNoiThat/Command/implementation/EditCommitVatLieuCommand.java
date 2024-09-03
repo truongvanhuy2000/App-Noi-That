@@ -21,6 +21,7 @@ public class EditCommitVatLieuCommand implements Command {
     private final TreeTableColumn.CellEditEvent<BangNoiThat, String> event;
     private Memento bangNoiThatSnapshot;
     private TreeTableView<BangNoiThat> bangNoiThatTreeItem;
+
     @Override
     public void execute() {
         BangNoiThat bangNoiThat = event.getRowValue().getValue();
