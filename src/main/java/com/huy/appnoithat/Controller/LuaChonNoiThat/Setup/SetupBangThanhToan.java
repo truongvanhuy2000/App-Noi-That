@@ -44,27 +44,19 @@ public class SetupBangThanhToan {
         bangThanhToan.setEditable(true);
         MenuItem DatCocThietKePercent = new MenuItem("Thay đổi phần trăm đặt cọc thiết kế");
         DatCocThietKePercent.setOnAction((event) -> {
-            Command command = new EditDatCocThietKePercentCommand(percentage);
-            commandManager.push(command);
-            command.execute();
+            commandManager.execute(new EditDatCocThietKePercentCommand(percentage));
         });
         MenuItem DatCocThiCongPercent = new MenuItem("Thay đổi phần trăm đặt cọc thi công");
         DatCocThiCongPercent.setOnAction((event) -> {
-            Command command = new EditDatCocThiCongPercentCommand(percentage);
-            commandManager.push(command);
-            command.execute();
+            commandManager.execute(new EditDatCocThiCongPercentCommand(percentage));
         });
         MenuItem HangDenChanCongTrinhPercent = new MenuItem("Thay đổi phần trăm hàng đến chân công trình");
         HangDenChanCongTrinhPercent.setOnAction((event) -> {
-            Command command = new EditHangDenChanCongTrinhPercentCommand(percentage);
-            commandManager.push(command);
-            command.execute();
+            commandManager.execute(new EditHangDenChanCongTrinhPercentCommand(percentage));
         });
         MenuItem recalculate = new MenuItem("Tính toán lại");
         recalculate.setOnAction((event) -> {
-            Command command = new RecalculateCommand(bangThanhToan.getItems().get(0), percentage);
-            commandManager.push(command);
-            command.execute();
+            commandManager.execute(new RecalculateCommand(bangThanhToan.getItems().get(0), percentage));
         });
         bangThanhToan.getContextMenu().getItems().addAll(DatCocThietKePercent, DatCocThiCongPercent, HangDenChanCongTrinhPercent, recalculate);
 
@@ -75,9 +67,7 @@ public class SetupBangThanhToan {
                 LOGGER.error("Row value of DatCocThietKe10 is null");
                 return;
             }
-            Command command = new EditBangThanhToan<>(event, event.getRowValue().getDatCocThietKe10());
-            commandManager.push(command);
-            command.execute();
+            commandManager.execute(new EditBangThanhToan<>(event, event.getRowValue().getDatCocThietKe10()));
         });
 
         DatCocThiCong30.setCellValueFactory(param -> param.getValue().getDatCocThiCong30().asObject());
@@ -87,9 +77,7 @@ public class SetupBangThanhToan {
                 LOGGER.error("Row value of DatCocThiCong30 is null");
                 return;
             }
-            Command command = new EditBangThanhToan<>(event, event.getRowValue().getDatCocThiCong30());
-            commandManager.push(command);
-            command.execute();
+            commandManager.execute(new EditBangThanhToan<>(event, event.getRowValue().getDatCocThiCong30()));
         });
 
         HangDenChanCongTrinh50.setCellValueFactory(param -> param.getValue().getHangDenChanCongTrinh50().asObject());
@@ -99,9 +87,7 @@ public class SetupBangThanhToan {
                 LOGGER.error("Row value of HangDenChanCongTrinh50 is null");
                 return;
             }
-            Command command = new EditBangThanhToan<>(event, event.getRowValue().getHangDenChanCongTrinh50());
-            commandManager.push(command);
-            command.execute();
+            commandManager.execute(new EditBangThanhToan<>(event, event.getRowValue().getHangDenChanCongTrinh50()));
         });
 
         NghiemThuQuyet.setCellValueFactory(param -> param.getValue().getNghiemThuQuyet().asObject());
@@ -111,9 +97,7 @@ public class SetupBangThanhToan {
                 LOGGER.error("Row value of NghiemThuQuyet is null");
                 return;
             }
-            Command command = new EditBangThanhToan<>(event, event.getRowValue().getNghiemThuQuyet());
-            commandManager.push(command);
-            command.execute();
+            commandManager.execute(new EditBangThanhToan<>(event, event.getRowValue().getNghiemThuQuyet()));
         });
 
         TongTien.setCellFactory(param -> new TextFieldTableCell<>(new CustomLongStringConverter()));

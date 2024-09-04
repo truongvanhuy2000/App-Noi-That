@@ -2,6 +2,7 @@ package com.huy.appnoithat.DataModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.huy.appnoithat.Common.Utils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +32,7 @@ public class ThongTinNoiThat {
     String SoLuong;
     @JsonProperty("ThanhTien")
     String ThanhTien;
+    ItemType itemType;
 
     /**
      * @param bangNoiThat This constructor will convert a BangNoiThat object to ThongTinNoiThat object
@@ -48,5 +50,6 @@ public class ThongTinNoiThat {
         DonGia = Utils.convertLongToDecimal(bangNoiThat.getDonGia().getValue());
         SoLuong = bangNoiThat.getKhoiLuong().getValue().toString();
         ThanhTien = Utils.convertLongToDecimal(bangNoiThat.getThanhTien().getValue());
+        itemType = bangNoiThat.getItemType();
     }
 }

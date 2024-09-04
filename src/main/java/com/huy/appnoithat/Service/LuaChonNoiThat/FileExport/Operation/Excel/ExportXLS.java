@@ -52,9 +52,7 @@ public abstract class ExportXLS {
     protected List<ThongTinNoiThat> setThongTinNoiThatList(List<ThongTinNoiThat> thongTinNoiThatList) {
         List<ThongTinNoiThat> thongTinForExport = new ArrayList<>();
         thongTinNoiThatList.forEach(item -> {
-            String stt = item.getSTT();
-            if (ItemTypeUtils.determineItemType(stt) == ItemType.NUMERIC ||
-                    ItemTypeUtils.determineItemType(stt) == ItemType.ROMAN) {
+            if (item.getItemType() == ItemType.NUMERIC || item.getItemType() == ItemType.ROMAN) {
                 thongTinForExport.add(item);
             }
         });
@@ -65,9 +63,9 @@ public abstract class ExportXLS {
     protected void rearrangeList(List<ThongTinNoiThat> list) {
         int romanCount = 0;
         for (ThongTinNoiThat item : list) {
-            if (Objects.requireNonNull(ItemTypeUtils.determineItemType(item.getSTT())) == ItemType.ROMAN) {
+            if (item.getItemType() == ItemType.ROMAN) {
                 romanCount++;
-                item.setSTT(ItemTypeUtils.createFullId(ItemType.ROMAN, Utils.toRoman(romanCount)));
+                item.setSTT(Utils.toRoman(romanCount));
             }
         }
     }
@@ -162,9 +160,9 @@ public abstract class ExportXLS {
                 continue;
             }
             spreadsheet.shiftRows(rowId, spreadsheet.getLastRowNum(), 1, true, true);
-            Row newRow = createPopulatedRow(spreadsheet, rowId, 10);
+            createPopulatedRow(spreadsheet, rowId, 10);
             // If STT is roman, that mean it's the merge Row, we can call it title row
-            if (ItemTypeUtils.determineItemType(thongTinNoiThat.getSTT()) == ItemType.ROMAN) {
+            if (thongTinNoiThat.getItemType() == ItemType.ROMAN) {
                 exportNoiThatTitle(spreadsheet, mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, cellId, thongTinNoiThat);
             }
             // If it's not roman, that mean it's the non merge row, we can call it content row
@@ -182,7 +180,7 @@ public abstract class ExportXLS {
         mergeCells(spreadsheet, mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, 1);
 
         Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
-        stylistFactory.CellPresetFactory(cell0, ItemTypeUtils.getIdFromFullId(thongTinNoiThat.getSTT()),
+        stylistFactory.CellPresetFactory(cell0, thongTinNoiThat.getSTT(),
                 12, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
         stylistFactory.setCellBackgroundColor(cell0, "eeeeee");
         Cell cell1 = spreadsheet.getRow(mergeRowId).getCell(cellId + 1);
@@ -198,7 +196,7 @@ public abstract class ExportXLS {
     protected void exportNoiThatContent(XSSFSheet spreadsheet, int mergeRowId, int mergeColumnId, int mergeRowRange,
                                         int mergeColumnRange, int cellId, ThongTinNoiThat thongTinNoiThat) {
         Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
-        stylistFactory.CellPresetFactory(cell0, ItemTypeUtils.getIdFromFullId(thongTinNoiThat.getSTT()), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.CellPresetFactory(cell0, thongTinNoiThat.getSTT(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
 
         Cell cell1 = spreadsheet.getRow(mergeRowId).getCell(cellId + 1);
         stylistFactory.CellPresetFactory(cell1, thongTinNoiThat.getTenHangMuc(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
@@ -232,8 +230,6 @@ public abstract class ExportXLS {
         int mergeRowId = rowId;
 
         int cellId = 0;
-
-//        mergeCells(mergeRowId, mergeColumnId, mergeRowRange, mergeColumnRange, 1);
 
         Cell cell0 = spreadsheet.getRow(mergeRowId).getCell(cellId);
         stylistFactory.CellPresetFactory(cell0, thongTinThanhToan.getTongTien(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);

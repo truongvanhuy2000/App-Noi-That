@@ -10,11 +10,16 @@ public class CommandManager {
     private static final int STACK_LIMIT = 20;
     private final Stack<Command> commandStack = new Stack<>();
 
-    public void push(Command command) {
+    private void push(Command command) {
         if (commandStack.size() >= STACK_LIMIT) {
             commandStack.remove(0);
         }
         commandStack.push(command);
+    }
+
+    public void execute(Command command) {
+        push(command);
+        command.execute();
     }
 
     public void undo() {

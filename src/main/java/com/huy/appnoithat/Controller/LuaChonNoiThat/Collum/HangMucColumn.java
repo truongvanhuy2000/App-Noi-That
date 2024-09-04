@@ -1,54 +1,38 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Command;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitHangMucCommand;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import com.huy.appnoithat.DataModel.Entity.HangMuc;
-import com.huy.appnoithat.DataModel.Entity.ThongSo;
-import com.huy.appnoithat.DataModel.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import lombok.Builder;
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
-public class HangMucCollumHandler {
-    private final ObservableList<String> hangMucList;
+@RequiredArgsConstructor
+public class HangMucColumn implements CustomColumn {
+    private final Logger LOGGER = LogManager.getLogger(this);
+    private final ObservableList<String> hangMucList = FXCollections.observableArrayList();
+    private final TreeTableColumn<BangNoiThat, String> HangMuc;
     private final LuaChonNoiThatService luaChonNoiThatService;
     private final CommandManager commandManager;
-    final static Logger LOGGER = LogManager.getLogger(HangMucCollumHandler.class);
 
-    /**
-     * Constructs a HangMucCollumHandler with the given ObservableList of hangMucList.
-     *
-     * @param hangMucList The ObservableList of String representing hangMucList data.
-     */
-
-    @Builder
-    public HangMucCollumHandler(
-            ObservableList<String> hangMucList,
-            LuaChonNoiThatService luaChonNoiThatService,
-            CommandManager commandManager
-    ) {
-        this.hangMucList = hangMucList;
-        this.luaChonNoiThatService = luaChonNoiThatService;
-        this.commandManager = commandManager;
+    @Override
+    public void setup() {
+        HangMuc.setCellValueFactory(this::getCustomCellValueFactory);
+        HangMuc.setCellFactory(this::getCustomCellFactory);
+        HangMuc.setOnEditCommit(this::onEditCommitHangMuc);
+        HangMuc.setOnEditStart(this::onStartEditHangMuc);
     }
 
     /**
@@ -57,10 +41,8 @@ public class HangMucCollumHandler {
      *
      * @param event The CellEditEvent containing information about the edit event.
      */
-    public void onEditCommitHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
-        Command command = new EditCommitHangMucCommand(luaChonNoiThatService, event);
-        commandManager.push(command);
-        command.execute();
+    private void onEditCommitHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
+        commandManager.execute(new EditCommitHangMucCommand(luaChonNoiThatService, event));
     }
 
     /**
@@ -69,12 +51,12 @@ public class HangMucCollumHandler {
      *
      * @param event The CellEditEvent containing information about the editing event.
      */
-    public void onStartEditHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
+    private void onStartEditHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         List<String> items;
         hangMucList.clear();
         // Roman mean it's a noi that, mean that its parent is phong cach
-        switch (ItemTypeUtils.determineItemType(currentItem)) {
+        switch (currentItem.getValue().getItemType()) {
             case ROMAN -> {
                 String phongCach = currentItem.getParent().getValue().getHangMuc().getValue();
                 items = Utils.getObjectNameList(luaChonNoiThatService.findNoiThatListBy(phongCach));
@@ -92,8 +74,6 @@ public class HangMucCollumHandler {
                 hangMucList.clear();
                 hangMucList.addAll(items);
             }
-            default -> {
-            }
         }
     }
 
@@ -104,7 +84,7 @@ public class HangMucCollumHandler {
      * @param param The TreeTableColumn instance for which the custom cell factory is provided.
      * @return A new CustomHangMucCell instance with the given 'hangMucList'.
      */
-    public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param) {
+    private TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param) {
         return new CustomHangMucCell(hangMucList);
     }
 
@@ -118,7 +98,7 @@ public class HangMucCollumHandler {
      * @return An ObservableValue<String> representing the 'hangMuc' property of the current cell's data.
      * Returns null if the current row's data is null.
      */
-    public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {
+    private ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {
         if (param.getValue() == null) {
             return null;
         }

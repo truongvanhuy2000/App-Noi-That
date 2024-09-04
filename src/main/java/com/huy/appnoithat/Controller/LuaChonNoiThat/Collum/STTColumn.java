@@ -1,6 +1,5 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -8,21 +7,11 @@ import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableRow;
 import javafx.scene.control.TreeTableView;
+import lombok.RequiredArgsConstructor;
 
-
-public class STTCollumHandler {
-    private final TreeTableView<BangNoiThat> TableNoiThat;
-
-    /**
-     * Handler class for managing STT (Serial Number) column in a TreeTableView of BangNoiThat items.
-     * Handles cell editing and provides custom cell factory and cell value factory for the STT column.
-     *
-     * @param tableNoiThat The TreeTableView representing the table of items.
-     */
-    public STTCollumHandler(TreeTableView<BangNoiThat> tableNoiThat) {
-        this.TableNoiThat = tableNoiThat;
-    }
-
+@RequiredArgsConstructor
+public class STTColumn implements CustomColumn  {
+    private final TreeTableColumn<BangNoiThat, String> STT;
 
     /**
      * Handles the commit event when editing the STT column in the TreeTableView.
@@ -33,6 +22,14 @@ public class STTCollumHandler {
     public void onEditCommitSTT(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         handleInputedSTT(event);
         event.getTreeTableView().getSelectionModel().clearSelection();
+    }
+
+    @Override
+    public void setup() {
+        // Set up collum for STT
+        STT.setCellValueFactory(this::getCustomCellValueFactory);
+        STT.setCellFactory(this::getCustomCellFactory);
+        STT.setOnEditCommit(this::onEditCommitSTT);
     }
 
 
@@ -153,23 +150,23 @@ public class STTCollumHandler {
                     setGraphic(null);
                     return;
                 }
-                setText(ItemTypeUtils.getIdFromFullId(item));
+                setText(item);
                 TreeTableRow<BangNoiThat> currentRow = getTableRow();
-                if (!isEmpty()) {
-                    switch (ItemTypeUtils.determineItemType(getItem())) {
-                        case ROMAN -> currentRow.setStyle(
-                                "-fx-font-weight: bold; " +
-                                        "-fx-background-color: #d0e1e7"
-                        );
-                        case AlPHA -> currentRow.setStyle(
-                                "-fx-font-weight: bold; " +
-                                        "-fx-font-size: 14px; " +
-                                        "-fx-background-color: #d0e1e7"
-                        );
-                        case NUMERIC -> currentRow.setStyle("-fx-font-weight: normal");
-                        default -> {
-                        }
-                    }
+                BangNoiThat bangNoiThat = currentRow.getItem();
+                if (bangNoiThat == null) {
+                    return;
+                }
+                switch (bangNoiThat.getItemType()) {
+                    case ROMAN -> currentRow.setStyle(
+                            "-fx-font-weight: bold; " +
+                                    "-fx-background-color: #d0e1e7"
+                    );
+                    case AlPHA -> currentRow.setStyle(
+                            "-fx-font-weight: bold; " +
+                                    "-fx-font-size: 14px; " +
+                                    "-fx-background-color: #d0e1e7"
+                    );
+                    case NUMERIC -> currentRow.setStyle("-fx-font-weight: normal");
                 }
             }
         };

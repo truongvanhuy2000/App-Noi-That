@@ -3,6 +3,7 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Operation;
 import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
@@ -113,7 +114,7 @@ public class ImportOperation {
      * @see TreeItem
      */
     public TreeItem<BangNoiThat> importFromThongTinList(List<ThongTinNoiThat> thongTinNoiThatList) {
-        TreeItem<BangNoiThat> itemRoot = TableUtils.createRootItem("0", TableNoiThat, bangThanhToan);
+        TreeItem<BangNoiThat> itemRoot = TableUtils.createRootItem(ItemType.ROOT, TableNoiThat, bangThanhToan);
         TreeItem<BangNoiThat> lv1Item = null;
         TreeItem<BangNoiThat> lv2Item = null;
         TreeItem<BangNoiThat> lv3Item = null;
@@ -122,9 +123,8 @@ public class ImportOperation {
         boolean isNewLv3 = false;
         try {
             for (ThongTinNoiThat item : thongTinNoiThatList) {
-                String stt = item.getSTT();
                 TreeItem<BangNoiThat> tempItem = TableUtils.convertToTreeItem(item);
-                switch (ItemTypeUtils.determineItemType(stt)) {
+                switch (item.getItemType()) {
                     case AlPHA -> {
                         if (tempItem != lv1Item) {
                             lv1Item = tempItem;

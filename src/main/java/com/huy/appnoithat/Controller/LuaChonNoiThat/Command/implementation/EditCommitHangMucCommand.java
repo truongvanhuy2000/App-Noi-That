@@ -45,16 +45,16 @@ public class EditCommitHangMucCommand implements Command {
         if (rowValue == null) {
             return;
         }
-        bangNoiThatSnapshot = rowValue.getValue().createSnapshot();
+        BangNoiThat bangNoiThat = rowValue.getValue();
+        bangNoiThatSnapshot = bangNoiThat.createSnapshot();
         oldChildren.addAll(rowValue.getChildren());
 
-        String stt = rowValue.getValue().getSTT().getValue();
         String newValue = event.getNewValue();
-        rowValue.getValue().setHangMuc(newValue);
-        if (ItemTypeUtils.determineItemType(stt) == ItemType.ROMAN) {
+        bangNoiThat.setHangMuc(newValue);
+        if (bangNoiThat.getItemType() == ItemType.ROMAN) {
             automaticallyInsertNoiThat(event);
         }
-        if (ItemTypeUtils.determineItemType(stt) == ItemType.NUMERIC) {
+        if (bangNoiThat.getItemType() == ItemType.NUMERIC) {
             automaticallyInsertVatLieuAndThongSo(event);
         }
     }

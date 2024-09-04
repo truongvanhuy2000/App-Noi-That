@@ -9,10 +9,10 @@ import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
-public class
-BangNoiThat {
+public class BangNoiThat {
     private final SimpleStringProperty STT;
     private final SimpleDoubleProperty Cao;
     private final SimpleDoubleProperty Dai;
@@ -23,10 +23,12 @@ BangNoiThat {
     private final SimpleStringProperty VatLieu;
     private final SimpleLongProperty ThanhTien;
     private final SimpleDoubleProperty KhoiLuong;
+    @Setter
+    private ItemType itemType;
 
 
     @Builder
-    public BangNoiThat(String id, Double cao, Double dai, Double rong, Long donGia, String donVi, String hangMuc, String vatLieu, Long thanhTien, Double khoiLuong) {
+    public BangNoiThat(String id, Double cao, Double dai, Double rong, Long donGia, String donVi, String hangMuc, String vatLieu, Long thanhTien, Double khoiLuong, ItemType itemType) {
         STT = new SimpleStringProperty(id);
         Cao = new SimpleDoubleProperty(cao);
         Dai = new SimpleDoubleProperty(dai);
@@ -37,19 +39,7 @@ BangNoiThat {
         VatLieu = new SimpleStringProperty(vatLieu);
         ThanhTien = new SimpleLongProperty(thanhTien);
         KhoiLuong = new SimpleDoubleProperty(khoiLuong);
-    }
-
-    public BangNoiThat() {
-        STT = new SimpleStringProperty("");
-        Cao = new SimpleDoubleProperty(0);
-        Dai = new SimpleDoubleProperty(0);
-        Rong = new SimpleDoubleProperty(0);
-        DonGia = new SimpleLongProperty(0);
-        DonVi = new SimpleStringProperty("");
-        HangMuc = new SimpleStringProperty("");
-        VatLieu = new SimpleStringProperty("");
-        ThanhTien = new SimpleLongProperty(0);
-        KhoiLuong = new SimpleDoubleProperty(0);
+        this.itemType = itemType;
     }
 
     public BangNoiThat(ThongTinNoiThat thongTinNoiThat) {
@@ -63,6 +53,7 @@ BangNoiThat {
         this.VatLieu = new SimpleStringProperty(thongTinNoiThat.getChiTiet());
         this.ThanhTien = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinNoiThat.getThanhTien()));
         this.KhoiLuong = new SimpleDoubleProperty(Double.parseDouble(thongTinNoiThat.getSoLuong()));
+        this.itemType = thongTinNoiThat.getItemType();
     }
 
     public BangNoiThat(BangNoiThat bangNoiThat) {
@@ -76,6 +67,7 @@ BangNoiThat {
         this.VatLieu = new SimpleStringProperty(bangNoiThat.getVatLieu().getValue());
         this.ThanhTien = new SimpleLongProperty(bangNoiThat.getThanhTien().getValue());
         this.KhoiLuong = new SimpleDoubleProperty(bangNoiThat.getKhoiLuong().getValue());
+        this.itemType = bangNoiThat.getItemType();
     }
 
     public void setSTT(String STT) {
@@ -131,22 +123,24 @@ BangNoiThat {
                 .vatLieu(VatLieu.getValue())
                 .thanhTien(ThanhTien.getValue())
                 .khoiLuong(KhoiLuong.getValue())
+                .itemType(itemType)
                 .build();
     }
 
     @Builder
     public static class Snapshot implements Memento {
-        private BangNoiThat bangNoiThat;
-        private String id;
-        private double cao;
-        private double dai;
-        private double rong;
-        private long donGia;
-        private String donVi;
-        private String hangMuc;
-        private String vatLieu;
-        private long thanhTien;
-        private double khoiLuong;
+        private final BangNoiThat bangNoiThat;
+        private final String id;
+        private final double cao;
+        private final double dai;
+        private final double rong;
+        private final long donGia;
+        private final String donVi;
+        private final String hangMuc;
+        private final String vatLieu;
+        private final long thanhTien;
+        private final double khoiLuong;
+        private final ItemType itemType;
 
         @Override
         public void restore() {
@@ -160,6 +154,7 @@ BangNoiThat {
             bangNoiThat.setVatLieu(vatLieu);
             bangNoiThat.setThanhTien(thanhTien);
             bangNoiThat.setKhoiLuong(khoiLuong);
+            bangNoiThat.setItemType(itemType);
         }
     }
 }

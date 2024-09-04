@@ -11,10 +11,13 @@ import javafx.event.EventHandler;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Optional;
 
 public class TableUtils {
+    private static final Logger LOGGER = LogManager.getLogger(TableUtils.class);
     /**
      * @param root THis method will return the youngest childern of the root
      * @return
@@ -35,7 +38,7 @@ public class TableUtils {
      * @return
      */
     public static boolean isAllowedToEdit(TreeItem<BangNoiThat> item) {
-        return ItemTypeUtils.determineItemType(item.getValue().getSTT().getValue()) == ItemType.NUMERIC;
+        return item.getValue().getItemType() == ItemType.NUMERIC;
     }
 
     /**
@@ -50,25 +53,19 @@ public class TableUtils {
         return isAllowedToEdit(selectedItem);
     }
 
-    /**
-     * @param id This method will create a new item with the given id
-     * @return
-     */
-    public static TreeItem<BangNoiThat> createNewItem(String id) {
-        TreeItem<BangNoiThat> newItem = new TreeItem<>(new BangNoiThat(id, 0.0, 0.0, 0.0, 0L,
-                "", "", "", 0L, 0.0));
+    public static TreeItem<BangNoiThat> createNewItem(ItemType type, String id) {
+        BangNoiThat bangNoiThat = BangNoiThat.builder()
+                .id(id).itemType(type).rong(0.0).dai(0.0).cao(0.0).donVi("").hangMuc("").vatLieu("")
+                .donGia(0L).khoiLuong(0.0).thanhTien(0L)
+                .build();
+        TreeItem<BangNoiThat> newItem = new TreeItem<>(bangNoiThat);
         setupNewItem(newItem);
         return newItem;
     }
 
-    public static TreeItem<BangNoiThat> createNewItem(ItemType type, String id) {
-        String fullId = ItemTypeUtils.createFullId(type, id);
-        return createNewItem(fullId);
-    }
-
-    public static TreeItem<BangNoiThat> createRootItem(String id, TreeTableView<BangNoiThat> bangNoiThat,
+    public static TreeItem<BangNoiThat> createRootItem(ItemType type, TreeTableView<BangNoiThat> bangNoiThat,
                                                        TableView<BangThanhToan> bangThanhToan) {
-        TreeItem<BangNoiThat> newItem = createNewItem(id);
+        TreeItem<BangNoiThat> newItem = createNewItem(type, "0");
         newItem.getValue().getThanhTien().addListener((observableValue, aLong, t1) -> {
             TableCalculationUtils.calculateBangThanhToan(bangThanhToan, t1.longValue());
         });
@@ -134,14 +131,11 @@ public class TableUtils {
                 TreeItem<BangNoiThat> item2 = item1.getChildren().get(j);
                 for (int z = 0; z < item2.getChildren().size(); z++) {
                     TreeItem<BangNoiThat> item3 = item2.getChildren().get(z);
-                    item3.getValue().setSTT(
-                            ItemTypeUtils.createFullId(ItemType.NUMERIC, String.valueOf(z + 1)));
+                    item3.getValue().setSTT(String.valueOf(z + 1));
                 }
-                item2.getValue().setSTT(
-                        ItemTypeUtils.createFullId(ItemType.ROMAN, Utils.toRoman(j + 1)));
+                item2.getValue().setSTT(Utils.toRoman(j + 1));
             }
-            item1.getValue().setSTT(
-                    ItemTypeUtils.createFullId(ItemType.AlPHA, Utils.toAlpha(i + 1)));
+            item1.getValue().setSTT(Utils.toAlpha(i + 1));
         }
     }
 
@@ -152,32 +146,30 @@ public class TableUtils {
      * @param root The parent TreeItem to which a new child item is to be added.
      * @return True if the limit is reached, false otherwise.
      */
-    public static TreeItem<BangNoiThat> createNewSibling(TreeItem<BangNoiThat> currentItem) {
+    public static Optional<TreeItem<BangNoiThat>> createNewSibling(TreeItem<BangNoiThat> currentItem) {
         if (currentItem == null) {
-            return null;
+            LOGGER.error("Current item must not be null");
+            throw new IllegalArgumentException();
         }
-        String stt = currentItem.getValue().getSTT().getValue();
-        Optional<String> nextStt = ItemTypeUtils.findTheNextStt(stt);
-        if (nextStt.isPresent()) {
-            TreeItem<BangNoiThat> newItem = TableUtils.createNewItem(
-                    ItemTypeUtils.determineItemType(stt), nextStt.get());
-            return createNewSibling(currentItem, newItem);
-        }
-        return null;
+        BangNoiThat bangNoiThat = currentItem.getValue();
+        String nextStt = ItemTypeUtils.findTheNextStt(bangNoiThat);
+        TreeItem<BangNoiThat> newItem = TableUtils.createNewItem(bangNoiThat.getItemType(), nextStt);
+        return createNewSibling(currentItem, newItem);
     }
 
-    public static TreeItem<BangNoiThat> createNewSibling(TreeItem<BangNoiThat> currentItem, TreeItem<BangNoiThat> newItem) {
+    public static Optional<TreeItem<BangNoiThat>> createNewSibling(TreeItem<BangNoiThat> currentItem, TreeItem<BangNoiThat> newItem) {
         if (currentItem == null || newItem == null) {
-            return null;
+            LOGGER.error("Current item and newItem must not be null");
+            throw new IllegalArgumentException();
         }
         if (currentItem.getParent() == null) {
-            return null;
+            LOGGER.error("Current item parent not be null");
+            return Optional.empty();
         }
         int currentPos = currentItem.getParent().getChildren().indexOf(currentItem);
         if (currentPos != -1) {
             currentItem.getParent().getChildren().add(currentPos + 1, newItem);
         }
-
-        return newItem;
+        return Optional.of(newItem);
     }
 }

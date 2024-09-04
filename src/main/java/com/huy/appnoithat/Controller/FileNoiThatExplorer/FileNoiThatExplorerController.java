@@ -132,7 +132,6 @@ public class FileNoiThatExplorerController {
     public void openFile(RecentFile recentFile) {
         if (!isDirectoryExist(recentFile.getDirectory())) {
             PopupUtils.throwErrorNotification("File không tồn tại");
-            // Remove from recent file
             fileNoiThatExplorerService.removeRecentFile(recentFile);
             return;
         }

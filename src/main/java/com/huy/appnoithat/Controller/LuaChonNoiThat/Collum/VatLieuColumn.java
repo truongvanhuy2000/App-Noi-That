@@ -2,49 +2,39 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomVatLieuCell;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Command;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitHangMucCommand;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitVatLieuCommand;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.DataModel.Entity.ThongSo;
 import com.huy.appnoithat.DataModel.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
+import lombok.RequiredArgsConstructor;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
-public class VatLieuCollumHandler {
-    private final ObservableList<String> vatLieuList;
+@RequiredArgsConstructor
+public class VatLieuColumn implements CustomColumn  {
+    private final TreeTableColumn<BangNoiThat, String> VatLieu;
     private final LuaChonNoiThatService luaChonNoiThatService;
     private final CommandManager commandManager;
 
-    HashMap<String, ThongSo> vatLieuThongSoHashMap = new HashMap<>();
+    private final HashMap<String, ThongSo> vatLieuThongSoHashMap = new HashMap<>();
+    private final ObservableList<String> vatLieuList = FXCollections.observableArrayList();
 
-    /**
-     * Handler class for managing the VatLieu (Material) column in a TreeTableView of BangNoiThat items.
-     * Handles custom cell factory for the VatLieu column based on the provided 'vatLieuList'.
-     * Provides a custom cell factory for rendering VatLieu cells in the TreeTableView.
-     *
-     * @param vatLieuList The list of VatLieu items to populate the VatLieu column options.
-     */
-
-    public VatLieuCollumHandler(
-            ObservableList<String> vatLieuList,
-            LuaChonNoiThatService luaChonNoiThatService,
-            CommandManager commandManager
-    ) {
-        this.vatLieuList = vatLieuList;
-        this.luaChonNoiThatService = luaChonNoiThatService;
-        this.commandManager = commandManager;
+    @Override
+    public void setup() {
+        VatLieu.setCellValueFactory(this::getCustomCellValueFactory);
+        VatLieu.setCellFactory(this::getCustomCellFactory);
+        VatLieu.setOnEditStart(this::onStartEditVatLieu);
+        VatLieu.setOnEditCommit(this::onEditCommitVatLieu);
     }
 
     /**
@@ -54,7 +44,7 @@ public class VatLieuCollumHandler {
      * @param param The TreeTableColumn instance for which the custom cell factory is provided.
      * @return A customized TreeTableCell for the VatLieu column.
      */
-    public TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param) {
+    private TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param) {
         return new CustomVatLieuCell(vatLieuList, param.getTreeTableView());
     }
 
@@ -66,7 +56,7 @@ public class VatLieuCollumHandler {
      * @param param The CellDataFeatures instance representing the data of the current cell.
      * @return An observable value representing the VatLieu property of the current BangNoiThat item.
      */
-    public ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {
+    private ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {
         if (param.getValue() == null) {
             return null;
         }
@@ -80,10 +70,8 @@ public class VatLieuCollumHandler {
      *
      * @param event The CellEditEvent instance representing the edit event for the VatLieu column.
      */
-    public void onEditCommitVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
-        Command command = new EditCommitVatLieuCommand(vatLieuThongSoHashMap, event);
-        commandManager.push(command);
-        command.execute();
+    private void onEditCommitVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
+        commandManager.execute(new EditCommitVatLieuCommand(vatLieuThongSoHashMap, event));
     }
 
 
@@ -94,7 +82,7 @@ public class VatLieuCollumHandler {
      *
      * @param event The CellEditEvent instance representing the start edit event for the VatLieu column.
      */
-    public void onStartEditVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
+    private void onStartEditVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         if (currentItem == null) {
             return;

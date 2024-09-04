@@ -46,5 +46,4 @@ public class AddNewItemIfEmptyCommand implements Command {
             parent.getChildren().add(tempNewItem);
         }
     }
-
 }

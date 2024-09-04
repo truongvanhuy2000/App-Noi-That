@@ -44,11 +44,9 @@ public class ContinuousAddForRomanSttCommand implements Command {
             newlyCreatedItem = continuousLineAddForRomanStt(currentSelectedItem);
             return;
         }
-        newlyCreatedItem = TableUtils.createNewSibling(currentSelectedItem);
-        if (newlyCreatedItem != null) {
-            TableUtils.selectSingleItem(TableNoiThat, newlyCreatedItem);
-            automaticallyAddNewNumericStt(newlyCreatedItem, 5);
-        }
+        newlyCreatedItem = TableUtils.createNewSibling(currentSelectedItem).orElseThrow();
+        TableUtils.selectSingleItem(TableNoiThat, newlyCreatedItem);
+        automaticallyAddNewNumericStt(newlyCreatedItem, 5);
     }
 
     public void automaticallyAddNewNumericStt(TreeItem<BangNoiThat> parent, int count) {

@@ -69,13 +69,11 @@ public class ContinuousAddForNumericSttCommand implements Command {
         if (currentSelectedItem.getValue() == null) {
             return null;
         }
-        Optional<String> nextStt = ItemTypeUtils.findTheNextStt(currentSelectedItem.getValue().getSTT().getValue());
-        if (nextStt.isPresent()) {
-            TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem(ItemType.NUMERIC, nextStt.get());
-            parent.getChildren().add(tempNewItem);
-            selectNewItem(tempNewItem);
-            return tempNewItem;
-        } else return null;
+        String nextStt = ItemTypeUtils.findTheNextStt(currentSelectedItem.getValue());
+        TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem(ItemType.NUMERIC, nextStt);
+        parent.getChildren().add(tempNewItem);
+        selectNewItem(tempNewItem);
+        return tempNewItem;
     }
 
     /**

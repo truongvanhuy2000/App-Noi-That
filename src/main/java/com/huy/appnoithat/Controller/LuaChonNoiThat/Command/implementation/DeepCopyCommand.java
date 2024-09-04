@@ -28,10 +28,8 @@ public class DeepCopyCommand implements Command {
         if (duplicatedEntries == null) {
             return;
         }
-        TreeItem<BangNoiThat> newSibling = TableUtils.createNewSibling(currentSelectedItem, duplicatedEntries);
-        if (newSibling != null) {
-            TableUtils.selectSingleItem(TableNoiThat, newSibling);
-        }
+        TreeItem<BangNoiThat> newSibling = TableUtils.createNewSibling(currentSelectedItem, duplicatedEntries).orElseThrow();
+        TableUtils.selectSingleItem(TableNoiThat, newSibling);
         TableUtils.reArrangeList(TableNoiThat);
         TableCalculationUtils.recalculateAllTongTien(TableNoiThat);
     }

@@ -1,17 +1,10 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Setup;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomEditingCell;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomNumberCell;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.HangMucCollumHandler;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.STTCollumHandler;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.VatLieuCollumHandler;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Command;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.*;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.*;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.AddNewItemIfEmptyCommand;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.CustomConverter.CustomLongStringConverter;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
@@ -20,12 +13,15 @@ import javafx.application.Platform;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.collections.FXCollections;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
-import javafx.util.converter.DoubleStringConverter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SetupBangNoiThat {
+    private final Logger LOGGER = LogManager.getLogger(this);
+
     private final TreeTableColumn<BangNoiThat, Double> Cao;
     private final TreeTableColumn<BangNoiThat, Double> Dai;
     private final TreeTableColumn<BangNoiThat, Double> Rong;
@@ -63,36 +59,42 @@ public class SetupBangNoiThat {
     public void setUpBangNoiThat() {
         resizeToFit();
         setUpCollum();
+        addInitialItem();
         TableNoiThat.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        if (TableNoiThat.getRoot() != null) return;
-        TreeItem<BangNoiThat> itemRoot = TableUtils.createRootItem("0", TableNoiThat, bangThanhToan);
+        TableNoiThat.getSelectionModel().selectedItemProperty().addListener(this::onSelectItemChanged);
+    }
+
+    private void onSelectItemChanged(
+            ObservableValue<? extends TreeItem<BangNoiThat>> obs,
+            TreeItem<BangNoiThat> oldSelection,
+            TreeItem<BangNoiThat> newSelection
+    ) {
+        if (oldSelection != null) {
+            oldSelection.setGraphic(null);
+        }
+        if (newSelection != null) {
+            ObservableList<TreeTablePosition<BangNoiThat, ?>> selectedCells = TableNoiThat.getSelectionModel().getSelectedCells();
+            if (selectedCells.isEmpty()) {
+                return;
+            }
+            int row = TableNoiThat.getSelectionModel().getSelectedCells().get(0).getRow();
+            Platform.runLater(() -> {
+                TableNoiThat.edit(row, TableNoiThat.getVisibleLeafColumn(1));
+            });
+        }
+    }
+
+    private void addInitialItem() {
+        if (TableNoiThat.getRoot() != null) {
+            LOGGER.info("Table Noi That already has a root");
+            return;
+        }
+        TreeItem<BangNoiThat> itemRoot = TableUtils.createRootItem(ItemType.ROOT, TableNoiThat, bangThanhToan);
         TableNoiThat.setRoot(itemRoot);
         TableNoiThat.setShowRoot(false);
         TableNoiThat.setEditable(true);
 
-        TreeItem<BangNoiThat> childItem = TableUtils.createNewItem(ItemType.AlPHA, "A");
-        itemRoot.getChildren().add(childItem);
-        TableNoiThat.getSelectionModel().select(childItem);
-        Platform.runLater(() -> {
-            luaChonNoiThatController.getAddContinuousButton().fire();
-        });
-
-        TableNoiThat.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (oldSelection != null) {
-                oldSelection.setGraphic(null);
-            }
-            if (newSelection != null) {
-                ObservableList<TreeTablePosition<BangNoiThat, ?>> selectedCells = TableNoiThat.getSelectionModel().getSelectedCells();
-                if (selectedCells.isEmpty()) {
-                    return;
-                }
-                int row = TableNoiThat.getSelectionModel().getSelectedCells().get(0).getRow();
-                Platform.runLater(() -> {
-                    TableNoiThat.edit(row, TableNoiThat.getVisibleLeafColumn(1));
-//                    TableNoiThat.scrollTo(row);
-                });
-            }
-        });
+        commandManager.execute(new AddNewItemIfEmptyCommand(TableNoiThat));
     }
 
     /**
@@ -119,146 +121,15 @@ public class SetupBangNoiThat {
     }
 
     private void setUpCollum() {
-        setUpKichThuoc();
-        setUpDonVi();
-        setUpHangMuc();
-        setUpVatLieu();
-        setUpThanhTien();
-        setUpKhoiLuong();
-        setUpSTT();
-    }
-
-    /**
-     * This function will set up the collum for KichThuoc
-     */
-    private void setUpSTT() {
-        STTCollumHandler sttCollumHandler = new STTCollumHandler(TableNoiThat);
-        // Set up collum for STT
-        STT.setCellValueFactory(sttCollumHandler::getCustomCellValueFactory);
-        STT.setCellFactory(sttCollumHandler::getCustomCellFactory);
-        STT.setOnEditCommit(sttCollumHandler::onEditCommitSTT);
-    }
-
-    /**
-     * This function will set up the collum for KichThuoc
-     */
-    private void setUpKhoiLuong() {
-        // Set up collum for KhoiLuong
-        KhoiLuong.setText("Khối\nlượng");
-        KhoiLuong.setCellValueFactory(param -> {
-            if (param.getValue() == null) return null;
-            return param.getValue().getValue().getKhoiLuong().asObject();
-        });
-        KhoiLuong.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat, false));
-        KhoiLuong.setOnEditCommit(event -> {
-            Command command = new EditCommitKhoiLuongCommand(event);
-            commandManager.push(command);
-            command.execute();
-        });
-    }
-
-    /**
-     * This function will set up the collum for ThanhTien
-     */
-    private void setUpThanhTien() {
-        // Set up collum for ThanhTien
-        ThanhTien.setCellValueFactory(param -> {
-            if (param.getValue() == null) return null;
-            return param.getValue().getValue().getThanhTien().asObject();
-        });
-        ThanhTien.setCellFactory(param -> new CustomNumberCell<>(new CustomLongStringConverter(), TableNoiThat, false));
-        ThanhTien.setOnEditCommit(event -> {
-            Command command = new EditCommitThanhTienCommand(event);
-            commandManager.push(command);
-            command.execute();
-        });
-    }
-
-    /**
-     * This function will set up the collum for VatLieu
-     */
-    private void setUpVatLieu() {
-        // Set up collum for VatLieu
-        ObservableList<String> vatLieuList = FXCollections.observableArrayList();
-        VatLieuCollumHandler vatLieuCollumHandler = new VatLieuCollumHandler(vatLieuList, luaChonNoiThatService, commandManager);
-        VatLieu.setCellValueFactory(vatLieuCollumHandler::getCustomCellValueFactory);
-        VatLieu.setCellFactory(vatLieuCollumHandler::getCustomCellFactory);
-        VatLieu.setOnEditStart(vatLieuCollumHandler::onStartEditVatLieu);
-        VatLieu.setOnEditCommit(vatLieuCollumHandler::onEditCommitVatLieu);
-    }
-
-    /**
-     * This function will set up the collum for HangMuc
-     */
-    private void setUpHangMuc() {
-
-        ObservableList<String> hangMucList = FXCollections.observableArrayList();
-        HangMucCollumHandler hangMucCollumHandler = new HangMucCollumHandler(hangMucList, luaChonNoiThatService, commandManager);
-        // Set up collum for HangMuc
-        HangMuc.setCellValueFactory(hangMucCollumHandler::getCustomCellValueFactory);
-//        HangMuc.setGraphic(checkBox);
-        HangMuc.setCellFactory(hangMucCollumHandler::getCustomCellFactory);
-        HangMuc.setOnEditCommit(hangMucCollumHandler::onEditCommitHangMuc);
-        HangMuc.setOnEditStart(hangMucCollumHandler::onStartEditHangMuc);
-    }
-
-    /**
-     * This function will set up the collum for DonVi
-     */
-    private void setUpDonVi() {
-        DonVi.setCellValueFactory(param -> {
-            if (param.getValue() == null) return null;
-            return param.getValue().getValue().getDonVi();
-        });
-        DonVi.setCellFactory(param -> new CustomEditingCell<>(false));
-    }
-
-    /**
-     * This function will set up the collum for KichThuoc
-     */
-    private void setUpKichThuoc() {
-        Cao.setCellValueFactory(param -> {
-            if (param.getValue() == null) return null;
-            return param.getValue().getValue().getCao().asObject();
-        });
-        Cao.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat, true));
-        Cao.setOnEditCommit(event -> {
-            Command command = new EditCommitCaoCommand(event);
-            commandManager.push(command);
-            command.execute();
-        });
-
-        Dai.setCellValueFactory(param -> {
-            if (param.getValue() == null) return null;
-            return param.getValue().getValue().getDai().asObject();
-        });
-        Dai.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat, true));
-        Dai.setOnEditCommit(event -> {
-            Command command = new EditCommitDaiCommand(event);
-            commandManager.push(command);
-            command.execute();
-        });
-
-        Rong.setCellValueFactory(param -> {
-            if (param.getValue() == null) return null;
-            return param.getValue().getValue().getRong().asObject();
-        });
-        Rong.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), TableNoiThat, true));
-        Rong.setOnEditCommit(event -> {
-            Command command = new EditCommitRongCommand(event);
-            commandManager.push(command);
-            command.execute();
-        });
-
-        DonGia.setCellValueFactory(param -> {
-            if (param.getValue() == null) return null;
-            return param.getValue().getValue().getDonGia().asObject();
-        });
-        DonGia.setCellFactory(param -> new CustomNumberCell<>(new CustomLongStringConverter(), TableNoiThat, false));
-        DonGia.setOnEditCommit(event -> {
-            Command command = new EditCommitDonGiaCommand(event);
-            commandManager.push(command);
-            command.execute();
-        });
+        new DonViColumn(DonVi).setup();
+        new DonGiaColumn(DonGia, commandManager).setup();
+        new HangMucColumn(HangMuc, luaChonNoiThatService, commandManager).setup();
+        new VatLieuColumn(VatLieu, luaChonNoiThatService, commandManager).setup();
+        new ThanhTienColumn(ThanhTien, commandManager).setup();
+        new KhoiLuongColumn(KhoiLuong, commandManager).setup();
+        new STTColumn(STT).setup();
+        new CaoColumn(Cao, commandManager).setup();
+        new DaiColumn(Dai, commandManager).setup();
+        new RongColumn(Rong, commandManager).setup();
     }
 }

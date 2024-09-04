@@ -31,7 +31,7 @@ public class ContinuousLineAddCommand implements Command {
         if (currentSelectedItem == null) {
             return;
         }
-        switch (ItemTypeUtils.determineItemType(currentSelectedItem)) {
+        switch (currentSelectedItem.getValue().getItemType()) {
             case ROMAN -> {
                 internalCommand = new ContinuousAddForRomanSttCommand(TableNoiThat);
                 internalCommand.execute();

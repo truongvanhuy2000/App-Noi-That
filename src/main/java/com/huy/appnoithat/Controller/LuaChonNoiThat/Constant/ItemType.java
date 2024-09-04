@@ -4,5 +4,5 @@ public enum ItemType {
     NUMERIC,
     AlPHA,
     ROMAN,
-    NONE
+    ROOT
 }

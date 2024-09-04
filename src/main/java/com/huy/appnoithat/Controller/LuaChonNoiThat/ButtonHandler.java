@@ -35,21 +35,14 @@ public class ButtonHandler {
      * @param event The ActionEvent triggering the continuous line addition operation.
      */
     public void continuousLineAdd(ActionEvent event) {
-        // Check if any items are selected in the TreeTableView
-        Command command = new ContinuousLineAddCommand(TableNoiThat);
-        commandManager.push(command);
-        command.execute();
+        commandManager.execute(new ContinuousLineAddCommand(TableNoiThat));
     }
 
     public void duplicateButtonHandler(ActionEvent actionEvent) {
-        Command command = new DeepCopyCommand(TableNoiThat);
-        commandManager.push(command);
-        command.execute();
+        commandManager.execute(new DeepCopyCommand(TableNoiThat));
     }
 
     public void handleDeleteAction(ActionEvent event) {
-        Command command = new DeleteRowCommand(TableNoiThat);
-        commandManager.push(command);
-        command.execute();
+        commandManager.execute(new DeleteRowCommand(TableNoiThat));
     }
 }

@@ -39,13 +39,11 @@ public class ContinuousAddForAlphaSttCommand implements Command {
             newlyCreatedItem = continuousLineAddForAlphaStt(currentSelectedItem);
             automaticallyAddNewNumericStt(newlyCreatedItem, 5);
         } else {
-            newlyCreatedItem = TableUtils.createNewSibling(currentSelectedItem);
-            if (newlyCreatedItem != null) {
-                TableUtils.selectSingleItem(TableNoiThat, newlyCreatedItem);
-                TreeItem<BangNoiThat> newRomanStt = TableUtils.createNewItem(ItemType.ROMAN, "I");
-                automaticallyAddNewNumericStt(newRomanStt, 5);
-                newlyCreatedItem.getChildren().add(newRomanStt);
-            }
+            newlyCreatedItem = TableUtils.createNewSibling(currentSelectedItem).orElseThrow();
+            TableUtils.selectSingleItem(TableNoiThat, newlyCreatedItem);
+            TreeItem<BangNoiThat> newRomanStt = TableUtils.createNewItem(ItemType.ROMAN, "I");
+            automaticallyAddNewNumericStt(newRomanStt, 5);
+            newlyCreatedItem.getChildren().add(newRomanStt);
         }
     }
 
