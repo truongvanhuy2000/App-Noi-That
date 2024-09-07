@@ -4,7 +4,6 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Command;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
@@ -28,7 +27,9 @@ public class DeleteRowCommand implements Command {
         ObservableList<TreeItem<BangNoiThat>> listItem = TableNoiThat.getSelectionModel().getSelectedItems();
         for (int i = listItem.size() - 1; i >= 0; i--) {
             TreeItem<BangNoiThat> item = listItem.get(i);
-            if (item == null || item.getParent() == null) continue;
+            if (item == null || item.getParent() == null) {
+                continue;
+            }
             createBackup(item);
             item.getParent().getChildren().remove(item);
         }

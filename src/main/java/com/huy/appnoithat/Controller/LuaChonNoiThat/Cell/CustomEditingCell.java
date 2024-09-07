@@ -1,18 +1,25 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
-import com.huy.appnoithat.Common.KeyboardUtils;
-import com.huy.appnoithat.DataModel.Enums.Action;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.beans.value.ObservableValue;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeTableCell;
+import javafx.event.Event;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTreeTableCell;
+import javafx.scene.input.KeyCode;
+import javafx.util.StringConverter;
+import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, String> {
+@RequiredArgsConstructor
+public class CustomEditingCell<X> extends TreeTableCell<BangNoiThat, X> {
+    private final Logger LOGGER = LogManager.getLogger(this);
+    private final TreeTableView<BangNoiThat> TableNoiThat;
+    private final StringConverter<X> converter;
+
     private TextField textField;
-    boolean isSttCell = false;
-
-    public CustomEditingCell(boolean isSttCell) {
-        this.isSttCell = isSttCell;
-    }
 
     /**
      * Starts the editing process for this component. Overrides the superclass method
@@ -23,13 +30,15 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
      */
     @Override
     public void startEdit() {
-        if (!isEmpty()) {
-            super.startEdit();
-            createTextField();
-            setText(null);
-            setGraphic(textField);
-            textField.selectAll();
+        if (!TableUtils.isEditable(TableNoiThat)) {
+            return;
         }
+        super.startEdit();
+        createTextField();
+        setText(null);
+        setGraphic(textField);
+        textField.selectAll();
+        textField.requestFocus();
     }
 
     /**
@@ -40,7 +49,7 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
     @Override
     public void cancelEdit() {
         super.cancelEdit();
-        setText(getItem());
+        setText(getString());
         setGraphic(null);
     }
 
@@ -56,16 +65,15 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
      * @param empty Indicates whether the cell should be displayed as empty.
      */
     @Override
-    public void updateItem(String item, boolean empty) {
+    public void updateItem(X item, boolean empty) {
         super.updateItem(item, empty);
         if (empty) {
+            setText(null);
             setGraphic(null);
-            setText(item);
         } else {
             if (isEditing()) {
                 if (textField != null) {
                     textField.setText(getString());
-                    setGraphic(null);
                 }
                 setText(null);
                 setGraphic(textField);
@@ -82,26 +90,39 @@ public class CustomEditingCell<BangNoiThat> extends TreeTableCell<BangNoiThat, S
      * handling commit actions, focusing, and keyboard shortcuts.
      */
     private void createTextField() {
-        if (textField != null) {
-            return;
-        }
         textField = new TextField(getString());
         textField.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
-        textField.setOnAction((e) -> commitEdit(textField.getText()));
+        textField.setOnAction((e) -> super.commitEdit(converter.fromString(textField.getText())));
         textField.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
             if (!newValue) {
-                commitEdit(textField.getText());
+                if (StringUtils.isBlank(textField.getText())) {
+                    return;
+                }
+                if (getString().equals(textField.getText())) {
+                    return;
+                }
+                X convertedData = converter.fromString(textField.getText());
+                commitWhenOutFocus(convertedData);
             }
         });
-        textField.setOnKeyPressed((key) -> {
-            if (KeyboardUtils.isRightKeyCombo(Action.SAVE, key)) {
-                commitEdit(textField.getText());
-                updateItem(textField.getText(), false);
+        textField.setOnKeyReleased(t -> {
+            if (t.getCode() == KeyCode.ESCAPE) {
+                cancelEdit();
+                t.consume();
             }
         });
     }
 
+    public void commitWhenOutFocus(X value) {
+        TreeTableView<BangNoiThat> treeTableView = this.getTreeTableView();
+        TreeTablePosition<BangNoiThat, X> position = new TreeTablePosition<>(treeTableView, this.getIndex(), super.getTableColumn());
+        LOGGER.debug("Fire cell edit when out of focus event");
+        TreeTableColumn.CellEditEvent<BangNoiThat, X> editEvent = new TreeTableColumn.CellEditEvent<>(
+                treeTableView, position, TreeTableColumn.editCommitEvent(), value);
+        Event.fireEvent(this.getTableColumn(), editEvent);
+    }
+
     private String getString() {
-        return getItem() == null ? "" : getItem();
+        return getItem() == null ? "" : converter.toString(getItem());
     }
 }

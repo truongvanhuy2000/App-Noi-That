@@ -1,11 +1,9 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Setup;
 
-import com.huy.appnoithat.Common.PopupUtils;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Command;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.BangThanhToan.*;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.CustomConverter.CustomLongStringConverter;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Converter.DecimalLongStringConverter;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import javafx.collections.FXCollections;
@@ -61,7 +59,7 @@ public class SetupBangThanhToan {
         bangThanhToan.getContextMenu().getItems().addAll(DatCocThietKePercent, DatCocThiCongPercent, HangDenChanCongTrinhPercent, recalculate);
 
         DatCocThietKe10.setCellValueFactory(param -> param.getValue().getDatCocThietKe10().asObject());
-        DatCocThietKe10.setCellFactory(param -> new TextFieldTableCell<>(new CustomLongStringConverter()));
+        DatCocThietKe10.setCellFactory(param -> new TextFieldTableCell<>(new DecimalLongStringConverter()));
         DatCocThietKe10.setOnEditCommit(event -> {
             if (event.getRowValue() == null) {
                 LOGGER.error("Row value of DatCocThietKe10 is null");
@@ -71,7 +69,7 @@ public class SetupBangThanhToan {
         });
 
         DatCocThiCong30.setCellValueFactory(param -> param.getValue().getDatCocThiCong30().asObject());
-        DatCocThiCong30.setCellFactory(param -> new TextFieldTableCell<>(new CustomLongStringConverter()));
+        DatCocThiCong30.setCellFactory(param -> new TextFieldTableCell<>(new DecimalLongStringConverter()));
         DatCocThiCong30.setOnEditCommit(event -> {
             if (event.getRowValue() == null) {
                 LOGGER.error("Row value of DatCocThiCong30 is null");
@@ -81,7 +79,7 @@ public class SetupBangThanhToan {
         });
 
         HangDenChanCongTrinh50.setCellValueFactory(param -> param.getValue().getHangDenChanCongTrinh50().asObject());
-        HangDenChanCongTrinh50.setCellFactory(param -> new TextFieldTableCell<>(new CustomLongStringConverter()));
+        HangDenChanCongTrinh50.setCellFactory(param -> new TextFieldTableCell<>(new DecimalLongStringConverter()));
         HangDenChanCongTrinh50.setOnEditCommit(event -> {
             if (event.getRowValue() == null) {
                 LOGGER.error("Row value of HangDenChanCongTrinh50 is null");
@@ -91,7 +89,7 @@ public class SetupBangThanhToan {
         });
 
         NghiemThuQuyet.setCellValueFactory(param -> param.getValue().getNghiemThuQuyet().asObject());
-        NghiemThuQuyet.setCellFactory(param -> new TextFieldTableCell<>(new CustomLongStringConverter()));
+        NghiemThuQuyet.setCellFactory(param -> new TextFieldTableCell<>(new DecimalLongStringConverter()));
         NghiemThuQuyet.setOnEditCommit(event -> {
             if (event.getRowValue() == null) {
                 LOGGER.error("Row value of NghiemThuQuyet is null");
@@ -100,7 +98,7 @@ public class SetupBangThanhToan {
             commandManager.execute(new EditBangThanhToan<>(event, event.getRowValue().getNghiemThuQuyet()));
         });
 
-        TongTien.setCellFactory(param -> new TextFieldTableCell<>(new CustomLongStringConverter()));
+        TongTien.setCellFactory(param -> new TextFieldTableCell<>(new DecimalLongStringConverter()));
         TongTien.setCellValueFactory(param -> param.getValue().getTongTien().asObject());
         TongTien.setEditable(false);
         bangThanhToan.setRowFactory(new Callback<>() {

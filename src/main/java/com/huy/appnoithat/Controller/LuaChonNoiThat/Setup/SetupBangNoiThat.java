@@ -121,7 +121,7 @@ public class SetupBangNoiThat {
     }
 
     private void setUpCollum() {
-        new DonViColumn(DonVi).setup();
+        new DonViColumn(DonVi, commandManager).setup();
         new DonGiaColumn(DonGia, commandManager).setup();
         new HangMucColumn(HangMuc, luaChonNoiThatService, commandManager).setup();
         new VatLieuColumn(VatLieu, luaChonNoiThatService, commandManager).setup();

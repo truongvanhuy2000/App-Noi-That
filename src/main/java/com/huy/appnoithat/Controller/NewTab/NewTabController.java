@@ -2,7 +2,8 @@ package com.huy.appnoithat.Controller.NewTab;
 
 import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
-import com.huy.appnoithat.Controller.NewTab.Operation.ContentOperation;
+import com.huy.appnoithat.Controller.NewTab.Operation.ExportOperation;
+import com.huy.appnoithat.Controller.NewTab.Operation.SaveOperation;
 import com.huy.appnoithat.Controller.NewTab.Operation.TabOperation;
 import com.huy.appnoithat.DataModel.Enums.Action;
 import com.huy.appnoithat.DataModel.Enums.FileType;
@@ -51,10 +52,11 @@ public class NewTabController implements Initializable {
     private StackPane loadingPane;
 
     private Timeline autoSaveTimer;
-    private State currentState;
+    private State currentState = State.NEW_FILE;
     private String currentDirectory;
     private TabOperation tabOperation;
-    private ContentOperation contentOperation;
+    private SaveOperation saveOperation;
+    private ExportOperation exportOperation;
 
     public NewTabController(
             StorageService persistenceStorageService,
@@ -70,27 +72,27 @@ public class NewTabController implements Initializable {
     void onClickMenuItem(ActionEvent event) {
         Object source = event.getSource();
         if (source == MenuItemExportPDF) {
-            contentOperation.exportFile(FileType.PDF);
+            exportOperation.exportFile(FileType.PDF);
         } else if (source == MenuItemExportXLS) {
-            contentOperation.exportFile(FileType.EXCEL);
+            exportOperation.exportFile(FileType.EXCEL);
         } else if (source == MenuItemExportMultipleXLS) {
-            contentOperation.exportMultipleExcel();
+            exportOperation.exportMultipleExcel();
         } else if (source == MenuItemSave) {
-            contentOperation.save();
+            saveOperation.save(exportOperation.exportData());
         } else if (source == MenuItemSaveAs) {
-            contentOperation.saveAs();
+            saveOperation.saveAs(exportOperation.exportData());
         } else if (source == AutoSave) {
             if (AutoSave.isSelected()) {
                 LOGGER.info("Auto save is enabled");
-                contentOperation.startAutoSaveAction();
+                startAutoSaveAction();
             } else {
                 LOGGER.info("Auto save is disabled");
-                contentOperation.stopAutoSaveAction();
+                stopAutoSaveAction();
             }
         } else if (source == MenuItemSaveCompanyInfo) {
-            contentOperation.saveThongTinCongTy();
+            saveOperation.saveThongTinCongTy();
         } else if (source == MenuItemSaveNoteArea) {
-            contentOperation.saveNoteArea();
+            saveOperation.saveNoteArea();
         }
     }
 
@@ -102,11 +104,24 @@ public class NewTabController implements Initializable {
     void onKeyPressed(KeyEvent event) {
         if (KeyboardUtils.isRightKeyCombo(Action.SAVE, event)) {
             LOGGER.info("Save key combo pressed");
-            contentOperation.save();
+            saveOperation.save(exportOperation.exportData());
         } else if (KeyboardUtils.isRightKeyCombo(Action.UNDO, event)) {
-            LOGGER.info("Undo key combo pressed");
-            contentOperation.undoAction();
+            TabContent selectedTabContent = getSelectedTabContent();
+            if (selectedTabContent == null) {
+                LOGGER.error("No tab was selected");
+                return;
+            }
+            selectedTabContent.getLuaChonNoiThatController().undo();
         }
+    }
+
+    private void startAutoSaveAction() {
+        autoSaveTimer.setCycleCount(Timeline.INDEFINITE);
+        autoSaveTimer.play();
+    }
+
+    private void stopAutoSaveAction() {
+        autoSaveTimer.stop();
     }
 
     @Override
@@ -115,23 +130,29 @@ public class NewTabController implements Initializable {
         loadingPane.setVisible(false);
 
         tabOperation = new TabOperation(this);
-        contentOperation = new ContentOperation(this);
+        saveOperation = new SaveOperation(this);
+        exportOperation = new ExportOperation(this);
+
         tabPane.getTabs().clear();
         Tab newTabButton = newTabButton();
         tabPane.getTabs().add(newTabButton);
         tabPane.setTabDragPolicy(TabPane.TabDragPolicy.REORDER);
         tabPane.getTabs().addListener((ListChangeListener.Change<? extends Tab> change) ->
                 handleMovingNewTabButton(change, newTabButton));
-        currentState = State.NEW_FILE;
+
+        startAutoSave();
+    }
+
+    private void startAutoSave() {
         AutoSave.setSelected(true);
         autoSaveTimer = new Timeline(new KeyFrame(Duration.minutes(10), event -> {
             if (currentState == State.OPEN_FROM_EXISTING_FILE && currentDirectory != null) {
-                contentOperation.save();
+                saveOperation.save(exportOperation.exportData());
             } else if (currentState == State.NEW_FILE) {
-                contentOperation.backup();
+                saveOperation.backup(exportOperation.exportData());
             }
         }));
-        contentOperation.startAutoSaveAction();
+        startAutoSaveAction();
     }
 
     /**
@@ -168,7 +189,6 @@ public class NewTabController implements Initializable {
         });
         addTab.setClosable(false);
         addTab.setGraphic(newTabButton);
-
         return addTab;
     }
 

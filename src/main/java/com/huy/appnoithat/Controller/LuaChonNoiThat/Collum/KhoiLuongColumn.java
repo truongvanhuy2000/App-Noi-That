@@ -1,15 +1,16 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomNumberCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomEditingCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitKhoiLuongCommand;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.scene.control.TreeTableColumn;
 import javafx.util.converter.DoubleStringConverter;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 @RequiredArgsConstructor
-public class KhoiLuongColumn implements CustomColumn  {
+public class KhoiLuongColumn implements CustomColumn {
     private final TreeTableColumn<BangNoiThat, Double> KhoiLuong;
     private final CommandManager commandManager;
 
@@ -24,9 +25,19 @@ public class KhoiLuongColumn implements CustomColumn  {
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getKhoiLuong().asObject();
         });
-        KhoiLuong.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), KhoiLuong.getTreeTableView(), false));
+        KhoiLuong.setCellFactory(param -> new CustomEditingCell<>(KhoiLuong.getTreeTableView(), new KhoiLuongConverter()));
         KhoiLuong.setOnEditCommit(event -> {
             commandManager.execute(new EditCommitKhoiLuongCommand(event));
         });
+    }
+
+    private static class KhoiLuongConverter extends DoubleStringConverter {
+        @Override
+        public String toString(Double value) {
+            if (value.equals(0.0)) {
+                return StringUtils.EMPTY;
+            }
+            return super.toString(value);
+        }
     }
 }

@@ -1,11 +1,11 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomNumberCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomEditingCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitDaiCommand;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Converter.KichThuocConverter;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.scene.control.TreeTableColumn;
-import javafx.util.converter.DoubleStringConverter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -19,7 +19,7 @@ public class DaiColumn implements CustomColumn{
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getDai().asObject();
         });
-        Dai.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), Dai.getTreeTableView(), true));
+        Dai.setCellFactory(param -> new CustomEditingCell<>(Dai.getTreeTableView(), new KichThuocConverter()));
         Dai.setOnEditCommit(event -> {
             commandManager.execute(new EditCommitDaiCommand(event));
         });

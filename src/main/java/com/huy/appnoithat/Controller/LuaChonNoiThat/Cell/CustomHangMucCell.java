@@ -1,6 +1,8 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
 import com.huy.appnoithat.Common.KeyboardUtils;
+import com.huy.appnoithat.Controller.Common.ButtonUtils;
+import com.huy.appnoithat.Controller.Common.DelayUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.DataModel.Enums.Action;
 import javafx.animation.PauseTransition;
@@ -52,32 +54,17 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         if (dropDownBtn != null) {
             return;
         }
-        dropDownBtn = new Button();
-        dropDownBtn.setOnAction((e) -> {
+        dropDownBtn = ButtonUtils.createDropDownButton((e) -> {
             setGraphic(comboBox);
             showComboBoxAfter(200);
         });
-        Image img = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/dropdown.png")));
-        ImageView view = new ImageView(img);
-        view.setFitHeight(10);
-        view.setFitWidth(10);
-        view.preserveRatioProperty().set(false);
-        dropDownBtn.setGraphic(view);
-        dropDownBtn.setPrefSize(20, 20);
-        dropDownBtn.setMaxSize(20, 20);
     }
 
     private void createEditBtn() {
-        editButton = new Button();
-        Image img = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/com/huy/appnoithat/Scene/icons/edit.png")));
-        ImageView view = new ImageView(img);
-        view.setFitHeight(15);
-        view.setFitWidth(15);
-        view.preserveRatioProperty().set(false);
-        editButton.setGraphic(view);
-        editButton.setPrefSize(20, 20);
-        editButton.setMaxSize(20, 20);
-
+        if (editButton != null) {
+            return;
+        }
+        editButton = ButtonUtils.createEditButton();
         TextField textField = new TextField();
         textField.setOnAction((e) -> {
             super.commitEdit(textField.getText());
@@ -176,9 +163,12 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
      *
      * @param millis The delay time in milliseconds before showing the ComboBox.
      */
+    /**
+     * Displays the ComboBox after a specified delay in milliseconds.
+     *
+     * @param millis The delay time in milliseconds before showing the ComboBox.
+     */
     private void showComboBoxAfter(double millis) {
-        PauseTransition delay = new PauseTransition(Duration.millis(millis));
-        delay.setOnFinished(event -> comboBox.show());
-        delay.play();
+        DelayUtils.doActionAfter(millis, event -> comboBox.show());
     }
 }

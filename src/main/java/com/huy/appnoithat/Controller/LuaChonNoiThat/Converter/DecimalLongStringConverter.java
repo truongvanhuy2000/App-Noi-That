@@ -1,9 +1,9 @@
-package com.huy.appnoithat.Controller.LuaChonNoiThat.CustomConverter;
+package com.huy.appnoithat.Controller.LuaChonNoiThat.Converter;
 
 import com.huy.appnoithat.Common.Utils;
 import javafx.util.StringConverter;
 
-public class CustomLongStringConverter extends StringConverter<Long> {
+public class DecimalLongStringConverter extends StringConverter<Long> {
     @Override
     public Long fromString(String var1) {
         if (var1 == null) {

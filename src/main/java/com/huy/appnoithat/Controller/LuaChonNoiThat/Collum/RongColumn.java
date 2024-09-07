@@ -1,11 +1,11 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomNumberCell;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomEditingCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitRongCommand;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Converter.KichThuocConverter;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.scene.control.TreeTableColumn;
-import javafx.util.converter.DoubleStringConverter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -19,7 +19,7 @@ public class RongColumn implements CustomColumn{
             if (param.getValue() == null) return null;
             return param.getValue().getValue().getRong().asObject();
         });
-        Rong.setCellFactory(param -> new CustomNumberCell<>(new DoubleStringConverter(), Rong.getTreeTableView(), true));
+        Rong.setCellFactory(param -> new CustomEditingCell<>(Rong.getTreeTableView(), new KichThuocConverter()));
         Rong.setOnEditCommit(event -> {
             commandManager.execute(new EditCommitRongCommand(event));
         });
