@@ -42,3 +42,4 @@ session
 /out/
 ./.mvn
 /Data/Temp/
+*.log
