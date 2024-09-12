@@ -26,6 +26,9 @@ public class PhongCachRestService {
     public List<PhongCachNoiThat> findAll() {
         URIBuilder uriBuilder = URIBuilder.empty().addRawPath(BASE_ENDPOINT);
         Optional<List<PhongCachNoiThat>> response = this.webClientService.authorizedHttpGet(uriBuilder, PhongCachNoiThat.class, List.class);
+        if (response.isEmpty()) {
+            LOGGER.error("Not found any phong cach");
+        }
         return response.orElse(new ArrayList<>());
     }
 

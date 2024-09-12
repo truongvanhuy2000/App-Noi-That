@@ -9,6 +9,7 @@ import com.huy.appnoithat.Service.FileNoiThatExplorer.FileNoiThatExplorerService
 import com.huy.appnoithat.Service.FileNoiThatExplorer.LocalFileNoiThatExplorerService;
 import com.huy.appnoithat.Service.Login.LoginService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.CacheNoiThatRequestService;
+import com.huy.appnoithat.Service.LuaChonNoiThat.CacheService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.FileExport.FileExportService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
@@ -111,8 +112,8 @@ public class ServiceModule extends AbstractModule {
 
         @Provides
         @Singleton
-        CacheNoiThatRequestService cacheNoiThatRequestService(ObjectMapper objectMapper) {
-            return new CacheNoiThatRequestService(objectMapper);
+        CacheService cacheNoiThatRequestService() {
+            return new CacheNoiThatRequestService();
         }
     }
 

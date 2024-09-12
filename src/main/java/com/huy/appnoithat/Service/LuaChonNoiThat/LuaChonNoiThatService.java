@@ -17,6 +17,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -27,7 +28,7 @@ public class LuaChonNoiThatService {
     private final NoiThatRestService noiThatRestService;
     private final HangMucRestService hangMucRestService;
     private final VatLieuRestService vatLieuRestService;
-    private final CacheNoiThatRequestService cacheNoiThatRequestService;
+    private final CacheService cacheService;
 
     /**
      * Retrieves a list of all PhongCachNoiThat from the service.
@@ -36,12 +37,12 @@ public class LuaChonNoiThatService {
      */
 
     public List<PhongCachNoiThat> findAllPhongCachNoiThat() {
-        String requestId = cacheNoiThatRequestService.createUniqueId("findAllPhongCachNoiThat");
-        if (cacheNoiThatRequestService.isContain(requestId)) {
-            return cacheNoiThatRequestService.readCache(requestId, PhongCachNoiThat.class);
+        String requestId = cacheService.createUniqueId("findAllPhongCachNoiThat");
+        if (cacheService.isContain(requestId)) {
+            return cacheService.readCache(requestId, PhongCachNoiThat.class).orElse(new ArrayList<>());
         }
         List<PhongCachNoiThat> phongCachNoiThatList = phongCachRestService.findAll();
-        cacheNoiThatRequestService.writeCache(phongCachNoiThatList, requestId);
+        cacheService.writeCache(phongCachNoiThatList, requestId);
         return phongCachNoiThatList;
     }
 
@@ -53,13 +54,13 @@ public class LuaChonNoiThatService {
      */
     public List<NoiThat> findNoiThatListBy(String phongCach) {
         // Encoding the PhongCach to ensure URL safety.
-        String requestId = cacheNoiThatRequestService.createUniqueId("findNoiThatListBy", phongCach);
-        if (cacheNoiThatRequestService.isContain(requestId)) {
-            return cacheNoiThatRequestService.readCache(requestId, NoiThat.class);
+        String requestId = cacheService.createUniqueId("findNoiThatListBy", phongCach);
+        if (cacheService.isContain(requestId)) {
+            return cacheService.readCache(requestId, NoiThat.class).orElse(new ArrayList<>());
         }
 
         List<NoiThat> noiThatList = noiThatRestService.searchBy(phongCach);
-        cacheNoiThatRequestService.writeCache(noiThatList, requestId);
+        cacheService.writeCache(noiThatList, requestId);
         return noiThatList;
     }
 
@@ -73,13 +74,13 @@ public class LuaChonNoiThatService {
      */
     public List<HangMuc> findHangMucListBy(String phongCach, String noiThat) {
         // Encoding PhongCach and NoiThat to ensure URL safety.
-        String requestId = cacheNoiThatRequestService.createUniqueId("findHangMucListBy", phongCach, noiThat);
-        if (cacheNoiThatRequestService.isContain(requestId)) {
-            return cacheNoiThatRequestService.readCache(requestId, HangMuc.class);
+        String requestId = cacheService.createUniqueId("findHangMucListBy", phongCach, noiThat);
+        if (cacheService.isContain(requestId)) {
+            return cacheService.readCache(requestId, HangMuc.class).orElse(new ArrayList<>());
         }
 
         List<HangMuc> hangMucList = hangMucRestService.searchBy(phongCach, noiThat);
-        cacheNoiThatRequestService.writeCache(hangMucList, requestId);
+        cacheService.writeCache(hangMucList, requestId);
         return hangMucList;
     }
 
@@ -93,13 +94,13 @@ public class LuaChonNoiThatService {
      */
     public List<VatLieu> findVatLieuListBy(String phongCach, String noiThat, String hangMuc) {
         // Encoding PhongCach, NoiThat, and HangMuc to ensure URL safety.
-        String requestId = cacheNoiThatRequestService.createUniqueId("findVatLieuListBy", phongCach, noiThat, hangMuc);
-        if (cacheNoiThatRequestService.isContain(requestId)) {
-            return cacheNoiThatRequestService.readCache(requestId, VatLieu.class);
+        String requestId = cacheService.createUniqueId("findVatLieuListBy", phongCach, noiThat, hangMuc);
+        if (cacheService.isContain(requestId)) {
+            return cacheService.readCache(requestId, VatLieu.class).orElse(new ArrayList<>());
         }
 
         List<VatLieu> vatLieuList = vatLieuRestService.searchBy(phongCach, noiThat, hangMuc);
-        cacheNoiThatRequestService.writeCache(vatLieuList, requestId);
+        cacheService.writeCache(vatLieuList, requestId);
         return vatLieuList;
     }
 
