@@ -31,9 +31,11 @@ public class ContinuousAddForNumericSttCommand implements Command {
         }
         parent = item.getParent();
         if (item.nextSibling() != null) {
-            TableUtils.createNewSibling(item);
+            TreeItem<BangNoiThat> createdItem = TableUtils.createNewSibling(item).orElseThrow();
+            createdItemList.add(createdItem);
         } else {
-            addNewNumericStt(5);
+            List<TreeItem<BangNoiThat>> createdItems = addNewNumericStt(5);
+            createdItemList.addAll(createdItems);
         }
     }
 
@@ -45,17 +47,17 @@ public class ContinuousAddForNumericSttCommand implements Command {
         }
     }
 
-    private void addNewNumericStt(int num) {
+    private List<TreeItem<BangNoiThat>> addNewNumericStt(int num) {
+        List<TreeItem<BangNoiThat>> createdItems = new ArrayList<>();
         for (int i = 0; i < num; i++) {
             TreeItem<BangNoiThat> item = TableNoiThat.getSelectionModel().getSelectedItem();
             if (item == null) {
                 throw new NullPointerException("No item is selected");
             }
             TreeItem<BangNoiThat> newItem = continuousLineAddForNumericStt(item);
-            if (newItem != null) {
-                createdItemList.add(newItem);
-            }
+            createdItems.add(newItem);
         }
+        return createdItems;
     }
 
     /**

@@ -112,12 +112,14 @@ public class BangThanhToan {
         private final SimpleIntegerProperty DatCocThietKePercentage;
         private final SimpleIntegerProperty DatCocThiCongPercentage;
         private final SimpleIntegerProperty HangDenChanCongTrinhPercentage;
+        private final SimpleIntegerProperty NghiemThuQuyetPercentage;
 
         @Builder
-        public Percentage(Integer datCocThietKePercentage, Integer datCocThiCongPercentage, Integer hangDenChanCongTrinhPercentage) {
+        public Percentage(Integer datCocThietKePercentage, Integer datCocThiCongPercentage, Integer hangDenChanCongTrinhPercentage, Integer nghiemThuQuyetPercentage) {
             DatCocThietKePercentage = new SimpleIntegerProperty(datCocThietKePercentage);
             DatCocThiCongPercentage = new SimpleIntegerProperty(datCocThiCongPercentage);
             HangDenChanCongTrinhPercentage = new SimpleIntegerProperty(hangDenChanCongTrinhPercentage);
+            NghiemThuQuyetPercentage = new SimpleIntegerProperty(nghiemThuQuyetPercentage);
         }
 
         public Memento createSnapshot() {
@@ -125,6 +127,7 @@ public class BangThanhToan {
                     .DatCocThietKePercentage(DatCocThietKePercentage.get())
                     .DatCocThiCongPercentage(DatCocThiCongPercentage.get())
                     .HangDenChanCongTrinhPercentage(HangDenChanCongTrinhPercentage.get())
+                    .NghiemThuQuyetPercentage(NghiemThuQuyetPercentage.get())
                     .build();
         }
 
@@ -133,6 +136,7 @@ public class BangThanhToan {
                     .datCocThietKePercentage(10)
                     .datCocThiCongPercentage(30)
                     .hangDenChanCongTrinhPercentage(50)
+                    .nghiemThuQuyetPercentage(10)
                     .build();
         }
 
@@ -140,6 +144,7 @@ public class BangThanhToan {
             getDatCocThiCongPercentage().addListener(changeListener);
             getDatCocThietKePercentage().addListener(changeListener);
             getHangDenChanCongTrinhPercentage().addListener(changeListener);
+            getNghiemThuQuyetPercentage().addListener(changeListener);
         }
 
         @Builder(builderMethodName = "hiddenBuilder")
@@ -149,6 +154,7 @@ public class BangThanhToan {
             private final int DatCocThietKePercentage;
             private final int DatCocThiCongPercentage;
             private final int HangDenChanCongTrinhPercentage;
+            private final int NghiemThuQuyetPercentage;
 
             public static SnapshotBuilder builder(Percentage percentage) {
                 return hiddenBuilder().percentage(percentage);
@@ -159,6 +165,7 @@ public class BangThanhToan {
                 percentage.getDatCocThietKePercentage().set(DatCocThietKePercentage);
                 percentage.getDatCocThiCongPercentage().set(DatCocThiCongPercentage);
                 percentage.getHangDenChanCongTrinhPercentage().set(HangDenChanCongTrinhPercentage);
+                percentage.getNghiemThuQuyetPercentage().set(NghiemThuQuyetPercentage);
             }
         }
     }

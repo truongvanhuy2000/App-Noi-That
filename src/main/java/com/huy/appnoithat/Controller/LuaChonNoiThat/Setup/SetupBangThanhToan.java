@@ -52,11 +52,15 @@ public class SetupBangThanhToan {
         HangDenChanCongTrinhPercent.setOnAction((event) -> {
             commandManager.execute(new EditHangDenChanCongTrinhPercentCommand(percentage));
         });
+        MenuItem NghiemThuQuyetPercent = new MenuItem("Thay đổi phần trăm nghiệm thu quyết");
+        NghiemThuQuyetPercent.setOnAction((event) -> {
+            commandManager.execute(new EditNghiemThuQuyetCommand(percentage));
+        });
         MenuItem recalculate = new MenuItem("Tính toán lại");
         recalculate.setOnAction((event) -> {
             commandManager.execute(new RecalculateCommand(bangThanhToan.getItems().get(0), percentage));
         });
-        bangThanhToan.getContextMenu().getItems().addAll(DatCocThietKePercent, DatCocThiCongPercent, HangDenChanCongTrinhPercent, recalculate);
+        bangThanhToan.getContextMenu().getItems().addAll(DatCocThietKePercent, DatCocThiCongPercent, HangDenChanCongTrinhPercent, NghiemThuQuyetPercent, recalculate);
 
         DatCocThietKe10.setCellValueFactory(param -> param.getValue().getDatCocThietKe10().asObject());
         DatCocThietKe10.setCellFactory(param -> new TextFieldTableCell<>(new DecimalLongStringConverter()));
@@ -123,7 +127,7 @@ public class SetupBangThanhToan {
     private void updateBangThanhToan() {
         DatCocThietKe10.setText(String.format("Đặt cọc thiết kế: %s", percentage.getDatCocThietKePercentage().get() + "%"));
         DatCocThiCong30.setText(String.format("Đặt cọc thi công: %s", percentage.getDatCocThiCongPercentage().get() + "%"));
-        HangDenChanCongTrinh50.setText(String.format("Đặt cọc thi công: %s", percentage.getHangDenChanCongTrinhPercentage().get() + "%"));
+        HangDenChanCongTrinh50.setText(String.format("Hàng đến chân công trình: %s", percentage.getHangDenChanCongTrinhPercentage().get() + "%"));
         TableCalculationUtils.calculateBangThanhToan(bangThanhToan, TongTien.getCellData(0));
     }
 }

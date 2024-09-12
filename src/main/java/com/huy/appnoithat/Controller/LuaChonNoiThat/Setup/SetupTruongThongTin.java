@@ -39,11 +39,9 @@ public class SetupTruongThongTin {
         noteArea.setOnMouseClicked(mouseEvent -> {
             noteArea.setMaxHeight(400);
             Platform.runLater(() -> noteArea.setPrefHeight(400));
-//            noteArea.setPrefWidth(200);
         });
         noteArea.focusedProperty().addListener((observableValue, aBoolean, t1) -> {
             if (!noteArea.isFocused()) {
-                System.out.println("Focus lost");
                 noteArea.setPrefHeight(30);
                 noteArea.setMaxHeight(30);
             }

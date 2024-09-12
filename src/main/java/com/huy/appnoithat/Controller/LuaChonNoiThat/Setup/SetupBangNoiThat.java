@@ -34,7 +34,6 @@ public class SetupBangNoiThat {
     private final TreeTableColumn<BangNoiThat, String> STT;
     private final TreeTableView<BangNoiThat> TableNoiThat;
     private final TableView<BangThanhToan> bangThanhToan;
-    private final LuaChonNoiThatController luaChonNoiThatController;
     private final LuaChonNoiThatService luaChonNoiThatService;
     private final CommandManager commandManager;
 
@@ -52,7 +51,6 @@ public class SetupBangNoiThat {
         TableNoiThat = luaChonNoiThatController.getTableNoiThat();
         bangThanhToan = luaChonNoiThatController.getBangThanhToan();
         this.luaChonNoiThatService = luaChonNoiThatController.getLuaChonNoiThatService();
-        this.luaChonNoiThatController = luaChonNoiThatController;
         commandManager = luaChonNoiThatController.getCommandManager();
     }
 
@@ -78,8 +76,9 @@ public class SetupBangNoiThat {
                 return;
             }
             int row = TableNoiThat.getSelectionModel().getSelectedCells().get(0).getRow();
+            int column = TableNoiThat.getSelectionModel().getSelectedCells().get(0).getColumn();
             Platform.runLater(() -> {
-                TableNoiThat.edit(row, TableNoiThat.getVisibleLeafColumn(1));
+                TableNoiThat.edit(row, TableNoiThat.getVisibleLeafColumn(column));
             });
         }
     }

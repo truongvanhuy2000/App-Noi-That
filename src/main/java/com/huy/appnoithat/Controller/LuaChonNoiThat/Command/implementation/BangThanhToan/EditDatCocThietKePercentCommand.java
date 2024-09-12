@@ -20,6 +20,7 @@ public class EditDatCocThietKePercentCommand implements Command {
             percentage.getDatCocThiCongPercentage().set(100
                     - percentage.getDatCocThietKePercentage().getValue()
                     - percentage.getHangDenChanCongTrinhPercentage().getValue()
+                    - percentage.getNghiemThuQuyetPercentage().getValue()
             );
         }
     }
