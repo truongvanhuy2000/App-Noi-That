@@ -43,3 +43,4 @@ session
 ./.mvn
 /Data/Temp/
 *.log
+/Data/

@@ -19,6 +19,7 @@ public class EditCommitCaoCommand implements Command {
 
     @Override
     public void execute() {
+        LOGGER.debug("Execute EditCommitCaoCommand");
         BangNoiThat bangNoiThat = event.getRowValue().getValue();
         treeTableView = event.getTreeTableView();
         if (bangNoiThat == null) {

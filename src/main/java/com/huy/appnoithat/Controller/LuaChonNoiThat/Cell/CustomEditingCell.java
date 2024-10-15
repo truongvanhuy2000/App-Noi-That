@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.scene.input.KeyCode;
 import javafx.util.StringConverter;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -16,10 +17,10 @@ import org.apache.logging.log4j.Logger;
 @RequiredArgsConstructor
 public class CustomEditingCell<X> extends TreeTableCell<BangNoiThat, X> {
     private final Logger LOGGER = LogManager.getLogger(this);
-    private final TreeTableView<BangNoiThat> TableNoiThat;
-    private final StringConverter<X> converter;
+    protected final TreeTableView<BangNoiThat> TableNoiThat;
+    protected final StringConverter<X> converter;
 
-    private TextField textField;
+    protected TextField textField;
 
     /**
      * Starts the editing process for this component. Overrides the superclass method
@@ -90,18 +91,28 @@ public class CustomEditingCell<X> extends TreeTableCell<BangNoiThat, X> {
      * handling commit actions, focusing, and keyboard shortcuts.
      */
     private void createTextField() {
-        textField = new TextField(getString());
+        textField = new TextField();
+        textField.setText(getString());
         textField.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
-        textField.setOnAction((e) -> super.commitEdit(converter.fromString(textField.getText())));
+        textField.setOnAction((e) -> {
+            super.commitEdit(converter.fromString(textField.getText()));
+            textField.clear();
+        });
         textField.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
             if (!newValue) {
-                if (StringUtils.isBlank(textField.getText())) {
+                LOGGER.debug("Unfocused cell");
+                String textFieldValue = textField.getText();
+                if (StringUtils.isBlank(textFieldValue)) {
+                    LOGGER.debug("Input text is blank");
                     return;
                 }
-                if (getString().equals(textField.getText())) {
+                X convertedData = converter.fromString(textFieldValue);
+                LOGGER.debug("convertedData {}, getItem() {}", convertedData, getItem());
+                if (convertedData.equals(getItem())) {
+                    LOGGER.debug("Final value not change, won't fire any event");
                     return;
                 }
-                X convertedData = converter.fromString(textField.getText());
+                textField.clear();
                 commitWhenOutFocus(convertedData);
             }
         });
@@ -113,16 +124,16 @@ public class CustomEditingCell<X> extends TreeTableCell<BangNoiThat, X> {
         });
     }
 
-    public void commitWhenOutFocus(X value) {
+    private void commitWhenOutFocus(X value) {
         TreeTableView<BangNoiThat> treeTableView = this.getTreeTableView();
         TreeTablePosition<BangNoiThat, X> position = new TreeTablePosition<>(treeTableView, this.getIndex(), super.getTableColumn());
-        LOGGER.debug("Fire cell edit when out of focus event");
+        LOGGER.debug("==FIRE CELL EDIT WHEN OUT OF FOCUS EVENT==");
         TreeTableColumn.CellEditEvent<BangNoiThat, X> editEvent = new TreeTableColumn.CellEditEvent<>(
                 treeTableView, position, TreeTableColumn.editCommitEvent(), value);
         Event.fireEvent(this.getTableColumn(), editEvent);
     }
 
-    private String getString() {
+    protected String getString() {
         return getItem() == null ? "" : converter.toString(getItem());
     }
 }

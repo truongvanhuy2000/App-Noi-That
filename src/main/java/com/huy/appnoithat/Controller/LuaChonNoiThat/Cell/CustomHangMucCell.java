@@ -150,7 +150,6 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         });
         comboBox.getStyleClass().add("combo-border");
         getTableColumn().prefWidthProperty().addListener((observable, oldValue, newValue) -> {
-//            System.out.println("New value: " + newValue);
             comboBox.setPrefWidth(newValue.doubleValue() - 10);
         });
         Platform.runLater(() -> {

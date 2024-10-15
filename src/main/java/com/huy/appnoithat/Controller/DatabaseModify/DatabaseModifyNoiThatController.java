@@ -170,7 +170,6 @@ public class DatabaseModifyNoiThatController implements Initializable {
      * @param parentID The ID of the parent element.
      */
     public void init(int parentID) {
-        System.out.println(parentID);
         this.parentID = parentID;
         refreshList();
         refreshChildrenList(0);

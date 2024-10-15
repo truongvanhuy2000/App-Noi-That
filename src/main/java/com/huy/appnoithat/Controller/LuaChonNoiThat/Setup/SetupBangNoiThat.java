@@ -103,6 +103,16 @@ public class SetupBangNoiThat {
     private void resizeToFit() {
         VatLieu.setResizable(false);
         TableNoiThat.widthProperty().addListener((observableValue, number, t1) -> {
+            STT.setPrefWidth(t1.doubleValue() * WidthConfiguration.STT / 100);
+            HangMuc.setPrefWidth(t1.doubleValue() * WidthConfiguration.HANG_MUC / 100);
+            Dai.setPrefWidth(t1.doubleValue() * WidthConfiguration.DAI / 100);
+            Rong.setPrefWidth(t1.doubleValue() * WidthConfiguration.RONG / 100);
+            Cao.setPrefWidth(t1.doubleValue() * WidthConfiguration.CAO / 100);
+            DonVi.setPrefWidth(t1.doubleValue() * WidthConfiguration.DON_VI_TINH / 100);
+            DonGia.setPrefWidth(t1.doubleValue() * WidthConfiguration.DON_GIA / 100);
+            KhoiLuong.setPrefWidth(t1.doubleValue() * WidthConfiguration.KHOI_LUONG / 100);
+            ThanhTien.setPrefWidth(t1.doubleValue() * WidthConfiguration.THANH_TIEN / 100);
+
             DoubleBinding usedWidth = STT.widthProperty()
                     .add(VatLieu.widthProperty())
                     .add(HangMuc.widthProperty())
@@ -113,7 +123,7 @@ public class SetupBangNoiThat {
                     .add(Dai.widthProperty())
                     .add(Rong.widthProperty())
                     .add(ThanhTien.widthProperty());
-            double width = t1.doubleValue() - usedWidth.doubleValue() + VatLieu.getWidth();
+            double width = t1.doubleValue() - usedWidth.doubleValue() + VatLieu.getWidth() - 10;
             DoubleProperty observableDouble = new SimpleDoubleProperty(width);
             VatLieu.prefWidthProperty().bind(observableDouble);
         });
@@ -130,5 +140,17 @@ public class SetupBangNoiThat {
         new CaoColumn(Cao, commandManager).setup();
         new DaiColumn(Dai, commandManager).setup();
         new RongColumn(Rong, commandManager).setup();
+    }
+
+    private static class WidthConfiguration {
+        public static final double STT = 3;
+        public static final double HANG_MUC = 15;
+        public static final double DAI = 5;
+        public static final double RONG = 5;
+        public static final double CAO = 5;
+        public static final double DON_VI_TINH = 5.5;
+        public static final double DON_GIA = 6.5;
+        public static final double KHOI_LUONG = 4.5;
+        public static final double THANH_TIEN = 8;
     }
 }

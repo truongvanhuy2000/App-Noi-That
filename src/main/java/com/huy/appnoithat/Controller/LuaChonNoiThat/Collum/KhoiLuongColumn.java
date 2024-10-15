@@ -3,6 +3,8 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomEditingCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitKhoiLuongCommand;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Converter.FormulaConverter;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Converter.KichThuocConverter;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.scene.control.TreeTableColumn;
 import javafx.util.converter.DoubleStringConverter;
@@ -32,12 +34,19 @@ public class KhoiLuongColumn implements CustomColumn {
     }
 
     private static class KhoiLuongConverter extends DoubleStringConverter {
+        private final FormulaConverter formulaConverter = new FormulaConverter();
+
         @Override
         public String toString(Double value) {
             if (value.equals(0.0)) {
                 return StringUtils.EMPTY;
             }
             return super.toString(value);
+        }
+
+        @Override
+        public Double fromString(String s) {
+            return formulaConverter.fromString(s).doubleValue();
         }
     }
 }

@@ -135,7 +135,7 @@ public class Utils {
      * @return
      */
     public static long convertDecimalToLong(String formattedNumber) {
-        if (formattedNumber == null)
+        if (formattedNumber == null || formattedNumber.isEmpty())
             return 0L;
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         try {
