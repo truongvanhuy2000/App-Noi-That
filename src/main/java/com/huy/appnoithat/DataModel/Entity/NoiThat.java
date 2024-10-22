@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class NoiThat implements CommonItemInterface {
+public class NoiThat implements NoiThatEntity {
     @JsonProperty("id")
     private int id;
     @JsonProperty("name")

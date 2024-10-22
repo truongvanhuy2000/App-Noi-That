@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class GlobalSettingController implements Initializable {
-    final static Logger LOGGER = LogManager.getLogger(ApacheHttpClient.class);
+    final Logger LOGGER = LogManager.getLogger(this);
     @FXML
     private CheckBox ActivateCheckBox;
     @FXML

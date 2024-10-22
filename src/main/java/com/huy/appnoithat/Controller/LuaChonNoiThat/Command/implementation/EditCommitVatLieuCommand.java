@@ -4,6 +4,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Command;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Memento;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.NoiThatItem;
 import com.huy.appnoithat.DataModel.Entity.ThongSo;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
@@ -17,8 +18,8 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class EditCommitVatLieuCommand implements Command {
     private final Logger LOGGER = LogManager.getLogger(this);
-    private final HashMap<String, ThongSo> vatLieuThongSoHashMap;
-    private final TreeTableColumn.CellEditEvent<BangNoiThat, String> event;
+    private final HashMap<Integer, ThongSo> vatLieuThongSoHashMap;
+    private final TreeTableColumn.CellEditEvent<BangNoiThat, NoiThatItem> event;
     private Memento bangNoiThatSnapshot;
     private TreeTableView<BangNoiThat> bangNoiThatTreeItem;
 
@@ -41,8 +42,8 @@ public class EditCommitVatLieuCommand implements Command {
         TableCalculationUtils.recalculateAllTongTien(bangNoiThatTreeItem);
     }
 
-    public void onEditCommitVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
-        String vatLieu = event.getNewValue();
+    public void onEditCommitVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, NoiThatItem> event) {
+        NoiThatItem vatLieu = event.getNewValue();
         BangNoiThat rowValue = event.getRowValue().getValue();
         bangNoiThatTreeItem = event.getTreeTableView();
         if (rowValue == null) {
@@ -50,7 +51,7 @@ public class EditCommitVatLieuCommand implements Command {
             return;
         }
         rowValue.setVatLieu(vatLieu);
-        ThongSo coresspondingThongSo = vatLieuThongSoHashMap.get(vatLieu);
+        ThongSo coresspondingThongSo = vatLieuThongSoHashMap.get(vatLieu.getId());
         if (coresspondingThongSo == null) {
             LOGGER.warn("coresspondingThongSo must not be null");
             return;

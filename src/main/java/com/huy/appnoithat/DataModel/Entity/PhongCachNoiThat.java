@@ -12,8 +12,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class PhongCachNoiThat implements CommonItemInterface {
+public class PhongCachNoiThat implements NoiThatEntity {
     @JsonProperty("id")
     private int id;
     @JsonProperty("name")

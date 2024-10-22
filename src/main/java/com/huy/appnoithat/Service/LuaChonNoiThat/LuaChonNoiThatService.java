@@ -64,6 +64,18 @@ public class LuaChonNoiThatService {
         return noiThatList;
     }
 
+    public List<NoiThat> findNoiThatListByPhongCachID(int phongCachID) {
+        // Encoding the PhongCach to ensure URL safety.
+        String requestId = cacheService.createUniqueId("findNoiThatListByPhongCachID", String.valueOf(phongCachID));
+        if (cacheService.isContain(requestId)) {
+            return cacheService.readCache(requestId, NoiThat.class).orElse(new ArrayList<>());
+        }
+
+        List<NoiThat> noiThatList = noiThatRestService.searchByPhongCach(phongCachID);
+        cacheService.writeCache(noiThatList, requestId);
+        return noiThatList;
+    }
+
 
     /**
      * Retrieves a list of HangMuc objects based on the provided PhongCach and NoiThat.
@@ -80,6 +92,18 @@ public class LuaChonNoiThatService {
         }
 
         List<HangMuc> hangMucList = hangMucRestService.searchBy(phongCach, noiThat);
+        cacheService.writeCache(hangMucList, requestId);
+        return hangMucList;
+    }
+
+    public List<HangMuc> findHangMucListByNoiThatID(Integer noiThatID) {
+        // Encoding PhongCach and NoiThat to ensure URL safety.
+        String requestId = cacheService.createUniqueId("findHangMucListByNoiThatID", noiThatID.toString());
+        if (cacheService.isContain(requestId)) {
+            return cacheService.readCache(requestId, HangMuc.class).orElse(new ArrayList<>());
+        }
+
+        List<HangMuc> hangMucList = hangMucRestService.searchByNoiThat(noiThatID);
         cacheService.writeCache(hangMucList, requestId);
         return hangMucList;
     }
@@ -105,6 +129,17 @@ public class LuaChonNoiThatService {
     }
 
 
+    public List<VatLieu> findVatLieuListByHangMucID(Integer hangMucID) {
+        // Encoding PhongCach, NoiThat, and HangMuc to ensure URL safety.
+        String requestId = cacheService.createUniqueId("findVatLieuListByHangMucID", hangMucID.toString());
+        if (cacheService.isContain(requestId)) {
+            return cacheService.readCache(requestId, VatLieu.class).orElse(new ArrayList<>());
+        }
+
+        List<VatLieu> vatLieuList = vatLieuRestService.searchByHangMuc(hangMucID);
+        cacheService.writeCache(vatLieuList, requestId);
+        return vatLieuList;
+    }
     /**
      * Exports a data package to the specified file of the given file type.
      *

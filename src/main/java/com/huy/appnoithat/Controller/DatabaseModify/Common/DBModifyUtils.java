@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.DatabaseModify.Common;
 
-import com.huy.appnoithat.DataModel.Entity.CommonItemInterface;
+import com.huy.appnoithat.DataModel.Entity.NoiThatEntity;
 import javafx.collections.ObservableList;
 
 public class DBModifyUtils {
@@ -23,9 +23,9 @@ public class DBModifyUtils {
      * @param list        The list of items to check for duplicates.
      * @return A unique name if a duplicate is found; otherwise, the original name.
      */
-    public static String getNotDuplicateName(String currentName, ObservableList<? extends CommonItemInterface> list) {
+    public static String getNotDuplicateName(String currentName, ObservableList<? extends NoiThatEntity> list) {
         int count = 0;
-        for (CommonItemInterface item : list) {
+        for (NoiThatEntity item : list) {
             if (item.getName().trim().equals(currentName.trim())) {
                 count++;
             }

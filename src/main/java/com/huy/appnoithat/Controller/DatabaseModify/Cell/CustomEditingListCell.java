@@ -1,14 +1,14 @@
 package com.huy.appnoithat.Controller.DatabaseModify.Cell;
 
 import com.huy.appnoithat.Common.KeyboardUtils;
-import com.huy.appnoithat.DataModel.Entity.CommonItemInterface;
+import com.huy.appnoithat.DataModel.Entity.NoiThatEntity;
 import com.huy.appnoithat.DataModel.Enums.Action;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 
-public class CustomEditingListCell<T extends CommonItemInterface> extends ListCell<T> {
+public class CustomEditingListCell<T extends NoiThatEntity> extends ListCell<T> {
     private TextArea textArea;
     private VBox vBox;
 

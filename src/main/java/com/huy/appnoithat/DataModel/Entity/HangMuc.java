@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class HangMuc implements CommonItemInterface {
+public class HangMuc implements NoiThatEntity {
     @JsonProperty("id")
     private int id;
     @JsonProperty("name")

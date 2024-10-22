@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class VatLieu implements CommonItemInterface {
+public class VatLieu implements NoiThatEntity {
     @JsonProperty("id")
     private int id;
     @JsonProperty("name")

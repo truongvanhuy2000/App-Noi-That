@@ -6,6 +6,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitVatLieuCommand;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.NoiThatItem;
 import com.huy.appnoithat.DataModel.Entity.ThongSo;
 import com.huy.appnoithat.DataModel.Entity.VatLieu;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
@@ -16,18 +17,21 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.List;
 
 @RequiredArgsConstructor
 public class VatLieuColumn implements CustomColumn  {
-    private final TreeTableColumn<BangNoiThat, String> VatLieu;
+    private final Logger LOGGER = LogManager.getLogger(this);
+    private final TreeTableColumn<BangNoiThat, NoiThatItem> VatLieu;
     private final LuaChonNoiThatService luaChonNoiThatService;
     private final CommandManager commandManager;
 
-    private final HashMap<String, ThongSo> vatLieuThongSoHashMap = new HashMap<>();
-    private final ObservableList<String> vatLieuList = FXCollections.observableArrayList();
+    private final HashMap<Integer, ThongSo> vatLieuThongSoHashMap = new HashMap<>();
+    private final ObservableList<NoiThatItem> vatLieuList = FXCollections.observableArrayList();
 
     @Override
     public void setup() {
@@ -44,7 +48,7 @@ public class VatLieuColumn implements CustomColumn  {
      * @param param The TreeTableColumn instance for which the custom cell factory is provided.
      * @return A customized TreeTableCell for the VatLieu column.
      */
-    private TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param) {
+    private TreeTableCell<BangNoiThat, NoiThatItem> getCustomCellFactory(TreeTableColumn<BangNoiThat, NoiThatItem> param) {
         return new CustomVatLieuCell(vatLieuList, param.getTreeTableView());
     }
 
@@ -56,7 +60,7 @@ public class VatLieuColumn implements CustomColumn  {
      * @param param The CellDataFeatures instance representing the data of the current cell.
      * @return An observable value representing the VatLieu property of the current BangNoiThat item.
      */
-    private ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {
+    private ObservableValue<NoiThatItem> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, NoiThatItem> param) {
         if (param.getValue() == null) {
             return null;
         }
@@ -70,7 +74,7 @@ public class VatLieuColumn implements CustomColumn  {
      *
      * @param event The CellEditEvent instance representing the edit event for the VatLieu column.
      */
-    private void onEditCommitVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
+    private void onEditCommitVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, NoiThatItem> event) {
         commandManager.execute(new EditCommitVatLieuCommand(vatLieuThongSoHashMap, event));
     }
 
@@ -82,35 +86,29 @@ public class VatLieuColumn implements CustomColumn  {
      *
      * @param event The CellEditEvent instance representing the start edit event for the VatLieu column.
      */
-    private void onStartEditVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
+    private void onStartEditVatLieu(TreeTableColumn.CellEditEvent<BangNoiThat, NoiThatItem> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
         if (currentItem == null) {
             return;
         }
-        List<String> items;
-
         // Check if editing is allowed for the current event
         if (!TableUtils.isAllowedToEdit(currentItem)) {
             return;
         }
-
-        // Retrieve HangMuc, NoiThat, and PhongCach values from the current TreeItem
-        String hangMuc = currentItem.getValue().getHangMuc().getValue();
-        String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
-        String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
-
-        // Retrieve a list of VatLieu objects based on PhongCach, NoiThat, and HangMuc
-        List<VatLieu> vatLieus = luaChonNoiThatService.findVatLieuListBy(phongCach, noiThat, hangMuc);
+        NoiThatItem hangMuc = currentItem.getValue().getHangMuc().getValue();
+        if (hangMuc == null) {
+            LOGGER.warn("Hang muc must not be null");
+            return;
+        }
+        List<VatLieu> vatLieus = luaChonNoiThatService.findVatLieuListByHangMucID(hangMuc.getId());
         if (vatLieus == null) {
             return;
         }
-
-        // Populate the vatLieuThongSoHashMap for corresponding VatLieu items
-        vatLieus.forEach(vatLieu -> {
-            vatLieuThongSoHashMap.put(vatLieu.getName(), vatLieu.getThongSo());
-        });
-        items = Utils.getObjectNameList(vatLieus);
         this.vatLieuList.clear();
-        this.vatLieuList.addAll(items);
+        vatLieus.forEach(vatLieu -> {
+            NoiThatItem noiThatItem = new NoiThatItem(vatLieu.getId(), vatLieu.getName());
+            vatLieuThongSoHashMap.put(vatLieu.getId(), vatLieu.getThongSo());
+            this.vatLieuList.addAll(noiThatItem);
+        });
     }
 }

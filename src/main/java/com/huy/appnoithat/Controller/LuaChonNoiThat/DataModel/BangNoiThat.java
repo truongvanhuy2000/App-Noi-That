@@ -3,9 +3,11 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Memento;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
+import com.huy.appnoithat.DataModel.Entity.NoiThatEntity;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,8 +21,8 @@ public class BangNoiThat {
     private final SimpleDoubleProperty Rong;
     private final SimpleLongProperty DonGia;
     private final SimpleStringProperty DonVi;
-    private final SimpleStringProperty HangMuc;
-    private final SimpleStringProperty VatLieu;
+    private final SimpleObjectProperty<NoiThatItem> HangMuc;
+    private final SimpleObjectProperty<NoiThatItem> VatLieu;
     private final SimpleLongProperty ThanhTien;
     private final SimpleDoubleProperty KhoiLuong;
     @Setter
@@ -28,15 +30,16 @@ public class BangNoiThat {
 
 
     @Builder
-    public BangNoiThat(String id, Double cao, Double dai, Double rong, Long donGia, String donVi, String hangMuc, String vatLieu, Long thanhTien, Double khoiLuong, ItemType itemType) {
+    public BangNoiThat(String id, Double cao, Double dai, Double rong, Long donGia, String donVi, NoiThatItem hangMuc,
+                       NoiThatItem vatLieu, Long thanhTien, Double khoiLuong, ItemType itemType) {
         STT = new SimpleStringProperty(id);
         Cao = new SimpleDoubleProperty(cao);
         Dai = new SimpleDoubleProperty(dai);
         Rong = new SimpleDoubleProperty(rong);
         DonGia = new SimpleLongProperty(donGia);
         DonVi = new SimpleStringProperty(donVi);
-        HangMuc = new SimpleStringProperty(hangMuc);
-        VatLieu = new SimpleStringProperty(vatLieu);
+        HangMuc = new SimpleObjectProperty<>(hangMuc);
+        VatLieu = new SimpleObjectProperty<>(vatLieu);
         ThanhTien = new SimpleLongProperty(thanhTien);
         KhoiLuong = new SimpleDoubleProperty(khoiLuong);
         this.itemType = itemType;
@@ -49,8 +52,8 @@ public class BangNoiThat {
         this.Rong = new SimpleDoubleProperty(Double.parseDouble(thongTinNoiThat.getRong()));
         this.DonGia = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinNoiThat.getDonGia()));
         this.DonVi = new SimpleStringProperty(thongTinNoiThat.getDonViTinh());
-        this.HangMuc = new SimpleStringProperty(thongTinNoiThat.getTenHangMuc());
-        this.VatLieu = new SimpleStringProperty(thongTinNoiThat.getChiTiet());
+        this.HangMuc = new SimpleObjectProperty<>(thongTinNoiThat.getTenHangMuc());
+        this.VatLieu = new SimpleObjectProperty<>(thongTinNoiThat.getChiTiet());
         this.ThanhTien = new SimpleLongProperty(Utils.convertDecimalToLong(thongTinNoiThat.getThanhTien()));
         this.KhoiLuong = new SimpleDoubleProperty(Double.parseDouble(thongTinNoiThat.getSoLuong()));
         this.itemType = thongTinNoiThat.getItemType();
@@ -63,8 +66,8 @@ public class BangNoiThat {
         this.Rong = new SimpleDoubleProperty(bangNoiThat.getRong().getValue());
         this.DonGia = new SimpleLongProperty(bangNoiThat.getDonGia().getValue());
         this.DonVi = new SimpleStringProperty(bangNoiThat.getDonVi().getValue());
-        this.HangMuc = new SimpleStringProperty(bangNoiThat.getHangMuc().getValue());
-        this.VatLieu = new SimpleStringProperty(bangNoiThat.getVatLieu().getValue());
+        this.HangMuc = new SimpleObjectProperty<>(bangNoiThat.getHangMuc().getValue());
+        this.VatLieu = new SimpleObjectProperty<>(bangNoiThat.getVatLieu().getValue());
         this.ThanhTien = new SimpleLongProperty(bangNoiThat.getThanhTien().getValue());
         this.KhoiLuong = new SimpleDoubleProperty(bangNoiThat.getKhoiLuong().getValue());
         this.itemType = bangNoiThat.getItemType();
@@ -94,11 +97,11 @@ public class BangNoiThat {
         this.DonVi.setValue(donVi);
     }
 
-    public void setHangMuc(String hangMuc) {
+    public void setHangMuc(NoiThatItem hangMuc) {
         this.HangMuc.setValue(hangMuc);
     }
 
-    public void setVatLieu(String vatLieu) {
+    public void setVatLieu(NoiThatItem vatLieu) {
         this.VatLieu.setValue(vatLieu);
     }
 
@@ -136,8 +139,8 @@ public class BangNoiThat {
         private final double rong;
         private final long donGia;
         private final String donVi;
-        private final String hangMuc;
-        private final String vatLieu;
+        private final NoiThatItem hangMuc;
+        private final NoiThatItem vatLieu;
         private final long thanhTien;
         private final double khoiLuong;
         private final ItemType itemType;

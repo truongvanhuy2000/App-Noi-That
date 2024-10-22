@@ -5,6 +5,8 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitHangMucCommand;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.NoiThatItem;
+import com.huy.appnoithat.DataModel.Entity.NoiThatEntity;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -22,8 +24,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class HangMucColumn implements CustomColumn {
     private final Logger LOGGER = LogManager.getLogger(this);
-    private final ObservableList<String> hangMucList = FXCollections.observableArrayList();
-    private final TreeTableColumn<BangNoiThat, String> HangMuc;
+    private final ObservableList<NoiThatItem> hangMucList = FXCollections.observableArrayList();
+    private final TreeTableColumn<BangNoiThat, NoiThatItem> HangMuc;
     private final LuaChonNoiThatService luaChonNoiThatService;
     private final CommandManager commandManager;
 
@@ -41,7 +43,7 @@ public class HangMucColumn implements CustomColumn {
      *
      * @param event The CellEditEvent containing information about the edit event.
      */
-    private void onEditCommitHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
+    private void onEditCommitHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, NoiThatItem> event) {
         commandManager.execute(new EditCommitHangMucCommand(luaChonNoiThatService, event));
     }
 
@@ -51,26 +53,34 @@ public class HangMucColumn implements CustomColumn {
      *
      * @param event The CellEditEvent containing information about the editing event.
      */
-    private void onStartEditHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
+    private void onStartEditHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, NoiThatItem> event) {
         TreeItem<BangNoiThat> currentItem = event.getRowValue();
-        List<String> items;
+        List<NoiThatItem> items;
         hangMucList.clear();
         // Roman mean it's a noi that, mean that its parent is phong cach
         switch (currentItem.getValue().getItemType()) {
             case ROMAN -> {
-                String phongCach = currentItem.getParent().getValue().getHangMuc().getValue();
-                items = Utils.getObjectNameList(luaChonNoiThatService.findNoiThatListBy(phongCach));
+                NoiThatItem phongCach = currentItem.getParent().getValue().getHangMuc().getValue();
+                if (phongCach == null) {
+                    return;
+                }
+                items = luaChonNoiThatService.findNoiThatListByPhongCachID(phongCach.getId())
+                        .stream().map(it -> new NoiThatItem(it.getId(), it.getName())).toList();
                 hangMucList.addAll(items);
             }
             case AlPHA -> {
-                items = Utils.getObjectNameList(luaChonNoiThatService.findAllPhongCachNoiThat());
+                items = luaChonNoiThatService.findAllPhongCachNoiThat().stream()
+                        .map(it -> new NoiThatItem(it.getId(), it.getName())).toList();
                 hangMucList.clear();
                 hangMucList.addAll(items);
             }
             case NUMERIC -> {
-                String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
-                String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
-                items = Utils.getObjectNameList(luaChonNoiThatService.findHangMucListBy(phongCach, noiThat));
+                NoiThatItem noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
+                if (noiThat == null) {
+                    return;
+                }
+                items = luaChonNoiThatService.findHangMucListByNoiThatID(noiThat.getId())
+                        .stream().map(it -> new NoiThatItem(it.getId(), it.getName())).toList();
                 hangMucList.clear();
                 hangMucList.addAll(items);
             }
@@ -84,7 +94,7 @@ public class HangMucColumn implements CustomColumn {
      * @param param The TreeTableColumn instance for which the custom cell factory is provided.
      * @return A new CustomHangMucCell instance with the given 'hangMucList'.
      */
-    private TreeTableCell<BangNoiThat, String> getCustomCellFactory(TreeTableColumn<BangNoiThat, String> param) {
+    private TreeTableCell<BangNoiThat, NoiThatItem> getCustomCellFactory(TreeTableColumn<BangNoiThat, NoiThatItem> param) {
         return new CustomHangMucCell(hangMucList);
     }
 
@@ -98,7 +108,7 @@ public class HangMucColumn implements CustomColumn {
      * @return An ObservableValue<String> representing the 'hangMuc' property of the current cell's data.
      * Returns null if the current row's data is null.
      */
-    private ObservableValue<String> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, String> param) {
+    private ObservableValue<NoiThatItem> getCustomCellValueFactory(TreeTableColumn.CellDataFeatures<BangNoiThat, NoiThatItem> param) {
         if (param.getValue() == null) {
             return null;
         }

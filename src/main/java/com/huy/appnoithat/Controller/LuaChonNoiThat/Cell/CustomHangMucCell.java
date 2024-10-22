@@ -4,6 +4,8 @@ import com.huy.appnoithat.Common.KeyboardUtils;
 import com.huy.appnoithat.Controller.Common.ButtonUtils;
 import com.huy.appnoithat.Controller.Common.DelayUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.NoiThatItem;
+import com.huy.appnoithat.DataModel.Entity.NoiThatEntity;
 import com.huy.appnoithat.DataModel.Enums.Action;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
@@ -16,16 +18,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
+import javafx.util.StringConverter;
+import lombok.val;
 
 import java.util.Objects;
 
-public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
-    private ComboBox<String> comboBox;
-    private final ObservableList<String> items;
+public class CustomHangMucCell extends TreeTableCell<BangNoiThat, NoiThatItem> {
+    private ComboBox<NoiThatItem> comboBox;
+    private final ObservableList<NoiThatItem> items;
     private Button dropDownBtn;
     private Button editButton;
 
-    public CustomHangMucCell(ObservableList<String> items) {
+    public CustomHangMucCell(ObservableList<NoiThatItem> items) {
         this.items = items;
     }
 
@@ -67,13 +71,15 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
         editButton = ButtonUtils.createEditButton();
         TextField textField = new TextField();
         textField.setOnAction((e) -> {
-            super.commitEdit(textField.getText());
-            updateItem(textField.getText(), false);
+            String value = textField.getText();
+            var item = new NoiThatItem(super.getItem().getId(), value);
+            super.commitEdit(item);
+            updateItem(item, false);
         });
         textField.setMaxWidth(Double.MAX_VALUE);
         editButton.setOnAction((e) -> {
             super.setText(null);
-            textField.setText(super.getItem());
+            textField.setText(getStringFromObject(super.getItem()));
             setGraphic(textField);
         });
     }
@@ -86,12 +92,12 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
     @Override
     public void cancelEdit() {
         super.cancelEdit();
-        super.setText(getItem());
+        super.setText(getStringFromObject(super.getItem()));
         setGraphic(null);
     }
 
     @Override
-    public void updateItem(String item, boolean empty) {
+    public void updateItem(NoiThatItem item, boolean empty) {
         super.updateItem(item, empty);
         if (empty || item == null) {
             super.setText(null);
@@ -102,10 +108,10 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
             if (comboBox != null) {
                 comboBox.setValue(super.getItem());
             }
-            super.setText(super.getItem());
+            super.setText(getStringFromObject(super.getItem()));
             setGraphic(comboBox);
         } else {
-            super.setText(super.getItem());
+            super.setText(getStringFromObject(super.getItem()));
             setGraphic(null);
         }
     }
@@ -140,6 +146,22 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
             comboBox.hide();
             showComboBoxAfter(200);
         });
+        comboBox.setConverter(new StringConverter<>() {
+            @Override
+            public String toString(NoiThatItem noiThatItem) {
+                if (noiThatItem == null) {
+                    return "";
+                }
+                return noiThatItem.getName();
+            }
+
+            @Override
+            public NoiThatItem fromString(String s) {
+                // No need to implement this for a read-only ComboBox
+                return null;
+            }
+        });
+
         comboBox.setMaxHeight(Double.MAX_VALUE);
         comboBox.setOnKeyPressed((key) -> {
             if (KeyboardUtils.isRightKeyCombo(Action.COMMIT, key)) {
@@ -169,5 +191,12 @@ public class CustomHangMucCell extends TreeTableCell<BangNoiThat, String> {
      */
     private void showComboBoxAfter(double millis) {
         DelayUtils.doActionAfter(millis, event -> comboBox.show());
+    }
+
+    private String getStringFromObject(NoiThatItem noiThatItem) {
+        if (noiThatItem == null) {
+            return "";
+        }
+        return noiThatItem.getName();
     }
 }

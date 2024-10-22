@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.NoiThatItem;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,9 +16,9 @@ public class ThongTinNoiThat {
     @JsonProperty("STT")
     String STT;
     @JsonProperty("TenHangMuc")
-    String TenHangMuc;
+    NoiThatItem TenHangMuc;
     @JsonProperty("ChiTiet")
-    String ChiTiet;
+    NoiThatItem ChiTiet;
     @JsonProperty("Dai")
     String Dai;
     @JsonProperty("Rong")

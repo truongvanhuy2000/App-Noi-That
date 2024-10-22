@@ -5,22 +5,22 @@ import com.huy.appnoithat.Controller.Common.ButtonUtils;
 import com.huy.appnoithat.Controller.Common.DelayUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.NoiThatItem;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
 import com.huy.appnoithat.DataModel.Enums.Action;
-import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
+import javafx.util.StringConverter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.util.Objects;
-
-public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
-    private ComboBox<String> comboBox;
-    private final ObservableList<String> items;
+public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, NoiThatItem> {
+    final Logger LOGGER = LogManager.getLogger(this);
+    private ComboBox<NoiThatItem> comboBox;
+    private final ObservableList<NoiThatItem> items;
     private final TreeTableView<BangNoiThat> TableNoiThat;
     private Button dropDownBtn;
     private Button editButton;
@@ -31,7 +31,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
      * @param items        The ObservableList of String items associated with this cell.
      * @param TableNoiThat The TreeTableView associated with this cell.
      */
-    public CustomVatLieuCell(ObservableList<String> items, TreeTableView<BangNoiThat> TableNoiThat) {
+    public CustomVatLieuCell(ObservableList<NoiThatItem> items, TreeTableView<BangNoiThat> TableNoiThat) {
         this.items = items;
         this.TableNoiThat = TableNoiThat;
     }
@@ -65,7 +65,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
     @Override
     public void cancelEdit() {
         super.cancelEdit();
-        super.setText(getItem());
+        super.setText(getString(super.getItem()));
         setGraphic(null);
     }
 
@@ -80,7 +80,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
      * @param empty Indicates whether the cell should be displayed as empty.
      */
     @Override
-    public void updateItem(String item, boolean empty) {
+    public void updateItem(NoiThatItem item, boolean empty) {
         super.updateItem(item, empty);
         if (empty) {
             super.setText(null);
@@ -91,11 +91,11 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
             if (comboBox != null) {
                 comboBox.setValue(super.getItem());
             }
-            super.setText(super.getItem());
+            super.setText(getString(super.getItem()));
             setGraphic(comboBox);
             comboBox.show();
         } else {
-            super.setText(super.getItem());
+            super.setText(getString(super.getItem()));
             setGraphic(null);
         }
     }
@@ -132,8 +132,10 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
                 textArea.positionCaret(currentTextPos + 1);
                 key.consume();
             } else if (KeyboardUtils.isRightKeyCombo(Action.COMMIT, key)) {
-                commitEdit(textArea.getText().trim().strip());
-                updateItem(textArea.getText().trim().strip(), false);
+                String content = textArea.getText().trim();
+                var item = new NoiThatItem(super.getItem().getId(), content);
+                commitEdit(item);
+                updateItem(item, false);
                 key.consume();
             }
         });
@@ -143,7 +145,7 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
 
         editButton.setOnAction((e) -> {
             super.setText(null);
-            textArea.setText(super.getItem());
+            textArea.setText(getString(super.getItem()));
             setGraphic(vBox);
         });
     }
@@ -178,6 +180,21 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
                 cancelEdit();
             }
         });
+        comboBox.setConverter(new StringConverter<>() {
+            @Override
+            public String toString(NoiThatItem noiThatItem) {
+                if (noiThatItem == null) {
+                    return "";
+                }
+                return noiThatItem.getName();
+            }
+
+            @Override
+            public NoiThatItem fromString(String s) {
+                // No need to implement this for a read-only ComboBox
+                return null;
+            }
+        });
         comboBox.getStyleClass().add("combo-border");
         getTableColumn().prefWidthProperty().addListener((observable, oldValue, newValue) -> {
             comboBox.setPrefWidth(newValue.doubleValue() - 10);
@@ -194,5 +211,12 @@ public class CustomVatLieuCell extends TreeTableCell<BangNoiThat, String> {
      */
     private void showComboBoxAfter(double millis) {
         DelayUtils.doActionAfter(millis, event -> comboBox.show());
+    }
+
+    private String getString(NoiThatItem noiThatItem) {
+        if (noiThatItem == null) {
+            return "";
+        }
+        return noiThatItem.getName();
     }
 }

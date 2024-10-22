@@ -5,12 +5,14 @@ import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.NoiThatItem;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Operation.ExportOperation;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Operation.ImportOperation;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupBangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupBangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Setup.SetupTruongThongTin;
 import com.huy.appnoithat.DataModel.DataPackage;
+import com.huy.appnoithat.DataModel.Entity.NoiThatEntity;
 import com.huy.appnoithat.DataModel.Enums.Action;
 import com.huy.appnoithat.DataModel.ThongTinCongTy;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
@@ -52,7 +54,9 @@ public class LuaChonNoiThatController implements Initializable {
     @FXML
     private TreeTableColumn<BangNoiThat, Long> DonGia, ThanhTien;
     @FXML
-    private TreeTableColumn<BangNoiThat, String> DonVi, HangMuc, VatLieu, STT;
+    private TreeTableColumn<BangNoiThat, String> DonVi, STT;
+    @FXML
+    private TreeTableColumn<BangNoiThat, NoiThatItem> HangMuc, VatLieu;
     // Button
     @FXML
     private Button addContinuousButton, addNewButton, ExportButton, SaveButton, duplicateButton, deleteButton;

@@ -156,7 +156,7 @@ public abstract class ExportXLS {
 
         for (ThongTinNoiThat thongTinNoiThat : thongTinNoiThats) {
             if (thongTinNoiThat.getSTT().isEmpty() ||
-                    thongTinNoiThat.getTenHangMuc().isEmpty()) {
+                    thongTinNoiThat.getTenHangMuc().getName().isEmpty()) {
                 continue;
             }
             spreadsheet.shiftRows(rowId, spreadsheet.getLastRowNum(), 1, true, true);
@@ -184,7 +184,7 @@ public abstract class ExportXLS {
                 12, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
         stylistFactory.setCellBackgroundColor(cell0, "eeeeee");
         Cell cell1 = spreadsheet.getRow(mergeRowId).getCell(cellId + 1);
-        stylistFactory.CellPresetFactory(cell1, thongTinNoiThat.getTenHangMuc(),
+        stylistFactory.CellPresetFactory(cell1, thongTinNoiThat.getTenHangMuc().getName(),
                 14, Stylist.Preset.BoldAll_TimeNewRoman_CenterBoth_ThinBorder);
         stylistFactory.setCellBackgroundColor(cell1, "eeeeee");
         Cell cell2 = spreadsheet.getRow(mergeRowId).getCell(cellId + 9);
@@ -199,10 +199,10 @@ public abstract class ExportXLS {
         stylistFactory.CellPresetFactory(cell0, thongTinNoiThat.getSTT(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
 
         Cell cell1 = spreadsheet.getRow(mergeRowId).getCell(cellId + 1);
-        stylistFactory.CellPresetFactory(cell1, thongTinNoiThat.getTenHangMuc(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
+        stylistFactory.CellPresetFactory(cell1, thongTinNoiThat.getTenHangMuc().getName(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);
 
         Cell cell2 = spreadsheet.getRow(mergeRowId).getCell(cellId + 2);
-        stylistFactory.CellPresetFactory(cell2, thongTinNoiThat.getChiTiet(), 12, Stylist.Preset.BoldText03_TimeNewRoman_VerticalCenter_ThinBorder);
+        stylistFactory.CellPresetFactory(cell2, thongTinNoiThat.getChiTiet().getName(), 12, Stylist.Preset.BoldText03_TimeNewRoman_VerticalCenter_ThinBorder);
 
         Cell cell3 = spreadsheet.getRow(mergeRowId).getCell(cellId + 3);
         stylistFactory.CellPresetFactory(cell3, thongTinNoiThat.getDai(), 12, Stylist.Preset.NormalText_TimeNewRoman_CenterBoth_ThinBorder);

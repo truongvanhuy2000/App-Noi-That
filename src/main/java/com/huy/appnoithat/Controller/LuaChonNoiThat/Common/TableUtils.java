@@ -4,6 +4,7 @@ import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.NoiThatItem;
 import com.huy.appnoithat.DataModel.ThongTinNoiThat;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -55,7 +56,17 @@ public class TableUtils {
 
     public static TreeItem<BangNoiThat> createNewItem(ItemType type, String id) {
         BangNoiThat bangNoiThat = BangNoiThat.builder()
-                .id(id).itemType(type).rong(0.0).dai(0.0).cao(0.0).donVi("").hangMuc("").vatLieu("")
+                .id(id).itemType(type).rong(0.0).dai(0.0).cao(0.0).donVi("")
+                .donGia(0L).khoiLuong(0.0).thanhTien(0L)
+                .build();
+        TreeItem<BangNoiThat> newItem = new TreeItem<>(bangNoiThat);
+        setupNewItem(newItem);
+        return newItem;
+    }
+
+    public static TreeItem<BangNoiThat> createNewItem(ItemType type, String id, NoiThatItem noiThatItem) {
+        BangNoiThat bangNoiThat = BangNoiThat.builder()
+                .id(id).itemType(type).rong(0.0).dai(0.0).cao(0.0).donVi("").hangMuc(noiThatItem)
                 .donGia(0L).khoiLuong(0.0).thanhTien(0L)
                 .build();
         TreeItem<BangNoiThat> newItem = new TreeItem<>(bangNoiThat);

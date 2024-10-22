@@ -8,6 +8,7 @@ import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableCalculationUtils
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.NoiThatItem;
 import com.huy.appnoithat.DataModel.Entity.HangMuc;
 import com.huy.appnoithat.DataModel.Entity.ThongSo;
 import com.huy.appnoithat.DataModel.Entity.VatLieu;
@@ -31,7 +32,7 @@ import java.util.Optional;
 public class EditCommitHangMucCommand implements Command {
     private final Logger LOGGER = LogManager.getLogger(this);
     private final LuaChonNoiThatService luaChonNoiThatService;
-    private final TreeTableColumn.CellEditEvent<BangNoiThat, String> event;
+    private final TreeTableColumn.CellEditEvent<BangNoiThat, NoiThatItem> event;
 
     private TreeItem<BangNoiThat> rowValue;
     private TreeTableView<BangNoiThat> treeTableView;
@@ -49,7 +50,7 @@ public class EditCommitHangMucCommand implements Command {
         bangNoiThatSnapshot = bangNoiThat.createSnapshot();
         oldChildren.addAll(rowValue.getChildren());
 
-        String newValue = event.getNewValue();
+        NoiThatItem newValue = event.getNewValue();
         bangNoiThat.setHangMuc(newValue);
         if (bangNoiThat.getItemType() == ItemType.ROMAN) {
             automaticallyInsertNoiThat(event);
@@ -71,16 +72,15 @@ public class EditCommitHangMucCommand implements Command {
         TableCalculationUtils.recalculateAllTongTien(treeTableView);
     }
 
-    private void automaticallyInsertNoiThat(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
+    private void automaticallyInsertNoiThat(TreeTableColumn.CellEditEvent<BangNoiThat, NoiThatItem> event) {
         TreeItem<BangNoiThat> rowValue = event.getRowValue();
         if (rowValue == null) {
             LOGGER.error("Null row value when automatically insert vat lieu and thong so");
             return;
         }
-        String noiThat = rowValue.getValue().getHangMuc().getValue();
-        String phongCach = rowValue.getParent().getValue().getHangMuc().getValue();
+        NoiThatItem noiThat = rowValue.getValue().getHangMuc().getValue();
 
-        List<HangMuc> items = luaChonNoiThatService.findHangMucListBy(phongCach, noiThat);
+        List<HangMuc> items = luaChonNoiThatService.findHangMucListByNoiThatID(noiThat.getId());
         if (items == null || items.isEmpty()) {
             LOGGER.error("cant found nothing");
             return;
@@ -88,15 +88,16 @@ public class EditCommitHangMucCommand implements Command {
         rowValue.getChildren().clear();
         int index = 1;
         for (HangMuc item : items) {
+            var noiThatItem = new NoiThatItem(item.getId(), item.getName());
             TreeItem<BangNoiThat> newItem = TableUtils.createNewItem(ItemType.NUMERIC, String.valueOf(index++));
             rowValue.getChildren().add(newItem);
-            newItem.getValue().setHangMuc(item.getName());
+            newItem.getValue().setHangMuc(noiThatItem);
             automaticallyInsertVatLieuAndThongSo(newItem);
         }
         TableCalculationUtils.recalculateAllTongTien(treeTableView);
     }
 
-    private void automaticallyInsertVatLieuAndThongSo(TreeTableColumn.CellEditEvent<BangNoiThat, String> event) {
+    private void automaticallyInsertVatLieuAndThongSo(TreeTableColumn.CellEditEvent<BangNoiThat, NoiThatItem> event) {
         TreeItem<BangNoiThat> rowValue = event.getRowValue();
         if (rowValue == null) {
             LOGGER.error("Null row value when automatically insert vat lieu and thong so");
@@ -111,7 +112,7 @@ public class EditCommitHangMucCommand implements Command {
     private void automaticallyInsertVatLieuAndThongSo(TreeItem<BangNoiThat> rowValue) {
         Optional<VatLieu> vatLieu = getTheFirstVatLieu(rowValue);
         if (vatLieu.isPresent()) {
-            String firstVatLieu = vatLieu.get().getName();
+            NoiThatItem firstVatLieu = new NoiThatItem(vatLieu.get().getId(), vatLieu.get().getName());
             ThongSo thongSo = vatLieu.get().getThongSo();
             if (thongSo != null) {
                 Double dai = Objects.requireNonNullElse(thongSo.getDai(), 0.0);
@@ -136,10 +137,8 @@ public class EditCommitHangMucCommand implements Command {
 
     private Optional<VatLieu> getTheFirstVatLieu(TreeItem<BangNoiThat> currentItem) {
         try {
-            String noiThat = currentItem.getParent().getValue().getHangMuc().getValue();
-            String phongCach = currentItem.getParent().getParent().getValue().getHangMuc().getValue();
-            String hangMuc = currentItem.getValue().getHangMuc().getValue();
-            List<VatLieu> items = luaChonNoiThatService.findVatLieuListBy(phongCach, noiThat, hangMuc);
+            NoiThatItem item = currentItem.getValue().getHangMuc().getValue();
+            List<VatLieu> items = luaChonNoiThatService.findVatLieuListByHangMucID(item.getId());
             if (items.isEmpty()) {
                 return Optional.empty();
             }
