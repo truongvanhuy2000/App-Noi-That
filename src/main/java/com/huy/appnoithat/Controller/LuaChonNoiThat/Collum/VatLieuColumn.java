@@ -1,10 +1,9 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 
-import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomVatLieuCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitVatLieuCommand;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Utils.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.NoiThatItem;
 import com.huy.appnoithat.DataModel.Entity.ThongSo;

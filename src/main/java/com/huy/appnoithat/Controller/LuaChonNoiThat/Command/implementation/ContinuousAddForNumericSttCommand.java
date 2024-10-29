@@ -1,8 +1,8 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Command;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Utils.ItemTypeUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Utils.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.scene.control.TreeItem;
@@ -13,7 +13,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 public class ContinuousAddForNumericSttCommand implements Command {

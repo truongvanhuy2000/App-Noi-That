@@ -1,6 +1,6 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Operation;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Utils.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;

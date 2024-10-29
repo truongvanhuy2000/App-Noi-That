@@ -1,14 +1,12 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Utils.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.scene.input.KeyCode;
 import javafx.util.StringConverter;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;

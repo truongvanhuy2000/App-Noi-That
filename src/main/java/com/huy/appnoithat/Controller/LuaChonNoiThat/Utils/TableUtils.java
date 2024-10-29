@@ -1,4 +1,4 @@
-package com.huy.appnoithat.Controller.LuaChonNoiThat.Common;
+package com.huy.appnoithat.Controller.LuaChonNoiThat.Utils;
 
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;

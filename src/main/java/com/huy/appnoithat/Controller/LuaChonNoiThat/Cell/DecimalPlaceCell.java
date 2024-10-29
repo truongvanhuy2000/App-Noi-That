@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Cell;
 
 import com.huy.appnoithat.Common.Utils;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Utils.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.scene.control.TreeTableView;
 import javafx.util.StringConverter;

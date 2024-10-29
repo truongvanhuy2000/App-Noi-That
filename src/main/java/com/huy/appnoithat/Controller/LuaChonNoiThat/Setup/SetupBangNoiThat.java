@@ -3,13 +3,13 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Setup;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.*;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.AddNewItemIfEmptyCommand;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Utils.BackgroundColorUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Utils.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangThanhToan;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.NoiThatItem;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.LuaChonNoiThatController;
-import com.huy.appnoithat.DataModel.Entity.NoiThatEntity;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
 import javafx.application.Platform;
 import javafx.beans.binding.DoubleBinding;
@@ -17,9 +17,14 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
+import javafx.css.CssParser;
+import javafx.css.Stylesheet;
 import javafx.scene.control.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import javax.swing.text.html.StyleSheet;
+import java.awt.*;
 
 public class SetupBangNoiThat {
     private final Logger LOGGER = LogManager.getLogger(this);
@@ -62,6 +67,17 @@ public class SetupBangNoiThat {
         addInitialItem();
         TableNoiThat.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         TableNoiThat.getSelectionModel().selectedItemProperty().addListener(this::onSelectItemChanged);
+        TableNoiThat.setRowFactory(tv -> {
+            TreeTableRow<BangNoiThat> row = new TreeTableRow<>();
+            row.selectedProperty().addListener((obs, oldVal, newVal) -> {
+                if (newVal) {
+                    row.setBackground(BackgroundColorUtils.getDarkerBackgroundColor(row.getBackground()));
+                } else {
+                    row.setBackground(BackgroundColorUtils.getBrighterBackgroundColor(row.getBackground()));
+                }
+            });
+            return row;
+        });
     }
 
     private void onSelectItemChanged(

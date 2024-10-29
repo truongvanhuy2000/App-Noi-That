@@ -1,7 +1,7 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Command;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Utils.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import javafx.scene.control.TreeItem;

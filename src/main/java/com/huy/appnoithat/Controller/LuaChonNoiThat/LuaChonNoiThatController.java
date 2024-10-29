@@ -145,6 +145,12 @@ public class LuaChonNoiThatController implements Initializable {
         setUpTruongThongTin();
     }
 
+    public DataPackage savetData() {
+        ExportOperation exportOperation = new ExportOperation(this);
+        commandManager.clearStack();
+        return exportOperation.exportData();
+    }
+
     public DataPackage exportData() {
         ExportOperation exportOperation = new ExportOperation(this);
         return exportOperation.exportData();

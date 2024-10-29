@@ -1,18 +1,11 @@
 package com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation;
 
-import com.huy.appnoithat.Common.PopupUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.Command;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.ItemTypeUtils;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Common.TableUtils;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Utils.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
-import javafx.event.ActionEvent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
 import lombok.RequiredArgsConstructor;
-
-import java.util.Optional;
 
 @RequiredArgsConstructor
 public class ContinuousLineAddCommand implements Command {

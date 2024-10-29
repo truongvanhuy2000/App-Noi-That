@@ -29,4 +29,8 @@ public class CommandManager {
         Command command = commandStack.pop();
         command.undo();
     }
+
+    public void clearStack() {
+        commandStack.clear();
+    }
 }
