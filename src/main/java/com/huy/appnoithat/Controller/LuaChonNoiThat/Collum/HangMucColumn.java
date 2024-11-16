@@ -3,6 +3,7 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Collum;
 import com.huy.appnoithat.Common.Utils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Cell.CustomHangMucCell;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
+import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitHangMucAsyncCommand;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.EditCommitHangMucCommand;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.BangNoiThat;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.DataModel.NoiThatItem;
@@ -44,7 +45,7 @@ public class HangMucColumn implements CustomColumn {
      * @param event The CellEditEvent containing information about the edit event.
      */
     private void onEditCommitHangMuc(TreeTableColumn.CellEditEvent<BangNoiThat, NoiThatItem> event) {
-        commandManager.execute(new EditCommitHangMucCommand(luaChonNoiThatService, event));
+        commandManager.execute(new EditCommitHangMucAsyncCommand(luaChonNoiThatService, event));
     }
 
     /**

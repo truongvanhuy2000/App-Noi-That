@@ -41,7 +41,10 @@ public class ItemTypeUtils {
                 row.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
                 row.setBackground(new Background(new BackgroundFill(Color.web("#d0e1e7"), null, null)));
             }
-            case NUMERIC -> row.setStyle("-fx-font-weight: normal");
+            case NUMERIC -> {
+                row.setStyle("-fx-font-weight: normal");
+                row.setBackground(new Background(new BackgroundFill(Color.web("#ffffff"), null, null)));
+            }
         }
     }
 }

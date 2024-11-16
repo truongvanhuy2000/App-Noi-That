@@ -5,6 +5,8 @@ import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
 import com.huy.appnoithat.Controller.NewTab.NewTabController;
 import com.huy.appnoithat.Controller.NewTab.TabContent;
+import com.huy.appnoithat.Controller.NewTab.TabUtils;
+import com.huy.appnoithat.DataModel.DataPackage;
 import com.huy.appnoithat.DataModel.Enums.FileType;
 import com.huy.appnoithat.DataModel.SaveFile.TabData;
 import com.huy.appnoithat.Service.LuaChonNoiThat.LuaChonNoiThatService;
@@ -16,6 +18,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +31,20 @@ public class SaveOperation {
     public SaveOperation(NewTabController newTabController) {
         this.newTabController = newTabController;
         this.noiThatFileService = newTabController.getNoiThatFileService();
+    }
+
+    private List<TabData> saveData() {
+        List<TabData> tabDataList = new ArrayList<>();
+        List<TabContent> tabContentList = TabUtils.resortTab(newTabController.getCurrentlyOpenTab(), newTabController.getTabPane());
+        for (TabContent tabContent : tabContentList) {
+            DataPackage dataPackage = tabContent.getLuaChonNoiThatController().saveData();
+            if (dataPackage == null) {
+                continue;
+            }
+            String tabName = tabContent.getTab().getText();
+            tabDataList.add(new TabData(dataPackage, tabName));
+        }
+        return tabDataList;
     }
 
     public void saveNoteArea() {
@@ -48,31 +65,30 @@ public class SaveOperation {
         selectedTabContent.getLuaChonNoiThatController().saveThongTinCongTy();
     }
 
-    public void save(List<TabData> contents) {
+    public boolean save() {
         // Create an instance of ExportOperation, passing the current object (this) to it
         if (newTabController.getCurrentState() == State.NEW_FILE) {
-            saveAs(contents).ifPresent((savedDirectory -> {
+            Optional<String> result = saveAs();
+            if (result.isPresent()) {
                 newTabController.setCurrentState(State.OPEN_FROM_EXISTING_FILE);
-                newTabController.setCurrentDirectory(savedDirectory);
-            }));
+                newTabController.setCurrentDirectory(result.get());
+                return true;
+            }
+            return false;
         } else if (newTabController.getCurrentState() == State.OPEN_FROM_EXISTING_FILE) {
+            List<TabData> contents = saveData();
             doSaveAction(contents, newTabController.getCurrentDirectory());
+            return true;
         }
+        return false;
     }
 
-    public void backup(List<TabData> contents) {
-        String filename = "backup-" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS").format(new Date()) + ".nt";
-        String tempDirectory = Paths.get(Config.FILE_EXPORT.TEMP_NT_FILE_DIRECTORY, filename).toString();
-        noiThatFileService.export(contents, new File(tempDirectory), false);
-    }
-
-    public Optional<String> saveAs(List<TabData> contents) {
-        File selectedFile;
-        selectedFile = PopupUtils.fileSaver(FileType.NT);
+    public Optional<String> saveAs() {
+        File selectedFile = PopupUtils.fileSaver(FileType.NT);
         if (selectedFile == null) {
-            backup(contents);
             return Optional.empty();
         }
+        List<TabData> contents = saveData();
         doSaveAction(contents, selectedFile.getAbsolutePath());
         return Optional.of(selectedFile.getAbsolutePath());
     }

@@ -87,7 +87,7 @@ public class TableCalculationUtils {
      * @param pattern Patter format is 0.0, 0.00,.....
      * @return
      */
-    public static double roundToDecimal(double value, int decimalRounding) {
+    public static Double roundToDecimal(double value, int decimalRounding) {
         BigDecimal salary = new BigDecimal(value);
         // This is to fix the problem with number like this 123.35 can't be round to 123.4
         // https://stackoverflow.com/questions/47781393/java-roundingmode-half-up-doesnt-round-up-as-expected

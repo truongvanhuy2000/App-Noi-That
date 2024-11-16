@@ -37,10 +37,7 @@ public class AddNewItemIfEmptyCommand implements Command {
         }
     }
 
-    public void automaticallyAddNewNumericStt(TreeItem<BangNoiThat> parent, int count) {
-        if (parent == null) {
-            return;
-        }
+    private void automaticallyAddNewNumericStt(TreeItem<BangNoiThat> parent, int count) {
         for (int i = 0; i < count; i++) {
             TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem(ItemType.NUMERIC, String.valueOf(i + 1));
             parent.getChildren().add(tempNewItem);

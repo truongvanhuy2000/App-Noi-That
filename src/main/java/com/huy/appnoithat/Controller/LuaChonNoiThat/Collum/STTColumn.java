@@ -9,9 +9,12 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableRow;
 import javafx.scene.control.TreeTableView;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @RequiredArgsConstructor
 public class STTColumn implements CustomColumn  {
+    private final Logger LOGGER = LogManager.getLogger(this);
     private final TreeTableColumn<BangNoiThat, String> STT;
 
     /**

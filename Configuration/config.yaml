@@ -1,5 +1,5 @@
 Webserver:
-  host: "https://noithatthuongaone.online:9123"
+  host: "https://backendant.lapbaogia.com:9123"
 #  host : "http://localhost:8080"
   timeout: 10
 

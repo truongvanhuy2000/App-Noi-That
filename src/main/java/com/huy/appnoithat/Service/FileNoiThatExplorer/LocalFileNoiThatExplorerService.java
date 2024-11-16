@@ -55,7 +55,7 @@ public class LocalFileNoiThatExplorerService implements FileNoiThatExplorerServi
      */
     @Override
     public void addRecentFile(RecentFile recentFile) {
-        if (recentFileObservableList == null) {
+        if (recentFileObservableList.isEmpty()) {
             // Retrieve the recent file list if it's not already loaded
             recentFileObservableList = getRecentFile();
         }
@@ -105,9 +105,8 @@ public class LocalFileNoiThatExplorerService implements FileNoiThatExplorerServi
      */
     private RecentFile isFileExist(RecentFile recentFile) {
         return recentFileObservableList.stream().filter(
-                recentFile1 -> recentFile1.getDirectory().equals(recentFile.getDirectory())).map(file -> {
-            file.setTimeStamp(recentFile.getTimeStamp());
-            return file;
-        }).findFirst().orElse(null);
+                recentFile1 -> recentFile1.getDirectory().equals(recentFile.getDirectory()))
+                .peek(file -> file.setTimeStamp(recentFile.getTimeStamp())).findFirst()
+                .orElse(null);
     }
 }

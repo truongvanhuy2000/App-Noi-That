@@ -1,6 +1,9 @@
 package com.huy.appnoithat.Controller.NewTab;
 
 import com.huy.appnoithat.Common.KeyboardUtils;
+import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Controller.Common.SaveBeforeCloseAlert;
+import com.huy.appnoithat.Controller.Common.StageUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.State;
 import com.huy.appnoithat.Controller.NewTab.Operation.ExportOperation;
 import com.huy.appnoithat.Controller.NewTab.Operation.SaveOperation;
@@ -12,6 +15,7 @@ import com.huy.appnoithat.Service.LuaChonNoiThat.NoiThatFileService;
 import com.huy.appnoithat.Service.PersistenceStorage.StorageService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -22,16 +26,15 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Duration;
 import lombok.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.text.MessageFormat;
+import java.util.*;
 
 @Data
 public class NewTabController implements Initializable {
@@ -50,7 +53,6 @@ public class NewTabController implements Initializable {
     private TabPane tabPane;
     @FXML
     private StackPane loadingPane;
-
     private Timeline autoSaveTimer;
     private State currentState = State.NEW_FILE;
     private String currentDirectory;
@@ -78,15 +80,13 @@ public class NewTabController implements Initializable {
         } else if (source == MenuItemExportMultipleXLS) {
             exportOperation.exportMultipleExcel();
         } else if (source == MenuItemSave) {
-            saveOperation.save(exportOperation.exportData());
+            saveOperation.save();
         } else if (source == MenuItemSaveAs) {
-            saveOperation.saveAs(exportOperation.exportData());
+            saveOperation.saveAs();
         } else if (source == AutoSave) {
             if (AutoSave.isSelected()) {
-                LOGGER.info("Auto save is enabled");
                 startAutoSaveAction();
             } else {
-                LOGGER.info("Auto save is disabled");
                 stopAutoSaveAction();
             }
         } else if (source == MenuItemSaveCompanyInfo) {
@@ -104,7 +104,7 @@ public class NewTabController implements Initializable {
     void onKeyPressed(KeyEvent event) {
         if (KeyboardUtils.isRightKeyCombo(Action.SAVE, event)) {
             LOGGER.info("Save key combo pressed");
-            saveOperation.save(exportOperation.exportData());
+            saveOperation.save();
         } else if (KeyboardUtils.isRightKeyCombo(Action.UNDO, event)) {
             TabContent selectedTabContent = getSelectedTabContent();
             if (selectedTabContent == null) {
@@ -139,7 +139,6 @@ public class NewTabController implements Initializable {
         tabPane.setTabDragPolicy(TabPane.TabDragPolicy.REORDER);
         tabPane.getTabs().addListener((ListChangeListener.Change<? extends Tab> change) ->
                 handleMovingNewTabButton(change, newTabButton));
-
         startAutoSave();
     }
 
@@ -147,9 +146,9 @@ public class NewTabController implements Initializable {
         AutoSave.setSelected(true);
         autoSaveTimer = new Timeline(new KeyFrame(Duration.minutes(10), event -> {
             if (currentState == State.OPEN_FROM_EXISTING_FILE && currentDirectory != null) {
-                saveOperation.save(exportOperation.exportData());
+                saveOperation.save();
             } else if (currentState == State.NEW_FILE) {
-                saveOperation.backup(exportOperation.exportData());
+                exportOperation.backup();
             }
         }));
         startAutoSaveAction();
@@ -176,6 +175,35 @@ public class NewTabController implements Initializable {
         this.currentStage = currentStage;
         AutoSave.setSelected(true);
         tabOperation.createNewTab(tabState, importDirectory);
+        currentStage.setOnCloseRequest(windowEvent -> {
+            windowEvent.consume();
+            onCloseRequest(currentStage);
+        });
+    }
+
+    private void onCloseRequest(Stage currentStage) {
+        if (isReadyToExit()) {
+            StageUtils.closeStage(currentStage);
+            return;
+        }
+
+        Alert alert = new SaveBeforeCloseAlert();
+        ButtonType result = alert.showAndWait().orElse(SaveBeforeCloseAlert.buttonTypeCancel);
+        if (result == SaveBeforeCloseAlert.buttonTypeSave) {
+            boolean saveResult = saveOperation.save();
+            if (saveResult) {
+                StageUtils.closeStage(currentStage);;
+            }
+        } else if (result == SaveBeforeCloseAlert.buttonTypeNotSave) {
+            String backedUpFile = exportOperation.backup();
+            PopupUtils.throwSuccessNotification(
+                    MessageFormat.format("Tệp đã được sao lưu lại với tên {0} và sẽ bị xóa sau 10 ngày", backedUpFile));
+            StageUtils.closeStage(currentStage);
+        }
+    }
+
+    private boolean isReadyToExit() {
+        return getCurrentlyOpenTab().stream().allMatch(tab -> tab.getLuaChonNoiThatController().isReadyToClosed());
     }
 
     private Tab newTabButton() {

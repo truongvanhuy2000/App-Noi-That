@@ -1,6 +1,7 @@
 package com.huy.appnoithat.Exception;
 
 import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Message.ErrorMessage;
 import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -12,7 +13,11 @@ public class GlobalExceptionHandler implements Thread.UncaughtExceptionHandler {
 
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
-        PopupUtils.throwErrorNotification("Lỗi hệ thống, vui lòng thông báo cho nhà phát triển");
-        LOGGER.log(Level.INFO, throwable.getMessage(), throwable);
+        if (throwable instanceof CalculationException) {
+            PopupUtils.throwErrorNotification(ErrorMessage.CALCULATION_ERROR);
+        } else {
+            PopupUtils.throwErrorNotification(ErrorMessage.UNKNOWN_ERROR);
+            LOGGER.log(Level.INFO, throwable.getMessage(), throwable);
+        }
     }
 }

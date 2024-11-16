@@ -3,6 +3,7 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Converter;
 import com.ezylang.evalex.EvaluationException;
 import com.ezylang.evalex.Expression;
 import com.ezylang.evalex.parser.ParseException;
+import com.huy.appnoithat.Exception.CalculationException;
 import javafx.util.StringConverter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -27,10 +28,10 @@ public class FormulaConverter extends StringConverter<Number> {
             return expression.evaluate().getNumberValue();
         } catch (EvaluationException e) {
             LOGGER.error("Can't evaluate this expression", e);
-            throw new RuntimeException(e);
+            throw new CalculationException(e);
         } catch (ParseException e) {
             LOGGER.error("Unable to parse this expression", e);
-            throw new RuntimeException(e);
+            throw new CalculationException(e);
         }
     }
 }

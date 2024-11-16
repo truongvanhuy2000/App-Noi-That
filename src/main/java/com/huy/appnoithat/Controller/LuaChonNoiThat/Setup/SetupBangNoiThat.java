@@ -2,7 +2,6 @@ package com.huy.appnoithat.Controller.LuaChonNoiThat.Setup;
 
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Collum.*;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.CommandManager;
-import com.huy.appnoithat.Controller.LuaChonNoiThat.Command.implementation.AddNewItemIfEmptyCommand;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Utils.BackgroundColorUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Utils.TableUtils;
 import com.huy.appnoithat.Controller.LuaChonNoiThat.Constant.ItemType;
@@ -17,17 +16,13 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import javafx.css.CssParser;
-import javafx.css.Stylesheet;
 import javafx.scene.control.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.swing.text.html.StyleSheet;
-import java.awt.*;
-
 public class SetupBangNoiThat {
     private final Logger LOGGER = LogManager.getLogger(this);
+    public static final int DEFAULT_INITIAL_ITEM = 5;
 
     private final TreeTableColumn<BangNoiThat, Double> Cao;
     private final TreeTableColumn<BangNoiThat, Double> Dai;
@@ -111,7 +106,18 @@ public class SetupBangNoiThat {
         TableNoiThat.setShowRoot(false);
         TableNoiThat.setEditable(true);
 
-        commandManager.execute(new AddNewItemIfEmptyCommand(TableNoiThat));
+        TreeItem<BangNoiThat> newlyCreatedItem = TableUtils.createNewItem(ItemType.AlPHA, "A");
+        TableNoiThat.getRoot().getChildren().add(newlyCreatedItem);
+        TreeItem<BangNoiThat> newRomanStt = TableUtils.createNewItem(ItemType.ROMAN, "I");
+        automaticallyAddNewNumericStt(newRomanStt);
+        newlyCreatedItem.getChildren().add(newRomanStt);
+    }
+
+    private void automaticallyAddNewNumericStt(TreeItem<BangNoiThat> parent) {
+        for (int i = 0; i < SetupBangNoiThat.DEFAULT_INITIAL_ITEM; i++) {
+            TreeItem<BangNoiThat> tempNewItem = TableUtils.createNewItem(ItemType.NUMERIC, String.valueOf(i + 1));
+            parent.getChildren().add(tempNewItem);
+        }
     }
 
     /**

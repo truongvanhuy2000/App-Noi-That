@@ -2,6 +2,7 @@ package com.huy.appnoithat;
 
 import com.huy.appnoithat.Configuration.ConfigHandler;
 import com.huy.appnoithat.Exception.GlobalExceptionHandler;
+import com.huy.appnoithat.Handler.HandleOldBackupFile;
 import com.huy.appnoithat.Handler.MultipleInstanceHandler;
 import com.huy.appnoithat.IOC.DIContainer;
 import com.huy.appnoithat.Scene.HomeScene;
@@ -10,8 +11,12 @@ import com.huy.appnoithat.Scene.StageFactory;
 import com.huy.appnoithat.Session.UserSessionManager;
 import com.huy.appnoithat.Work.OpenFileWork;
 import com.huy.appnoithat.Work.WorkFactory;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -58,6 +63,7 @@ public class HelloApplication extends Application {
         MultipleInstanceHandler.startHandleMultipleInstance();
         LOGGER.info("Start application");
         ConfigHandler.getInstance().readConfiguration();
+        HandleOldBackupFile.start();
         launch(HelloApplication.class, args);
     }
 }

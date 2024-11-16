@@ -2,6 +2,7 @@ package com.huy.appnoithat.Controller.NewTab.Operation;
 
 import com.huy.appnoithat.Common.FXUtils;
 import com.huy.appnoithat.Common.PopupUtils;
+import com.huy.appnoithat.Configuration.Config;
 import com.huy.appnoithat.Controller.NewTab.NewTabController;
 import com.huy.appnoithat.Controller.NewTab.TabContent;
 import com.huy.appnoithat.Controller.NewTab.TabUtils;
@@ -20,7 +21,10 @@ import org.apache.logging.log4j.Logger;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -38,7 +42,7 @@ public class ExportOperation {
         this.luaChonNoiThatService = newTabController.getLuaChonNoiThatService();
     }
 
-    public List<TabData> exportData() {
+    private List<TabData> exportData() {
         List<TabData> tabDataList = new ArrayList<>();
         List<TabContent> tabContentList = TabUtils.resortTab(newTabController.getCurrentlyOpenTab(), newTabController.getTabPane());
         for (TabContent tabContent : tabContentList) {
@@ -50,6 +54,14 @@ public class ExportOperation {
             tabDataList.add(new TabData(dataPackage, tabName));
         }
         return tabDataList;
+    }
+
+    public String backup() {
+        List<TabData> contents = exportData();
+        String filename = "backup-" + new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS").format(new Date()) + ".nt";
+        String tempDirectory = Paths.get(Config.FILE_EXPORT.TEMP_NT_FILE_DIRECTORY, filename).toString();
+        noiThatFileService.export(contents, new File(tempDirectory), false);
+        return filename;
     }
 
     public void exportFile(FileType fileType) {

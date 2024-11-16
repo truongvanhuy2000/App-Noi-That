@@ -42,7 +42,7 @@ import java.util.ResourceBundle;
 
 @Getter
 public class LuaChonNoiThatController implements Initializable {
-    final static Logger LOGGER = LogManager.getLogger(LuaChonNoiThatController.class);
+    private final Logger LOGGER = LogManager.getLogger(this);
     @FXML
     private TextField TenCongTy, VanPhong, DiaChiXuong, DienThoaiCongTy, Email;
     @FXML
@@ -57,7 +57,6 @@ public class LuaChonNoiThatController implements Initializable {
     private TreeTableColumn<BangNoiThat, String> DonVi, STT;
     @FXML
     private TreeTableColumn<BangNoiThat, NoiThatItem> HangMuc, VatLieu;
-    // Button
     @FXML
     private Button addContinuousButton, addNewButton, ExportButton, SaveButton, duplicateButton, deleteButton;
     @FXML
@@ -73,6 +72,7 @@ public class LuaChonNoiThatController implements Initializable {
     private final StorageService persistenceStorageService;
     private final LuaChonNoiThatService luaChonNoiThatService;
     private final CommandManager commandManager;
+    private long latestSavedTime = 0;
 
     public LuaChonNoiThatController(
             StorageService persistenceStorageService,
@@ -145,10 +145,13 @@ public class LuaChonNoiThatController implements Initializable {
         setUpTruongThongTin();
     }
 
-    public DataPackage savetData() {
-        ExportOperation exportOperation = new ExportOperation(this);
-        commandManager.clearStack();
-        return exportOperation.exportData();
+    public DataPackage saveData() {
+        latestSavedTime = System.currentTimeMillis();
+        return exportData();
+    }
+
+    public boolean isReadyToClosed() {
+        return commandManager.getLatestChangeTime() <= latestSavedTime;
     }
 
     public DataPackage exportData() {

@@ -95,6 +95,7 @@ public class ServiceModule extends AbstractModule {
         }
 
         @Provides
+        @Singleton
         FileNoiThatExplorerService fileNoiThatExplorerService(StorageService persistenceStorageService) {
             return new LocalFileNoiThatExplorerService(persistenceStorageService);
         }
