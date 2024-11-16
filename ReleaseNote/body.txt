@@ -1,3 +1,4 @@
-- New Undo feature for LuaChonNoiThat
+- Improve save file feature
+- Do some basic calculation inside a cell
 - Minor adjustments
 - Bug fixes
